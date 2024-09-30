@@ -1051,9 +1051,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cdklabs/proserve-constructs@workspace:.":
+"@cdklabs/cdk-proserve-constructs@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@cdklabs/proserve-constructs@workspace:."
+  resolution: "@cdklabs/cdk-proserve-constructs@workspace:."
   dependencies:
     "@aws-cdk/integ-runner": "npm:latest"
     "@aws-cdk/integ-tests-alpha": "npm:latest"

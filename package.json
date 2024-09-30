@@ -1,8 +1,8 @@
 {
-  "name": "@cdklabs/proserve-constructs",
+  "name": "@cdklabs/cdk-proserve-constructs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cdklabs/proserve-constructs.git"
+    "url": "https://github.com/cdklabs/cdk-proserve-constructs.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -148,22 +148,22 @@
     "outdir": "dist",
     "targets": {
       "java": {
-        "package": "io.github.cdklabs.proserve.constructs",
+        "package": "io.github.cdklabs.cdk.proserve.constructs",
         "maven": {
           "groupId": "io.github.cdklabs",
-          "artifactId": "proserve-constructs"
+          "artifactId": "cdk-proserve-constructs"
         }
       },
       "python": {
-        "distName": "cdklabs.proserve-constructs",
-        "module": "cdklabs.proserve_constructs"
+        "distName": "cdklabs.cdk-proserve-constructs",
+        "module": "cdklabs.cdk_proserve_constructs"
       },
       "dotnet": {
-        "namespace": "Cdklabs.ProserveConstructs",
-        "packageId": "Cdklabs.ProserveConstructs"
+        "namespace": "Cdklabs.CdkProserveConstructs",
+        "packageId": "Cdklabs.CdkProserveConstructs"
       },
       "go": {
-        "moduleName": "github.com/cdklabs/proserve-constructs-go"
+        "moduleName": "github.com/cdklabs/cdk-proserve-constructs-go"
       }
     },
     "tsc": {
