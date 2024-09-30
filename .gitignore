@@ -39,6 +39,9 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+.DS_Store
+.python-version
+.nvmrc
 /test-reports/
 junit.xml
 /coverage/

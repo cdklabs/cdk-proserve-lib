@@ -8,15 +8,24 @@ import {
     EndOfLine
 } from 'projen/lib/javascript';
 
+const deps = [
+    '@aws-sdk/client-ssm@3.600.0',
+    '@aws-sdk/client-opensearch@3.600.0',
+    '@types/aws-lambda@8.10.141'
+];
+
 const project = new CdklabsConstructLibrary({
     author: 'Derrike Nunn',
     authorAddress: 'nunnderr@amazon.com',
-    cdkVersion: '2.1.0',
+    cdkVersion: '2.160.0',
     defaultReleaseBranch: 'main',
-    devDeps: ['cdklabs-projen-project-types'],
-    name: 'cdk-proserve-constructs',
-    packageName: '@cdklabs/cdk-proserve-constructs',
+    deps: deps,
+    bundledDeps: deps,
+    devDeps: ['cdklabs-projen-project-types', 'aws-sdk-client-mock', 'esbuild'],
+    name: '@cdklabs/proserve-constructs',
+    packageName: '@cdklabs/proserve-constructs',
     projenrcTs: true,
+    gitignore: ['.DS_Store', '.python-version', '.nvmrc'],
     packageManager: NodePackageManager.YARN_BERRY,
     prettier: true,
     prettierOptions: {
