@@ -64,21 +64,7 @@ export interface OpensearchAdminUserProps {
 export class OpensearchAdminUser extends Construct {
     private static serviceTokens = new Map<string, string>();
 
-    constructor(scope: Construct, id: string, props: OpensearchAdminUserProps) {
-        super(scope, id);
-
-        new CustomResource(this, 'OpensearchAdminUserCr', {
-            serviceToken: OpensearchAdminUser.buildProvider(scope, props),
-            properties: {
-                DomainName: props.domain.domainName,
-                PasswordParameterName: props.password.parameterName,
-                UsernameParameterName: props.username.parameterName
-            },
-            resourceType: 'Custom::OpensearchAdminUser'
-        });
-    }
-
-    private static buildProvider(
+    private static getOrBuildProvider(
         scope: Construct,
         props: OpensearchAdminUserProps
     ): string {
@@ -137,5 +123,19 @@ export class OpensearchAdminUser extends Construct {
         }
 
         return OpensearchAdminUser.serviceTokens.get(stackId)!;
+    }
+
+    constructor(scope: Construct, id: string, props: OpensearchAdminUserProps) {
+        super(scope, id);
+
+        new CustomResource(this, 'OpensearchAdminUserCr', {
+            serviceToken: OpensearchAdminUser.getOrBuildProvider(scope, props),
+            properties: {
+                DomainName: props.domain.domainName,
+                PasswordParameterName: props.password.parameterName,
+                UsernameParameterName: props.username.parameterName
+            },
+            resourceType: 'Custom::OpensearchAdminUser'
+        });
     }
 }
