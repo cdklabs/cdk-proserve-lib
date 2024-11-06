@@ -1,14 +1,23 @@
 /**
- * (c) 2024 Amazon Web Services, Inc. or its affiliates. All Rights Reserved.
+ *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
- * This AWS Content is provided subject to the terms of the AWS Customer
- * Agreement available at https://aws.amazon.com/agreement or other written
- * agreement between Customer and either Amazon Web Services, Inc. or
- * Amazon Web Services EMEA SARL or both.
+ *  Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance
+ *  with the License. A copy of the License is located at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  or in the 'license' file accompanying this file. This file is distributed on an 'AS IS' BASIS, WITHOUT WARRANTIES
+ *  OR CONDITIONS OF ANY KIND, express or implied. See the License for the specific language governing permissions
+ *  and limitations under the License.
  */
 
-import * as logs from 'aws-cdk-lib/aws-logs';
-import * as cr from 'aws-cdk-lib/custom-resources';
+import { RetentionDays } from 'aws-cdk-lib/aws-logs';
+import {
+    AwsCustomResource,
+    AwsCustomResourcePolicy,
+    AwsSdkCall,
+    PhysicalResourceId
+} from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 
 /**
@@ -51,14 +60,14 @@ export class Ec2ImageBuilderGetImage extends Construct {
     ) {
         super(scope, id);
 
-        const customResource = new cr.AwsCustomResource(
+        const customResource = new AwsCustomResource(
             this,
             'ImagePipelineAmiResource',
             {
-                policy: cr.AwsCustomResourcePolicy.fromSdkCalls({
+                policy: AwsCustomResourcePolicy.fromSdkCalls({
                     resources: [props.imageBuildVersionArn]
                 }),
-                logRetention: logs.RetentionDays.ONE_YEAR,
+                logRetention: RetentionDays.ONE_YEAR,
                 onCreate: this.getImage(id, props.imageBuildVersionArn),
                 onUpdate: this.getImage(id, props.imageBuildVersionArn),
                 resourceType: 'Custom::Ec2ImageBuilderGetImage'
@@ -74,7 +83,7 @@ export class Ec2ImageBuilderGetImage extends Construct {
      * @param imageBuildVersionArn The ARN of the image build version to retrieve
      * @returns The AWS SDK call configuration
      */
-    private getImage(id: string, imageBuildVersionArn: string): cr.AwsSdkCall {
+    private getImage(id: string, imageBuildVersionArn: string): AwsSdkCall {
         const params = {
             imageBuildVersionArn: imageBuildVersionArn
         };
@@ -83,7 +92,7 @@ export class Ec2ImageBuilderGetImage extends Construct {
             service: 'Imagebuilder',
             action: 'getImage',
             parameters: params,
-            physicalResourceId: cr.PhysicalResourceId.of(id),
+            physicalResourceId: PhysicalResourceId.of(id),
             outputPaths: [this.apiResponseField]
         };
     }

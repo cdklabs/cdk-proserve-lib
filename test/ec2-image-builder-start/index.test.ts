@@ -13,26 +13,26 @@
 
 import { Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
-import { Ec2ImageBuilderGetImage } from '../../src/ec2-image-builder-get-image';
+import { Ec2ImageBuilderStart } from '../../src/ec2-image-builder-start';
 
-describe('Ec2ImageBuilderGetImage', () => {
+describe('Ec2ImageBuilderStart', () => {
     let stack: Stack;
-    const imageBuildVersionArn =
-        'arn:aws:imagebuilder:us-west-2:123456789012:image/example-image/1.0.0/1';
+    const pipelineArn =
+        'arn:aws:imagebuilder:us-west-2:123456789012:image-pipeline/example-pipeline';
 
     beforeEach(() => {
         stack = new Stack();
     });
 
-    it('creates custom resource with correct properties', () => {
+    it('creates custom resource', () => {
         // Act
-        new Ec2ImageBuilderGetImage(stack, 'TestConstruct', {
-            imageBuildVersionArn
+        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+            pipelineArn
         });
 
         // Assert
         const template = Template.fromStack(stack);
-        template.hasResourceProperties('Custom::Ec2ImageBuilderGetImage', {
+        template.hasResourceProperties('Custom::Ec2ImageBuilderStart', {
             ServiceToken: {
                 'Fn::GetAtt': [
                     'AWS679f53fac002430cb0da5b7982bd22872D164C4C',
@@ -40,10 +40,10 @@ describe('Ec2ImageBuilderGetImage', () => {
                 ]
             },
             Create: Match.stringLikeRegexp(
-                `"imageBuildVersionArn":"${imageBuildVersionArn}"`
+                `"imagePipelineArn":"${pipelineArn}`
             ),
             Update: Match.stringLikeRegexp(
-                `"imageBuildVersionArn":"${imageBuildVersionArn}"`
+                `"imagePipelineArn":"${pipelineArn}`
             ),
             InstallLatestAwsSdk: true
         });
@@ -51,8 +51,8 @@ describe('Ec2ImageBuilderGetImage', () => {
 
     it('sets correct IAM policy', () => {
         // Act
-        new Ec2ImageBuilderGetImage(stack, 'TestConstruct', {
-            imageBuildVersionArn
+        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+            pipelineArn
         });
 
         // Assert
@@ -61,14 +61,15 @@ describe('Ec2ImageBuilderGetImage', () => {
             PolicyDocument: {
                 Statement: [
                     {
-                        Action: 'imagebuilder:GetImage',
+                        Action: 'imagebuilder:StartImagePipelineExecution',
                         Effect: 'Allow',
-                        Resource: imageBuildVersionArn
+                        Resource: pipelineArn
                     }
-                ]
+                ],
+                Version: '2012-10-17'
             },
             PolicyName: Match.stringLikeRegexp(
-                'TestConstructImagePipelineAmiResourceCustomResourcePolicy'
+                'TestConstructCustomResourcePolicy'
             ),
             Roles: Match.arrayWith([
                 {
@@ -80,19 +81,16 @@ describe('Ec2ImageBuilderGetImage', () => {
         });
     });
 
-    it('exposes ami', () => {
+    it('exposes imageBuildVersionArn', () => {
         // Act
-        const construct = new Ec2ImageBuilderGetImage(stack, 'TestConstruct', {
-            imageBuildVersionArn
+        const construct = new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+            pipelineArn
         });
 
         // Assert
-        expect(construct.ami).toBeDefined();
-        expect(stack.resolve(construct.ami)).toEqual({
-            'Fn::GetAtt': [
-                'TestConstructImagePipelineAmiResourceC003FA3E',
-                'image.outputResources.amis.0.image'
-            ]
+        expect(construct.imageBuildVersionArn).toBeDefined();
+        expect(stack.resolve(construct.imageBuildVersionArn)).toEqual({
+            'Fn::GetAtt': ['TestConstruct45D4903A', 'imageBuildVersionArn']
         });
     });
 });
