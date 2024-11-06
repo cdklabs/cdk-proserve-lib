@@ -2,7 +2,127 @@
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
 
-### OpensearchAdminUser <a name="OpensearchAdminUser" id="@cdklabs/proserve-constructs.OpensearchAdminUser"></a>
+### Ec2ImageBuilderGetImage <a name="Ec2ImageBuilderGetImage" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage"></a>
+
+Custom construct that retrieves the AMI ID from an EC2 Image Builder image build version.
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.Initializer"></a>
+
+```typescript
+import { Ec2ImageBuilderGetImage } from '@cdklabs/cdk-proserve-constructs'
+
+new Ec2ImageBuilderGetImage(scope: Construct, id: string, props: Ec2ImageBuilderGetImageProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.Initializer.parameter.props">props</a></code> | <code><a href="#@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImageProps">Ec2ImageBuilderGetImageProps</a></code> | Configuration properties. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The scoped construct ID.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImageProps">Ec2ImageBuilderGetImageProps</a>
+
+Configuration properties.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.isConstruct"></a>
+
+```typescript
+import { Ec2ImageBuilderGetImage } from '@cdklabs/cdk-proserve-constructs'
+
+Ec2ImageBuilderGetImage.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.property.ami">ami</a></code> | <code>string</code> | The AMI ID retrieved from the EC2 Image Builder image. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `ami`<sup>Required</sup> <a name="ami" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImage.property.ami"></a>
+
+```typescript
+public readonly ami: string;
+```
+
+- *Type:* string
+
+The AMI ID retrieved from the EC2 Image Builder image.
+
+---
+
+
+### OpensearchAdminUser <a name="OpensearchAdminUser" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUser"></a>
 
 OpensearchAdminUser construct creates a custom resource to manage an admin user for an Amazon Opensearch domain.
 
@@ -26,37 +146,37 @@ const adminUser = new OpensearchAdminUser(this, 'OpensearchAdminUser', {
 ```
 
 
-#### Initializers <a name="Initializers" id="@cdklabs/proserve-constructs.OpensearchAdminUser.Initializer"></a>
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.Initializer"></a>
 
 ```typescript
-import { OpensearchAdminUser } from '@cdklabs/proserve-constructs'
+import { OpensearchAdminUser } from '@cdklabs/cdk-proserve-constructs'
 
 new OpensearchAdminUser(scope: Construct, id: string, props: OpensearchAdminUserProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/proserve-constructs.OpensearchAdminUser.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@cdklabs/proserve-constructs.OpensearchAdminUser.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/proserve-constructs.OpensearchAdminUser.Initializer.parameter.props">props</a></code> | <code><a href="#@cdklabs/proserve-constructs.OpensearchAdminUserProps">OpensearchAdminUserProps</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.Initializer.parameter.props">props</a></code> | <code><a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps">OpensearchAdminUserProps</a></code> | *No description.* |
 
 ---
 
-##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/proserve-constructs.OpensearchAdminUser.Initializer.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.Initializer.parameter.scope"></a>
 
 - *Type:* constructs.Construct
 
 ---
 
-##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/proserve-constructs.OpensearchAdminUser.Initializer.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.Initializer.parameter.id"></a>
 
 - *Type:* string
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/proserve-constructs.OpensearchAdminUser.Initializer.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.Initializer.parameter.props"></a>
 
-- *Type:* <a href="#@cdklabs/proserve-constructs.OpensearchAdminUserProps">OpensearchAdminUserProps</a>
+- *Type:* <a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps">OpensearchAdminUserProps</a>
 
 ---
 
@@ -64,11 +184,11 @@ new OpensearchAdminUser(scope: Construct, id: string, props: OpensearchAdminUser
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdklabs/proserve-constructs.OpensearchAdminUser.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.toString">toString</a></code> | Returns a string representation of this construct. |
 
 ---
 
-##### `toString` <a name="toString" id="@cdklabs/proserve-constructs.OpensearchAdminUser.toString"></a>
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.toString"></a>
 
 ```typescript
 public toString(): string
@@ -80,21 +200,21 @@ Returns a string representation of this construct.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdklabs/proserve-constructs.OpensearchAdminUser.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/proserve-constructs.OpensearchAdminUser.isConstruct"></a>
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.isConstruct"></a>
 
 ```typescript
-import { OpensearchAdminUser } from '@cdklabs/proserve-constructs'
+import { OpensearchAdminUser } from '@cdklabs/cdk-proserve-constructs'
 
 OpensearchAdminUser.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
 
-###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/proserve-constructs.OpensearchAdminUser.isConstruct.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
@@ -106,11 +226,11 @@ Any object.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/proserve-constructs.OpensearchAdminUser.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 
 ---
 
-##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/proserve-constructs.OpensearchAdminUser.property.node"></a>
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUser.property.node"></a>
 
 ```typescript
 public readonly node: Node;
@@ -125,14 +245,46 @@ The tree node.
 
 ## Structs <a name="Structs" id="Structs"></a>
 
-### OpensearchAdminUserProps <a name="OpensearchAdminUserProps" id="@cdklabs/proserve-constructs.OpensearchAdminUserProps"></a>
+### Ec2ImageBuilderGetImageProps <a name="Ec2ImageBuilderGetImageProps" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImageProps"></a>
+
+Properties for the Ec2ImageBuilderGetImage construct.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImageProps.Initializer"></a>
+
+```typescript
+import { Ec2ImageBuilderGetImageProps } from '@cdklabs/cdk-proserve-constructs'
+
+const ec2ImageBuilderGetImageProps: Ec2ImageBuilderGetImageProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImageProps.property.imageBuildVersionArn">imageBuildVersionArn</a></code> | <code>string</code> | The ARN of the EC2 Image Builder image build version. |
+
+---
+
+##### `imageBuildVersionArn`<sup>Required</sup> <a name="imageBuildVersionArn" id="@cdklabs/cdk-proserve-constructs.Ec2ImageBuilderGetImageProps.property.imageBuildVersionArn"></a>
+
+```typescript
+public readonly imageBuildVersionArn: string;
+```
+
+- *Type:* string
+
+The ARN of the EC2 Image Builder image build version.
+
+---
+
+### OpensearchAdminUserProps <a name="OpensearchAdminUserProps" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps"></a>
 
 Properties for the OpensearchAdminUser construct.
 
-#### Initializer <a name="Initializer" id="@cdklabs/proserve-constructs.OpensearchAdminUserProps.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps.Initializer"></a>
 
 ```typescript
-import { OpensearchAdminUserProps } from '@cdklabs/proserve-constructs'
+import { OpensearchAdminUserProps } from '@cdklabs/cdk-proserve-constructs'
 
 const opensearchAdminUserProps: OpensearchAdminUserProps = { ... }
 ```
@@ -141,15 +293,15 @@ const opensearchAdminUserProps: OpensearchAdminUserProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/proserve-constructs.OpensearchAdminUserProps.property.domain">domain</a></code> | <code>aws-cdk-lib.aws_opensearchservice.IDomain</code> | The Opensearch domain to which the admin user will be added. |
-| <code><a href="#@cdklabs/proserve-constructs.OpensearchAdminUserProps.property.password">password</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | The SSM parameter containing the password for the Opensearch admin user. |
-| <code><a href="#@cdklabs/proserve-constructs.OpensearchAdminUserProps.property.username">username</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | The SSM parameter containing the username for the Opensearch admin user. |
-| <code><a href="#@cdklabs/proserve-constructs.OpensearchAdminUserProps.property.domainKey">domainKey</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional. |
-| <code><a href="#@cdklabs/proserve-constructs.OpensearchAdminUserProps.property.workerEncryption">workerEncryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional. |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps.property.domain">domain</a></code> | <code>aws-cdk-lib.aws_opensearchservice.IDomain</code> | The Opensearch domain to which the admin user will be added. |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps.property.password">password</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | The SSM parameter containing the password for the Opensearch admin user. |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps.property.username">username</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | The SSM parameter containing the username for the Opensearch admin user. |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps.property.domainKey">domainKey</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional. |
+| <code><a href="#@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps.property.workerEncryption">workerEncryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional. |
 
 ---
 
-##### `domain`<sup>Required</sup> <a name="domain" id="@cdklabs/proserve-constructs.OpensearchAdminUserProps.property.domain"></a>
+##### `domain`<sup>Required</sup> <a name="domain" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps.property.domain"></a>
 
 ```typescript
 public readonly domain: IDomain;
@@ -161,7 +313,7 @@ The Opensearch domain to which the admin user will be added.
 
 ---
 
-##### `password`<sup>Required</sup> <a name="password" id="@cdklabs/proserve-constructs.OpensearchAdminUserProps.property.password"></a>
+##### `password`<sup>Required</sup> <a name="password" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps.property.password"></a>
 
 ```typescript
 public readonly password: IParameter;
@@ -173,7 +325,7 @@ The SSM parameter containing the password for the Opensearch admin user.
 
 ---
 
-##### `username`<sup>Required</sup> <a name="username" id="@cdklabs/proserve-constructs.OpensearchAdminUserProps.property.username"></a>
+##### `username`<sup>Required</sup> <a name="username" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps.property.username"></a>
 
 ```typescript
 public readonly username: IParameter;
@@ -185,7 +337,7 @@ The SSM parameter containing the username for the Opensearch admin user.
 
 ---
 
-##### `domainKey`<sup>Optional</sup> <a name="domainKey" id="@cdklabs/proserve-constructs.OpensearchAdminUserProps.property.domainKey"></a>
+##### `domainKey`<sup>Optional</sup> <a name="domainKey" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps.property.domainKey"></a>
 
 ```typescript
 public readonly domainKey: IKey;
@@ -200,7 +352,7 @@ If provided, the construct will grant the necessary permissions to use this key.
 
 ---
 
-##### `workerEncryption`<sup>Optional</sup> <a name="workerEncryption" id="@cdklabs/proserve-constructs.OpensearchAdminUserProps.property.workerEncryption"></a>
+##### `workerEncryption`<sup>Optional</sup> <a name="workerEncryption" id="@cdklabs/cdk-proserve-constructs.OpensearchAdminUserProps.property.workerEncryption"></a>
 
 ```typescript
 public readonly workerEncryption: IKey;
