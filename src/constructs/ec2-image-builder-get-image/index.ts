@@ -19,6 +19,7 @@ import {
     PhysicalResourceId
 } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
+import { CustomResourceLambdaConfiguration } from '../../interfaces';
 
 /**
  * Properties for the Ec2ImageBuilderGetImage construct
@@ -28,6 +29,11 @@ export interface Ec2ImageBuilderGetImageProps {
      * The ARN of the EC2 Image Builder image build version
      */
     readonly imageBuildVersionArn: string;
+
+    /**
+     * Optional Lambda configuration settings.
+     */
+    readonly lambdaConfiguration?: CustomResourceLambdaConfiguration;
 }
 
 /**
@@ -70,7 +76,8 @@ export class Ec2ImageBuilderGetImage extends Construct {
                 logRetention: RetentionDays.ONE_YEAR,
                 onCreate: this.getImage(id, props.imageBuildVersionArn),
                 onUpdate: this.getImage(id, props.imageBuildVersionArn),
-                resourceType: 'Custom::Ec2ImageBuilderGetImage'
+                resourceType: 'Custom::Ec2ImageBuilderGetImage',
+                ...props.lambdaConfiguration
             }
         );
 

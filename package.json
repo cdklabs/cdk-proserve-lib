@@ -1,8 +1,8 @@
 {
-  "name": "@cdklabs/cdk-proserve-constructs",
+  "name": "@cdklabs/cdk-proserve",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cdklabs/cdk-proserve-constructs.git"
+    "url": "https://github.com/cdklabs/cdk-proserve.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -80,12 +80,14 @@
   "dependencies": {
     "@aws-sdk/client-opensearch": "3.600.0",
     "@aws-sdk/client-ssm": "3.600.0",
-    "@types/aws-lambda": "8.10.141"
+    "@types/aws-lambda": "8.10.141",
+    "axios": "1.7.7"
   },
   "bundledDependencies": [
     "@aws-sdk/client-opensearch",
     "@aws-sdk/client-ssm",
-    "@types/aws-lambda"
+    "@types/aws-lambda",
+    "axios"
   ],
   "keywords": [
     "cdk"
@@ -148,22 +150,22 @@
     "outdir": "dist",
     "targets": {
       "java": {
-        "package": "io.github.cdklabs.cdk.proserve.constructs",
+        "package": "io.github.cdklabs.cdk.proserve",
         "maven": {
           "groupId": "io.github.cdklabs",
-          "artifactId": "cdk-proserve-constructs"
+          "artifactId": "cdk-proserve"
         }
       },
       "python": {
-        "distName": "cdklabs.cdk-proserve-constructs",
-        "module": "cdklabs.cdk_proserve_constructs"
+        "distName": "cdklabs.cdk-proserve",
+        "module": "cdklabs.cdk_proserve"
       },
       "dotnet": {
-        "namespace": "Cdklabs.CdkProserveConstructs",
-        "packageId": "Cdklabs.CdkProserveConstructs"
+        "namespace": "Cdklabs.CdkProserve",
+        "packageId": "Cdklabs.CdkProserve"
       },
       "go": {
-        "moduleName": "github.com/cdklabs/cdk-proserve-constructs-go"
+        "moduleName": "github.com/cdklabs/cdk-proserve-go"
       }
     },
     "tsc": {

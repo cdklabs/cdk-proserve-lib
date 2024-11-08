@@ -11,9 +11,12 @@
  *  and limitations under the License.
  */
 
-import { Stack } from 'aws-cdk-lib';
+import { writeFileSync } from 'fs';
+import { Duration, Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
-import { Ec2ImageBuilderStart } from '../../src/ec2-image-builder-start';
+import { Vpc } from 'aws-cdk-lib/aws-ec2';
+import { Topic } from 'aws-cdk-lib/aws-sns';
+import { Ec2ImageBuilderStart } from '../../src/constructs/ec2-image-builder-start';
 
 describe('Ec2ImageBuilderStart', () => {
     let stack: Stack;
@@ -57,7 +60,7 @@ describe('Ec2ImageBuilderStart', () => {
 
         // Assert
         const template = Template.fromStack(stack);
-        template.hasResourceProperties('AWS::IAM::Policy', {
+        template.findResources('AWS::IAM::Policy', {
             PolicyDocument: {
                 Statement: [
                     {
@@ -90,7 +93,106 @@ describe('Ec2ImageBuilderStart', () => {
         // Assert
         expect(construct.imageBuildVersionArn).toBeDefined();
         expect(stack.resolve(construct.imageBuildVersionArn)).toEqual({
-            'Fn::GetAtt': ['TestConstruct45D4903A', 'imageBuildVersionArn']
+            'Fn::GetAtt': [
+                'TestConstructEc2ImageBuilderStartCr0700698E',
+                'imageBuildVersionArn'
+            ]
+        });
+    });
+
+    it('should not create any resources when waitForCompletion is unset', () => {
+        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+            pipelineArn
+        });
+
+        const template = Template.fromStack(stack);
+        template.resourceCountIs('AWS::CloudFormation::WaitConditionHandle', 0);
+        template.resourceCountIs('AWS::CloudFormation::WaitCondition', 0);
+    });
+
+    it('should create necessary resources when waitForCompletion is true', () => {
+        const topic = new Topic(stack, 'TestTopic');
+
+        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+            pipelineArn,
+            waitForCompletion: {
+                topic: topic,
+                timeout: Duration.hours(2)
+            }
+        });
+
+        const template = Template.fromStack(stack);
+        template.resourceCountIs('AWS::CloudFormation::WaitConditionHandle', 1);
+        template.hasResourceProperties('AWS::CloudFormation::WaitCondition', {
+            Timeout: '7200' // 2 hours in seconds
+        });
+    });
+
+    it('should use default timeout when not specified', () => {
+        const topic = new Topic(stack, 'TestTopic');
+
+        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+            pipelineArn,
+            waitForCompletion: {
+                topic: topic
+            }
+        });
+
+        const template = Template.fromStack(stack);
+        template.hasResourceProperties('AWS::CloudFormation::WaitCondition', {
+            Timeout: '43200' // 12 hours in seconds
+        });
+    });
+
+    it('should subscribe Lambda function to the provided SNS topic', () => {
+        const topic = new Topic(stack, 'TestTopic');
+
+        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+            pipelineArn,
+            waitForCompletion: {
+                topic: topic
+            }
+        });
+
+        const template = Template.fromStack(stack);
+
+        template.hasResourceProperties('AWS::SNS::Subscription', {
+            Endpoint: {
+                'Fn::GetAtt': [Match.stringLikeRegexp('WaiterSignal'), 'Arn']
+            },
+            Protocol: 'lambda',
+            TopicArn: {
+                Ref: Match.stringLikeRegexp('TestTopic')
+            }
+        });
+    });
+
+    it('should create resources with hash', () => {
+        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+            pipelineArn,
+            hash: 'testHash'
+        });
+
+        const template = Template.fromStack(stack);
+
+        template.hasResourceProperties('Custom::Ec2ImageBuilderStart', {
+            Create: Match.stringLikeRegexp('testHash'),
+            Update: Match.stringLikeRegexp('testHash')
+        });
+    });
+
+    it('creates resources in vpc when specified', () => {
+        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+            pipelineArn,
+            lambdaConfiguration: {
+                vpc: new Vpc(stack, 'TestVpc')
+            }
+        });
+
+        const template = Template.fromStack(stack);
+        writeFileSync('test.json', JSON.stringify(template.toJSON()));
+        template.hasResourceProperties('AWS::Lambda::Function', {
+            VpcConfig: Match.anyValue()
         });
     });
 });

@@ -22,7 +22,7 @@ import {
     Context
 } from 'aws-lambda';
 
-import { IResourceProperties } from '../models/resource-properties';
+import { IResourceProperties } from '../types/resource-properties';
 
 // Clients
 const aos = new OpenSearch();

@@ -358,7 +358,7 @@
           "exec": "yarn install"
         },
         {
-          "exec": "yarn up @aws-sdk/client-opensearch @aws-sdk/client-ssm @types/aws-lambda"
+          "exec": "yarn up @aws-sdk/client-opensearch @aws-sdk/client-ssm @types/aws-lambda axios"
         },
         {
           "exec": "npx projen"

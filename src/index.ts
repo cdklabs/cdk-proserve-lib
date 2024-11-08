@@ -11,5 +11,5 @@
  *  and limitations under the License.
  */
 
-export * from './opensearch-admin-user';
-export * from './ec2-image-builder-get-image';
+export * as constructs from './constructs';
+export * as interfaces from './interfaces';

@@ -11,7 +11,8 @@ import {
 const deps = [
     '@aws-sdk/client-ssm@3.600.0',
     '@aws-sdk/client-opensearch@3.600.0',
-    '@types/aws-lambda@8.10.141'
+    '@types/aws-lambda@8.10.141',
+    'axios@1.7.7'
 ];
 
 const project = new CdklabsConstructLibrary({
@@ -22,8 +23,8 @@ const project = new CdklabsConstructLibrary({
     deps: deps,
     bundledDeps: deps,
     devDeps: ['cdklabs-projen-project-types', 'aws-sdk-client-mock', 'esbuild'],
-    name: '@cdklabs/cdk-proserve-constructs',
-    packageName: '@cdklabs/cdk-proserve-constructs',
+    name: '@cdklabs/cdk-proserve',
+    packageName: '@cdklabs/cdk-proserve',
     projenrcTs: true,
     gitignore: ['.DS_Store', '.python-version', '.nvmrc'],
     packageManager: NodePackageManager.YARN_BERRY,
