@@ -11,6 +11,4 @@
  *  and limitations under the License.
  */
 
-export * as constructs from './constructs';
-export * as interfaces from './interfaces';
-export * as patterns from './patterns';
+export * from './ec2-linux-stig-image-pipeline';

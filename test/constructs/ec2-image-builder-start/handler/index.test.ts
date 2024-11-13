@@ -1,6 +1,6 @@
 import { SNSEvent, Context } from 'aws-lambda';
 import axios from 'axios';
-import { handler } from '../../../src/constructs/ec2-image-builder-start/handler';
+import { handler } from '../../../../src/constructs/ec2-image-builder-start/handler';
 
 jest.mock('axios');
 
@@ -39,7 +39,7 @@ describe('Lambda Handler', () => {
 
         expect(axios.put).toHaveBeenCalledWith('https://test-url.com', {
             Status: 'SUCCESS',
-            Reason: 'Signal from SNS',
+            Reason: 'Complete.',
             UniqueId: 'test-request-id',
             Data: 'Pipeline has given a SUCCESS signal from SNS.'
         });
@@ -47,7 +47,7 @@ describe('Lambda Handler', () => {
 
     it('should signal FAILURE when status is not AVAILABLE', async () => {
         mockEvent.Records[0].Sns.Message = JSON.stringify({
-            state: { status: 'FAILED' },
+            state: { status: 'FAILED', reason: 'Test failure reason.' },
             arn: 'test-arn'
         });
 
@@ -55,7 +55,7 @@ describe('Lambda Handler', () => {
 
         expect(axios.put).toHaveBeenCalledWith('https://test-url.com', {
             Status: 'FAILURE',
-            Reason: 'Signal from SNS',
+            Reason: 'Pipeline has given a FAILURE signal. Test failure reason.',
             UniqueId: 'test-request-id',
             Data: 'Pipeline has given a FAILURE signal from SNS.'
         });

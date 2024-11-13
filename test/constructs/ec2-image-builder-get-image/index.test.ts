@@ -13,7 +13,7 @@
 
 import { Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
-import { Ec2ImageBuilderGetImage } from '../../src/constructs/ec2-image-builder-get-image';
+import { Ec2ImageBuilderGetImage } from '../../../src/constructs/ec2-image-builder-get-image';
 
 describe('Ec2ImageBuilderGetImage', () => {
     let stack: Stack;

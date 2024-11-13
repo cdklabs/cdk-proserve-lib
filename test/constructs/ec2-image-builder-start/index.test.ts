@@ -16,7 +16,7 @@ import { Duration, Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { Vpc } from 'aws-cdk-lib/aws-ec2';
 import { Topic } from 'aws-cdk-lib/aws-sns';
-import { Ec2ImageBuilderStart } from '../../src/constructs/ec2-image-builder-start';
+import { Ec2ImageBuilderStart } from '../../../src/constructs/ec2-image-builder-start';
 
 describe('Ec2ImageBuilderStart', () => {
     let stack: Stack;

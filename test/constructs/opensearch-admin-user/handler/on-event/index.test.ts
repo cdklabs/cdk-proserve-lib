@@ -18,8 +18,8 @@ import {
 import { GetParameterCommand, SSM } from '@aws-sdk/client-ssm';
 import { CdkCustomResourceEvent } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
-import { handler } from '../../../../src/constructs/opensearch-admin-user/handler/on-event';
-import { IResourceProperties } from '../../../../src/constructs/opensearch-admin-user/handler/types/resource-properties';
+import { handler } from '../../../../../src/constructs/opensearch-admin-user/handler/on-event';
+import { IResourceProperties } from '../../../../../src/constructs/opensearch-admin-user/handler/types/resource-properties';
 
 describe('Lambda function handler', () => {
     const aosMock = mockClient(OpenSearch);

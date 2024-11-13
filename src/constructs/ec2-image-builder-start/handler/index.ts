@@ -18,10 +18,11 @@ type SignalStatus = 'SUCCESS' | 'FAILURE';
 type ImagePipelineStatus = 'AVAILABLE' | 'FAILED';
 
 interface ImagePipelineSnsMessage {
-    state: {
-        status: ImagePipelineStatus;
+    readonly state: {
+        readonly status: ImagePipelineStatus;
+        readonly reason?: string;
     };
-    arn: string;
+    readonly arn: string;
 }
 
 interface SignalMessage {
@@ -61,10 +62,14 @@ export const handler = async (
 
         if (message.arn == imageBuildArn) {
             console.info('Image build ARN matches.');
+
             // Signal the WaitCondition
             const signalMessage: SignalMessage = {
                 Status: status,
-                Reason: 'Signal from SNS',
+                Reason:
+                    status == 'FAILURE'
+                        ? `Pipeline has given a ${status} signal. ${message.state.reason}`
+                        : 'Complete.',
                 UniqueId: context.awsRequestId,
                 Data: `Pipeline has given a ${status} signal from SNS.`
             };

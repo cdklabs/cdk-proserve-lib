@@ -1,8 +1,8 @@
 {
-  "name": "@cdklabs/cdk-proserve",
+  "name": "@cdklabs/cdk-proserve-lib",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cdklabs/cdk-proserve.git"
+    "url": "https://github.com/cdklabs/cdk-proserve-lib.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -35,7 +35,8 @@
     "upgrade-cdklabs-projen-project-types": "npx projen upgrade-cdklabs-projen-project-types",
     "upgrade-dev-deps": "npx projen upgrade-dev-deps",
     "watch": "npx projen watch",
-    "projen": "npx projen"
+    "projen": "npx projen",
+    "generate:enum": "npx ts-node ./src/constructs/ec2-image-pipeline/scripts/generate.ts"
   },
   "author": {
     "name": "Amazon Web Services",
@@ -78,12 +79,14 @@
     "constructs": "^10.0.5"
   },
   "dependencies": {
+    "@aws-sdk/client-imagebuilder": "3.600.0",
     "@aws-sdk/client-opensearch": "3.600.0",
     "@aws-sdk/client-ssm": "3.600.0",
     "@types/aws-lambda": "8.10.141",
     "axios": "1.7.7"
   },
   "bundledDependencies": [
+    "@aws-sdk/client-imagebuilder",
     "@aws-sdk/client-opensearch",
     "@aws-sdk/client-ssm",
     "@types/aws-lambda",
@@ -150,22 +153,22 @@
     "outdir": "dist",
     "targets": {
       "java": {
-        "package": "io.github.cdklabs.cdk.proserve",
+        "package": "io.github.cdklabs.cdk.proserve.lib",
         "maven": {
           "groupId": "io.github.cdklabs",
-          "artifactId": "cdk-proserve"
+          "artifactId": "cdk-proserve-lib"
         }
       },
       "python": {
-        "distName": "cdklabs.cdk-proserve",
-        "module": "cdklabs.cdk_proserve"
+        "distName": "cdklabs.cdk-proserve-lib",
+        "module": "cdklabs.cdk_proserve_lib"
       },
       "dotnet": {
-        "namespace": "Cdklabs.CdkProserve",
-        "packageId": "Cdklabs.CdkProserve"
+        "namespace": "Cdklabs.CdkProserveLib",
+        "packageId": "Cdklabs.CdkProserveLib"
       },
       "go": {
-        "moduleName": "github.com/cdklabs/cdk-proserve-go"
+        "moduleName": "github.com/cdklabs/cdk-proserve-lib-go"
       }
     },
     "tsc": {

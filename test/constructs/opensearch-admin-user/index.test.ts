@@ -16,7 +16,7 @@ import { Match, Template } from 'aws-cdk-lib/assertions';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Domain, EngineVersion } from 'aws-cdk-lib/aws-opensearchservice';
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
-import { OpensearchAdminUser } from '../../src/constructs/opensearch-admin-user/index';
+import { OpensearchAdminUser } from '../../../src/constructs/opensearch-admin-user/index';
 
 describe('OpensearchAdminUser', () => {
     let stack: Stack;
