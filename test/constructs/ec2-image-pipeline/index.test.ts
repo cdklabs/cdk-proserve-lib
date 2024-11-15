@@ -1,20 +1,46 @@
+/**
+ *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance
+ *  with the License. A copy of the License is located at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  or in the 'license' file accompanying this file. This file is distributed on an 'AS IS' BASIS, WITHOUT WARRANTIES
+ *  OR CONDITIONS OF ANY KIND, express or implied. See the License for the specific language governing permissions
+ *  and limitations under the License.
+ */
+
 import { Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { SecurityGroup, Vpc } from 'aws-cdk-lib/aws-ec2';
 import { CfnComponent } from 'aws-cdk-lib/aws-imagebuilder';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Ec2ImagePipeline } from '../../../src/constructs/ec2-image-pipeline';
+import {
+    addCdkNagCommonSuppressions,
+    addCdkNagPacks,
+    checkForCdkNagIssues
+} from '../../../utilities/cdk-nag';
 
 describe('Ec2ImagePipeline', () => {
     let stack: Stack;
+    const name: string = 'Ec2ImagePipeline';
 
     beforeEach(() => {
         stack = new Stack();
+
+        addCdkNagPacks(stack);
+        addCdkNagCommonSuppressions(stack);
+    });
+
+    afterEach(() => {
+        checkForCdkNagIssues(stack, name);
     });
 
     it('creates image pipeline with default properties', () => {
         // Act
-        new Ec2ImagePipeline(stack, 'TestImagePipeline', {
+        new Ec2ImagePipeline(stack, name, {
             version: '0.1.0'
         });
 
@@ -38,7 +64,7 @@ describe('Ec2ImagePipeline', () => {
         const kmsKey = new Key(stack, 'TestKey');
 
         // Act
-        new Ec2ImagePipeline(stack, 'TestImagePipeline', {
+        new Ec2ImagePipeline(stack, name, {
             version: '1.0.0',
             description: 'Test pipeline',
             encryption: kmsKey,
@@ -56,7 +82,7 @@ describe('Ec2ImagePipeline', () => {
         // Assert
         const template = Template.fromStack(stack);
         template.hasResourceProperties('AWS::ImageBuilder::ImagePipeline', {
-            Name: 'TestImagePipelineImagePipeline',
+            Name: Match.stringLikeRegexp(name),
             Description: 'Test pipeline'
         });
 
@@ -106,7 +132,7 @@ describe('Ec2ImagePipeline', () => {
 
     it('exposes image pipeline ARN and SNS topic', () => {
         // Act
-        const imagePipeline = new Ec2ImagePipeline(stack, 'TestImagePipeline', {
+        const imagePipeline = new Ec2ImagePipeline(stack, name, {
             version: '0.1.0'
         });
 
@@ -117,7 +143,7 @@ describe('Ec2ImagePipeline', () => {
 
     it('sets latestAmi when waitForCompletion is true', () => {
         // Act
-        const imagePipeline = new Ec2ImagePipeline(stack, 'TestImagePipeline', {
+        const imagePipeline = new Ec2ImagePipeline(stack, name, {
             version: '0.1.0',
             buildConfiguration: {
                 start: true,
@@ -131,7 +157,7 @@ describe('Ec2ImagePipeline', () => {
 
     it('does not set latestAmi when waitForCompletion is false', () => {
         // Act
-        const imagePipeline = new Ec2ImagePipeline(stack, 'TestImagePipeline', {
+        const imagePipeline = new Ec2ImagePipeline(stack, name, {
             version: '0.1.0',
             buildConfiguration: {
                 start: true,
@@ -153,7 +179,7 @@ describe('Ec2ImagePipeline', () => {
         });
 
         // Act
-        new Ec2ImagePipeline(stack, 'TestImagePipeline', {
+        new Ec2ImagePipeline(stack, name, {
             version: '0.1.0',
             components: [
                 Ec2ImagePipeline.Component.AWS_CLI_VERSION_2_LINUX,
@@ -205,7 +231,7 @@ describe('Ec2ImagePipeline', () => {
         });
 
         // Act
-        new Ec2ImagePipeline(stack, 'TestImagePipeline', {
+        new Ec2ImagePipeline(stack, name, {
             version: '0.1.0',
             vpcConfiguration: {
                 vpc,
@@ -248,7 +274,7 @@ describe('Ec2ImagePipeline', () => {
         const vpc = new Vpc(stack, 'TestVpc');
 
         // Act
-        new Ec2ImagePipeline(stack, 'TestImagePipeline', {
+        new Ec2ImagePipeline(stack, name, {
             version: '0.1.0',
             vpcConfiguration: {
                 vpc
@@ -272,12 +298,7 @@ describe('Ec2ImagePipeline', () => {
             {
                 SecurityGroupIds: [
                     {
-                        'Fn::GetAtt': [
-                            Match.stringLikeRegexp(
-                                'TestImagePipelineImagePipelineSg'
-                            ),
-                            'GroupId'
-                        ]
+                        'Fn::GetAtt': [Match.stringLikeRegexp(name), 'GroupId']
                     }
                 ]
             }
@@ -285,5 +306,13 @@ describe('Ec2ImagePipeline', () => {
 
         // Verify that no additional security group is created by the construct
         template.resourceCountIs('AWS::EC2::SecurityGroup', 1);
+    });
+
+    it('throws error for invalid SEMVER format', () => {
+        expect(() => {
+            new Ec2ImagePipeline(stack, name, {
+                version: 'asdf'
+            });
+        }).toThrow(/Expected type: SEMVER/);
     });
 });

@@ -13,9 +13,9 @@ const deps = [
     '@aws-sdk/client-opensearch@3.600.0',
     '@aws-sdk/client-imagebuilder@3.600.0',
     '@types/aws-lambda@8.10.141',
+    'cdk-nag@2.34.0',
     'axios@1.7.7'
 ];
-
 const project = new CdklabsConstructLibrary({
     author: 'Derrike Nunn',
     authorAddress: 'nunnderr@amazon.com',
@@ -51,6 +51,7 @@ const project = new CdklabsConstructLibrary({
     }
 });
 
+project.jest?.addIgnorePattern('utilities');
 project.tasks.tryFind('rosetta:extract')?.updateStep(0, {
     exec: 'yarn jsii-rosetta extract'
 });

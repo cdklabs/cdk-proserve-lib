@@ -21,8 +21,11 @@ import {
     SecurityGroup
 } from 'aws-cdk-lib/aws-ec2';
 import {
+    AnyPrincipal,
+    Effect,
     InstanceProfile,
     ManagedPolicy,
+    PolicyStatement,
     Role,
     ServicePrincipal
 } from 'aws-cdk-lib/aws-iam';
@@ -35,6 +38,7 @@ import {
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { ITopic, Topic } from 'aws-cdk-lib/aws-sns';
 import { Construct } from 'constructs';
+import { validate, ValidationTypes } from '../../common/validate';
 import { Ec2ImageBuilderGetImage } from '../ec2-image-builder-get-image';
 import { Ec2ImageBuilderStart } from '../ec2-image-builder-start';
 
@@ -115,6 +119,8 @@ export class Ec2ImagePipeline extends Construct {
     constructor(scope: Construct, id: string, props: Ec2ImagePipelineProps) {
         super(scope, id);
 
+        validate(props.version, ValidationTypes.SEMVER);
+
         let baseMachineImage: IMachineImage = props?.machineImage
             ? props.machineImage
             : MachineImage.latestAmazonLinux2023();
@@ -138,8 +144,22 @@ export class Ec2ImagePipeline extends Construct {
 
         // SNS Topic
         const topic = new Topic(this, 'ImageBuilderTopic', {
-            masterKey: props?.encryption
+            masterKey: props?.encryption,
+            enforceSSL: true
         });
+        topic.addToResourcePolicy(
+            new PolicyStatement({
+                effect: Effect.DENY,
+                principals: [new AnyPrincipal()],
+                actions: ['sns:Publish'],
+                resources: [topic.topicArn],
+                conditions: {
+                    Bool: {
+                        'aws:SecureTransport': 'false'
+                    }
+                }
+            })
+        );
 
         // IAM Role
         const role = new Role(this, 'ImagePipelineRole', {

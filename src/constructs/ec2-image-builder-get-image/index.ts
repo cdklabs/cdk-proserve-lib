@@ -19,6 +19,7 @@ import {
     PhysicalResourceId
 } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
+import { validate, ValidationTypes } from '../../common/validate';
 import { CustomResourceLambdaConfiguration } from '../../interfaces';
 
 /**
@@ -65,6 +66,8 @@ export class Ec2ImageBuilderGetImage extends Construct {
         props: Ec2ImageBuilderGetImageProps
     ) {
         super(scope, id);
+
+        validate(props.imageBuildVersionArn, ValidationTypes.AWS_ARN);
 
         const customResource = new AwsCustomResource(
             this,

@@ -1118,6 +1118,7 @@ __metadata:
     aws-cdk-lib: "npm:2.160.0"
     aws-sdk-client-mock: "npm:^4.0.2"
     axios: "npm:1.7.7"
+    cdk-nag: "npm:2.34.0"
     cdklabs-projen-project-types: "npm:^0.1.205"
     commit-and-tag-version: "npm:^12"
     constructs: "npm:10.0.5"
@@ -3364,6 +3365,16 @@ __metadata:
   version: 1.6.3
   resolution: "case@npm:1.6.3"
   checksum: 43fcbb1dff1c4add94dd2bc98bd923d6616f10bff6959adf686d192c3db7d7ced35410761e1ac94cc4a1f5c41c86406ad79d390805539e421e8a77e553f67223
+  languageName: node
+  linkType: hard
+
+"cdk-nag@npm:2.34.0":
+  version: 2.34.0
+  resolution: "cdk-nag@npm:2.34.0"
+  peerDependencies:
+    aws-cdk-lib: ^2.156.0
+    constructs: ^10.0.5
+  checksum: 39d9c4e3c409f853782ad821a7204c436cd3f04c58399a80792252cb148d383879edae4d43cc3f0ad1b3de0bb23a15ef9849b9a93b644c318d0c9124a9cbc168
   languageName: node
   linkType: hard
 

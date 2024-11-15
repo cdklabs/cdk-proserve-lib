@@ -109,6 +109,11 @@
       "type": "build"
     },
     {
+      "name": "@aws-sdk/client-imagebuilder",
+      "version": "3.600.0",
+      "type": "bundled"
+    },
+    {
       "name": "@aws-sdk/client-opensearch",
       "version": "3.600.0",
       "type": "bundled"
@@ -126,6 +131,11 @@
     {
       "name": "axios",
       "version": "1.7.7",
+      "type": "bundled"
+    },
+    {
+      "name": "cdk-nag",
+      "version": "2.34.0",
       "type": "bundled"
     },
     {
@@ -149,6 +159,11 @@
       "type": "peer"
     },
     {
+      "name": "@aws-sdk/client-imagebuilder",
+      "version": "3.600.0",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-sdk/client-opensearch",
       "version": "3.600.0",
       "type": "runtime"
@@ -166,6 +181,11 @@
     {
       "name": "axios",
       "version": "1.7.7",
+      "type": "runtime"
+    },
+    {
+      "name": "cdk-nag",
+      "version": "2.34.0",
       "type": "runtime"
     }
   ],

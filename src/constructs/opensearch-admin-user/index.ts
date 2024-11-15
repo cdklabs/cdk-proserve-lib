@@ -18,10 +18,10 @@ import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { IDomain } from 'aws-cdk-lib/aws-opensearchservice';
-import { Queue, QueueEncryption } from 'aws-cdk-lib/aws-sqs';
 import { IParameter } from 'aws-cdk-lib/aws-ssm';
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
+import { LambdaConfiguration } from '../../interfaces';
 
 /**
  * Properties for the OpensearchAdminUser construct.
@@ -53,6 +53,11 @@ export interface OpensearchAdminUserProps {
      * If provided, this key will be used for encryption; otherwise, an AWS managed key will be used.
      */
     readonly workerEncryption?: IKey;
+
+    /**
+     * Optional Lambda configuration settings.
+     */
+    readonly lambdaConfiguration?: LambdaConfiguration;
 }
 
 /**
@@ -95,18 +100,10 @@ export class OpensearchAdminUser extends Construct {
                     handler: 'index.handler',
                     memorySize: 512,
                     timeout: Duration.minutes(1),
-                    runtime: Runtime.NODEJS_18_X,
+                    runtime: Runtime.NODEJS_20_X,
                     environmentEncryption: props.workerEncryption,
-                    deadLetterQueue: new Queue(
-                        scope,
-                        'OpensearchAdminUserCrOnEventFailed',
-                        {
-                            encryption: props.workerEncryption
-                                ? QueueEncryption.KMS
-                                : QueueEncryption.KMS_MANAGED,
-                            encryptionMasterKey: props.workerEncryption
-                        }
-                    )
+                    reservedConcurrentExecutions: 5,
+                    ...props.lambdaConfiguration
                 }
             );
 
@@ -126,12 +123,17 @@ export class OpensearchAdminUser extends Construct {
 
             props.username.grantRead(onEventHandler);
             props.password.grantRead(onEventHandler);
+            const provider = new Provider(
+                scope,
+                'OpensearchAdminUserCrProvider',
+                {
+                    onEventHandler: onEventHandler
+                }
+            );
 
             OpensearchAdminUser.serviceTokens.set(
                 stackId,
-                new Provider(scope, 'OpensearchAdminUserCrProvider', {
-                    onEventHandler: onEventHandler
-                }).serviceToken
+                provider.serviceToken
             );
         }
 

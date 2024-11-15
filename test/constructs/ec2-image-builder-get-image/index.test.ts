@@ -14,19 +14,32 @@
 import { Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { Ec2ImageBuilderGetImage } from '../../../src/constructs/ec2-image-builder-get-image';
+import {
+    addCdkNagCommonSuppressions,
+    addCdkNagPacks,
+    checkForCdkNagIssues
+} from '../../../utilities/cdk-nag';
 
 describe('Ec2ImageBuilderGetImage', () => {
     let stack: Stack;
+    const name = 'Ec2ImageBuilderGetImage';
     const imageBuildVersionArn =
         'arn:aws:imagebuilder:us-west-2:123456789012:image/example-image/1.0.0/1';
 
     beforeEach(() => {
         stack = new Stack();
+
+        addCdkNagPacks(stack);
+        addCdkNagCommonSuppressions(stack);
+    });
+
+    afterEach(() => {
+        checkForCdkNagIssues(stack, name);
     });
 
     it('creates custom resource with correct properties', () => {
         // Act
-        new Ec2ImageBuilderGetImage(stack, 'TestConstruct', {
+        new Ec2ImageBuilderGetImage(stack, name, {
             imageBuildVersionArn
         });
 
@@ -51,7 +64,7 @@ describe('Ec2ImageBuilderGetImage', () => {
 
     it('sets correct IAM policy', () => {
         // Act
-        new Ec2ImageBuilderGetImage(stack, 'TestConstruct', {
+        new Ec2ImageBuilderGetImage(stack, name, {
             imageBuildVersionArn
         });
 
@@ -67,9 +80,7 @@ describe('Ec2ImageBuilderGetImage', () => {
                     }
                 ]
             },
-            PolicyName: Match.stringLikeRegexp(
-                'TestConstructImagePipelineAmiResourceCustomResourcePolicy'
-            ),
+            PolicyName: Match.stringLikeRegexp(name),
             Roles: Match.arrayWith([
                 {
                     Ref: Match.stringLikeRegexp(
@@ -82,7 +93,7 @@ describe('Ec2ImageBuilderGetImage', () => {
 
     it('exposes ami', () => {
         // Act
-        const construct = new Ec2ImageBuilderGetImage(stack, 'TestConstruct', {
+        const construct = new Ec2ImageBuilderGetImage(stack, name, {
             imageBuildVersionArn
         });
 
@@ -90,9 +101,17 @@ describe('Ec2ImageBuilderGetImage', () => {
         expect(construct.ami).toBeDefined();
         expect(stack.resolve(construct.ami)).toEqual({
             'Fn::GetAtt': [
-                'TestConstructImagePipelineAmiResourceC003FA3E',
+                'Ec2ImageBuilderGetImageImagePipelineAmiResourceD801D387',
                 'image.outputResources.amis.0.image'
             ]
         });
+    });
+
+    it('throws error for invalid ARN format', () => {
+        expect(() => {
+            new Ec2ImageBuilderGetImage(stack, name, {
+                imageBuildVersionArn: 'invalid-arn'
+            });
+        }).toThrow(/Expected type: AWS_ARN/);
     });
 });

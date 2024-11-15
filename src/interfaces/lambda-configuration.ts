@@ -3,6 +3,12 @@ import { IQueue } from 'aws-cdk-lib/aws-sqs';
 
 export interface LambdaConfiguration {
     /**
+     * The number of concurrent executions for the provider Lambda function.
+     * Default: 5
+     */
+    readonly reservedConcurrentExecutions?: number;
+
+    /**
      * Security groups to attach to the provider Lambda functions
      */
     readonly securityGroups?: ISecurityGroup[];

@@ -30,6 +30,7 @@ import {
     PhysicalResourceId
 } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
+import { validate, ValidationTypes } from '../../common/validate';
 import { LambdaConfiguration } from '../../interfaces/lambda-configuration';
 
 /**
@@ -95,7 +96,15 @@ export class Ec2ImageBuilderStart extends Construct {
     ) {
         super(scope, id);
 
-        this.hash = props.hash ?? 'RunOnce';
+        if ((props.waitForCompletion?.timeout?.toSeconds() ?? 0) > 43200) {
+            throw new Error('Timeout cannot exceed 12 hours');
+        }
+        if ((props.hash?.length ?? 0) > 7) {
+            throw new Error('Hash must be 7 characters or less');
+        }
+        validate(props.pipelineArn, ValidationTypes.AWS_ARN);
+
+        this.hash = props.hash ?? 'Run1x';
 
         this.cr = new AwsCustomResource(this, `Ec2ImageBuilderStartCr`, {
             policy: AwsCustomResourcePolicy.fromSdkCalls({
@@ -149,7 +158,8 @@ export class Ec2ImageBuilderStart extends Construct {
                 },
                 entry: join(__dirname, 'handler', 'index.ts'),
                 handler: 'index.handler',
-                runtime: Runtime.NODEJS_18_X,
+                runtime: Runtime.NODEJS_20_X,
+                reservedConcurrentExecutions: 5,
                 environment: {
                     WAIT_HANDLE_URL: waitHandle.ref,
                     IMAGE_BUILD_ARN: this.imageBuildVersionArn

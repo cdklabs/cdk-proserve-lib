@@ -17,12 +17,18 @@ import { Key } from 'aws-cdk-lib/aws-kms';
 import { Domain, EngineVersion } from 'aws-cdk-lib/aws-opensearchservice';
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { OpensearchAdminUser } from '../../../src/constructs/opensearch-admin-user/index';
+import {
+    addCdkNagCommonSuppressions,
+    addCdkNagPacks,
+    checkForCdkNagIssues
+} from '../../../utilities/cdk-nag';
 
 describe('OpensearchAdminUser', () => {
     let stack: Stack;
     let domain: Domain;
     let username: StringParameter;
     let password: StringParameter;
+    const name: string = 'OpensearchAdminUser';
 
     beforeEach(() => {
         stack = new Stack(undefined, `TST${new Date().getTime()}`);
@@ -40,11 +46,18 @@ describe('OpensearchAdminUser', () => {
             parameterName: '/test/password',
             stringValue: 'password123'
         });
+
+        addCdkNagPacks(stack);
+        addCdkNagCommonSuppressions(stack);
+    });
+
+    afterEach(() => {
+        checkForCdkNagIssues(stack, name);
     });
 
     it('creates custom resource with correct properties', () => {
         // Act
-        new OpensearchAdminUser(stack, 'TestConstruct', {
+        new OpensearchAdminUser(stack, name, {
             username,
             password,
             domain
@@ -70,7 +83,7 @@ describe('OpensearchAdminUser', () => {
 
     it('creates Lambda function with correct properties', () => {
         // Act
-        new OpensearchAdminUser(stack, 'TestConstruct', {
+        new OpensearchAdminUser(stack, name, {
             username,
             password,
             domain
@@ -80,16 +93,15 @@ describe('OpensearchAdminUser', () => {
         const template = Template.fromStack(stack);
         template.hasResourceProperties('AWS::Lambda::Function', {
             Handler: 'index.handler',
-            Runtime: 'nodejs18.x',
+            Runtime: 'nodejs20.x',
             Timeout: 60,
-            MemorySize: 512,
-            DeadLetterConfig: Match.anyValue()
+            MemorySize: 512
         });
     });
 
     it('grants necessary permissions to Lambda function', () => {
         // Act
-        new OpensearchAdminUser(stack, 'TestConstruct', {
+        new OpensearchAdminUser(stack, name, {
             username,
             password,
             domain
@@ -115,7 +127,7 @@ describe('OpensearchAdminUser', () => {
         const domainKey = new Key(stack, 'TestDomainKey');
 
         // Act
-        new OpensearchAdminUser(stack, 'TestConstruct', {
+        new OpensearchAdminUser(stack, name, {
             username,
             password,
             domain,
@@ -149,7 +161,7 @@ describe('OpensearchAdminUser', () => {
         const workerEncryption = new Key(stack, 'TestWorkerKey');
 
         // Act
-        new OpensearchAdminUser(stack, 'TestConstruct', {
+        new OpensearchAdminUser(stack, name, {
             username,
             password,
             domain,
@@ -158,11 +170,7 @@ describe('OpensearchAdminUser', () => {
 
         // Assert
         const template = Template.fromStack(stack);
-        template.hasResourceProperties('AWS::SQS::Queue', {
-            KmsMasterKeyId: {
-                'Fn::GetAtt': [Match.stringLikeRegexp('TestWorkerKey'), 'Arn']
-            }
-        });
+
         template.hasResourceProperties('AWS::Lambda::Function', {
             KmsKeyArn: {
                 'Fn::GetAtt': [Match.stringLikeRegexp('TestWorkerKey'), 'Arn']

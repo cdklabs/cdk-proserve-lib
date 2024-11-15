@@ -11,30 +11,43 @@
  *  and limitations under the License.
  */
 
-import { writeFileSync } from 'fs';
 import { Duration, Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { Vpc } from 'aws-cdk-lib/aws-ec2';
 import { Topic } from 'aws-cdk-lib/aws-sns';
 import { Ec2ImageBuilderStart } from '../../../src/constructs/ec2-image-builder-start';
+import {
+    addCdkNagCommonSuppressions,
+    addCdkNagPacks,
+    checkForCdkNagIssues
+} from '../../../utilities/cdk-nag';
 
 describe('Ec2ImageBuilderStart', () => {
     let stack: Stack;
+    const name = 'Ec2ImageBuilderStart';
     const pipelineArn =
         'arn:aws:imagebuilder:us-west-2:123456789012:image-pipeline/example-pipeline';
 
     beforeEach(() => {
         stack = new Stack();
+
+        addCdkNagPacks(stack);
+        addCdkNagCommonSuppressions(stack);
+    });
+
+    afterEach(() => {
+        checkForCdkNagIssues(stack, name);
     });
 
     it('creates custom resource', () => {
         // Act
-        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+        new Ec2ImageBuilderStart(stack, name, {
             pipelineArn
         });
 
         // Assert
         const template = Template.fromStack(stack);
+
         template.hasResourceProperties('Custom::Ec2ImageBuilderStart', {
             ServiceToken: {
                 'Fn::GetAtt': [
@@ -54,7 +67,7 @@ describe('Ec2ImageBuilderStart', () => {
 
     it('sets correct IAM policy', () => {
         // Act
-        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+        new Ec2ImageBuilderStart(stack, name, {
             pipelineArn
         });
 
@@ -86,7 +99,7 @@ describe('Ec2ImageBuilderStart', () => {
 
     it('exposes imageBuildVersionArn', () => {
         // Act
-        const construct = new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+        const construct = new Ec2ImageBuilderStart(stack, name, {
             pipelineArn
         });
 
@@ -94,14 +107,14 @@ describe('Ec2ImageBuilderStart', () => {
         expect(construct.imageBuildVersionArn).toBeDefined();
         expect(stack.resolve(construct.imageBuildVersionArn)).toEqual({
             'Fn::GetAtt': [
-                'TestConstructEc2ImageBuilderStartCr0700698E',
+                'Ec2ImageBuilderStartEc2ImageBuilderStartCr25FFB31E',
                 'imageBuildVersionArn'
             ]
         });
     });
 
     it('should not create any resources when waitForCompletion is unset', () => {
-        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+        new Ec2ImageBuilderStart(stack, name, {
             pipelineArn
         });
 
@@ -113,7 +126,7 @@ describe('Ec2ImageBuilderStart', () => {
     it('should create necessary resources when waitForCompletion is true', () => {
         const topic = new Topic(stack, 'TestTopic');
 
-        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+        new Ec2ImageBuilderStart(stack, name, {
             pipelineArn,
             waitForCompletion: {
                 topic: topic,
@@ -131,7 +144,7 @@ describe('Ec2ImageBuilderStart', () => {
     it('should use default timeout when not specified', () => {
         const topic = new Topic(stack, 'TestTopic');
 
-        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+        new Ec2ImageBuilderStart(stack, name, {
             pipelineArn,
             waitForCompletion: {
                 topic: topic
@@ -147,7 +160,7 @@ describe('Ec2ImageBuilderStart', () => {
     it('should subscribe Lambda function to the provided SNS topic', () => {
         const topic = new Topic(stack, 'TestTopic');
 
-        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+        new Ec2ImageBuilderStart(stack, name, {
             pipelineArn,
             waitForCompletion: {
                 topic: topic
@@ -168,21 +181,21 @@ describe('Ec2ImageBuilderStart', () => {
     });
 
     it('should create resources with hash', () => {
-        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+        new Ec2ImageBuilderStart(stack, name, {
             pipelineArn,
-            hash: 'testHash'
+            hash: 'hash'
         });
 
         const template = Template.fromStack(stack);
 
         template.hasResourceProperties('Custom::Ec2ImageBuilderStart', {
-            Create: Match.stringLikeRegexp('testHash'),
-            Update: Match.stringLikeRegexp('testHash')
+            Create: Match.stringLikeRegexp('hash'),
+            Update: Match.stringLikeRegexp('hash')
         });
     });
 
     it('creates resources in vpc when specified', () => {
-        new Ec2ImageBuilderStart(stack, 'TestConstruct', {
+        new Ec2ImageBuilderStart(stack, name, {
             pipelineArn,
             lambdaConfiguration: {
                 vpc: new Vpc(stack, 'TestVpc')
@@ -190,9 +203,16 @@ describe('Ec2ImageBuilderStart', () => {
         });
 
         const template = Template.fromStack(stack);
-        writeFileSync('test.json', JSON.stringify(template.toJSON()));
         template.hasResourceProperties('AWS::Lambda::Function', {
             VpcConfig: Match.anyValue()
         });
+    });
+
+    it('throws error for invalid ARN format', () => {
+        expect(() => {
+            new Ec2ImageBuilderStart(stack, name, {
+                pipelineArn: 'invalid-arn'
+            });
+        }).toThrow(/Expected type: AWS_ARN/);
     });
 });

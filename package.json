@@ -83,14 +83,16 @@
     "@aws-sdk/client-opensearch": "3.600.0",
     "@aws-sdk/client-ssm": "3.600.0",
     "@types/aws-lambda": "8.10.141",
-    "axios": "1.7.7"
+    "axios": "1.7.7",
+    "cdk-nag": "2.34.0"
   },
   "bundledDependencies": [
     "@aws-sdk/client-imagebuilder",
     "@aws-sdk/client-opensearch",
     "@aws-sdk/client-ssm",
     "@types/aws-lambda",
-    "axios"
+    "axios",
+    "cdk-nag"
   ],
   "keywords": [
     "cdk"
@@ -121,10 +123,12 @@
     ],
     "coverageDirectory": "coverage",
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "utilities"
     ],
     "testPathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "utilities"
     ],
     "watchPathIgnorePatterns": [
       "/node_modules/"
