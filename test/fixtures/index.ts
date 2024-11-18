@@ -11,5 +11,6 @@
  *  and limitations under the License.
  */
 
-export * from './construct';
-export * from './props';
+export * from './account';
+export * from './custom-resource';
+export * from './types';

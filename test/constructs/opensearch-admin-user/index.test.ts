@@ -15,20 +15,26 @@ import { Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Domain, EngineVersion } from 'aws-cdk-lib/aws-opensearchservice';
+import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
-import { OpensearchAdminUser } from '../../../src/constructs/opensearch-admin-user/index';
+import { PolicyProperties } from 'cloudform-types/types/iam/policy';
+import { FunctionProperties } from 'cloudform-types/types/lambda/function';
+import { mockPasswordParameterName } from './fixtures';
+import { OpenSearchAdminUser } from '../../../src/constructs/opensearch-admin-user/index';
 import {
     addCdkNagCommonSuppressions,
     addCdkNagPacks,
     checkForCdkNagIssues
 } from '../../../utilities/cdk-nag';
 
-describe('OpensearchAdminUser', () => {
+const constructName: string = 'OpensearchAdminUser';
+const passwordParameterElementName = 'PasswordParamater';
+const passwordSecretElementName = 'PasswordSecret';
+
+describe('OpenSearchAdminUser', () => {
     let stack: Stack;
     let domain: Domain;
     let username: StringParameter;
-    let password: StringParameter;
-    const name: string = 'OpensearchAdminUser';
 
     beforeEach(() => {
         stack = new Stack(undefined, `TST${new Date().getTime()}`);
@@ -42,30 +48,39 @@ describe('OpensearchAdminUser', () => {
             parameterName: '/test/username',
             stringValue: 'admin'
         });
-        password = new StringParameter(stack, 'Password', {
-            parameterName: '/test/password',
-            stringValue: 'password123'
-        });
 
         addCdkNagPacks(stack);
         addCdkNagCommonSuppressions(stack);
     });
 
     afterEach(() => {
-        checkForCdkNagIssues(stack, name);
+        checkForCdkNagIssues(stack, constructName);
     });
 
-    it('creates custom resource with correct properties', () => {
+    it('creates custom resource with correct properties (parameter)', () => {
+        // Arrange
+        const password = new StringParameter(
+            stack,
+            passwordParameterElementName,
+            {
+                parameterName: mockPasswordParameterName,
+                stringValue: 'password123'
+            }
+        );
+
         // Act
-        new OpensearchAdminUser(stack, name, {
+        new OpenSearchAdminUser(stack, constructName, {
             username,
-            password,
+            password: {
+                parameter: password,
+                type: 'parameter'
+            },
             domain
         });
 
         // Assert
         const template = Template.fromStack(stack);
-        template.hasResourceProperties('Custom::OpensearchAdminUser', {
+        template.hasResourceProperties('Custom::OpenSearchAdminUser', {
             ServiceToken: {
                 'Fn::GetAtt': Match.anyValue()
             },
@@ -73,63 +88,257 @@ describe('OpensearchAdminUser', () => {
                 Ref: Match.stringLikeRegexp('TestDomain')
             }),
             PasswordParameterName: Match.objectLike({
-                Ref: Match.stringLikeRegexp('Password')
+                Ref: Match.stringLikeRegexp(passwordParameterElementName)
             }),
             UsernameParameterName: Match.objectLike({
                 Ref: Match.stringLikeRegexp('Username')
             })
         });
-    });
 
-    it('creates Lambda function with correct properties', () => {
-        // Act
-        new OpensearchAdminUser(stack, name, {
-            username,
-            password,
-            domain
-        });
-
-        // Assert
-        const template = Template.fromStack(stack);
-        template.hasResourceProperties('AWS::Lambda::Function', {
+        const lambdaResourceProperties: Partial<FunctionProperties> = {
             Handler: 'index.handler',
+            MemorySize: 512,
+            ReservedConcurrentExecutions: 5,
             Runtime: 'nodejs20.x',
-            Timeout: 60,
-            MemorySize: 512
-        });
+            Timeout: 60
+        };
+
+        template.hasResourceProperties(
+            'AWS::Lambda::Function',
+            lambdaResourceProperties
+        );
     });
 
-    it('grants necessary permissions to Lambda function', () => {
+    it('creates custom resource with correct properties (secret)', () => {
+        // Arrange
+        const password = new Secret(stack, passwordSecretElementName, {});
+
         // Act
-        new OpensearchAdminUser(stack, name, {
+        new OpenSearchAdminUser(stack, constructName, {
             username,
-            password,
+            password: {
+                secret: password,
+                type: 'secret'
+            },
             domain
         });
 
         // Assert
         const template = Template.fromStack(stack);
-        template.hasResourceProperties('AWS::IAM::Policy', {
+        template.hasResourceProperties('Custom::OpenSearchAdminUser', {
+            ServiceToken: {
+                'Fn::GetAtt': Match.anyValue()
+            },
+            DomainName: Match.objectLike({
+                Ref: Match.stringLikeRegexp('TestDomain')
+            }),
+            PasswordSecretArn: Match.objectLike({
+                Ref: Match.stringLikeRegexp(passwordSecretElementName)
+            }),
+            UsernameParameterName: Match.objectLike({
+                Ref: Match.stringLikeRegexp('Username')
+            })
+        });
+
+        const lambdaResourceProperties: Partial<FunctionProperties> = {
+            Handler: 'index.handler',
+            MemorySize: 512,
+            ReservedConcurrentExecutions: 5,
+            Runtime: 'nodejs20.x',
+            Timeout: 60
+        };
+
+        template.hasResourceProperties(
+            'AWS::Lambda::Function',
+            lambdaResourceProperties
+        );
+    });
+
+    it('grants necessary permissions to Lambda function (parameter)', () => {
+        // Arrange
+        const password = new StringParameter(
+            stack,
+            passwordParameterElementName,
+            {
+                parameterName: mockPasswordParameterName,
+                stringValue: 'password123'
+            }
+        );
+
+        // Act
+        new OpenSearchAdminUser(stack, constructName, {
+            username,
+            password: {
+                parameter: password,
+                type: 'parameter'
+            },
+            domain
+        });
+
+        // Assert
+        const template = Template.fromStack(stack);
+
+        const iamPolicyProperties: Partial<PolicyProperties> = {
             PolicyDocument: {
                 Statement: Match.arrayWith([
                     Match.objectLike({
                         Action: 'es:UpdateDomainConfig',
                         Effect: 'Allow',
                         Resource: Match.anyValue()
+                    }),
+                    Match.objectLike({
+                        Action: [
+                            'ssm:DescribeParameters',
+                            'ssm:GetParameters',
+                            'ssm:GetParameter',
+                            'ssm:GetParameterHistory'
+                        ],
+                        Effect: 'Allow',
+                        Resource: Match.anyValue()
                     })
                 ])
             }
+        };
+
+        template.hasResourceProperties('AWS::IAM::Policy', iamPolicyProperties);
+    });
+
+    it('grants necessary permissions to Lambda function (unencrypted secret)', () => {
+        // Arrange
+        const password = new Secret(stack, passwordSecretElementName, {});
+
+        // Act
+        new OpenSearchAdminUser(stack, constructName, {
+            username,
+            password: {
+                secret: password,
+                type: 'secret'
+            },
+            domain
         });
+
+        // Assert
+        const template = Template.fromStack(stack);
+
+        const iamPolicyProperties: Partial<PolicyProperties> = {
+            PolicyDocument: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Action: 'es:UpdateDomainConfig',
+                        Effect: 'Allow',
+                        Resource: Match.anyValue()
+                    }),
+                    Match.objectLike({
+                        Action: [
+                            'ssm:DescribeParameters',
+                            'ssm:GetParameters',
+                            'ssm:GetParameter',
+                            'ssm:GetParameterHistory'
+                        ],
+                        Effect: 'Allow',
+                        Resource: Match.anyValue()
+                    }),
+                    Match.objectLike({
+                        Action: Match.arrayWith([
+                            'secretsmanager:GetSecretValue'
+                        ])
+                    })
+                ])
+            }
+        };
+
+        template.hasResourceProperties('AWS::IAM::Policy', iamPolicyProperties);
+    });
+
+    it('grants necessary permissions to Lambda function (encrypted secret)', () => {
+        // Arrange
+        const passwordKeyElementName = 'PasswordKey';
+        const passwordKey = new Key(stack, passwordKeyElementName);
+        const password = new Secret(stack, passwordSecretElementName, {
+            encryptionKey: passwordKey
+        });
+
+        // Act
+        new OpenSearchAdminUser(stack, constructName, {
+            username,
+            password: {
+                secret: password,
+                encryption: passwordKey,
+                type: 'secret'
+            },
+            domain
+        });
+
+        // Assert
+        const template = Template.fromStack(stack);
+
+        const iamPolicyProperties: Partial<PolicyProperties> = {
+            PolicyDocument: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Action: 'es:UpdateDomainConfig',
+                        Effect: 'Allow',
+                        Resource: Match.anyValue()
+                    }),
+                    Match.objectLike({
+                        Action: [
+                            'ssm:DescribeParameters',
+                            'ssm:GetParameters',
+                            'ssm:GetParameter',
+                            'ssm:GetParameterHistory'
+                        ],
+                        Effect: 'Allow',
+                        Resource: Match.anyValue()
+                    }),
+                    Match.objectLike({
+                        Action: Match.arrayWith([
+                            'secretsmanager:GetSecretValue'
+                        ])
+                    }),
+
+                    Match.objectLike({
+                        Action: [
+                            'kms:Decrypt',
+                            'kms:Encrypt',
+                            'kms:ReEncrypt*',
+                            'kms:GenerateDataKey*'
+                        ],
+                        Effect: 'Allow',
+                        Resource: {
+                            'Fn::GetAtt': [
+                                Match.stringLikeRegexp(passwordKeyElementName),
+                                'Arn'
+                            ]
+                        }
+                    })
+                ])
+            }
+        };
+
+        template.hasResourceProperties('AWS::IAM::Policy', iamPolicyProperties);
     });
 
     it('grants KMS permissions when domainKey is provided', () => {
         // Arrange
-        const domainKey = new Key(stack, 'TestDomainKey');
+        const password = new StringParameter(
+            stack,
+            passwordParameterElementName,
+            {
+                parameterName: mockPasswordParameterName,
+                stringValue: 'password123'
+            }
+        );
+
+        const domainKeyElementName = 'TestDomainKey';
+        const domainKey = new Key(stack, domainKeyElementName);
 
         // Act
-        new OpensearchAdminUser(stack, name, {
+        new OpenSearchAdminUser(stack, constructName, {
             username,
-            password,
+            password: {
+                parameter: password,
+                type: 'parameter'
+            },
             domain,
             domainKey
         });
@@ -138,7 +347,7 @@ describe('OpensearchAdminUser', () => {
         const template = Template.fromStack(stack);
 
         // Check that the Lambda function has permission to use the KMS key
-        template.hasResourceProperties('AWS::IAM::Policy', {
+        const iamPolicyProperties: Partial<PolicyProperties> = {
             PolicyDocument: {
                 Statement: Match.arrayWith([
                     Match.objectLike({
@@ -146,34 +355,51 @@ describe('OpensearchAdminUser', () => {
                         Effect: 'Allow',
                         Resource: {
                             'Fn::GetAtt': [
-                                Match.stringLikeRegexp('TestDomainKey'),
+                                Match.stringLikeRegexp(domainKeyElementName),
                                 'Arn'
                             ]
                         }
                     })
                 ])
             }
-        });
+        };
+
+        template.hasResourceProperties('AWS::IAM::Policy', iamPolicyProperties);
     });
 
     it('creates encrypted resources with provided key', () => {
         // Arrange
-        const workerEncryption = new Key(stack, 'TestWorkerKey');
+        const password = new StringParameter(
+            stack,
+            passwordParameterElementName,
+            {
+                parameterName: mockPasswordParameterName,
+                stringValue: 'password123'
+            }
+        );
+
+        const encryptionElementName = 'TestWorkerKey';
+        const encryption = new Key(stack, encryptionElementName);
 
         // Act
-        new OpensearchAdminUser(stack, name, {
+        new OpenSearchAdminUser(stack, constructName, {
             username,
-            password,
+            password: {
+                parameter: password,
+                type: 'parameter'
+            },
             domain,
-            workerEncryption
+            encryption
         });
 
         // Assert
         const template = Template.fromStack(stack);
-
         template.hasResourceProperties('AWS::Lambda::Function', {
             KmsKeyArn: {
-                'Fn::GetAtt': [Match.stringLikeRegexp('TestWorkerKey'), 'Arn']
+                'Fn::GetAtt': [
+                    Match.stringLikeRegexp(encryptionElementName),
+                    'Arn'
+                ]
             }
         });
     });

@@ -11,8 +11,29 @@
  *  and limitations under the License.
  */
 
-export interface IResourceProperties {
+/**
+ * Invocation properties for the Custom Resource
+ */
+export interface ResourceProperties {
+    /**
+     * Name of the OpenSearch domain
+     */
     readonly DomainName: string;
+
+    /**
+     * Name of the AWS Systems Manager Parameter Store parameter that contains the admin user username
+     */
     readonly UsernameParameterName: string;
-    readonly PasswordParameterName: string;
+
+    /**
+     * Name of the AWS Systems Manager Parameter Store parameter that contains the admin user password
+     * Either this or the `PasswordSecretArn` must be specified
+     */
+    readonly PasswordParameterName?: string;
+
+    /**
+     * Name of the AWS Secrets Manager secret that contains the admin user password
+     * Either this or the `PasswordParameterName` must be specified
+     */
+    readonly PasswordSecretArn?: string;
 }

@@ -28,6 +28,10 @@
       "type": "build"
     },
     {
+      "name": "cloudform-types",
+      "type": "build"
+    },
+    {
       "name": "commit-and-tag-version",
       "version": "^12",
       "type": "build"
@@ -55,6 +59,10 @@
     {
       "name": "eslint",
       "version": "^8",
+      "type": "build"
+    },
+    {
+      "name": "husky",
       "type": "build"
     },
     {
@@ -89,6 +97,10 @@
       "type": "build"
     },
     {
+      "name": "lint-staged",
+      "type": "build"
+    },
+    {
       "name": "prettier",
       "type": "build"
     },
@@ -115,6 +127,11 @@
     },
     {
       "name": "@aws-sdk/client-opensearch",
+      "version": "3.600.0",
+      "type": "bundled"
+    },
+    {
+      "name": "@aws-sdk/client-secrets-manager",
       "version": "3.600.0",
       "type": "bundled"
     },
@@ -165,6 +182,11 @@
     },
     {
       "name": "@aws-sdk/client-opensearch",
+      "version": "3.600.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-sdk/client-secrets-manager",
       "version": "3.600.0",
       "type": "runtime"
     },

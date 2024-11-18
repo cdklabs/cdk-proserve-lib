@@ -13,112 +13,388 @@
 
 import {
     OpenSearch,
-    UpdateDomainConfigCommand
+    UpdateDomainConfigCommand,
+    ValidationException
 } from '@aws-sdk/client-opensearch';
+import {
+    GetSecretValueCommand,
+    SecretsManager
+} from '@aws-sdk/client-secrets-manager';
 import { GetParameterCommand, SSM } from '@aws-sdk/client-ssm';
-import { CdkCustomResourceEvent } from 'aws-lambda';
+import {
+    CloudFormationCustomResourceCreateEvent,
+    CloudFormationCustomResourceDeleteEvent,
+    CloudFormationCustomResourceUpdateEvent
+} from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
 import { handler } from '../../../../../src/constructs/opensearch-admin-user/handler/on-event';
-import { IResourceProperties } from '../../../../../src/constructs/opensearch-admin-user/handler/types/resource-properties';
+import { FailedToRetrieveCredentialValueException } from '../../../../../src/constructs/opensearch-admin-user/handler/types/exceptions';
+import { ResourceProperties } from '../../../../../src/constructs/opensearch-admin-user/handler/types/resource-properties';
+import { mockContext } from '../../../../fixtures';
+import {
+    mockCreateEvent,
+    mockDomainName,
+    mockPasswordParameterName,
+    mockUserParameterName,
+    mockUsernameValue,
+    mockPasswordValue,
+    mockPasswordSecretArn,
+    mockUpdateEvent,
+    mockDeleteEvent
+} from '../../fixtures';
 
 describe('Lambda function handler', () => {
     const aosMock = mockClient(OpenSearch);
     const ssmMock = mockClient(SSM);
+    const secretsmanagerMock = mockClient(SecretsManager);
 
     beforeEach(() => {
         aosMock.reset();
+        secretsmanagerMock.reset();
         ssmMock.reset();
     });
 
-    const baseEvent: Partial<CdkCustomResourceEvent<IResourceProperties>> = {
-        ResourceProperties: {
-            ServiceToken:
-                'arn:aws:lambda:us-east-1:123456789012:function:my-function',
-            DomainName: 'test-domain',
-            UsernameParameterName: '/test/username',
-            PasswordParameterName: '/test/password'
-        }
-    };
+    it('should handle CREATE event with password parameter successfully', async () => {
+        // Arrange
+        const mockEvent: CloudFormationCustomResourceCreateEvent<ResourceProperties> =
+            {
+                ...mockCreateEvent,
+                ResourceProperties: {
+                    ...mockCreateEvent.ResourceProperties,
+                    PasswordParameterName: mockPasswordParameterName
+                }
+            };
 
-    it('should handle CREATE event successfully', async () => {
-        const mockEvent: CdkCustomResourceEvent<IResourceProperties> = {
-            ...baseEvent,
-            RequestType: 'Create'
-        } as CdkCustomResourceEvent<IResourceProperties>;
+        ssmMock
+            .on(GetParameterCommand)
+            .rejects()
+            .on(GetParameterCommand, {
+                Name: mockUserParameterName,
+                WithDecryption: true
+            })
+            .resolves({
+                Parameter: {
+                    Value: mockUsernameValue
+                }
+            })
+            .on(GetParameterCommand, {
+                Name: mockPasswordParameterName,
+                WithDecryption: true
+            })
+            .resolves({
+                Parameter: {
+                    Value: mockPasswordValue
+                }
+            });
 
-        const mockContext = {} as any;
+        aosMock
+            .on(UpdateDomainConfigCommand)
+            .rejects()
+            .on(UpdateDomainConfigCommand, {
+                DomainName: mockDomainName,
+                AdvancedSecurityOptions: {
+                    MasterUserOptions: {
+                        MasterUserName: mockUsernameValue,
+                        MasterUserPassword: mockPasswordValue
+                    },
+                    InternalUserDatabaseEnabled: true
+                }
+            });
 
-        ssmMock.on(GetParameterCommand).callsFake((input) => {
-            if (input.Name === '/test/username') {
-                return Promise.resolve({
-                    Parameter: { Value: 'testuser' }
-                });
-            } else if (input.Name === '/test/password') {
-                return Promise.resolve({
-                    Parameter: { Value: 'testpassword' }
-                });
-            } else {
-                return Promise.reject(new Error('Invalid parameter name'));
-            }
-        });
-
-        aosMock.on(UpdateDomainConfigCommand).resolves({});
-
+        // Act
         const result = await handler(mockEvent, mockContext);
 
-        expect(result).toEqual({ PhysicalResourceId: 'test-domain' });
-        expect(ssmMock.calls()).toHaveLength(2);
+        // Assert
+        expect(result).toEqual({ PhysicalResourceId: mockDomainName });
         expect(aosMock.calls()).toHaveLength(1);
+        expect(secretsmanagerMock.calls()).toHaveLength(0);
+        expect(ssmMock.calls()).toHaveLength(2);
+    });
+
+    it('should handle CREATE event with password secret successfully', async () => {
+        // Arrange
+        const mockEvent: CloudFormationCustomResourceCreateEvent<ResourceProperties> =
+            {
+                ...mockCreateEvent,
+                ResourceProperties: {
+                    ...mockCreateEvent.ResourceProperties,
+                    PasswordSecretArn: mockPasswordSecretArn
+                }
+            };
+
+        ssmMock
+            .on(GetParameterCommand)
+            .rejects()
+            .on(GetParameterCommand, {
+                Name: mockUserParameterName,
+                WithDecryption: true
+            })
+            .resolves({
+                Parameter: {
+                    Value: mockUsernameValue
+                }
+            });
+
+        secretsmanagerMock
+            .on(GetSecretValueCommand)
+            .rejects()
+            .on(GetSecretValueCommand, {
+                SecretId: mockPasswordSecretArn
+            })
+            .resolves({
+                SecretString: mockPasswordValue
+            });
+
+        aosMock
+            .on(UpdateDomainConfigCommand)
+            .rejects()
+            .on(UpdateDomainConfigCommand, {
+                DomainName: mockDomainName,
+                AdvancedSecurityOptions: {
+                    MasterUserOptions: {
+                        MasterUserName: mockUsernameValue,
+                        MasterUserPassword: mockPasswordValue
+                    },
+                    InternalUserDatabaseEnabled: true
+                }
+            });
+
+        // Act
+        const result = await handler(mockEvent, mockContext);
+
+        // Assert
+        expect(result).toEqual({ PhysicalResourceId: mockDomainName });
+        expect(aosMock.calls()).toHaveLength(1);
+        expect(secretsmanagerMock.calls()).toHaveLength(1);
+        expect(ssmMock.calls()).toHaveLength(1);
     });
 
     it('should handle UPDATE event successfully', async () => {
-        const mockEvent: CdkCustomResourceEvent<IResourceProperties> = {
-            ...baseEvent,
-            RequestType: 'Update',
-            PhysicalResourceId: 'existing-domain'
-        } as CdkCustomResourceEvent<IResourceProperties>;
+        // Arrange
+        const mockEvent: CloudFormationCustomResourceUpdateEvent<ResourceProperties> =
+            {
+                ...mockUpdateEvent,
+                OldResourceProperties: {
+                    ...mockUpdateEvent.OldResourceProperties,
+                    PasswordParameterName: `${mockPasswordParameterName}old`
+                },
+                ResourceProperties: {
+                    ...mockUpdateEvent.ResourceProperties,
+                    PasswordParameterName: mockPasswordParameterName
+                }
+            };
 
-        const mockContext = {} as any;
-
+        // Act
         const result = await handler(mockEvent, mockContext);
 
-        expect(result).toEqual({ PhysicalResourceId: 'existing-domain' });
+        // Assert
+        expect(result).toEqual({ PhysicalResourceId: mockDomainName });
+        expect(aosMock.calls()).toHaveLength(0);
+        expect(secretsmanagerMock.calls()).toHaveLength(0);
+        expect(ssmMock.calls()).toHaveLength(0);
     });
 
     it('should handle DELETE event successfully', async () => {
-        const mockEvent: CdkCustomResourceEvent<IResourceProperties> = {
-            ...baseEvent,
-            RequestType: 'Delete',
-            PhysicalResourceId: 'existing-domain'
-        } as CdkCustomResourceEvent<IResourceProperties>;
+        // Arrange
+        const mockEvent: CloudFormationCustomResourceDeleteEvent<ResourceProperties> =
+            {
+                ...mockDeleteEvent,
+                ResourceProperties: {
+                    ...mockDeleteEvent.ResourceProperties,
+                    PasswordParameterName: mockPasswordParameterName
+                }
+            };
 
-        const mockContext = {} as any;
-
+        // Act
         const result = await handler(mockEvent, mockContext);
 
-        expect(result).toEqual({ PhysicalResourceId: 'existing-domain' });
+        // Assert
+        expect(result).toEqual({ PhysicalResourceId: mockDomainName });
+        expect(aosMock.calls()).toHaveLength(0);
+        expect(secretsmanagerMock.calls()).toHaveLength(0);
+        expect(ssmMock.calls()).toHaveLength(0);
+    });
+
+    it('onCreate should return an error message if the credential source is missing', async () => {
+        // Act
+        const actual = handler(mockCreateEvent, mockContext);
+
+        //Assert
+        await expect(actual)
+            .rejects.toThrow(
+                'Password must be specified as either an AWS Systems Manager Parameter Store parameter or an AWS Secrets Manager secret'
+            )
+            .finally(() => {
+                expect(aosMock.calls()).toHaveLength(0);
+                expect(secretsmanagerMock.calls()).toHaveLength(0);
+                expect(ssmMock.calls()).toHaveLength(1);
+            });
+    });
+
+    it('onCreate should return an error message if multiple credential sources are specified', async () => {
+        // Arrange
+        const mockEvent: CloudFormationCustomResourceCreateEvent<ResourceProperties> =
+            {
+                ...mockCreateEvent,
+                ResourceProperties: {
+                    ...mockCreateEvent.ResourceProperties,
+                    PasswordParameterName: mockPasswordParameterName,
+                    PasswordSecretArn: mockPasswordSecretArn
+                }
+            };
+
+        // Act
+        const actual = handler(mockEvent, mockContext);
+
+        //Assert
+        await expect(actual)
+            .rejects.toThrow(
+                'Password must be specified as either an AWS Systems Manager Parameter Store parameter or an AWS Secrets Manager secret'
+            )
+            .finally(() => {
+                expect(aosMock.calls()).toHaveLength(0);
+                expect(secretsmanagerMock.calls()).toHaveLength(0);
+                expect(ssmMock.calls()).toHaveLength(1);
+            });
     });
 
     it('onCreate should return an error message when updateDomainConfig fails', async () => {
-        aosMock
-            .on(UpdateDomainConfigCommand)
-            .rejects(new Error('Update domain config failed'));
+        // Arrange
+        const mockEvent: CloudFormationCustomResourceCreateEvent<ResourceProperties> =
+            {
+                ...mockCreateEvent,
+                ResourceProperties: {
+                    ...mockCreateEvent.ResourceProperties,
+                    PasswordParameterName: mockPasswordParameterName
+                }
+            };
 
-        ssmMock.on(GetParameterCommand).resolves({
-            Parameter: { Value: 'test-value' }
-        });
+        ssmMock
+            .on(GetParameterCommand)
+            .rejects()
+            .on(GetParameterCommand, {
+                Name: mockUserParameterName,
+                WithDecryption: true
+            })
+            .resolves({
+                Parameter: {
+                    Value: mockUsernameValue
+                }
+            })
+            .on(GetParameterCommand, {
+                Name: mockPasswordParameterName,
+                WithDecryption: true
+            })
+            .resolves({
+                Parameter: {
+                    Value: mockPasswordValue
+                }
+            });
 
-        const event = {
-            RequestType: 'Create',
-            ResourceProperties: {
-                DomainName: 'test-domain',
-                UsernameParameterName: '/test/username',
-                PasswordParameterName: '/test/password'
-            }
-        } as any;
-
-        await expect(handler(event, {} as any)).rejects.toThrow(
-            'Update domain config failed'
+        aosMock.on(UpdateDomainConfigCommand).rejects(
+            new ValidationException({
+                message: 'Bad format',
+                $metadata: {}
+            })
         );
+
+        // Act
+        const actual = handler(mockEvent, mockContext);
+
+        // Assert
+        await expect(actual)
+            .rejects.toThrow(ValidationException)
+            .finally(() => {
+                expect(aosMock.calls()).toHaveLength(1);
+                expect(secretsmanagerMock.calls()).toHaveLength(0);
+                expect(ssmMock.calls()).toHaveLength(2);
+            });
+    });
+
+    it('onCreate should return an error message when retrieving the credential as parameter fails', async () => {
+        // Arrange
+        const mockEvent: CloudFormationCustomResourceCreateEvent<ResourceProperties> =
+            {
+                ...mockCreateEvent,
+                ResourceProperties: {
+                    ...mockCreateEvent.ResourceProperties,
+                    PasswordParameterName: mockPasswordParameterName
+                }
+            };
+
+        ssmMock
+            .on(GetParameterCommand)
+            .rejects()
+            .on(GetParameterCommand, {
+                Name: mockUserParameterName,
+                WithDecryption: true
+            })
+            .resolves({
+                Parameter: {
+                    Value: mockUsernameValue
+                }
+            })
+            .on(GetParameterCommand, {
+                Name: mockPasswordParameterName,
+                WithDecryption: true
+            })
+            .resolves({});
+
+        // Act
+        const actual = handler(mockEvent, mockContext);
+
+        // Assert
+        await expect(actual)
+            .rejects.toThrow(FailedToRetrieveCredentialValueException)
+            .finally(() => {
+                expect(aosMock.calls()).toHaveLength(0);
+                expect(secretsmanagerMock.calls()).toHaveLength(0);
+                expect(ssmMock.calls()).toHaveLength(2);
+            });
+    });
+
+    it('onCreate should return an error message when retrieving the credential as secret fails', async () => {
+        // Arrange
+        const mockEvent: CloudFormationCustomResourceCreateEvent<ResourceProperties> =
+            {
+                ...mockCreateEvent,
+                ResourceProperties: {
+                    ...mockCreateEvent.ResourceProperties,
+                    PasswordSecretArn: mockPasswordSecretArn
+                }
+            };
+
+        ssmMock
+            .on(GetParameterCommand)
+            .rejects()
+            .on(GetParameterCommand, {
+                Name: mockUserParameterName,
+                WithDecryption: true
+            })
+            .resolves({
+                Parameter: {
+                    Value: mockUsernameValue
+                }
+            });
+
+        secretsmanagerMock
+            .on(GetSecretValueCommand)
+            .rejects()
+            .on(GetSecretValueCommand, {
+                SecretId: mockPasswordSecretArn
+            })
+            .resolves({});
+
+        // Act
+        const actual = handler(mockEvent, mockContext);
+
+        // Assert
+        await expect(actual)
+            .rejects.toThrow(FailedToRetrieveCredentialValueException)
+            .finally(() => {
+                expect(aosMock.calls()).toHaveLength(0);
+                expect(secretsmanagerMock.calls()).toHaveLength(1);
+                expect(ssmMock.calls()).toHaveLength(1);
+            });
     });
 });
