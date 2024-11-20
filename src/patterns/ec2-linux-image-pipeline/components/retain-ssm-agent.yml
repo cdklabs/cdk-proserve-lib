@@ -1,0 +1,17 @@
+---
+# RetainSSMAgentInstallation
+#
+# Component that will ensure the SSM Agent installation is retained after build.
+#
+
+name: RetainSSMAgentInstallation
+description: Flags the build to retain the SSM Agent installation.
+schemaVersion: 1.0
+phases:
+  - name: build
+    steps:
+      - name: RetainSSMAgentInstallation
+        action: ExecuteBash
+        inputs:
+          commands:
+            - sudo rm -rf /tmp/imagebuilder_service/ssm_installed

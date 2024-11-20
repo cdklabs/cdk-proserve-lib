@@ -108,4 +108,12 @@ project.addScripts({
     'generate:enum':
         'npx ts-node ./src/constructs/ec2-image-pipeline/scripts/generate.ts'
 });
+
+/**
+ * Set minimum package versions across dependency chain
+ */
+project.package.addPackageResolutions(
+    'cross-spawn@>7.0.5' // grype finding nov24
+);
+
 project.synth();

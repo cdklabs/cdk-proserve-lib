@@ -11,13 +11,19 @@
  *  and limitations under the License.
  */
 
-import { writeFileSync } from 'fs';
 import { Stack } from 'aws-cdk-lib';
-import { Match, Template } from 'aws-cdk-lib/assertions';
+import { Match } from 'aws-cdk-lib/assertions';
 import { Ec2ImagePipeline } from '../../../src/constructs/ec2-image-pipeline';
-import { Ec2LinuxStigImagePipeline } from '../../../src/patterns/ec2-linux-stig-image-pipeline';
+import { Ec2LinuxImagePipeline } from '../../../src/patterns/ec2-linux-image-pipeline';
+import { FeatureError } from '../../../src/patterns/ec2-linux-image-pipeline/types/exception';
+import {
+    getTemplateWithCdkNag,
+    validateNoCdkNagFindings
+} from '../../../utilities/cdk-nag-jest';
 
-describe('Ec2LinuxStigImagePipeline', () => {
+const constructName = 'Ec2LinuxStigImagePipeline';
+
+describe(constructName, () => {
     let stack: Stack;
 
     beforeEach(() => {
@@ -29,17 +35,25 @@ describe('Ec2LinuxStigImagePipeline', () => {
         });
     });
 
+    afterEach(() => {
+        validateNoCdkNagFindings(stack, constructName);
+    });
+
     it('creates pipeline with default settings', () => {
         // Act
-        new Ec2LinuxStigImagePipeline(stack, 'TestPipeline', {
-            version: '0.1.0'
+        new Ec2LinuxImagePipeline(stack, constructName, {
+            version: '0.1.0',
+            features: [
+                Ec2LinuxImagePipeline.Feature.AWS_CLI,
+                Ec2LinuxImagePipeline.Feature.STIG
+            ]
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         template.hasResourceProperties('AWS::ImageBuilder::ImagePipeline', {
-            Name: Match.stringLikeRegexp('TestPipeline')
+            Name: Match.stringLikeRegexp(constructName)
         });
 
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
@@ -92,14 +106,14 @@ describe('Ec2LinuxStigImagePipeline', () => {
 
     it('uses correct machine image for Amazon Linux 2023', () => {
         // Act
-        new Ec2LinuxStigImagePipeline(stack, 'TestPipeline', {
+        new Ec2LinuxImagePipeline(stack, constructName, {
             version: '0.1.0',
             operatingSystem:
-                Ec2LinuxStigImagePipeline.OperatingSystem.AMAZON_LINUX_2023
+                Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2023
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
             ParentImage: {
@@ -110,15 +124,15 @@ describe('Ec2LinuxStigImagePipeline', () => {
 
     it('uses correct machine image for Red Hat Enterprise Linux 8.9', () => {
         // Act
-        new Ec2LinuxStigImagePipeline(stack, 'TestPipeline', {
+        new Ec2LinuxImagePipeline(stack, constructName, {
             version: '0.1.0',
             operatingSystem:
-                Ec2LinuxStigImagePipeline.OperatingSystem
+                Ec2LinuxImagePipeline.OperatingSystem
                     .RED_HAT_ENTERPRISE_LINUX_8_9
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
             ParentImage: 'ami-1234'
@@ -127,20 +141,18 @@ describe('Ec2LinuxStigImagePipeline', () => {
 
     it('adds SCAP Compliance Checker for compatible OS', () => {
         // Act
-        new Ec2LinuxStigImagePipeline(stack, 'TestPipeline', {
+        new Ec2LinuxImagePipeline(stack, constructName, {
             version: '0.1.0',
             operatingSystem:
-                Ec2LinuxStigImagePipeline.OperatingSystem
-                    .RED_HAT_ENTERPRISE_LINUX_8_9
+                Ec2LinuxImagePipeline.OperatingSystem
+                    .RED_HAT_ENTERPRISE_LINUX_8_9,
+            features: [Ec2LinuxImagePipeline.Feature.SCAP]
         });
 
         // Assert
-        const template = Template.fromStack(stack);
-        writeFileSync('test.json', JSON.stringify(template.toJSON(), null, 2));
+        const template = getTemplateWithCdkNag(stack);
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
             Components: [
-                {},
-                {},
                 {},
                 {
                     ComponentArn: {
@@ -162,13 +174,13 @@ describe('Ec2LinuxStigImagePipeline', () => {
 
     it('sets correct root volume size', () => {
         // Act
-        new Ec2LinuxStigImagePipeline(stack, 'TestPipeline', {
+        new Ec2LinuxImagePipeline(stack, constructName, {
             version: '0.1.0',
             rootVolumeSize: 20
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
             BlockDeviceMappings: [
@@ -184,7 +196,7 @@ describe('Ec2LinuxStigImagePipeline', () => {
 
     it('adds extra components', () => {
         // Act
-        new Ec2LinuxStigImagePipeline(stack, 'TestPipeline', {
+        new Ec2LinuxImagePipeline(stack, constructName, {
             version: '0.1.0',
             extraComponents: [
                 Ec2ImagePipeline.Component.AMAZON_CLOUDWATCH_AGENT_LINUX
@@ -192,11 +204,10 @@ describe('Ec2LinuxStigImagePipeline', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
             Components: [
-                {},
                 {},
                 {},
                 {
@@ -212,14 +223,15 @@ describe('Ec2LinuxStigImagePipeline', () => {
                             ]
                         ]
                     }
-                }
+                },
+                {}
             ]
         });
     });
 
     it('adds extra device mappings', () => {
         // Act
-        new Ec2LinuxStigImagePipeline(stack, 'TestPipeline', {
+        new Ec2LinuxImagePipeline(stack, constructName, {
             version: '0.1.0',
             extraDeviceMappings: [
                 {
@@ -232,7 +244,7 @@ describe('Ec2LinuxStigImagePipeline', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
             BlockDeviceMappings: [
@@ -250,5 +262,60 @@ describe('Ec2LinuxStigImagePipeline', () => {
                 }
             ]
         });
+    });
+
+    it('adds nice dcv feature for compatible operating systems', () => {
+        new Ec2LinuxImagePipeline(stack, constructName, {
+            version: '0.1.0',
+            operatingSystem:
+                Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2,
+            features: [Ec2LinuxImagePipeline.Feature.NICE_DCV]
+        });
+
+        const template = getTemplateWithCdkNag(stack);
+
+        // Check if the NiceDcvPrereqs component is created
+        template.hasResourceProperties('AWS::ImageBuilder::Component', {
+            Name: 'nice-dcv-prereqs'
+        });
+
+        template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
+            Components: [
+                {}, // linux updates
+                {
+                    ComponentArn: {
+                        'Fn::GetAtt': [
+                            Match.stringLikeRegexp(constructName),
+                            'Arn'
+                        ]
+                    }
+                },
+                {
+                    ComponentArn: {
+                        'Fn::Join': [
+                            '',
+                            [
+                                'arn:',
+                                { Ref: 'AWS::Partition' },
+                                ':imagebuilder:',
+                                { Ref: 'AWS::Region' },
+                                ':aws:component/dcv-server-linux/x.x.x'
+                            ]
+                        ]
+                    }
+                }
+            ]
+        });
+    });
+
+    it('throws error for incompatible operating systems', () => {
+        expect(() => {
+            new Ec2LinuxImagePipeline(stack, constructName, {
+                version: '0.1.0',
+                operatingSystem:
+                    Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2023,
+                features: [Ec2LinuxImagePipeline.Feature.NICE_DCV]
+            });
+        }).toThrow(FeatureError);
     });
 });

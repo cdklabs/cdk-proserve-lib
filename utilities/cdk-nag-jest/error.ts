@@ -11,4 +11,12 @@
  *  and limitations under the License.
  */
 
-export * from './ec2-linux-image-pipeline';
+export class CdkNagError extends Error {
+    constructor(
+        message: string,
+        public annotations: any[]
+    ) {
+        super(message);
+        this.name = 'CdkNagError';
+    }
+}

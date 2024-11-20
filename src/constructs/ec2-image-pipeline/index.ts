@@ -39,6 +39,7 @@ import { IKey } from 'aws-cdk-lib/aws-kms';
 import { ITopic, Topic } from 'aws-cdk-lib/aws-sns';
 import { Construct } from 'constructs';
 import { validate, ValidationTypes } from '../../common/validate';
+import { LambdaConfiguration } from '../../interfaces';
 import { Ec2ImageBuilderGetImage } from '../ec2-image-builder-get-image';
 import { Ec2ImageBuilderStart } from '../ec2-image-builder-start';
 
@@ -47,7 +48,8 @@ import { Ec2ImageBuilderStart } from '../ec2-image-builder-start';
  */
 export interface Ec2ImagePipelineBaseProps {
     /**
-     * Version of the image pipeline.
+     * Version of the image pipeline. This must be updated if you make
+     * underlying changes to the pipeline configuration.
      */
     readonly version: string;
 
@@ -75,6 +77,11 @@ export interface Ec2ImagePipelineBaseProps {
      * VPC configuration for the image pipeline.
      */
     readonly vpcConfiguration?: Ec2ImagePipeline.VpcConfigurationProps;
+
+    /**
+     * Optional Lambda configuration settings.
+     */
+    readonly lambdaConfiguration?: LambdaConfiguration;
 }
 
 /**
@@ -242,12 +249,18 @@ export class Ec2ImagePipeline extends Construct {
                     : undefined,
                 hash: props.buildConfiguration.hash
                     ? props.buildConfiguration.hash
-                    : props.version
+                    : props.version,
+                encryption: props.encryption,
+                lambdaConfiguration: props.lambdaConfiguration
             });
 
             if (props.buildConfiguration.waitForCompletion) {
                 const image = new Ec2ImageBuilderGetImage(this, 'GetImage', {
-                    imageBuildVersionArn: imageBuild.imageBuildVersionArn
+                    imageBuildVersionArn: imageBuild.imageBuildVersionArn,
+                    lambdaConfiguration: {
+                        vpc: props.lambdaConfiguration?.vpc,
+                        subnets: props.lambdaConfiguration?.subnets
+                    }
                 });
                 image.node.addDependency(imageBuild);
 

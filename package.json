@@ -100,6 +100,9 @@
     "axios",
     "cdk-nag"
   ],
+  "resolutions": {
+    "cross-spawn": ">7.0.5"
+  },
   "keywords": [
     "cdk"
   ],

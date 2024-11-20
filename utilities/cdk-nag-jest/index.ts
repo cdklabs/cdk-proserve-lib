@@ -11,4 +11,5 @@
  *  and limitations under the License.
  */
 
-export * from './ec2-linux-image-pipeline';
+export { getTemplateWithCdkNag } from './template';
+export { validateNoCdkNagFindings } from './validate';

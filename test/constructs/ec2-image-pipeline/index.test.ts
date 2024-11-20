@@ -12,40 +12,37 @@
  */
 
 import { Stack } from 'aws-cdk-lib';
-import { Match, Template } from 'aws-cdk-lib/assertions';
+import { Match } from 'aws-cdk-lib/assertions';
 import { SecurityGroup, Vpc } from 'aws-cdk-lib/aws-ec2';
 import { CfnComponent } from 'aws-cdk-lib/aws-imagebuilder';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Ec2ImagePipeline } from '../../../src/constructs/ec2-image-pipeline';
 import {
-    addCdkNagCommonSuppressions,
-    addCdkNagPacks,
-    checkForCdkNagIssues
-} from '../../../utilities/cdk-nag';
+    getTemplateWithCdkNag,
+    validateNoCdkNagFindings
+} from '../../../utilities/cdk-nag-jest';
 
-describe('Ec2ImagePipeline', () => {
+const constructName = 'Ec2ImagePipeline';
+
+describe(constructName, () => {
     let stack: Stack;
-    const name: string = 'Ec2ImagePipeline';
 
     beforeEach(() => {
         stack = new Stack();
-
-        addCdkNagPacks(stack);
-        addCdkNagCommonSuppressions(stack);
     });
 
     afterEach(() => {
-        checkForCdkNagIssues(stack, name);
+        validateNoCdkNagFindings(stack, constructName);
     });
 
     it('creates image pipeline with default properties', () => {
         // Act
-        new Ec2ImagePipeline(stack, name, {
+        new Ec2ImagePipeline(stack, constructName, {
             version: '0.1.0'
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
         template.resourceCountIs('AWS::ImageBuilder::ImagePipeline', 1);
         template.resourceCountIs(
             'AWS::ImageBuilder::InfrastructureConfiguration',
@@ -64,7 +61,7 @@ describe('Ec2ImagePipeline', () => {
         const kmsKey = new Key(stack, 'TestKey');
 
         // Act
-        new Ec2ImagePipeline(stack, name, {
+        new Ec2ImagePipeline(stack, constructName, {
             version: '1.0.0',
             description: 'Test pipeline',
             encryption: kmsKey,
@@ -80,9 +77,9 @@ describe('Ec2ImagePipeline', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
         template.hasResourceProperties('AWS::ImageBuilder::ImagePipeline', {
-            Name: Match.stringLikeRegexp(name),
+            Name: Match.stringLikeRegexp(constructName),
             Description: 'Test pipeline'
         });
 
@@ -132,7 +129,7 @@ describe('Ec2ImagePipeline', () => {
 
     it('exposes image pipeline ARN and SNS topic', () => {
         // Act
-        const imagePipeline = new Ec2ImagePipeline(stack, name, {
+        const imagePipeline = new Ec2ImagePipeline(stack, constructName, {
             version: '0.1.0'
         });
 
@@ -143,7 +140,7 @@ describe('Ec2ImagePipeline', () => {
 
     it('sets latestAmi when waitForCompletion is true', () => {
         // Act
-        const imagePipeline = new Ec2ImagePipeline(stack, name, {
+        const imagePipeline = new Ec2ImagePipeline(stack, constructName, {
             version: '0.1.0',
             buildConfiguration: {
                 start: true,
@@ -157,7 +154,7 @@ describe('Ec2ImagePipeline', () => {
 
     it('does not set latestAmi when waitForCompletion is false', () => {
         // Act
-        const imagePipeline = new Ec2ImagePipeline(stack, name, {
+        const imagePipeline = new Ec2ImagePipeline(stack, constructName, {
             version: '0.1.0',
             buildConfiguration: {
                 start: true,
@@ -179,7 +176,7 @@ describe('Ec2ImagePipeline', () => {
         });
 
         // Act
-        new Ec2ImagePipeline(stack, name, {
+        new Ec2ImagePipeline(stack, constructName, {
             version: '0.1.0',
             components: [
                 Ec2ImagePipeline.Component.AWS_CLI_VERSION_2_LINUX,
@@ -188,7 +185,7 @@ describe('Ec2ImagePipeline', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         template.hasResourceProperties('AWS::ImageBuilder::Component', {
             Name: 'MyCustomComponent',
@@ -231,7 +228,7 @@ describe('Ec2ImagePipeline', () => {
         });
 
         // Act
-        new Ec2ImagePipeline(stack, name, {
+        new Ec2ImagePipeline(stack, constructName, {
             version: '0.1.0',
             vpcConfiguration: {
                 vpc,
@@ -240,7 +237,7 @@ describe('Ec2ImagePipeline', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         // Verify that the security group is created
         template.hasResourceProperties('AWS::EC2::SecurityGroup', {
@@ -274,7 +271,7 @@ describe('Ec2ImagePipeline', () => {
         const vpc = new Vpc(stack, 'TestVpc');
 
         // Act
-        new Ec2ImagePipeline(stack, name, {
+        new Ec2ImagePipeline(stack, constructName, {
             version: '0.1.0',
             vpcConfiguration: {
                 vpc
@@ -282,7 +279,7 @@ describe('Ec2ImagePipeline', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         // Verify that the security group is created
         template.hasResourceProperties('AWS::EC2::SecurityGroup', {
@@ -298,7 +295,10 @@ describe('Ec2ImagePipeline', () => {
             {
                 SecurityGroupIds: [
                     {
-                        'Fn::GetAtt': [Match.stringLikeRegexp(name), 'GroupId']
+                        'Fn::GetAtt': [
+                            Match.stringLikeRegexp(constructName),
+                            'GroupId'
+                        ]
                     }
                 ]
             }
@@ -310,7 +310,7 @@ describe('Ec2ImagePipeline', () => {
 
     it('throws error for invalid SEMVER format', () => {
         expect(() => {
-            new Ec2ImagePipeline(stack, name, {
+            new Ec2ImagePipeline(stack, constructName, {
                 version: 'asdf'
             });
         }).toThrow(/Expected type: SEMVER/);

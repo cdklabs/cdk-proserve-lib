@@ -12,39 +12,36 @@
  */
 
 import { Stack } from 'aws-cdk-lib';
-import { Match, Template } from 'aws-cdk-lib/assertions';
+import { Match } from 'aws-cdk-lib/assertions';
 import { Ec2ImageBuilderGetImage } from '../../../src/constructs/ec2-image-builder-get-image';
 import {
-    addCdkNagCommonSuppressions,
-    addCdkNagPacks,
-    checkForCdkNagIssues
-} from '../../../utilities/cdk-nag';
+    getTemplateWithCdkNag,
+    validateNoCdkNagFindings
+} from '../../../utilities/cdk-nag-jest';
 
-describe('Ec2ImageBuilderGetImage', () => {
+const constructName = 'Ec2ImageBuilderGetImage';
+const imageBuildVersionArn =
+    'arn:aws:imagebuilder:us-west-2:123456789012:image/example-image/1.0.0/1';
+
+describe(constructName, () => {
     let stack: Stack;
-    const name = 'Ec2ImageBuilderGetImage';
-    const imageBuildVersionArn =
-        'arn:aws:imagebuilder:us-west-2:123456789012:image/example-image/1.0.0/1';
 
     beforeEach(() => {
         stack = new Stack();
-
-        addCdkNagPacks(stack);
-        addCdkNagCommonSuppressions(stack);
     });
 
     afterEach(() => {
-        checkForCdkNagIssues(stack, name);
+        validateNoCdkNagFindings(stack, constructName);
     });
 
     it('creates custom resource with correct properties', () => {
         // Act
-        new Ec2ImageBuilderGetImage(stack, name, {
+        new Ec2ImageBuilderGetImage(stack, constructName, {
             imageBuildVersionArn
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
         template.hasResourceProperties('Custom::Ec2ImageBuilderGetImage', {
             ServiceToken: {
                 'Fn::GetAtt': [
@@ -64,12 +61,12 @@ describe('Ec2ImageBuilderGetImage', () => {
 
     it('sets correct IAM policy', () => {
         // Act
-        new Ec2ImageBuilderGetImage(stack, name, {
+        new Ec2ImageBuilderGetImage(stack, constructName, {
             imageBuildVersionArn
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
         template.hasResourceProperties('AWS::IAM::Policy', {
             PolicyDocument: {
                 Statement: [
@@ -80,7 +77,7 @@ describe('Ec2ImageBuilderGetImage', () => {
                     }
                 ]
             },
-            PolicyName: Match.stringLikeRegexp(name),
+            PolicyName: Match.stringLikeRegexp(constructName),
             Roles: Match.arrayWith([
                 {
                     Ref: Match.stringLikeRegexp(
@@ -93,7 +90,7 @@ describe('Ec2ImageBuilderGetImage', () => {
 
     it('exposes ami', () => {
         // Act
-        const construct = new Ec2ImageBuilderGetImage(stack, name, {
+        const construct = new Ec2ImageBuilderGetImage(stack, constructName, {
             imageBuildVersionArn
         });
 
@@ -109,7 +106,7 @@ describe('Ec2ImageBuilderGetImage', () => {
 
     it('throws error for invalid ARN format', () => {
         expect(() => {
-            new Ec2ImageBuilderGetImage(stack, name, {
+            new Ec2ImageBuilderGetImage(stack, constructName, {
                 imageBuildVersionArn: 'invalid-arn'
             });
         }).toThrow(/Expected type: AWS_ARN/);

@@ -649,6 +649,49 @@ The tree node.
 
 ## Structs <a name="Structs" id="Structs"></a>
 
+### AwsCustomResourceLambdaConfiguration <a name="AwsCustomResourceLambdaConfiguration" id="@cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration"></a>
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration.Initializer"></a>
+
+```typescript
+import { interfaces } from '@cdklabs/cdk-proserve-lib'
+
+const awsCustomResourceLambdaConfiguration: interfaces.AwsCustomResourceLambdaConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration.property.subnets">subnets</a></code> | <code>aws-cdk-lib.aws_ec2.SubnetSelection</code> | Optional subnet selection for the Lambda functions. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC where the Lambda functions will be deployed. |
+
+---
+
+##### `subnets`<sup>Optional</sup> <a name="subnets" id="@cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration.property.subnets"></a>
+
+```typescript
+public readonly subnets: SubnetSelection;
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.SubnetSelection
+
+Optional subnet selection for the Lambda functions.
+
+---
+
+##### `vpc`<sup>Optional</sup> <a name="vpc" id="@cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration.property.vpc"></a>
+
+```typescript
+public readonly vpc: IVpc;
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.IVpc
+
+VPC where the Lambda functions will be deployed.
+
+---
+
 ### BuildConfigurationProps <a name="BuildConfigurationProps" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.BuildConfigurationProps"></a>
 
 #### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.BuildConfigurationProps.Initializer"></a>
@@ -699,49 +742,6 @@ public readonly waitForCompletion: boolean;
 
 ---
 
-### CustomResourceLambdaConfiguration <a name="CustomResourceLambdaConfiguration" id="@cdklabs/cdk-proserve-lib.interfaces.CustomResourceLambdaConfiguration"></a>
-
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.interfaces.CustomResourceLambdaConfiguration.Initializer"></a>
-
-```typescript
-import { interfaces } from '@cdklabs/cdk-proserve-lib'
-
-const customResourceLambdaConfiguration: interfaces.CustomResourceLambdaConfiguration = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.interfaces.CustomResourceLambdaConfiguration.property.subnets">subnets</a></code> | <code>aws-cdk-lib.aws_ec2.SubnetSelection</code> | Optional subnet selection for the Lambda functions. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.interfaces.CustomResourceLambdaConfiguration.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC where the Lambda functions will be deployed. |
-
----
-
-##### `subnets`<sup>Optional</sup> <a name="subnets" id="@cdklabs/cdk-proserve-lib.interfaces.CustomResourceLambdaConfiguration.property.subnets"></a>
-
-```typescript
-public readonly subnets: SubnetSelection;
-```
-
-- *Type:* aws-cdk-lib.aws_ec2.SubnetSelection
-
-Optional subnet selection for the Lambda functions.
-
----
-
-##### `vpc`<sup>Optional</sup> <a name="vpc" id="@cdklabs/cdk-proserve-lib.interfaces.CustomResourceLambdaConfiguration.property.vpc"></a>
-
-```typescript
-public readonly vpc: IVpc;
-```
-
-- *Type:* aws-cdk-lib.aws_ec2.IVpc
-
-VPC where the Lambda functions will be deployed.
-
----
-
 ### Ec2ImageBuilderGetImageProps <a name="Ec2ImageBuilderGetImageProps" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImageProps"></a>
 
 Properties for the Ec2ImageBuilderGetImage construct.
@@ -759,7 +759,7 @@ const ec2ImageBuilderGetImageProps: constructs.Ec2ImageBuilderGetImageProps = { 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImageProps.property.imageBuildVersionArn">imageBuildVersionArn</a></code> | <code>string</code> | The ARN of the EC2 Image Builder image build version. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImageProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.CustomResourceLambdaConfiguration</code> | Optional Lambda configuration settings. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImageProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration</code> | Optional Lambda configuration settings. |
 
 ---
 
@@ -778,10 +778,10 @@ The ARN of the EC2 Image Builder image build version.
 ##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImageProps.property.lambdaConfiguration"></a>
 
 ```typescript
-public readonly lambdaConfiguration: CustomResourceLambdaConfiguration;
+public readonly lambdaConfiguration: AwsCustomResourceLambdaConfiguration;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.interfaces.CustomResourceLambdaConfiguration
+- *Type:* @cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration
 
 Optional Lambda configuration settings.
 
@@ -1296,6 +1296,8 @@ const lambdaConfiguration: interfaces.LambdaConfiguration = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration.property.deadLetterQueue">deadLetterQueue</a></code> | <code>aws-cdk-lib.aws_sqs.IQueue</code> | Optional SQS queue to use as a dead letter queue. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration.property.logGroupRetention">logGroupRetention</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | Optional retention period for the Lambda functions log group. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The number of concurrent executions for the provider Lambda function. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | Security groups to attach to the provider Lambda functions. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration.property.subnets">subnets</a></code> | <code>aws-cdk-lib.aws_ec2.SubnetSelection</code> | Optional subnet selection for the Lambda functions. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC where the Lambda functions will be deployed. |
@@ -1311,6 +1313,34 @@ public readonly deadLetterQueue: IQueue;
 - *Type:* aws-cdk-lib.aws_sqs.IQueue
 
 Optional SQS queue to use as a dead letter queue.
+
+---
+
+##### `logGroupRetention`<sup>Optional</sup> <a name="logGroupRetention" id="@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration.property.logGroupRetention"></a>
+
+```typescript
+public readonly logGroupRetention: RetentionDays;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.RetentionDays
+
+Optional retention period for the Lambda functions log group.
+
+Default: RetentionDays.ONE_WEEK
+
+---
+
+##### `reservedConcurrentExecutions`<sup>Optional</sup> <a name="reservedConcurrentExecutions" id="@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration.property.reservedConcurrentExecutions"></a>
+
+```typescript
+public readonly reservedConcurrentExecutions: number;
+```
+
+- *Type:* number
+
+The number of concurrent executions for the provider Lambda function.
+
+Default: 5
 
 ---
 
@@ -1370,6 +1400,7 @@ const opensearchAdminUserProps: constructs.OpensearchAdminUserProps = { ... }
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.password">password</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | The SSM parameter containing the password for the Opensearch admin user. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.username">username</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | The SSM parameter containing the username for the Opensearch admin user. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.domainKey">domainKey</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration</code> | Optional Lambda configuration settings. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.workerEncryption">workerEncryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional. |
 
 ---
@@ -1422,6 +1453,18 @@ Optional.
 
 The KMS key used to encrypt the Opensearch domain.
 If provided, the construct will grant the necessary permissions to use this key.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration
+
+Optional Lambda configuration settings.
 
 ---
 

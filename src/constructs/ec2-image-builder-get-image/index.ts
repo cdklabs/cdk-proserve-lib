@@ -20,7 +20,7 @@ import {
 } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 import { validate, ValidationTypes } from '../../common/validate';
-import { CustomResourceLambdaConfiguration } from '../../interfaces';
+import { AwsCustomResourceLambdaConfiguration } from '../../interfaces';
 
 /**
  * Properties for the Ec2ImageBuilderGetImage construct
@@ -34,7 +34,7 @@ export interface Ec2ImageBuilderGetImageProps {
     /**
      * Optional Lambda configuration settings.
      */
-    readonly lambdaConfiguration?: CustomResourceLambdaConfiguration;
+    readonly lambdaConfiguration?: AwsCustomResourceLambdaConfiguration;
 }
 
 /**

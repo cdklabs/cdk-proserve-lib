@@ -12,7 +12,7 @@
  */
 
 import { Stack } from 'aws-cdk-lib';
-import { Match, Template } from 'aws-cdk-lib/assertions';
+import { Match } from 'aws-cdk-lib/assertions';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Domain, EngineVersion } from 'aws-cdk-lib/aws-opensearchservice';
 import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
@@ -22,16 +22,15 @@ import { FunctionProperties } from 'cloudform-types/types/lambda/function';
 import { mockPasswordParameterName } from './fixtures';
 import { OpenSearchAdminUser } from '../../../src/constructs/opensearch-admin-user/index';
 import {
-    addCdkNagCommonSuppressions,
-    addCdkNagPacks,
-    checkForCdkNagIssues
-} from '../../../utilities/cdk-nag';
+    getTemplateWithCdkNag,
+    validateNoCdkNagFindings
+} from '../../../utilities/cdk-nag-jest';
 
-const constructName: string = 'OpensearchAdminUser';
+const constructName = 'OpensearchAdminUser';
 const passwordParameterElementName = 'PasswordParamater';
 const passwordSecretElementName = 'PasswordSecret';
 
-describe('OpenSearchAdminUser', () => {
+describe(constructName, () => {
     let stack: Stack;
     let domain: Domain;
     let username: StringParameter;
@@ -48,13 +47,10 @@ describe('OpenSearchAdminUser', () => {
             parameterName: '/test/username',
             stringValue: 'admin'
         });
-
-        addCdkNagPacks(stack);
-        addCdkNagCommonSuppressions(stack);
     });
 
     afterEach(() => {
-        checkForCdkNagIssues(stack, constructName);
+        validateNoCdkNagFindings(stack, constructName);
     });
 
     it('creates custom resource with correct properties (parameter)', () => {
@@ -79,7 +75,8 @@ describe('OpenSearchAdminUser', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
+
         template.hasResourceProperties('Custom::OpenSearchAdminUser', {
             ServiceToken: {
                 'Fn::GetAtt': Match.anyValue()
@@ -124,7 +121,8 @@ describe('OpenSearchAdminUser', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
+
         template.hasResourceProperties('Custom::OpenSearchAdminUser', {
             ServiceToken: {
                 'Fn::GetAtt': Match.anyValue()
@@ -176,7 +174,7 @@ describe('OpenSearchAdminUser', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         const iamPolicyProperties: Partial<PolicyProperties> = {
             PolicyDocument: {
@@ -218,7 +216,7 @@ describe('OpenSearchAdminUser', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         const iamPolicyProperties: Partial<PolicyProperties> = {
             PolicyDocument: {
@@ -270,7 +268,7 @@ describe('OpenSearchAdminUser', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         const iamPolicyProperties: Partial<PolicyProperties> = {
             PolicyDocument: {
@@ -344,7 +342,7 @@ describe('OpenSearchAdminUser', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
 
         // Check that the Lambda function has permission to use the KMS key
         const iamPolicyProperties: Partial<PolicyProperties> = {
@@ -393,7 +391,7 @@ describe('OpenSearchAdminUser', () => {
         });
 
         // Assert
-        const template = Template.fromStack(stack);
+        const template = getTemplateWithCdkNag(stack);
         template.hasResourceProperties('AWS::Lambda::Function', {
             KmsKeyArn: {
                 'Fn::GetAtt': [

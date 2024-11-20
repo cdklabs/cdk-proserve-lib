@@ -1,7 +1,19 @@
 import { ISecurityGroup, IVpc, SubnetSelection } from 'aws-cdk-lib/aws-ec2';
+import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { IQueue } from 'aws-cdk-lib/aws-sqs';
 
-export interface LambdaConfiguration {
+interface BaseLambdaConfiguration {
+    /**
+     * VPC where the Lambda functions will be deployed
+     */
+    readonly vpc?: IVpc;
+    /**
+     * Optional subnet selection for the Lambda functions
+     */
+    readonly subnets?: SubnetSelection;
+}
+
+export interface LambdaConfiguration extends BaseLambdaConfiguration {
     /**
      * The number of concurrent executions for the provider Lambda function.
      * Default: 5
@@ -16,23 +28,13 @@ export interface LambdaConfiguration {
      * Optional SQS queue to use as a dead letter queue
      */
     readonly deadLetterQueue?: IQueue;
+
     /**
-     * VPC where the Lambda functions will be deployed
+     * Optional retention period for the Lambda functions log group.
+     * Default: RetentionDays.ONE_WEEK
      */
-    readonly vpc?: IVpc;
-    /**
-     * Optional subnet selection for the Lambda functions
-     */
-    readonly subnets?: SubnetSelection;
+    readonly logGroupRetention?: RetentionDays;
 }
 
-export interface CustomResourceLambdaConfiguration {
-    /**
-     * VPC where the Lambda functions will be deployed
-     */
-    readonly vpc?: IVpc;
-    /**
-     * Optional subnet selection for the Lambda functions
-     */
-    readonly subnets?: SubnetSelection;
-}
+export interface AwsCustomResourceLambdaConfiguration
+    extends BaseLambdaConfiguration {}
