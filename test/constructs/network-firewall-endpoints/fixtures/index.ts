@@ -11,7 +11,20 @@
  *  and limitations under the License.
  */
 
-export * from './account';
-export * from './custom-resource';
-export * from './network';
-export * from './types';
+import { buildMockArn, mockAccount, mockRegion } from '../../../fixtures';
+
+/**
+ * Mock Firewall Name
+ */
+export const mockFirewallName = 'TestFirewall';
+
+/**
+ * Mock Firewall Policy ARN
+ */
+export const mockFirewallPolicyArn = buildMockArn(
+    'aws',
+    'network-firewall',
+    'firewall-policy/test-policy',
+    mockRegion,
+    mockAccount
+);

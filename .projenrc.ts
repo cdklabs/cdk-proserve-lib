@@ -27,7 +27,6 @@ const deps = [
     '@aws-sdk/client-opensearch@3.600.0',
     '@aws-sdk/client-imagebuilder@3.600.0',
     '@types/aws-lambda@8.10.141',
-    'cdk-nag@2.34.0',
     'axios@1.7.7'
 ];
 const project = new CdklabsConstructLibrary({
@@ -43,7 +42,8 @@ const project = new CdklabsConstructLibrary({
         'cloudform-types',
         'esbuild',
         'husky',
-        'lint-staged'
+        'lint-staged',
+        'cdk-nag@2.34.0'
     ],
     name: '@cdklabs/cdk-proserve-lib',
     packageName: '@cdklabs/cdk-proserve-lib',

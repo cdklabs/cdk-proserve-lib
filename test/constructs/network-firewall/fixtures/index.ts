@@ -11,7 +11,12 @@
  *  and limitations under the License.
  */
 
-export * from './account';
-export * from './custom-resource';
-export * from './network';
-export * from './types';
+/**
+ * Mock Suricata Rules Path
+ */
+export const mockSuricataRulesPath = 'mock/path/rules.txt';
+
+/**
+ * Mock Suricata Rules Capacity
+ */
+export const mockSuricataRulesCapacity = 1000;

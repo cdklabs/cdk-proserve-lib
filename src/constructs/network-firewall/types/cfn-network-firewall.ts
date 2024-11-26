@@ -11,7 +11,7 @@
  *  and limitations under the License.
  */
 
-export * from './account';
-export * from './custom-resource';
-export * from './network';
-export * from './types';
+export type LogDestinationType =
+    | 'S3'
+    | 'CloudWatchLogs'
+    | 'KinesisDataFirehose';

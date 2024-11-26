@@ -24,6 +24,11 @@
       "type": "build"
     },
     {
+      "name": "cdk-nag",
+      "version": "2.34.0",
+      "type": "build"
+    },
+    {
       "name": "cdklabs-projen-project-types",
       "type": "build"
     },
@@ -151,11 +156,6 @@
       "type": "bundled"
     },
     {
-      "name": "cdk-nag",
-      "version": "2.34.0",
-      "type": "bundled"
-    },
-    {
       "name": "@aws-cdk/integ-runner",
       "version": "latest",
       "type": "devenv"
@@ -208,11 +208,6 @@
     {
       "name": "axios",
       "version": "1.7.7",
-      "type": "runtime"
-    },
-    {
-      "name": "cdk-nag",
-      "version": "2.34.0",
       "type": "runtime"
     }
   ],

@@ -358,7 +358,7 @@
           "exec": "yarn install"
         },
         {
-          "exec": "yarn up @aws-sdk/client-imagebuilder @aws-sdk/client-opensearch @aws-sdk/client-secrets-manager @aws-sdk/client-ssm @types/aws-lambda axios cdk-nag"
+          "exec": "yarn up @aws-sdk/client-imagebuilder @aws-sdk/client-opensearch @aws-sdk/client-secrets-manager @aws-sdk/client-ssm @types/aws-lambda axios"
         },
         {
           "exec": "npx projen"
@@ -406,7 +406,7 @@
           "exec": "yarn install"
         },
         {
-          "exec": "yarn up @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock cloudform-types commit-and-tag-version esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint husky jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii lint-staged prettier ts-jest ts-node typescript @aws-cdk/integ-runner @aws-cdk/integ-tests-alpha"
+          "exec": "yarn up @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock cdk-nag cloudform-types commit-and-tag-version esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint husky jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii lint-staged prettier ts-jest ts-node typescript @aws-cdk/integ-runner @aws-cdk/integ-tests-alpha"
         },
         {
           "exec": "npx projen"
