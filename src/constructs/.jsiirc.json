@@ -1,0 +1,7 @@
+{
+    "targets": {
+        "dotnet": {
+            "namespace": "Cdklabs.CdkProserveLib.Components"
+        }
+    }
+}

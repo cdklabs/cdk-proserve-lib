@@ -15,12 +15,12 @@ import { Stack, Token } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Vpc } from 'aws-cdk-lib/aws-ec2';
 import { CfnFirewall } from 'aws-cdk-lib/aws-networkfirewall';
+import { mockFirewallName, mockFirewallPolicyArn } from './fixtures';
 import { NetworkFirewallEndpoints } from '../../../src/constructs/network-firewall-endpoints';
 import {
     getTemplateWithCdkNag,
     validateNoCdkNagFindings
 } from '../../../utilities/cdk-nag-jest';
-import { mockFirewallName, mockFirewallPolicyArn } from './fixtures';
 import { mockRegion, mockSubnetId, mockVpcId } from '../../fixtures';
 
 const constructName = 'NetworkFirewallEndpoints';

@@ -16,12 +16,12 @@ import { Stack } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Subnet, Vpc } from 'aws-cdk-lib/aws-ec2';
 import { Key } from 'aws-cdk-lib/aws-kms';
+import { mockSuricataRulesCapacity, mockSuricataRulesPath } from './fixtures';
 import { NetworkFirewall } from '../../../src/constructs/network-firewall/index';
 import {
     getTemplateWithCdkNag,
     validateNoCdkNagFindings
 } from '../../../utilities/cdk-nag-jest';
-import { mockSuricataRulesCapacity, mockSuricataRulesPath } from './fixtures';
 
 const originalReadFileSync = fs.readFileSync;
 
