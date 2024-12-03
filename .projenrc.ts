@@ -32,6 +32,7 @@ const deps = [
 const project = new CdklabsConstructLibrary({
     author: 'Derrike Nunn',
     authorAddress: 'nunnderr@amazon.com',
+    jsiiVersion: '~5.7',
     cdkVersion: '2.160.0',
     defaultReleaseBranch: 'main',
     deps: deps,
@@ -62,7 +63,16 @@ const project = new CdklabsConstructLibrary({
             bracketSpacing: true,
             arrowParens: ArrowParens.ALWAYS,
             endOfLine: EndOfLine.LF
-        }
+        },
+        overrides: [
+            {
+                files: ['*.yml', '*.yaml'],
+                options: {
+                    singleQuote: false,
+                    tabWidth: 2
+                }
+            }
+        ]
     },
     yarnBerryOptions: {
         yarnRcOptions: {

@@ -14,4 +14,6 @@
 export * from './ec2-image-builder-get-image';
 export * from './ec2-image-builder-start';
 export * from './ec2-image-pipeline';
+export * from './network-firewall';
+export * from './network-firewall-endpoints';
 export * from './opensearch-admin-user';

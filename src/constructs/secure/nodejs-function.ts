@@ -56,7 +56,8 @@ export class SecureNodejsFunction extends Construct {
         this.nodejsFunction = new NodejsFunction(this, 'Function', {
             ...defaultProps,
             ...props,
-            environmentEncryption: props.encryption,
+            environmentEncryption:
+                props.encryption ?? props.environmentEncryption,
             logGroup: this.logGroup,
             role: this.role
         });

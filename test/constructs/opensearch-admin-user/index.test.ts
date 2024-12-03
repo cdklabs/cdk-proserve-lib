@@ -51,6 +51,7 @@ describe(constructName, () => {
 
     afterEach(() => {
         validateNoCdkNagFindings(stack, constructName);
+        validateNoCdkNagFindings(stack, OpenSearchAdminUser.name);
     });
 
     it('creates custom resource with correct properties (parameter)', () => {
@@ -67,9 +68,8 @@ describe(constructName, () => {
         // Act
         new OpenSearchAdminUser(stack, constructName, {
             username,
-            password: {
-                parameter: password,
-                type: 'parameter'
+            credential: {
+                parameter: password
             },
             domain
         });
@@ -113,9 +113,8 @@ describe(constructName, () => {
         // Act
         new OpenSearchAdminUser(stack, constructName, {
             username,
-            password: {
-                secret: password,
-                type: 'secret'
+            credential: {
+                secret: password
             },
             domain
         });
@@ -166,9 +165,8 @@ describe(constructName, () => {
         // Act
         new OpenSearchAdminUser(stack, constructName, {
             username,
-            password: {
-                parameter: password,
-                type: 'parameter'
+            credential: {
+                parameter: password
             },
             domain
         });
@@ -208,9 +206,8 @@ describe(constructName, () => {
         // Act
         new OpenSearchAdminUser(stack, constructName, {
             username,
-            password: {
-                secret: password,
-                type: 'secret'
+            credential: {
+                secret: password
             },
             domain
         });
@@ -259,10 +256,9 @@ describe(constructName, () => {
         // Act
         new OpenSearchAdminUser(stack, constructName, {
             username,
-            password: {
+            credential: {
                 secret: password,
-                encryption: passwordKey,
-                type: 'secret'
+                encryption: passwordKey
             },
             domain
         });
@@ -333,9 +329,8 @@ describe(constructName, () => {
         // Act
         new OpenSearchAdminUser(stack, constructName, {
             username,
-            password: {
-                parameter: password,
-                type: 'parameter'
+            credential: {
+                parameter: password
             },
             domain,
             domainKey
@@ -382,9 +377,8 @@ describe(constructName, () => {
         // Act
         new OpenSearchAdminUser(stack, constructName, {
             username,
-            password: {
-                parameter: password,
-                type: 'parameter'
+            credential: {
+                parameter: password
             },
             domain,
             encryption

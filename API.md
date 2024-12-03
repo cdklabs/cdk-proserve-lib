@@ -384,39 +384,39 @@ property to be available.
 ---
 
 
-### Ec2LinuxStigImagePipeline <a name="Ec2LinuxStigImagePipeline" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline"></a>
+### Ec2LinuxImagePipeline <a name="Ec2LinuxImagePipeline" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline"></a>
 
-#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.Initializer"></a>
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer"></a>
 
 ```typescript
 import { patterns } from '@cdklabs/cdk-proserve-lib'
 
-new patterns.Ec2LinuxStigImagePipeline(scope: Construct, id: string, props: Ec2LinuxStigImagePipelineProps)
+new patterns.Ec2LinuxImagePipeline(scope: Construct, id: string, props: Ec2LinuxImagePipelineProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps</code> | *No description.* |
 
 ---
 
-##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.Initializer.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.scope"></a>
 
 - *Type:* constructs.Construct
 
 ---
 
-##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.Initializer.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.id"></a>
 
 - *Type:* string
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.Initializer.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.props"></a>
 
-- *Type:* @cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps
 
 ---
 
@@ -424,11 +424,11 @@ new patterns.Ec2LinuxStigImagePipeline(scope: Construct, id: string, props: Ec2L
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.toString">toString</a></code> | Returns a string representation of this construct. |
 
 ---
 
-##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.toString"></a>
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.toString"></a>
 
 ```typescript
 public toString(): string
@@ -440,21 +440,21 @@ Returns a string representation of this construct.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.isConstruct"></a>
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.isConstruct"></a>
 
 ```typescript
 import { patterns } from '@cdklabs/cdk-proserve-lib'
 
-patterns.Ec2LinuxStigImagePipeline.isConstruct(x: any)
+patterns.Ec2LinuxImagePipeline.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
 
-###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.isConstruct.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
@@ -466,14 +466,14 @@ Any object.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.property.imagePipelineArn">imagePipelineArn</a></code> | <code>string</code> | The Image Pipeline ARN that gets created. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.property.imagePipelineTopic">imagePipelineTopic</a></code> | <code>aws-cdk-lib.aws_sns.ITopic</code> | The Image Pipeline Topic that gets created. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.property.latestAmi">latestAmi</a></code> | <code>string</code> | The latest AMI built by the pipeline. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.imagePipelineArn">imagePipelineArn</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.imagePipelineTopic">imagePipelineTopic</a></code> | <code>aws-cdk-lib.aws_sns.ITopic</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.latestAmi">latestAmi</a></code> | <code>string</code> | *No description.* |
 
 ---
 
-##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.property.node"></a>
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.node"></a>
 
 ```typescript
 public readonly node: Node;
@@ -485,7 +485,7 @@ The tree node.
 
 ---
 
-##### `imagePipelineArn`<sup>Required</sup> <a name="imagePipelineArn" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.property.imagePipelineArn"></a>
+##### `imagePipelineArn`<sup>Required</sup> <a name="imagePipelineArn" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.imagePipelineArn"></a>
 
 ```typescript
 public readonly imagePipelineArn: string;
@@ -493,11 +493,9 @@ public readonly imagePipelineArn: string;
 
 - *Type:* string
 
-The Image Pipeline ARN that gets created.
-
 ---
 
-##### `imagePipelineTopic`<sup>Required</sup> <a name="imagePipelineTopic" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.property.imagePipelineTopic"></a>
+##### `imagePipelineTopic`<sup>Required</sup> <a name="imagePipelineTopic" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.imagePipelineTopic"></a>
 
 ```typescript
 public readonly imagePipelineTopic: ITopic;
@@ -505,11 +503,9 @@ public readonly imagePipelineTopic: ITopic;
 
 - *Type:* aws-cdk-lib.aws_sns.ITopic
 
-The Image Pipeline Topic that gets created.
-
 ---
 
-##### `latestAmi`<sup>Optional</sup> <a name="latestAmi" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.property.latestAmi"></a>
+##### `latestAmi`<sup>Optional</sup> <a name="latestAmi" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.latestAmi"></a>
 
 ```typescript
 public readonly latestAmi: string;
@@ -517,70 +513,55 @@ public readonly latestAmi: string;
 
 - *Type:* string
 
-The latest AMI built by the pipeline.
-
-NOTE: You must have enabled the
-Build Configuration option to wait for image build completion for this
-property to be available.
-
 ---
 
 
-### OpensearchAdminUser <a name="OpensearchAdminUser" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser"></a>
+### NetworkFirewall <a name="NetworkFirewall" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall"></a>
 
-OpensearchAdminUser construct creates a custom resource to manage an admin user for an Amazon Opensearch domain.
+AWS Network Firewall.
 
-This construct creates a Lambda-backed custom resource that adds an admin user to the specified Opensearch domain.
-It uses the provided SSM parameters for the username and password, and sets up the necessary IAM permissions
-for the Lambda function to interact with the Opensearch domain and SSM parameters.
+Configures a new AWS Network Firewall in a VPC. Sets up according to best
+practices found at:
 
-The construct also handles encryption for the Lambda function's environment variables and dead letter queue,
-using either a provided KMS key or an AWS managed key.
+> [https://aws.github.io/aws-security-services-best-practices/guides/network-firewall/](https://aws.github.io/aws-security-services-best-practices/guides/network-firewall/)
 
-*Example*
-
-```typescript
-const adminUser = new OpensearchAdminUser(this, 'OpensearchAdminUser', {
-  username: usernameParameter,
-  password: passwordParameter,
-  domain: opensearchDomain,
-  domainKey: opensearchDomainKey,
-  workerEncryption: workerKmsKey
-});
-```
-
-
-#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.Initializer"></a>
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.Initializer"></a>
 
 ```typescript
 import { constructs } from '@cdklabs/cdk-proserve-lib'
 
-new constructs.OpensearchAdminUser(scope: Construct, id: string, props: OpensearchAdminUserProps)
+new constructs.NetworkFirewall(scope: Construct, id: string, props: NetworkFirewallProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - Parent construct scope. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.Initializer.parameter.id">id</a></code> | <code>string</code> | - Construct ID used to generate unique resource names. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps</code> | - Network Firewall configuration properties. |
 
 ---
 
-##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.Initializer.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.Initializer.parameter.scope"></a>
 
 - *Type:* constructs.Construct
 
+Parent construct scope.
+
 ---
 
-##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.Initializer.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+Construct ID used to generate unique resource names.
+
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.Initializer.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.Initializer.parameter.props"></a>
 
-- *Type:* @cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps
+
+Network Firewall configuration properties.
 
 ---
 
@@ -588,11 +569,11 @@ new constructs.OpensearchAdminUser(scope: Construct, id: string, props: Opensear
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.toString">toString</a></code> | Returns a string representation of this construct. |
 
 ---
 
-##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.toString"></a>
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.toString"></a>
 
 ```typescript
 public toString(): string
@@ -604,21 +585,21 @@ Returns a string representation of this construct.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.isConstruct"></a>
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.isConstruct"></a>
 
 ```typescript
 import { constructs } from '@cdklabs/cdk-proserve-lib'
 
-constructs.OpensearchAdminUser.isConstruct(x: any)
+constructs.NetworkFirewall.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
 
-###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.isConstruct.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
@@ -630,11 +611,263 @@ Any object.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.property.firewall">firewall</a></code> | <code>aws-cdk-lib.aws_networkfirewall.CfnFirewall</code> | The underlying CloudFormation Network Firewall resource. |
 
 ---
 
-##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUser.property.node"></a>
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `firewall`<sup>Required</sup> <a name="firewall" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.property.firewall"></a>
+
+```typescript
+public readonly firewall: CfnFirewall;
+```
+
+- *Type:* aws-cdk-lib.aws_networkfirewall.CfnFirewall
+
+The underlying CloudFormation Network Firewall resource.
+
+---
+
+
+### NetworkFirewallEndpoints <a name="NetworkFirewallEndpoints" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints"></a>
+
+Construct that retrieves and manages Network Firewall endpoints Uses AWS Custom Resources to fetch endpoint information from the Network Firewall service.
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+new constructs.NetworkFirewallEndpoints(scope: Construct, id: string, props: NetworkFirewallEndpointsProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpointsProps</code> | Configuration properties for the construct. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The scoped construct ID.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpointsProps
+
+Configuration properties for the construct.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.getEndpointId">getEndpointId</a></code> | Gets the endpoint ID for a specific availability zone. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `getEndpointId` <a name="getEndpointId" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.getEndpointId"></a>
+
+```typescript
+public getEndpointId(availabilityZone: string): string
+```
+
+Gets the endpoint ID for a specific availability zone.
+
+###### `availabilityZone`<sup>Required</sup> <a name="availabilityZone" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.getEndpointId.parameter.availabilityZone"></a>
+
+- *Type:* string
+
+The availability zone to get the endpoint ID for.
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.isConstruct"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+constructs.NetworkFirewallEndpoints.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+
+### OpenSearchAdminUser <a name="OpenSearchAdminUser" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser"></a>
+
+OpenSearchAdminUser construct creates a custom resource to manage an admin user for an Amazon OpenSearch domain.
+
+This construct creates a Lambda-backed custom resource that adds an admin user to the specified OpenSearch domain.
+It uses the provided SSM parameter for the username, a provided SSM parameter or Secrets Manager secret for the
+password, and sets up the necessary IAM permissions for the Lambda function to interact with the OpenSearch domain
+and SSM parameter(s) and/or secret.
+
+The construct also handles encryption for the Lambda function's environment variables and dead letter queue,
+using either a provided KMS key or an AWS managed key.
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+new constructs.OpenSearchAdminUser(scope: Construct, id: string, props: OpenSearchAdminUserProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the custom resource belongs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for this instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps</code> | Metadata for configuring the custom resource. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+Parent to which the custom resource belongs.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+Unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps
+
+Metadata for configuring the custom resource.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.isConstruct"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+constructs.OpenSearchAdminUser.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.property.node"></a>
 
 ```typescript
 public readonly node: Node;
@@ -905,6 +1138,7 @@ const ec2ImagePipelineBaseProps: constructs.Ec2ImagePipelineBaseProps = { ... }
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineBaseProps.property.description">description</a></code> | <code>string</code> | Description of the image pipeline. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineBaseProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | KMS key for encryption. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineBaseProps.property.instanceTypes">instanceTypes</a></code> | <code>string[]</code> | Instance types for the Image Builder Pipeline. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineBaseProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration</code> | Optional Lambda configuration settings. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineBaseProps.property.vpcConfiguration">vpcConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.VpcConfigurationProps</code> | VPC configuration for the image pipeline. |
 
 ---
@@ -918,6 +1152,9 @@ public readonly version: string;
 - *Type:* string
 
 Version of the image pipeline.
+
+This must be updated if you make
+underlying changes to the pipeline configuration.
 
 ---
 
@@ -971,6 +1208,18 @@ Default: [t3.medium]
 
 ---
 
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineBaseProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
+
 ##### `vpcConfiguration`<sup>Optional</sup> <a name="vpcConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineBaseProps.property.vpcConfiguration"></a>
 
 ```typescript
@@ -1004,6 +1253,7 @@ const ec2ImagePipelineProps: constructs.Ec2ImagePipelineProps = { ... }
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps.property.description">description</a></code> | <code>string</code> | Description of the image pipeline. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | KMS key for encryption. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps.property.instanceTypes">instanceTypes</a></code> | <code>string[]</code> | Instance types for the Image Builder Pipeline. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration</code> | Optional Lambda configuration settings. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps.property.vpcConfiguration">vpcConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.VpcConfigurationProps</code> | VPC configuration for the image pipeline. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps.property.blockDeviceMappings">blockDeviceMappings</a></code> | <code>aws-cdk-lib.aws_imagebuilder.CfnImageRecipe.InstanceBlockDeviceMappingProperty[]</code> | Block device mappings for the image. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps.property.components">components</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component \| aws-cdk-lib.aws_imagebuilder.CfnComponent[]</code> | Components to be included in the image pipeline. |
@@ -1020,6 +1270,9 @@ public readonly version: string;
 - *Type:* string
 
 Version of the image pipeline.
+
+This must be updated if you make
+underlying changes to the pipeline configuration.
 
 ---
 
@@ -1073,6 +1326,18 @@ Default: [t3.medium]
 
 ---
 
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
+
 ##### `vpcConfiguration`<sup>Optional</sup> <a name="vpcConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps.property.vpcConfiguration"></a>
 
 ```typescript
@@ -1123,36 +1388,38 @@ The machine image to use as a base for the pipeline.
 
 ---
 
-### Ec2LinuxStigImagePipelineProps <a name="Ec2LinuxStigImagePipelineProps" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps"></a>
+### Ec2LinuxImagePipelineProps <a name="Ec2LinuxImagePipelineProps" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps"></a>
 
 Properties for creating a Linux STIG Image Pipeline.
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.Initializer"></a>
 
 ```typescript
 import { patterns } from '@cdklabs/cdk-proserve-lib'
 
-const ec2LinuxStigImagePipelineProps: patterns.Ec2LinuxStigImagePipelineProps = { ... }
+const ec2LinuxImagePipelineProps: patterns.Ec2LinuxImagePipelineProps = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.version">version</a></code> | <code>string</code> | Version of the image pipeline. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.buildConfiguration">buildConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.BuildConfigurationProps</code> | Configuration options for the build process. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.description">description</a></code> | <code>string</code> | Description of the image pipeline. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | KMS key for encryption. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.instanceTypes">instanceTypes</a></code> | <code>string[]</code> | Instance types for the Image Builder Pipeline. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.vpcConfiguration">vpcConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.VpcConfigurationProps</code> | VPC configuration for the image pipeline. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.extraComponents">extraComponents</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component \| aws-cdk-lib.aws_imagebuilder.CfnComponent[]</code> | Additional components to install in the image. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.extraDeviceMappings">extraDeviceMappings</a></code> | <code>aws-cdk-lib.aws_imagebuilder.CfnImageRecipe.InstanceBlockDeviceMappingProperty[]</code> | Additional EBS volume mappings to add to the image. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.operatingSystem">operatingSystem</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.OperatingSystem</code> | The operating system to use for the image pipeline. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.rootVolumeSize">rootVolumeSize</a></code> | <code>number</code> | Size for the root volume in GB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.version">version</a></code> | <code>string</code> | Version of the image pipeline. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.buildConfiguration">buildConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.BuildConfigurationProps</code> | Configuration options for the build process. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.description">description</a></code> | <code>string</code> | Description of the image pipeline. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | KMS key for encryption. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.instanceTypes">instanceTypes</a></code> | <code>string[]</code> | Instance types for the Image Builder Pipeline. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.vpcConfiguration">vpcConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.VpcConfigurationProps</code> | VPC configuration for the image pipeline. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.extraComponents">extraComponents</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component \| aws-cdk-lib.aws_imagebuilder.CfnComponent[]</code> | Additional components to install in the image. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.extraDeviceMappings">extraDeviceMappings</a></code> | <code>aws-cdk-lib.aws_imagebuilder.CfnImageRecipe.InstanceBlockDeviceMappingProperty[]</code> | Additional EBS volume mappings to add to the image. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.features">features</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature[]</code> | A list of features to install. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.operatingSystem">operatingSystem</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.OperatingSystem</code> | The operating system to use for the image pipeline. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.rootVolumeSize">rootVolumeSize</a></code> | <code>number</code> | Size for the root volume in GB. |
 
 ---
 
-##### `version`<sup>Required</sup> <a name="version" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.version"></a>
+##### `version`<sup>Required</sup> <a name="version" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.version"></a>
 
 ```typescript
 public readonly version: string;
@@ -1162,9 +1429,12 @@ public readonly version: string;
 
 Version of the image pipeline.
 
+This must be updated if you make
+underlying changes to the pipeline configuration.
+
 ---
 
-##### `buildConfiguration`<sup>Optional</sup> <a name="buildConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.buildConfiguration"></a>
+##### `buildConfiguration`<sup>Optional</sup> <a name="buildConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.buildConfiguration"></a>
 
 ```typescript
 public readonly buildConfiguration: BuildConfigurationProps;
@@ -1176,7 +1446,7 @@ Configuration options for the build process.
 
 ---
 
-##### `description`<sup>Optional</sup> <a name="description" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.description"></a>
+##### `description`<sup>Optional</sup> <a name="description" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.description"></a>
 
 ```typescript
 public readonly description: string;
@@ -1188,7 +1458,7 @@ Description of the image pipeline.
 
 ---
 
-##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.encryption"></a>
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.encryption"></a>
 
 ```typescript
 public readonly encryption: IKey;
@@ -1200,7 +1470,7 @@ KMS key for encryption.
 
 ---
 
-##### `instanceTypes`<sup>Optional</sup> <a name="instanceTypes" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.instanceTypes"></a>
+##### `instanceTypes`<sup>Optional</sup> <a name="instanceTypes" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.instanceTypes"></a>
 
 ```typescript
 public readonly instanceTypes: string[];
@@ -1214,7 +1484,19 @@ Default: [t3.medium]
 
 ---
 
-##### `vpcConfiguration`<sup>Optional</sup> <a name="vpcConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.vpcConfiguration"></a>
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
+
+##### `vpcConfiguration`<sup>Optional</sup> <a name="vpcConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.vpcConfiguration"></a>
 
 ```typescript
 public readonly vpcConfiguration: VpcConfigurationProps;
@@ -1226,7 +1508,7 @@ VPC configuration for the image pipeline.
 
 ---
 
-##### `extraComponents`<sup>Optional</sup> <a name="extraComponents" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.extraComponents"></a>
+##### `extraComponents`<sup>Optional</sup> <a name="extraComponents" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.extraComponents"></a>
 
 ```typescript
 public readonly extraComponents: Component | CfnComponent[];
@@ -1240,7 +1522,7 @@ These will be added after the default Linux components.
 
 ---
 
-##### `extraDeviceMappings`<sup>Optional</sup> <a name="extraDeviceMappings" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.extraDeviceMappings"></a>
+##### `extraDeviceMappings`<sup>Optional</sup> <a name="extraDeviceMappings" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.extraDeviceMappings"></a>
 
 ```typescript
 public readonly extraDeviceMappings: InstanceBlockDeviceMappingProperty[];
@@ -1254,19 +1536,31 @@ These will be added in addition to the root volume.
 
 ---
 
-##### `operatingSystem`<sup>Optional</sup> <a name="operatingSystem" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.operatingSystem"></a>
+##### `features`<sup>Optional</sup> <a name="features" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.features"></a>
+
+```typescript
+public readonly features: Feature[];
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature[]
+
+A list of features to install.
+
+---
+
+##### `operatingSystem`<sup>Optional</sup> <a name="operatingSystem" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.operatingSystem"></a>
 
 ```typescript
 public readonly operatingSystem: OperatingSystem;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.OperatingSystem
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.OperatingSystem
 
 The operating system to use for the image pipeline.
 
 ---
 
-##### `rootVolumeSize`<sup>Optional</sup> <a name="rootVolumeSize" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipelineProps.property.rootVolumeSize"></a>
+##### `rootVolumeSize`<sup>Optional</sup> <a name="rootVolumeSize" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.rootVolumeSize"></a>
 
 ```typescript
 public readonly rootVolumeSize: number;
@@ -1380,32 +1674,344 @@ VPC where the Lambda functions will be deployed.
 
 ---
 
-### OpensearchAdminUserProps <a name="OpensearchAdminUserProps" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps"></a>
+### LoggingConfiguration <a name="LoggingConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LoggingConfiguration"></a>
 
-Properties for the OpensearchAdminUser construct.
-
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LoggingConfiguration.Initializer"></a>
 
 ```typescript
 import { constructs } from '@cdklabs/cdk-proserve-lib'
 
-const opensearchAdminUserProps: constructs.OpensearchAdminUserProps = { ... }
+const loggingConfiguration: constructs.NetworkFirewall.LoggingConfiguration = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.domain">domain</a></code> | <code>aws-cdk-lib.aws_opensearchservice.IDomain</code> | The Opensearch domain to which the admin user will be added. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.password">password</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | The SSM parameter containing the password for the Opensearch admin user. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.username">username</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | The SSM parameter containing the username for the Opensearch admin user. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.domainKey">domainKey</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration</code> | Optional Lambda configuration settings. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.workerEncryption">workerEncryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LoggingConfiguration.property.logTypes">logTypes</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LogType[]</code> | The type of logs to write for the Network Firewall. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LoggingConfiguration.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS key for encrypting Network Firewall logs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LoggingConfiguration.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.ILogGroup</code> | Log group to use for Network Firewall Logging. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LoggingConfiguration.property.logRetention">logRetention</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | If you do not specify a log group, the amount of time to keep logs in the automatically created Log Group. |
 
 ---
 
-##### `domain`<sup>Required</sup> <a name="domain" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.domain"></a>
+##### `logTypes`<sup>Required</sup> <a name="logTypes" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LoggingConfiguration.property.logTypes"></a>
+
+```typescript
+public readonly logTypes: LogType[];
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LogType[]
+
+The type of logs to write for the Network Firewall.
+
+This can be `TLS`, `FLOW`, or `ALERT`.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LoggingConfiguration.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional KMS key for encrypting Network Firewall logs.
+
+---
+
+##### `logGroup`<sup>Optional</sup> <a name="logGroup" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LoggingConfiguration.property.logGroup"></a>
+
+```typescript
+public readonly logGroup: ILogGroup;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.ILogGroup
+
+Log group to use for Network Firewall Logging.
+
+If not specified, a log group is created for you. The encryption key provided will be used to encrypt it if one was provided to the construct.
+
+---
+
+##### `logRetention`<sup>Optional</sup> <a name="logRetention" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LoggingConfiguration.property.logRetention"></a>
+
+```typescript
+public readonly logRetention: RetentionDays;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.RetentionDays
+
+If you do not specify a log group, the amount of time to keep logs in the automatically created Log Group.
+
+Default: one week
+
+---
+
+### NetworkFirewallEndpointsProps <a name="NetworkFirewallEndpointsProps" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpointsProps"></a>
+
+Properties for the NetworkFirewallEndpoints construct.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpointsProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const networkFirewallEndpointsProps: constructs.NetworkFirewallEndpointsProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpointsProps.property.firewall">firewall</a></code> | <code>aws-cdk-lib.aws_networkfirewall.CfnFirewall</code> | The AWS Network Firewall to get the Endpoints for. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpointsProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration</code> | Optional Lambda configuration settings. |
+
+---
+
+##### `firewall`<sup>Required</sup> <a name="firewall" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpointsProps.property.firewall"></a>
+
+```typescript
+public readonly firewall: CfnFirewall;
+```
+
+- *Type:* aws-cdk-lib.aws_networkfirewall.CfnFirewall
+
+The AWS Network Firewall to get the Endpoints for.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpointsProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: AwsCustomResourceLambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
+
+### NetworkFirewallProps <a name="NetworkFirewallProps" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps"></a>
+
+Properties for configuring a NetworkFirewall.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const networkFirewallProps: constructs.NetworkFirewallProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.property.firewallSubnets">firewallSubnets</a></code> | <code>aws-cdk-lib.aws_ec2.ISubnet[]</code> | List of subnets where the Network Firewall will be placed These should typically be dedicated firewall subnets. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.property.suricataRulesCapacity">suricataRulesCapacity</a></code> | <code>number</code> | The capacity to set for the Suricata rule group. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.property.suricataRulesFilePath">suricataRulesFilePath</a></code> | <code>string</code> | Path to the Suricata rules file on the local file system. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC where the Network Firewall will be deployed. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.property.configureVpcRoutes">configureVpcRoutes</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.NetworkFirewallVpcRouteProps</code> | Network Firewall routing configuration. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.property.logging">logging</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LoggingConfiguration</code> | Optional logging configuration for the Network Firewall. |
+
+---
+
+##### `firewallSubnets`<sup>Required</sup> <a name="firewallSubnets" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.property.firewallSubnets"></a>
+
+```typescript
+public readonly firewallSubnets: ISubnet[];
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.ISubnet[]
+
+List of subnets where the Network Firewall will be placed These should typically be dedicated firewall subnets.
+
+---
+
+##### `suricataRulesCapacity`<sup>Required</sup> <a name="suricataRulesCapacity" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.property.suricataRulesCapacity"></a>
+
+```typescript
+public readonly suricataRulesCapacity: number;
+```
+
+- *Type:* number
+
+The capacity to set for the Suricata rule group.
+
+This cannot be modified
+after creation. You should set this to the upper bound of what you expect
+your firewall rule group to consume.
+
+---
+
+##### `suricataRulesFilePath`<sup>Required</sup> <a name="suricataRulesFilePath" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.property.suricataRulesFilePath"></a>
+
+```typescript
+public readonly suricataRulesFilePath: string;
+```
+
+- *Type:* string
+
+Path to the Suricata rules file on the local file system.
+
+---
+
+##### `vpc`<sup>Required</sup> <a name="vpc" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.property.vpc"></a>
+
+```typescript
+public readonly vpc: IVpc;
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.IVpc
+
+VPC where the Network Firewall will be deployed.
+
+---
+
+##### `configureVpcRoutes`<sup>Optional</sup> <a name="configureVpcRoutes" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.property.configureVpcRoutes"></a>
+
+```typescript
+public readonly configureVpcRoutes: NetworkFirewallVpcRouteProps;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.NetworkFirewallVpcRouteProps
+
+Network Firewall routing configuration.
+
+By configuring these settings,
+the Construct will automatically setup basic routing statements for you
+for the provided subnets.
+
+---
+
+##### `logging`<sup>Optional</sup> <a name="logging" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallProps.property.logging"></a>
+
+```typescript
+public readonly logging: LoggingConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LoggingConfiguration
+
+Optional logging configuration for the Network Firewall.
+
+If not provided,
+logs will not be written.
+
+---
+
+### NetworkFirewallVpcRouteProps <a name="NetworkFirewallVpcRouteProps" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.NetworkFirewallVpcRouteProps"></a>
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.NetworkFirewallVpcRouteProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const networkFirewallVpcRouteProps: constructs.NetworkFirewall.NetworkFirewallVpcRouteProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.NetworkFirewallVpcRouteProps.property.protectedSubnets">protectedSubnets</a></code> | <code>aws-cdk-lib.aws_ec2.ISubnet[]</code> | Subnets that will sit behind the network firewall and should have routes to the Network Firewall. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.NetworkFirewallVpcRouteProps.property.destinationCidr">destinationCidr</a></code> | <code>string</code> | The destination CIDR block for the firewall (protectedSubnets) route. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.NetworkFirewallVpcRouteProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration</code> | Configuration for the Lambda function that will be used to retrieve info about the AWS Network Firewall in order to setup the routing. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.NetworkFirewallVpcRouteProps.property.returnSubnets">returnSubnets</a></code> | <code>aws-cdk-lib.aws_ec2.ISubnet[]</code> | Subnets that should have routes back to the protected subnets. |
+
+---
+
+##### `protectedSubnets`<sup>Required</sup> <a name="protectedSubnets" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.NetworkFirewallVpcRouteProps.property.protectedSubnets"></a>
+
+```typescript
+public readonly protectedSubnets: ISubnet[];
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.ISubnet[]
+
+Subnets that will sit behind the network firewall and should have routes to the Network Firewall.
+
+By supplying this parameter, routes will
+be created for these subnets to the Network Firewall. Specify the
+optional `destinationCidr` parameter if you want to restrict the
+routes to a specific CIDR block. By default, routes will be created
+for all outbound traffic (0.0.0.0/0) to the firewall.
+
+---
+
+##### `destinationCidr`<sup>Optional</sup> <a name="destinationCidr" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.NetworkFirewallVpcRouteProps.property.destinationCidr"></a>
+
+```typescript
+public readonly destinationCidr: string;
+```
+
+- *Type:* string
+
+The destination CIDR block for the firewall (protectedSubnets) route.
+
+If not specified, defaults to '0.0.0.0/0' (all IPv4 traffic).
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.NetworkFirewallVpcRouteProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: AwsCustomResourceLambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration
+
+Configuration for the Lambda function that will be used to retrieve info about the AWS Network Firewall in order to setup the routing.
+
+---
+
+##### `returnSubnets`<sup>Optional</sup> <a name="returnSubnets" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.NetworkFirewallVpcRouteProps.property.returnSubnets"></a>
+
+```typescript
+public readonly returnSubnets: ISubnet[];
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.ISubnet[]
+
+Subnets that should have routes back to the protected subnets.
+
+Since
+traffic is flowing through the firewall, routes should be put into the
+subnets where traffic is returning to. This is most likely your public
+subnets in the VPC. By supplying this parameter, routes will be created
+that send all traffic destined for the `protectedSubnets` back to the
+firewall for proper routing.
+
+---
+
+### OpenSearchAdminUserProps <a name="OpenSearchAdminUserProps" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps"></a>
+
+Properties for the OpenSearchAdminUser construct.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const openSearchAdminUserProps: constructs.OpenSearchAdminUserProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.domain">domain</a></code> | <code>aws-cdk-lib.aws_opensearchservice.IDomain</code> | The OpenSearch domain to which the admin user will be added. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.password">password</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps \| @cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps</code> | The SSM parameter or Secret containing the password for the OpenSearch admin user. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.username">username</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | The SSM parameter containing the username for the OpenSearch admin user. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.domainKey">domainKey</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+
+---
+
+##### `domain`<sup>Required</sup> <a name="domain" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.domain"></a>
 
 ```typescript
 public readonly domain: IDomain;
@@ -1413,23 +2019,23 @@ public readonly domain: IDomain;
 
 - *Type:* aws-cdk-lib.aws_opensearchservice.IDomain
 
-The Opensearch domain to which the admin user will be added.
+The OpenSearch domain to which the admin user will be added.
 
 ---
 
-##### `password`<sup>Required</sup> <a name="password" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.password"></a>
+##### `password`<sup>Required</sup> <a name="password" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.password"></a>
 
 ```typescript
-public readonly password: IParameter;
+public readonly password: PasswordParameterProps | PasswordSecretProps;
 ```
 
-- *Type:* aws-cdk-lib.aws_ssm.IParameter
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps | @cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps
 
-The SSM parameter containing the password for the Opensearch admin user.
+The SSM parameter or Secret containing the password for the OpenSearch admin user.
 
 ---
 
-##### `username`<sup>Required</sup> <a name="username" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.username"></a>
+##### `username`<sup>Required</sup> <a name="username" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.username"></a>
 
 ```typescript
 public readonly username: IParameter;
@@ -1437,11 +2043,11 @@ public readonly username: IParameter;
 
 - *Type:* aws-cdk-lib.aws_ssm.IParameter
 
-The SSM parameter containing the username for the Opensearch admin user.
+The SSM parameter containing the username for the OpenSearch admin user.
 
 ---
 
-##### `domainKey`<sup>Optional</sup> <a name="domainKey" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.domainKey"></a>
+##### `domainKey`<sup>Optional</sup> <a name="domainKey" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.domainKey"></a>
 
 ```typescript
 public readonly domainKey: IKey;
@@ -1451,12 +2057,27 @@ public readonly domainKey: IKey;
 
 Optional.
 
-The KMS key used to encrypt the Opensearch domain.
+The KMS key used to encrypt the OpenSearch domain.
 If provided, the construct will grant the necessary permissions to use this key.
 
 ---
 
-##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.lambdaConfiguration"></a>
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional.
+
+The KMS key used to encrypt the worker resources (e.g., Lambda function environment variables).
+If provided, this key will be used for encryption; otherwise, an AWS managed key will be used.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.lambdaConfiguration"></a>
 
 ```typescript
 public readonly lambdaConfiguration: LambdaConfiguration;
@@ -1468,18 +2089,80 @@ Optional Lambda configuration settings.
 
 ---
 
-##### `workerEncryption`<sup>Optional</sup> <a name="workerEncryption" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchAdminUserProps.property.workerEncryption"></a>
+### PasswordParameterProps <a name="PasswordParameterProps" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps"></a>
+
+Properties for the admin user password specific to when the credential is stored in AWS Systems Manager Parameter Store.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps.Initializer"></a>
 
 ```typescript
-public readonly workerEncryption: IKey;
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const passwordParameterProps: constructs.OpenSearchAdminUser.PasswordParameterProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps.property.parameter">parameter</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | Reference to the AWS Systems Manager Parameter Store parameter that contains the admin credential. |
+
+---
+
+##### `parameter`<sup>Required</sup> <a name="parameter" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps.property.parameter"></a>
+
+```typescript
+public readonly parameter: IParameter;
+```
+
+- *Type:* aws-cdk-lib.aws_ssm.IParameter
+
+Reference to the AWS Systems Manager Parameter Store parameter that contains the admin credential.
+
+---
+
+### PasswordSecretProps <a name="PasswordSecretProps" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps"></a>
+
+Properties for the admin user password specific to when the credential is stored in AWS Secrets Manager.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const passwordSecretProps: constructs.OpenSearchAdminUser.PasswordSecretProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Reference to the AWS Secrets Manager secret that contains the admin credential. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
+
+---
+
+##### `secret`<sup>Required</sup> <a name="secret" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.secret"></a>
+
+```typescript
+public readonly secret: ISecret;
+```
+
+- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
+
+Reference to the AWS Secrets Manager secret that contains the admin credential.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
 ```
 
 - *Type:* aws-cdk-lib.aws_kms.IKey
 
-Optional.
-
-The KMS key used to encrypt the worker resources (e.g., Lambda function environment variables).
-If provided, this key will be used for encryption; otherwise, an AWS managed key will be used.
+Optional encryption key that protects the secret.
 
 ---
 
@@ -2182,29 +2865,107 @@ Image Builder Component.
 ---
 
 
-### OperatingSystem <a name="OperatingSystem" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.OperatingSystem"></a>
+### Feature <a name="Feature" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature"></a>
 
 #### Members <a name="Members" id="Members"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.OperatingSystem.RED_HAT_ENTERPRISE_LINUX_8_9">RED_HAT_ENTERPRISE_LINUX_8_9</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.OperatingSystem.AMAZON_LINUX_2">AMAZON_LINUX_2</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.OperatingSystem.AMAZON_LINUX_2023">AMAZON_LINUX_2023</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature.AWS_CLI">AWS_CLI</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature.NICE_DCV">NICE_DCV</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature.RETAIN_SSM_AGENT">RETAIN_SSM_AGENT</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature.STIG">STIG</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature.SCAP">SCAP</a></code> | *No description.* |
 
 ---
 
-##### `RED_HAT_ENTERPRISE_LINUX_8_9` <a name="RED_HAT_ENTERPRISE_LINUX_8_9" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.OperatingSystem.RED_HAT_ENTERPRISE_LINUX_8_9"></a>
-
----
-
-
-##### `AMAZON_LINUX_2` <a name="AMAZON_LINUX_2" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.OperatingSystem.AMAZON_LINUX_2"></a>
+##### `AWS_CLI` <a name="AWS_CLI" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature.AWS_CLI"></a>
 
 ---
 
 
-##### `AMAZON_LINUX_2023` <a name="AMAZON_LINUX_2023" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxStigImagePipeline.OperatingSystem.AMAZON_LINUX_2023"></a>
+##### `NICE_DCV` <a name="NICE_DCV" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature.NICE_DCV"></a>
+
+---
+
+
+##### `RETAIN_SSM_AGENT` <a name="RETAIN_SSM_AGENT" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature.RETAIN_SSM_AGENT"></a>
+
+---
+
+
+##### `STIG` <a name="STIG" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature.STIG"></a>
+
+---
+
+
+##### `SCAP` <a name="SCAP" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature.SCAP"></a>
+
+---
+
+
+### LogType <a name="LogType" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LogType"></a>
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LogType.TLS">TLS</a></code> | Logs for events that are related to TLS inspection. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LogType.FLOW">FLOW</a></code> | Standard network traffic flow logs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LogType.ALERT">ALERT</a></code> | Logs for traffic that matches your stateful rules and that have an action that sends an alert. |
+
+---
+
+##### `TLS` <a name="TLS" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LogType.TLS"></a>
+
+Logs for events that are related to TLS inspection.
+
+For more information, see Inspecting SSL/TLS traffic with TLS inspection configurations in the Network Firewall Developer Guide .
+
+---
+
+
+##### `FLOW` <a name="FLOW" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LogType.FLOW"></a>
+
+Standard network traffic flow logs.
+
+The stateful rules engine records flow logs for all network traffic that it receives. Each flow log record captures the network flow for a specific standard stateless rule group.
+
+---
+
+
+##### `ALERT` <a name="ALERT" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.LogType.ALERT"></a>
+
+Logs for traffic that matches your stateful rules and that have an action that sends an alert.
+
+A stateful rule sends alerts for the rule actions DROP, ALERT, and REJECT. For more information, see the StatefulRule property.
+
+---
+
+
+### OperatingSystem <a name="OperatingSystem" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.OperatingSystem"></a>
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.OperatingSystem.RED_HAT_ENTERPRISE_LINUX_8_9">RED_HAT_ENTERPRISE_LINUX_8_9</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2">AMAZON_LINUX_2</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2023">AMAZON_LINUX_2023</a></code> | *No description.* |
+
+---
+
+##### `RED_HAT_ENTERPRISE_LINUX_8_9` <a name="RED_HAT_ENTERPRISE_LINUX_8_9" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.OperatingSystem.RED_HAT_ENTERPRISE_LINUX_8_9"></a>
+
+---
+
+
+##### `AMAZON_LINUX_2` <a name="AMAZON_LINUX_2" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2"></a>
+
+---
+
+
+##### `AMAZON_LINUX_2023` <a name="AMAZON_LINUX_2023" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2023"></a>
 
 ---
 
