@@ -2002,12 +2002,24 @@ const openSearchAdminUserProps: constructs.OpenSearchAdminUserProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.credential">credential</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps \| @cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps</code> | The SSM parameter or Secret containing the password for the OpenSearch admin user. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.domain">domain</a></code> | <code>aws-cdk-lib.aws_opensearchservice.IDomain</code> | The OpenSearch domain to which the admin user will be added. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.password">password</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps \| @cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps</code> | The SSM parameter or Secret containing the password for the OpenSearch admin user. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.username">username</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | The SSM parameter containing the username for the OpenSearch admin user. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.domainKey">domainKey</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+
+---
+
+##### `credential`<sup>Required</sup> <a name="credential" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.credential"></a>
+
+```typescript
+public readonly credential: PasswordParameterProps | PasswordSecretProps;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps | @cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps
+
+The SSM parameter or Secret containing the password for the OpenSearch admin user.
 
 ---
 
@@ -2020,18 +2032,6 @@ public readonly domain: IDomain;
 - *Type:* aws-cdk-lib.aws_opensearchservice.IDomain
 
 The OpenSearch domain to which the admin user will be added.
-
----
-
-##### `password`<sup>Required</sup> <a name="password" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.password"></a>
-
-```typescript
-public readonly password: PasswordParameterProps | PasswordSecretProps;
-```
-
-- *Type:* @cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps | @cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps
-
-The SSM parameter or Secret containing the password for the OpenSearch admin user.
 
 ---
 

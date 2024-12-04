@@ -7,6 +7,7 @@
   "scripts": {
     "build": "npx projen build",
     "bump": "npx projen bump",
+    "bundle": "npx projen bundle",
     "clobber": "npx projen clobber",
     "compat": "npx projen compat",
     "compile": "npx projen compile",
@@ -36,8 +37,8 @@
     "upgrade-dev-deps": "npx projen upgrade-dev-deps",
     "watch": "npx projen watch",
     "projen": "npx projen",
-    "prepare": "husky",
-    "generate:enum": "npx ts-node ./src/constructs/ec2-image-pipeline/scripts/generate.ts"
+    "generate:enum": "npx ts-node ./src/constructs/ec2-image-pipeline/scripts/generate.ts",
+    "prepare": "husky"
   },
   "author": {
     "name": "Amazon Web Services",
@@ -191,6 +192,10 @@
     }
   },
   "private": true,
+  "files": [
+    "API.md",
+    "lib/**/*"
+  ],
   "lint-staged": {
     "**/*": [
       "prettier --write --ignore-unknown"

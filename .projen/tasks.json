@@ -43,6 +43,19 @@
       ],
       "condition": "git log --oneline -1 | grep -qv \"chore(release):\""
     },
+    "bundle": {
+      "name": "bundle",
+      "steps": [
+        {
+          "exec": "find src -name \"*.yml\" -exec sh -c 'mkdir -p \"lib/$(dirname ${1#src/})\" && cp \"$1\" \"lib/${1#src/}\"' _ {} \\;",
+          "name": "Distribute asset files (.yml) to the build directory"
+        },
+        {
+          "exec": "find src -name \"*.yaml\" -exec sh -c 'mkdir -p \"lib/$(dirname ${1#src/})\" && cp \"$1\" \"lib/${1#src/}\"' _ {} \\;",
+          "name": "Distribute asset files (.yaml) to the build directory"
+        }
+      ]
+    },
     "clobber": {
       "name": "clobber",
       "description": "hard resets to HEAD of origin and cleans the local repo",
@@ -260,6 +273,9 @@
         },
         {
           "spawn": "rosetta:extract"
+        },
+        {
+          "spawn": "bundle"
         }
       ]
     },
