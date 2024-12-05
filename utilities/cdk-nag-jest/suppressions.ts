@@ -13,7 +13,7 @@
 
 import { Stack } from 'aws-cdk-lib';
 import { NagSuppressions } from 'cdk-nag';
-import { SecureNodejsFunction } from '../../src/constructs/secure/nodejs-function';
+import { SecureFunction } from '../../src/constructs/secure/function';
 
 /**
  * Adds common suppressions to the entire stack.
@@ -63,19 +63,17 @@ export function addCommonStackSuppressions(stack: Stack) {
  */
 export function addCommonResourceSuppressions(stack: Stack) {
     stack.node.findAll().forEach((child) => {
-        if (child instanceof SecureNodejsFunction) {
-            addSuppressionsForSecureNodeJsFunction(child);
+        if (child instanceof SecureFunction) {
+            addSuppressionsForSecureFunction(child);
         }
     });
 }
 
 /**
- * Adds suppressions to a given SecureNodejsFunction.
- * @param resource the SecureNodejsFunction to add suppressions to.
+ * Adds suppressions to a given SecureFunction.
+ * @param resource the SecureFunction to add suppressions to.
  */
-function addSuppressionsForSecureNodeJsFunction(
-    resource: SecureNodejsFunction
-) {
+function addSuppressionsForSecureFunction(resource: SecureFunction) {
     NagSuppressions.addResourceSuppressions(
         resource,
         [

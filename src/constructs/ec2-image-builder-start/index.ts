@@ -18,7 +18,7 @@ import {
     Duration
 } from 'aws-cdk-lib';
 import { IKey } from 'aws-cdk-lib/aws-kms';
-import { CfnFunction } from 'aws-cdk-lib/aws-lambda';
+import { CfnFunction, Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { SnsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { ITopic } from 'aws-cdk-lib/aws-sns';
@@ -31,7 +31,7 @@ import {
 import { Construct } from 'constructs';
 import { validate, ValidationTypes } from '../../common/validate';
 import { LambdaConfiguration } from '../../interfaces/lambda-configuration';
-import { SecureNodejsFunction } from '../secure/nodejs-function';
+import { SecureFunction } from '../secure/function';
 
 /**
  * Properties for the EC2 Image Builder Start custom resource
@@ -152,8 +152,9 @@ export class Ec2ImageBuilderStart extends Construct {
                 `WaitHandle${this.hash}`
             );
 
-            const signal = new SecureNodejsFunction(this, 'WaiterSignal', {
-                entry: join(__dirname, 'handler', 'index.ts'),
+            const signal = new SecureFunction(this, 'WaiterSignal', {
+                code: Code.fromAsset(join(__dirname, 'handler')),
+                runtime: Runtime.NODEJS_20_X,
                 handler: 'index.handler',
                 environment: {
                     WAIT_HANDLE_URL: waitHandle.ref,
@@ -170,11 +171,11 @@ export class Ec2ImageBuilderStart extends Construct {
                 timeout: duration.toSeconds().toString()
             });
             waiter.addDependency(
-                signal.nodejsFunction.node.defaultChild as CfnFunction
+                signal.function.node.defaultChild as CfnFunction
             );
 
             // Subscribe to Image Pipeline Topic
-            signal.nodejsFunction.addEventSource(
+            signal.function.addEventSource(
                 new SnsEventSource(props.waitForCompletion?.topic)
             );
         }

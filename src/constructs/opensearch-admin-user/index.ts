@@ -15,14 +15,14 @@ import { join } from 'path';
 import { Aws, CustomResource, Duration, Stack } from 'aws-cdk-lib';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
-import { Runtime } from 'aws-cdk-lib/aws-lambda';
+import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { IDomain } from 'aws-cdk-lib/aws-opensearchservice';
 import { ISecret } from 'aws-cdk-lib/aws-secretsmanager';
 import { IParameter } from 'aws-cdk-lib/aws-ssm';
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 import { LambdaConfiguration } from '../../interfaces';
-import { SecureNodejsFunction } from '../secure/nodejs-function';
+import { SecureFunction } from '../secure/function';
 import { ResourceProperties } from './handler/types/resource-properties';
 
 /**
@@ -101,27 +101,19 @@ export class OpenSearchAdminUser extends Construct {
                 `Cr${OpenSearchAdminUser.name}`
             );
 
-            const onEventHandler = new SecureNodejsFunction(
-                provider,
-                'OnEvent',
-                {
-                    bundling: {
-                        minify: true
-                    },
-                    entry: join(__dirname, 'handler', 'on-event', 'index.ts'),
-                    handler: 'index.handler',
-                    memorySize: 512,
-                    timeout: Duration.minutes(1),
-                    runtime: Runtime.NODEJS_20_X,
-                    encryption: props.encryption,
-                    ...props.lambdaConfiguration
-                }
-            );
+            const onEventHandler = new SecureFunction(provider, 'OnEvent', {
+                code: Code.fromAsset(join(__dirname, 'handler', 'on-event')),
+                handler: 'index.handler',
+                timeout: Duration.minutes(1),
+                runtime: Runtime.NODEJS_20_X,
+                encryption: props.encryption,
+                ...props.lambdaConfiguration
+            });
 
             OpenSearchAdminUser.serviceTokens.set(
                 stackId,
                 new Provider(provider, 'Provider', {
-                    onEventHandler: onEventHandler.nodejsFunction
+                    onEventHandler: onEventHandler.function
                 })
             );
         }

@@ -94,7 +94,6 @@ describe(constructName, () => {
 
         const lambdaResourceProperties: Partial<FunctionProperties> = {
             Handler: 'index.handler',
-            MemorySize: 512,
             ReservedConcurrentExecutions: 5,
             Runtime: 'nodejs20.x',
             Timeout: 60
@@ -139,7 +138,6 @@ describe(constructName, () => {
 
         const lambdaResourceProperties: Partial<FunctionProperties> = {
             Handler: 'index.handler',
-            MemorySize: 512,
             ReservedConcurrentExecutions: 5,
             Runtime: 'nodejs20.x',
             Timeout: 60

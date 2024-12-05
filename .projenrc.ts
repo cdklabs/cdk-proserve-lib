@@ -93,7 +93,7 @@ const project = new CdklabsConstructLibrary({
  * Package.json Modifications
  */
 project.addFields({
-    files: ['API.md', 'lib/**/*'],
+    files: ['API.md', 'lib/**/*', '.jsii', '.jsii.gz'],
     'lint-staged': {
         '**/*': ['prettier --write --ignore-unknown']
     }
@@ -106,19 +106,68 @@ project.addScripts({
 });
 
 /**
+ * Tsconfig Modifications
+ */
+project.tsconfigDev?.addInclude('esbuild.ts');
+
+/**
+ * Tasks
+ */
+project.addTask('clean', {
+    description: 'Removes all ephemeral build and test files.',
+    steps: [
+        {
+            exec: 'rm -rf coverage/',
+            name: 'Remove coverage information.'
+        },
+        {
+            exec: 'rm -rf dist/',
+            name: 'Remove built packages.'
+        },
+        {
+            exec: 'rm -rf lib/',
+            name: 'Remove build files.'
+        },
+        {
+            exec: 'rm -rf test-reports/',
+            name: 'Remove testing information.'
+        },
+        {
+            exec: 'rm -rf .jsii tsconfig.json',
+            name: 'Remove intermediate files.'
+        }
+    ]
+});
+
+const compileLambdas = project.addTask('compile:lambda', {
+    description: 'Builds the Lambda function code and bundles dependencies',
+    steps: [
+        {
+            exec: 'yarn ts-node esbuild.ts',
+            name: 'Run esbuild.'
+        }
+    ]
+});
+
+/**
  * Asset Bundling
  */
+const srcDir = 'src';
+const outputDir = 'lib';
 const bundleExtensions = ['yml', 'yaml'];
-const bundleTask = project.addTask('bundle');
+const bundleTask = project.addTask('bundle', {
+    description: 'Distributes assets to the build directory.'
+});
 bundleExtensions.forEach((e) =>
     bundleTask.exec(
-        `find src -name "*.${e}" -exec sh -c 'mkdir -p "lib/$(dirname \${1#src/})" && cp "$1" "lib/\${1#src/}"' _ {} \\;`,
+        `find ${srcDir} -name "*.${e}" -exec sh -c 'mkdir -p "${outputDir}/$(dirname \${1#${srcDir}/})" && cp "$1" "${outputDir}/\${1#${srcDir}/}"' _ {} \\;`,
         {
-            name: `Distribute asset files (.${e}) to the build directory`
+            name: `Distribute asset files (.${e}) to the build directory.`
         }
     )
 );
 project.postCompileTask.spawn(bundleTask);
+project.postCompileTask.spawn(compileLambdas);
 
 /**
  * Ignore Patterns

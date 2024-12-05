@@ -1,14 +1,23 @@
+/**
+ *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance
+ *  with the License. A copy of the License is located at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  or in the 'license' file accompanying this file. This file is distributed on an 'AS IS' BASIS, WITHOUT WARRANTIES
+ *  OR CONDITIONS OF ANY KIND, express or implied. See the License for the specific language governing permissions
+ *  and limitations under the License.
+ */
+
 import { Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
-import { Runtime } from 'aws-cdk-lib/aws-lambda';
-import {
-    NodejsFunction,
-    NodejsFunctionProps
-} from 'aws-cdk-lib/aws-lambda-nodejs';
+import { Function, FunctionProps } from 'aws-cdk-lib/aws-lambda';
 import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
 
-export interface SecureNodejsFunctionProps extends NodejsFunctionProps {
+export interface SecureFunctionProps extends FunctionProps {
     /**
      * Optional retention period for the Lambda functions log group.
      * Default: RetentionDays.ONE_WEEK
@@ -21,23 +30,15 @@ export interface SecureNodejsFunctionProps extends NodejsFunctionProps {
     readonly encryption?: IKey;
 }
 
-export class SecureNodejsFunction extends Construct {
-    public readonly nodejsFunction: NodejsFunction;
+export class SecureFunction extends Construct {
+    public readonly function: Function;
     public readonly logGroup: LogGroup;
     public readonly role: Role;
 
-    constructor(
-        scope: Construct,
-        id: string,
-        props: SecureNodejsFunctionProps
-    ) {
+    constructor(scope: Construct, id: string, props: SecureFunctionProps) {
         super(scope, id);
 
-        const defaultProps: Partial<NodejsFunctionProps> = {
-            bundling: {
-                minify: true
-            },
-            runtime: Runtime.NODEJS_20_X,
+        const defaultProps: Partial<FunctionProps> = {
             reservedConcurrentExecutions: 5
         };
 
@@ -53,7 +54,7 @@ export class SecureNodejsFunction extends Construct {
             encryptionKey: props.encryption
         });
 
-        this.nodejsFunction = new NodejsFunction(this, 'Function', {
+        this.function = new Function(this, 'Function', {
             ...defaultProps,
             ...props,
             environmentEncryption:
@@ -64,10 +65,10 @@ export class SecureNodejsFunction extends Construct {
 
         // Grant permissions to use the key for lambda environment and logs
         if (props.encryption) {
-            props.encryption.grantEncryptDecrypt(this.nodejsFunction);
+            props.encryption.grantEncryptDecrypt(this.function);
         }
 
         // Grant the function permission to write to the log group
-        this.logGroup.grantWrite(this.nodejsFunction);
+        this.logGroup.grantWrite(this.function);
     }
 }

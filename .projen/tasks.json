@@ -45,14 +45,41 @@
     },
     "bundle": {
       "name": "bundle",
+      "description": "Distributes assets to the build directory.",
       "steps": [
         {
           "exec": "find src -name \"*.yml\" -exec sh -c 'mkdir -p \"lib/$(dirname ${1#src/})\" && cp \"$1\" \"lib/${1#src/}\"' _ {} \\;",
-          "name": "Distribute asset files (.yml) to the build directory"
+          "name": "Distribute asset files (.yml) to the build directory."
         },
         {
           "exec": "find src -name \"*.yaml\" -exec sh -c 'mkdir -p \"lib/$(dirname ${1#src/})\" && cp \"$1\" \"lib/${1#src/}\"' _ {} \\;",
-          "name": "Distribute asset files (.yaml) to the build directory"
+          "name": "Distribute asset files (.yaml) to the build directory."
+        }
+      ]
+    },
+    "clean": {
+      "name": "clean",
+      "description": "Removes all ephemeral build and test files.",
+      "steps": [
+        {
+          "exec": "rm -rf coverage/",
+          "name": "Remove coverage information."
+        },
+        {
+          "exec": "rm -rf dist/",
+          "name": "Remove built packages."
+        },
+        {
+          "exec": "rm -rf lib/",
+          "name": "Remove build files."
+        },
+        {
+          "exec": "rm -rf test-reports/",
+          "name": "Remove testing information."
+        },
+        {
+          "exec": "rm -rf .jsii tsconfig.json",
+          "name": "Remove intermediate files."
         }
       ]
     },
@@ -103,6 +130,16 @@
       "steps": [
         {
           "exec": "jsii --silence-warnings=reserved-word"
+        }
+      ]
+    },
+    "compile:lambda": {
+      "name": "compile:lambda",
+      "description": "Builds the Lambda function code and bundles dependencies",
+      "steps": [
+        {
+          "exec": "yarn ts-node esbuild.ts",
+          "name": "Run esbuild."
         }
       ]
     },
@@ -276,6 +313,9 @@
         },
         {
           "spawn": "bundle"
+        },
+        {
+          "spawn": "compile:lambda"
         }
       ]
     },

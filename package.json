@@ -8,9 +8,11 @@
     "build": "npx projen build",
     "bump": "npx projen bump",
     "bundle": "npx projen bundle",
+    "clean": "npx projen clean",
     "clobber": "npx projen clobber",
     "compat": "npx projen compat",
     "compile": "npx projen compile",
+    "compile:lambda": "npx projen compile:lambda",
     "default": "npx projen default",
     "docgen": "npx projen docgen",
     "eject": "npx projen eject",
@@ -194,7 +196,9 @@
   "private": true,
   "files": [
     "API.md",
-    "lib/**/*"
+    "lib/**/*",
+    ".jsii",
+    ".jsii.gz"
   ],
   "lint-staged": {
     "**/*": [
