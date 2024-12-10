@@ -10,7 +10,6 @@
  *  OR CONDITIONS OF ANY KIND, express or implied. See the License for the specific language governing permissions
  *  and limitations under the License.
  */
-
 import { readFileSync, writeFileSync } from 'fs';
 import {
     Imagebuilder,
@@ -24,7 +23,7 @@ function formatComponentName(name: string): string {
 }
 
 // Main function to generate the Enum and inject it into the file
-async function generateAndInjectComponentEnum() {
+export async function generateAndInjectImageBuilderComponentEnum() {
     try {
         // Create an ImageBuilder client
         const client = new Imagebuilder({ region: 'us-east-1' });
@@ -54,25 +53,27 @@ async function generateAndInjectComponentEnum() {
             throw new Error('No components found');
         }
 
-        // Use a Set to keep only unique component names
-        const uniqueComponents = new Set(
-            allComponents.map((component) => component.name)
+        // Create a Map to store component names and their descriptions
+        const componentMap = new Map(
+            allComponents
+                .filter((component) => component.name && component.description)
+                .map((component) => [component.name, component.description])
         );
 
-        // Generate Enum entries
-        const enumEntries = Array.from(uniqueComponents).map(
-            (componentName) => {
+        // Generate Enum entries with descriptions
+        const enumEntries = Array.from(componentMap.entries()).map(
+            ([componentName, description]) => {
                 if (!componentName) {
                     throw new Error('Component name is undefined');
                 }
                 const name = formatComponentName(componentName);
-                return `${name} = '${componentName}'`;
+                return `        /** ${description} */\n        ${name} = '${componentName}'`;
             }
         );
 
         // Create the Enum string
         const enumString = `    export enum Component {
-        ${enumEntries.join(',\n        ')}
+${enumEntries.join(',\n\n')}
     }`;
 
         // Read the existing file content
@@ -100,12 +101,10 @@ async function generateAndInjectComponentEnum() {
         // Write the modified content back to the file
         writeFileSync(filePath, newContent);
 
-        console.log('Enum injected successfully!');
-        console.log(`Total unique components: ${uniqueComponents.size}`);
+        console.log(
+            `Image Builder Components generated -- count: ${componentMap.size}`
+        );
     } catch (error) {
         console.error('Error generating and injecting enum:', error);
     }
 }
-
-// Run the function
-void generateAndInjectComponentEnum();

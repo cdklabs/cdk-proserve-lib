@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@aws-sdk/client-wafv2",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },

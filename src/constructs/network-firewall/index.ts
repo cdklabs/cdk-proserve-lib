@@ -27,6 +27,7 @@ import { Construct } from 'constructs';
 import { AwsCustomResourceLambdaConfiguration } from '../../interfaces';
 import { NetworkFirewallEndpoints } from '../network-firewall-endpoints';
 import { LogDestinationType } from './types/cfn-network-firewall';
+import { DefaultConfig } from '../../common/default-config';
 
 /**
  * Properties for configuring a NetworkFirewall
@@ -154,7 +155,7 @@ export class NetworkFirewall extends Construct {
                 : new LogGroup(this, 'LogGroup', {
                       retention: props.logging?.logRetention
                           ? props.logging.logRetention
-                          : RetentionDays.ONE_WEEK,
+                          : DefaultConfig.logRetention,
                       encryptionKey: props.logging.encryption
                   });
 

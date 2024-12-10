@@ -39,7 +39,7 @@
     "upgrade-dev-deps": "npx projen upgrade-dev-deps",
     "watch": "npx projen watch",
     "projen": "npx projen",
-    "generate:enum": "npx ts-node ./src/constructs/ec2-image-pipeline/scripts/generate.ts",
+    "generate:enums": "yarn ts-node utilities/generators",
     "prepare": "husky"
   },
   "author": {
@@ -50,6 +50,7 @@
   "devDependencies": {
     "@aws-cdk/integ-runner": "latest",
     "@aws-cdk/integ-tests-alpha": "latest",
+    "@aws-sdk/client-wafv2": "^3.699.0",
     "@types/jest": "^29.5.13",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^7",

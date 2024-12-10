@@ -20,7 +20,6 @@ import {
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { CfnFunction, Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { SnsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
-import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { ITopic } from 'aws-cdk-lib/aws-sns';
 import {
     AwsCustomResource,
@@ -29,6 +28,7 @@ import {
     PhysicalResourceId
 } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
+import { DefaultConfig } from '../../common/default-config';
 import { validate, ValidationTypes } from '../../common/validate';
 import { LambdaConfiguration } from '../../interfaces/lambda-configuration';
 import { SecureFunction } from '../secure/function';
@@ -110,7 +110,9 @@ export class Ec2ImageBuilderStart extends Construct {
             policy: AwsCustomResourcePolicy.fromSdkCalls({
                 resources: [props.pipelineArn]
             }),
-            logRetention: RetentionDays.ONE_YEAR,
+            logRetention:
+                props.lambdaConfiguration?.logGroupRetention ??
+                DefaultConfig.logRetention,
             onCreate: this.start(props.pipelineArn),
             onUpdate: this.start(props.pipelineArn),
             resourceType: 'Custom::Ec2ImageBuilderStart',

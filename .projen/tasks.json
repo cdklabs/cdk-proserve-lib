@@ -456,13 +456,13 @@
       },
       "steps": [
         {
-          "exec": "yarn dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@types/jest,aws-sdk-client-mock,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,husky,jest,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,prettier,ts-jest,ts-node,typescript"
+          "exec": "yarn dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@aws-sdk/client-wafv2,@types/jest,aws-sdk-client-mock,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,husky,jest,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,prettier,ts-jest,ts-node,typescript"
         },
         {
           "exec": "yarn install"
         },
         {
-          "exec": "yarn up @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock cdk-nag cloudform-types commit-and-tag-version esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint husky jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii lint-staged prettier ts-jest ts-node typescript @aws-cdk/integ-runner @aws-cdk/integ-tests-alpha"
+          "exec": "yarn up @aws-sdk/client-wafv2 @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock cdk-nag cloudform-types commit-and-tag-version esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint husky jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii lint-staged prettier ts-jest ts-node typescript @aws-cdk/integ-runner @aws-cdk/integ-tests-alpha"
         },
         {
           "exec": "npx projen"

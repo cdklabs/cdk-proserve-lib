@@ -138,7 +138,7 @@ describe(constructName, () => {
         const template = getTemplateWithCdkNag(stack);
 
         template.hasResourceProperties('AWS::Logs::LogGroup', {
-            RetentionInDays: 7
+            RetentionInDays: 30
         });
 
         template.hasResourceProperties(

@@ -44,7 +44,8 @@ export interface LambdaConfiguration extends BaseLambdaConfiguration {
 
     /**
      * Optional retention period for the Lambda functions log group.
-     * Default: RetentionDays.ONE_WEEK
+     *
+     * @default RetentionDays.ONE_MONTH
      */
     readonly logGroupRetention?: RetentionDays;
 }

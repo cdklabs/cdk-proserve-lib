@@ -16,11 +16,12 @@ import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Function, FunctionProps } from 'aws-cdk-lib/aws-lambda';
 import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
+import { DefaultConfig } from '../../common/default-config';
 
 export interface SecureFunctionProps extends FunctionProps {
     /**
      * Optional retention period for the Lambda functions log group.
-     * Default: RetentionDays.ONE_WEEK
+     * Default: RetentionDays.ONE_MONTH
      */
     readonly logGroupRetention?: RetentionDays;
 
@@ -50,7 +51,7 @@ export class SecureFunction extends Construct {
         this.logGroup = new LogGroup(this, 'LogGroup', {
             retention: props.logGroupRetention
                 ? props.logGroupRetention
-                : RetentionDays.ONE_WEEK,
+                : DefaultConfig.logRetention,
             encryptionKey: props.encryption
         });
 

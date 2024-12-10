@@ -11,7 +11,6 @@
  *  and limitations under the License.
  */
 
-import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { CfnFirewall } from 'aws-cdk-lib/aws-networkfirewall';
 import {
     AwsCustomResource,
@@ -20,6 +19,7 @@ import {
     PhysicalResourceId
 } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
+import { DefaultConfig } from '../../common/default-config';
 import { AwsCustomResourceLambdaConfiguration } from '../../interfaces';
 
 /**
@@ -72,7 +72,7 @@ export class NetworkFirewallEndpoints extends Construct {
             policy: AwsCustomResourcePolicy.fromSdkCalls({
                 resources: [props.firewall.attrFirewallArn]
             }),
-            logRetention: RetentionDays.ONE_YEAR,
+            logRetention: DefaultConfig.logRetention,
             ...props.lambdaConfiguration
         });
 

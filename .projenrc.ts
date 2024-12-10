@@ -51,6 +51,7 @@ const project = new CdklabsConstructLibrary({
         'esbuild',
         'husky',
         'lint-staged',
+        '@aws-sdk/client-wafv2',
         'cdk-nag@2.34.0'
     ],
     name: '@cdklabs/cdk-proserve-lib',
@@ -100,8 +101,7 @@ project.addFields({
 });
 
 project.addScripts({
-    'generate:enum':
-        'npx ts-node ./src/constructs/ec2-image-pipeline/scripts/generate.ts',
+    'generate:enums': 'yarn ts-node utilities/generators',
     prepare: 'husky'
 });
 

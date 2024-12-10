@@ -11,7 +11,6 @@
  *  and limitations under the License.
  */
 
-import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import {
     AwsCustomResource,
     AwsCustomResourcePolicy,
@@ -19,6 +18,7 @@ import {
     PhysicalResourceId
 } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
+import { DefaultConfig } from '../../common/default-config';
 import { validate, ValidationTypes } from '../../common/validate';
 import { AwsCustomResourceLambdaConfiguration } from '../../interfaces';
 
@@ -76,7 +76,7 @@ export class Ec2ImageBuilderGetImage extends Construct {
                 policy: AwsCustomResourcePolicy.fromSdkCalls({
                     resources: [props.imageBuildVersionArn]
                 }),
-                logRetention: RetentionDays.ONE_YEAR,
+                logRetention: DefaultConfig.logRetention,
                 onCreate: this.getImage(id, props.imageBuildVersionArn),
                 onUpdate: this.getImage(id, props.imageBuildVersionArn),
                 resourceType: 'Custom::Ec2ImageBuilderGetImage',
