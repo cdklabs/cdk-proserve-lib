@@ -12,6 +12,7 @@
  */
 
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
+import { TaskStep } from 'projen';
 import {
     YarnNodeLinker,
     NodePackageManager,
@@ -94,10 +95,30 @@ const project = new CdklabsConstructLibrary({
  * Package.json Modifications
  */
 project.addFields({
-    files: ['API.md', 'lib/**/*', '.jsii', '.jsii.gz'],
+    exports: {
+        '.': './index.js',
+        './constructs': './constructs/index.js',
+        './interfaces': './interfaces/index.js',
+        './patterns': './patterns/index.js'
+    },
+    // Represents the structure in the package staging directory
+    files: [
+        'API.md',
+        'index.js',
+        'index.d.ts',
+        'common/**/*',
+        'constructs/**/*',
+        'interfaces/**/*',
+        'patterns/**/*',
+        'tsconfig.tsbuildinfo',
+        '.jsii',
+        '.jsii.gz'
+    ],
     'lint-staged': {
         '**/*': ['prettier --write --ignore-unknown']
-    }
+    },
+    // Represents the structure in the package staging directory
+    main: 'index.js'
 });
 
 project.addScripts({
@@ -113,6 +134,7 @@ project.tsconfigDev?.addInclude('esbuild.ts');
 /**
  * Tasks
  */
+// Clean Up Task
 project.addTask('clean', {
     description: 'Removes all ephemeral build and test files.',
     steps: [
@@ -139,6 +161,76 @@ project.addTask('clean', {
     ]
 });
 
+// Packaging Task
+const stageDir = 'dist/stage';
+const buildFiles = [
+    '-R lib/*',
+    '-R .git',
+    'API.md',
+    'package.json',
+    'yarn.lock',
+    '.jsii',
+    'LICENSE',
+    'README.md',
+    '.npmignore'
+];
+
+const prePackageTask = project.addTask('pre-package', {
+    description: 'Prepares the structure for packaging.',
+    steps: [
+        {
+            exec: `mkdir -p ${stageDir}`,
+            name: 'Make package staging directory.'
+        },
+        ...buildFiles.map<TaskStep>((f) => {
+            return {
+                exec: `cp ${f} ${stageDir}`,
+                name: `Copy build file (${f}) to package staging directory.`
+            };
+        }),
+        {
+            exec: `cd ${stageDir} && yarn`,
+            name: 'Install modules for package staging.'
+        }
+    ]
+});
+
+const postPackageTask = project.addTask('post-package', {
+    description: 'Cleans up after packaging completes.',
+    steps: [
+        {
+            exec: `rm -rf ${stageDir}`,
+            name: 'Remove the package staging directory.'
+        }
+    ]
+});
+
+const packageTask = project.tasks.tryFind('package');
+packageTask?.prependSpawn(prePackageTask);
+packageTask?.spawn(postPackageTask);
+
+const packageLanguageTasks = ['js', 'java', 'python', 'dotnet', 'go'];
+
+packageLanguageTasks.forEach((l) => {
+    const languageTask = project.tasks.tryFind(`package:${l}`);
+    const currentCommand = languageTask?.steps.at(0)?.exec;
+
+    if (currentCommand) {
+        languageTask.updateStep(0, {
+            exec: `cd ${stageDir} && ${currentCommand}`
+        });
+
+        languageTask.exec(`cp -R ${stageDir}/dist/${l} dist/`, {
+            name: 'Extract the packaged distributions.'
+        });
+
+        languageTask.prependSpawn(prePackageTask, {
+            condition: `! [ -d "${stageDir}" ]`
+        });
+    }
+});
+
+// Lambda Build Task
 const compileLambdas = project.addTask('compile:lambda', {
     description: 'Builds the Lambda function code and bundles dependencies',
     steps: [
