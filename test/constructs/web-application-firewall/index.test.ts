@@ -1,14 +1,27 @@
+/**
+ *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance
+ *  with the License. A copy of the License is located at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  or in the 'license' file accompanying this file. This file is distributed on an 'AS IS' BASIS, WITHOUT WARRANTIES
+ *  OR CONDITIONS OF ANY KIND, express or implied. See the License for the specific language governing permissions
+ *  and limitations under the License.
+ */
+
 import { Stack, RemovalPolicy } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Vpc } from 'aws-cdk-lib/aws-ec2';
 import * as elbv2 from 'aws-cdk-lib/aws-elasticloadbalancingv2';
+import { Key } from 'aws-cdk-lib/aws-kms';
 import * as logs from 'aws-cdk-lib/aws-logs';
 import { WebApplicationFirewall } from '../../../src/constructs/web-application-firewall';
 import {
     getTemplateWithCdkNag,
     validateNoCdkNagFindings
 } from '../../../utilities/cdk-nag-jest';
-import { Key } from 'aws-cdk-lib/aws-kms';
 
 const constructName = 'WebApplicationFirewall';
 
@@ -33,6 +46,55 @@ describe(constructName, () => {
 
     afterEach(() => {
         validateNoCdkNagFindings(stack, constructName);
+    });
+
+    test('creates WAF with CloudWatch metrics and sampled requests enabled', () => {
+        // Act
+        new WebApplicationFirewall(stack, constructName, {
+            cloudWatchMetricsEnabled: true,
+            sampledRequestsEnabled: true,
+            logging: loggingConfig
+        });
+
+        // Assert
+        const template = getTemplateWithCdkNag(stack);
+        template.hasResourceProperties('AWS::WAFv2::WebACL', {
+            VisibilityConfig: {
+                CloudWatchMetricsEnabled: true,
+                SampledRequestsEnabled: true
+            }
+        });
+    });
+
+    test('creates WAF with no rules', () => {
+        // Act
+        new WebApplicationFirewall(stack, constructName, {
+            logging: loggingConfig
+        });
+
+        // Assert
+        const template = getTemplateWithCdkNag(stack);
+        template.hasResourceProperties('AWS::WAFv2::WebACL', {
+            Rules: []
+        });
+    });
+
+    test('creates WAF with visibility config', () => {
+        // Act
+        new WebApplicationFirewall(stack, constructName, {
+            cloudWatchMetricsEnabled: true,
+            sampledRequestsEnabled: true,
+            logging: loggingConfig
+        });
+
+        // Assert
+        const template = getTemplateWithCdkNag(stack);
+        template.hasResourceProperties('AWS::WAFv2::WebACL', {
+            VisibilityConfig: {
+                CloudWatchMetricsEnabled: true,
+                SampledRequestsEnabled: true
+            }
+        });
     });
 
     test('creates basic WAF with default configuration', () => {

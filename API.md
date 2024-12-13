@@ -2279,575 +2279,815 @@ Image Builder Component.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CLOUDWATCH_AGENT_LINUX">AMAZON_CLOUDWATCH_AGENT_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CLOUDWATCH_AGENT_WINDOWS">AMAZON_CLOUDWATCH_AGENT_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11_APT_GENERIC">AMAZON_CORRETTO_11_APT_GENERIC</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11_HEADLESS">AMAZON_CORRETTO_11_HEADLESS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11_RPM_GENERIC">AMAZON_CORRETTO_11_RPM_GENERIC</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11_WINDOWS">AMAZON_CORRETTO_11_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11">AMAZON_CORRETTO_11</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_17_HEADLESS">AMAZON_CORRETTO_17_HEADLESS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_17_JDK">AMAZON_CORRETTO_17_JDK</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_17_JRE">AMAZON_CORRETTO_17_JRE</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_17_WINDOWS">AMAZON_CORRETTO_17_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_21_HEADLESS">AMAZON_CORRETTO_21_HEADLESS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_21_JDK">AMAZON_CORRETTO_21_JDK</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_21_JRE">AMAZON_CORRETTO_21_JRE</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_21_WINDOWS">AMAZON_CORRETTO_21_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_APT_GENERIC">AMAZON_CORRETTO_8_APT_GENERIC</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_JDK">AMAZON_CORRETTO_8_JDK</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_JRE">AMAZON_CORRETTO_8_JRE</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_RPM_GENERIC">AMAZON_CORRETTO_8_RPM_GENERIC</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_WINDOWS">AMAZON_CORRETTO_8_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_KINESIS_AGENT_WINDOWS">AMAZON_KINESIS_AGENT_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ANACONDA_WINDOWS">ANACONDA_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.APACHE_TOMCAT_9_LINUX">APACHE_TOMCAT_9_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.APT_REPOSITORY_TEST_LINUX">APT_REPOSITORY_TEST_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CLI_VERSION_2_LINUX">AWS_CLI_VERSION_2_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CLI_VERSION_2_WINDOWS">AWS_CLI_VERSION_2_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CODEDEPLOY_AGENT_LINUX">AWS_CODEDEPLOY_AGENT_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CODEDEPLOY_AGENT_WINDOWS">AWS_CODEDEPLOY_AGENT_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_VSS_COMPONENTS_WINDOWS">AWS_VSS_COMPONENTS_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.CHOCOLATEY">CHOCOLATEY</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.CHRONY_TIME_CONFIGURATION_TEST">CHRONY_TIME_CONFIGURATION_TEST</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DCV_SERVER_LINUX">DCV_SERVER_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DCV_SERVER_WINDOWS">DCV_SERVER_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DISTRIBUTOR_PACKAGE_WINDOWS">DISTRIBUTOR_PACKAGE_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOCKER_CE_CENTOS">DOCKER_CE_CENTOS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOCKER_CE_LINUX">DOCKER_CE_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOCKER_CE_UBUNTU">DOCKER_CE_UBUNTU</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_DESKTOP_RUNTIME_LTS_WINDOWS">DOTNET_DESKTOP_RUNTIME_LTS_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_HOSTING_BUNDLE_LTS_WINDOWS">DOTNET_HOSTING_BUNDLE_LTS_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_RUNTIME_LTS_LINUX">DOTNET_RUNTIME_LTS_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_RUNTIME_LTS_WINDOWS">DOTNET_RUNTIME_LTS_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_SDK_LTS_LINUX">DOTNET_SDK_LTS_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_SDK_LTS_WINDOWS">DOTNET_SDK_LTS_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EBS_VOLUME_USAGE_TEST_LINUX">EBS_VOLUME_USAGE_TEST_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EBS_VOLUME_USAGE_TEST_WINDOWS">EBS_VOLUME_USAGE_TEST_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EC2_NETWORK_ROUTE_TEST_WINDOWS">EC2_NETWORK_ROUTE_TEST_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EC2LAUNCH_V2_WINDOWS">EC2LAUNCH_V2_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ECS_OPTIMIZED_AMI_WINDOWS">ECS_OPTIMIZED_AMI_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EKS_OPTIMIZED_AMI_WINDOWS">EKS_OPTIMIZED_AMI_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ENI_ATTACHMENT_TEST_LINUX">ENI_ATTACHMENT_TEST_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ENI_ATTACHMENT_TEST_WINDOWS">ENI_ATTACHMENT_TEST_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.GO_STABLE_LINUX">GO_STABLE_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.GO_STABLE_WINDOWS">GO_STABLE_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.HELLO_WORLD_LINUX">HELLO_WORLD_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.HELLO_WORLD_WINDOWS">HELLO_WORLD_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.INSPECTOR_TEST_LINUX">INSPECTOR_TEST_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.INSPECTOR_TEST_WINDOWS">INSPECTOR_TEST_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.INSTALL_PACKAGE_FROM_REPOSITORY">INSTALL_PACKAGE_FROM_REPOSITORY</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MARIADB_LINUX">MARIADB_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MATE_DE_LINUX">MATE_DE_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MONO_LINUX">MONO_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PHP_8_2_LINUX">PHP_8_2_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_LTS_LINUX">POWERSHELL_LTS_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_LTS_WINDOWS">POWERSHELL_LTS_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_SNAP">POWERSHELL_SNAP</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_YUM">POWERSHELL_YUM</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PUTTY">PUTTY</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PYTHON_3_LINUX">PYTHON_3_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PYTHON_3_WINDOWS">PYTHON_3_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_LINUX">REBOOT_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_TEST_LINUX">REBOOT_TEST_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_TEST_WINDOWS">REBOOT_TEST_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_WINDOWS">REBOOT_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SAN_SIFT_LINUX">SAN_SIFT_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_LINUX">SCAP_COMPLIANCE_CHECKER_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_WINDOWS">SCAP_COMPLIANCE_CHECKER_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SIMPLE_BOOT_TEST_LINUX">SIMPLE_BOOT_TEST_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SIMPLE_BOOT_TEST_WINDOWS">SIMPLE_BOOT_TEST_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_HIGH">STIG_BUILD_LINUX_HIGH</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_LOW">STIG_BUILD_LINUX_LOW</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_MEDIUM">STIG_BUILD_LINUX_MEDIUM</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_HIGH">STIG_BUILD_WINDOWS_HIGH</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_LOW">STIG_BUILD_WINDOWS_LOW</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_MEDIUM">STIG_BUILD_WINDOWS_MEDIUM</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_LINUX_KERNEL_5">UPDATE_LINUX_KERNEL_5</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_LINUX_KERNEL_ML">UPDATE_LINUX_KERNEL_ML</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_LINUX">UPDATE_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_WINDOWS">UPDATE_WINDOWS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.VALIDATE_SINGLE_SSH_PUBLIC_KEY_TEST_LINUX">VALIDATE_SINGLE_SSH_PUBLIC_KEY_TEST_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.VALIDATE_SSH_HOST_KEY_GENERATION_LINUX">VALIDATE_SSH_HOST_KEY_GENERATION_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.VALIDATE_SSH_PUBLIC_KEY_LINUX">VALIDATE_SSH_PUBLIC_KEY_LINUX</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WINDOWS_ACTIVATION_TEST">WINDOWS_ACTIVATION_TEST</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WINDOWS_IS_READY_WITH_PASSWORD_GENERATION_TEST">WINDOWS_IS_READY_WITH_PASSWORD_GENERATION_TEST</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WINDOWS_SERVER_IIS">WINDOWS_SERVER_IIS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.YUM_REPOSITORY_TEST_LINUX">YUM_REPOSITORY_TEST_LINUX</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CLOUDWATCH_AGENT_LINUX">AMAZON_CLOUDWATCH_AGENT_LINUX</a></code> | Installs the latest version of the Amazon CloudWatch agent. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CLOUDWATCH_AGENT_WINDOWS">AMAZON_CLOUDWATCH_AGENT_WINDOWS</a></code> | Installs the latest version of the Amazon CloudWatch agent. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11_APT_GENERIC">AMAZON_CORRETTO_11_APT_GENERIC</a></code> | Installs Amazon Corretto 11 for Debian-based Linux platforms in accordance with the Amazon Corretto 11 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/generic-linux-install.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11_HEADLESS">AMAZON_CORRETTO_11_HEADLESS</a></code> | Installs Amazon Corretto 11 Headless. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11_RPM_GENERIC">AMAZON_CORRETTO_11_RPM_GENERIC</a></code> | Installs Amazon Corretto 11 for RPM-based Linux platforms in accordance with the Amazon Corretto 11 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/generic-linux-install.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11_WINDOWS">AMAZON_CORRETTO_11_WINDOWS</a></code> | Installs Amazon Corretto 11 for Windows in accordance with the Amazon Corretto 11 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/windows-7-install.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11">AMAZON_CORRETTO_11</a></code> | Installs Amazon Corretto 11. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_17_HEADLESS">AMAZON_CORRETTO_17_HEADLESS</a></code> | Installs Amazon Corretto 17 Headless. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_17_JDK">AMAZON_CORRETTO_17_JDK</a></code> | Installs Amazon Corretto 17 JDK in accordance with the Amazon Corretto 17 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/linux-info.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_17_JRE">AMAZON_CORRETTO_17_JRE</a></code> | Installs Amazon Corretto 17 JRE. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_17_WINDOWS">AMAZON_CORRETTO_17_WINDOWS</a></code> | Installs Amazon Corretto 17 for Windows in accordance with the Amazon Corretto 17 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/windows-7-install.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_21_HEADLESS">AMAZON_CORRETTO_21_HEADLESS</a></code> | Installs Amazon Corretto 21 Headless. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_21_JDK">AMAZON_CORRETTO_21_JDK</a></code> | Installs Amazon Corretto 21 JDK in accordance with the Amazon Corretto 21 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-21-ug/linux-info.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_21_JRE">AMAZON_CORRETTO_21_JRE</a></code> | Installs Amazon Corretto 21 JRE. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_21_WINDOWS">AMAZON_CORRETTO_21_WINDOWS</a></code> | Installs Amazon Corretto 21 for Windows in accordance with the Amazon Corretto 21 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-21-ug/windows-10-install.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_APT_GENERIC">AMAZON_CORRETTO_8_APT_GENERIC</a></code> | Installs Amazon Corretto 8 for Debian-based Linux platforms in accordance with the Amazon Corretto 8 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/generic-linux-install.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_JDK">AMAZON_CORRETTO_8_JDK</a></code> | Installs Amazon Corretto 8 JDK. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_JRE">AMAZON_CORRETTO_8_JRE</a></code> | Installs Amazon Corretto 8 JRE. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_RPM_GENERIC">AMAZON_CORRETTO_8_RPM_GENERIC</a></code> | Installs Amazon Corretto 8 for RPM-based Linux platforms in accordance with the Amazon Corretto 8 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/generic-linux-install.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_WINDOWS">AMAZON_CORRETTO_8_WINDOWS</a></code> | Installs Amazon Corretto 8 for Windows in accordance with the Amazon Corretto 8 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/windows-7-install.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_KINESIS_AGENT_WINDOWS">AMAZON_KINESIS_AGENT_WINDOWS</a></code> | Installs the latest version of Amazon Kinesis Agent for Windows. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ANACONDA_WINDOWS">ANACONDA_WINDOWS</a></code> | Installs the Anaconda distribution and environments for Tensorflow, PyTorch, and MXNet. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.APACHE_TOMCAT_9_LINUX">APACHE_TOMCAT_9_LINUX</a></code> | Installs the latest version of Apache Tomcat and the JRE, sets required environment variables, and schedules Tomcat to run on startup. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.APT_REPOSITORY_TEST_LINUX">APT_REPOSITORY_TEST_LINUX</a></code> | Tests whether the apt package manager is functioning correctly. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CLI_VERSION_2_LINUX">AWS_CLI_VERSION_2_LINUX</a></code> | Installs the latest version of the AWS CLI version 2, and creates the symlink /usr/bin/aws that points to the installed application. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CLI_VERSION_2_WINDOWS">AWS_CLI_VERSION_2_WINDOWS</a></code> | Installs the latest version of the AWS CLI version 2. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CODEDEPLOY_AGENT_LINUX">AWS_CODEDEPLOY_AGENT_LINUX</a></code> | Installs the latest version of the AWS CodeDeploy agent. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CODEDEPLOY_AGENT_WINDOWS">AWS_CODEDEPLOY_AGENT_WINDOWS</a></code> | Installs the latest version of the AWS CodeDeploy agent. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_VSS_COMPONENTS_WINDOWS">AWS_VSS_COMPONENTS_WINDOWS</a></code> | Installs the AwsVssComponents Distributor package on a Windows instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.CHOCOLATEY">CHOCOLATEY</a></code> | Installs Chocolatey for Windows. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.CHRONY_TIME_CONFIGURATION_TEST">CHRONY_TIME_CONFIGURATION_TEST</a></code> | Validates the Chrony configuration file and ensures that Chrony time sources on Amazon Linux 2 are configured for the Amazon time servers. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DCV_SERVER_LINUX">DCV_SERVER_LINUX</a></code> | Install and configure the latest NICE DCV server on Linux. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DCV_SERVER_WINDOWS">DCV_SERVER_WINDOWS</a></code> | Install and configure the latest NICE DCV server on Windows. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DISTRIBUTOR_PACKAGE_WINDOWS">DISTRIBUTOR_PACKAGE_WINDOWS</a></code> | Installs a Distributor package on a Windows instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOCKER_CE_CENTOS">DOCKER_CE_CENTOS</a></code> | Installs Docker Community Edition from the Docker package repository, and enables the centos user to manage Docker without using sudo. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOCKER_CE_LINUX">DOCKER_CE_LINUX</a></code> | Install the latest Docker Community Edition from Amazon Linux Extras, and enable the ec2-user user to manage docker without using sudo. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOCKER_CE_UBUNTU">DOCKER_CE_UBUNTU</a></code> | Installs Docker Community Edition from the Docker package repository, and enables the ubuntu user to manage Docker without using sudo. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_DESKTOP_RUNTIME_LTS_WINDOWS">DOTNET_DESKTOP_RUNTIME_LTS_WINDOWS</a></code> | Installs the latest 8.0 channel release of the Microsoft .NET Desktop Runtime. For more information, see the .NET 8.0 download page at https://dotnet.microsoft.com/download/dotnet/8.0. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_HOSTING_BUNDLE_LTS_WINDOWS">DOTNET_HOSTING_BUNDLE_LTS_WINDOWS</a></code> | Installs the latest 8.0 channel release of the Microsoft .NET Hosting Bundle. For more information, see the .NET 8.0 download page at https://dotnet.microsoft.com/download/dotnet/8.0. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_RUNTIME_LTS_LINUX">DOTNET_RUNTIME_LTS_LINUX</a></code> | Installs the latest 8.0 channel release of the Microsoft .NET Runtime. For more information, see the .NET 8.0 download page at https://dotnet.microsoft.com/download/dotnet/8.0. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_RUNTIME_LTS_WINDOWS">DOTNET_RUNTIME_LTS_WINDOWS</a></code> | Installs the latest 8.0 channel release of the Microsoft .NET Runtime. For more information, see the .NET 8.0 download page at https://dotnet.microsoft.com/download/dotnet/8.0. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_SDK_LTS_LINUX">DOTNET_SDK_LTS_LINUX</a></code> | Installs the latest 8.0 channel release of the Microsoft .NET SDK. For more information, see the .NET 8.0 download page at https://dotnet.microsoft.com/download/dotnet/8.0. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_SDK_LTS_WINDOWS">DOTNET_SDK_LTS_WINDOWS</a></code> | Installs the latest 8.0 channel release of the Microsoft .NET SDK. For more information, see the .NET 8.0 download page at https://dotnet.microsoft.com/download/dotnet/8.0. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EBS_VOLUME_USAGE_TEST_LINUX">EBS_VOLUME_USAGE_TEST_LINUX</a></code> | The EBS volume usage test performs the following actions: 1) It creates an EBS volume and attaches it to the instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EBS_VOLUME_USAGE_TEST_WINDOWS">EBS_VOLUME_USAGE_TEST_WINDOWS</a></code> | The EBS volume usage test performs the following actions: 1) It creates an EBS volume and attaches it to the instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EC2_NETWORK_ROUTE_TEST_WINDOWS">EC2_NETWORK_ROUTE_TEST_WINDOWS</a></code> | Test to ensure all required EC2 network routes exist in the route table. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EC2LAUNCH_V2_WINDOWS">EC2LAUNCH_V2_WINDOWS</a></code> | Installs the latest version of EC2Launch v2. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ECS_OPTIMIZED_AMI_WINDOWS">ECS_OPTIMIZED_AMI_WINDOWS</a></code> | Installs Amazon ECS-optimized Windows artifacts. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EKS_OPTIMIZED_AMI_WINDOWS">EKS_OPTIMIZED_AMI_WINDOWS</a></code> | Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.30. This includes kubelet version 1.30.2, containerd version 1.7.14, and CSI Proxy version 1.1.2. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ENI_ATTACHMENT_TEST_LINUX">ENI_ATTACHMENT_TEST_LINUX</a></code> | The ENI attachment test performs the following actions: 1) It creates an elastic network interface (ENI) and attaches it to the instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ENI_ATTACHMENT_TEST_WINDOWS">ENI_ATTACHMENT_TEST_WINDOWS</a></code> | The ENI attachment test performs the following actions: 1) It creates an elastic network interface (ENI) and attaches it to the instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.GO_STABLE_LINUX">GO_STABLE_LINUX</a></code> | Installs the latest stable release of the Go programming language using the release information from https://go.dev/dl/. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.GO_STABLE_WINDOWS">GO_STABLE_WINDOWS</a></code> | Installs the latest stable release of the Go programming language using the release information from https://go.dev/dl/. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.HELLO_WORLD_LINUX">HELLO_WORLD_LINUX</a></code> | Hello world testing document for Linux. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.HELLO_WORLD_WINDOWS">HELLO_WORLD_WINDOWS</a></code> | Hello world testing document for Windows. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.INSPECTOR_TEST_LINUX">INSPECTOR_TEST_LINUX</a></code> | Performs a Center for Internet Security (CIS) security assessment for an instance, using Amazon Inspector (Inspector). |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.INSPECTOR_TEST_WINDOWS">INSPECTOR_TEST_WINDOWS</a></code> | Performs a Center for Internet Security (CIS) security assessment for an instance, using Amazon Inspector (Inspector). |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.INSTALL_PACKAGE_FROM_REPOSITORY">INSTALL_PACKAGE_FROM_REPOSITORY</a></code> | Installs a package from the Linux repository. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MARIADB_LINUX">MARIADB_LINUX</a></code> | Installs the MariaDB package using apt, yum, or zypper. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MATE_DE_LINUX">MATE_DE_LINUX</a></code> | Installs the MATE Desktop Environment, xrdp, TigerVNC server, and enables the xrdp service. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MONO_LINUX">MONO_LINUX</a></code> | Installs the latest version of the Mono framework. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PHP_8_2_LINUX">PHP_8_2_LINUX</a></code> | Installs PHP 8.2. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_LTS_LINUX">POWERSHELL_LTS_LINUX</a></code> | Installs the latest LTS 7.4 release of PowerShell following the instructions at https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.4. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_LTS_WINDOWS">POWERSHELL_LTS_WINDOWS</a></code> | Installs the latest LTS 7.4 release of PowerShell using the MSI installer from the GitHub repository located at https://github.com/PowerShell/PowerShell. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_SNAP">POWERSHELL_SNAP</a></code> | Installs the latest version of PowerShell using snap. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_YUM">POWERSHELL_YUM</a></code> | Installs the latest version of PowerShell from the Microsoft RedHat repository. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PUTTY">PUTTY</a></code> | Installs the latest version of PuTTY from the 64-bit MSI link on the release page: https://the.earth.li/~sgtatham/putty/latest/w64/. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PYTHON_3_LINUX">PYTHON_3_LINUX</a></code> | Installs the Python 3 package using apt, yum, or zypper. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PYTHON_3_WINDOWS">PYTHON_3_WINDOWS</a></code> | Installs Python 3.8.2 for Windows. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_LINUX">REBOOT_LINUX</a></code> | Reboots the system. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_TEST_LINUX">REBOOT_TEST_LINUX</a></code> | Tests whether the system can reboot successfully. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_TEST_WINDOWS">REBOOT_TEST_WINDOWS</a></code> | Tests whether the system can reboot successfully. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_WINDOWS">REBOOT_WINDOWS</a></code> | Reboots the system. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SAN_SIFT_LINUX">SAN_SIFT_LINUX</a></code> | Installs SANS SIFT v1.14.0 on Ubuntu, allowing you to leverage a suite of forensics tools. For more information, see https://www.sans.org/tools/sift-workstation/. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_LINUX">SCAP_COMPLIANCE_CHECKER_LINUX</a></code> | Installs and runs SCAP Compliance Checker (SCC) 5.8 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04 with all current STIG Q4 2023 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_WINDOWS">SCAP_COMPLIANCE_CHECKER_WINDOWS</a></code> | Installs and runs SCAP Compliance Checker (SCC) 5.10 for Windows with all current STIG Q3 2024 benchmarks. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-builder-stig.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SIMPLE_BOOT_TEST_LINUX">SIMPLE_BOOT_TEST_LINUX</a></code> | Executes a simple boot test. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SIMPLE_BOOT_TEST_WINDOWS">SIMPLE_BOOT_TEST_WINDOWS</a></code> | Executes a simple boot test. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_HIGH">STIG_BUILD_LINUX_HIGH</a></code> | Applies the high, medium, and low severity STIG settings for Red Hat Enterprise Linux (RHEL) to Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, and Ubuntu 22.04 instances. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_LOW">STIG_BUILD_LINUX_LOW</a></code> | Applies the low severity STIG settings for Red Hat Enterprise Linux (RHEL) to Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, and Ubuntu 22.04 instances. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_MEDIUM">STIG_BUILD_LINUX_MEDIUM</a></code> | Applies the medium and low severity STIG settings for Red Hat Enterprise Linux (RHEL) to Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, and Ubuntu 22.04 instances. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_HIGH">STIG_BUILD_WINDOWS_HIGH</a></code> | Applies the high, medium, and low severity STIG settings to Windows instances. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_LOW">STIG_BUILD_WINDOWS_LOW</a></code> | Applies the low severity STIG settings to Windows instances. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_MEDIUM">STIG_BUILD_WINDOWS_MEDIUM</a></code> | Applies the medium and low severity STIG settings to Windows instances. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_LINUX_KERNEL_5">UPDATE_LINUX_KERNEL_5</a></code> | Installs the Linux kernel 5.* for Amazon Linux 2 from Amazon Linux Extras. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_LINUX_KERNEL_ML">UPDATE_LINUX_KERNEL_ML</a></code> | Installs the latest mainline release of the Linux kernel for CentOS 7 and Red Hat Enterprise Linux 7 and 8 via the 'kernel-ml' package from https://www.elrepo.org. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_LINUX">UPDATE_LINUX</a></code> | Updates Linux by installing all available updates via the UpdateOS action module. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_WINDOWS">UPDATE_WINDOWS</a></code> | Updates Windows with the latest security updates. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.VALIDATE_SINGLE_SSH_PUBLIC_KEY_TEST_LINUX">VALIDATE_SINGLE_SSH_PUBLIC_KEY_TEST_LINUX</a></code> | Ensures the `authorized_keys` file contains only the SSH public key returned from the EC2 Instance Metadata Service. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.VALIDATE_SSH_HOST_KEY_GENERATION_LINUX">VALIDATE_SSH_HOST_KEY_GENERATION_LINUX</a></code> | Verifies whether the SSH host key was generated after the latest boot. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.VALIDATE_SSH_PUBLIC_KEY_LINUX">VALIDATE_SSH_PUBLIC_KEY_LINUX</a></code> | Ensures the `authorized_keys` file contains the SSH public key returned from the EC2 Instance Metadata Service. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WINDOWS_ACTIVATION_TEST">WINDOWS_ACTIVATION_TEST</a></code> | Verifies the Windows license status in the Common Information Model. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WINDOWS_IS_READY_WITH_PASSWORD_GENERATION_TEST">WINDOWS_IS_READY_WITH_PASSWORD_GENERATION_TEST</a></code> | Checks the EC2 logs for the statement `Windows is Ready to use` and for the password generation message on Windows Server 2016 and later SKUs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WINDOWS_SERVER_IIS">WINDOWS_SERVER_IIS</a></code> | Installs the Internet Information Services (IIS) web server and management tools. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.YUM_REPOSITORY_TEST_LINUX">YUM_REPOSITORY_TEST_LINUX</a></code> | Tests whether yum repository works successfully. |
 
 ---
 
 ##### `AMAZON_CLOUDWATCH_AGENT_LINUX` <a name="AMAZON_CLOUDWATCH_AGENT_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CLOUDWATCH_AGENT_LINUX"></a>
+
+Installs the latest version of the Amazon CloudWatch agent.
+
+This component installs only the agent. You must take additional steps to configure and use the Amazon CloudWatch agent. For more information, see the documentation at https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-on-EC2-Instance.html.
 
 ---
 
 
 ##### `AMAZON_CLOUDWATCH_AGENT_WINDOWS` <a name="AMAZON_CLOUDWATCH_AGENT_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CLOUDWATCH_AGENT_WINDOWS"></a>
 
+Installs the latest version of the Amazon CloudWatch agent.
+
+This component installs only the agent. You must take additional steps to configure and use the Amazon CloudWatch agent. For more information, see the documentation at https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-on-EC2-Instance.html.
+
 ---
 
 
 ##### `AMAZON_CORRETTO_11_APT_GENERIC` <a name="AMAZON_CORRETTO_11_APT_GENERIC" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11_APT_GENERIC"></a>
+
+Installs Amazon Corretto 11 for Debian-based Linux platforms in accordance with the Amazon Corretto 11 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/generic-linux-install.html.
 
 ---
 
 
 ##### `AMAZON_CORRETTO_11_HEADLESS` <a name="AMAZON_CORRETTO_11_HEADLESS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11_HEADLESS"></a>
 
+Installs Amazon Corretto 11 Headless.
+
 ---
 
 
 ##### `AMAZON_CORRETTO_11_RPM_GENERIC` <a name="AMAZON_CORRETTO_11_RPM_GENERIC" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11_RPM_GENERIC"></a>
+
+Installs Amazon Corretto 11 for RPM-based Linux platforms in accordance with the Amazon Corretto 11 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/generic-linux-install.html.
 
 ---
 
 
 ##### `AMAZON_CORRETTO_11_WINDOWS` <a name="AMAZON_CORRETTO_11_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11_WINDOWS"></a>
 
+Installs Amazon Corretto 11 for Windows in accordance with the Amazon Corretto 11 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/windows-7-install.html.
+
 ---
 
 
 ##### `AMAZON_CORRETTO_11` <a name="AMAZON_CORRETTO_11" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_11"></a>
+
+Installs Amazon Corretto 11.
 
 ---
 
 
 ##### `AMAZON_CORRETTO_17_HEADLESS` <a name="AMAZON_CORRETTO_17_HEADLESS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_17_HEADLESS"></a>
 
+Installs Amazon Corretto 17 Headless.
+
 ---
 
 
 ##### `AMAZON_CORRETTO_17_JDK` <a name="AMAZON_CORRETTO_17_JDK" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_17_JDK"></a>
+
+Installs Amazon Corretto 17 JDK in accordance with the Amazon Corretto 17 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/linux-info.html.
 
 ---
 
 
 ##### `AMAZON_CORRETTO_17_JRE` <a name="AMAZON_CORRETTO_17_JRE" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_17_JRE"></a>
 
+Installs Amazon Corretto 17 JRE.
+
 ---
 
 
 ##### `AMAZON_CORRETTO_17_WINDOWS` <a name="AMAZON_CORRETTO_17_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_17_WINDOWS"></a>
+
+Installs Amazon Corretto 17 for Windows in accordance with the Amazon Corretto 17 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/windows-7-install.html.
 
 ---
 
 
 ##### `AMAZON_CORRETTO_21_HEADLESS` <a name="AMAZON_CORRETTO_21_HEADLESS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_21_HEADLESS"></a>
 
+Installs Amazon Corretto 21 Headless.
+
 ---
 
 
 ##### `AMAZON_CORRETTO_21_JDK` <a name="AMAZON_CORRETTO_21_JDK" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_21_JDK"></a>
+
+Installs Amazon Corretto 21 JDK in accordance with the Amazon Corretto 21 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-21-ug/linux-info.html.
 
 ---
 
 
 ##### `AMAZON_CORRETTO_21_JRE` <a name="AMAZON_CORRETTO_21_JRE" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_21_JRE"></a>
 
+Installs Amazon Corretto 21 JRE.
+
 ---
 
 
 ##### `AMAZON_CORRETTO_21_WINDOWS` <a name="AMAZON_CORRETTO_21_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_21_WINDOWS"></a>
+
+Installs Amazon Corretto 21 for Windows in accordance with the Amazon Corretto 21 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-21-ug/windows-10-install.html.
 
 ---
 
 
 ##### `AMAZON_CORRETTO_8_APT_GENERIC` <a name="AMAZON_CORRETTO_8_APT_GENERIC" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_APT_GENERIC"></a>
 
+Installs Amazon Corretto 8 for Debian-based Linux platforms in accordance with the Amazon Corretto 8 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/generic-linux-install.html.
+
 ---
 
 
 ##### `AMAZON_CORRETTO_8_JDK` <a name="AMAZON_CORRETTO_8_JDK" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_JDK"></a>
+
+Installs Amazon Corretto 8 JDK.
 
 ---
 
 
 ##### `AMAZON_CORRETTO_8_JRE` <a name="AMAZON_CORRETTO_8_JRE" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_JRE"></a>
 
+Installs Amazon Corretto 8 JRE.
+
 ---
 
 
 ##### `AMAZON_CORRETTO_8_RPM_GENERIC` <a name="AMAZON_CORRETTO_8_RPM_GENERIC" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_RPM_GENERIC"></a>
+
+Installs Amazon Corretto 8 for RPM-based Linux platforms in accordance with the Amazon Corretto 8 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/generic-linux-install.html.
 
 ---
 
 
 ##### `AMAZON_CORRETTO_8_WINDOWS` <a name="AMAZON_CORRETTO_8_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_WINDOWS"></a>
 
+Installs Amazon Corretto 8 for Windows in accordance with the Amazon Corretto 8 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/windows-7-install.html.
+
 ---
 
 
 ##### `AMAZON_KINESIS_AGENT_WINDOWS` <a name="AMAZON_KINESIS_AGENT_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_KINESIS_AGENT_WINDOWS"></a>
+
+Installs the latest version of Amazon Kinesis Agent for Windows.
 
 ---
 
 
 ##### `ANACONDA_WINDOWS` <a name="ANACONDA_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ANACONDA_WINDOWS"></a>
 
+Installs the Anaconda distribution and environments for Tensorflow, PyTorch, and MXNet.
+
 ---
 
 
 ##### `APACHE_TOMCAT_9_LINUX` <a name="APACHE_TOMCAT_9_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.APACHE_TOMCAT_9_LINUX"></a>
+
+Installs the latest version of Apache Tomcat and the JRE, sets required environment variables, and schedules Tomcat to run on startup.
 
 ---
 
 
 ##### `APT_REPOSITORY_TEST_LINUX` <a name="APT_REPOSITORY_TEST_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.APT_REPOSITORY_TEST_LINUX"></a>
 
+Tests whether the apt package manager is functioning correctly.
+
 ---
 
 
 ##### `AWS_CLI_VERSION_2_LINUX` <a name="AWS_CLI_VERSION_2_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CLI_VERSION_2_LINUX"></a>
+
+Installs the latest version of the AWS CLI version 2, and creates the symlink /usr/bin/aws that points to the installed application.
+
+For more information, see https://docs.aws.amazon.com/cli/latest/userguide/.
 
 ---
 
 
 ##### `AWS_CLI_VERSION_2_WINDOWS` <a name="AWS_CLI_VERSION_2_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CLI_VERSION_2_WINDOWS"></a>
 
+Installs the latest version of the AWS CLI version 2.
+
+For more information, review the user guide at https://docs.aws.amazon.com/cli/latest/userguide/.
+
 ---
 
 
 ##### `AWS_CODEDEPLOY_AGENT_LINUX` <a name="AWS_CODEDEPLOY_AGENT_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CODEDEPLOY_AGENT_LINUX"></a>
+
+Installs the latest version of the AWS CodeDeploy agent.
+
+This component installs only the agent. You must take additional steps to configure and use the AWS CodeDeploy agent. For more information, see the documentation at https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html.
 
 ---
 
 
 ##### `AWS_CODEDEPLOY_AGENT_WINDOWS` <a name="AWS_CODEDEPLOY_AGENT_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CODEDEPLOY_AGENT_WINDOWS"></a>
 
+Installs the latest version of the AWS CodeDeploy agent.
+
+This component installs only the agent. You must take additional steps to configure and use the agent. For more information, see the documentation at https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install-windows.html.
+
 ---
 
 
 ##### `AWS_VSS_COMPONENTS_WINDOWS` <a name="AWS_VSS_COMPONENTS_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_VSS_COMPONENTS_WINDOWS"></a>
+
+Installs the AwsVssComponents Distributor package on a Windows instance.
+
+The instance must have an AWS Tools for PowerShell version that includes Systems Manager modules installed. The IAM profile attached to the build instance must have the following permissions - configure the ssm:SendCommand permission with the AWS-ConfigureAWSPackage Systems Manager document on all instances in the Region, and configure the ssm:GetCommandInvocation permission for '*'. For more information, see the documentation at https://docs.aws.amazon.com/imagebuilder/latest/userguide/mgdcomponent-distributor-win.html and https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/application-consistent-snapshots.html.
 
 ---
 
 
 ##### `CHOCOLATEY` <a name="CHOCOLATEY" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.CHOCOLATEY"></a>
 
+Installs Chocolatey for Windows.
+
 ---
 
 
 ##### `CHRONY_TIME_CONFIGURATION_TEST` <a name="CHRONY_TIME_CONFIGURATION_TEST" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.CHRONY_TIME_CONFIGURATION_TEST"></a>
+
+Validates the Chrony configuration file and ensures that Chrony time sources on Amazon Linux 2 are configured for the Amazon time servers.
+
+Uses validation steps outlined here: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html.
 
 ---
 
 
 ##### `DCV_SERVER_LINUX` <a name="DCV_SERVER_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DCV_SERVER_LINUX"></a>
 
+Install and configure the latest NICE DCV server on Linux.
+
 ---
 
 
 ##### `DCV_SERVER_WINDOWS` <a name="DCV_SERVER_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DCV_SERVER_WINDOWS"></a>
+
+Install and configure the latest NICE DCV server on Windows.
 
 ---
 
 
 ##### `DISTRIBUTOR_PACKAGE_WINDOWS` <a name="DISTRIBUTOR_PACKAGE_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DISTRIBUTOR_PACKAGE_WINDOWS"></a>
 
+Installs a Distributor package on a Windows instance.
+
+The instance must have an AWS Tools for PowerShell version that includes Systems Manager modules installed. The IAM profile attached to the build instance must have the following permissions - configure the ssm:SendCommand permission with the AWS-ConfigureAWSPackage Systems Manager document on all instances in the Region, and configure the ssm:GetCommandInvocation permission for '*'. For more information, see the documentation at https://docs.aws.amazon.com/imagebuilder/latest/userguide/mgdcomponent-distributor-win.html.
+
 ---
 
 
 ##### `DOCKER_CE_CENTOS` <a name="DOCKER_CE_CENTOS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOCKER_CE_CENTOS"></a>
+
+Installs Docker Community Edition from the Docker package repository, and enables the centos user to manage Docker without using sudo.
+
+For more information, review the installation guide at https://docs.docker.com/install/linux/docker-ce/centos/.
 
 ---
 
 
 ##### `DOCKER_CE_LINUX` <a name="DOCKER_CE_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOCKER_CE_LINUX"></a>
 
+Install the latest Docker Community Edition from Amazon Linux Extras, and enable the ec2-user user to manage docker without using sudo.
+
 ---
 
 
 ##### `DOCKER_CE_UBUNTU` <a name="DOCKER_CE_UBUNTU" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOCKER_CE_UBUNTU"></a>
+
+Installs Docker Community Edition from the Docker package repository, and enables the ubuntu user to manage Docker without using sudo.
+
+For more information, review the installation guide at https://docs.docker.com/install/linux/docker-ce/ubuntu/.
 
 ---
 
 
 ##### `DOTNET_DESKTOP_RUNTIME_LTS_WINDOWS` <a name="DOTNET_DESKTOP_RUNTIME_LTS_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_DESKTOP_RUNTIME_LTS_WINDOWS"></a>
 
+Installs the latest 8.0 channel release of the Microsoft .NET Desktop Runtime. For more information, see the .NET 8.0 download page at https://dotnet.microsoft.com/download/dotnet/8.0.
+
 ---
 
 
 ##### `DOTNET_HOSTING_BUNDLE_LTS_WINDOWS` <a name="DOTNET_HOSTING_BUNDLE_LTS_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_HOSTING_BUNDLE_LTS_WINDOWS"></a>
+
+Installs the latest 8.0 channel release of the Microsoft .NET Hosting Bundle. For more information, see the .NET 8.0 download page at https://dotnet.microsoft.com/download/dotnet/8.0.
 
 ---
 
 
 ##### `DOTNET_RUNTIME_LTS_LINUX` <a name="DOTNET_RUNTIME_LTS_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_RUNTIME_LTS_LINUX"></a>
 
+Installs the latest 8.0 channel release of the Microsoft .NET Runtime. For more information, see the .NET 8.0 download page at https://dotnet.microsoft.com/download/dotnet/8.0.
+
 ---
 
 
 ##### `DOTNET_RUNTIME_LTS_WINDOWS` <a name="DOTNET_RUNTIME_LTS_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_RUNTIME_LTS_WINDOWS"></a>
+
+Installs the latest 8.0 channel release of the Microsoft .NET Runtime. For more information, see the .NET 8.0 download page at https://dotnet.microsoft.com/download/dotnet/8.0.
 
 ---
 
 
 ##### `DOTNET_SDK_LTS_LINUX` <a name="DOTNET_SDK_LTS_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_SDK_LTS_LINUX"></a>
 
+Installs the latest 8.0 channel release of the Microsoft .NET SDK. For more information, see the .NET 8.0 download page at https://dotnet.microsoft.com/download/dotnet/8.0.
+
 ---
 
 
 ##### `DOTNET_SDK_LTS_WINDOWS` <a name="DOTNET_SDK_LTS_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOTNET_SDK_LTS_WINDOWS"></a>
+
+Installs the latest 8.0 channel release of the Microsoft .NET SDK. For more information, see the .NET 8.0 download page at https://dotnet.microsoft.com/download/dotnet/8.0.
 
 ---
 
 
 ##### `EBS_VOLUME_USAGE_TEST_LINUX` <a name="EBS_VOLUME_USAGE_TEST_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EBS_VOLUME_USAGE_TEST_LINUX"></a>
 
+The EBS volume usage test performs the following actions: 1) It creates an EBS volume and attaches it to the instance.
+
+2) It creates a temporary file on the volume and detaches the volume. 3) It reattaches the volume and validates that the file exists. 4) It detaches and deletes the volume. To perform this test, an IAM policy with the following actions is required: ec2:AttachVolume, ec2:Create Tags, ec2:CreateVolume, ec2:DeleteVolume, ec2:DescribeVolumes, and ec2:DetachVolume.
+
 ---
 
 
 ##### `EBS_VOLUME_USAGE_TEST_WINDOWS` <a name="EBS_VOLUME_USAGE_TEST_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EBS_VOLUME_USAGE_TEST_WINDOWS"></a>
+
+The EBS volume usage test performs the following actions: 1) It creates an EBS volume and attaches it to the instance.
+
+2) It creates a temporary file on the volume and detaches the volume. 3) It reattaches the volume and validates that the file exists. 4) It detaches and deletes the volume. To perform this test, an IAM policy with the following actions is required: ec2:AttachVolume, ec2:Create Tags, ec2:CreateVolume, ec2:DeleteVolume, ec2:DescribeVolumes, and ec2:DetachVolume.
 
 ---
 
 
 ##### `EC2_NETWORK_ROUTE_TEST_WINDOWS` <a name="EC2_NETWORK_ROUTE_TEST_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EC2_NETWORK_ROUTE_TEST_WINDOWS"></a>
 
+Test to ensure all required EC2 network routes exist in the route table.
+
 ---
 
 
 ##### `EC2LAUNCH_V2_WINDOWS` <a name="EC2LAUNCH_V2_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EC2LAUNCH_V2_WINDOWS"></a>
+
+Installs the latest version of EC2Launch v2.
+
+For more information, see the documentation at https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-v2.html.
 
 ---
 
 
 ##### `ECS_OPTIMIZED_AMI_WINDOWS` <a name="ECS_OPTIMIZED_AMI_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ECS_OPTIMIZED_AMI_WINDOWS"></a>
 
+Installs Amazon ECS-optimized Windows artifacts.
+
+This includes latest Amazon ECS Container Agent and Docker CE version 20.10.21.
+
 ---
 
 
 ##### `EKS_OPTIMIZED_AMI_WINDOWS` <a name="EKS_OPTIMIZED_AMI_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EKS_OPTIMIZED_AMI_WINDOWS"></a>
+
+Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.30. This includes kubelet version 1.30.2, containerd version 1.7.14, and CSI Proxy version 1.1.2.
 
 ---
 
 
 ##### `ENI_ATTACHMENT_TEST_LINUX` <a name="ENI_ATTACHMENT_TEST_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ENI_ATTACHMENT_TEST_LINUX"></a>
 
+The ENI attachment test performs the following actions: 1) It creates an elastic network interface (ENI) and attaches it to the instance.
+
+2) It validates that the attached ENI has an IP address. 3) It detaches and deletes the ENI. To perform this test, an IAM policy with the following actions is required: ec2:AttachNetworkInterface, ec2:CreateNetworkInterface, ec2:CreateTags, ec2:DeleteNetworkInterface, ec2:DescribeNetworkInterfaces, ec2:DescribeNetworkInterfaceAttribute, and ec2:DetachNetworkInterface.
+
 ---
 
 
 ##### `ENI_ATTACHMENT_TEST_WINDOWS` <a name="ENI_ATTACHMENT_TEST_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ENI_ATTACHMENT_TEST_WINDOWS"></a>
+
+The ENI attachment test performs the following actions: 1) It creates an elastic network interface (ENI) and attaches it to the instance.
+
+2) It validates that the attached ENI has an IP address. 3) It detaches and deletes the ENI. To perform this test, an IAM policy with the following actions is required: ec2:AttachNetworkInterface, ec2:CreateNetworkInterface, ec2:CreateTags, ec2:DeleteNetworkInterface, ec2:DescribeNetworkInterfaces, ec2:DescribeNetworkInterfaceAttribute, and ec2:DetachNetworkInterface.
 
 ---
 
 
 ##### `GO_STABLE_LINUX` <a name="GO_STABLE_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.GO_STABLE_LINUX"></a>
 
+Installs the latest stable release of the Go programming language using the release information from https://go.dev/dl/.
+
 ---
 
 
 ##### `GO_STABLE_WINDOWS` <a name="GO_STABLE_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.GO_STABLE_WINDOWS"></a>
+
+Installs the latest stable release of the Go programming language using the release information from https://go.dev/dl/.
 
 ---
 
 
 ##### `HELLO_WORLD_LINUX` <a name="HELLO_WORLD_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.HELLO_WORLD_LINUX"></a>
 
+Hello world testing document for Linux.
+
 ---
 
 
 ##### `HELLO_WORLD_WINDOWS` <a name="HELLO_WORLD_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.HELLO_WORLD_WINDOWS"></a>
+
+Hello world testing document for Windows.
 
 ---
 
 
 ##### `INSPECTOR_TEST_LINUX` <a name="INSPECTOR_TEST_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.INSPECTOR_TEST_LINUX"></a>
 
+Performs a Center for Internet Security (CIS) security assessment for an instance, using Amazon Inspector (Inspector).
+
+This component performs the following actions: 1) It installs the Inspector agent. 2) It creates a resource group, assessment target, and assessment template. 3) It runs the assessment and provides a link to the results in the logs and on the Inspector Service console. In order to run successfully, this component requires that the AmazonInspectorFullAccess IAM policy and the ssm:SendCommand and ec2:CreateTags IAM permissions are attached to the instance profile. To find the list of supported Operating Systems and their rules packages, refer to the Inspector documentation https://docs.aws.amazon.com/inspector/v1/userguide/inspector_rule-packages_across_os.html.
+
 ---
 
 
 ##### `INSPECTOR_TEST_WINDOWS` <a name="INSPECTOR_TEST_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.INSPECTOR_TEST_WINDOWS"></a>
+
+Performs a Center for Internet Security (CIS) security assessment for an instance, using Amazon Inspector (Inspector).
+
+This component performs the following actions: 1) It installs the Inspector agent. 2) It creates a resource group, assessment target, and assessment template. 3) It runs the assessment and provides a link to the results in the logs and on the Inspector Service console. In order to run successfully, this component requires that the AmazonInspectorFullAccess IAM policy and the ssm:SendCommand and ec2:CreateTags IAM permissions are attached to the instance profile. To find the list of supported Operating Systems and their rules packages, refer to the Inspector documentation https://docs.aws.amazon.com/inspector/v1/userguide/inspector_rule-packages_across_os.html.
 
 ---
 
 
 ##### `INSTALL_PACKAGE_FROM_REPOSITORY` <a name="INSTALL_PACKAGE_FROM_REPOSITORY" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.INSTALL_PACKAGE_FROM_REPOSITORY"></a>
 
+Installs a package from the Linux repository.
+
 ---
 
 
 ##### `MARIADB_LINUX` <a name="MARIADB_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MARIADB_LINUX"></a>
+
+Installs the MariaDB package using apt, yum, or zypper.
 
 ---
 
 
 ##### `MATE_DE_LINUX` <a name="MATE_DE_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MATE_DE_LINUX"></a>
 
+Installs the MATE Desktop Environment, xrdp, TigerVNC server, and enables the xrdp service.
+
 ---
 
 
 ##### `MONO_LINUX` <a name="MONO_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MONO_LINUX"></a>
+
+Installs the latest version of the Mono framework.
+
+Follows the instructions found at https://www.mono-project.com/.
 
 ---
 
 
 ##### `PHP_8_2_LINUX` <a name="PHP_8_2_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PHP_8_2_LINUX"></a>
 
+Installs PHP 8.2.
+
 ---
 
 
 ##### `POWERSHELL_LTS_LINUX` <a name="POWERSHELL_LTS_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_LTS_LINUX"></a>
+
+Installs the latest LTS 7.4 release of PowerShell following the instructions at https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.4.
 
 ---
 
 
 ##### `POWERSHELL_LTS_WINDOWS` <a name="POWERSHELL_LTS_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_LTS_WINDOWS"></a>
 
+Installs the latest LTS 7.4 release of PowerShell using the MSI installer from the GitHub repository located at https://github.com/PowerShell/PowerShell.
+
 ---
 
 
 ##### `POWERSHELL_SNAP` <a name="POWERSHELL_SNAP" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_SNAP"></a>
+
+Installs the latest version of PowerShell using snap.
 
 ---
 
 
 ##### `POWERSHELL_YUM` <a name="POWERSHELL_YUM" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_YUM"></a>
 
+Installs the latest version of PowerShell from the Microsoft RedHat repository.
+
 ---
 
 
 ##### `PUTTY` <a name="PUTTY" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PUTTY"></a>
+
+Installs the latest version of PuTTY from the 64-bit MSI link on the release page: https://the.earth.li/~sgtatham/putty/latest/w64/.
 
 ---
 
 
 ##### `PYTHON_3_LINUX` <a name="PYTHON_3_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PYTHON_3_LINUX"></a>
 
+Installs the Python 3 package using apt, yum, or zypper.
+
 ---
 
 
 ##### `PYTHON_3_WINDOWS` <a name="PYTHON_3_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PYTHON_3_WINDOWS"></a>
+
+Installs Python 3.8.2 for Windows.
 
 ---
 
 
 ##### `REBOOT_LINUX` <a name="REBOOT_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_LINUX"></a>
 
+Reboots the system.
+
 ---
 
 
 ##### `REBOOT_TEST_LINUX` <a name="REBOOT_TEST_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_TEST_LINUX"></a>
+
+Tests whether the system can reboot successfully.
 
 ---
 
 
 ##### `REBOOT_TEST_WINDOWS` <a name="REBOOT_TEST_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_TEST_WINDOWS"></a>
 
+Tests whether the system can reboot successfully.
+
 ---
 
 
 ##### `REBOOT_WINDOWS` <a name="REBOOT_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_WINDOWS"></a>
+
+Reboots the system.
 
 ---
 
 
 ##### `SAN_SIFT_LINUX` <a name="SAN_SIFT_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SAN_SIFT_LINUX"></a>
 
+Installs SANS SIFT v1.14.0 on Ubuntu, allowing you to leverage a suite of forensics tools. For more information, see https://www.sans.org/tools/sift-workstation/.
+
 ---
 
 
 ##### `SCAP_COMPLIANCE_CHECKER_LINUX` <a name="SCAP_COMPLIANCE_CHECKER_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_LINUX"></a>
+
+Installs and runs SCAP Compliance Checker (SCC) 5.8 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04 with all current STIG Q4 2023 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html.
 
 ---
 
 
 ##### `SCAP_COMPLIANCE_CHECKER_WINDOWS` <a name="SCAP_COMPLIANCE_CHECKER_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_WINDOWS"></a>
 
+Installs and runs SCAP Compliance Checker (SCC) 5.10 for Windows with all current STIG Q3 2024 benchmarks. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-builder-stig.html.
+
 ---
 
 
 ##### `SIMPLE_BOOT_TEST_LINUX` <a name="SIMPLE_BOOT_TEST_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SIMPLE_BOOT_TEST_LINUX"></a>
+
+Executes a simple boot test.
 
 ---
 
 
 ##### `SIMPLE_BOOT_TEST_WINDOWS` <a name="SIMPLE_BOOT_TEST_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SIMPLE_BOOT_TEST_WINDOWS"></a>
 
+Executes a simple boot test.
+
 ---
 
 
 ##### `STIG_BUILD_LINUX_HIGH` <a name="STIG_BUILD_LINUX_HIGH" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_HIGH"></a>
+
+Applies the high, medium, and low severity STIG settings for Red Hat Enterprise Linux (RHEL) to Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, and Ubuntu 22.04 instances. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html.
 
 ---
 
 
 ##### `STIG_BUILD_LINUX_LOW` <a name="STIG_BUILD_LINUX_LOW" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_LOW"></a>
 
+Applies the low severity STIG settings for Red Hat Enterprise Linux (RHEL) to Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, and Ubuntu 22.04 instances. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html.
+
 ---
 
 
 ##### `STIG_BUILD_LINUX_MEDIUM` <a name="STIG_BUILD_LINUX_MEDIUM" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_MEDIUM"></a>
+
+Applies the medium and low severity STIG settings for Red Hat Enterprise Linux (RHEL) to Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, and Ubuntu 22.04 instances. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html.
 
 ---
 
 
 ##### `STIG_BUILD_WINDOWS_HIGH` <a name="STIG_BUILD_WINDOWS_HIGH" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_HIGH"></a>
 
+Applies the high, medium, and low severity STIG settings to Windows instances.
+
+For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-builder-stig.html.
+
 ---
 
 
 ##### `STIG_BUILD_WINDOWS_LOW` <a name="STIG_BUILD_WINDOWS_LOW" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_LOW"></a>
+
+Applies the low severity STIG settings to Windows instances.
+
+For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-builder-stig.html.
 
 ---
 
 
 ##### `STIG_BUILD_WINDOWS_MEDIUM` <a name="STIG_BUILD_WINDOWS_MEDIUM" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_MEDIUM"></a>
 
+Applies the medium and low severity STIG settings to Windows instances.
+
+For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-builder-stig.html.
+
 ---
 
 
 ##### `UPDATE_LINUX_KERNEL_5` <a name="UPDATE_LINUX_KERNEL_5" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_LINUX_KERNEL_5"></a>
+
+Installs the Linux kernel 5.* for Amazon Linux 2 from Amazon Linux Extras.
 
 ---
 
 
 ##### `UPDATE_LINUX_KERNEL_ML` <a name="UPDATE_LINUX_KERNEL_ML" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_LINUX_KERNEL_ML"></a>
 
+Installs the latest mainline release of the Linux kernel for CentOS 7 and Red Hat Enterprise Linux 7 and 8 via the 'kernel-ml' package from https://www.elrepo.org.
+
 ---
 
 
 ##### `UPDATE_LINUX` <a name="UPDATE_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_LINUX"></a>
+
+Updates Linux by installing all available updates via the UpdateOS action module.
 
 ---
 
 
 ##### `UPDATE_WINDOWS` <a name="UPDATE_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_WINDOWS"></a>
 
+Updates Windows with the latest security updates.
+
 ---
 
 
 ##### `VALIDATE_SINGLE_SSH_PUBLIC_KEY_TEST_LINUX` <a name="VALIDATE_SINGLE_SSH_PUBLIC_KEY_TEST_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.VALIDATE_SINGLE_SSH_PUBLIC_KEY_TEST_LINUX"></a>
+
+Ensures the `authorized_keys` file contains only the SSH public key returned from the EC2 Instance Metadata Service.
 
 ---
 
 
 ##### `VALIDATE_SSH_HOST_KEY_GENERATION_LINUX` <a name="VALIDATE_SSH_HOST_KEY_GENERATION_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.VALIDATE_SSH_HOST_KEY_GENERATION_LINUX"></a>
 
+Verifies whether the SSH host key was generated after the latest boot.
+
 ---
 
 
 ##### `VALIDATE_SSH_PUBLIC_KEY_LINUX` <a name="VALIDATE_SSH_PUBLIC_KEY_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.VALIDATE_SSH_PUBLIC_KEY_LINUX"></a>
+
+Ensures the `authorized_keys` file contains the SSH public key returned from the EC2 Instance Metadata Service.
 
 ---
 
 
 ##### `WINDOWS_ACTIVATION_TEST` <a name="WINDOWS_ACTIVATION_TEST" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WINDOWS_ACTIVATION_TEST"></a>
 
+Verifies the Windows license status in the Common Information Model.
+
 ---
 
 
 ##### `WINDOWS_IS_READY_WITH_PASSWORD_GENERATION_TEST` <a name="WINDOWS_IS_READY_WITH_PASSWORD_GENERATION_TEST" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WINDOWS_IS_READY_WITH_PASSWORD_GENERATION_TEST"></a>
+
+Checks the EC2 logs for the statement `Windows is Ready to use` and for the password generation message on Windows Server 2016 and later SKUs.
+
+This component does not support instances launched without an EC2 key pair.
 
 ---
 
 
 ##### `WINDOWS_SERVER_IIS` <a name="WINDOWS_SERVER_IIS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WINDOWS_SERVER_IIS"></a>
 
+Installs the Internet Information Services (IIS) web server and management tools.
+
+The installation is performed by enabling the Windows features built into the Windows operating system.
+
 ---
 
 
 ##### `YUM_REPOSITORY_TEST_LINUX` <a name="YUM_REPOSITORY_TEST_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.YUM_REPOSITORY_TEST_LINUX"></a>
+
+Tests whether yum repository works successfully.
 
 ---
 
