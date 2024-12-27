@@ -19,6 +19,7 @@ import { build, BuildOptions } from 'esbuild';
 const buildDefaults: Partial<BuildOptions> = {
     bundle: true,
     minify: true,
+    platform: 'node',
     tsconfig: 'tsconfig.json'
 };
 
@@ -29,7 +30,8 @@ build({
     ...buildDefaults,
     entryPoints: [
         'src/constructs/ec2-image-builder-start/handler/index.ts',
-        'src/constructs/opensearch-admin-user/handler/on-event/index.ts'
+        'src/constructs/opensearch-admin-user/handler/on-event/index.ts',
+        'src/constructs/friendly-embrace/handler/on-event/index.ts'
     ],
     outdir: 'lib/constructs'
 });

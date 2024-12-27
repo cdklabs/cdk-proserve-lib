@@ -516,6 +516,138 @@ public readonly latestAmi: string;
 ---
 
 
+### FriendlyEmbrace <a name="FriendlyEmbrace" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace"></a>
+
+Friendly Embrace Custom Resource.
+
+A custom resource that is designed remove the "Deadly Embrace" problem that
+occurs when you attempt to update a CloudFormation stack that is exporting
+a resource used by another stack. This custom resource will run after all of
+your stacks have been deployed and remove the dependencies by hardcoding
+each export for all stacks that use it. For this reason, this custom resource
+should run inside of its own stack and should be the last stack that is
+deployed for your application.
+
+> NOTE: You may need to add more permissions to the handler if the custom
+resource cannot update your stacks. You can call upon the `handler` property
+of the class to add more permissions to it.
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+new constructs.FriendlyEmbrace(scope: Construct, id: string, props?: IFriendlyEmbraceProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the custom resource belongs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the custom resource. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps</code> | Metadata for configuring the custom resource. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+Parent to which the custom resource belongs.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+Unique identifier for the custom resource.
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps
+
+Metadata for configuring the custom resource.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.isConstruct"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+constructs.FriendlyEmbrace.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.property.onEventHandler">onEventHandler</a></code> | <code>aws-cdk-lib.aws_lambda_nodejs.NodejsFunction</code> | Handler for the custom resource. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `onEventHandler`<sup>Required</sup> <a name="onEventHandler" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.property.onEventHandler"></a>
+
+```typescript
+public readonly onEventHandler: NodejsFunction;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda_nodejs.NodejsFunction
+
+Handler for the custom resource.
+
+---
+
+
 ### NetworkFirewall <a name="NetworkFirewall" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall"></a>
 
 AWS Network Firewall.
@@ -880,6 +1012,153 @@ The tree node.
 ---
 
 
+### WebApplicationFirewall <a name="WebApplicationFirewall" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall"></a>
+
+WebApplicationFirewall construct represents a WAF (Web Application Firewall) that can be associated with AWS resources like Application Load Balancers.
+
+It allows configuring AWS managed rule groups, logging, and visibility settings.
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+new constructs.WebApplicationFirewall(scope: Construct, id: string, props?: WebApplicationFirewallProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.associate">associate</a></code> | Associates the Web Application Firewall to an applicable resource. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `associate` <a name="associate" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.associate"></a>
+
+```typescript
+public associate(resource: ApplicationLoadBalancer): void
+```
+
+Associates the Web Application Firewall to an applicable resource.
+
+###### `resource`<sup>Required</sup> <a name="resource" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.associate.parameter.resource"></a>
+
+- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.ApplicationLoadBalancer
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.isConstruct"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+constructs.WebApplicationFirewall.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.property.webAcl">webAcl</a></code> | <code>aws-cdk-lib.aws_wafv2.CfnWebACL</code> | The WAF Web ACL (Access Control List) resource. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.LogGroup</code> | Optional CloudWatch log group for WAF logging. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `webAcl`<sup>Required</sup> <a name="webAcl" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.property.webAcl"></a>
+
+```typescript
+public readonly webAcl: CfnWebACL;
+```
+
+- *Type:* aws-cdk-lib.aws_wafv2.CfnWebACL
+
+The WAF Web ACL (Access Control List) resource.
+
+---
+
+##### `logGroup`<sup>Optional</sup> <a name="logGroup" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.property.logGroup"></a>
+
+```typescript
+public readonly logGroup: LogGroup;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.LogGroup
+
+Optional CloudWatch log group for WAF logging.
+
+This is available if you
+have configured `logging` on the construct.
+
+---
+
+
 ## Structs <a name="Structs" id="Structs"></a>
 
 ### AwsCustomResourceLambdaConfiguration <a name="AwsCustomResourceLambdaConfiguration" id="@cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration"></a>
@@ -922,6 +1201,69 @@ public readonly vpc: IVpc;
 - *Type:* aws-cdk-lib.aws_ec2.IVpc
 
 VPC where the Lambda functions will be deployed.
+
+---
+
+### AwsManagedRuleGroupConfig <a name="AwsManagedRuleGroupConfig" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroupConfig"></a>
+
+Configuration interface for AWS Managed Rule Groups.
+
+This interface allows you to specify a managed rule group and optionally
+override the default actions for specific rules within that group.
+
+*Example*
+
+```typescript
+{
+  ruleGroup: AwsManagedRuleGroup.COMMON_RULE_SET,
+  ruleGroupActionOverrides: [
+    {
+      name: 'GenericLFI_QUERYARGUMENTS',
+      action: OverrideAction.ALLOW
+    }
+  ]
+}
+```
+
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroupConfig.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const awsManagedRuleGroupConfig: constructs.WebApplicationFirewall.AwsManagedRuleGroupConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroupConfig.property.ruleGroup">ruleGroup</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup</code> | The AWS Managed Rule Group to apply. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroupConfig.property.ruleGroupActionOverrides">ruleGroupActionOverrides</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideConfig[]</code> | Optional list of rule action overrides. |
+
+---
+
+##### `ruleGroup`<sup>Required</sup> <a name="ruleGroup" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroupConfig.property.ruleGroup"></a>
+
+```typescript
+public readonly ruleGroup: AwsManagedRuleGroup;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup
+
+The AWS Managed Rule Group to apply.
+
+---
+
+##### `ruleGroupActionOverrides`<sup>Optional</sup> <a name="ruleGroupActionOverrides" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroupConfig.property.ruleGroupActionOverrides"></a>
+
+```typescript
+public readonly ruleGroupActionOverrides: OverrideConfig[];
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideConfig[]
+
+Optional list of rule action overrides.
 
 ---
 
@@ -2088,6 +2430,51 @@ Optional Lambda configuration settings.
 
 ---
 
+### OverrideConfig <a name="OverrideConfig" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideConfig"></a>
+
+Configuration for rule overrides.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideConfig.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const overrideConfig: constructs.WebApplicationFirewall.OverrideConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideConfig.property.action">action</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideAction</code> | The action to take for the specific rule. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideConfig.property.name">name</a></code> | <code>string</code> | The name of the specific rule to override. |
+
+---
+
+##### `action`<sup>Required</sup> <a name="action" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideConfig.property.action"></a>
+
+```typescript
+public readonly action: OverrideAction;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideAction
+
+The action to take for the specific rule.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideConfig.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the specific rule to override.
+
+---
+
 ### PasswordParameterProps <a name="PasswordParameterProps" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps"></a>
 
 Properties for the admin user password specific to when the credential is stored in AWS Systems Manager Parameter Store.
@@ -2267,9 +2654,353 @@ This is set to a maximum of 12 hours by default.
 
 ---
 
+### WebApplicationFirewallLoggingConfig <a name="WebApplicationFirewallLoggingConfig" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig"></a>
 
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const webApplicationFirewallLoggingConfig: constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig.property.logGroupNameAffix">logGroupNameAffix</a></code> | <code>string</code> | Log Group name affix to be appended to aws-waf-logs-<affix>. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig.property.encryptionKey">encryptionKey</a></code> | <code>aws-cdk-lib.aws_kms.Key</code> | KMS key to use for encryption of the log group. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig.property.removalPolicy">removalPolicy</a></code> | <code>aws-cdk-lib.RemovalPolicy</code> | Removal policy for the log group. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig.property.retention">retention</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | Retention period for the log group. |
+
+---
+
+##### `logGroupNameAffix`<sup>Required</sup> <a name="logGroupNameAffix" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig.property.logGroupNameAffix"></a>
+
+```typescript
+public readonly logGroupNameAffix: string;
+```
+
+- *Type:* string
+
+Log Group name affix to be appended to aws-waf-logs-<affix>.
+
+---
+
+##### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig.property.encryptionKey"></a>
+
+```typescript
+public readonly encryptionKey: Key;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.Key
+
+KMS key to use for encryption of the log group.
+
+---
+
+##### `removalPolicy`<sup>Optional</sup> <a name="removalPolicy" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig.property.removalPolicy"></a>
+
+```typescript
+public readonly removalPolicy: RemovalPolicy;
+```
+
+- *Type:* aws-cdk-lib.RemovalPolicy
+- *Default:* DESTROY
+
+Removal policy for the log group.
+
+---
+
+##### `retention`<sup>Optional</sup> <a name="retention" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig.property.retention"></a>
+
+```typescript
+public readonly retention: RetentionDays;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.RetentionDays
+- *Default:* ONE_MONTH
+
+Retention period for the log group.
+
+---
+
+### WebApplicationFirewallProps <a name="WebApplicationFirewallProps" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps"></a>
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const webApplicationFirewallProps: constructs.WebApplicationFirewallProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps.property.awsManagedRuleGroups">awsManagedRuleGroups</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroupConfig \| @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup[]</code> | List of AWS Managed Rule Groups to use for the firewall. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps.property.cloudWatchMetricsEnabled">cloudWatchMetricsEnabled</a></code> | <code>boolean</code> | Whether to enable CloudWatch metrics. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps.property.logging">logging</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig</code> | Logging configuration for the firewall. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps.property.sampledRequestsEnabled">sampledRequestsEnabled</a></code> | <code>boolean</code> | Whether to enable sampled requests. |
+
+---
+
+##### `awsManagedRuleGroups`<sup>Optional</sup> <a name="awsManagedRuleGroups" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps.property.awsManagedRuleGroups"></a>
+
+```typescript
+public readonly awsManagedRuleGroups: AwsManagedRuleGroupConfig | AwsManagedRuleGroup[];
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroupConfig | @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup[]
+- *Default:* []
+
+List of AWS Managed Rule Groups to use for the firewall.
+
+---
+
+##### `cloudWatchMetricsEnabled`<sup>Optional</sup> <a name="cloudWatchMetricsEnabled" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps.property.cloudWatchMetricsEnabled"></a>
+
+```typescript
+public readonly cloudWatchMetricsEnabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to enable CloudWatch metrics.
+
+---
+
+##### `logging`<sup>Optional</sup> <a name="logging" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps.property.logging"></a>
+
+```typescript
+public readonly logging: WebApplicationFirewallLoggingConfig;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.WebApplicationFirewallLoggingConfig
+
+Logging configuration for the firewall.
+
+---
+
+##### `sampledRequestsEnabled`<sup>Optional</sup> <a name="sampledRequestsEnabled" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps.property.sampledRequestsEnabled"></a>
+
+```typescript
+public readonly sampledRequestsEnabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to enable sampled requests.
+
+---
+
+
+## Protocols <a name="Protocols" id="Protocols"></a>
+
+### IFriendlyEmbraceProps <a name="IFriendlyEmbraceProps" id="@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps"></a>
+
+- *Implemented By:* @cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps
+
+Input metadata for the custom resource.
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the worker's environment. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps.property.ignoreInvalidStates">ignoreInvalidStates</a></code> | <code>boolean</code> | Whether or not stacks in error state should be fatal to CR completion. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Encryption key for protecting the worker's environment.
+
+---
+
+##### `ignoreInvalidStates`<sup>Optional</sup> <a name="ignoreInvalidStates" id="@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps.property.ignoreInvalidStates"></a>
+
+```typescript
+public readonly ignoreInvalidStates: boolean;
+```
+
+- *Type:* boolean
+
+Whether or not stacks in error state should be fatal to CR completion.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
 
 ## Enums <a name="Enums" id="Enums"></a>
+
+### AwsManagedRuleGroup <a name="AwsManagedRuleGroup" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup"></a>
+
+WAF Managed Rule Groups.
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.COMMON_RULE_SET">COMMON_RULE_SET</a></code> | Contains rules that are generally applicable to web applications. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ADMIN_PROTECTION_RULE_SET">ADMIN_PROTECTION_RULE_SET</a></code> | Contains rules that allow you to block external access to exposed admin pages. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.KNOWN_BAD_INPUTS_RULE_SET">KNOWN_BAD_INPUTS_RULE_SET</a></code> | Contains rules that allow you to block request patterns that are known to be invalid and are associated with exploitation or discovery of vulnerabilities. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.SQL_DATABASE_RULE_SET">SQL_DATABASE_RULE_SET</a></code> | Contains rules that allow you to block request patterns associated with exploitation of SQL databases, like SQL injection attacks. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.LINUX_RULE_SET">LINUX_RULE_SET</a></code> | Contains rules that block request patterns associated with exploitation of vulnerabilities specific to Linux, including LFI attacks. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.UNIX_RULE_SET">UNIX_RULE_SET</a></code> | Contains rules that block request patterns associated with exploiting vulnerabilities specific to POSIX/POSIX-like OS, including LFI attacks. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.WINDOWS_RULE_SET">WINDOWS_RULE_SET</a></code> | Contains rules that block request patterns associated with exploiting vulnerabilities specific to Windows, (e.g., PowerShell commands). This can help prevent exploits that allow attacker to run unauthorized commands or execute malicious code. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.PHP_RULE_SET">PHP_RULE_SET</a></code> | Contains rules that block request patterns associated with exploiting vulnerabilities specific to the use of the PHP, including injection of unsafe PHP functions. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.WORD_PRESS_RULE_SET">WORD_PRESS_RULE_SET</a></code> | The WordPress Applications group contains rules that block request patterns associated with the exploitation of vulnerabilities specific to WordPress sites. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.AMAZON_IP_REPUTATION_LIST">AMAZON_IP_REPUTATION_LIST</a></code> | This group contains rules that are based on Amazon threat intelligence. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ANONYMOUS_IP_LIST">ANONYMOUS_IP_LIST</a></code> | This group contains rules that allow you to block requests from services that allow obfuscation of viewer identity. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.BOT_CONTROL_RULE_SET">BOT_CONTROL_RULE_SET</a></code> | Provides protection against automated bots that can consume excess resources, skew business metrics, cause downtime, or perform malicious activities. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ATP_RULE_SET">ATP_RULE_SET</a></code> | Provides protection for your login page against stolen credentials, credential stuffing attacks, brute force login attempts, and other anomalous login activities. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ACFP_RULE_SET">ACFP_RULE_SET</a></code> | Provides protection against the creation of fraudulent accounts on your site. |
+
+---
+
+##### `COMMON_RULE_SET` <a name="COMMON_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.COMMON_RULE_SET"></a>
+
+Contains rules that are generally applicable to web applications.
+
+This provides protection against exploitation of a wide range of vulnerabilities, including those described in OWASP publications.
+
+---
+
+
+##### `ADMIN_PROTECTION_RULE_SET` <a name="ADMIN_PROTECTION_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ADMIN_PROTECTION_RULE_SET"></a>
+
+Contains rules that allow you to block external access to exposed admin pages.
+
+This may be useful if you are running third-party software or would like to reduce the risk of a malicious actor gaining administrative access to your application.
+
+---
+
+
+##### `KNOWN_BAD_INPUTS_RULE_SET` <a name="KNOWN_BAD_INPUTS_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.KNOWN_BAD_INPUTS_RULE_SET"></a>
+
+Contains rules that allow you to block request patterns that are known to be invalid and are associated with exploitation or discovery of vulnerabilities.
+
+This can help reduce the risk of a malicious actor discovering a vulnerable application.
+
+---
+
+
+##### `SQL_DATABASE_RULE_SET` <a name="SQL_DATABASE_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.SQL_DATABASE_RULE_SET"></a>
+
+Contains rules that allow you to block request patterns associated with exploitation of SQL databases, like SQL injection attacks.
+
+This can help prevent remote injection of unauthorized queries.
+
+---
+
+
+##### `LINUX_RULE_SET` <a name="LINUX_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.LINUX_RULE_SET"></a>
+
+Contains rules that block request patterns associated with exploitation of vulnerabilities specific to Linux, including LFI attacks.
+
+This can help prevent attacks that expose file contents or execute code for which the attacker should not have had access.
+
+---
+
+
+##### `UNIX_RULE_SET` <a name="UNIX_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.UNIX_RULE_SET"></a>
+
+Contains rules that block request patterns associated with exploiting vulnerabilities specific to POSIX/POSIX-like OS, including LFI attacks.
+
+This can help prevent attacks that expose file contents or execute code for which access should not been allowed.
+
+---
+
+
+##### `WINDOWS_RULE_SET` <a name="WINDOWS_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.WINDOWS_RULE_SET"></a>
+
+Contains rules that block request patterns associated with exploiting vulnerabilities specific to Windows, (e.g., PowerShell commands). This can help prevent exploits that allow attacker to run unauthorized commands or execute malicious code.
+
+---
+
+
+##### `PHP_RULE_SET` <a name="PHP_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.PHP_RULE_SET"></a>
+
+Contains rules that block request patterns associated with exploiting vulnerabilities specific to the use of the PHP, including injection of unsafe PHP functions.
+
+This can help prevent exploits that allow an attacker to remotely execute code or commands.
+
+---
+
+
+##### `WORD_PRESS_RULE_SET` <a name="WORD_PRESS_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.WORD_PRESS_RULE_SET"></a>
+
+The WordPress Applications group contains rules that block request patterns associated with the exploitation of vulnerabilities specific to WordPress sites.
+
+---
+
+
+##### `AMAZON_IP_REPUTATION_LIST` <a name="AMAZON_IP_REPUTATION_LIST" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.AMAZON_IP_REPUTATION_LIST"></a>
+
+This group contains rules that are based on Amazon threat intelligence.
+
+This is useful if you would like to block sources associated with bots or other threats.
+
+---
+
+
+##### `ANONYMOUS_IP_LIST` <a name="ANONYMOUS_IP_LIST" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ANONYMOUS_IP_LIST"></a>
+
+This group contains rules that allow you to block requests from services that allow obfuscation of viewer identity.
+
+This can include request originating from VPN, proxies, Tor nodes, and hosting providers. This is useful if you want to filter out viewers that may be trying to hide their identity from your application.
+
+---
+
+
+##### `BOT_CONTROL_RULE_SET` <a name="BOT_CONTROL_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.BOT_CONTROL_RULE_SET"></a>
+
+Provides protection against automated bots that can consume excess resources, skew business metrics, cause downtime, or perform malicious activities.
+
+Bot Control provides additional visibility through Amazon CloudWatch and generates labels that you can use to control bot traffic to your applications.
+
+---
+
+
+##### `ATP_RULE_SET` <a name="ATP_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ATP_RULE_SET"></a>
+
+Provides protection for your login page against stolen credentials, credential stuffing attacks, brute force login attempts, and other anomalous login activities.
+
+With account takeover prevention, you can prevent unauthorized access that may lead to fraudulent activities, or inform legitimate users to take a preventive action.
+
+---
+
+
+##### `ACFP_RULE_SET` <a name="ACFP_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ACFP_RULE_SET"></a>
+
+Provides protection against the creation of fraudulent accounts on your site.
+
+Fraudulent accounts can be used for activities such as obtaining sign-up bonuses and impersonating legitimate users.
+
+---
+
 
 ### Component <a name="Component" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component"></a>
 
@@ -3193,6 +3924,35 @@ A stateful rule sends alerts for the rule actions DROP, ALERT, and REJECT. For m
 
 
 ##### `AMAZON_LINUX_2023` <a name="AMAZON_LINUX_2023" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2023"></a>
+
+---
+
+
+### OverrideAction <a name="OverrideAction" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideAction"></a>
+
+Enum representing possible override actions for WAF rules.
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideAction.ALLOW">ALLOW</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideAction.BLOCK">BLOCK</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideAction.COUNT">COUNT</a></code> | *No description.* |
+
+---
+
+##### `ALLOW` <a name="ALLOW" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideAction.ALLOW"></a>
+
+---
+
+
+##### `BLOCK` <a name="BLOCK" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideAction.BLOCK"></a>
+
+---
+
+
+##### `COUNT` <a name="COUNT" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideAction.COUNT"></a>
 
 ---
 

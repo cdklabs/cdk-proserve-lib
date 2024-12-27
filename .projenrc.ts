@@ -25,11 +25,14 @@ import {
 /**
  * Dependencies
  */
+const sdkVersion = '3.600.0';
 const deps = [
-    '@aws-sdk/client-secrets-manager@3.600.0',
-    '@aws-sdk/client-ssm@3.600.0',
-    '@aws-sdk/client-opensearch@3.600.0',
-    '@aws-sdk/client-imagebuilder@3.600.0',
+    `@aws-sdk/client-secrets-manager@${sdkVersion}`,
+    `@aws-sdk/client-ssm@${sdkVersion}`,
+    `@aws-sdk/client-opensearch@${sdkVersion}`,
+    `@aws-sdk/client-imagebuilder@${sdkVersion}`,
+    `@aws-sdk/client-cloudformation@${sdkVersion}`,
+    `@aws-sdk/client-s3@${sdkVersion}`,
     '@types/aws-lambda@8.10.141',
     'axios@1.7.7'
 ];
@@ -296,7 +299,8 @@ project.tasks.tryFind('rosetta:extract')?.updateStep(0, {
  * Set minimum package versions across dependency chain
  */
 project.package.addPackageResolutions(
-    'cross-spawn@>7.0.5' // grype finding nov24
+    'cross-spawn@^7.0.5', // grype finding nov24
+    'jsii@^5.7.3' // grype finding dec24
 );
 
 project.synth();

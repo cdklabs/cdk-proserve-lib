@@ -130,12 +130,22 @@
       "type": "build"
     },
     {
+      "name": "@aws-sdk/client-cloudformation",
+      "version": "3.600.0",
+      "type": "bundled"
+    },
+    {
       "name": "@aws-sdk/client-imagebuilder",
       "version": "3.600.0",
       "type": "bundled"
     },
     {
       "name": "@aws-sdk/client-opensearch",
+      "version": "3.600.0",
+      "type": "bundled"
+    },
+    {
+      "name": "@aws-sdk/client-s3",
       "version": "3.600.0",
       "type": "bundled"
     },
@@ -171,7 +181,12 @@
     },
     {
       "name": "cross-spawn",
-      "version": ">7.0.5",
+      "version": "^7.0.5",
+      "type": "override"
+    },
+    {
+      "name": "jsii",
+      "version": "^5.7.3",
       "type": "override"
     },
     {
@@ -185,12 +200,22 @@
       "type": "peer"
     },
     {
+      "name": "@aws-sdk/client-cloudformation",
+      "version": "3.600.0",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-sdk/client-imagebuilder",
       "version": "3.600.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/client-opensearch",
+      "version": "3.600.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-sdk/client-s3",
       "version": "3.600.0",
       "type": "runtime"
     },
