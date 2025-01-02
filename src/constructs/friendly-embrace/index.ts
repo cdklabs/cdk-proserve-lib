@@ -11,6 +11,7 @@
  *  and limitations under the License.
  */
 
+import { join } from 'node:path';
 import { Aws, CustomResource, Duration } from 'aws-cdk-lib';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
@@ -25,10 +26,9 @@ import {
 } from 'aws-cdk-lib/aws-s3';
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct, IConstruct } from 'constructs';
-import { join } from 'node:path';
 import { DefaultConfig } from '../../common/default-config';
 import { LambdaConfiguration } from '../../interfaces';
-import { SecureFunction } from '../secure/function';
+import { SecureFunction } from '../secure-function';
 import { ResourceProperties } from './handler/types/resource-properties';
 
 interface IProviderResources {

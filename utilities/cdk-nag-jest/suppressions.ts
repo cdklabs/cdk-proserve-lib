@@ -13,7 +13,7 @@
 
 import { Stack } from 'aws-cdk-lib';
 import { NagSuppressions } from 'cdk-nag';
-import { SecureFunction } from '../../src/constructs/secure/function';
+import { SecureFunction } from '../../src/constructs/secure-function';
 
 /**
  * Adds common suppressions to the entire stack.

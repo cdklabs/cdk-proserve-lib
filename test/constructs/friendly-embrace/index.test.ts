@@ -14,12 +14,12 @@
 import { App, Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { Key } from 'aws-cdk-lib/aws-kms';
+import { NagSuppressions } from 'cdk-nag';
 import { FriendlyEmbrace } from '../../../src/constructs/friendly-embrace';
 import {
     getTemplateWithCdkNag,
     validateNoCdkNagFindings
 } from '../../../utilities/cdk-nag-jest';
-import { NagSuppressions } from 'cdk-nag';
 
 const constructName = 'FriendlyEmbrace';
 

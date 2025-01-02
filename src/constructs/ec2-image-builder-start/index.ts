@@ -31,7 +31,7 @@ import { Construct } from 'constructs';
 import { DefaultConfig } from '../../common/default-config';
 import { validate, ValidationTypes } from '../../common/validate';
 import { LambdaConfiguration } from '../../interfaces/lambda-configuration';
-import { SecureFunction } from '../secure/function';
+import { SecureFunction } from '../secure-function';
 
 /**
  * Properties for the EC2 Image Builder Start custom resource

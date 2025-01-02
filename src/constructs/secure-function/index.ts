@@ -18,6 +18,11 @@ import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
 import { DefaultConfig } from '../../common/default-config';
 
+/**
+ * Properties for creating a SecureFunction
+ * Extends FunctionProps from AWS Lambda Function to include additional
+ * configurations.
+ */
 export interface SecureFunctionProps extends FunctionProps {
     /**
      * Optional retention period for the Lambda functions log group.
@@ -31,11 +36,29 @@ export interface SecureFunctionProps extends FunctionProps {
     readonly encryption?: IKey;
 }
 
+/**
+ * This construct creates a Lambda Function, IAM Role and Log Group and grants
+ * specific permissions for the Lambda to write to the created Log Group. This
+ * improves the baseline functionality of the Lambda function, as the original
+ * implementation grants permissions to wildcard (*) logs. In addition, this
+ * construct will set some sane defaults such as a default retention period of
+ * 1 month for the log group and set the reserved concurrent executions to 5
+ * instead of using the account limit.
+ */
 export class SecureFunction extends Construct {
+    /** The Lambda function instance */
     public readonly function: Function;
+    /** The CloudWatch log group for the Lambda function */
     public readonly logGroup: LogGroup;
+    /** The IAM role assigned to the Lambda function */
     public readonly role: Role;
 
+    /**
+     * Creates a new SecureFunction
+     * @param scope The construct scope
+     * @param id The construct ID
+     * @param props Configuration properties for the secure function
+     */
     constructor(scope: Construct, id: string, props: SecureFunctionProps) {
         super(scope, id);
 

@@ -22,7 +22,7 @@ import { IParameter } from 'aws-cdk-lib/aws-ssm';
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 import { LambdaConfiguration } from '../../interfaces';
-import { SecureFunction } from '../secure/function';
+import { SecureFunction } from '../secure-function';
 import { ResourceProperties } from './handler/types/resource-properties';
 
 /**
