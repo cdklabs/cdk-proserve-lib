@@ -100,6 +100,7 @@ const project = new CdklabsConstructLibrary({
 project.addFields({
     exports: {
         '.': './index.js',
+        './aspects': './aspects/index.js',
         './constructs': './constructs/index.js',
         './interfaces': './interfaces/index.js',
         './patterns': './patterns/index.js'
@@ -109,6 +110,7 @@ project.addFields({
         'API.md',
         'index.js',
         'index.d.ts',
+        'aspects/**/*',
         'common/**/*',
         'constructs/**/*',
         'interfaces/**/*',

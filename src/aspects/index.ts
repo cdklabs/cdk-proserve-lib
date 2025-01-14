@@ -11,7 +11,7 @@
  *  and limitations under the License.
  */
 
-export * as aspects from './aspects';
-export * as constructs from './constructs';
-export * as interfaces from './interfaces';
-export * as patterns from './patterns';
+export * from './apply-removal-policy';
+export * from './create-lambda-log-group';
+export * from './set-log-retention';
+export * from './sqs-require-ssl';
