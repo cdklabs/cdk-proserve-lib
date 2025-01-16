@@ -11,9 +11,9 @@
  *  and limitations under the License.
  */
 
+import { Stack } from 'aws-cdk-lib';
 import { Annotations, Match } from 'aws-cdk-lib/assertions';
 import { CdkNagError } from './error';
-import { Stack } from 'aws-cdk-lib';
 
 /**
  * Validates that there are no CDK Nag Findings for a given stack. This function

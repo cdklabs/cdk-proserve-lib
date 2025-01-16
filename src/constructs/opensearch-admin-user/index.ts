@@ -177,7 +177,7 @@ export class OpenSearchAdminUser extends Construct {
             props.credential.secret.grantRead(provider.onEventHandler);
 
             if (props.credential.encryption) {
-                props.credential.encryption.grantEncryptDecrypt(
+                props.credential.encryption.grantDecrypt(
                     provider.onEventHandler
                 );
             }

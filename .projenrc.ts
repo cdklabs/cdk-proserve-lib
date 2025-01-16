@@ -27,6 +27,7 @@ import {
  */
 const sdkVersion = '3.600.0';
 const deps = [
+    `@aws-sdk/client-iam@${sdkVersion}`,
     `@aws-sdk/client-secrets-manager@${sdkVersion}`,
     `@aws-sdk/client-ssm@${sdkVersion}`,
     `@aws-sdk/client-opensearch@${sdkVersion}`,
@@ -34,7 +35,8 @@ const deps = [
     `@aws-sdk/client-cloudformation@${sdkVersion}`,
     `@aws-sdk/client-s3@${sdkVersion}`,
     '@types/aws-lambda@8.10.141',
-    'axios@1.7.7'
+    'axios@1.7.7',
+    'uuid@11.0.3'
 ];
 
 /**
@@ -48,14 +50,19 @@ const project = new CdklabsConstructLibrary({
     defaultReleaseBranch: 'main',
     deps: deps,
     bundledDeps: deps,
+    rosettaOptions: {
+        strict: false
+    },
     devDeps: [
         'aws-sdk-client-mock',
+        'aws-sdk-client-mock-jest',
         'cdklabs-projen-project-types',
         'cloudform-types',
         'esbuild',
         'husky',
         'lint-staged',
         '@aws-sdk/client-wafv2',
+        '@types/uuid',
         'cdk-nag@2.34.0'
     ],
     name: '@cdklabs/cdk-proserve-lib',

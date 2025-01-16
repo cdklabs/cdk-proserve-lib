@@ -42,6 +42,11 @@ export const mockResourceProperties: ResourceProperties = {
 };
 
 /**
+ * Mock response physical ID
+ */
+const physicalId = 'physical-id-not-used';
+
+/**
  * Mock CREATE event for the custom resource
  */
 export const mockCreateEvent: CloudFormationCustomResourceCreateEvent<ResourceProperties> =
@@ -52,7 +57,7 @@ export const mockCreateEvent: CloudFormationCustomResourceCreateEvent<ResourcePr
  */
 export const mockUpdateEvent: CloudFormationCustomResourceUpdateEvent<ResourceProperties> =
     buildMockUpdateEvent(
-        'unused',
+        physicalId,
         resourceType,
         {
             stackNames: [mockStackName],
@@ -67,7 +72,7 @@ export const mockUpdateEvent: CloudFormationCustomResourceUpdateEvent<ResourcePr
  */
 export const mockRollbackEvent: CloudFormationCustomResourceUpdateEvent<ResourceProperties> =
     buildMockUpdateEvent(
-        'unused',
+        physicalId,
         resourceType,
         {
             stackNames: [mockStackName],
@@ -80,4 +85,4 @@ export const mockRollbackEvent: CloudFormationCustomResourceUpdateEvent<Resource
  * Mock DELETE event for the custom resource
  */
 export const mockDeleteEvent: CloudFormationCustomResourceDeleteEvent<ResourceProperties> =
-    buildMockDeleteEvent('unused', resourceType, mockResourceProperties);
+    buildMockDeleteEvent(physicalId, resourceType, mockResourceProperties);

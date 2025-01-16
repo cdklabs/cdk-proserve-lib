@@ -648,6 +648,133 @@ Handler for the custom resource.
 ---
 
 
+### IamServerCertificate <a name="IamServerCertificate" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate"></a>
+
+A construct that creates a Custom Resource to manage an AWS Identity and Access Management Server Certificate for use in regions/partitions where AWS Certificate Manager is not available.
+
+This construct allows you to create an IAM Server Certificate using a certificate and private key stored in either
+AWS Systems Manager Parameter Store or AWS Secrets Manager. It uses a Custom Resource to manage the lifecycle of the
+server certificate.
+
+The construct also handles encryption for the framework resources using either a provided KMS key or an
+AWS managed key.
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+new constructs.IamServerCertificate(scope: Construct, id: string, props: IamServerCertificateProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the Custom Resource belongs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for this instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps</code> | Metadata for configuring the Custom Resource. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+Parent to which the Custom Resource belongs.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+Unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps
+
+Metadata for configuring the Custom Resource.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.isConstruct"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+constructs.IamServerCertificate.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.property.arn">arn</a></code> | <code>string</code> | ARN for the created AWS IAM Server Certificate. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `arn`<sup>Required</sup> <a name="arn" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.property.arn"></a>
+
+```typescript
+public readonly arn: string;
+```
+
+- *Type:* string
+
+ARN for the created AWS IAM Server Certificate.
+
+---
+
+
 ### NetworkFirewall <a name="NetworkFirewall" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall"></a>
 
 AWS Network Firewall.
@@ -1242,21 +1369,6 @@ Configuration interface for AWS Managed Rule Groups.
 
 This interface allows you to specify a managed rule group and optionally
 override the default actions for specific rules within that group.
-
-*Example*
-
-```typescript
-{
-  ruleGroup: AwsManagedRuleGroup.COMMON_RULE_SET,
-  ruleGroupActionOverrides: [
-    {
-      name: 'GenericLFI_QUERYARGUMENTS',
-      action: OverrideAction.ALLOW
-    }
-  ]
-}
-```
-
 
 #### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroupConfig.Initializer"></a>
 
@@ -2020,6 +2132,90 @@ Optional Lambda configuration settings.
 
 ---
 
+### IamServerCertificateProps <a name="IamServerCertificateProps" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps"></a>
+
+Properties for the IamServerCertificate construct.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const iamServerCertificateProps: constructs.IamServerCertificateProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.certificate">certificate</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps \| @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps</code> | AWS Systems Manager parameter or AWS Secrets Manager secret which contains the public certificate. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.prefix">prefix</a></code> | <code>string</code> | Prefix to prepend to the AWS IAM Server Certificate name. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.privateKey">privateKey</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps \| @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps</code> | AWS Systems Manager parameter or AWS Secrets Manager secret which contains the private key. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the framework resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+
+---
+
+##### `certificate`<sup>Required</sup> <a name="certificate" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.certificate"></a>
+
+```typescript
+public readonly certificate: ParameterProps | SecretProps;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps | @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps
+
+AWS Systems Manager parameter or AWS Secrets Manager secret which contains the public certificate.
+
+---
+
+##### `prefix`<sup>Required</sup> <a name="prefix" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.prefix"></a>
+
+```typescript
+public readonly prefix: string;
+```
+
+- *Type:* string
+
+Prefix to prepend to the AWS IAM Server Certificate name.
+
+---
+
+##### `privateKey`<sup>Required</sup> <a name="privateKey" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.privateKey"></a>
+
+```typescript
+public readonly privateKey: ParameterProps | SecretProps;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps | @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps
+
+AWS Systems Manager parameter or AWS Secrets Manager secret which contains the private key.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Encryption key for protecting the framework resources.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
+
 ### LambdaConfiguration <a name="LambdaConfiguration" id="@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration"></a>
 
 #### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration.Initializer"></a>
@@ -2578,6 +2774,38 @@ The name of the specific rule to override.
 
 ---
 
+### ParameterProps <a name="ParameterProps" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps"></a>
+
+Properties for a server certificate element when it is stored in AWS Systems Manager Parameter Store.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const parameterProps: constructs.IamServerCertificate.ParameterProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps.property.parameter">parameter</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | Reference to the AWS Systems Manager Parameter Store parameter that contains the data. |
+
+---
+
+##### `parameter`<sup>Required</sup> <a name="parameter" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps.property.parameter"></a>
+
+```typescript
+public readonly parameter: IParameter;
+```
+
+- *Type:* aws-cdk-lib.aws_ssm.IParameter
+
+Reference to the AWS Systems Manager Parameter Store parameter that contains the data.
+
+---
+
 ### PasswordParameterProps <a name="PasswordParameterProps" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps"></a>
 
 Properties for the admin user password specific to when the credential is stored in AWS Systems Manager Parameter Store.
@@ -2644,6 +2872,51 @@ Reference to the AWS Secrets Manager secret that contains the admin credential.
 ---
 
 ##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional encryption key that protects the secret.
+
+---
+
+### SecretProps <a name="SecretProps" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps"></a>
+
+Properties for a server certificate element when it is stored in AWS Secrets Manager.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const secretProps: constructs.IamServerCertificate.SecretProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Reference to the AWS Secrets Manager secret that contains the data. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
+
+---
+
+##### `secret`<sup>Required</sup> <a name="secret" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.secret"></a>
+
+```typescript
+public readonly secret: ISecret;
+```
+
+- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
+
+Reference to the AWS Secrets Manager secret that contains the data.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.encryption"></a>
 
 ```typescript
 public readonly encryption: IKey;

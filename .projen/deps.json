@@ -14,6 +14,10 @@
       "type": "build"
     },
     {
+      "name": "@types/uuid",
+      "type": "build"
+    },
+    {
       "name": "@typescript-eslint/eslint-plugin",
       "version": "^7",
       "type": "build"
@@ -25,6 +29,10 @@
     },
     {
       "name": "aws-sdk-client-mock",
+      "type": "build"
+    },
+    {
+      "name": "aws-sdk-client-mock-jest",
       "type": "build"
     },
     {
@@ -135,6 +143,11 @@
       "type": "bundled"
     },
     {
+      "name": "@aws-sdk/client-iam",
+      "version": "3.600.0",
+      "type": "bundled"
+    },
+    {
       "name": "@aws-sdk/client-imagebuilder",
       "version": "3.600.0",
       "type": "bundled"
@@ -167,6 +180,11 @@
     {
       "name": "axios",
       "version": "1.7.7",
+      "type": "bundled"
+    },
+    {
+      "name": "uuid",
+      "version": "11.0.3",
       "type": "bundled"
     },
     {
@@ -205,6 +223,11 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-sdk/client-iam",
+      "version": "3.600.0",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-sdk/client-imagebuilder",
       "version": "3.600.0",
       "type": "runtime"
@@ -237,6 +260,11 @@
     {
       "name": "axios",
       "version": "1.7.7",
+      "type": "runtime"
+    },
+    {
+      "name": "uuid",
+      "version": "11.0.3",
       "type": "runtime"
     }
   ],

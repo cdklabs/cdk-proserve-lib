@@ -328,17 +328,6 @@ export namespace WebApplicationFirewall {
      *
      * This interface allows you to specify a managed rule group and optionally
      * override the default actions for specific rules within that group.
-     *
-     * @example
-     * {
-     *   ruleGroup: AwsManagedRuleGroup.COMMON_RULE_SET,
-     *   ruleGroupActionOverrides: [
-     *     {
-     *       name: 'GenericLFI_QUERYARGUMENTS',
-     *       action: OverrideAction.ALLOW
-     *     }
-     *   ]
-     * }
      */
     export interface AwsManagedRuleGroupConfig {
         /**

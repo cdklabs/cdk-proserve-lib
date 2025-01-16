@@ -11,12 +11,12 @@
  *  and limitations under the License.
  */
 
-export * from './ec2-image-builder-get-image';
-export * from './ec2-image-builder-start';
-export * from './ec2-image-pipeline';
-export * from './friendly-embrace';
-export * from './iam-server-certificate';
-export * from './network-firewall';
-export * from './network-firewall-endpoints';
-export * from './opensearch-admin-user';
-export * from './web-application-firewall';
+/**
+ * Response data for the Custom Resource
+ */
+export interface ResponseData {
+    /**
+     * ARN for the provisioned AWS IAM Server Certificate
+     */
+    readonly Arn: string;
+}

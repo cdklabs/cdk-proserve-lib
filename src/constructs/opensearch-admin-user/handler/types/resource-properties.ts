@@ -32,7 +32,7 @@ export interface ResourceProperties {
     readonly PasswordParameterName?: string;
 
     /**
-     * Name of the AWS Secrets Manager secret that contains the admin user password
+     * ARN of the AWS Secrets Manager secret that contains the admin user password
      * Either this or the `PasswordParameterName` must be specified
      */
     readonly PasswordSecretArn?: string;

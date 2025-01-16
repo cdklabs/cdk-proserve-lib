@@ -278,14 +278,8 @@ describeCdkTest(OpenSearchAdminUser, (id, getStack, getTemplate) => {
                             'secretsmanager:GetSecretValue'
                         ])
                     }),
-
                     Match.objectLike({
-                        Action: [
-                            'kms:Decrypt',
-                            'kms:Encrypt',
-                            'kms:ReEncrypt*',
-                            'kms:GenerateDataKey*'
-                        ],
+                        Action: 'kms:Decrypt',
                         Effect: 'Allow',
                         Resource: {
                             'Fn::GetAtt': [
