@@ -18,14 +18,9 @@ import * as elbv2 from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import * as logs from 'aws-cdk-lib/aws-logs';
 import { WebApplicationFirewall } from '../../../src/constructs/web-application-firewall';
-import {
-    getTemplateWithCdkNag,
-    validateNoCdkNagFindings
-} from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-const constructName = 'WebApplicationFirewall';
-
-describe(constructName, () => {
+describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
     let stack: Stack;
     let vpc: Vpc;
     let key: Key;
@@ -33,7 +28,7 @@ describe(constructName, () => {
 
     beforeEach(() => {
         // Arrange
-        stack = new Stack();
+        stack = getStack();
         vpc = new Vpc(stack, 'TestVpc');
         key = new Key(stack, 'TestKey');
         loggingConfig = {
@@ -44,20 +39,16 @@ describe(constructName, () => {
         };
     });
 
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
-    });
-
     test('creates WAF with CloudWatch metrics and sampled requests enabled', () => {
         // Act
-        new WebApplicationFirewall(stack, constructName, {
+        new WebApplicationFirewall(stack, id, {
             cloudWatchMetricsEnabled: true,
             sampledRequestsEnabled: true,
             logging: loggingConfig
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::WAFv2::WebACL', {
             VisibilityConfig: {
                 CloudWatchMetricsEnabled: true,
@@ -68,12 +59,12 @@ describe(constructName, () => {
 
     test('creates WAF with no rules', () => {
         // Act
-        new WebApplicationFirewall(stack, constructName, {
+        new WebApplicationFirewall(stack, id, {
             logging: loggingConfig
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::WAFv2::WebACL', {
             Rules: []
         });
@@ -81,14 +72,14 @@ describe(constructName, () => {
 
     test('creates WAF with visibility config', () => {
         // Act
-        new WebApplicationFirewall(stack, constructName, {
+        new WebApplicationFirewall(stack, id, {
             cloudWatchMetricsEnabled: true,
             sampledRequestsEnabled: true,
             logging: loggingConfig
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::WAFv2::WebACL', {
             VisibilityConfig: {
                 CloudWatchMetricsEnabled: true,
@@ -99,12 +90,12 @@ describe(constructName, () => {
 
     test('creates basic WAF with default configuration', () => {
         // Act
-        new WebApplicationFirewall(stack, constructName, {
+        new WebApplicationFirewall(stack, id, {
             logging: loggingConfig
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::WAFv2::WebACL', {
             DefaultAction: {
                 Allow: {}
@@ -119,7 +110,7 @@ describe(constructName, () => {
 
     test('creates WAF with AWS managed rules', () => {
         // Act
-        new WebApplicationFirewall(stack, constructName, {
+        new WebApplicationFirewall(stack, id, {
             awsManagedRuleGroups: [
                 WebApplicationFirewall.AwsManagedRuleGroup.COMMON_RULE_SET,
                 WebApplicationFirewall.AwsManagedRuleGroup.SQL_DATABASE_RULE_SET
@@ -128,7 +119,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::WAFv2::WebACL', {
             Rules: [
                 {
@@ -159,26 +150,26 @@ describe(constructName, () => {
 
     test('creates WAF with logging configuration', () => {
         // Act
-        new WebApplicationFirewall(stack, constructName, {
+        new WebApplicationFirewall(stack, id, {
             logging: loggingConfig
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::Logs::LogGroup', {
             LogGroupName: 'aws-waf-logs-test-logs',
             RetentionInDays: 30
         });
         template.hasResourceProperties('AWS::WAFv2::LoggingConfiguration', {
             LogDestinationConfigs: [
-                { 'Fn::GetAtt': [Match.stringLikeRegexp(constructName), 'Arn'] }
+                { 'Fn::GetAtt': [Match.stringLikeRegexp(id), 'Arn'] }
             ]
         });
     });
 
     test('associates WAF with ALB', () => {
         // Arrange
-        const waf = new WebApplicationFirewall(stack, constructName, {
+        const waf = new WebApplicationFirewall(stack, id, {
             logging: loggingConfig
         });
         const alb = new elbv2.ApplicationLoadBalancer(stack, 'TestALB', {
@@ -189,18 +180,18 @@ describe(constructName, () => {
         waf.associate(alb);
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::WAFv2::WebACLAssociation', {
             ResourceArn: { Ref: Match.stringLikeRegexp('TestALB') },
             WebACLArn: {
-                'Fn::GetAtt': [Match.stringLikeRegexp(constructName), 'Arn']
+                'Fn::GetAtt': [Match.stringLikeRegexp(id), 'Arn']
             }
         });
     });
 
     test('creates WAF with rule overrides', () => {
         // Act
-        new WebApplicationFirewall(stack, constructName, {
+        new WebApplicationFirewall(stack, id, {
             awsManagedRuleGroups: [
                 {
                     ruleGroup:
@@ -218,7 +209,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::WAFv2::WebACL', {
             Rules: [
                 {
@@ -240,7 +231,7 @@ describe(constructName, () => {
 
     test('does not allow incompatible resource association', () => {
         // Arrange
-        const waf = new WebApplicationFirewall(stack, constructName, {
+        const waf = new WebApplicationFirewall(stack, id, {
             logging: loggingConfig
         });
         const nlb = new elbv2.NetworkLoadBalancer(stack, 'TestNLB', {

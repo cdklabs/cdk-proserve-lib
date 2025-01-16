@@ -17,34 +17,25 @@ import { Key } from 'aws-cdk-lib/aws-kms';
 import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { SecureFunction } from '../../../src/constructs/secure-function';
-import {
-    getTemplateWithCdkNag,
-    validateNoCdkNagFindings
-} from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-const constructName = 'SecureFunction';
-
-describe(constructName, () => {
+describeCdkTest(SecureFunction, (id, getStack, getTemplate) => {
     let stack: Stack;
 
     beforeEach(() => {
-        stack = new Stack();
-    });
-
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
+        stack = getStack();
     });
 
     it('creates lambda function with default properties', () => {
         // Act
-        new SecureFunction(stack, constructName, {
+        new SecureFunction(stack, id, {
             runtime: Runtime.NODEJS_20_X,
             handler: 'index.handler',
             code: Code.fromInline('exports.handler = function() { }')
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::Lambda::Function', {
             Handler: 'index.handler',
@@ -75,7 +66,7 @@ describe(constructName, () => {
 
     it('creates lambda function with custom log retention', () => {
         // Act
-        new SecureFunction(stack, constructName, {
+        new SecureFunction(stack, id, {
             runtime: Runtime.NODEJS_20_X,
             handler: 'index.handler',
             code: Code.fromInline('exports.handler = function() { }'),
@@ -83,7 +74,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::Logs::LogGroup', {
             RetentionInDays: 7
@@ -95,7 +86,7 @@ describe(constructName, () => {
         const key = new Key(stack, 'TestKey');
 
         // Act
-        new SecureFunction(stack, constructName, {
+        new SecureFunction(stack, id, {
             runtime: Runtime.NODEJS_20_X,
             handler: 'index.handler',
             code: Code.fromInline('exports.handler = function() { }'),
@@ -103,7 +94,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         // Verify Log Group encryption
         template.hasResourceProperties('AWS::Logs::LogGroup', {
@@ -122,14 +113,14 @@ describe(constructName, () => {
 
     it('grants log write permissions to lambda', () => {
         // Act
-        new SecureFunction(stack, constructName, {
+        new SecureFunction(stack, id, {
             runtime: Runtime.NODEJS_20_X,
             handler: 'index.handler',
             code: Code.fromInline('exports.handler = function() { }')
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::IAM::Policy', {
             PolicyDocument: {

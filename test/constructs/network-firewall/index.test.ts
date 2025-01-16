@@ -18,16 +18,11 @@ import { Subnet, Vpc } from 'aws-cdk-lib/aws-ec2';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { mockSuricataRulesCapacity, mockSuricataRulesPath } from './fixtures';
 import { NetworkFirewall } from '../../../src/constructs/network-firewall/index';
-import {
-    getTemplateWithCdkNag,
-    validateNoCdkNagFindings
-} from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
 const originalReadFileSync = fs.readFileSync;
 
-const constructName = 'NetworkFirewall';
-
-describe(constructName, () => {
+describeCdkTest(NetworkFirewall, (id, getStack, getTemplate) => {
     let stack: Stack;
     let vpc: Vpc;
     let publicSubnets: Subnet[];
@@ -35,7 +30,7 @@ describe(constructName, () => {
     let protectedSubnets: Subnet[];
 
     beforeEach(() => {
-        stack = new Stack();
+        stack = getStack();
         vpc = new Vpc(stack, 'TestVpc');
         firewallSubnets = [
             new Subnet(stack, 'FirewallSubnet1', {
@@ -69,19 +64,18 @@ describe(constructName, () => {
     });
 
     afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
         jest.restoreAllMocks();
     });
 
     it('creates a Network Firewall with basic configuration', () => {
-        new NetworkFirewall(stack, constructName, {
+        new NetworkFirewall(stack, id, {
             suricataRulesFilePath: mockSuricataRulesPath,
             suricataRulesCapacity: mockSuricataRulesCapacity,
             vpc,
             firewallSubnets
         });
 
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::NetworkFirewall::RuleGroup', {
             Type: 'STATEFUL',
@@ -120,7 +114,7 @@ describe(constructName, () => {
     it('creates a Network Firewall with logging', () => {
         const kmsKey = new Key(stack, 'TestKey');
 
-        new NetworkFirewall(stack, constructName, {
+        new NetworkFirewall(stack, id, {
             suricataRulesFilePath: mockSuricataRulesPath,
             suricataRulesCapacity: mockSuricataRulesCapacity,
             vpc,
@@ -135,7 +129,7 @@ describe(constructName, () => {
             }
         });
 
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::Logs::LogGroup', {
             RetentionInDays: 30
@@ -145,10 +139,7 @@ describe(constructName, () => {
             'AWS::NetworkFirewall::LoggingConfiguration',
             {
                 FirewallArn: {
-                    'Fn::GetAtt': [
-                        Match.stringLikeRegexp(constructName),
-                        'FirewallArn'
-                    ]
+                    'Fn::GetAtt': [Match.stringLikeRegexp(id), 'FirewallArn']
                 },
                 LoggingConfiguration: {
                     LogDestinationConfigs: [
@@ -162,7 +153,7 @@ describe(constructName, () => {
     });
 
     it('configures VPC routes when specified', () => {
-        new NetworkFirewall(stack, constructName, {
+        new NetworkFirewall(stack, id, {
             suricataRulesFilePath: mockSuricataRulesPath,
             suricataRulesCapacity: mockSuricataRulesCapacity,
             vpc,
@@ -173,14 +164,14 @@ describe(constructName, () => {
             }
         });
 
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('Custom::AWS', {
             ServiceToken: {
                 'Fn::GetAtt': [Match.stringLikeRegexp('AWS'), 'Arn']
             },
-            Create: Match.stringLikeRegexp(constructName),
-            Update: Match.stringLikeRegexp(constructName)
+            Create: Match.stringLikeRegexp(id),
+            Update: Match.stringLikeRegexp(id)
         });
 
         template.hasResourceProperties('AWS::EC2::Route', {
@@ -213,7 +204,7 @@ describe(constructName, () => {
     it('uses KMS key for log encryption when provided', () => {
         const kmsKey = new Key(stack, 'TestKey');
 
-        new NetworkFirewall(stack, constructName, {
+        new NetworkFirewall(stack, id, {
             suricataRulesFilePath: mockSuricataRulesPath,
             suricataRulesCapacity: mockSuricataRulesCapacity,
             vpc,
@@ -228,7 +219,7 @@ describe(constructName, () => {
             }
         });
 
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::Logs::LogGroup', {
             KmsKeyId: {

@@ -21,22 +21,18 @@ import { PolicyProperties } from 'cloudform-types/types/iam/policy';
 import { FunctionProperties } from 'cloudform-types/types/lambda/function';
 import { mockPasswordParameterName } from './fixtures';
 import { OpenSearchAdminUser } from '../../../src/constructs/opensearch-admin-user/index';
-import {
-    getTemplateWithCdkNag,
-    validateNoCdkNagFindings
-} from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-const constructName = 'OpensearchAdminUser';
 const passwordParameterElementName = 'PasswordParamater';
 const passwordSecretElementName = 'PasswordSecret';
 
-describe(constructName, () => {
+describeCdkTest(OpenSearchAdminUser, (id, getStack, getTemplate) => {
     let stack: Stack;
     let domain: Domain;
     let username: StringParameter;
 
     beforeEach(() => {
-        stack = new Stack(undefined, `TST${new Date().getTime()}`);
+        stack = getStack();
 
         domain = new Domain(stack, 'TestDomain', {
             domainName: 'test-domain',
@@ -47,11 +43,6 @@ describe(constructName, () => {
             parameterName: '/test/username',
             stringValue: 'admin'
         });
-    });
-
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
-        validateNoCdkNagFindings(stack, OpenSearchAdminUser.name);
     });
 
     it('creates custom resource with correct properties (parameter)', () => {
@@ -66,7 +57,7 @@ describe(constructName, () => {
         );
 
         // Act
-        new OpenSearchAdminUser(stack, constructName, {
+        new OpenSearchAdminUser(stack, id, {
             username,
             credential: {
                 parameter: password
@@ -75,7 +66,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('Custom::OpenSearchAdminUser', {
             ServiceToken: {
@@ -110,7 +101,7 @@ describe(constructName, () => {
         const password = new Secret(stack, passwordSecretElementName, {});
 
         // Act
-        new OpenSearchAdminUser(stack, constructName, {
+        new OpenSearchAdminUser(stack, id, {
             username,
             credential: {
                 secret: password
@@ -119,7 +110,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('Custom::OpenSearchAdminUser', {
             ServiceToken: {
@@ -161,7 +152,7 @@ describe(constructName, () => {
         );
 
         // Act
-        new OpenSearchAdminUser(stack, constructName, {
+        new OpenSearchAdminUser(stack, id, {
             username,
             credential: {
                 parameter: password
@@ -170,7 +161,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         const iamPolicyProperties: Partial<PolicyProperties> = {
             PolicyDocument: {
@@ -202,7 +193,7 @@ describe(constructName, () => {
         const password = new Secret(stack, passwordSecretElementName, {});
 
         // Act
-        new OpenSearchAdminUser(stack, constructName, {
+        new OpenSearchAdminUser(stack, id, {
             username,
             credential: {
                 secret: password
@@ -211,7 +202,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         const iamPolicyProperties: Partial<PolicyProperties> = {
             PolicyDocument: {
@@ -252,7 +243,7 @@ describe(constructName, () => {
         });
 
         // Act
-        new OpenSearchAdminUser(stack, constructName, {
+        new OpenSearchAdminUser(stack, id, {
             username,
             credential: {
                 secret: password,
@@ -262,7 +253,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         const iamPolicyProperties: Partial<PolicyProperties> = {
             PolicyDocument: {
@@ -325,7 +316,7 @@ describe(constructName, () => {
         const domainKey = new Key(stack, domainKeyElementName);
 
         // Act
-        new OpenSearchAdminUser(stack, constructName, {
+        new OpenSearchAdminUser(stack, id, {
             username,
             credential: {
                 parameter: password
@@ -335,7 +326,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         // Check that the Lambda function has permission to use the KMS key
         const iamPolicyProperties: Partial<PolicyProperties> = {
@@ -373,7 +364,7 @@ describe(constructName, () => {
         const encryption = new Key(stack, encryptionElementName);
 
         // Act
-        new OpenSearchAdminUser(stack, constructName, {
+        new OpenSearchAdminUser(stack, id, {
             username,
             credential: {
                 parameter: password
@@ -383,7 +374,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::Lambda::Function', {
             KmsKeyArn: {
                 'Fn::GetAtt': [

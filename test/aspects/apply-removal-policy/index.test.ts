@@ -12,32 +12,22 @@
  */
 
 import { Aspects, RemovalPolicy, Stack } from 'aws-cdk-lib';
-import { ApplyRemovalPolicy } from '../../../src/aspects/apply-removal-policy';
-import {
-    validateNoCdkNagFindings,
-    getTemplateWithCdkNag
-} from '../../../utilities/cdk-nag-jest';
-import { LogGroup } from 'aws-cdk-lib/aws-logs';
 import { Key } from 'aws-cdk-lib/aws-kms';
+import { LogGroup } from 'aws-cdk-lib/aws-logs';
+import { ApplyRemovalPolicy } from '../../../src/aspects/apply-removal-policy';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-const aspectName = 'ApplyRemovalPolicy';
-const constructName = 'LogGroup';
-
-describe(aspectName, () => {
+describeCdkTest(ApplyRemovalPolicy, (_, getStack, getTemplate) => {
     let stack: Stack;
 
     beforeEach(() => {
-        stack = new Stack();
-    });
-
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
+        stack = getStack();
     });
 
     it('should set removal policy on resource', () => {
         // Arrange
         const key = new Key(stack, 'Key', { enableKeyRotation: true });
-        new LogGroup(stack, constructName, { encryptionKey: key });
+        new LogGroup(stack, 'LogGroup', { encryptionKey: key });
 
         // Act
         Aspects.of(stack).add(
@@ -45,7 +35,7 @@ describe(aspectName, () => {
         );
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResource('AWS::Logs::LogGroup', {
             DeletionPolicy: 'Delete',
             UpdateReplacePolicy: 'Delete'

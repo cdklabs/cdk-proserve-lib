@@ -17,20 +17,15 @@ import { Vpc } from 'aws-cdk-lib/aws-ec2';
 import { CfnFirewall } from 'aws-cdk-lib/aws-networkfirewall';
 import { mockFirewallName, mockFirewallPolicyArn } from './fixtures';
 import { NetworkFirewallEndpoints } from '../../../src/constructs/network-firewall-endpoints';
-import {
-    getTemplateWithCdkNag,
-    validateNoCdkNagFindings
-} from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 import { mockRegion, mockSubnetId, mockVpcId } from '../../fixtures';
 
-const constructName = 'NetworkFirewallEndpoints';
-
-describe(constructName, () => {
+describeCdkTest(NetworkFirewallEndpoints, (id, getStack, getTemplate) => {
     let stack: Stack;
     let firewall: CfnFirewall;
 
     beforeEach(() => {
-        stack = new Stack();
+        stack = getStack();
         firewall = new CfnFirewall(stack, mockFirewallName, {
             firewallName: mockFirewallName,
             firewallPolicyArn: mockFirewallPolicyArn,
@@ -39,31 +34,27 @@ describe(constructName, () => {
         });
     });
 
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
-    });
-
     it('creates AWS Custom Resource', () => {
-        new NetworkFirewallEndpoints(stack, constructName, {
+        new NetworkFirewallEndpoints(stack, id, {
             firewall: firewall
         });
 
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('Custom::AWS', {
             ServiceToken: {
                 'Fn::GetAtt': [Match.stringLikeRegexp('AWS'), 'Arn']
             },
-            Create: Match.stringLikeRegexp(constructName),
-            Update: Match.stringLikeRegexp(constructName)
+            Create: Match.stringLikeRegexp(id),
+            Update: Match.stringLikeRegexp(id)
         });
     });
 
     it('adds dependency on firewall', () => {
-        new NetworkFirewallEndpoints(stack, constructName, {
+        new NetworkFirewallEndpoints(stack, id, {
             firewall: firewall
         });
 
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResource('Custom::AWS', {
             DependsOn: [Match.anyValue(), mockFirewallName]
         });
@@ -72,21 +63,21 @@ describe(constructName, () => {
     it('uses custom Lambda configuration when provided', () => {
         const vpc = new Vpc(stack, 'TestVpc');
 
-        new NetworkFirewallEndpoints(stack, constructName, {
+        new NetworkFirewallEndpoints(stack, id, {
             firewall: firewall,
             lambdaConfiguration: {
                 vpc: vpc
             }
         });
 
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::Lambda::Function', {
             VpcConfig: Match.anyValue()
         });
     });
 
     it('getEndpointId returns an unresolved token', () => {
-        const endpoints = new NetworkFirewallEndpoints(stack, constructName, {
+        const endpoints = new NetworkFirewallEndpoints(stack, id, {
             firewall: firewall
         });
 

@@ -12,39 +12,35 @@
  */
 
 import { Aspects, Stack } from 'aws-cdk-lib';
-import { SetLogRetention } from '../../../src/aspects/set-log-retention';
-import {
-    validateNoCdkNagFindings,
-    getTemplateWithCdkNag
-} from '../../../utilities/cdk-nag-jest';
-import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
+import { Key } from 'aws-cdk-lib/aws-kms';
 import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { NagSuppressions } from 'cdk-nag';
+import { SetLogRetention } from '../../../src/aspects/set-log-retention';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-const aspectName = 'SetLogRetention';
-const constructName = 'TestFunction';
-
-describe(aspectName, () => {
+describeCdkTest(SetLogRetention, (_, getStack, getTemplate) => {
     let stack: Stack;
 
     beforeEach(() => {
-        stack = new Stack();
+        stack = getStack();
 
         NagSuppressions.addStackSuppressions(stack, [
             {
                 id: 'AwsSolutions-IAM4',
                 reason: 'Not testing IAM in this test scenario.'
+            },
+            {
+                id: 'AwsSolutions-IAM5',
+                reason: 'Permissions are tightly scoped to allow setting log retention. This is an underlying CDK permission grant.'
             }
         ]);
     });
 
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
-    });
-
     it('should set retention on LogGroup', () => {
         // Arrange
-        new LogGroup(stack, 'LogGroup');
+        const key = new Key(stack, 'Key', { enableKeyRotation: true });
+        new LogGroup(stack, 'LogGroup', { encryptionKey: key });
 
         // Act
         Aspects.of(stack).add(
@@ -52,7 +48,7 @@ describe(aspectName, () => {
         );
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::Logs::LogGroup', {
             RetentionInDays: 7
         });
@@ -60,7 +56,7 @@ describe(aspectName, () => {
 
     it('should set retention on custom resource log retention', () => {
         // Arrange
-        const func = new Function(stack, constructName, {
+        const func = new Function(stack, 'TestFunction', {
             runtime: Runtime.NODEJS_20_X,
             handler: 'index.handler',
             code: Code.fromInline('exports.handler = () => {};'),
@@ -74,8 +70,7 @@ describe(aspectName, () => {
         );
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
-
+        const template = getTemplate();
         template.hasResourceProperties('Custom::LogRetention', {
             RetentionInDays: 7
         });

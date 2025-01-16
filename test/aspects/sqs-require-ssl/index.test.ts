@@ -12,45 +12,34 @@
  */
 
 import { Aspects, Stack } from 'aws-cdk-lib';
-import { Queue } from 'aws-cdk-lib/aws-sqs';
-import { SqsRequireSsl } from '../../../src/aspects/sqs-require-ssl';
-import {
-    validateNoCdkNagFindings,
-    getTemplateWithCdkNag
-} from '../../../utilities/cdk-nag-jest';
 import { Match } from 'aws-cdk-lib/assertions';
+import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { NagSuppressions } from 'cdk-nag';
+import { SqsRequireSsl } from '../../../src/aspects/sqs-require-ssl';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-const aspectName = 'SqsRequireSsl';
-const constructName = 'TestQueue';
-
-describe(aspectName, () => {
+describeCdkTest(SqsRequireSsl, (id, getStack, getTemplate) => {
     let stack: Stack;
 
     beforeEach(() => {
-        stack = new Stack();
+        stack = getStack();
+    });
 
-        NagSuppressions.addStackSuppressions(stack, [
+    it('adds SSL requirement policy to SQS queue', () => {
+        // Arrange
+        const queue = new Queue(stack, id);
+        NagSuppressions.addResourceSuppressions(queue, [
             {
                 id: 'AwsSolutions-SQS3',
                 reason: 'This queue does not need a DLQ as it is just used for testing the Aspect.'
             }
         ]);
-    });
-
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
-    });
-
-    it('adds SSL requirement policy to SQS queue', () => {
-        // Arrange
-        new Queue(stack, constructName);
 
         // Act
         Aspects.of(stack).add(new SqsRequireSsl());
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::SQS::QueuePolicy', {
             PolicyDocument: {
                 Statement: [
@@ -66,10 +55,7 @@ describe(aspectName, () => {
                             AWS: '*'
                         },
                         Resource: {
-                            'Fn::GetAtt': [
-                                Match.stringLikeRegexp(constructName),
-                                'Arn'
-                            ]
+                            'Fn::GetAtt': [Match.stringLikeRegexp(id), 'Arn']
                         }
                     }
                 ],

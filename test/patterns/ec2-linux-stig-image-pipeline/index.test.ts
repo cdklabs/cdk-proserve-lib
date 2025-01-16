@@ -16,32 +16,18 @@ import { Match } from 'aws-cdk-lib/assertions';
 import { Ec2ImagePipeline } from '../../../src/constructs/ec2-image-pipeline';
 import { Ec2LinuxImagePipeline } from '../../../src/patterns/ec2-linux-image-pipeline';
 import { FeatureError } from '../../../src/patterns/ec2-linux-image-pipeline/types/exception';
-import {
-    getTemplateWithCdkNag,
-    validateNoCdkNagFindings
-} from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-const constructName = 'Ec2LinuxStigImagePipeline';
-
-describe(constructName, () => {
+describeCdkTest(Ec2LinuxImagePipeline, (id, getStack, getTemplate) => {
     let stack: Stack;
 
     beforeEach(() => {
-        stack = new Stack(undefined, undefined, {
-            env: {
-                account: '123456789012',
-                region: 'us-east-1'
-            }
-        });
-    });
-
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
+        stack = getStack();
     });
 
     it('creates pipeline with default settings', () => {
         // Act
-        new Ec2LinuxImagePipeline(stack, constructName, {
+        new Ec2LinuxImagePipeline(stack, id, {
             version: '0.1.0',
             features: [
                 Ec2LinuxImagePipeline.Feature.AWS_CLI,
@@ -50,10 +36,10 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::ImageBuilder::ImagePipeline', {
-            Name: Match.stringLikeRegexp(constructName)
+            Name: Match.stringLikeRegexp(id)
         });
 
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
@@ -106,14 +92,14 @@ describe(constructName, () => {
 
     it('uses correct machine image for Amazon Linux 2023', () => {
         // Act
-        new Ec2LinuxImagePipeline(stack, constructName, {
+        new Ec2LinuxImagePipeline(stack, id, {
             version: '0.1.0',
             operatingSystem:
                 Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2023
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
             ParentImage: {
@@ -124,7 +110,7 @@ describe(constructName, () => {
 
     it('uses correct machine image for Red Hat Enterprise Linux 8.9', () => {
         // Act
-        new Ec2LinuxImagePipeline(stack, constructName, {
+        new Ec2LinuxImagePipeline(stack, id, {
             version: '0.1.0',
             operatingSystem:
                 Ec2LinuxImagePipeline.OperatingSystem
@@ -132,7 +118,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
             ParentImage: 'ami-1234'
@@ -141,7 +127,7 @@ describe(constructName, () => {
 
     it('adds SCAP Compliance Checker for compatible OS', () => {
         // Act
-        new Ec2LinuxImagePipeline(stack, constructName, {
+        new Ec2LinuxImagePipeline(stack, id, {
             version: '0.1.0',
             operatingSystem:
                 Ec2LinuxImagePipeline.OperatingSystem
@@ -150,7 +136,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
             Components: [
                 {},
@@ -174,13 +160,13 @@ describe(constructName, () => {
 
     it('sets correct root volume size', () => {
         // Act
-        new Ec2LinuxImagePipeline(stack, constructName, {
+        new Ec2LinuxImagePipeline(stack, id, {
             version: '0.1.0',
             rootVolumeSize: 20
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
             BlockDeviceMappings: [
@@ -196,7 +182,7 @@ describe(constructName, () => {
 
     it('adds extra components', () => {
         // Act
-        new Ec2LinuxImagePipeline(stack, constructName, {
+        new Ec2LinuxImagePipeline(stack, id, {
             version: '0.1.0',
             extraComponents: [
                 Ec2ImagePipeline.Component.AMAZON_CLOUDWATCH_AGENT_LINUX
@@ -204,7 +190,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
             Components: [
@@ -231,7 +217,7 @@ describe(constructName, () => {
 
     it('adds extra device mappings', () => {
         // Act
-        new Ec2LinuxImagePipeline(stack, constructName, {
+        new Ec2LinuxImagePipeline(stack, id, {
             version: '0.1.0',
             extraDeviceMappings: [
                 {
@@ -244,7 +230,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::ImageBuilder::ImageRecipe', {
             BlockDeviceMappings: [
@@ -265,14 +251,14 @@ describe(constructName, () => {
     });
 
     it('adds nice dcv feature for compatible operating systems', () => {
-        new Ec2LinuxImagePipeline(stack, constructName, {
+        new Ec2LinuxImagePipeline(stack, id, {
             version: '0.1.0',
             operatingSystem:
                 Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2,
             features: [Ec2LinuxImagePipeline.Feature.NICE_DCV]
         });
 
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         // Check if the NiceDcvPrereqs component is created
         template.hasResourceProperties('AWS::ImageBuilder::Component', {
@@ -284,10 +270,7 @@ describe(constructName, () => {
                 {}, // linux updates
                 {
                     ComponentArn: {
-                        'Fn::GetAtt': [
-                            Match.stringLikeRegexp(constructName),
-                            'Arn'
-                        ]
+                        'Fn::GetAtt': [Match.stringLikeRegexp(id), 'Arn']
                     }
                 },
                 {
@@ -310,7 +293,7 @@ describe(constructName, () => {
 
     it('throws error for incompatible operating systems', () => {
         expect(() => {
-            new Ec2LinuxImagePipeline(stack, constructName, {
+            new Ec2LinuxImagePipeline(stack, id, {
                 version: '0.1.0',
                 operatingSystem:
                     Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2023,

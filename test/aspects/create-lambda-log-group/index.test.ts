@@ -12,38 +12,32 @@
  */
 
 import { Aspects, Stack } from 'aws-cdk-lib';
-import { CreateLambdaLogGroup } from '../../../src/aspects/create-lambda-log-group';
-import {
-    validateNoCdkNagFindings,
-    getTemplateWithCdkNag
-} from '../../../utilities/cdk-nag-jest';
 import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NagSuppressions } from 'cdk-nag';
+import { CreateLambdaLogGroup } from '../../../src/aspects/create-lambda-log-group';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-const aspectName = 'CreateLambdaLogGroup';
-const constructName = 'TestFunction';
-
-describe(aspectName, () => {
+describeCdkTest(CreateLambdaLogGroup, (_, getStack, getTemplate) => {
     let stack: Stack;
 
     beforeEach(() => {
-        stack = new Stack();
+        stack = getStack();
 
         NagSuppressions.addStackSuppressions(stack, [
             {
                 id: 'AwsSolutions-IAM4',
                 reason: 'Not testing IAM in this test scenario.'
+            },
+            {
+                id: 'AwsSolutions-IAM5',
+                reason: 'Permissions are tightly scoped to allow setting log retention. This is an underlying CDK permission grant.'
             }
         ]);
     });
 
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
-    });
-
     it('should create log group when visiting a Lambda function', () => {
         // Arrange
-        new Function(stack, constructName, {
+        new Function(stack, 'TestFunction', {
             runtime: Runtime.NODEJS_20_X,
             handler: 'index.handler',
             code: Code.fromInline('exports.handler = () => {};'),
@@ -54,7 +48,7 @@ describe(aspectName, () => {
         Aspects.of(stack).add(new CreateLambdaLogGroup());
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResource('Custom::LogRetention', {});
     });
 });

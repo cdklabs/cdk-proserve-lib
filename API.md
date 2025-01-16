@@ -537,14 +537,14 @@ of the class to add more permissions to it.
 ```typescript
 import { constructs } from '@cdklabs/cdk-proserve-lib'
 
-new constructs.FriendlyEmbrace(scope: Construct, id: string, props?: IFriendlyEmbraceProps)
+new constructs.FriendlyEmbrace(scope: Construct, id: string, props?: FriendlyEmbraceProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the custom resource belongs. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the custom resource. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps</code> | Metadata for configuring the custom resource. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps</code> | Metadata for configuring the custom resource. |
 
 ---
 
@@ -566,7 +566,7 @@ Unique identifier for the custom resource.
 
 ##### `props`<sup>Optional</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.props"></a>
 
-- *Type:* @cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps
 
 Metadata for configuring the custom resource.
 
@@ -1160,6 +1160,38 @@ have configured `logging` on the construct.
 
 
 ## Structs <a name="Structs" id="Structs"></a>
+
+### ApplyRemovalPolicyProps <a name="ApplyRemovalPolicyProps" id="@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicyProps"></a>
+
+Properties for configuring the removal policy settings.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicyProps.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+const applyRemovalPolicyProps: aspects.ApplyRemovalPolicyProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicyProps.property.removalPolicy">removalPolicy</a></code> | <code>aws-cdk-lib.RemovalPolicy</code> | The removal policy to apply to the resource. |
+
+---
+
+##### `removalPolicy`<sup>Required</sup> <a name="removalPolicy" id="@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicyProps.property.removalPolicy"></a>
+
+```typescript
+public readonly removalPolicy: RemovalPolicy;
+```
+
+- *Type:* aws-cdk-lib.RemovalPolicy
+
+The removal policy to apply to the resource.
+
+---
 
 ### AwsCustomResourceLambdaConfiguration <a name="AwsCustomResourceLambdaConfiguration" id="@cdklabs/cdk-proserve-lib.interfaces.AwsCustomResourceLambdaConfiguration"></a>
 
@@ -1917,6 +1949,77 @@ Default: 10 GB.
 
 ---
 
+### FriendlyEmbraceProps <a name="FriendlyEmbraceProps" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps"></a>
+
+Input metadata for the custom resource.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const friendlyEmbraceProps: constructs.FriendlyEmbraceProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.bucketConfiguration">bucketConfiguration</a></code> | <code>aws-cdk-lib.aws_s3.BucketProps</code> | Optional S3 Bucket configuration settings. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the Lambda environment. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.ignoreInvalidStates">ignoreInvalidStates</a></code> | <code>boolean</code> | Whether or not stacks in error state should be fatal to CR completion. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+
+---
+
+##### `bucketConfiguration`<sup>Optional</sup> <a name="bucketConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.bucketConfiguration"></a>
+
+```typescript
+public readonly bucketConfiguration: BucketProps;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.BucketProps
+
+Optional S3 Bucket configuration settings.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Encryption key for protecting the Lambda environment.
+
+---
+
+##### `ignoreInvalidStates`<sup>Optional</sup> <a name="ignoreInvalidStates" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.ignoreInvalidStates"></a>
+
+```typescript
+public readonly ignoreInvalidStates: boolean;
+```
+
+- *Type:* boolean
+
+Whether or not stacks in error state should be fatal to CR completion.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
+
 ### LambdaConfiguration <a name="LambdaConfiguration" id="@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration"></a>
 
 #### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration.Initializer"></a>
@@ -2552,6 +2655,38 @@ Optional encryption key that protects the secret.
 
 ---
 
+### SetLogRetentionProps <a name="SetLogRetentionProps" id="@cdklabs/cdk-proserve-lib.aspects.SetLogRetentionProps"></a>
+
+Properties for configuring log retention settings.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SetLogRetentionProps.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+const setLogRetentionProps: aspects.SetLogRetentionProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SetLogRetentionProps.property.period">period</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | The retention period for the logs. |
+
+---
+
+##### `period`<sup>Required</sup> <a name="period" id="@cdklabs/cdk-proserve-lib.aspects.SetLogRetentionProps.property.period"></a>
+
+```typescript
+public readonly period: RetentionDays;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.RetentionDays
+
+The retention period for the logs.
+
+---
+
 ### VpcConfigurationProps <a name="VpcConfigurationProps" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.VpcConfigurationProps"></a>
 
 VPC Configuration.
@@ -2797,61 +2932,213 @@ Whether to enable sampled requests.
 
 ---
 
+## Classes <a name="Classes" id="Classes"></a>
 
-## Protocols <a name="Protocols" id="Protocols"></a>
+### ApplyRemovalPolicy <a name="ApplyRemovalPolicy" id="@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicy"></a>
 
-### IFriendlyEmbraceProps <a name="IFriendlyEmbraceProps" id="@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps"></a>
+- *Implements:* aws-cdk-lib.IAspect
 
-- *Implemented By:* @cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps
+Aspect that applies the provided Removal Policy to all resources.
 
-Input metadata for the custom resource.
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicy.Initializer"></a>
 
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-#### Properties <a name="Properties" id="Properties"></a>
+new aspects.ApplyRemovalPolicy(props: ApplyRemovalPolicyProps)
+```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the worker's environment. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps.property.ignoreInvalidStates">ignoreInvalidStates</a></code> | <code>boolean</code> | Whether or not stacks in error state should be fatal to CR completion. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicy.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicyProps</code> | Configuration properties for removal policy. |
 
 ---
 
-##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps.property.encryption"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicy.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicyProps
+
+Configuration properties for removal policy.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicy.visit">visit</a></code> | Visits a construct and applies the removal policy. |
+
+---
+
+##### `visit` <a name="visit" id="@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicy.visit"></a>
 
 ```typescript
-public readonly encryption: IKey;
+public visit(node: IConstruct): void
 ```
 
-- *Type:* aws-cdk-lib.aws_kms.IKey
+Visits a construct and applies the removal policy.
 
-Encryption key for protecting the worker's environment.
+###### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicy.visit.parameter.node"></a>
+
+- *Type:* constructs.IConstruct
+
+The construct being visited.
 
 ---
 
-##### `ignoreInvalidStates`<sup>Optional</sup> <a name="ignoreInvalidStates" id="@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps.property.ignoreInvalidStates"></a>
+
+
+
+### CreateLambdaLogGroup <a name="CreateLambdaLogGroup" id="@cdklabs/cdk-proserve-lib.aspects.CreateLambdaLogGroup"></a>
+
+- *Implements:* aws-cdk-lib.IAspect
+
+An aspect that ensures Lambda log groups are created for all Lambda functions.
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.CreateLambdaLogGroup.Initializer"></a>
 
 ```typescript
-public readonly ignoreInvalidStates: boolean;
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+new aspects.CreateLambdaLogGroup()
 ```
 
-- *Type:* boolean
-
-Whether or not stacks in error state should be fatal to CR completion.
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
 
 ---
 
-##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.IFriendlyEmbraceProps.property.lambdaConfiguration"></a>
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.CreateLambdaLogGroup.visit">visit</a></code> | Visits a construct and creates a log group if the construct is a Lambda function. |
+
+---
+
+##### `visit` <a name="visit" id="@cdklabs/cdk-proserve-lib.aspects.CreateLambdaLogGroup.visit"></a>
 
 ```typescript
-public readonly lambdaConfiguration: LambdaConfiguration;
+public visit(node: IConstruct): void
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.interfaces.LambdaConfiguration
+Visits a construct and creates a log group if the construct is a Lambda function.
 
-Optional Lambda configuration settings.
+###### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.aspects.CreateLambdaLogGroup.visit.parameter.node"></a>
+
+- *Type:* constructs.IConstruct
+
+The construct being visited.
 
 ---
+
+
+
+
+### SetLogRetention <a name="SetLogRetention" id="@cdklabs/cdk-proserve-lib.aspects.SetLogRetention"></a>
+
+- *Implements:* aws-cdk-lib.IAspect
+
+Aspect that sets log retention period for CloudWatch Log Groups.
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.SetLogRetention.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+new aspects.SetLogRetention(props: SetLogRetentionProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SetLogRetention.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SetLogRetentionProps</code> | Configuration properties for log retention. |
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.SetLogRetention.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SetLogRetentionProps
+
+Configuration properties for log retention.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SetLogRetention.visit">visit</a></code> | Visits a construct and sets log retention if applicable. |
+
+---
+
+##### `visit` <a name="visit" id="@cdklabs/cdk-proserve-lib.aspects.SetLogRetention.visit"></a>
+
+```typescript
+public visit(node: IConstruct): void
+```
+
+Visits a construct and sets log retention if applicable.
+
+###### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.aspects.SetLogRetention.visit.parameter.node"></a>
+
+- *Type:* constructs.IConstruct
+
+The construct being visited.
+
+---
+
+
+
+
+### SqsRequireSsl <a name="SqsRequireSsl" id="@cdklabs/cdk-proserve-lib.aspects.SqsRequireSsl"></a>
+
+- *Implements:* aws-cdk-lib.IAspect
+
+An aspect that enforces SSL/TLS requirements for SQS queues.
+
+When applied to a CDK construct, it adds a resource policy to any SQS queue
+that denies all actions when the request is not made over a secure transport.
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.SqsRequireSsl.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+new aspects.SqsRequireSsl()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SqsRequireSsl.visit">visit</a></code> | Visits a construct and adds SSL/TLS requirement policy if it's an SQS queue. |
+
+---
+
+##### `visit` <a name="visit" id="@cdklabs/cdk-proserve-lib.aspects.SqsRequireSsl.visit"></a>
+
+```typescript
+public visit(node: IConstruct): void
+```
+
+Visits a construct and adds SSL/TLS requirement policy if it's an SQS queue.
+
+###### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.aspects.SqsRequireSsl.visit.parameter.node"></a>
+
+- *Type:* constructs.IConstruct
+
+The construct being visited.
+
+---
+
+
+
+
 
 ## Enums <a name="Enums" id="Enums"></a>
 

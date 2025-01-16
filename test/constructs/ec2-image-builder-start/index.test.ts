@@ -16,34 +16,26 @@ import { Match } from 'aws-cdk-lib/assertions';
 import { Vpc } from 'aws-cdk-lib/aws-ec2';
 import { Topic } from 'aws-cdk-lib/aws-sns';
 import { Ec2ImageBuilderStart } from '../../../src/constructs/ec2-image-builder-start';
-import {
-    getTemplateWithCdkNag,
-    validateNoCdkNagFindings
-} from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-const constructName = 'Ec2ImageBuilderStart';
 const pipelineArn =
     'arn:aws:imagebuilder:us-west-2:123456789012:image-pipeline/example-pipeline';
 
-describe(constructName, () => {
+describeCdkTest(Ec2ImageBuilderStart, (id, getStack, getTemplate) => {
     let stack: Stack;
 
     beforeEach(() => {
-        stack = new Stack();
-    });
-
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
+        stack = getStack();
     });
 
     it('creates custom resource', () => {
         // Act
-        new Ec2ImageBuilderStart(stack, constructName, {
+        new Ec2ImageBuilderStart(stack, id, {
             pipelineArn
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('Custom::Ec2ImageBuilderStart', {
             ServiceToken: {
@@ -64,14 +56,13 @@ describe(constructName, () => {
 
     it('sets correct IAM policy', () => {
         // Act
-        new Ec2ImageBuilderStart(stack, constructName, {
+        new Ec2ImageBuilderStart(stack, id, {
             pipelineArn
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
-
-        template.findResources('AWS::IAM::Policy', {
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::IAM::Policy', {
             PolicyDocument: {
                 Statement: [
                     {
@@ -82,9 +73,7 @@ describe(constructName, () => {
                 ],
                 Version: '2012-10-17'
             },
-            PolicyName: Match.stringLikeRegexp(
-                'TestConstructCustomResourcePolicy'
-            ),
+            PolicyName: Match.stringLikeRegexp(id),
             Roles: Match.arrayWith([
                 {
                     Ref: Match.stringLikeRegexp(
@@ -97,7 +86,7 @@ describe(constructName, () => {
 
     it('exposes imageBuildVersionArn', () => {
         // Act
-        const construct = new Ec2ImageBuilderStart(stack, constructName, {
+        const construct = new Ec2ImageBuilderStart(stack, id, {
             pipelineArn
         });
 
@@ -112,21 +101,18 @@ describe(constructName, () => {
     });
 
     it('should not create any resources when waitForCompletion is unset', () => {
-        new Ec2ImageBuilderStart(stack, constructName, {
+        new Ec2ImageBuilderStart(stack, id, {
             pipelineArn
         });
 
-        const template = getTemplateWithCdkNag(stack);
-
+        const template = getTemplate();
         template.resourceCountIs('AWS::CloudFormation::WaitConditionHandle', 0);
         template.resourceCountIs('AWS::CloudFormation::WaitCondition', 0);
     });
 
     it('should create necessary resources when waitForCompletion is true', () => {
-        stack = new Stack();
         const topic = new Topic(stack, 'TestTopic');
-
-        new Ec2ImageBuilderStart(stack, constructName, {
+        new Ec2ImageBuilderStart(stack, id, {
             pipelineArn,
             waitForCompletion: {
                 topic: topic,
@@ -134,7 +120,7 @@ describe(constructName, () => {
             }
         });
 
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.resourceCountIs('AWS::CloudFormation::WaitConditionHandle', 1);
         template.hasResourceProperties('AWS::CloudFormation::WaitCondition', {
             Timeout: '7200' // 2 hours in seconds
@@ -144,15 +130,14 @@ describe(constructName, () => {
     it('should use default timeout when not specified', () => {
         const topic = new Topic(stack, 'TestTopic');
 
-        new Ec2ImageBuilderStart(stack, constructName, {
+        new Ec2ImageBuilderStart(stack, id, {
             pipelineArn,
             waitForCompletion: {
                 topic: topic
             }
         });
 
-        const template = getTemplateWithCdkNag(stack);
-
+        const template = getTemplate();
         template.hasResourceProperties('AWS::CloudFormation::WaitCondition', {
             Timeout: '43200' // 12 hours in seconds
         });
@@ -161,15 +146,14 @@ describe(constructName, () => {
     it('should subscribe Lambda function to the provided SNS topic', () => {
         const topic = new Topic(stack, 'TestTopic');
 
-        new Ec2ImageBuilderStart(stack, constructName, {
+        new Ec2ImageBuilderStart(stack, id, {
             pipelineArn,
             waitForCompletion: {
                 topic: topic
             }
         });
 
-        const template = getTemplateWithCdkNag(stack);
-
+        const template = getTemplate();
         template.hasResourceProperties('AWS::SNS::Subscription', {
             Endpoint: {
                 'Fn::GetAtt': [Match.stringLikeRegexp('WaiterSignal'), 'Arn']
@@ -182,13 +166,12 @@ describe(constructName, () => {
     });
 
     it('should create resources with hash', () => {
-        new Ec2ImageBuilderStart(stack, constructName, {
+        new Ec2ImageBuilderStart(stack, id, {
             pipelineArn,
             hash: 'hash'
         });
 
-        const template = getTemplateWithCdkNag(stack);
-
+        const template = getTemplate();
         template.hasResourceProperties('Custom::Ec2ImageBuilderStart', {
             Create: Match.stringLikeRegexp('hash'),
             Update: Match.stringLikeRegexp('hash')
@@ -196,14 +179,14 @@ describe(constructName, () => {
     });
 
     it('creates resources in vpc when specified', () => {
-        new Ec2ImageBuilderStart(stack, constructName, {
+        new Ec2ImageBuilderStart(stack, id, {
             pipelineArn,
             lambdaConfiguration: {
                 vpc: new Vpc(stack, 'TestVpc')
             }
         });
 
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::Lambda::Function', {
             VpcConfig: Match.anyValue()
         });
@@ -211,7 +194,7 @@ describe(constructName, () => {
 
     it('throws error for invalid ARN format', () => {
         expect(() => {
-            new Ec2ImageBuilderStart(stack, constructName, {
+            new Ec2ImageBuilderStart(stack, id, {
                 pipelineArn: 'invalid-arn'
             });
         }).toThrow(/Expected type: AWS_ARN/);

@@ -14,34 +14,26 @@
 import { Stack } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Ec2ImageBuilderGetImage } from '../../../src/constructs/ec2-image-builder-get-image';
-import {
-    getTemplateWithCdkNag,
-    validateNoCdkNagFindings
-} from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-const constructName = 'Ec2ImageBuilderGetImage';
 const imageBuildVersionArn =
     'arn:aws:imagebuilder:us-west-2:123456789012:image/example-image/1.0.0/1';
 
-describe(constructName, () => {
+describeCdkTest(Ec2ImageBuilderGetImage, (id, getStack, getTemplate) => {
     let stack: Stack;
 
     beforeEach(() => {
-        stack = new Stack();
-    });
-
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
+        stack = getStack();
     });
 
     it('creates custom resource with correct properties', () => {
         // Act
-        new Ec2ImageBuilderGetImage(stack, constructName, {
+        new Ec2ImageBuilderGetImage(stack, id, {
             imageBuildVersionArn
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('Custom::Ec2ImageBuilderGetImage', {
             ServiceToken: {
                 'Fn::GetAtt': [
@@ -61,12 +53,12 @@ describe(constructName, () => {
 
     it('sets correct IAM policy', () => {
         // Act
-        new Ec2ImageBuilderGetImage(stack, constructName, {
+        new Ec2ImageBuilderGetImage(stack, id, {
             imageBuildVersionArn
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::IAM::Policy', {
             PolicyDocument: {
                 Statement: [
@@ -77,7 +69,7 @@ describe(constructName, () => {
                     }
                 ]
             },
-            PolicyName: Match.stringLikeRegexp(constructName),
+            PolicyName: Match.stringLikeRegexp(id),
             Roles: Match.arrayWith([
                 {
                     Ref: Match.stringLikeRegexp(
@@ -90,7 +82,7 @@ describe(constructName, () => {
 
     it('exposes ami', () => {
         // Act
-        const construct = new Ec2ImageBuilderGetImage(stack, constructName, {
+        const construct = new Ec2ImageBuilderGetImage(stack, id, {
             imageBuildVersionArn
         });
 
@@ -106,7 +98,7 @@ describe(constructName, () => {
 
     it('throws error for invalid ARN format', () => {
         expect(() => {
-            new Ec2ImageBuilderGetImage(stack, constructName, {
+            new Ec2ImageBuilderGetImage(stack, id, {
                 imageBuildVersionArn: 'invalid-arn'
             });
         }).toThrow(/Expected type: AWS_ARN/);

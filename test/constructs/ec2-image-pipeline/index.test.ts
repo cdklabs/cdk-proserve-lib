@@ -17,32 +17,23 @@ import { SecurityGroup, Vpc } from 'aws-cdk-lib/aws-ec2';
 import { CfnComponent } from 'aws-cdk-lib/aws-imagebuilder';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Ec2ImagePipeline } from '../../../src/constructs/ec2-image-pipeline';
-import {
-    getTemplateWithCdkNag,
-    validateNoCdkNagFindings
-} from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-const constructName = 'Ec2ImagePipeline';
-
-describe(constructName, () => {
+describeCdkTest(Ec2ImagePipeline, (id, getStack, getTemplate) => {
     let stack: Stack;
 
     beforeEach(() => {
-        stack = new Stack();
-    });
-
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
+        stack = getStack();
     });
 
     it('creates image pipeline with default properties', () => {
         // Act
-        new Ec2ImagePipeline(stack, constructName, {
+        new Ec2ImagePipeline(stack, id, {
             version: '0.1.0'
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.resourceCountIs('AWS::ImageBuilder::ImagePipeline', 1);
         template.resourceCountIs(
             'AWS::ImageBuilder::InfrastructureConfiguration',
@@ -61,7 +52,7 @@ describe(constructName, () => {
         const kmsKey = new Key(stack, 'TestKey');
 
         // Act
-        new Ec2ImagePipeline(stack, constructName, {
+        new Ec2ImagePipeline(stack, id, {
             version: '1.0.0',
             description: 'Test pipeline',
             encryption: kmsKey,
@@ -77,9 +68,9 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
         template.hasResourceProperties('AWS::ImageBuilder::ImagePipeline', {
-            Name: Match.stringLikeRegexp(constructName),
+            Name: Match.stringLikeRegexp(id),
             Description: 'Test pipeline'
         });
 
@@ -129,7 +120,7 @@ describe(constructName, () => {
 
     it('exposes image pipeline ARN and SNS topic', () => {
         // Act
-        const imagePipeline = new Ec2ImagePipeline(stack, constructName, {
+        const imagePipeline = new Ec2ImagePipeline(stack, id, {
             version: '0.1.0'
         });
 
@@ -140,7 +131,7 @@ describe(constructName, () => {
 
     it('sets latestAmi when waitForCompletion is true', () => {
         // Act
-        const imagePipeline = new Ec2ImagePipeline(stack, constructName, {
+        const imagePipeline = new Ec2ImagePipeline(stack, id, {
             version: '0.1.0',
             buildConfiguration: {
                 start: true,
@@ -154,7 +145,7 @@ describe(constructName, () => {
 
     it('does not set latestAmi when waitForCompletion is false', () => {
         // Act
-        const imagePipeline = new Ec2ImagePipeline(stack, constructName, {
+        const imagePipeline = new Ec2ImagePipeline(stack, id, {
             version: '0.1.0',
             buildConfiguration: {
                 start: true,
@@ -176,7 +167,7 @@ describe(constructName, () => {
         });
 
         // Act
-        new Ec2ImagePipeline(stack, constructName, {
+        new Ec2ImagePipeline(stack, id, {
             version: '0.1.0',
             components: [
                 Ec2ImagePipeline.Component.AWS_CLI_VERSION_2_LINUX,
@@ -185,7 +176,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         template.hasResourceProperties('AWS::ImageBuilder::Component', {
             Name: 'MyCustomComponent',
@@ -228,7 +219,7 @@ describe(constructName, () => {
         });
 
         // Act
-        new Ec2ImagePipeline(stack, constructName, {
+        new Ec2ImagePipeline(stack, id, {
             version: '0.1.0',
             vpcConfiguration: {
                 vpc,
@@ -237,7 +228,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         // Verify that the security group is created
         template.hasResourceProperties('AWS::EC2::SecurityGroup', {
@@ -271,7 +262,7 @@ describe(constructName, () => {
         const vpc = new Vpc(stack, 'TestVpc');
 
         // Act
-        new Ec2ImagePipeline(stack, constructName, {
+        new Ec2ImagePipeline(stack, id, {
             version: '0.1.0',
             vpcConfiguration: {
                 vpc
@@ -279,7 +270,7 @@ describe(constructName, () => {
         });
 
         // Assert
-        const template = getTemplateWithCdkNag(stack);
+        const template = getTemplate();
 
         // Verify that the security group is created
         template.hasResourceProperties('AWS::EC2::SecurityGroup', {
@@ -295,10 +286,7 @@ describe(constructName, () => {
             {
                 SecurityGroupIds: [
                     {
-                        'Fn::GetAtt': [
-                            Match.stringLikeRegexp(constructName),
-                            'GroupId'
-                        ]
+                        'Fn::GetAtt': [Match.stringLikeRegexp(id), 'GroupId']
                     }
                 ]
             }
@@ -310,7 +298,7 @@ describe(constructName, () => {
 
     it('throws error for invalid SEMVER format', () => {
         expect(() => {
-            new Ec2ImagePipeline(stack, constructName, {
+            new Ec2ImagePipeline(stack, id, {
                 version: 'asdf'
             });
         }).toThrow(/Expected type: SEMVER/);

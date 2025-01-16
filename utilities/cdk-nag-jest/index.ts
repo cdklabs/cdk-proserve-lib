@@ -13,3 +13,4 @@
 
 export { getTemplateWithCdkNag } from './template';
 export { validateNoCdkNagFindings } from './validate';
+export { describeCdkTest } from './test-cdk';

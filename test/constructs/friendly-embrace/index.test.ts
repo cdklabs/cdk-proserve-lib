@@ -16,27 +16,22 @@ import { Match, Template } from 'aws-cdk-lib/assertions';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { NagSuppressions } from 'cdk-nag';
 import { FriendlyEmbrace } from '../../../src/constructs/friendly-embrace';
-import {
-    getTemplateWithCdkNag,
-    validateNoCdkNagFindings
-} from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-const constructName = 'FriendlyEmbrace';
-
-describe(constructName, () => {
+describeCdkTest(FriendlyEmbrace, (id, getStack, getTemplate, getApp) => {
     let app: App;
     let stack: Stack;
     let template: Template;
 
     beforeEach(() => {
-        app = new App();
+        app = getApp();
+        stack = getStack();
         new Stack(app, 'AppStack'); // must be at least one other stack
-        stack = new Stack(app, 'Embrace');
 
         NagSuppressions.addStackSuppressions(stack, [
             ...['NIST.800.53.R5-S3BucketLoggingEnabled', 'AwsSolutions-S1'].map(
-                (id) => ({
-                    id,
+                (nagId) => ({
+                    id: nagId,
                     reason: 'Bucket logging is optional and up to the user to set through optional parameters of the construct.'
                 })
             ),
@@ -51,13 +46,9 @@ describe(constructName, () => {
         ]);
     });
 
-    afterEach(() => {
-        validateNoCdkNagFindings(stack, constructName);
-    });
-
     it('creates S3 bucket with default encryption', () => {
-        new FriendlyEmbrace(stack, constructName);
-        template = getTemplateWithCdkNag(stack);
+        new FriendlyEmbrace(stack, id);
+        template = getTemplate();
         template.hasResourceProperties('AWS::S3::Bucket', {
             BucketEncryption: {
                 ServerSideEncryptionConfiguration: [
@@ -72,8 +63,8 @@ describe(constructName, () => {
     });
 
     it('creates Lambda function with expected configuration', () => {
-        new FriendlyEmbrace(stack, constructName);
-        template = getTemplateWithCdkNag(stack);
+        new FriendlyEmbrace(stack, id);
+        template = getTemplate();
         template.hasResourceProperties('AWS::Lambda::Function', {
             Handler: 'index.handler',
             Runtime: 'nodejs20.x',
@@ -83,8 +74,8 @@ describe(constructName, () => {
     });
 
     it('creates custom resource with expected properties', () => {
-        new FriendlyEmbrace(stack, constructName);
-        template = getTemplateWithCdkNag(stack);
+        new FriendlyEmbrace(stack, id);
+        template = getTemplate();
         template.hasResourceProperties('Custom::FriendlyEmbrace', {
             ServiceToken: {
                 'Fn::GetAtt': Match.arrayWith([
@@ -96,8 +87,8 @@ describe(constructName, () => {
     });
 
     it('creates IAM role with required permissions', () => {
-        new FriendlyEmbrace(stack, constructName);
-        template = getTemplateWithCdkNag(stack);
+        new FriendlyEmbrace(stack, id);
+        template = getTemplate();
         template.hasResourceProperties('AWS::IAM::Role', {
             AssumeRolePolicyDocument: {
                 Statement: [
@@ -143,10 +134,10 @@ describe(constructName, () => {
 
     test('creates S3 bucket with custom KMS encryption', () => {
         const key = new Key(stack, 'TestKey');
-        new FriendlyEmbrace(stack, constructName, {
+        new FriendlyEmbrace(stack, id, {
             encryption: key
         });
-        template = getTemplateWithCdkNag(stack);
+        template = getTemplate();
         template.hasResourceProperties('AWS::S3::Bucket', {
             BucketEncryption: {
                 ServerSideEncryptionConfiguration: [
@@ -165,7 +156,7 @@ describe(constructName, () => {
         new FriendlyEmbrace(stack, 'TestFriendlyEmbrace', {
             ignoreInvalidStates: true
         });
-        template = getTemplateWithCdkNag(stack);
+        template = getTemplate();
         template.hasResourceProperties('Custom::FriendlyEmbrace', {
             ignoreInvalidStates: true
         });
