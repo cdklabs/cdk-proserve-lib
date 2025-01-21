@@ -18,6 +18,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+      - name: Install corepack
+        run: sudo corepack enable
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:

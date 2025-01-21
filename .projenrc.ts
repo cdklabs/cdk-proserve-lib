@@ -83,6 +83,9 @@ const project = new CdklabsConstructLibrary({
             }
         ]
     },
+    workflowBootstrapSteps: [
+        { name: 'Install corepack', run: 'sudo corepack enable' }
+    ],
     yarnBerryOptions: {
         yarnRcOptions: {
             enableTelemetry: false,
