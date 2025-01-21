@@ -264,6 +264,20 @@ project.postCompileTask.spawn(bundleTask);
 project.postCompileTask.spawn(compileLambdas);
 
 /**
+ * README
+ */
+const readmeTask = project.addTask('update:readme', {
+    description: 'Updates the README with library package information.',
+    steps: [
+        {
+            exec: 'yarn ts-node utilities/generators/lib/update-readme-library.ts',
+            name: 'Runs script to automatically update the README.'
+        }
+    ]
+});
+project.postCompileTask.spawn(readmeTask);
+
+/**
  * Ignore Patterns
  */
 // Linting

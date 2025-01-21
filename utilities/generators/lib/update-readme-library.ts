@@ -1,0 +1,174 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+
+import * as fs from 'fs';
+
+interface DocItem {
+    name: string;
+    description: string;
+}
+
+function parseApiDoc(filePath: string): {
+    constructs: DocItem[];
+    aspects: DocItem[];
+    patterns: DocItem[];
+} {
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const lines = content.split('\n');
+
+    const constructs: DocItem[] = [];
+    const aspects: DocItem[] = [];
+    const patterns: DocItem[] = [];
+
+    let currentSection = '';
+    let currentItem: DocItem | null = null;
+
+    let ignoreSection = false;
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+
+        // Detect sections
+        // Inside the section detection part:
+        if (line.startsWith('## Constructs')) {
+            currentSection = 'constructs';
+            ignoreSection = false;
+        } else if (line.startsWith('## Classes')) {
+            if (currentItem) {
+                // Add the current item to its proper list
+                if (currentSection === 'constructs') {
+                    constructs.push(currentItem);
+                }
+                currentItem = null; // Reset currentItem for the new section
+            }
+            currentSection = 'aspects';
+            ignoreSection = false;
+        } else if (line.startsWith('## Structs')) {
+            ignoreSection = true;
+        } else if (line.startsWith('## Enum')) {
+            ignoreSection = true;
+        }
+
+        if (ignoreSection) {
+            continue;
+        }
+
+        // Detect items
+        if (line.startsWith('### ')) {
+            if (currentItem) {
+                if (currentItem.description.toLowerCase().includes('pattern')) {
+                    patterns.push(currentItem);
+                } else if (currentSection === 'constructs') {
+                    constructs.push(currentItem);
+                } else if (currentSection === 'aspects') {
+                    aspects.push(currentItem);
+                }
+            }
+
+            const name = line.replace('### ', '').split(' ')[0];
+            currentItem = {
+                name,
+                description: ''
+            };
+
+            // Get description from following lines
+            let j = i + 1;
+            let description: string[] = []; // Explicitly type as string array
+            let foundDescription = false;
+            while (j < lines.length) {
+                const nextLine = lines[j];
+                if (nextLine.startsWith('#') || nextLine.startsWith('---')) {
+                    break;
+                }
+                if (foundDescription && nextLine.trim() === '') {
+                    break;
+                }
+                if (nextLine) {
+                    // Only add non-empty lines
+                    description.push(nextLine);
+                    foundDescription = true;
+                }
+                j++;
+            }
+            if (description.length > 0) {
+                currentItem.description = description.join(' ');
+            }
+        }
+    }
+
+    // Don't forget to add the last item
+    if (currentItem) {
+        if (currentSection === 'constructs') {
+            constructs.push(currentItem);
+        } else if (currentSection === 'aspects') {
+            aspects.push(currentItem);
+        }
+    }
+
+    return { constructs, aspects, patterns };
+}
+
+function generateMarkdown(
+    constructs: DocItem[],
+    aspects: DocItem[],
+    patterns: DocItem[]
+): string {
+    let output = '';
+    output += `Total: ${constructs.length + aspects.length + patterns.length}\n\n`;
+    output += '### Constructs\n\n';
+    output += `Count: ${constructs.length}\n\n`;
+    for (const construct of constructs) {
+        const anchor = construct.name.toLowerCase().replace(/\s+/g, '-');
+        output += `- [**${construct.name}**](API.md#${anchor}): ${construct.description}\n`;
+    }
+
+    output += '\n### Aspects\n\n';
+    output += `Count: ${aspects.length}\n\n`;
+    for (const aspect of aspects) {
+        const anchor = aspect.name.toLowerCase().replace(/\s+/g, '-');
+        output += `- [**${aspect.name}**](API.md#${anchor}): ${aspect.description}\n`;
+    }
+
+    // Add Patterns section
+    output += '\n### Patterns\n\n';
+    output += `Count: ${patterns.length}\n\n`;
+    for (const pattern of patterns) {
+        const anchor = pattern.name.toLowerCase().replace(/\s+/g, '-');
+        output += `- [**${pattern.name}**](API.md#${anchor}): ${pattern.description}\n`;
+    }
+
+    return output;
+}
+
+// Usage
+const apiData = parseApiDoc('API.md');
+const markdown = generateMarkdown(
+    apiData.constructs,
+    apiData.aspects,
+    apiData.patterns
+);
+
+// Read existing README
+const readmeContent = fs.readFileSync('README.md', 'utf-8');
+
+// Create the new Library section with static description
+const newLibrarySection = `## Library
+
+The library consists of constructs, aspects, and patterns that you can utilize
+in AWS Cloud Development Kit (CDK) applications.
+
+${markdown}`;
+
+// Replace everything between ## Library and the next section
+const newReadme = readmeContent.replace(
+    /## Library[\s\S]*?(?=\n## |$)/,
+    newLibrarySection
+);
+
+// Write the updated content back to README.md
+fs.writeFileSync('README.md', newReadme);
+
+const total =
+    apiData.constructs.length +
+    apiData.aspects.length +
+    apiData.patterns.length;
+console.log(`README updated -- count: ${total}`);

@@ -47,6 +47,9 @@ export interface Ec2LinuxImagePipelineProps extends Ec2ImagePipelineBaseProps {
     readonly extraComponents?: (Ec2ImagePipeline.Component | CfnComponent)[];
 }
 
+/**
+ * A pattern to build an image pipeline specifically for Linux.
+ */
 export class Ec2LinuxImagePipeline extends Construct {
     public latestAmi: string | undefined;
     public imagePipelineArn: string;

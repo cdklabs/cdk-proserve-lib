@@ -6,6 +6,16 @@
 
 Custom construct that retrieves the AMI ID from an EC2 Image Builder image build version.
 
+*Example*
+
+```typescript
+const image = new Ec2ImageBuilderGetImage(this, 'amiId', {
+  imageBuildVersionArn: 'arn:aws:ec2-imagebuilder:us-east-1:aws:image/amazon-linux-2023-x86-latest'
+});
+new CfnOutput(this, 'AmiId', { value: image.ami });
+```
+
+
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImage.Initializer"></a>
 
 ```typescript
@@ -385,6 +395,8 @@ property to be available.
 
 
 ### Ec2LinuxImagePipeline <a name="Ec2LinuxImagePipeline" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline"></a>
+
+A pattern to build an image pipeline specifically for Linux.
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer"></a>
 

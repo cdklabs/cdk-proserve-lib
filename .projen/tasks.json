@@ -362,6 +362,9 @@
         },
         {
           "spawn": "compile:lambda"
+        },
+        {
+          "spawn": "update:readme"
         }
       ]
     },
@@ -506,6 +509,16 @@
       "steps": [
         {
           "builtin": "release/reset-version"
+        }
+      ]
+    },
+    "update:readme": {
+      "name": "update:readme",
+      "description": "Updates the README with library package information.",
+      "steps": [
+        {
+          "exec": "yarn ts-node utilities/generators/lib/update-readme-library.ts",
+          "name": "Runs script to automatically update the README."
         }
       ]
     },

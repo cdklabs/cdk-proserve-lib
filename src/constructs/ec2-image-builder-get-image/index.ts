@@ -29,6 +29,12 @@ export interface Ec2ImageBuilderGetImageProps {
 
 /**
  * Custom construct that retrieves the AMI ID from an EC2 Image Builder image build version
+ *
+ * @example
+ * const image = new Ec2ImageBuilderGetImage(this, 'SomeImage', {
+ *   imageBuildVersionArn: 'arn:aws:imagebuilder:us-east-1:123456789012:image/some-image/0.0.1/1'
+ * });
+ * new CfnOutput(this, 'AmiId', { value: image.ami });
  */
 export class Ec2ImageBuilderGetImage extends Construct {
     /**

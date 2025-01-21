@@ -36,6 +36,7 @@
     "test": "npx projen test",
     "test:watch": "npx projen test:watch",
     "unbump": "npx projen unbump",
+    "update:readme": "npx projen update:readme",
     "upgrade": "npx projen upgrade",
     "upgrade-cdklabs-projen-project-types": "npx projen upgrade-cdklabs-projen-project-types",
     "upgrade-dev-deps": "npx projen upgrade-dev-deps",
