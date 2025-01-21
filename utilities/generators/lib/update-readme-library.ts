@@ -82,6 +82,14 @@ function parseApiDoc(filePath: string): {
                 if (foundDescription && nextLine.trim() === '') {
                     break;
                 }
+                // Skip the "Implements" line for Aspects
+                if (
+                    currentSection === 'aspects' &&
+                    nextLine.trim().startsWith('- *Implements:*')
+                ) {
+                    j++;
+                    continue;
+                }
                 if (nextLine) {
                     // Only add non-empty lines
                     description.push(nextLine);
@@ -154,7 +162,7 @@ const readmeContent = fs.readFileSync('README.md', 'utf-8');
 const newLibrarySection = `## Library
 
 The library consists of constructs, aspects, and patterns that you can utilize
-in AWS Cloud Development Kit (CDK) applications.
+in AWS CDK applications.
 
 ${markdown}`;
 

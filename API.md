@@ -9,8 +9,8 @@ Custom construct that retrieves the AMI ID from an EC2 Image Builder image build
 *Example*
 
 ```typescript
-const image = new Ec2ImageBuilderGetImage(this, 'amiId', {
-  imageBuildVersionArn: 'arn:aws:ec2-imagebuilder:us-east-1:aws:image/amazon-linux-2023-x86-latest'
+const image = new Ec2ImageBuilderGetImage(this, 'SomeImage', {
+  imageBuildVersionArn: 'arn:aws:imagebuilder:us-east-1:123456789012:image/some-image/0.0.1/1'
 });
 new CfnOutput(this, 'AmiId', { value: image.ami });
 ```

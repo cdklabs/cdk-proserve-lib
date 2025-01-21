@@ -5,20 +5,20 @@ SPDX-License-Identifier: Apache-2.0
 
 # CDK ProServe Library
 
-[![PyPI version](https://img.shields.io/pypi/v/cdklabs.cdk-proserve-lib)](https://pypi.org/project/cdk-proserve-lib/)
 [![npm version](https://img.shields.io/npm/v/@cdklabs/cdk-proserve-lib)](https://www.npmjs.com/package/@cdklabs/cdk-proserve-lib)
+[![PyPI version](https://img.shields.io/pypi/v/cdklabs.cdk-proserve-lib)](https://pypi.org/project/cdk-proserve-lib/)
 [![Maven version](https://img.shields.io/maven-central/v/io.github.cdklabs/cdkproservelib)](https://search.maven.org/search?q=a:cdkproservelib)
 [![NuGet version](https://img.shields.io/nuget/v/Cdklabs.CdkProserveLib)](https://www.nuget.org/packages/Cdklabs.CdkProserveLib)
 [![Go version](https://img.shields.io/github/go-mod/go-version/cdklabs/cdk-proserve-lib-go?color=blue&filename=cdkproservelib%2Fgo.mod)](https://github.com/cdklabs/cdk-proserve-lib-go)
 
 [![View on Construct Hub](https://constructs.dev/badge?package=@cdklabs/cdk-proserve-lib)](https://constructs.dev/packages/@cdklabs/cdk-proserve-lib)
 
-An [AWS Cloud Development Kit (CDK)](https://aws.amazon.com/cdk/) Library built and maintained by AWS Professional Services.
+An [AWS Cloud Development Kit (CDK)](https://aws.amazon.com/cdk/) library.
 
 ## Library
 
 The library consists of constructs, aspects, and patterns that you can utilize
-in AWS Cloud Development Kit (CDK) applications.
+in AWS CDK applications.
 
 Total: 14
 
@@ -40,10 +40,10 @@ Count: 9
 
 Count: 4
 
--   [**ApplyRemovalPolicy**](API.md#applyremovalpolicy): - _Implements:_ aws-cdk-lib.IAspect
--   [**CreateLambdaLogGroup**](API.md#createlambdaloggroup): - _Implements:_ aws-cdk-lib.IAspect
--   [**SetLogRetention**](API.md#setlogretention): - _Implements:_ aws-cdk-lib.IAspect
--   [**SqsRequireSsl**](API.md#sqsrequiressl): - _Implements:_ aws-cdk-lib.IAspect
+-   [**ApplyRemovalPolicy**](API.md#applyremovalpolicy): Aspect that applies the provided Removal Policy to all resources.
+-   [**CreateLambdaLogGroup**](API.md#createlambdaloggroup): An aspect that ensures Lambda log groups are created for all Lambda functions.
+-   [**SetLogRetention**](API.md#setlogretention): Aspect that sets log retention period for CloudWatch Log Groups.
+-   [**SqsRequireSsl**](API.md#sqsrequiressl): An aspect that enforces SSL/TLS requirements for SQS queues.
 
 ### Patterns
 
