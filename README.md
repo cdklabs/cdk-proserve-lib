@@ -26,30 +26,30 @@ Total: 14
 
 Count: 9
 
--   [**Ec2ImageBuilderGetImage**](API.md#ec2imagebuildergetimage): Custom construct that retrieves the AMI ID from an EC2 Image Builder image build version.
--   [**Ec2ImageBuilderStart**](API.md#ec2imagebuilderstart): Starts an EC2 Image Builder pipeline execution.
--   [**Ec2ImagePipeline**](API.md#ec2imagepipeline):
--   [**FriendlyEmbrace**](API.md#friendlyembrace): Friendly Embrace Custom Resource.
--   [**IamServerCertificate**](API.md#iamservercertificate): A construct that creates a Custom Resource to manage an AWS Identity and Access Management Server Certificate for use in regions/partitions where AWS Certificate Manager is not available.
--   [**NetworkFirewall**](API.md#networkfirewall): AWS Network Firewall.
--   [**NetworkFirewallEndpoints**](API.md#networkfirewallendpoints): Construct that retrieves and manages Network Firewall endpoints Uses AWS Custom Resources to fetch endpoint information from the Network Firewall service.
--   [**OpenSearchAdminUser**](API.md#opensearchadminuser): OpenSearchAdminUser construct creates a custom resource to manage an admin user for an Amazon OpenSearch domain.
--   [**WebApplicationFirewall**](API.md#webapplicationfirewall): WebApplicationFirewall construct represents a WAF (Web Application Firewall) that can be associated with AWS resources like Application Load Balancers.
+- [**Ec2ImageBuilderGetImage**](API.md#ec2imagebuildergetimage): Custom construct that retrieves the AMI ID from an EC2 Image Builder image build version.
+- [**Ec2ImageBuilderStart**](API.md#ec2imagebuilderstart): Starts an EC2 Image Builder pipeline execution.
+- [**Ec2ImagePipeline**](API.md#ec2imagepipeline): 
+- [**FriendlyEmbrace**](API.md#friendlyembrace): Friendly Embrace Custom Resource.
+- [**IamServerCertificate**](API.md#iamservercertificate): A construct that creates a Custom Resource to manage an AWS Identity and Access Management Server Certificate for use in regions/partitions where AWS Certificate Manager is not available.
+- [**NetworkFirewall**](API.md#networkfirewall): AWS Network Firewall.
+- [**NetworkFirewallEndpoints**](API.md#networkfirewallendpoints): Construct that retrieves and manages Network Firewall endpoints Uses AWS Custom Resources to fetch endpoint information from the Network Firewall service.
+- [**OpenSearchAdminUser**](API.md#opensearchadminuser): OpenSearchAdminUser construct creates a custom resource to manage an admin user for an Amazon OpenSearch domain.
+- [**WebApplicationFirewall**](API.md#webapplicationfirewall): WebApplicationFirewall construct represents a WAF (Web Application Firewall) that can be associated with AWS resources like Application Load Balancers.
 
 ### Aspects
 
 Count: 4
 
--   [**ApplyRemovalPolicy**](API.md#applyremovalpolicy): Aspect that applies the provided Removal Policy to all resources.
--   [**CreateLambdaLogGroup**](API.md#createlambdaloggroup): An aspect that ensures Lambda log groups are created for all Lambda functions.
--   [**SetLogRetention**](API.md#setlogretention): Aspect that sets log retention period for CloudWatch Log Groups.
--   [**SqsRequireSsl**](API.md#sqsrequiressl): An aspect that enforces SSL/TLS requirements for SQS queues.
+- [**ApplyRemovalPolicy**](API.md#applyremovalpolicy): Aspect that applies the provided Removal Policy to all resources.
+- [**CreateLambdaLogGroup**](API.md#createlambdaloggroup): An aspect that ensures Lambda log groups are created for all Lambda functions.
+- [**SetLogRetention**](API.md#setlogretention): Aspect that sets log retention period for CloudWatch Log Groups.
+- [**SqsRequireSsl**](API.md#sqsrequiressl): An aspect that enforces SSL/TLS requirements for SQS queues.
 
 ### Patterns
 
 Count: 1
 
--   [**Ec2LinuxImagePipeline**](API.md#ec2linuximagepipeline): A pattern to build an image pipeline specifically for Linux.
+- [**Ec2LinuxImagePipeline**](API.md#ec2linuximagepipeline): A pattern to build an image pipeline specifically for Linux.
 
 ## License
 
