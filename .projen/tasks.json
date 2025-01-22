@@ -235,6 +235,9 @@
         {
           "spawn": "package-all",
           "condition": "node -e \"if (process.env.CI) process.exit(1)\""
+        },
+        {
+          "spawn": "post-package"
         }
       ]
     },
@@ -264,15 +267,12 @@
       "description": "Create dotnet language bindings",
       "steps": [
         {
-          "spawn": "pre-package",
-          "condition": "! [ -d \"dist/stage\" ]"
-        },
-        {
-          "exec": "cd dist/stage && jsii-pacmak -v --target dotnet"
+          "exec": "if [ -d \"dist/stage\" ]; then cd dist/stage && jsii-pacmak -v --target dotnet; else jsii-pacmak -v --target dotnet; fi"
         },
         {
           "exec": "cp -R dist/stage/dist/dotnet dist/",
-          "name": "Extract the packaged distributions."
+          "name": "Extract the packaged distributions.",
+          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
         }
       ]
     },
@@ -281,15 +281,12 @@
       "description": "Create go language bindings",
       "steps": [
         {
-          "spawn": "pre-package",
-          "condition": "! [ -d \"dist/stage\" ]"
-        },
-        {
-          "exec": "cd dist/stage && jsii-pacmak -v --target go"
+          "exec": "if [ -d \"dist/stage\" ]; then cd dist/stage && jsii-pacmak -v --target go; else jsii-pacmak -v --target go; fi"
         },
         {
           "exec": "cp -R dist/stage/dist/go dist/",
-          "name": "Extract the packaged distributions."
+          "name": "Extract the packaged distributions.",
+          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
         }
       ]
     },
@@ -298,15 +295,12 @@
       "description": "Create java language bindings",
       "steps": [
         {
-          "spawn": "pre-package",
-          "condition": "! [ -d \"dist/stage\" ]"
-        },
-        {
-          "exec": "cd dist/stage && jsii-pacmak -v --target java"
+          "exec": "if [ -d \"dist/stage\" ]; then cd dist/stage && jsii-pacmak -v --target java; else jsii-pacmak -v --target java; fi"
         },
         {
           "exec": "cp -R dist/stage/dist/java dist/",
-          "name": "Extract the packaged distributions."
+          "name": "Extract the packaged distributions.",
+          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
         }
       ]
     },
@@ -315,15 +309,12 @@
       "description": "Create js language bindings",
       "steps": [
         {
-          "spawn": "pre-package",
-          "condition": "! [ -d \"dist/stage\" ]"
-        },
-        {
-          "exec": "cd dist/stage && jsii-pacmak -v --target js"
+          "exec": "if [ -d \"dist/stage\" ]; then cd dist/stage && jsii-pacmak -v --target js; else jsii-pacmak -v --target js; fi"
         },
         {
           "exec": "cp -R dist/stage/dist/js dist/",
-          "name": "Extract the packaged distributions."
+          "name": "Extract the packaged distributions.",
+          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
         }
       ]
     },
@@ -332,15 +323,12 @@
       "description": "Create python language bindings",
       "steps": [
         {
-          "spawn": "pre-package",
-          "condition": "! [ -d \"dist/stage\" ]"
-        },
-        {
-          "exec": "cd dist/stage && jsii-pacmak -v --target python"
+          "exec": "if [ -d \"dist/stage\" ]; then cd dist/stage && jsii-pacmak -v --target python; else jsii-pacmak -v --target python; fi"
         },
         {
           "exec": "cp -R dist/stage/dist/python dist/",
-          "name": "Extract the packaged distributions."
+          "name": "Extract the packaged distributions.",
+          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
         }
       ]
     },
@@ -364,6 +352,17 @@
           "spawn": "update:readme"
         }
       ]
+    },
+    "post-package": {
+      "name": "post-package",
+      "description": "Cleans up after packaging completes.",
+      "steps": [
+        {
+          "exec": "rm -rf dist/stage",
+          "name": "Remove the package staging directory."
+        }
+      ],
+      "condition": "node -e \"if (process.env.CI) process.exit(1)\""
     },
     "post-upgrade": {
       "name": "post-upgrade",
@@ -421,7 +420,8 @@
           "exec": "cd dist/stage && yarn",
           "name": "Install modules for package staging."
         }
-      ]
+      ],
+      "condition": "node -e \"if (process.env.CI) process.exit(1)\""
     },
     "release": {
       "name": "release",

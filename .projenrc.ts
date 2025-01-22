@@ -198,23 +198,24 @@ const prePackageTask = project.addTask('pre-package', {
             exec: `cd ${stageDir} && yarn`,
             name: 'Install modules for package staging.'
         }
-    ]
-    // condition: 'node -e "if (!process.env.CI) process.exit(1)"'
+    ],
+    condition: 'node -e "if (process.env.CI) process.exit(1)"'
 });
 
-// const postPackageTask = project.addTask('post-package', {
-//     description: 'Cleans up after packaging completes.',
-//     steps: [
-//         {
-//             exec: `rm -rf ${stageDir}`,
-//             name: 'Remove the package staging directory.'
-//         }
-//     ]
-// });
+const postPackageTask = project.addTask('post-package', {
+    description: 'Cleans up after packaging completes.',
+    steps: [
+        {
+            exec: `rm -rf ${stageDir}`,
+            name: 'Remove the package staging directory.'
+        }
+    ],
+    condition: 'node -e "if (process.env.CI) process.exit(1)"'
+});
 
 const packageTask = project.tasks.tryFind('package');
 packageTask?.prependSpawn(prePackageTask);
-// packageTask?.spawn(postPackageTask);
+packageTask?.spawn(postPackageTask);
 
 const packageLanguageTasks = ['js', 'java', 'python', 'dotnet', 'go'];
 
@@ -224,16 +225,17 @@ packageLanguageTasks.forEach((l) => {
 
     if (currentCommand) {
         languageTask.updateStep(0, {
-            exec: `cd ${stageDir} && ${currentCommand}`
+            exec: `if [ -d "${stageDir}" ]; then cd ${stageDir} && ${currentCommand}; else ${currentCommand}; fi`
         });
 
         languageTask.exec(`cp -R ${stageDir}/dist/${l} dist/`, {
-            name: 'Extract the packaged distributions.'
+            name: 'Extract the packaged distributions.',
+            condition: 'node -e "if (process.env.CI) process.exit(1)"'
         });
 
-        languageTask.prependSpawn(prePackageTask, {
-            condition: `! [ -d "${stageDir}" ]`
-        });
+        // languageTask.prependSpawn(prePackageTask, {
+        //     condition: `! [ -d "${stageDir}" ]`
+        // });
     }
 });
 
