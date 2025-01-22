@@ -61,6 +61,7 @@ const project = new CdklabsConstructLibrary({
     gitignore: ['.DS_Store', '.python-version', '.nvmrc', 'test.json'],
     packageManager: NodePackageManager.YARN_BERRY,
     prettier: true,
+    // jsiiTargetLanguages: [JsiiLanguage.PYTHON],
     prettierOptions: {
         settings: {
             tabWidth: 4,
@@ -198,21 +199,22 @@ const prePackageTask = project.addTask('pre-package', {
             name: 'Install modules for package staging.'
         }
     ]
+    // condition: 'node -e "if (!process.env.CI) process.exit(1)"'
 });
 
-const postPackageTask = project.addTask('post-package', {
-    description: 'Cleans up after packaging completes.',
-    steps: [
-        {
-            exec: `rm -rf ${stageDir}`,
-            name: 'Remove the package staging directory.'
-        }
-    ]
-});
+// const postPackageTask = project.addTask('post-package', {
+//     description: 'Cleans up after packaging completes.',
+//     steps: [
+//         {
+//             exec: `rm -rf ${stageDir}`,
+//             name: 'Remove the package staging directory.'
+//         }
+//     ]
+// });
 
 const packageTask = project.tasks.tryFind('package');
 packageTask?.prependSpawn(prePackageTask);
-packageTask?.spawn(postPackageTask);
+// packageTask?.spawn(postPackageTask);
 
 const packageLanguageTasks = ['js', 'java', 'python', 'dotnet', 'go'];
 
