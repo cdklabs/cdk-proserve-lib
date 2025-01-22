@@ -22,6 +22,8 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Install Corepack
+        run: sudo corepack enable
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -107,6 +109,8 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
+      - name: Install Corepack
+        run: sudo corepack enable
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -145,6 +149,8 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
+      - name: Install Corepack
+        run: sudo corepack enable
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -182,6 +188,8 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
+      - name: Install Corepack
+        run: sudo corepack enable
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -219,6 +227,8 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
+      - name: Install Corepack
+        run: sudo corepack enable
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -256,6 +266,8 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
+      - name: Install Corepack
+        run: sudo corepack enable
       - name: Checkout
         uses: actions/checkout@v4
         with:
