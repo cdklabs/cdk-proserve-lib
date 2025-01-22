@@ -172,9 +172,18 @@ project.addTask('clean', {
 const packageLanguageTasks = ['js', 'java', 'python', 'dotnet', 'go'];
 packageLanguageTasks.forEach((l) => {
     const languageTask = project.tasks.tryFind(`package:${l}`);
+
     languageTask?.updateStep(0, {
-        exec: `jsii-pacmak -v --target ${l} --pack-command "rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name"`
+        ...languageTask.steps[0],
+        condition: 'node -e "if (process.env.CI) process.exit(1)"'
     });
+
+    languageTask?.exec(
+        `jsii-pacmak -v --target ${l} --pack-command "rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name"`,
+        {
+            condition: `node -e "if (!process.env.CI || !process.env.GITHUB_JOB.toLowerCase() === 'build') process.exit(1)"`
+        }
+    );
 });
 
 // Lambda Build Task

@@ -261,7 +261,12 @@
       "description": "Create dotnet language bindings",
       "steps": [
         {
-          "exec": "jsii-pacmak -v --target dotnet --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\""
+          "exec": "jsii-pacmak -v --target dotnet",
+          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
+        },
+        {
+          "exec": "jsii-pacmak -v --target dotnet --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\"",
+          "condition": "node -e \"if (!process.env.CI || !process.env.GITHUB_JOB.toLowerCase() === 'build') process.exit(1)\""
         }
       ]
     },
@@ -270,7 +275,12 @@
       "description": "Create go language bindings",
       "steps": [
         {
-          "exec": "jsii-pacmak -v --target go --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\""
+          "exec": "jsii-pacmak -v --target go",
+          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
+        },
+        {
+          "exec": "jsii-pacmak -v --target go --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\"",
+          "condition": "node -e \"if (!process.env.CI || !process.env.GITHUB_JOB.toLowerCase() === 'build') process.exit(1)\""
         }
       ]
     },
@@ -279,7 +289,12 @@
       "description": "Create java language bindings",
       "steps": [
         {
-          "exec": "jsii-pacmak -v --target java --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\""
+          "exec": "jsii-pacmak -v --target java",
+          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
+        },
+        {
+          "exec": "jsii-pacmak -v --target java --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\"",
+          "condition": "node -e \"if (!process.env.CI || !process.env.GITHUB_JOB.toLowerCase() === 'build') process.exit(1)\""
         }
       ]
     },
@@ -288,7 +303,12 @@
       "description": "Create js language bindings",
       "steps": [
         {
-          "exec": "jsii-pacmak -v --target js --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\""
+          "exec": "jsii-pacmak -v --target js",
+          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
+        },
+        {
+          "exec": "jsii-pacmak -v --target js --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\"",
+          "condition": "node -e \"if (!process.env.CI || !process.env.GITHUB_JOB.toLowerCase() === 'build') process.exit(1)\""
         }
       ]
     },
@@ -297,7 +317,12 @@
       "description": "Create python language bindings",
       "steps": [
         {
-          "exec": "jsii-pacmak -v --target python --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\""
+          "exec": "jsii-pacmak -v --target python",
+          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
+        },
+        {
+          "exec": "jsii-pacmak -v --target python --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\"",
+          "condition": "node -e \"if (!process.env.CI || !process.env.GITHUB_JOB.toLowerCase() === 'build') process.exit(1)\""
         }
       ]
     },
