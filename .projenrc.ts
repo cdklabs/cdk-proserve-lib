@@ -200,7 +200,8 @@ const prePackageTask = project.addTask('pre-package', {
             name: 'Install modules for package staging.'
         }
     ],
-    condition: 'node -e "if (process.env.CI) process.exit(1)"'
+    condition:
+        'node -e "if (process.env.CI && process.env.GITHUB_JOB !== \'build\') process.exit(1)"'
 });
 
 const postPackageTask = project.addTask('post-package', {
