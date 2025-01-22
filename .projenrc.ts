@@ -3,6 +3,7 @@
 
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
 import { TaskStep } from 'projen';
+import { Job, JobStep } from 'projen/lib/github/workflows-model';
 import {
     YarnNodeLinker,
     NodePackageManager,
@@ -11,6 +12,12 @@ import {
     ArrowParens,
     EndOfLine
 } from 'projen/lib/javascript';
+
+/**
+ * Constants
+ */
+const COREPACK_JOB_NAME = 'Install Corepack';
+const COREPACK_JOB_COMMAND = 'sudo corepack enable;';
 
 /**
  * Dependencies
@@ -43,6 +50,13 @@ const project = new CdklabsConstructLibrary({
     rosettaOptions: {
         strict: false
     },
+    // Need to use this option to properly configure the Release publish actions
+    workflowBootstrapSteps: [
+        {
+            name: COREPACK_JOB_NAME,
+            run: COREPACK_JOB_COMMAND
+        }
+    ],
     devDeps: [
         'aws-sdk-client-mock',
         'aws-sdk-client-mock-jest',
@@ -315,5 +329,84 @@ project.package.addPackageResolutions(
     'cross-spawn@^7.0.5', // grype finding nov24
     'jsii@^5.7.3' // grype finding dec24
 );
+
+/**
+ * GitHub Workflows
+ */
+
+/**
+ * Injects corepack as a dependency in a workflow job that leverages Yarn
+ * @param workflowName Name of the workflow
+ * @param jobName Name of the job
+ */
+function injectCorepack(workflowName: string, jobName: string) {
+    const workflow = project.github?.tryFindWorkflow(workflowName);
+    const job = workflow?.getJob(jobName);
+
+    if (job && 'steps' in job) {
+        // Resolve the job steps
+        const newSteps = (() => {
+            if (typeof job.steps === 'function') {
+                return ((job.steps as Function)() as JobStep[]).slice();
+            } else if (Array.isArray(job.steps)) {
+                return job.steps.slice();
+            } else {
+                return [];
+            }
+        })();
+
+        // Remove the corepack dependency from the bootstrap job since its in the wrong place in the workflow
+        const bootstrapIndex = newSteps.findIndex(
+            (s) => s.name?.toLowerCase() === COREPACK_JOB_NAME.toLowerCase()
+        );
+
+        if (bootstrapIndex) {
+            newSteps.splice(bootstrapIndex, 1);
+        }
+
+        // Add the corepack dependency back in the correct location
+        const newIndex = newSteps.findIndex(
+            (s) => s.name?.toLowerCase() === 'install dependencies'
+        );
+
+        if (newIndex > -1) {
+            newSteps.splice(newIndex, 0, {
+                name: COREPACK_JOB_NAME,
+                run: COREPACK_JOB_COMMAND
+            });
+        }
+
+        const updatedJob: Job = {
+            ...job,
+            steps: newSteps
+        };
+
+        workflow?.updateJob(jobName, updatedJob);
+    }
+}
+
+// Update all workflows that require corepack
+const workflows: Record<string, string[]> = {
+    build: [
+        'build',
+        'package-js',
+        'package-java',
+        'package-python',
+        'package-dotnet',
+        'package-go'
+    ],
+    release: ['release'],
+    'upgrade-cdklabs-projen-project-types-main': ['upgrade'],
+    'upgrade-dev-deps-main': ['upgrade'],
+    'upgrade-main': ['upgrade']
+};
+
+for (const workflowName in workflows) {
+    const jobs = workflows[workflowName];
+
+    for (const jobName of jobs) {
+        injectCorepack(workflowName, jobName);
+    }
+}
 
 project.synth();

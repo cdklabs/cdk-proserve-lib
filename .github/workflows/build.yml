@@ -26,6 +26,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
+      - name: Install Corepack
+        run: sudo corepack enable;
       - name: Install dependencies
         run: yarn install
       - name: build
@@ -113,6 +115,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           path: .repo
+      - name: Install Corepack
+        run: sudo corepack enable;
       - name: Install Dependencies
         run: cd .repo && yarn install --immutable
       - name: Extract build artifact
@@ -151,6 +155,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           path: .repo
+      - name: Install Corepack
+        run: sudo corepack enable;
       - name: Install Dependencies
         run: cd .repo && yarn install --immutable
       - name: Extract build artifact
@@ -188,6 +194,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           path: .repo
+      - name: Install Corepack
+        run: sudo corepack enable;
       - name: Install Dependencies
         run: cd .repo && yarn install --immutable
       - name: Extract build artifact
@@ -225,6 +233,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           path: .repo
+      - name: Install Corepack
+        run: sudo corepack enable;
       - name: Install Dependencies
         run: cd .repo && yarn install --immutable
       - name: Extract build artifact
@@ -262,6 +272,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           path: .repo
+      - name: Install Corepack
+        run: sudo corepack enable;
       - name: Install Dependencies
         run: cd .repo && yarn install --immutable
       - name: Extract build artifact

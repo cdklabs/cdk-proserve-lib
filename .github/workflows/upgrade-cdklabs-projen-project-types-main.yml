@@ -18,6 +18,8 @@ jobs:
           ref: main
       - name: Setup Node.js
         uses: actions/setup-node@v4
+      - name: Install Corepack
+        run: sudo corepack enable;
       - name: Install dependencies
         run: yarn install --immutable
       - name: Upgrade dependencies
