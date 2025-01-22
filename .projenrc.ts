@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
-import { TaskStep } from 'projen';
 import {
     YarnNodeLinker,
     NodePackageManager,
@@ -111,14 +110,14 @@ project.addFields({
     // Represents the structure in the package staging directory
     files: [
         'API.md',
-        'index.js',
-        'index.d.ts',
-        'aspects/**/*',
-        'common/**/*',
-        'constructs/**/*',
-        'interfaces/**/*',
-        'patterns/**/*',
-        'tsconfig.tsbuildinfo',
+        'lib/index.js',
+        'lib/index.d.ts',
+        'lib/aspects/**/*',
+        'lib/common/**/*',
+        'lib/constructs/**/*',
+        'lib/interfaces/**/*',
+        'lib/patterns/**/*',
+        'lib/tsconfig.tsbuildinfo',
         '.jsii',
         '.jsii.gz'
     ],
@@ -169,74 +168,35 @@ project.addTask('clean', {
     ]
 });
 
-// Packaging Task
-const stageDir = 'dist/stage';
-const buildFiles = [
-    '-R lib/*',
-    '-R .git',
-    'API.md',
-    'package.json',
-    'yarn.lock',
-    '.jsii',
-    'LICENSE',
-    'README.md',
-    '.npmignore'
-];
-
-const prePackageTask = project.addTask('pre-package', {
-    description: 'Prepares the structure for packaging.',
+// JS Packaging Task
+const repackTempDir = 'dist/js/temp';
+const repackJsTask = project.addTask('repack:js', {
+    description:
+        'Repacks the JavaScript library with the correct folder structure',
     steps: [
         {
-            exec: `mkdir -p ${stageDir}`,
-            name: 'Make package staging directory.'
+            exec: `mkdir -p ${repackTempDir}`
         },
-        ...buildFiles.map<TaskStep>((f) => {
-            return {
-                exec: `cp ${f} ${stageDir}`,
-                name: `Copy build file (${f}) to package staging directory.`
-            };
-        }),
         {
-            exec: `cd ${stageDir} && yarn`,
-            name: 'Install modules for package staging.'
+            exec: `tar -xzvf dist/js/*.tgz -C ${repackTempDir}`
+        },
+        {
+            exec: `mv ${repackTempDir}/package/lib/* ${repackTempDir}/package`
+        },
+        {
+            exec: `rm -rf ${repackTempDir}/package/lib`
+        },
+        {
+            exec: `cd ${repackTempDir} && tar -czvf ../$(basename $(ls ../*.tgz)) package`
+        },
+        {
+            exec: `rm -rf ${repackTempDir}`
         }
     ]
 });
 
-const postPackageTask = project.addTask('post-package', {
-    description: 'Cleans up after packaging completes.',
-    steps: [
-        {
-            exec: `rm -rf ${stageDir}`,
-            name: 'Remove the package staging directory.'
-        }
-    ]
-});
-
-const packageTask = project.tasks.tryFind('package');
-packageTask?.prependSpawn(prePackageTask);
-packageTask?.spawn(postPackageTask);
-
-const packageLanguageTasks = ['js', 'java', 'python', 'dotnet', 'go'];
-
-packageLanguageTasks.forEach((l) => {
-    const languageTask = project.tasks.tryFind(`package:${l}`);
-    const currentCommand = languageTask?.steps.at(0)?.exec;
-
-    if (currentCommand) {
-        languageTask.updateStep(0, {
-            exec: `cd ${stageDir} && ${currentCommand}`
-        });
-
-        languageTask.exec(`cp -R ${stageDir}/dist/${l} dist/`, {
-            name: 'Extract the packaged distributions.'
-        });
-
-        languageTask.prependSpawn(prePackageTask, {
-            condition: `! [ -d "${stageDir}" ]`
-        });
-    }
-});
+const jsPackageTask = project.tasks.tryFind('package:js');
+jsPackageTask?.spawn(repackJsTask);
 
 // Lambda Build Task
 const compileLambdas = project.addTask('compile:lambda', {
