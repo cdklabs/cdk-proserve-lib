@@ -61,7 +61,6 @@ const project = new CdklabsConstructLibrary({
     gitignore: ['.DS_Store', '.python-version', '.nvmrc', 'test.json'],
     packageManager: NodePackageManager.YARN_BERRY,
     prettier: true,
-    // jsiiTargetLanguages: [JsiiLanguage.PYTHON],
     prettierOptions: {
         settings: {
             tabWidth: 4,
@@ -85,7 +84,8 @@ const project = new CdklabsConstructLibrary({
         ]
     },
     workflowBootstrapSteps: [
-        { name: 'Install corepack', run: 'sudo corepack enable' }
+        { name: 'Install corepack', run: 'sudo corepack enable' },
+        { name: 'test var', run: 'echo ${{ vars.JOB_NAME }}' }
     ],
     yarnBerryOptions: {
         yarnRcOptions: {

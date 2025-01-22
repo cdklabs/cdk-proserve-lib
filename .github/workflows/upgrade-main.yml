@@ -20,6 +20,8 @@ jobs:
           ref: main
       - name: Install corepack
         run: sudo corepack enable
+      - name: test var
+        run: echo ${{ vars.JOB_NAME }}
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:

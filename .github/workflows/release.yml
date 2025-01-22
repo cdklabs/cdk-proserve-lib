@@ -30,6 +30,8 @@ jobs:
           git config user.email "github-actions@github.com"
       - name: Install corepack
         run: sudo corepack enable
+      - name: test var
+        run: echo ${{ vars.JOB_NAME }}
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -112,6 +114,8 @@ jobs:
         continue-on-error: true
       - name: Install corepack
         run: sudo corepack enable
+      - name: test var
+        run: echo ${{ vars.JOB_NAME }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -157,6 +161,8 @@ jobs:
         continue-on-error: true
       - name: Install corepack
         run: sudo corepack enable
+      - name: test var
+        run: echo ${{ vars.JOB_NAME }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -204,6 +210,8 @@ jobs:
         continue-on-error: true
       - name: Install corepack
         run: sudo corepack enable
+      - name: test var
+        run: echo ${{ vars.JOB_NAME }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -247,6 +255,8 @@ jobs:
         continue-on-error: true
       - name: Install corepack
         run: sudo corepack enable
+      - name: test var
+        run: echo ${{ vars.JOB_NAME }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -289,6 +299,8 @@ jobs:
         continue-on-error: true
       - name: Install corepack
         run: sudo corepack enable
+      - name: test var
+        run: echo ${{ vars.JOB_NAME }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
