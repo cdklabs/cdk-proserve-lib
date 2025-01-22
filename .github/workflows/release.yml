@@ -31,7 +31,9 @@ jobs:
       - name: Install corepack
         run: sudo corepack enable
       - name: test var
-        run: echo ${{ vars.JOB_NAME }}
+        run: echo ${{ vars.GITHUB_JOB }}
+      - name: test var2
+        run: echo $GITHUB_JOB
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -115,7 +117,9 @@ jobs:
       - name: Install corepack
         run: sudo corepack enable
       - name: test var
-        run: echo ${{ vars.JOB_NAME }}
+        run: echo ${{ vars.GITHUB_JOB }}
+      - name: test var2
+        run: echo $GITHUB_JOB
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -162,7 +166,9 @@ jobs:
       - name: Install corepack
         run: sudo corepack enable
       - name: test var
-        run: echo ${{ vars.JOB_NAME }}
+        run: echo ${{ vars.GITHUB_JOB }}
+      - name: test var2
+        run: echo $GITHUB_JOB
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -211,7 +217,9 @@ jobs:
       - name: Install corepack
         run: sudo corepack enable
       - name: test var
-        run: echo ${{ vars.JOB_NAME }}
+        run: echo ${{ vars.GITHUB_JOB }}
+      - name: test var2
+        run: echo $GITHUB_JOB
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -256,7 +264,9 @@ jobs:
       - name: Install corepack
         run: sudo corepack enable
       - name: test var
-        run: echo ${{ vars.JOB_NAME }}
+        run: echo ${{ vars.GITHUB_JOB }}
+      - name: test var2
+        run: echo $GITHUB_JOB
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -300,7 +310,9 @@ jobs:
       - name: Install corepack
         run: sudo corepack enable
       - name: test var
-        run: echo ${{ vars.JOB_NAME }}
+        run: echo ${{ vars.GITHUB_JOB }}
+      - name: test var2
+        run: echo $GITHUB_JOB
       - name: Checkout
         uses: actions/checkout@v4
         with:

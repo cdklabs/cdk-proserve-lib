@@ -85,7 +85,8 @@ const project = new CdklabsConstructLibrary({
     },
     workflowBootstrapSteps: [
         { name: 'Install corepack', run: 'sudo corepack enable' },
-        { name: 'test var', run: 'echo ${{ vars.JOB_NAME }}' }
+        { name: 'test var', run: 'echo ${{ vars.GITHUB_JOB }}' },
+        { name: 'test var2', run: 'echo $GITHUB_JOB' }
     ],
     yarnBerryOptions: {
         yarnRcOptions: {
