@@ -232,7 +232,8 @@ packageLanguageTasks.forEach((l) => {
 
         languageTask.exec(`cp -R ${stageDir}/dist/${l} dist/`, {
             name: 'Extract the packaged distributions.',
-            condition: 'node -e "if (process.env.CI) process.exit(1)"'
+            condition:
+                'node -e "if (process.env.CI && process.env.GITHUB_JOB !== \'build\') process.exit(1)"'
         });
 
         // languageTask.prependSpawn(prePackageTask, {

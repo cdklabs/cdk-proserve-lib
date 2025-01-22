@@ -272,7 +272,7 @@
         {
           "exec": "cp -R dist/stage/dist/dotnet dist/",
           "name": "Extract the packaged distributions.",
-          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
+          "condition": "node -e \"if (process.env.CI && process.env.GITHUB_JOB !== 'build') process.exit(1)\""
         }
       ]
     },
@@ -286,7 +286,7 @@
         {
           "exec": "cp -R dist/stage/dist/go dist/",
           "name": "Extract the packaged distributions.",
-          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
+          "condition": "node -e \"if (process.env.CI && process.env.GITHUB_JOB !== 'build') process.exit(1)\""
         }
       ]
     },
@@ -300,7 +300,7 @@
         {
           "exec": "cp -R dist/stage/dist/java dist/",
           "name": "Extract the packaged distributions.",
-          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
+          "condition": "node -e \"if (process.env.CI && process.env.GITHUB_JOB !== 'build') process.exit(1)\""
         }
       ]
     },
@@ -314,7 +314,7 @@
         {
           "exec": "cp -R dist/stage/dist/js dist/",
           "name": "Extract the packaged distributions.",
-          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
+          "condition": "node -e \"if (process.env.CI && process.env.GITHUB_JOB !== 'build') process.exit(1)\""
         }
       ]
     },
@@ -328,7 +328,7 @@
         {
           "exec": "cp -R dist/stage/dist/python dist/",
           "name": "Extract the packaged distributions.",
-          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
+          "condition": "node -e \"if (process.env.CI && process.env.GITHUB_JOB !== 'build') process.exit(1)\""
         }
       ]
     },
