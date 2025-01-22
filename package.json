@@ -30,7 +30,6 @@
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
     "release": "npx projen release",
-    "repack:js": "npx projen repack:js",
     "rosetta:extract": "npx projen rosetta:extract",
     "test": "npx projen test",
     "test:watch": "npx projen test:watch",

@@ -261,7 +261,7 @@
       "description": "Create dotnet language bindings",
       "steps": [
         {
-          "exec": "jsii-pacmak -v --target dotnet"
+          "exec": "jsii-pacmak -v --target dotnet --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\""
         }
       ]
     },
@@ -270,7 +270,7 @@
       "description": "Create go language bindings",
       "steps": [
         {
-          "exec": "jsii-pacmak -v --target go"
+          "exec": "jsii-pacmak -v --target go --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\""
         }
       ]
     },
@@ -279,7 +279,7 @@
       "description": "Create java language bindings",
       "steps": [
         {
-          "exec": "jsii-pacmak -v --target java"
+          "exec": "jsii-pacmak -v --target java --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\""
         }
       ]
     },
@@ -288,10 +288,7 @@
       "description": "Create js language bindings",
       "steps": [
         {
-          "exec": "jsii-pacmak -v --target js"
-        },
-        {
-          "spawn": "repack:js"
+          "exec": "jsii-pacmak -v --target js --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\""
         }
       ]
     },
@@ -300,7 +297,7 @@
       "description": "Create python language bindings",
       "steps": [
         {
-          "exec": "jsii-pacmak -v --target python"
+          "exec": "jsii-pacmak -v --target python --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\""
         }
       ]
     },
@@ -354,30 +351,6 @@
         },
         {
           "exec": "git diff --ignore-space-at-eol --exit-code"
-        }
-      ]
-    },
-    "repack:js": {
-      "name": "repack:js",
-      "description": "Repacks the JavaScript library with the correct folder structure",
-      "steps": [
-        {
-          "exec": "mkdir -p dist/js/temp"
-        },
-        {
-          "exec": "tar -xzvf dist/js/*.tgz -C dist/js/temp"
-        },
-        {
-          "exec": "mv dist/js/temp/package/lib/* dist/js/temp/package"
-        },
-        {
-          "exec": "rm -rf dist/js/temp/package/lib"
-        },
-        {
-          "exec": "cd dist/js/temp && tar -czvf ../$(basename $(ls ../*.tgz)) package"
-        },
-        {
-          "exec": "rm -rf dist/js/temp"
         }
       ]
     },

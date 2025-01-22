@@ -168,35 +168,14 @@ project.addTask('clean', {
     ]
 });
 
-// JS Packaging Task
-const repackTempDir = 'dist/js/temp';
-const repackJsTask = project.addTask('repack:js', {
-    description:
-        'Repacks the JavaScript library with the correct folder structure',
-    steps: [
-        {
-            exec: `mkdir -p ${repackTempDir}`
-        },
-        {
-            exec: `tar -xzvf dist/js/*.tgz -C ${repackTempDir}`
-        },
-        {
-            exec: `mv ${repackTempDir}/package/lib/* ${repackTempDir}/package`
-        },
-        {
-            exec: `rm -rf ${repackTempDir}/package/lib`
-        },
-        {
-            exec: `cd ${repackTempDir} && tar -czvf ../$(basename $(ls ../*.tgz)) package`
-        },
-        {
-            exec: `rm -rf ${repackTempDir}`
-        }
-    ]
+// Language Packaging Tasks
+const packageLanguageTasks = ['js', 'java', 'python', 'dotnet', 'go'];
+packageLanguageTasks.forEach((l) => {
+    const languageTask = project.tasks.tryFind(`package:${l}`);
+    languageTask?.updateStep(0, {
+        exec: `jsii-pacmak -v --target ${l} --pack-command "rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name"`
+    });
 });
-
-const jsPackageTask = project.tasks.tryFind('package:js');
-jsPackageTask?.spawn(repackJsTask);
 
 // Lambda Build Task
 const compileLambdas = project.addTask('compile:lambda', {
