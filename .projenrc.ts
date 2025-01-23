@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
-import { TaskStep } from 'projen';
 import {
     YarnNodeLinker,
     NodePackageManager,
@@ -83,6 +82,12 @@ const project = new CdklabsConstructLibrary({
             }
         ]
     },
+    workflowBootstrapSteps: [
+        {
+            name: 'Install Corepack',
+            run: 'sudo corepack enable'
+        }
+    ],
     yarnBerryOptions: {
         yarnRcOptions: {
             enableTelemetry: false,
@@ -105,14 +110,14 @@ project.addFields({
     // Represents the structure in the package staging directory
     files: [
         'API.md',
-        'index.js',
-        'index.d.ts',
-        'aspects/**/*',
-        'common/**/*',
-        'constructs/**/*',
-        'interfaces/**/*',
-        'patterns/**/*',
-        'tsconfig.tsbuildinfo',
+        'lib/index.js',
+        'lib/index.d.ts',
+        'lib/aspects/**/*',
+        'lib/common/**/*',
+        'lib/constructs/**/*',
+        'lib/interfaces/**/*',
+        'lib/patterns/**/*',
+        'lib/tsconfig.tsbuildinfo',
         '.jsii',
         '.jsii.gz'
     ],
@@ -163,73 +168,22 @@ project.addTask('clean', {
     ]
 });
 
-// Packaging Task
-const stageDir = 'dist/stage';
-const buildFiles = [
-    '-R lib/*',
-    '-R .git',
-    'API.md',
-    'package.json',
-    'yarn.lock',
-    '.jsii',
-    'LICENSE',
-    'README.md',
-    '.npmignore'
-];
-
-const prePackageTask = project.addTask('pre-package', {
-    description: 'Prepares the structure for packaging.',
-    steps: [
-        {
-            exec: `mkdir -p ${stageDir}`,
-            name: 'Make package staging directory.'
-        },
-        ...buildFiles.map<TaskStep>((f) => {
-            return {
-                exec: `cp ${f} ${stageDir}`,
-                name: `Copy build file (${f}) to package staging directory.`
-            };
-        }),
-        {
-            exec: `cd ${stageDir} && yarn`,
-            name: 'Install modules for package staging.'
-        }
-    ]
-});
-
-const postPackageTask = project.addTask('post-package', {
-    description: 'Cleans up after packaging completes.',
-    steps: [
-        {
-            exec: `rm -rf ${stageDir}`,
-            name: 'Remove the package staging directory.'
-        }
-    ]
-});
-
-const packageTask = project.tasks.tryFind('package');
-packageTask?.prependSpawn(prePackageTask);
-packageTask?.spawn(postPackageTask);
-
+// Language Packaging Tasks
 const packageLanguageTasks = ['js', 'java', 'python', 'dotnet', 'go'];
-
 packageLanguageTasks.forEach((l) => {
     const languageTask = project.tasks.tryFind(`package:${l}`);
-    const currentCommand = languageTask?.steps.at(0)?.exec;
 
-    if (currentCommand) {
-        languageTask.updateStep(0, {
-            exec: `cd ${stageDir} && ${currentCommand}`
-        });
+    languageTask?.updateStep(0, {
+        ...languageTask.steps[0],
+        condition: `node -e "if (!process.env.CI || process.env.GITHUB_JOB.toLowerCase() !== 'build') process.exit(1)"`
+    });
 
-        languageTask.exec(`cp -R ${stageDir}/dist/${l} dist/`, {
-            name: 'Extract the packaged distributions.'
-        });
-
-        languageTask.prependSpawn(prePackageTask, {
-            condition: `! [ -d "${stageDir}" ]`
-        });
-    }
+    languageTask?.exec(
+        `jsii-pacmak -v --target ${l} --pack-command "rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name"`,
+        {
+            condition: `node -e "if (process.env.CI && process.env.GITHUB_JOB.toLowerCase() === 'build') process.exit(1)"`
+        }
+    );
 });
 
 // Lambda Build Task
@@ -305,7 +259,7 @@ project.jest?.addIgnorePattern('<rootDir>/test/(.+/)?fixtures/');
  * Projen Fixes
  */
 project.tasks.tryFind('rosetta:extract')?.updateStep(0, {
-    exec: 'yarn jsii-rosetta extract'
+    exec: 'yarn jsii-rosetta extract 2> /dev/null 1>&2'
 });
 
 /**

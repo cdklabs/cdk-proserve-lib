@@ -226,18 +226,12 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "spawn": "pre-package"
-        },
-        {
           "spawn": "package:js",
           "condition": "node -e \"if (!process.env.CI) process.exit(1)\""
         },
         {
           "spawn": "package-all",
           "condition": "node -e \"if (process.env.CI) process.exit(1)\""
-        },
-        {
-          "spawn": "post-package"
         }
       ]
     },
@@ -267,15 +261,12 @@
       "description": "Create dotnet language bindings",
       "steps": [
         {
-          "spawn": "pre-package",
-          "condition": "! [ -d \"dist/stage\" ]"
+          "exec": "jsii-pacmak -v --target dotnet",
+          "condition": "node -e \"if (!process.env.CI || process.env.GITHUB_JOB.toLowerCase() !== 'build') process.exit(1)\""
         },
         {
-          "exec": "cd dist/stage && jsii-pacmak -v --target dotnet"
-        },
-        {
-          "exec": "cp -R dist/stage/dist/dotnet dist/",
-          "name": "Extract the packaged distributions."
+          "exec": "jsii-pacmak -v --target dotnet --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\"",
+          "condition": "node -e \"if (process.env.CI && process.env.GITHUB_JOB.toLowerCase() === 'build') process.exit(1)\""
         }
       ]
     },
@@ -284,15 +275,12 @@
       "description": "Create go language bindings",
       "steps": [
         {
-          "spawn": "pre-package",
-          "condition": "! [ -d \"dist/stage\" ]"
+          "exec": "jsii-pacmak -v --target go",
+          "condition": "node -e \"if (!process.env.CI || process.env.GITHUB_JOB.toLowerCase() !== 'build') process.exit(1)\""
         },
         {
-          "exec": "cd dist/stage && jsii-pacmak -v --target go"
-        },
-        {
-          "exec": "cp -R dist/stage/dist/go dist/",
-          "name": "Extract the packaged distributions."
+          "exec": "jsii-pacmak -v --target go --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\"",
+          "condition": "node -e \"if (process.env.CI && process.env.GITHUB_JOB.toLowerCase() === 'build') process.exit(1)\""
         }
       ]
     },
@@ -301,15 +289,12 @@
       "description": "Create java language bindings",
       "steps": [
         {
-          "spawn": "pre-package",
-          "condition": "! [ -d \"dist/stage\" ]"
+          "exec": "jsii-pacmak -v --target java",
+          "condition": "node -e \"if (!process.env.CI || process.env.GITHUB_JOB.toLowerCase() !== 'build') process.exit(1)\""
         },
         {
-          "exec": "cd dist/stage && jsii-pacmak -v --target java"
-        },
-        {
-          "exec": "cp -R dist/stage/dist/java dist/",
-          "name": "Extract the packaged distributions."
+          "exec": "jsii-pacmak -v --target java --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\"",
+          "condition": "node -e \"if (process.env.CI && process.env.GITHUB_JOB.toLowerCase() === 'build') process.exit(1)\""
         }
       ]
     },
@@ -318,15 +303,12 @@
       "description": "Create js language bindings",
       "steps": [
         {
-          "spawn": "pre-package",
-          "condition": "! [ -d \"dist/stage\" ]"
+          "exec": "jsii-pacmak -v --target js",
+          "condition": "node -e \"if (!process.env.CI || process.env.GITHUB_JOB.toLowerCase() !== 'build') process.exit(1)\""
         },
         {
-          "exec": "cd dist/stage && jsii-pacmak -v --target js"
-        },
-        {
-          "exec": "cp -R dist/stage/dist/js dist/",
-          "name": "Extract the packaged distributions."
+          "exec": "jsii-pacmak -v --target js --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\"",
+          "condition": "node -e \"if (process.env.CI && process.env.GITHUB_JOB.toLowerCase() === 'build') process.exit(1)\""
         }
       ]
     },
@@ -335,15 +317,12 @@
       "description": "Create python language bindings",
       "steps": [
         {
-          "spawn": "pre-package",
-          "condition": "! [ -d \"dist/stage\" ]"
+          "exec": "jsii-pacmak -v --target python",
+          "condition": "node -e \"if (!process.env.CI || process.env.GITHUB_JOB.toLowerCase() !== 'build') process.exit(1)\""
         },
         {
-          "exec": "cd dist/stage && jsii-pacmak -v --target python"
-        },
-        {
-          "exec": "cp -R dist/stage/dist/python dist/",
-          "name": "Extract the packaged distributions."
+          "exec": "jsii-pacmak -v --target python --pack-command \"rm -rf * && name=\\$(npm pack \"$(pwd)\" | tail -1) && mkdir tmp && tar -xzvf \\$name -C tmp && mv tmp/package/lib/* tmp/package && rm -rf tmp/package/lib && cd tmp && tar -czvf ../\\$name package && cd .. && rm -rf tmp && echo \\$name\"",
+          "condition": "node -e \"if (process.env.CI && process.env.GITHUB_JOB.toLowerCase() === 'build') process.exit(1)\""
         }
       ]
     },
@@ -368,16 +347,6 @@
         }
       ]
     },
-    "post-package": {
-      "name": "post-package",
-      "description": "Cleans up after packaging completes.",
-      "steps": [
-        {
-          "exec": "rm -rf dist/stage",
-          "name": "Remove the package staging directory."
-        }
-      ]
-    },
     "post-upgrade": {
       "name": "post-upgrade",
       "description": "Runs after upgrading dependencies"
@@ -385,56 +354,6 @@
     "pre-compile": {
       "name": "pre-compile",
       "description": "Prepare the project for compilation"
-    },
-    "pre-package": {
-      "name": "pre-package",
-      "description": "Prepares the structure for packaging.",
-      "steps": [
-        {
-          "exec": "mkdir -p dist/stage",
-          "name": "Make package staging directory."
-        },
-        {
-          "exec": "cp -R lib/* dist/stage",
-          "name": "Copy build file (-R lib/*) to package staging directory."
-        },
-        {
-          "exec": "cp -R .git dist/stage",
-          "name": "Copy build file (-R .git) to package staging directory."
-        },
-        {
-          "exec": "cp API.md dist/stage",
-          "name": "Copy build file (API.md) to package staging directory."
-        },
-        {
-          "exec": "cp package.json dist/stage",
-          "name": "Copy build file (package.json) to package staging directory."
-        },
-        {
-          "exec": "cp yarn.lock dist/stage",
-          "name": "Copy build file (yarn.lock) to package staging directory."
-        },
-        {
-          "exec": "cp .jsii dist/stage",
-          "name": "Copy build file (.jsii) to package staging directory."
-        },
-        {
-          "exec": "cp LICENSE dist/stage",
-          "name": "Copy build file (LICENSE) to package staging directory."
-        },
-        {
-          "exec": "cp README.md dist/stage",
-          "name": "Copy build file (README.md) to package staging directory."
-        },
-        {
-          "exec": "cp .npmignore dist/stage",
-          "name": "Copy build file (.npmignore) to package staging directory."
-        },
-        {
-          "exec": "cd dist/stage && yarn",
-          "name": "Install modules for package staging."
-        }
-      ]
     },
     "release": {
       "name": "release",
@@ -465,7 +384,7 @@
       "description": "Test rosetta extract",
       "steps": [
         {
-          "exec": "yarn jsii-rosetta extract"
+          "exec": "yarn jsii-rosetta extract 2> /dev/null 1>&2"
         }
       ]
     },
