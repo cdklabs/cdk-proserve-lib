@@ -259,7 +259,7 @@ project.jest?.addIgnorePattern('<rootDir>/test/(.+/)?fixtures/');
  * Projen Fixes
  */
 project.tasks.tryFind('rosetta:extract')?.updateStep(0, {
-    exec: 'yarn jsii-rosetta extract'
+    exec: 'yarn jsii-rosetta extract 2> /dev/null 1>&2'
 });
 
 /**

@@ -384,7 +384,7 @@
       "description": "Test rosetta extract",
       "steps": [
         {
-          "exec": "yarn jsii-rosetta extract"
+          "exec": "yarn jsii-rosetta extract 2> /dev/null 1>&2"
         }
       ]
     },
