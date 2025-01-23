@@ -175,7 +175,7 @@ packageLanguageTasks.forEach((l) => {
 
     languageTask?.updateStep(0, {
         ...languageTask.steps[0],
-        condition: `node -e "if (!process.env.CI || process.env.GITHUB_JOB.toLowerCase() !== 'build' || process.env.GITHUB_JOB.toLowerCase() !== 'release') process.exit(1)"`
+        condition: `node -e "if (!process.env.CI || (process.env.GITHUB_JOB.toLowerCase() !== 'build' && process.env.GITHUB_JOB.toLowerCase() !== 'release')) process.exit(1)"`
     });
 
     languageTask?.exec(
