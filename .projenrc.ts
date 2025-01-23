@@ -212,7 +212,8 @@ const postPackageTask = project.addTask('post-package', {
             name: 'Remove the package staging directory.'
         }
     ],
-    condition: 'node -e "if (process.env.CI) process.exit(1)"'
+    condition:
+        'node -e "if (process.env.CI && process.env.GITHUB_JOB !== \'build\') process.exit(1)"'
 });
 
 const packageTask = project.tasks.tryFind('package');

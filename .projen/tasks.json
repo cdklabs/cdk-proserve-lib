@@ -362,7 +362,7 @@
           "name": "Remove the package staging directory."
         }
       ],
-      "condition": "node -e \"if (process.env.CI) process.exit(1)\""
+      "condition": "node -e \"if (process.env.CI && process.env.GITHUB_JOB !== 'build') process.exit(1)\""
     },
     "post-upgrade": {
       "name": "post-upgrade",
