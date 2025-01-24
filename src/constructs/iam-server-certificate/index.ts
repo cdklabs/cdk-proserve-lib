@@ -63,6 +63,42 @@ export interface IamServerCertificateProps {
  *
  * The construct also handles encryption for the framework resources using either a provided KMS key or an
  * AWS managed key.
+ *
+ * @example
+ *
+ * import { App, Stack } from 'aws-cdk-lib';
+ * import { Key } from 'aws-cdk-lib/aws-kms';
+ * import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
+ * import { StringParameter } from 'aws-cdk-lib/aws-ssm';
+ * import { IamServerCertificate } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
+ * const app = new App();
+ * const stack = new Stack(app);
+ *
+ * const keyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-key-id';
+ * const key = Key.fromKeyArn(stack, 'Encryption', keyArn);
+ *
+ * const certificateData = StringParameter.fromSecureStringParameterAttributes(stack, 'CertificateData', {
+ *      parameterName: 'sample-parameter',
+ *      encryptionKey: key
+ * });
+ *
+ * const privateKeyData = Secret.fromSecretAttributes(stack, 'PrivateKeySecret', {
+ *      encryptionKey: key,
+ *      secretCompleteArn: 'arn:aws:secretsmanager:us-east-1:111111111111:secret:PrivateKeySecret-aBc123'
+ * });
+ *
+ * const certificate = new IamServerCertificate(stack, 'ServerCertificate', {
+ *      certificate: {
+ *          parameter: certificateData,
+ *          encryption: key
+ *      },
+ *      privateKey: {
+ *          secret: privateKeyData,
+ *          encryption: key
+ *      },
+ *      prefix: 'myapp'
+ * });
  */
 export class IamServerCertificate extends Construct {
     /**
@@ -150,7 +186,9 @@ export class IamServerCertificate extends Construct {
                     : props.certificate.parameter.parameterName,
                 Source: certificateFromSecret ? 'secret' : 'parameter'
             },
-            CertificatePrefix: props.prefix,
+            CertificatePrefix: props.prefix.endsWith('-')
+                ? props.prefix.slice(0, -1)
+                : props.prefix,
             PrivateKey: {
                 Id: privateKeyFromSecret
                     ? props.privateKey.secret.secretArn
@@ -198,10 +236,18 @@ export class IamServerCertificate extends Construct {
             })
         });
 
+        if (props.certificate.encryption) {
+            props.certificate.encryption.grantDecrypt(providerPermissions);
+        }
+
         if (IamServerCertificate.isSecret(props.certificate)) {
             this.grantReadForSecret(providerPermissions, props.certificate);
         } else {
             props.certificate.parameter.grantRead(providerPermissions);
+        }
+
+        if (props.privateKey.encryption) {
+            props.privateKey.encryption.grantDecrypt(providerPermissions);
         }
 
         if (IamServerCertificate.isSecret(props.privateKey)) {
@@ -241,18 +287,24 @@ export class IamServerCertificate extends Construct {
                 resources: [`${resources.secret.secretArn}*`]
             })
         );
-
-        if (resources.encryption) {
-            resources.encryption.grantDecrypt(policy);
-        }
     }
 }
 
 export namespace IamServerCertificate {
     /**
+     * Properties for a server certificate element regardless of where it is stored
+     */
+    export interface ElementProps {
+        /**
+         * Optional encryption key that protects the secret
+         */
+        readonly encryption?: IKey;
+    }
+
+    /**
      * Properties for a server certificate element when it is stored in AWS Systems Manager Parameter Store
      */
-    export interface ParameterProps {
+    export interface ParameterProps extends ElementProps {
         /**
          * Reference to the AWS Systems Manager Parameter Store parameter that contains the data
          */
@@ -262,15 +314,10 @@ export namespace IamServerCertificate {
     /**
      * Properties for a server certificate element when it is stored in AWS Secrets Manager
      */
-    export interface SecretProps {
+    export interface SecretProps extends ElementProps {
         /**
          * Reference to the AWS Secrets Manager secret that contains the data
          */
         readonly secret: ISecret;
-
-        /**
-         * Optional encryption key that protects the secret
-         */
-        readonly encryption?: IKey;
     }
 }

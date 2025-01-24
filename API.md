@@ -773,6 +773,45 @@ server certificate.
 The construct also handles encryption for the framework resources using either a provided KMS key or an
 AWS managed key.
 
+*Example*
+
+```typescript
+import { App, Stack } from 'aws-cdk-lib';
+import { Key } from 'aws-cdk-lib/aws-kms';
+import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
+import { StringParameter } from 'aws-cdk-lib/aws-ssm';
+import { IamServerCertificate } from '@cdklabs/cdk-proserve-lib/constructs';
+
+const app = new App();
+const stack = new Stack(app);
+
+const keyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-key-id';
+const key = Key.fromKeyArn(stack, 'Encryption', keyArn);
+
+const certificateData = StringParameter.fromSecureStringParameterAttributes(stack, 'CertificateData', {
+     parameterName: 'sample-parameter',
+     encryptionKey: key
+});
+
+const privateKeyData = Secret.fromSecretAttributes(stack, 'PrivateKeySecret', {
+     encryptionKey: key,
+     secretCompleteArn: 'arn:aws:secretsmanager:us-east-1:111111111111:secret:PrivateKeySecret-aBc123'
+});
+
+const certificate = new IamServerCertificate(stack, 'ServerCertificate', {
+     certificate: {
+         parameter: certificateData,
+         encryption: key
+     },
+     privateKey: {
+         secret: privateKeyData,
+         encryption: key
+     },
+     prefix: 'myapp'
+});
+```
+
+
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.Initializer"></a>
 
 ```typescript
@@ -1178,6 +1217,42 @@ and SSM parameter(s) and/or secret.
 
 The construct also handles encryption for the Lambda function's environment variables and dead letter queue,
 using either a provided KMS key or an AWS managed key.
+
+*Example*
+
+```typescript
+import { App, Stack } from 'aws-cdk-lib';
+import { Key } from 'aws-cdk-lib/aws-kms';
+import { Domain } from 'aws-cdk-lib/aws-opensearchservice';
+import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
+import { OpenSearchAdminUser } from '@cdklabs/cdk-proserve-lib/constructs';
+
+const app = new App();
+const stack = new Stack(app);
+
+const keyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-key-id';
+const key = Key.fromKeyArn(stack, 'Encryption', keyArn);
+
+const adminCredential = StringParameter.fromSecureStringParameterAttributes(stack, 'AdminCredential', {
+     parameterName: 'sample-parameter',
+     encryptionKey: key
+});
+
+const domainKeyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-domain-key-id';
+const domainKey = Key.fromKeyArn(stack, 'DomainEncryption', domainKeyArn);
+const domain = Domain.fromDomainEndpoint(stack, 'Domain', 'vpc-testdomain.us-east-1.es.amazonaws.com');
+
+const adminUser = new OpenSearchAdminUser(stack, 'AdminUser', {
+     credential: {
+         secret: adminCredential,
+         encryption: key
+     },
+     domain: domain,
+     domainKey: domainKey,
+     username: 'admin'
+});
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.Initializer"></a>
 
@@ -2230,6 +2305,38 @@ Default: 10 GB.
 
 ---
 
+### ElementProps <a name="ElementProps" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ElementProps"></a>
+
+Properties for a server certificate element regardless of where it is stored.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ElementProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const elementProps: constructs.IamServerCertificate.ElementProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ElementProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ElementProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional encryption key that protects the secret.
+
+---
+
 ### FriendlyEmbraceProps <a name="FriendlyEmbraceProps" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps"></a>
 
 Input metadata for the custom resource.
@@ -2960,7 +3067,20 @@ const parameterProps: constructs.IamServerCertificate.ParameterProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps.property.parameter">parameter</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | Reference to the AWS Systems Manager Parameter Store parameter that contains the data. |
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional encryption key that protects the secret.
 
 ---
 
@@ -2973,6 +3093,38 @@ public readonly parameter: IParameter;
 - *Type:* aws-cdk-lib.aws_ssm.IParameter
 
 Reference to the AWS Systems Manager Parameter Store parameter that contains the data.
+
+---
+
+### PasswordCommonProps <a name="PasswordCommonProps" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordCommonProps"></a>
+
+Properties for the admin user password regardless of where it is stored.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordCommonProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const passwordCommonProps: constructs.OpenSearchAdminUser.PasswordCommonProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordCommonProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordCommonProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional encryption key that protects the secret.
 
 ---
 
@@ -2992,7 +3144,20 @@ const passwordParameterProps: constructs.OpenSearchAdminUser.PasswordParameterPr
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps.property.parameter">parameter</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | Reference to the AWS Systems Manager Parameter Store parameter that contains the admin credential. |
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional encryption key that protects the secret.
 
 ---
 
@@ -3024,20 +3189,8 @@ const passwordSecretProps: constructs.OpenSearchAdminUser.PasswordSecretProps = 
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Reference to the AWS Secrets Manager secret that contains the admin credential. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
-
----
-
-##### `secret`<sup>Required</sup> <a name="secret" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.secret"></a>
-
-```typescript
-public readonly secret: ISecret;
-```
-
-- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
-
-Reference to the AWS Secrets Manager secret that contains the admin credential.
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Reference to the AWS Secrets Manager secret that contains the admin credential. |
 
 ---
 
@@ -3050,6 +3203,18 @@ public readonly encryption: IKey;
 - *Type:* aws-cdk-lib.aws_kms.IKey
 
 Optional encryption key that protects the secret.
+
+---
+
+##### `secret`<sup>Required</sup> <a name="secret" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.secret"></a>
+
+```typescript
+public readonly secret: ISecret;
+```
+
+- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
+
+Reference to the AWS Secrets Manager secret that contains the admin credential.
 
 ---
 
@@ -3069,20 +3234,8 @@ const secretProps: constructs.IamServerCertificate.SecretProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Reference to the AWS Secrets Manager secret that contains the data. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
-
----
-
-##### `secret`<sup>Required</sup> <a name="secret" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.secret"></a>
-
-```typescript
-public readonly secret: ISecret;
-```
-
-- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
-
-Reference to the AWS Secrets Manager secret that contains the data.
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Reference to the AWS Secrets Manager secret that contains the data. |
 
 ---
 
@@ -3095,6 +3248,18 @@ public readonly encryption: IKey;
 - *Type:* aws-cdk-lib.aws_kms.IKey
 
 Optional encryption key that protects the secret.
+
+---
+
+##### `secret`<sup>Required</sup> <a name="secret" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.secret"></a>
+
+```typescript
+public readonly secret: ISecret;
+```
+
+- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
+
+Reference to the AWS Secrets Manager secret that contains the data.
 
 ---
 

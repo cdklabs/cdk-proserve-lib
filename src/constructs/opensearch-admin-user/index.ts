@@ -3,7 +3,12 @@
 
 import { join } from 'path';
 import { Aws, CustomResource, Duration, Stack } from 'aws-cdk-lib';
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import {
+    Effect,
+    Policy,
+    PolicyDocument,
+    PolicyStatement
+} from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { IDomain } from 'aws-cdk-lib/aws-opensearchservice';
@@ -64,6 +69,40 @@ export interface OpenSearchAdminUserProps {
  *
  * The construct also handles encryption for the Lambda function's environment variables and dead letter queue,
  * using either a provided KMS key or an AWS managed key.
+ *
+ * @example
+ *
+ * import { App, Stack } from 'aws-cdk-lib';
+ * import { Key } from 'aws-cdk-lib/aws-kms';
+ * import { Domain } from 'aws-cdk-lib/aws-opensearchservice';
+ * import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
+ * import { OpenSearchAdminUser } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
+ * const app = new App();
+ * const stack = new Stack(app);
+ *
+ * const keyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-key-id';
+ * const key = Key.fromKeyArn(stack, 'Encryption', keyArn);
+ *
+ * const adminCredential = StringParameter.fromSecureStringParameterAttributes(stack, 'AdminCredential', {
+ *      parameterName: 'sample-parameter',
+ *      encryptionKey: key
+ * });
+ *
+ * const domainKeyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-domain-key-id';
+ * const domainKey = Key.fromKeyArn(stack, 'DomainEncryption', domainKeyArn);
+ * const domain = Domain.fromDomainEndpoint(stack, 'Domain', 'vpc-testdomain.us-east-1.es.amazonaws.com');
+ *
+ * const adminUser = new OpenSearchAdminUser(stack, 'AdminUser', {
+ *      credential: {
+ *          secret: adminCredential,
+ *          encryption: key
+ *      },
+ *      domain: domain,
+ *      domainKey: domainKey,
+ *      username: 'admin'
+ * });
+ *
  */
 export class OpenSearchAdminUser extends Construct {
     /**
@@ -145,33 +184,47 @@ export class OpenSearchAdminUser extends Construct {
 
         const provider = OpenSearchAdminUser.getOrBuildProvider(scope, props);
 
-        provider.onEventHandler.addToRolePolicy(
-            new PolicyStatement({
-                actions: ['es:UpdateDomainConfig'],
-                effect: Effect.ALLOW,
-                resources: [
-                    `arn:${Aws.PARTITION}:es:${Aws.REGION}:${Aws.ACCOUNT_ID}:domain/${props.domain.domainName}`
+        // Create permissions as a separate policy to ensure in DELETEs they are not removed until after the CR has run
+        const providerPermissions = new Policy(this, 'Permissions', {
+            document: new PolicyDocument({
+                statements: [
+                    new PolicyStatement({
+                        actions: ['es:UpdateDomainConfig'],
+                        effect: Effect.ALLOW,
+                        resources: [
+                            `arn:${Aws.PARTITION}:es:${Aws.REGION}:${Aws.ACCOUNT_ID}:domain/${props.domain.domainName}`
+                        ]
+                    })
                 ]
             })
-        );
+        });
 
         if (props.domainKey) {
-            props.domainKey.grant(provider.onEventHandler, 'kms:DescribeKey');
+            props.domainKey.grant(providerPermissions, 'kms:DescribeKey');
         }
 
-        props.username.grantRead(provider.onEventHandler);
+        props.username.grantRead(providerPermissions);
+
+        if (props.credential.encryption) {
+            props.credential.encryption.grantDecrypt(providerPermissions);
+        }
 
         if ('parameter' in props.credential) {
-            props.credential.parameter.grantRead(provider.onEventHandler);
+            props.credential.parameter.grantRead(providerPermissions);
         } else {
-            props.credential.secret.grantRead(provider.onEventHandler);
-
-            if (props.credential.encryption) {
-                props.credential.encryption.grantDecrypt(
-                    provider.onEventHandler
-                );
-            }
+            providerPermissions.addStatements(
+                new PolicyStatement({
+                    actions: [
+                        'secretsmanager:GetSecretValue',
+                        'secretsmanager:DescribeSecret'
+                    ],
+                    effect: Effect.ALLOW,
+                    resources: [`${props.credential.secret.secretArn}*`]
+                })
+            );
         }
+
+        provider.onEventHandler.role!.attachInlinePolicy(providerPermissions);
 
         new CustomResource(this, 'OpenSearchAdminUser', {
             serviceToken: provider.serviceToken,
@@ -184,9 +237,19 @@ export class OpenSearchAdminUser extends Construct {
 
 export namespace OpenSearchAdminUser {
     /**
+     * Properties for the admin user password regardless of where it is stored
+     */
+    export interface PasswordCommonProps {
+        /**
+         * Optional encryption key that protects the secret
+         */
+        readonly encryption?: IKey;
+    }
+
+    /**
      * Properties for the admin user password specific to when the credential is stored in AWS Systems Manager Parameter Store
      */
-    export interface PasswordParameterProps {
+    export interface PasswordParameterProps extends PasswordCommonProps {
         /**
          * Reference to the AWS Systems Manager Parameter Store parameter that contains the admin credential
          */
@@ -196,15 +259,10 @@ export namespace OpenSearchAdminUser {
     /**
      * Properties for the admin user password specific to when the credential is stored in AWS Secrets Manager
      */
-    export interface PasswordSecretProps {
+    export interface PasswordSecretProps extends PasswordCommonProps {
         /**
          * Reference to the AWS Secrets Manager secret that contains the admin credential
          */
         readonly secret: ISecret;
-
-        /**
-         * Optional encryption key that protects the secret
-         */
-        readonly encryption?: IKey;
     }
 }
