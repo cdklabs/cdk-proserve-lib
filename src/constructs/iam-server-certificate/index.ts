@@ -66,29 +66,25 @@ export interface IamServerCertificateProps {
  *
  * @example
  *
- * import { App, Stack } from 'aws-cdk-lib';
  * import { Key } from 'aws-cdk-lib/aws-kms';
  * import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
  * import { StringParameter } from 'aws-cdk-lib/aws-ssm';
  * import { IamServerCertificate } from '@cdklabs/cdk-proserve-lib/constructs';
  *
- * const app = new App();
- * const stack = new Stack(app);
- *
  * const keyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-key-id';
- * const key = Key.fromKeyArn(stack, 'Encryption', keyArn);
+ * const key = Key.fromKeyArn(this, 'Encryption', keyArn);
  *
- * const certificateData = StringParameter.fromSecureStringParameterAttributes(stack, 'CertificateData', {
+ * const certificateData = StringParameter.fromSecureStringParameterAttributes(this, 'CertificateData', {
  *      parameterName: 'sample-parameter',
  *      encryptionKey: key
  * });
  *
- * const privateKeyData = Secret.fromSecretAttributes(stack, 'PrivateKeySecret', {
+ * const privateKeyData = Secret.fromSecretAttributes(this, 'PrivateKeySecret', {
  *      encryptionKey: key,
  *      secretCompleteArn: 'arn:aws:secretsmanager:us-east-1:111111111111:secret:PrivateKeySecret-aBc123'
  * });
  *
- * const certificate = new IamServerCertificate(stack, 'ServerCertificate', {
+ * const certificate = new IamServerCertificate(this, 'ServerCertificate', {
  *      certificate: {
  *          parameter: certificateData,
  *          encryption: key

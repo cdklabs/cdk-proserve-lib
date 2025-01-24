@@ -776,29 +776,25 @@ AWS managed key.
 *Example*
 
 ```typescript
-import { App, Stack } from 'aws-cdk-lib';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { IamServerCertificate } from '@cdklabs/cdk-proserve-lib/constructs';
 
-const app = new App();
-const stack = new Stack(app);
-
 const keyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-key-id';
-const key = Key.fromKeyArn(stack, 'Encryption', keyArn);
+const key = Key.fromKeyArn(this, 'Encryption', keyArn);
 
-const certificateData = StringParameter.fromSecureStringParameterAttributes(stack, 'CertificateData', {
+const certificateData = StringParameter.fromSecureStringParameterAttributes(this, 'CertificateData', {
      parameterName: 'sample-parameter',
      encryptionKey: key
 });
 
-const privateKeyData = Secret.fromSecretAttributes(stack, 'PrivateKeySecret', {
+const privateKeyData = Secret.fromSecretAttributes(this, 'PrivateKeySecret', {
      encryptionKey: key,
      secretCompleteArn: 'arn:aws:secretsmanager:us-east-1:111111111111:secret:PrivateKeySecret-aBc123'
 });
 
-const certificate = new IamServerCertificate(stack, 'ServerCertificate', {
+const certificate = new IamServerCertificate(this, 'ServerCertificate', {
      certificate: {
          parameter: certificateData,
          encryption: key
@@ -1221,28 +1217,24 @@ using either a provided KMS key or an AWS managed key.
 *Example*
 
 ```typescript
-import { App, Stack } from 'aws-cdk-lib';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Domain } from 'aws-cdk-lib/aws-opensearchservice';
 import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { OpenSearchAdminUser } from '@cdklabs/cdk-proserve-lib/constructs';
 
-const app = new App();
-const stack = new Stack(app);
-
 const keyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-key-id';
-const key = Key.fromKeyArn(stack, 'Encryption', keyArn);
+const key = Key.fromKeyArn(this, 'Encryption', keyArn);
 
-const adminCredential = StringParameter.fromSecureStringParameterAttributes(stack, 'AdminCredential', {
+const adminCredential = StringParameter.fromSecureStringParameterAttributes(this, 'AdminCredential', {
      parameterName: 'sample-parameter',
      encryptionKey: key
 });
 
 const domainKeyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-domain-key-id';
-const domainKey = Key.fromKeyArn(stack, 'DomainEncryption', domainKeyArn);
-const domain = Domain.fromDomainEndpoint(stack, 'Domain', 'vpc-testdomain.us-east-1.es.amazonaws.com');
+const domainKey = Key.fromKeyArn(this, 'DomainEncryption', domainKeyArn);
+const domain = Domain.fromDomainEndpoint(this, 'Domain', 'vpc-testdomain.us-east-1.es.amazonaws.com');
 
-const adminUser = new OpenSearchAdminUser(stack, 'AdminUser', {
+const adminUser = new OpenSearchAdminUser(this, 'AdminUser', {
      credential: {
          secret: adminCredential,
          encryption: key
