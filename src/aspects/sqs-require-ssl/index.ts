@@ -14,7 +14,12 @@ import { IConstruct } from 'constructs';
  * all actions when the request is not made over a secure transport.
  *
  * @example
- * cdk.Aspects.of(app).add(new SqsRequireSsl());
+ * import { App, Aspects } from 'aws-cdk-lib';
+ * import { SqsRequireSsl } from '@cdklabs/cdk-proserve-lib/aspects';
+ *
+ * const app = new App();
+ *
+ * Aspects.of(app).add(new SqsRequireSsl());
  */
 export class SqsRequireSsl implements IAspect {
     /**

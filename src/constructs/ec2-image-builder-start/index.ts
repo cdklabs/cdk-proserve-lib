@@ -73,6 +73,11 @@ export interface Ec2ImageBuilderStartProps {
  * build step.
  *
  * @example
+ *
+ * import { Duration } from 'aws-cdk-lib';
+ * import { Topic } from 'aws-cdk-lib/aws-sns';
+ * import { Ec2ImageBuilderStart } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
  * const topic = Topic.fromTopicArn(
  *   this,
  *   'MyTopic',

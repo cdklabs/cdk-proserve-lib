@@ -12,6 +12,9 @@ EC2 Image Builder pipeline.
 *Example*
 
 ```typescript
+import { CfnOutput } from 'aws-cdk-lib';
+import { Ec2ImageBuilderGetImage } from '@cdklabs/cdk-proserve-lib/constructs';
+
 const image = new Ec2ImageBuilderGetImage(this, 'SomeImage', {
   imageBuildVersionArn: 'arn:aws:imagebuilder:us-east-1:123456789012:image/some-image/0.0.1/1'
 });
@@ -147,6 +150,10 @@ build step.
 *Example*
 
 ```typescript
+import { Duration } from 'aws-cdk-lib';
+import { Topic } from 'aws-cdk-lib/aws-sns';
+import { Ec2ImageBuilderStart } from '@cdklabs/cdk-proserve-lib/constructs';
+
 const topic = Topic.fromTopicArn(
   this,
   'MyTopic',
@@ -290,6 +297,9 @@ by AWS.
 *Example*
 
 ```typescript
+import { CfnOutput } from 'aws-cdk-lib';
+import { Ec2ImagePipeline } from '@cdklabs/cdk-proserve-lib/constructs';
+
 const pipeline = new Ec2ImagePipeline(this, 'ImagePipeline', {
   version: '0.1.0',
   buildConfiguration: {
@@ -466,6 +476,8 @@ volume.
 *Example*
 
 ```typescript
+import { Ec2LinuxImagePipeline } from '@cdklabs/cdk-proserve-lib/patterns';
+
 new Ec2LinuxImagePipeline(this, 'StigImagePipeline', {
   version: '0.1.0',
   operatingSystem:
@@ -639,6 +651,9 @@ of the class to add more permissions to it.
 *Example*
 
 ```typescript
+import { App, Stack } from 'aws-cdk-lib';
+import { FriendlyEmbrace } from '@cdklabs/cdk-proserve-lib/constructs';
+
 const app = new App();
 // ... other stack definitions
 const embrace = new Stack(app, 'FriendlyEmbrace'); // last stack
@@ -935,6 +950,8 @@ Follows guidelines that can be found at:
 *Example*
 
 ```typescript
+import { NetworkFirewall } from '@cdklabs/cdk-proserve-lib/constructs';
+
 new NetworkFirewall(this, 'Firewall', {
   vpc,
   firewallSubnets: vpc.selectSubnets({subnetGroupName: 'firewall'}).subnets,
@@ -1072,6 +1089,9 @@ routing to the firewall.
 *Example*
 
 ```typescript
+import { CfnOutput } from 'aws-cdk-lib';
+import { NetworkFirewallEndpoints } from '@cdklabs/cdk-proserve-lib/constructs';
+
 const endpoints = new NetworkFirewallEndpoints(this, 'Endpoints', {
   firewall: cfnFirewall,  // CfnFirewall resource to find endpoints for
 });
@@ -1363,6 +1383,9 @@ an ALB.
 *Example*
 
 ```typescript
+import { ApplicationLoadBalancer } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
+import { WebApplicationFirewall } from '@cdklabs/cdk-proserve-lib/constructs';
+
 const alb = new ApplicationLoadBalancer(this, 'Alb', { vpc });
 const waf = new WebApplicationFirewall(this, 'WAF', {
   awsManagedRuleGroups: [
@@ -3547,7 +3570,12 @@ set to RETAIN or DESTROY.
 *Example*
 
 ```typescript
-cdk.Aspects.of(app).add(
+import { App, Aspects, RemovalPolicy } from 'aws-cdk-lib';
+import { ApplyRemovalPolicy } from '@cdklabs/cdk-proserve-lib/aspects';
+
+const app = new App();
+
+Aspects.of(app).add(
   new ApplyRemovalPolicy({ removalPolicy: RemovalPolicy.DESTROY })
 );
 ```
@@ -3611,7 +3639,12 @@ Ensures that Lambda log groups are created for all Lambda functions that the asp
 *Example*
 
 ```typescript
-cdk.Aspects.of(app).add(new CreateLambdaLogGroup());
+import { App, Aspects } from 'aws-cdk-lib';
+import { CreateLambdaLogGroup } from '@cdklabs/cdk-proserve-lib/aspects';
+
+const app = new App();
+
+Aspects.of(app).add(new CreateLambdaLogGroup());
 ```
 
 
@@ -3664,7 +3697,13 @@ Aspect that sets the log retention period for CloudWatch log groups to a user-su
 *Example*
 
 ```typescript
-cdk.Aspects.of(app).add(
+import { App, Aspects } from 'aws-cdk-lib';
+import { RetentionDays } from 'aws-cdk-lib/aws-logs';
+import { SetLogRetention } from '@cdklabs/cdk-proserve-lib/aspects';
+
+const app = new App();
+
+Aspects.of(app).add(
   new SetLogRetention({ period: RetentionDays.EIGHTEEN_MONTHS })
 );
 ```
@@ -3731,7 +3770,12 @@ all actions when the request is not made over a secure transport.
 *Example*
 
 ```typescript
-cdk.Aspects.of(app).add(new SqsRequireSsl());
+import { App, Aspects } from 'aws-cdk-lib';
+import { SqsRequireSsl } from '@cdklabs/cdk-proserve-lib/aspects';
+
+const app = new App();
+
+Aspects.of(app).add(new SqsRequireSsl());
 ```
 
 

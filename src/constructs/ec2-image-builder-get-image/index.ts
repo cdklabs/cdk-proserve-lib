@@ -34,6 +34,10 @@ export interface Ec2ImageBuilderGetImageProps {
  * EC2 Image Builder pipeline.
  *
  * @example
+ *
+ * import { CfnOutput } from 'aws-cdk-lib';
+ * import { Ec2ImageBuilderGetImage } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
  * const image = new Ec2ImageBuilderGetImage(this, 'SomeImage', {
  *   imageBuildVersionArn: 'arn:aws:imagebuilder:us-east-1:123456789012:image/some-image/0.0.1/1'
  * });

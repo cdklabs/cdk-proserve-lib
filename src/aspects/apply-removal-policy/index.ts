@@ -23,7 +23,13 @@ export interface ApplyRemovalPolicyProps {
  * set to RETAIN or DESTROY.
  *
  * @example
- * cdk.Aspects.of(app).add(
+ *
+ * import { App, Aspects, RemovalPolicy } from 'aws-cdk-lib';
+ * import { ApplyRemovalPolicy } from '@cdklabs/cdk-proserve-lib/aspects';
+ *
+ * const app = new App();
+ *
+ * Aspects.of(app).add(
  *   new ApplyRemovalPolicy({ removalPolicy: RemovalPolicy.DESTROY })
  * );
  */

@@ -69,6 +69,9 @@ export interface NetworkFirewallProps {
  * @see https://aws.github.io/aws-security-services-best-practices/guides/network-firewall/
  *
  * @example
+ *
+ * import { NetworkFirewall } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
  * new NetworkFirewall(this, 'Firewall', {
  *   vpc,
  *   firewallSubnets: vpc.selectSubnets({subnetGroupName: 'firewall'}).subnets,
