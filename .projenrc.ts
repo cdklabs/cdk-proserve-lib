@@ -80,6 +80,12 @@ const project = new CdklabsConstructLibrary({
                     singleQuote: false,
                     tabWidth: 2
                 }
+            },
+            {
+                files: ['*.md'],
+                options: {
+                    tabWidth: 1
+                }
             }
         ]
     },
