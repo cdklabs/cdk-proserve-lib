@@ -16,7 +16,13 @@ export interface SetLogRetentionProps {
 }
 
 /**
- * Aspect that sets log retention period for CloudWatch Log Groups
+ * Aspect that sets the log retention period for CloudWatch log groups to a
+ * user-supplied retention period.
+ *
+ * @example
+ * cdk.Aspects.of(app).add(
+ *   new SetLogRetention({ period: RetentionDays.EIGHTEEN_MONTHS })
+ * );
  */
 export class SetLogRetention implements IAspect {
     /**

@@ -28,8 +28,22 @@ export interface NetworkFirewallEndpointsProps {
 }
 
 /**
- * Construct that retrieves and manages Network Firewall endpoints
- * Uses AWS Custom Resources to fetch endpoint information from the Network Firewall service
+ * Retrieves Network Firewall endpoints so that you can reference them in your
+ * other resources.
+ *
+ * Uses an AWS Custom Resource to fetch endpoint information from the Network
+ * Firewall service. This is useful so that you can both create a Network
+ * Firewall and reference the endpoints it creates, to do things like configure
+ * routing to the firewall.
+ *
+ * @example
+ * const endpoints = new NetworkFirewallEndpoints(this, 'Endpoints', {
+ *   firewall: cfnFirewall,  // CfnFirewall resource to find endpoints for
+ * });
+ * const az1EndpointId = endpoints.getEndpointId('us-east-1a');
+ * const az2EndpointId = endpoints.getEndpointId('us-east-1b');
+ * new CfnOutput(this, 'Az1EndpointId', { value: az1Endpoint });
+ * new CfnOutput(this, 'Az2EndpointId', { value: az2Endpoint });
  */
 export class NetworkFirewallEndpoints extends Construct {
     /**
@@ -44,7 +58,9 @@ export class NetworkFirewallEndpoints extends Construct {
     private readonly cr: AwsCustomResource;
 
     /**
-     * Creates a new NetworkFirewallEndpoints construct
+     * Retrieves Network Firewall endpoints so that you can reference them in
+     * your other resources.
+     *
      * @param scope The scope in which to define this construct
      * @param id The scoped construct ID
      * @param props Configuration properties for the construct

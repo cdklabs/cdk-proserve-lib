@@ -34,6 +34,7 @@ const deps = [
 const project = new CdklabsConstructLibrary({
     author: 'Derrike Nunn',
     authorAddress: 'nunnderr@amazon.com',
+    stability: 'experimental',
     jsiiVersion: '~5.7',
     cdkVersion: '2.160.0',
     defaultReleaseBranch: 'main',

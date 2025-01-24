@@ -52,19 +52,27 @@ export interface FriendlyEmbraceProps {
 }
 
 /**
- * Friendly Embrace Custom Resource
+ * The Friendly Embrace construct can be used to remove CloudFormation stack
+ * dependencies that are based on stack exports and imports.
  *
- * A custom resource that is designed remove the "Deadly Embrace" problem that
+ * A custom resource that is designed to remove the "Deadly Embrace" problem that
  * occurs when you attempt to update a CloudFormation stack that is exporting
- * a resource used by another stack. This custom resource will run after all of
- * your stacks have been deployed and remove the dependencies by hardcoding
- * each export for all stacks that use it. For this reason, this custom resource
- * should run inside of its own stack and should be the last stack that is
- * deployed for your application.
+ * a resource used by another stack. This custom resource will run before all of
+ * your stacks deploy/update and remove the dependencies by hardcoding each
+ * export for all stacks that use it. For this reason, this construct should run
+ * inside of its own stack and should be the last stack that is instantiated for
+ * your application. That way the construct will be able to retrieve all of the
+ * stacks from your CDK resource tree that it needs to update.
  *
  * > NOTE: You may need to add more permissions to the handler if the custom
  * resource cannot update your stacks. You can call upon the `handler` property
  * of the class to add more permissions to it.
+ *
+ * @example
+ * const app = new App();
+ * // ... other stack definitions
+ * const embrace = new Stack(app, 'FriendlyEmbrace'); // last stack
+ * new FriendlyEmbrace(embrace, 'FriendlyEmbrace'); // only construct in stack
  */
 export class FriendlyEmbrace extends Construct {
     /**
@@ -206,11 +214,12 @@ export class FriendlyEmbrace extends Construct {
     readonly onEventHandler: NodejsFunction;
 
     /**
-     * Constructor
+     * The Friendly Embrace construct can be used to remove CloudFormation stack
+     * dependencies that are based on stack exports and imports.
      *
-     * @param scope Parent to which the custom resource belongs
-     * @param id Unique identifier for the custom resource
-     * @param props Metadata for configuring the custom resource
+     * @param scope The scope in which to define this construct
+     * @param id The construct ID
+     * @param props Configuration properties
      */
     constructor(scope: Construct, id: string, props?: FriendlyEmbraceProps) {
         super(scope, id);

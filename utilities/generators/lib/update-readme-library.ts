@@ -126,14 +126,14 @@ function generateMarkdown(
     output += `Count: ${constructs.length}\n\n`;
     for (const construct of constructs) {
         const anchor = construct.name.toLowerCase().replace(/\s+/g, '-');
-        output += `- [**${construct.name}**](API.md#${anchor}): ${construct.description}\n`;
+        output += `- [**${construct.name}**](API.md#${anchor}-): ${construct.description}\n`;
     }
 
     output += '\n### Aspects\n\n';
     output += `Count: ${aspects.length}\n\n`;
     for (const aspect of aspects) {
         const anchor = aspect.name.toLowerCase().replace(/\s+/g, '-');
-        output += `- [**${aspect.name}**](API.md#${anchor}): ${aspect.description}\n`;
+        output += `- [**${aspect.name}**](API.md#${anchor}-): ${aspect.description}\n`;
     }
 
     // Add Patterns section
@@ -141,7 +141,7 @@ function generateMarkdown(
     output += `Count: ${patterns.length}\n\n`;
     for (const pattern of patterns) {
         const anchor = pattern.name.toLowerCase().replace(/\s+/g, '-');
-        output += `- [**${pattern.name}**](API.md#${anchor}): ${pattern.description}\n`;
+        output += `- [**${pattern.name}**](API.md#${anchor}-): ${pattern.description}\n`;
     }
 
     return output;
