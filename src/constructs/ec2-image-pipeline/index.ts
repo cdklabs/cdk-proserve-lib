@@ -80,6 +80,8 @@ export interface Ec2ImagePipelineBaseProps {
 export interface Ec2ImagePipelineProps extends Ec2ImagePipelineBaseProps {
     /**
      * The machine image to use as a base for the pipeline.
+     *
+     * @default AmazonLinux2023
      */
     readonly machineImage?: IMachineImage;
 
@@ -95,6 +97,28 @@ export interface Ec2ImagePipelineProps extends Ec2ImagePipelineBaseProps {
     readonly components?: (Ec2ImagePipeline.Component | CfnComponent)[];
 }
 
+/**
+ * An EC2 Image Pipeline that can be used to build a Amazon Machine Image (AMI)
+ * automatically.
+ *
+ * This construct simplifies the process of creating an EC2 Image Pipeline and
+ * provides all of the available components that can be used that are maintained
+ * by AWS.
+ *
+ * @example
+ * const pipeline = new Ec2ImagePipeline(this, 'ImagePipeline', {
+ *   version: '0.1.0',
+ *   buildConfiguration: {
+ *     start: true,
+ *     waitForCompletion: true
+ *   },
+ *   components: [
+ *     Ec2ImagePipeline.Component.AWS_CLI_VERSION_2_LINUX,
+ *     Ec2ImagePipeline.Component.DOCKER_CE_LINUX
+ *   ]
+ * });
+ * new CfnOutput(this, 'ImagePipelineAmi', { value: pipeline.latestAmi! });
+ */
 export class Ec2ImagePipeline extends Construct {
     /**
      * The latest AMI built by the pipeline. NOTE: You must have enabled the
@@ -113,6 +137,14 @@ export class Ec2ImagePipeline extends Construct {
      */
     public readonly imagePipelineTopic: ITopic;
 
+    /**
+     * An EC2 Image Pipeline that can be used to build a Amazon Machine Image
+     * (AMI) automatically.
+     *
+     * @param scope The scope in which to define this construct
+     * @param id The scoped construct ID
+     * @param props Configuration properties
+     */
     constructor(scope: Construct, id: string, props: Ec2ImagePipelineProps) {
         super(scope, id);
 

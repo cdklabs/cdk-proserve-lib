@@ -28,7 +28,10 @@ export interface Ec2ImageBuilderGetImageProps {
 }
 
 /**
- * Custom construct that retrieves the AMI ID from an EC2 Image Builder image build version
+ * Retrieves an EC2 Image Builder image build version.
+ *
+ * This is useful for retrieving the AMI ID of an image that was built by an
+ * EC2 Image Builder pipeline.
  *
  * @example
  * const image = new Ec2ImageBuilderGetImage(this, 'SomeImage', {
@@ -49,8 +52,7 @@ export class Ec2ImageBuilderGetImage extends Construct {
         'image.outputResources.amis.0.image';
 
     /**
-     * Retrieves an Image from EC2 Image Builder so that you can grab the AMI
-     * that was built by the Image Builder pipeline.
+     * Retrieves an EC2 Image Builder image build version.
      *
      * @param scope The scope in which to define this construct
      * @param id The scoped construct ID

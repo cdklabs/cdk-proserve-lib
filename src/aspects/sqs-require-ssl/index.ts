@@ -7,9 +7,14 @@ import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { IConstruct } from 'constructs';
 
 /**
- * An aspect that enforces SSL/TLS requirements for SQS queues.
- * When applied to a CDK construct, it adds a resource policy to any SQS queue
- * that denies all actions when the request is not made over a secure transport.
+ * Enforces SSL/TLS requirements on Simple Queue Service (SQS) for all resources
+ * that the aspect applies to.
+ *
+ * This is accomplished by adding a resource policy to any SQS queue that denies
+ * all actions when the request is not made over a secure transport.
+ *
+ * @example
+ * cdk.Aspects.of(app).add(new SqsRequireSsl());
  */
 export class SqsRequireSsl implements IAspect {
     /**

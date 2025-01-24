@@ -15,7 +15,17 @@ export interface ApplyRemovalPolicyProps {
 }
 
 /**
- * Aspect that applies the provided Removal Policy to all resources
+ * Sets a user specified Removal Policy to all resources that the aspect applies
+ * to.
+ *
+ * This Aspect is useful if you want to enforce a specified removal policy on
+ * resources. For example, you could ensure that your removal policy is always
+ * set to RETAIN or DESTROY.
+ *
+ * @example
+ * cdk.Aspects.of(app).add(
+ *   new ApplyRemovalPolicy({ removalPolicy: RemovalPolicy.DESTROY })
+ * );
  */
 export class ApplyRemovalPolicy implements IAspect {
     /**
