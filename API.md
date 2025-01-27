@@ -635,6 +635,11 @@ public readonly latestAmi: string;
 
 The Friendly Embrace construct can be used to remove CloudFormation stack dependencies that are based on stack exports and imports.
 
+🚨 WARNING: This construct is experimental and will directly modify
+CloudFormation stacks in your CDK application via a Lambda-backed Custom
+Resource. It is not recommended to use this construct in a production
+environment.
+
 A custom resource that is designed to remove the "Deadly Embrace" problem that
 occurs when you attempt to update a CloudFormation stack that is exporting
 a resource used by another stack. This custom resource will run before all of
