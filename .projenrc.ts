@@ -32,8 +32,9 @@ const deps = [
  * Project Definition
  */
 const project = new CdklabsConstructLibrary({
-    author: 'Derrike Nunn',
-    authorAddress: 'nunnderr@amazon.com',
+    author: 'Derrike Nunn && Luciano Taranto',
+    authorAddress: 'aws-cdk-dev@amazon.com',
+    stability: 'experimental',
     jsiiVersion: '~5.7',
     cdkVersion: '2.160.0',
     defaultReleaseBranch: 'main',
@@ -78,6 +79,12 @@ const project = new CdklabsConstructLibrary({
                 options: {
                     singleQuote: false,
                     tabWidth: 2
+                }
+            },
+            {
+                files: ['*.md'],
+                options: {
+                    tabWidth: 1
                 }
             }
         ]

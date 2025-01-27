@@ -122,26 +122,32 @@ function generateMarkdown(
 ): string {
     let output = '';
     output += `Total: ${constructs.length + aspects.length + patterns.length}\n\n`;
-    output += '### Constructs\n\n';
+    output += '### 🧱 Constructs\n\n';
+    output +=
+        'Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) applications. A construct is a component within your application that represents one or more AWS CloudFormation resources and their configuration. You build your application, piece by piece, by importing and configuring constructs. To learn more about constructs, check out the [AWS CDK documentation](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html).\n\n';
     output += `Count: ${constructs.length}\n\n`;
     for (const construct of constructs) {
         const anchor = construct.name.toLowerCase().replace(/\s+/g, '-');
-        output += `- [**${construct.name}**](API.md#${anchor}): ${construct.description}\n`;
+        output += `- [**${construct.name}**](API.md#${anchor}-): ${construct.description}\n`;
     }
 
-    output += '\n### Aspects\n\n';
+    output += '\n### 🎭 Aspects\n\n';
+    output +=
+        'Aspects are a way to apply an operation to all constructs in a given scope. The aspect could modify the constructs, such as by adding tags. Or it could verify something about the state of the constructs, such as making sure that all buckets are encrypted. To learn more about aspects, check out the [AWS CDK documentation](https://docs.aws.amazon.com/cdk/v2/guide/aspects.html).\n\n';
     output += `Count: ${aspects.length}\n\n`;
     for (const aspect of aspects) {
         const anchor = aspect.name.toLowerCase().replace(/\s+/g, '-');
-        output += `- [**${aspect.name}**](API.md#${anchor}): ${aspect.description}\n`;
+        output += `- [**${aspect.name}**](API.md#${anchor}-): ${aspect.description}\n`;
     }
 
     // Add Patterns section
-    output += '\n### Patterns\n\n';
+    output += '\n### 🎯 Patterns\n\n';
+    output +=
+        'Patterns are higher-level abstractions that combine multiple constructs and their configurations to form an opinionated solution. They help developers implement best practices and reduce the amount of code needed to build well-architected infrastructure. Patterns typically orchestrate multiple AWS services together in a way that follows AWS best practices. To learn more about patterns, check out the [AWS CDK documentation](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html#constructs_lib_levels).\n\n';
     output += `Count: ${patterns.length}\n\n`;
     for (const pattern of patterns) {
         const anchor = pattern.name.toLowerCase().replace(/\s+/g, '-');
-        output += `- [**${pattern.name}**](API.md#${anchor}): ${pattern.description}\n`;
+        output += `- [**${pattern.name}**](API.md#${anchor}-): ${pattern.description}\n`;
     }
 
     return output;
@@ -159,10 +165,9 @@ const markdown = generateMarkdown(
 const readmeContent = fs.readFileSync('README.md', 'utf-8');
 
 // Create the new Library section with static description
-const newLibrarySection = `## Library
+const newLibrarySection = `## 📚 Library
 
-The library consists of constructs, aspects, and patterns that you can utilize
-in AWS CDK applications.
+The library consists of [constructs](#-constructs), [aspects](#-aspects), and [patterns](#-patterns) that you can utilize in AWS CDK applications.
 
 ${markdown}`;
 

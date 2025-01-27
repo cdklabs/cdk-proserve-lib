@@ -42,9 +42,29 @@ export interface WebApplicationFirewallProps {
 }
 
 /**
- * WebApplicationFirewall construct represents a WAF (Web Application Firewall)
- * that can be associated with AWS resources like Application Load Balancers.
- * It allows configuring AWS managed rule groups, logging, and visibility settings.
+ * Creates an AWS Web Application Firewall (WAF) that can be associated with
+ * resources such as an Application Load Balancer.
+ *
+ * It allows configuring AWS managed rule groups, logging, and visibility
+ * settings. The construct simplifies the creation of a WAF by providing
+ * available AWS managed rule groups that can be utilized.
+ *
+ * Currently, the only resource that is supported to associate the WAF with is
+ * an ALB.
+ *
+ * @example
+ *
+ * import { ApplicationLoadBalancer } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
+ * import { WebApplicationFirewall } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
+ * const alb = new ApplicationLoadBalancer(this, 'Alb', { vpc });
+ * const waf = new WebApplicationFirewall(this, 'WAF', {
+ *   awsManagedRuleGroups: [
+ *     WebApplicationFirewall.AwsManagedRuleGroup.COMMON_RULE_SET,
+ *     WebApplicationFirewall.AwsManagedRuleGroup.LINUX_RULE_SET
+ *   ]
+ * });
+ * waf.associate(alb);  // Associate the WAF with the ALB
  */
 export class WebApplicationFirewall extends Construct {
     /**
@@ -67,6 +87,14 @@ export class WebApplicationFirewall extends Construct {
         sampledRequestsEnabled: boolean;
     };
 
+    /**
+     * Creates an AWS Web Application Firewall (WAF) that can be associated with
+     * resources such as an Application Load Balancer.
+     *
+     * @param scope The scope in which to define this construct
+     * @param id The scoped construct ID
+     * @param props Configuration properties
+     */
     constructor(
         scope: Construct,
         id: string,

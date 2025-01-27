@@ -49,7 +49,8 @@ export interface NetworkFirewallProps {
     /**
      * Network Firewall routing configuration. By configuring these settings,
      * the Construct will automatically setup basic routing statements for you
-     * for the provided subnets.
+     * for the provided subnets. This should be used with caution and you should
+     * double check the routing is correct prior to deployment.
      */
     readonly configureVpcRoutes?: NetworkFirewall.NetworkFirewallVpcRouteProps;
 
@@ -61,12 +62,22 @@ export interface NetworkFirewallProps {
 }
 
 /**
- * AWS Network Firewall
+ * Creates an AWS Network Firewall using a user-supplied Suricata rules file in
+ * a VPC.
  *
- * Configures a new AWS Network Firewall in a VPC. Sets up according to best
- * practices found at:
- *
+ * Follows guidelines that can be found at:
  * @see https://aws.github.io/aws-security-services-best-practices/guides/network-firewall/
+ *
+ * @example
+ *
+ * import { NetworkFirewall } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
+ * new NetworkFirewall(this, 'Firewall', {
+ *   vpc,
+ *   firewallSubnets: vpc.selectSubnets({subnetGroupName: 'firewall'}).subnets,
+ *   suricataRulesFilePath: './firewall-rules-suricata.txt',
+ *   suricataRulesCapacity: 1000  // perform your own calculation based on the rules
+ * });
  */
 export class NetworkFirewall extends Construct {
     /**
@@ -75,7 +86,9 @@ export class NetworkFirewall extends Construct {
     public readonly firewall: CfnFirewall;
 
     /**
-     * Creates a new Network Firewall with associated rule groups, policies and logging
+     * Creates an AWS Network Firewall using a user-supplied Suricata rules file
+     * in a VPC.
+     *
      * @param scope - Parent construct scope
      * @param id - Construct ID used to generate unique resource names
      * @param props - Network Firewall configuration properties

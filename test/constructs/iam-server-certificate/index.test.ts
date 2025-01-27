@@ -21,7 +21,7 @@ import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
 const certificateParameterElementName = 'CertificateParameter';
 const privateKeyParameterElementName = 'PrivateKeyParameter';
-const secretKeyElementName = 'SecretEncryptionKey';
+const keyElementName = 'EncryptionKey';
 const certificateSecretElementName = 'CertificateSecret';
 const privateKeySecretElementName = 'PrivateKeySecret';
 
@@ -134,7 +134,7 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
 
     it('creates custom resource with correct properties (secret)', () => {
         // Arrange
-        const key = new Key(stack, secretKeyElementName);
+        const key = new Key(stack, keyElementName);
         const certificate = new Secret(stack, certificateSecretElementName, {
             encryptionKey: key
         });
@@ -193,7 +193,7 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
 
     it('creates custom resource with correct properties (parameter, secret)', () => {
         // Arrange
-        const key = new Key(stack, secretKeyElementName);
+        const key = new Key(stack, keyElementName);
         const certificate = new StringParameter(
             stack,
             certificateParameterElementName,
@@ -256,7 +256,7 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
 
     it('creates custom resource with correct properties (secret, parameter)', () => {
         // Arrange
-        const key = new Key(stack, secretKeyElementName);
+        const key = new Key(stack, keyElementName);
         const certificate = new Secret(stack, certificateSecretElementName, {
             encryptionKey: key
         });
@@ -317,7 +317,7 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
         );
     });
 
-    it('grants necessary permissions to Lambda function (parameter)', () => {
+    it('grants necessary permissions to Lambda function (unencrypted parameter)', () => {
         // Arrange
         const certificate = new StringParameter(
             stack,
@@ -389,6 +389,91 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
         template.hasResourceProperties('AWS::IAM::Policy', iamPolicyProperties);
     });
 
+    it('grants necessary permissions to Lambda function (encrypted parameter)', () => {
+        // Arrange
+        const key = new Key(stack, keyElementName);
+        const certificate = new StringParameter(
+            stack,
+            certificateParameterElementName,
+            {
+                parameterName: mockCertificateParameterName,
+                stringValue: mockCertificateValue
+            }
+        );
+        const privateKey = new StringParameter(
+            stack,
+            privateKeyParameterElementName,
+            {
+                parameterName: mockPrivateKeyParameterName,
+                stringValue: mockPrivateKeyValue
+            }
+        );
+
+        // Act
+        new IamServerCertificate(stack, id, {
+            certificate: {
+                parameter: certificate,
+                encryption: key
+            },
+            prefix: mockPrefix,
+            privateKey: {
+                parameter: privateKey,
+                encryption: key
+            }
+        });
+
+        // Assert
+        const template = getTemplate();
+
+        const iamPolicyProperties: Partial<PolicyProperties> = {
+            PolicyDocument: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Action: [
+                            'iam:UploadServerCertificate',
+                            'iam:DeleteServerCertificate'
+                        ],
+                        Effect: 'Allow',
+                        Resource: {
+                            'Fn::Join': [
+                                '',
+                                [
+                                    'arn:',
+                                    { Ref: 'AWS::Partition' },
+                                    ':iam::',
+                                    { Ref: 'AWS::AccountId' },
+                                    `:server-certificate/${mockPrefix}-*`
+                                ]
+                            ]
+                        }
+                    }),
+                    Match.objectLike({
+                        Action: 'kms:Decrypt',
+                        Effect: 'Allow',
+                        Resource: {
+                            'Fn::GetAtt': [
+                                Match.stringLikeRegexp(keyElementName),
+                                'Arn'
+                            ]
+                        }
+                    }),
+                    Match.objectLike({
+                        Action: [
+                            'ssm:DescribeParameters',
+                            'ssm:GetParameters',
+                            'ssm:GetParameter',
+                            'ssm:GetParameterHistory'
+                        ],
+                        Effect: 'Allow',
+                        Resource: Match.anyValue()
+                    })
+                ])
+            }
+        };
+
+        template.hasResourceProperties('AWS::IAM::Policy', iamPolicyProperties);
+    });
+
     it('grants necessary permissions to Lambda function (unencrypted secret)', () => {
         // Arrange
         const certificate = new Secret(stack, certificateSecretElementName);
@@ -431,9 +516,44 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
                         }
                     }),
                     Match.objectLike({
-                        Action: Match.arrayWith([
-                            'secretsmanager:GetSecretValue'
-                        ])
+                        Action: [
+                            'secretsmanager:GetSecretValue',
+                            'secretsmanager:DescribeSecret'
+                        ],
+                        Effect: 'Allow',
+                        Resource: {
+                            'Fn::Join': [
+                                '',
+                                [
+                                    {
+                                        Ref: Match.stringLikeRegexp(
+                                            certificateSecretElementName
+                                        )
+                                    },
+                                    '*'
+                                ]
+                            ]
+                        }
+                    }),
+                    Match.objectLike({
+                        Action: [
+                            'secretsmanager:GetSecretValue',
+                            'secretsmanager:DescribeSecret'
+                        ],
+                        Effect: 'Allow',
+                        Resource: {
+                            'Fn::Join': [
+                                '',
+                                [
+                                    {
+                                        Ref: Match.stringLikeRegexp(
+                                            privateKeySecretElementName
+                                        )
+                                    },
+                                    '*'
+                                ]
+                            ]
+                        }
                     })
                 ])
             }
@@ -444,7 +564,7 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
 
     it('grants necessary permissions to Lambda function (encrypted secret)', () => {
         // Arrange
-        const key = new Key(stack, secretKeyElementName);
+        const key = new Key(stack, keyElementName);
         const certificate = new Secret(stack, certificateSecretElementName, {
             secretName: 'CertificateSecret',
             encryptionKey: key
@@ -492,20 +612,52 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
                         }
                     }),
                     Match.objectLike({
-                        Action: [
-                            'secretsmanager:GetSecretValue',
-                            'secretsmanager:DescribeSecret'
-                        ],
-                        Effect: 'Allow'
-                        // Resource: Match
-                    }),
-                    Match.objectLike({
                         Action: 'kms:Decrypt',
                         Effect: 'Allow',
                         Resource: {
                             'Fn::GetAtt': [
-                                Match.stringLikeRegexp(secretKeyElementName),
+                                Match.stringLikeRegexp(keyElementName),
                                 'Arn'
+                            ]
+                        }
+                    }),
+                    Match.objectLike({
+                        Action: [
+                            'secretsmanager:GetSecretValue',
+                            'secretsmanager:DescribeSecret'
+                        ],
+                        Effect: 'Allow',
+                        Resource: {
+                            'Fn::Join': [
+                                '',
+                                [
+                                    {
+                                        Ref: Match.stringLikeRegexp(
+                                            certificateSecretElementName
+                                        )
+                                    },
+                                    '*'
+                                ]
+                            ]
+                        }
+                    }),
+                    Match.objectLike({
+                        Action: [
+                            'secretsmanager:GetSecretValue',
+                            'secretsmanager:DescribeSecret'
+                        ],
+                        Effect: 'Allow',
+                        Resource: {
+                            'Fn::Join': [
+                                '',
+                                [
+                                    {
+                                        Ref: Match.stringLikeRegexp(
+                                            privateKeySecretElementName
+                                        )
+                                    },
+                                    '*'
+                                ]
                             ]
                         }
                     })

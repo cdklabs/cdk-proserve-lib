@@ -4,11 +4,17 @@
 
 ### Ec2ImageBuilderGetImage <a name="Ec2ImageBuilderGetImage" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImage"></a>
 
-Custom construct that retrieves the AMI ID from an EC2 Image Builder image build version.
+Retrieves an EC2 Image Builder image build version.
+
+This is useful for retrieving the AMI ID of an image that was built by an
+EC2 Image Builder pipeline.
 
 *Example*
 
 ```typescript
+import { CfnOutput } from 'aws-cdk-lib';
+import { Ec2ImageBuilderGetImage } from '@cdklabs/cdk-proserve-lib/constructs';
+
 const image = new Ec2ImageBuilderGetImage(this, 'SomeImage', {
   imageBuildVersionArn: 'arn:aws:imagebuilder:us-east-1:123456789012:image/some-image/0.0.1/1'
 });
@@ -134,7 +140,35 @@ The AMI ID retrieved from the EC2 Image Builder image.
 
 ### Ec2ImageBuilderStart <a name="Ec2ImageBuilderStart" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderStart"></a>
 
-Starts an EC2 Image Builder pipeline execution.
+Starts an EC2 Image Builder Pipeline and optionally waits for the build to complete.
+
+This construct is useful if you want to create an image as part of your IaC
+deployment. By waiting for completion of this construct, you can use the
+image in the same deployment by retrieving the AMI and passing it to an EC2
+build step.
+
+*Example*
+
+```typescript
+import { Duration } from 'aws-cdk-lib';
+import { Topic } from 'aws-cdk-lib/aws-sns';
+import { Ec2ImageBuilderStart } from '@cdklabs/cdk-proserve-lib/constructs';
+
+const topic = Topic.fromTopicArn(
+  this,
+  'MyTopic',
+  'arn:aws:sns:us-east-1:123456789012:my-notification-topic'
+);
+new Ec2ImageBuilderStart(this, 'ImageBuilderStart', {
+  pipelineArn:
+    'arn:aws:imagebuilder:us-east-1:123456789012:image-pipeline/my-image-pipeline',
+  waitForCompletion: {
+    topic: topic,
+    timeout: Duration.hours(7)  // wait up to 7 hours for completion
+  }
+});
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderStart.Initializer"></a>
 
@@ -254,6 +288,33 @@ The ARN of the image build version created by the pipeline execution.
 
 ### Ec2ImagePipeline <a name="Ec2ImagePipeline" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline"></a>
 
+An EC2 Image Pipeline that can be used to build a Amazon Machine Image (AMI) automatically.
+
+This construct simplifies the process of creating an EC2 Image Pipeline and
+provides all of the available components that can be used that are maintained
+by AWS.
+
+*Example*
+
+```typescript
+import { CfnOutput } from 'aws-cdk-lib';
+import { Ec2ImagePipeline } from '@cdklabs/cdk-proserve-lib/constructs';
+
+const pipeline = new Ec2ImagePipeline(this, 'ImagePipeline', {
+  version: '0.1.0',
+  buildConfiguration: {
+    start: true,
+    waitForCompletion: true
+  },
+  components: [
+    Ec2ImagePipeline.Component.AWS_CLI_VERSION_2_LINUX,
+    Ec2ImagePipeline.Component.DOCKER_CE_LINUX
+  ]
+});
+new CfnOutput(this, 'ImagePipelineAmi', { value: pipeline.latestAmi! });
+```
+
+
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Initializer"></a>
 
 ```typescript
@@ -264,9 +325,9 @@ new constructs.Ec2ImagePipeline(scope: Construct, id: string, props: Ec2ImagePip
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps</code> | Configuration properties. |
 
 ---
 
@@ -274,17 +335,23 @@ new constructs.Ec2ImagePipeline(scope: Construct, id: string, props: Ec2ImagePip
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The scoped construct ID.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Initializer.parameter.props"></a>
 
 - *Type:* @cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps
+
+Configuration properties.
 
 ---
 
@@ -396,7 +463,37 @@ property to be available.
 
 ### Ec2LinuxImagePipeline <a name="Ec2LinuxImagePipeline" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline"></a>
 
-A pattern to build an image pipeline specifically for Linux.
+A pattern to build an EC2 Image Pipeline specifically for Linux.
+
+This pattern contains opinionated code and features to help create a linux
+pipeline. This pattern further simplifies setting up an image pipeline by
+letting you choose specific operating systems and features.
+
+The example below shows how you can configure an image that contains the AWS
+CLI and retains the SSM agent on the image. The image will have a 100GB root
+volume.
+
+*Example*
+
+```typescript
+import { Ec2LinuxImagePipeline } from '@cdklabs/cdk-proserve-lib/patterns';
+
+new Ec2LinuxImagePipeline(this, 'StigImagePipeline', {
+  version: '0.1.0',
+  operatingSystem:
+    Ec2LinuxImagePipeline.OperatingSystem.RED_HAT_ENTERPRISE_LINUX_8_9,
+  rootVolumeSize: 100,
+    buildConfiguration: {
+      start: true,
+      waitForCompletion: true
+    },
+  features: [
+    Ec2LinuxImagePipeline.Feature.AWS_CLI,
+    Ec2LinuxImagePipeline.Feature.RETAIN_SSM_AGENT
+  ]
+);
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer"></a>
 
@@ -408,9 +505,9 @@ new patterns.Ec2LinuxImagePipeline(scope: Construct, id: string, props: Ec2Linux
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps</code> | Configuration properties. |
 
 ---
 
@@ -418,17 +515,23 @@ new patterns.Ec2LinuxImagePipeline(scope: Construct, id: string, props: Ec2Linux
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The scoped construct ID.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Initializer.parameter.props"></a>
 
 - *Type:* @cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps
+
+Configuration properties.
 
 ---
 
@@ -530,19 +633,33 @@ public readonly latestAmi: string;
 
 ### FriendlyEmbrace <a name="FriendlyEmbrace" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace"></a>
 
-Friendly Embrace Custom Resource.
+The Friendly Embrace construct can be used to remove CloudFormation stack dependencies that are based on stack exports and imports.
 
-A custom resource that is designed remove the "Deadly Embrace" problem that
+A custom resource that is designed to remove the "Deadly Embrace" problem that
 occurs when you attempt to update a CloudFormation stack that is exporting
-a resource used by another stack. This custom resource will run after all of
-your stacks have been deployed and remove the dependencies by hardcoding
-each export for all stacks that use it. For this reason, this custom resource
-should run inside of its own stack and should be the last stack that is
-deployed for your application.
+a resource used by another stack. This custom resource will run before all of
+your stacks deploy/update and remove the dependencies by hardcoding each
+export for all stacks that use it. For this reason, this construct should run
+inside of its own stack and should be the last stack that is instantiated for
+your application. That way the construct will be able to retrieve all of the
+stacks from your CDK resource tree that it needs to update.
 
 > NOTE: You may need to add more permissions to the handler if the custom
 resource cannot update your stacks. You can call upon the `handler` property
 of the class to add more permissions to it.
+
+*Example*
+
+```typescript
+import { App, Stack } from 'aws-cdk-lib';
+import { FriendlyEmbrace } from '@cdklabs/cdk-proserve-lib/constructs';
+
+const app = new App();
+// ... other stack definitions
+const embrace = new Stack(app, 'FriendlyEmbrace'); // last stack
+new FriendlyEmbrace(embrace, 'FriendlyEmbrace'); // only construct in stack
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer"></a>
 
@@ -554,9 +671,9 @@ new constructs.FriendlyEmbrace(scope: Construct, id: string, props?: FriendlyEmb
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the custom resource belongs. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the custom resource. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps</code> | Metadata for configuring the custom resource. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.id">id</a></code> | <code>string</code> | The construct ID. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps</code> | Configuration properties. |
 
 ---
 
@@ -564,7 +681,7 @@ new constructs.FriendlyEmbrace(scope: Construct, id: string, props?: FriendlyEmb
 
 - *Type:* constructs.Construct
 
-Parent to which the custom resource belongs.
+The scope in which to define this construct.
 
 ---
 
@@ -572,7 +689,7 @@ Parent to which the custom resource belongs.
 
 - *Type:* string
 
-Unique identifier for the custom resource.
+The construct ID.
 
 ---
 
@@ -580,7 +697,7 @@ Unique identifier for the custom resource.
 
 - *Type:* @cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps
 
-Metadata for configuring the custom resource.
+Configuration properties.
 
 ---
 
@@ -670,6 +787,41 @@ server certificate.
 
 The construct also handles encryption for the framework resources using either a provided KMS key or an
 AWS managed key.
+
+*Example*
+
+```typescript
+import { Key } from 'aws-cdk-lib/aws-kms';
+import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
+import { StringParameter } from 'aws-cdk-lib/aws-ssm';
+import { IamServerCertificate } from '@cdklabs/cdk-proserve-lib/constructs';
+
+const keyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-key-id';
+const key = Key.fromKeyArn(this, 'Encryption', keyArn);
+
+const certificateData = StringParameter.fromSecureStringParameterAttributes(this, 'CertificateData', {
+     parameterName: 'sample-parameter',
+     encryptionKey: key
+});
+
+const privateKeyData = Secret.fromSecretAttributes(this, 'PrivateKeySecret', {
+     encryptionKey: key,
+     secretCompleteArn: 'arn:aws:secretsmanager:us-east-1:111111111111:secret:PrivateKeySecret-aBc123'
+});
+
+const certificate = new IamServerCertificate(this, 'ServerCertificate', {
+     certificate: {
+         parameter: certificateData,
+         encryption: key
+     },
+     privateKey: {
+         secret: privateKeyData,
+         encryption: key
+     },
+     prefix: 'myapp'
+});
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.Initializer"></a>
 
@@ -789,12 +941,25 @@ ARN for the created AWS IAM Server Certificate.
 
 ### NetworkFirewall <a name="NetworkFirewall" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall"></a>
 
-AWS Network Firewall.
+Creates an AWS Network Firewall using a user-supplied Suricata rules file in a VPC.
 
-Configures a new AWS Network Firewall in a VPC. Sets up according to best
-practices found at:
+Follows guidelines that can be found at:
 
 > [https://aws.github.io/aws-security-services-best-practices/guides/network-firewall/](https://aws.github.io/aws-security-services-best-practices/guides/network-firewall/)
+
+*Example*
+
+```typescript
+import { NetworkFirewall } from '@cdklabs/cdk-proserve-lib/constructs';
+
+new NetworkFirewall(this, 'Firewall', {
+  vpc,
+  firewallSubnets: vpc.selectSubnets({subnetGroupName: 'firewall'}).subnets,
+  suricataRulesFilePath: './firewall-rules-suricata.txt',
+  suricataRulesCapacity: 1000  // perform your own calculation based on the rules
+});
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.Initializer"></a>
 
@@ -914,7 +1079,28 @@ The underlying CloudFormation Network Firewall resource.
 
 ### NetworkFirewallEndpoints <a name="NetworkFirewallEndpoints" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints"></a>
 
-Construct that retrieves and manages Network Firewall endpoints Uses AWS Custom Resources to fetch endpoint information from the Network Firewall service.
+Retrieves Network Firewall endpoints so that you can reference them in your other resources.
+
+Uses an AWS Custom Resource to fetch endpoint information from the Network
+Firewall service. This is useful so that you can both create a Network
+Firewall and reference the endpoints it creates, to do things like configure
+routing to the firewall.
+
+*Example*
+
+```typescript
+import { CfnOutput } from 'aws-cdk-lib';
+import { NetworkFirewallEndpoints } from '@cdklabs/cdk-proserve-lib/constructs';
+
+const endpoints = new NetworkFirewallEndpoints(this, 'Endpoints', {
+  firewall: cfnFirewall,  // CfnFirewall resource to find endpoints for
+});
+const az1EndpointId = endpoints.getEndpointId('us-east-1a');
+const az2EndpointId = endpoints.getEndpointId('us-east-1b');
+new CfnOutput(this, 'Az1EndpointId', { value: az1Endpoint });
+new CfnOutput(this, 'Az2EndpointId', { value: az2Endpoint });
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.Initializer"></a>
 
@@ -1048,6 +1234,38 @@ and SSM parameter(s) and/or secret.
 The construct also handles encryption for the Lambda function's environment variables and dead letter queue,
 using either a provided KMS key or an AWS managed key.
 
+*Example*
+
+```typescript
+import { Key } from 'aws-cdk-lib/aws-kms';
+import { Domain } from 'aws-cdk-lib/aws-opensearchservice';
+import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
+import { OpenSearchAdminUser } from '@cdklabs/cdk-proserve-lib/constructs';
+
+const keyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-key-id';
+const key = Key.fromKeyArn(this, 'Encryption', keyArn);
+
+const adminCredential = StringParameter.fromSecureStringParameterAttributes(this, 'AdminCredential', {
+     parameterName: 'sample-parameter',
+     encryptionKey: key
+});
+
+const domainKeyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-domain-key-id';
+const domainKey = Key.fromKeyArn(this, 'DomainEncryption', domainKeyArn);
+const domain = Domain.fromDomainEndpoint(this, 'Domain', 'vpc-testdomain.us-east-1.es.amazonaws.com');
+
+const adminUser = new OpenSearchAdminUser(this, 'AdminUser', {
+     credential: {
+         secret: adminCredential,
+         encryption: key
+     },
+     domain: domain,
+     domainKey: domainKey,
+     username: 'admin'
+});
+```
+
+
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.Initializer"></a>
 
 ```typescript
@@ -1153,9 +1371,31 @@ The tree node.
 
 ### WebApplicationFirewall <a name="WebApplicationFirewall" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall"></a>
 
-WebApplicationFirewall construct represents a WAF (Web Application Firewall) that can be associated with AWS resources like Application Load Balancers.
+Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
 
-It allows configuring AWS managed rule groups, logging, and visibility settings.
+It allows configuring AWS managed rule groups, logging, and visibility
+settings. The construct simplifies the creation of a WAF by providing
+available AWS managed rule groups that can be utilized.
+
+Currently, the only resource that is supported to associate the WAF with is
+an ALB.
+
+*Example*
+
+```typescript
+import { ApplicationLoadBalancer } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
+import { WebApplicationFirewall } from '@cdklabs/cdk-proserve-lib/constructs';
+
+const alb = new ApplicationLoadBalancer(this, 'Alb', { vpc });
+const waf = new WebApplicationFirewall(this, 'WAF', {
+  awsManagedRuleGroups: [
+    WebApplicationFirewall.AwsManagedRuleGroup.COMMON_RULE_SET,
+    WebApplicationFirewall.AwsManagedRuleGroup.LINUX_RULE_SET
+  ]
+});
+waf.associate(alb);  // Associate the WAF with the ALB
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer"></a>
 
@@ -1167,9 +1407,9 @@ new constructs.WebApplicationFirewall(scope: Construct, id: string, props?: WebA
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps</code> | Configuration properties. |
 
 ---
 
@@ -1177,17 +1417,23 @@ new constructs.WebApplicationFirewall(scope: Construct, id: string, props?: WebA
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The scoped construct ID.
+
 ---
 
 ##### `props`<sup>Optional</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.Initializer.parameter.props"></a>
 
 - *Type:* @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps
+
+Configuration properties.
 
 ---
 
@@ -1881,6 +2127,7 @@ public readonly machineImage: IMachineImage;
 ```
 
 - *Type:* aws-cdk-lib.aws_ec2.IMachineImage
+- *Default:* AmazonLinux2023
 
 The machine image to use as a base for the pipeline.
 
@@ -2070,6 +2317,38 @@ public readonly rootVolumeSize: number;
 Size for the root volume in GB.
 
 Default: 10 GB.
+
+---
+
+### ElementProps <a name="ElementProps" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ElementProps"></a>
+
+Properties for a server certificate element regardless of where it is stored.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ElementProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const elementProps: constructs.IamServerCertificate.ElementProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ElementProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ElementProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional encryption key that protects the secret.
 
 ---
 
@@ -2535,7 +2814,8 @@ Network Firewall routing configuration.
 
 By configuring these settings,
 the Construct will automatically setup basic routing statements for you
-for the provided subnets.
+for the provided subnets. This should be used with caution and you should
+double check the routing is correct prior to deployment.
 
 ---
 
@@ -2802,7 +3082,20 @@ const parameterProps: constructs.IamServerCertificate.ParameterProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps.property.parameter">parameter</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | Reference to the AWS Systems Manager Parameter Store parameter that contains the data. |
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional encryption key that protects the secret.
 
 ---
 
@@ -2815,6 +3108,38 @@ public readonly parameter: IParameter;
 - *Type:* aws-cdk-lib.aws_ssm.IParameter
 
 Reference to the AWS Systems Manager Parameter Store parameter that contains the data.
+
+---
+
+### PasswordCommonProps <a name="PasswordCommonProps" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordCommonProps"></a>
+
+Properties for the admin user password regardless of where it is stored.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordCommonProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const passwordCommonProps: constructs.OpenSearchAdminUser.PasswordCommonProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordCommonProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordCommonProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional encryption key that protects the secret.
 
 ---
 
@@ -2834,7 +3159,20 @@ const passwordParameterProps: constructs.OpenSearchAdminUser.PasswordParameterPr
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps.property.parameter">parameter</a></code> | <code>aws-cdk-lib.aws_ssm.IParameter</code> | Reference to the AWS Systems Manager Parameter Store parameter that contains the admin credential. |
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordParameterProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional encryption key that protects the secret.
 
 ---
 
@@ -2866,20 +3204,8 @@ const passwordSecretProps: constructs.OpenSearchAdminUser.PasswordSecretProps = 
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Reference to the AWS Secrets Manager secret that contains the admin credential. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
-
----
-
-##### `secret`<sup>Required</sup> <a name="secret" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.secret"></a>
-
-```typescript
-public readonly secret: ISecret;
-```
-
-- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
-
-Reference to the AWS Secrets Manager secret that contains the admin credential.
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Reference to the AWS Secrets Manager secret that contains the admin credential. |
 
 ---
 
@@ -2892,6 +3218,18 @@ public readonly encryption: IKey;
 - *Type:* aws-cdk-lib.aws_kms.IKey
 
 Optional encryption key that protects the secret.
+
+---
+
+##### `secret`<sup>Required</sup> <a name="secret" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.PasswordSecretProps.property.secret"></a>
+
+```typescript
+public readonly secret: ISecret;
+```
+
+- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
+
+Reference to the AWS Secrets Manager secret that contains the admin credential.
 
 ---
 
@@ -2911,20 +3249,8 @@ const secretProps: constructs.IamServerCertificate.SecretProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Reference to the AWS Secrets Manager secret that contains the data. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional encryption key that protects the secret. |
-
----
-
-##### `secret`<sup>Required</sup> <a name="secret" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.secret"></a>
-
-```typescript
-public readonly secret: ISecret;
-```
-
-- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
-
-Reference to the AWS Secrets Manager secret that contains the data.
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.secret">secret</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Reference to the AWS Secrets Manager secret that contains the data. |
 
 ---
 
@@ -2937,6 +3263,18 @@ public readonly encryption: IKey;
 - *Type:* aws-cdk-lib.aws_kms.IKey
 
 Optional encryption key that protects the secret.
+
+---
+
+##### `secret`<sup>Required</sup> <a name="secret" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps.property.secret"></a>
+
+```typescript
+public readonly secret: ISecret;
+```
+
+- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
+
+Reference to the AWS Secrets Manager secret that contains the data.
 
 ---
 
@@ -3223,7 +3561,25 @@ Whether to enable sampled requests.
 
 - *Implements:* aws-cdk-lib.IAspect
 
-Aspect that applies the provided Removal Policy to all resources.
+Sets a user specified Removal Policy to all resources that the aspect applies to.
+
+This Aspect is useful if you want to enforce a specified removal policy on
+resources. For example, you could ensure that your removal policy is always
+set to RETAIN or DESTROY.
+
+*Example*
+
+```typescript
+import { App, Aspects, RemovalPolicy } from 'aws-cdk-lib';
+import { ApplyRemovalPolicy } from '@cdklabs/cdk-proserve-lib/aspects';
+
+const app = new App();
+
+Aspects.of(app).add(
+  new ApplyRemovalPolicy({ removalPolicy: RemovalPolicy.DESTROY })
+);
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicy.Initializer"></a>
 
@@ -3278,7 +3634,19 @@ The construct being visited.
 
 - *Implements:* aws-cdk-lib.IAspect
 
-An aspect that ensures Lambda log groups are created for all Lambda functions.
+Ensures that Lambda log groups are created for all Lambda functions that the aspect applies to.
+
+*Example*
+
+```typescript
+import { App, Aspects } from 'aws-cdk-lib';
+import { CreateLambdaLogGroup } from '@cdklabs/cdk-proserve-lib/aspects';
+
+const app = new App();
+
+Aspects.of(app).add(new CreateLambdaLogGroup());
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.CreateLambdaLogGroup.Initializer"></a>
 
@@ -3324,7 +3692,22 @@ The construct being visited.
 
 - *Implements:* aws-cdk-lib.IAspect
 
-Aspect that sets log retention period for CloudWatch Log Groups.
+Aspect that sets the log retention period for CloudWatch log groups to a user-supplied retention period.
+
+*Example*
+
+```typescript
+import { App, Aspects } from 'aws-cdk-lib';
+import { RetentionDays } from 'aws-cdk-lib/aws-logs';
+import { SetLogRetention } from '@cdklabs/cdk-proserve-lib/aspects';
+
+const app = new App();
+
+Aspects.of(app).add(
+  new SetLogRetention({ period: RetentionDays.EIGHTEEN_MONTHS })
+);
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.SetLogRetention.Initializer"></a>
 
@@ -3379,10 +3762,22 @@ The construct being visited.
 
 - *Implements:* aws-cdk-lib.IAspect
 
-An aspect that enforces SSL/TLS requirements for SQS queues.
+Enforces SSL/TLS requirements on Simple Queue Service (SQS) for all resources that the aspect applies to.
 
-When applied to a CDK construct, it adds a resource policy to any SQS queue
-that denies all actions when the request is not made over a secure transport.
+This is accomplished by adding a resource policy to any SQS queue that denies
+all actions when the request is not made over a secure transport.
+
+*Example*
+
+```typescript
+import { App, Aspects } from 'aws-cdk-lib';
+import { SqsRequireSsl } from '@cdklabs/cdk-proserve-lib/aspects';
+
+const app = new App();
+
+Aspects.of(app).add(new SqsRequireSsl());
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.SqsRequireSsl.Initializer"></a>
 

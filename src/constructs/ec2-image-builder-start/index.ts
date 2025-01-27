@@ -64,17 +64,47 @@ export interface Ec2ImageBuilderStartProps {
 }
 
 /**
- * Starts an EC2 Image Builder pipeline execution
+ * Starts an EC2 Image Builder Pipeline and optionally waits for the build to
+ * complete.
+ *
+ * This construct is useful if you want to create an image as part of your IaC
+ * deployment. By waiting for completion of this construct, you can use the
+ * image in the same deployment by retrieving the AMI and passing it to an EC2
+ * build step.
+ *
+ * @example
+ *
+ * import { Duration } from 'aws-cdk-lib';
+ * import { Topic } from 'aws-cdk-lib/aws-sns';
+ * import { Ec2ImageBuilderStart } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
+ * const topic = Topic.fromTopicArn(
+ *   this,
+ *   'MyTopic',
+ *   'arn:aws:sns:us-east-1:123456789012:my-notification-topic'
+ * );
+ * new Ec2ImageBuilderStart(this, 'ImageBuilderStart', {
+ *   pipelineArn:
+ *     'arn:aws:imagebuilder:us-east-1:123456789012:image-pipeline/my-image-pipeline',
+ *   waitForCompletion: {
+ *     topic: topic,
+ *     timeout: Duration.hours(7)  // wait up to 7 hours for completion
+ *   }
+ * });
  */
 export class Ec2ImageBuilderStart extends Construct {
     /** The ARN of the image build version created by the pipeline execution */
     public readonly imageBuildVersionArn: string;
 
+    /** The underlying custom resource that starts the pipeline execution. */
     private readonly cr: AwsCustomResource;
+    /** The hash value supplied by the user or the default value (Run1x) */
     private readonly hash: string;
 
     /**
-     * Creates a new EC2 Image Builder Start custom resource
+     * Starts an EC2 Image Builder Pipeline and optionally waits for the build
+     * to complete.
+     *
      * @param scope The construct scope
      * @param id The construct ID
      * @param props Configuration properties

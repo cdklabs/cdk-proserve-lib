@@ -2,11 +2,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { Stack } from 'aws-cdk-lib';
-import { Match } from 'aws-cdk-lib/assertions';
+import { Match, Template } from 'aws-cdk-lib/assertions';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Domain, EngineVersion } from 'aws-cdk-lib/aws-opensearchservice';
 import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
+import { NagSuppressions } from 'cdk-nag';
 import { PolicyProperties } from 'cloudform-types/types/iam/policy';
 import { FunctionProperties } from 'cloudform-types/types/lambda/function';
 import { mockPasswordParameterName } from './fixtures';
@@ -15,11 +16,36 @@ import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
 const passwordParameterElementName = 'PasswordParamater';
 const passwordSecretElementName = 'PasswordSecret';
+const passwordKeyElementName = 'PasswordKey';
 
 describeCdkTest(OpenSearchAdminUser, (id, getStack, getTemplate) => {
     let stack: Stack;
     let domain: Domain;
     let username: StringParameter;
+
+    function getTemplateWithSecretsAndNag(s: Stack): Template {
+        const originalTemplate = Template.fromStack(s);
+
+        const secretResourceIds = Object.keys(
+            originalTemplate.findResources('AWS::SecretsManager::Secret')
+        );
+
+        NagSuppressions.addStackSuppressions(
+            s,
+            [
+                {
+                    id: 'AwsSolutions-IAM5',
+                    appliesTo: secretResourceIds.map(
+                        (resourceId) => `Resource::<${resourceId}>*`
+                    ),
+                    reason: 'Permissions are tightly scoped up to the known principal prefix.'
+                }
+            ],
+            true
+        );
+
+        return getTemplate();
+    }
 
     beforeEach(() => {
         stack = getStack();
@@ -100,7 +126,7 @@ describeCdkTest(OpenSearchAdminUser, (id, getStack, getTemplate) => {
         });
 
         // Assert
-        const template = getTemplate();
+        const template = getTemplateWithSecretsAndNag(stack);
 
         template.hasResourceProperties('Custom::OpenSearchAdminUser', {
             ServiceToken: {
@@ -130,7 +156,7 @@ describeCdkTest(OpenSearchAdminUser, (id, getStack, getTemplate) => {
         );
     });
 
-    it('grants necessary permissions to Lambda function (parameter)', () => {
+    it('grants necessary permissions to Lambda function (unencrypted parameter)', () => {
         // Arrange
         const password = new StringParameter(
             stack,
@@ -178,6 +204,66 @@ describeCdkTest(OpenSearchAdminUser, (id, getStack, getTemplate) => {
         template.hasResourceProperties('AWS::IAM::Policy', iamPolicyProperties);
     });
 
+    it('grants necessary permissions to Lambda function (encrypted parameter)', () => {
+        // Arrange
+        const passwordKey = new Key(stack, passwordKeyElementName);
+        const password = new StringParameter(
+            stack,
+            passwordParameterElementName,
+            {
+                parameterName: mockPasswordParameterName,
+                stringValue: 'password123'
+            }
+        );
+
+        // Act
+        new OpenSearchAdminUser(stack, id, {
+            username,
+            credential: {
+                parameter: password,
+                encryption: passwordKey
+            },
+            domain
+        });
+
+        // Assert
+        const template = getTemplate();
+
+        const iamPolicyProperties: Partial<PolicyProperties> = {
+            PolicyDocument: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Action: 'es:UpdateDomainConfig',
+                        Effect: 'Allow',
+                        Resource: Match.anyValue()
+                    }),
+                    Match.objectLike({
+                        Action: [
+                            'ssm:DescribeParameters',
+                            'ssm:GetParameters',
+                            'ssm:GetParameter',
+                            'ssm:GetParameterHistory'
+                        ],
+                        Effect: 'Allow',
+                        Resource: Match.anyValue()
+                    }),
+                    Match.objectLike({
+                        Action: 'kms:Decrypt',
+                        Effect: 'Allow',
+                        Resource: {
+                            'Fn::GetAtt': [
+                                Match.stringLikeRegexp(passwordKeyElementName),
+                                'Arn'
+                            ]
+                        }
+                    })
+                ])
+            }
+        };
+
+        template.hasResourceProperties('AWS::IAM::Policy', iamPolicyProperties);
+    });
+
     it('grants necessary permissions to Lambda function (unencrypted secret)', () => {
         // Arrange
         const password = new Secret(stack, passwordSecretElementName, {});
@@ -192,7 +278,7 @@ describeCdkTest(OpenSearchAdminUser, (id, getStack, getTemplate) => {
         });
 
         // Assert
-        const template = getTemplate();
+        const template = getTemplateWithSecretsAndNag(stack);
 
         const iamPolicyProperties: Partial<PolicyProperties> = {
             PolicyDocument: {
@@ -226,7 +312,6 @@ describeCdkTest(OpenSearchAdminUser, (id, getStack, getTemplate) => {
 
     it('grants necessary permissions to Lambda function (encrypted secret)', () => {
         // Arrange
-        const passwordKeyElementName = 'PasswordKey';
         const passwordKey = new Key(stack, passwordKeyElementName);
         const password = new Secret(stack, passwordSecretElementName, {
             encryptionKey: passwordKey
@@ -243,7 +328,7 @@ describeCdkTest(OpenSearchAdminUser, (id, getStack, getTemplate) => {
         });
 
         // Assert
-        const template = getTemplate();
+        const template = getTemplateWithSecretsAndNag(stack);
 
         const iamPolicyProperties: Partial<PolicyProperties> = {
             PolicyDocument: {
@@ -264,17 +349,32 @@ describeCdkTest(OpenSearchAdminUser, (id, getStack, getTemplate) => {
                         Resource: Match.anyValue()
                     }),
                     Match.objectLike({
-                        Action: Match.arrayWith([
-                            'secretsmanager:GetSecretValue'
-                        ])
-                    }),
-                    Match.objectLike({
                         Action: 'kms:Decrypt',
                         Effect: 'Allow',
                         Resource: {
                             'Fn::GetAtt': [
                                 Match.stringLikeRegexp(passwordKeyElementName),
                                 'Arn'
+                            ]
+                        }
+                    }),
+                    Match.objectLike({
+                        Action: [
+                            'secretsmanager:GetSecretValue',
+                            'secretsmanager:DescribeSecret'
+                        ],
+                        Effect: 'Allow',
+                        Resource: {
+                            'Fn::Join': [
+                                '',
+                                [
+                                    {
+                                        Ref: Match.stringLikeRegexp(
+                                            passwordSecretElementName
+                                        )
+                                    },
+                                    '*'
+                                ]
                             ]
                         }
                     })

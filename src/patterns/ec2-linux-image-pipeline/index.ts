@@ -48,13 +48,47 @@ export interface Ec2LinuxImagePipelineProps extends Ec2ImagePipelineBaseProps {
 }
 
 /**
- * A pattern to build an image pipeline specifically for Linux.
+ * A pattern to build an EC2 Image Pipeline specifically for Linux.
+ *
+ * This pattern contains opinionated code and features to help create a linux
+ * pipeline. This pattern further simplifies setting up an image pipeline by
+ * letting you choose specific operating systems and features.
+ *
+ * The example below shows how you can configure an image that contains the AWS
+ * CLI and retains the SSM agent on the image. The image will have a 100GB root
+ * volume.
+ *
+ * @example
+ *
+ * import { Ec2LinuxImagePipeline } from '@cdklabs/cdk-proserve-lib/patterns';
+ *
+ * new Ec2LinuxImagePipeline(this, 'StigImagePipeline', {
+ *   version: '0.1.0',
+ *   operatingSystem:
+ *     Ec2LinuxImagePipeline.OperatingSystem.RED_HAT_ENTERPRISE_LINUX_8_9,
+ *   rootVolumeSize: 100,
+ *     buildConfiguration: {
+ *       start: true,
+ *       waitForCompletion: true
+ *     },
+ *   features: [
+ *     Ec2LinuxImagePipeline.Feature.AWS_CLI,
+ *     Ec2LinuxImagePipeline.Feature.RETAIN_SSM_AGENT
+ *   ]
+ * );
  */
 export class Ec2LinuxImagePipeline extends Construct {
     public latestAmi: string | undefined;
     public imagePipelineArn: string;
     public imagePipelineTopic: ITopic;
 
+    /**
+     * A pattern to build an EC2 Image Pipeline specifically for Linux.
+     *
+     * @param scope The scope in which to define this construct
+     * @param id The scoped construct ID
+     * @param props Configuration properties
+     */
     constructor(
         scope: Construct,
         id: string,
