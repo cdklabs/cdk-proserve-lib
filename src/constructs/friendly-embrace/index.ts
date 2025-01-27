@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { join } from 'node:path';
-import { Aws, CustomResource, Duration } from 'aws-cdk-lib';
+import { Annotations, Aws, CustomResource, Duration } from 'aws-cdk-lib';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
@@ -54,6 +54,11 @@ export interface FriendlyEmbraceProps {
 /**
  * The Friendly Embrace construct can be used to remove CloudFormation stack
  * dependencies that are based on stack exports and imports.
+ *
+ * 🚨 WARNING: This construct is experimental and will directly modify
+ * CloudFormation stacks in your CDK application via a Lambda-backed Custom
+ * Resource. It is not recommended to use this construct in a production
+ * environment.
  *
  * A custom resource that is designed to remove the "Deadly Embrace" problem that
  * occurs when you attempt to update a CloudFormation stack that is exporting
@@ -221,6 +226,11 @@ export class FriendlyEmbrace extends Construct {
      * The Friendly Embrace construct can be used to remove CloudFormation stack
      * dependencies that are based on stack exports and imports.
      *
+     * 🚨 WARNING: This construct is experimental and will directly modify
+     * CloudFormation stacks in your CDK application via a Lambda-backed Custom
+     * Resource. It is not recommended to use this construct in a production
+     * environment.
+     *
      * @param scope The scope in which to define this construct
      * @param id The construct ID
      * @param props Configuration properties
@@ -232,6 +242,11 @@ export class FriendlyEmbrace extends Construct {
             this,
             otherStacks,
             props
+        );
+
+        Annotations.of(this).addWarningV2(
+            'cdk-proserve-lib:construct:FriendlyEmbrace',
+            '🚨 WARNING: This construct is experimental and will directly modify CloudFormation stacks in your CDK application via a Lambda-backed Custom Resource. It is not recommended to use this construct in a production environment.'
         );
 
         new CustomResource(this, 'CrFriendlyEmbrace', {
