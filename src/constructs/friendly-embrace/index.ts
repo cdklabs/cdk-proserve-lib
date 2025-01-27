@@ -69,6 +69,10 @@ export interface FriendlyEmbraceProps {
  * of the class to add more permissions to it.
  *
  * @example
+ *
+ * import { App, Stack } from 'aws-cdk-lib';
+ * import { FriendlyEmbrace } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
  * const app = new App();
  * // ... other stack definitions
  * const embrace = new Stack(app, 'FriendlyEmbrace'); // last stack

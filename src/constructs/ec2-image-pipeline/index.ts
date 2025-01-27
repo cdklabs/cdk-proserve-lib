@@ -106,6 +106,10 @@ export interface Ec2ImagePipelineProps extends Ec2ImagePipelineBaseProps {
  * by AWS.
  *
  * @example
+ *
+ * import { CfnOutput } from 'aws-cdk-lib';
+ * import { Ec2ImagePipeline } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
  * const pipeline = new Ec2ImagePipeline(this, 'ImagePipeline', {
  *   version: '0.1.0',
  *   buildConfiguration: {

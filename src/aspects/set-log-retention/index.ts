@@ -20,7 +20,14 @@ export interface SetLogRetentionProps {
  * user-supplied retention period.
  *
  * @example
- * cdk.Aspects.of(app).add(
+ *
+ * import { App, Aspects } from 'aws-cdk-lib';
+ * import { RetentionDays } from 'aws-cdk-lib/aws-logs';
+ * import { SetLogRetention } from '@cdklabs/cdk-proserve-lib/aspects';
+ *
+ * const app = new App();
+ *
+ * Aspects.of(app).add(
  *   new SetLogRetention({ period: RetentionDays.EIGHTEEN_MONTHS })
  * );
  */

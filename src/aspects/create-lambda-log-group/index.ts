@@ -10,7 +10,13 @@ import { IConstruct } from 'constructs';
  * aspect applies to.
  *
  * @example
- * cdk.Aspects.of(app).add(new CreateLambdaLogGroup());
+ *
+ * import { App, Aspects } from 'aws-cdk-lib';
+ * import { CreateLambdaLogGroup } from '@cdklabs/cdk-proserve-lib/aspects';
+ *
+ * const app = new App();
+ *
+ * Aspects.of(app).add(new CreateLambdaLogGroup());
  */
 export class CreateLambdaLogGroup implements IAspect {
     /**

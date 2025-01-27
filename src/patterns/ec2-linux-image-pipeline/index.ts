@@ -59,6 +59,9 @@ export interface Ec2LinuxImagePipelineProps extends Ec2ImagePipelineBaseProps {
  * volume.
  *
  * @example
+ *
+ * import { Ec2LinuxImagePipeline } from '@cdklabs/cdk-proserve-lib/patterns';
+ *
  * new Ec2LinuxImagePipeline(this, 'StigImagePipeline', {
  *   version: '0.1.0',
  *   operatingSystem:

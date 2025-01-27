@@ -37,6 +37,10 @@ export interface NetworkFirewallEndpointsProps {
  * routing to the firewall.
  *
  * @example
+ *
+ * import { CfnOutput } from 'aws-cdk-lib';
+ * import { NetworkFirewallEndpoints } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
  * const endpoints = new NetworkFirewallEndpoints(this, 'Endpoints', {
  *   firewall: cfnFirewall,  // CfnFirewall resource to find endpoints for
  * });

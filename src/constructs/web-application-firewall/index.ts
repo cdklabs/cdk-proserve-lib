@@ -53,6 +53,10 @@ export interface WebApplicationFirewallProps {
  * an ALB.
  *
  * @example
+ *
+ * import { ApplicationLoadBalancer } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
+ * import { WebApplicationFirewall } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
  * const alb = new ApplicationLoadBalancer(this, 'Alb', { vpc });
  * const waf = new WebApplicationFirewall(this, 'WAF', {
  *   awsManagedRuleGroups: [
