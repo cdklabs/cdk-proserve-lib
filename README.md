@@ -6,10 +6,10 @@ SPDX-License-Identifier: Apache-2.0
 # CDK ProServe Library
 
 [![npm version](https://img.shields.io/npm/v/@cdklabs/cdk-proserve-lib)](https://www.npmjs.com/package/@cdklabs/cdk-proserve-lib)
-[![PyPI version](https://img.shields.io/pypi/v/cdklabs.cdk-proserve-lib)](https://pypi.org/project/cdk-proserve-lib/)
-[![Maven version](https://img.shields.io/maven-central/v/io.github.cdklabs/cdkproservelib)](https://search.maven.org/search?q=a:cdkproservelib)
+[![PyPI version](https://img.shields.io/pypi/v/cdklabs.cdk-proserve-lib)](https://pypi.org/project/cdklabs.cdk-proserve-lib)
+[![Maven version](https://img.shields.io/maven-central/v/io.github.cdklabs/cdk-proserve-lib)](https://central.sonatype.com/artifact/io.github.cdklabs/cdk-proserve-lib)
 [![NuGet version](https://img.shields.io/nuget/v/Cdklabs.CdkProserveLib)](https://www.nuget.org/packages/Cdklabs.CdkProserveLib)
-[![Go version](https://img.shields.io/github/go-mod/go-version/cdklabs/cdk-proserve-lib-go?color=blue&filename=cdkproservelib%2Fgo.mod)](https://github.com/cdklabs/cdk-proserve-lib-go)
+[![Go version](https://img.shields.io/github/go-mod/go-version/cdklabs/cdk-proserve-lib-go?color=blue&filename=cdklabscdkproservelib%2Fgo.mod)](https://github.com/cdklabs/cdk-proserve-lib-go/tree/main/cdklabscdkproservelib)
 
 [![View on Construct Hub](https://constructs.dev/badge?package=@cdklabs/cdk-proserve-lib)](https://constructs.dev/packages/@cdklabs/cdk-proserve-lib)
 
@@ -45,7 +45,7 @@ Add the following to your `pom.xml`:
 ```xml
 <dependency>
     <groupId>io.github.cdklabs</groupId>
-    <artifactId>cdkproservelib</artifactId>
+    <artifactId>cdk-proserve-lib</artifactId>
     <version>[VERSION]</version>
 </dependency>
 ```
@@ -67,7 +67,7 @@ dotnet add package Cdklabs.CdkProserveLib
 <summary>Go</summary>
 
 ```bash
-go get github.com/cdklabs/cdk-proserve-lib-go/cdkproservelib
+go get github.com/cdklabs/cdk-proserve-lib-go/cdklabscdkproservelib
 ```
 
 </details>

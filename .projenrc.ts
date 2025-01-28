@@ -35,6 +35,7 @@ const project = new CdklabsConstructLibrary({
     author: 'Derrike Nunn && Luciano Taranto',
     authorAddress: 'aws-cdk-dev@amazon.com',
     stability: 'experimental',
+    private: false,
     jsiiVersion: '~5.7',
     cdkVersion: '2.160.0',
     defaultReleaseBranch: 'main',
