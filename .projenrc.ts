@@ -37,7 +37,7 @@ const project = new CdklabsConstructLibrary({
     stability: 'experimental',
     private: false,
     jsiiVersion: '~5.7',
-    cdkVersion: '2.160.0',
+    cdkVersion: '2.177.0',
     defaultReleaseBranch: 'main',
     deps: deps,
     bundledDeps: deps,
