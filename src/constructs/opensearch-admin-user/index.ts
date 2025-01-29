@@ -235,7 +235,7 @@ export namespace OpenSearchAdminUser {
     /**
      * Properties for the admin user password regardless of where it is stored
      */
-    export interface PasswordCommonProps {
+    interface PasswordCommonProps {
         /**
          * Optional encryption key that protects the secret
          */

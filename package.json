@@ -126,6 +126,9 @@
   },
   "main": "index.js",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.0.0",
   "packageManager": "yarn@4.0.1",
   "jest": {
@@ -206,7 +209,6 @@
       "rootDir": "src"
     }
   },
-  "private": true,
   "exports": {
     ".": "./index.js",
     "./aspects": "./aspects/index.js",

@@ -290,7 +290,7 @@ export namespace IamServerCertificate {
     /**
      * Properties for a server certificate element regardless of where it is stored
      */
-    export interface ElementProps {
+    interface ElementProps {
         /**
          * Optional encryption key that protects the secret
          */
