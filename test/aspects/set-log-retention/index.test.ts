@@ -47,7 +47,7 @@ describeCdkTest(SetLogRetention, (_, getStack, getTemplate) => {
     it('should set retention on custom resource log retention', () => {
         // Arrange
         const func = new Function(stack, 'TestFunction', {
-            runtime: Runtime.NODEJS_20_X,
+            runtime: Runtime.NODEJS_22_X,
             handler: 'index.handler',
             code: Code.fromInline('exports.handler = () => {};'),
             reservedConcurrentExecutions: 5

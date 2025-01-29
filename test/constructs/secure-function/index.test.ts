@@ -19,7 +19,7 @@ describeCdkTest(SecureFunction, (id, getStack, getTemplate) => {
     it('creates lambda function with default properties', () => {
         // Act
         new SecureFunction(stack, id, {
-            runtime: Runtime.NODEJS_20_X,
+            runtime: Runtime.NODEJS_22_X,
             handler: 'index.handler',
             code: Code.fromInline('exports.handler = function() { }')
         });
@@ -57,7 +57,7 @@ describeCdkTest(SecureFunction, (id, getStack, getTemplate) => {
     it('creates lambda function with custom log retention', () => {
         // Act
         new SecureFunction(stack, id, {
-            runtime: Runtime.NODEJS_20_X,
+            runtime: Runtime.NODEJS_22_X,
             handler: 'index.handler',
             code: Code.fromInline('exports.handler = function() { }'),
             logGroupRetention: RetentionDays.ONE_WEEK
@@ -77,7 +77,7 @@ describeCdkTest(SecureFunction, (id, getStack, getTemplate) => {
 
         // Act
         new SecureFunction(stack, id, {
-            runtime: Runtime.NODEJS_20_X,
+            runtime: Runtime.NODEJS_22_X,
             handler: 'index.handler',
             code: Code.fromInline('exports.handler = function() { }'),
             encryption: key
@@ -104,7 +104,7 @@ describeCdkTest(SecureFunction, (id, getStack, getTemplate) => {
     it('grants log write permissions to lambda', () => {
         // Act
         new SecureFunction(stack, id, {
-            runtime: Runtime.NODEJS_20_X,
+            runtime: Runtime.NODEJS_22_X,
             handler: 'index.handler',
             code: Code.fromInline('exports.handler = function() { }')
         });

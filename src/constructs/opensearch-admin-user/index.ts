@@ -130,7 +130,7 @@ export class OpenSearchAdminUser extends Construct {
                 code: Code.fromAsset(join(__dirname, 'handler', 'on-event')),
                 handler: 'index.handler',
                 timeout: Duration.minutes(1),
-                runtime: Runtime.NODEJS_20_X,
+                runtime: Runtime.NODEJS_22_X,
                 encryption: props.encryption,
                 ...props.lambdaConfiguration
             });
