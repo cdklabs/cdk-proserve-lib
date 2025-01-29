@@ -29,7 +29,7 @@ describeCdkTest(SecureFunction, (id, getStack, getTemplate) => {
 
         template.hasResourceProperties('AWS::Lambda::Function', {
             Handler: 'index.handler',
-            Runtime: 'nodejs20.x',
+            Runtime: 'nodejs22.x',
             ReservedConcurrentExecutions: 5
         });
 
