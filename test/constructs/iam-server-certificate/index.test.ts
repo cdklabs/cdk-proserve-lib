@@ -121,7 +121,7 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
         const lambdaResourceProperties: Partial<FunctionProperties> = {
             Handler: 'index.handler',
             ReservedConcurrentExecutions: 5,
-            Runtime: 'nodejs20.x',
+            Runtime: 'nodejs22.x',
             Timeout: 60,
             MemorySize: 512
         };
@@ -180,7 +180,7 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
         const lambdaResourceProperties: Partial<FunctionProperties> = {
             Handler: 'index.handler',
             ReservedConcurrentExecutions: 5,
-            Runtime: 'nodejs20.x',
+            Runtime: 'nodejs22.x',
             Timeout: 60,
             MemorySize: 512
         };
@@ -243,7 +243,7 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
         const lambdaResourceProperties: Partial<FunctionProperties> = {
             Handler: 'index.handler',
             ReservedConcurrentExecutions: 5,
-            Runtime: 'nodejs20.x',
+            Runtime: 'nodejs22.x',
             Timeout: 60,
             MemorySize: 512
         };
@@ -306,7 +306,7 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
         const lambdaResourceProperties: Partial<FunctionProperties> = {
             Handler: 'index.handler',
             ReservedConcurrentExecutions: 5,
-            Runtime: 'nodejs20.x',
+            Runtime: 'nodejs22.x',
             Timeout: 60,
             MemorySize: 512
         };

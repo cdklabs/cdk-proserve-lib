@@ -57,7 +57,7 @@ describeCdkTest(FriendlyEmbrace, (id, getStack, getTemplate, getApp) => {
         template = getTemplate();
         template.hasResourceProperties('AWS::Lambda::Function', {
             Handler: 'index.handler',
-            Runtime: 'nodejs20.x',
+            Runtime: 'nodejs22.x',
             Timeout: 300,
             MemorySize: 512
         });

@@ -102,7 +102,7 @@ describeCdkTest(OpenSearchAdminUser, (id, getStack, getTemplate) => {
         const lambdaResourceProperties: Partial<FunctionProperties> = {
             Handler: 'index.handler',
             ReservedConcurrentExecutions: 5,
-            Runtime: 'nodejs20.x',
+            Runtime: 'nodejs22.x',
             Timeout: 60
         };
 
@@ -146,7 +146,7 @@ describeCdkTest(OpenSearchAdminUser, (id, getStack, getTemplate) => {
         const lambdaResourceProperties: Partial<FunctionProperties> = {
             Handler: 'index.handler',
             ReservedConcurrentExecutions: 5,
-            Runtime: 'nodejs20.x',
+            Runtime: 'nodejs22.x',
             Timeout: 60
         };
 

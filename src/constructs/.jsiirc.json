@@ -2,6 +2,10 @@
     "targets": {
         "dotnet": {
             "namespace": "Cdklabs.CdkProserveLib.Components"
+        },
+        "go": {
+            "moduleName": "github.com/cdklabs/cdk-proserve-lib-go/cdklabscdkproservelib",
+            "packageName": "components"
         }
     }
 }
