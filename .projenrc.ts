@@ -36,6 +36,7 @@ const project = new CdklabsConstructLibrary({
     authorAddress: 'aws-cdk-dev@amazon.com',
     stability: 'experimental',
     private: false,
+    keywords: ['aws', 'aws-cdk', 'cdk'],
     jsiiVersion: '~5.7',
     cdkVersion: '2.177.0',
     defaultReleaseBranch: 'main',
@@ -57,6 +58,8 @@ const project = new CdklabsConstructLibrary({
     ],
     name: '@cdklabs/cdk-proserve-lib',
     packageName: '@cdklabs/cdk-proserve-lib',
+    description:
+        'AWS CDK library containing constructs, aspects, and patterns.',
     projenrcTs: true,
     gitignore: ['.DS_Store', '.python-version', '.nvmrc', 'test.json'],
     packageManager: NodePackageManager.YARN_BERRY,
