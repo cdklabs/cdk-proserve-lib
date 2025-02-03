@@ -36,7 +36,7 @@ const project = new CdklabsConstructLibrary({
     authorAddress: 'aws-cdk-dev@amazon.com',
     stability: 'experimental',
     private: false,
-    keywords: ['aws', 'aws-cdk', 'cdk'],
+    keywords: ['aws', 'awscdk', 'aws-cdk', 'cdk'],
     jsiiVersion: '~5.7',
     cdkVersion: '2.177.0',
     defaultReleaseBranch: 'main',
