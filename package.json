@@ -1,5 +1,6 @@
 {
   "name": "@cdklabs/cdk-proserve-lib",
+  "description": "AWS CDK library containing constructs, aspects, and patterns.",
   "repository": {
     "type": "git",
     "url": "https://github.com/cdklabs/cdk-proserve-lib.git"
@@ -105,6 +106,9 @@
     "jsii": "^5.7.3"
   },
   "keywords": [
+    "aws",
+    "aws-cdk",
+    "awscdk",
     "cdk"
   ],
   "engines": {
