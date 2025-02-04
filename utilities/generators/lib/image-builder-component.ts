@@ -2,11 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { readFileSync, writeFileSync } from 'fs';
-import {
-    Imagebuilder,
-    ListComponentsCommandInput,
-    ListComponentsCommandOutput
-} from '@aws-sdk/client-imagebuilder';
+import { Imagebuilder } from '@aws-sdk/client-imagebuilder';
 
 // Function to format component name
 function formatComponentName(name: string): string {
@@ -22,16 +18,12 @@ export async function generateAndInjectImageBuilderComponentEnum() {
         let nextToken: string | undefined;
 
         do {
-            // Prepare the command input
-            const input: ListComponentsCommandInput = {
+            // Execute the command
+            const response = await client.listComponents({
                 owner: 'Amazon',
                 maxResults: 25,
                 nextToken: nextToken
-            };
-
-            // Execute the command
-            const response: ListComponentsCommandOutput =
-                await client.listComponents(input);
+            });
             if (response.componentVersionList) {
                 allComponents = allComponents.concat(
                     response.componentVersionList

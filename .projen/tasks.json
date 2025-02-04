@@ -183,6 +183,18 @@
         }
       ]
     },
+    "generate": {
+      "name": "generate",
+      "description": "Automatically update files with generator scripts.",
+      "steps": [
+        {
+          "exec": "yarn ts-node ./utilities/generators"
+        },
+        {
+          "spawn": "eslint"
+        }
+      ]
+    },
     "install": {
       "name": "install",
       "description": "Install project dependencies and update lockfile (non-frozen)",

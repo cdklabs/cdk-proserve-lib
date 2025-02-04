@@ -3,5 +3,5 @@
 
 export * as aspects from './aspects';
 export * as constructs from './constructs';
-export * as interfaces from './interfaces';
 export * as patterns from './patterns';
+export * as types from './types';

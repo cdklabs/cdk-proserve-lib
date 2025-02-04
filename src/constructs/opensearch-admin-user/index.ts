@@ -16,7 +16,7 @@ import { ISecret } from 'aws-cdk-lib/aws-secretsmanager';
 import { IParameter } from 'aws-cdk-lib/aws-ssm';
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
-import { LambdaConfiguration } from '../../interfaces';
+import { LambdaConfiguration } from '../../types';
 import { SecureFunction } from '../secure-function';
 import { ResourceProperties } from './handler/types/resource-properties';
 
