@@ -18,6 +18,7 @@
     "docgen": "npx projen docgen",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
+    "generate": "npx projen generate",
     "integ": "npx projen integ",
     "integ:update": "npx projen integ:update",
     "package": "npx projen package",
@@ -41,7 +42,6 @@
     "upgrade-dev-deps": "npx projen upgrade-dev-deps",
     "watch": "npx projen watch",
     "projen": "npx projen",
-    "generate:enums": "yarn ts-node utilities/generators",
     "prepare": "husky"
   },
   "author": {
@@ -203,8 +203,8 @@
     ".": "./index.js",
     "./aspects": "./aspects/index.js",
     "./constructs": "./constructs/index.js",
-    "./interfaces": "./interfaces/index.js",
-    "./patterns": "./patterns/index.js"
+    "./patterns": "./patterns/index.js",
+    "./types": "./types/index.js"
   },
   "files": [
     "API.md",
@@ -213,8 +213,8 @@
     "lib/aspects/**/*",
     "lib/common/**/*",
     "lib/constructs/**/*",
-    "lib/interfaces/**/*",
     "lib/patterns/**/*",
+    "lib/types/**/*",
     "lib/tsconfig.tsbuildinfo",
     ".jsii",
     ".jsii.gz"

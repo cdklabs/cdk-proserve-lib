@@ -114,8 +114,8 @@ project.addFields({
         '.': './index.js',
         './aspects': './aspects/index.js',
         './constructs': './constructs/index.js',
-        './interfaces': './interfaces/index.js',
-        './patterns': './patterns/index.js'
+        './patterns': './patterns/index.js',
+        './types': './types/index.js'
     },
     // Represents the structure in the package staging directory
     files: [
@@ -125,8 +125,8 @@ project.addFields({
         'lib/aspects/**/*',
         'lib/common/**/*',
         'lib/constructs/**/*',
-        'lib/interfaces/**/*',
         'lib/patterns/**/*',
+        'lib/types/**/*',
         'lib/tsconfig.tsbuildinfo',
         '.jsii',
         '.jsii.gz'
@@ -139,7 +139,6 @@ project.addFields({
 });
 
 project.addScripts({
-    'generate:enums': 'yarn ts-node utilities/generators',
     prepare: 'husky'
 });
 
@@ -174,6 +173,19 @@ project.addTask('clean', {
         {
             exec: 'rm -rf .jsii tsconfig.json',
             name: 'Remove intermediate files.'
+        }
+    ]
+});
+
+// Generate Task
+project.addTask('generate', {
+    description: 'Automatically update files with generator scripts.',
+    steps: [
+        {
+            exec: 'yarn ts-node ./utilities/generators'
+        },
+        {
+            spawn: 'eslint'
         }
     ]
 });
