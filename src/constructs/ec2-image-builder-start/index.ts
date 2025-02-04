@@ -20,7 +20,7 @@ import {
 import { Construct } from 'constructs';
 import { DefaultConfig } from '../../common/default-config';
 import { validate, ValidationTypes } from '../../common/validate';
-import { LambdaConfiguration } from '../../interfaces/lambda-configuration';
+import { LambdaConfiguration } from '../../types/lambda-configuration';
 import { SecureFunction } from '../secure-function';
 
 /**

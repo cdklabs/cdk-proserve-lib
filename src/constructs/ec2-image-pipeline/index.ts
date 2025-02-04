@@ -29,7 +29,7 @@ import { IKey } from 'aws-cdk-lib/aws-kms';
 import { ITopic, Topic } from 'aws-cdk-lib/aws-sns';
 import { Construct } from 'constructs';
 import { validate, ValidationTypes } from '../../common/validate';
-import { LambdaConfiguration } from '../../interfaces';
+import { LambdaConfiguration } from '../../types';
 import { Ec2ImageBuilderGetImage } from '../ec2-image-builder-get-image';
 import { Ec2ImageBuilderStart } from '../ec2-image-builder-start';
 
@@ -448,7 +448,7 @@ export namespace Ec2ImagePipeline {
         /** Installs Amazon ECS-optimized Windows artifacts. This includes latest Amazon ECS Container Agent and Docker CE version 20.10.21. */
         ECS_OPTIMIZED_AMI_WINDOWS = 'ecs-optimized-ami-windows',
 
-        /** Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.30. This includes kubelet version 1.30.2, containerd version 1.7.14, and CSI Proxy version 1.1.2. */
+        /** Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.30. This includes kubelet version 1.30.8, containerd version 1.7.14, and CSI Proxy version 1.1.2. */
         EKS_OPTIMIZED_AMI_WINDOWS = 'eks-optimized-ami-windows',
 
         /** The ENI attachment test performs the following actions: 1) It creates an elastic network interface (ENI) and attaches it to the instance. 2) It validates that the attached ENI has an IP address. 3) It detaches and deletes the ENI. To perform this test, an IAM policy with the following actions is required: ec2:AttachNetworkInterface, ec2:CreateNetworkInterface, ec2:CreateTags, ec2:DeleteNetworkInterface, ec2:DescribeNetworkInterfaces, ec2:DescribeNetworkInterfaceAttribute, and ec2:DetachNetworkInterface. */

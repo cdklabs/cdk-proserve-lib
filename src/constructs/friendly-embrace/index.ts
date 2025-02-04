@@ -17,7 +17,7 @@ import {
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct, IConstruct } from 'constructs';
 import { DefaultConfig } from '../../common/default-config';
-import { LambdaConfiguration } from '../../interfaces';
+import { LambdaConfiguration } from '../../types';
 import { SecureFunction } from '../secure-function';
 import { ResourceProperties } from './handler/types/resource-properties';
 

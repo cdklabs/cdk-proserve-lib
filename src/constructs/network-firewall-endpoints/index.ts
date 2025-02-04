@@ -10,7 +10,7 @@ import {
 } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 import { DefaultConfig } from '../../common/default-config';
-import { AwsCustomResourceLambdaConfiguration } from '../../interfaces';
+import { AwsCustomResourceLambdaConfiguration } from '../../types';
 
 /**
  * Properties for the NetworkFirewallEndpoints construct

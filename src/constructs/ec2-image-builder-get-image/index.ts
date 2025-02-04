@@ -10,7 +10,7 @@ import {
 import { Construct } from 'constructs';
 import { DefaultConfig } from '../../common/default-config';
 import { validate, ValidationTypes } from '../../common/validate';
-import { AwsCustomResourceLambdaConfiguration } from '../../interfaces';
+import { AwsCustomResourceLambdaConfiguration } from '../../types';
 
 /**
  * Properties for the Ec2ImageBuilderGetImage construct

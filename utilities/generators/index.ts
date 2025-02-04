@@ -3,12 +3,14 @@
 
 import { generateAndInjectAwsManagedRuleEnum } from './lib/aws-managed-rule-groups';
 import { generateAndInjectImageBuilderComponentEnum } from './lib/image-builder-component';
+import { generateAndInjectAWSManagedPolicyClass } from './lib/aws-managed-policy';
 
 async function main() {
     try {
         await Promise.all([
             generateAndInjectAwsManagedRuleEnum(),
-            generateAndInjectImageBuilderComponentEnum()
+            generateAndInjectImageBuilderComponentEnum(),
+            generateAndInjectAWSManagedPolicyClass()
         ]);
     } catch (error) {
         console.error('Error running generators:', error);
