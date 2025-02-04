@@ -17,6 +17,7 @@ import { Construct } from 'constructs';
 import { LambdaConfiguration } from '../../interfaces';
 import { SecureFunction } from '../secure-function';
 import { ResourceProperties } from './handler/types/resource-properties';
+import { AllRulesMustHaveUniqueIdsException } from './types/exceptions';
 
 /**
  * Input metadata for the custom resource

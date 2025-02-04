@@ -2,27 +2,40 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { CORSRule as SdkCORSRule } from '@aws-sdk/client-s3';
-import { CORSRule } from '../../../../src/constructs/s3-bucket-cors/handler/types/resource-properties';
+import { HttpMethods } from 'aws-cdk-lib/aws-s3';
+import { S3BucketCors } from '../../../../src/constructs/s3-bucket-cors';
+import { CORSRule as HandlerCORSRule } from '../../../../src/constructs/s3-bucket-cors/handler/types/resource-properties';
 
 /**
  * Mock existing Amazon S3 bucket name
  */
-export const mockExistingS3BucketName = 'ExistingBucket';
+export const mockExistingS3BucketName = 'existing-bucket';
 
 /**
  * Mock non-existant Amazon S3 bucket name
  */
-export const mockNonexistantS3BucketName = 'NonexistantBucket';
+export const mockNonexistantS3BucketName = 'nonexistant-bucket';
 
 /**
- * Mock CORS rule
+ * Mock CORS rule (Handler)
  */
-export const mockCORSRule: CORSRule = {
+export const mockCORSRule: HandlerCORSRule = {
     AllowedMethods: ['PUT'],
     AllowedOrigins: ['https://example.com'],
     AllowedHeaders: ['*'],
     ExposeHeaders: ['etag'],
     ID: 'TestRule'
+};
+
+/**
+ * Mock CORS rule (Infrastructure)
+ */
+export const mockInfrastructureCORSRule: S3BucketCors.CorsRule = {
+    allowedMethods: [HttpMethods.PUT],
+    allowedOrigins: mockCORSRule.AllowedOrigins!,
+    allowedHeaders: mockCORSRule.AllowedHeaders,
+    exposedHeaders: mockCORSRule.ExposeHeaders,
+    id: mockCORSRule.ID
 };
 
 /**

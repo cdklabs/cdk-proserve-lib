@@ -4,4 +4,4 @@
 /**
  * Indicates there are different CORS rules with the same IDs
  */
-class AllRulesMustHaveUniqueIdsException extends Error {}
+export class AllRulesMustHaveUniqueIdsException extends Error {}
