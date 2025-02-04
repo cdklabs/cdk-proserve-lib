@@ -2,10 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { readFileSync, writeFileSync } from 'fs';
-import {
-    ListAvailableManagedRuleGroupsCommand,
-    WAFV2Client
-} from '@aws-sdk/client-wafv2';
+import { WAFV2 } from '@aws-sdk/client-wafv2';
 
 function formatRuleGroupName(name: string): string {
     let formattedName = name.replace(/^AWSManagedRules/, '');
@@ -21,12 +18,11 @@ function formatRuleGroupName(name: string): string {
 
 export async function generateAndInjectAwsManagedRuleEnum() {
     try {
-        const client = new WAFV2Client({ region: 'us-east-1' });
-        const command = new ListAvailableManagedRuleGroupsCommand({
+        const client = new WAFV2({ region: 'us-east-1' });
+
+        const response = await client.listAvailableManagedRuleGroups({
             Scope: 'REGIONAL'
         });
-
-        const response = await client.send(command);
         const ruleGroups = response.ManagedRuleGroups ?? [];
 
         if (ruleGroups.length === 0) {

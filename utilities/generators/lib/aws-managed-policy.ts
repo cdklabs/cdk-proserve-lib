@@ -2,11 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { readFileSync, writeFileSync } from 'fs';
-import {
-    IAMClient,
-    ListPoliciesCommand,
-    ListPoliciesCommandInput
-} from '@aws-sdk/client-iam';
+import { IAM } from '@aws-sdk/client-iam';
 
 function formatPolicyName(name: string): string {
     let processedName = name.replace(/-/g, '_');
@@ -29,19 +25,17 @@ function formatPolicyName(name: string): string {
 
 export async function generateAndInjectAWSManagedPolicyClass() {
     try {
-        const client = new IAMClient({});
         let allPolicies: any[] = [];
         let marker: string | undefined;
 
         do {
-            const params: ListPoliciesCommandInput = {
+            const client = new IAM({ region: 'us-east-1' });
+
+            const response = await client.listPolicies({
                 Scope: 'AWS',
                 OnlyAttached: false,
                 Marker: marker
-            };
-
-            const command = new ListPoliciesCommand(params);
-            const response = await client.send(command);
+            });
 
             if (response.Policies) {
                 const rootPathPolicies = response.Policies.filter(
@@ -94,8 +88,7 @@ ${classMembers.join('\n\n')}
         try {
             fileContent = readFileSync(filePath, 'utf8');
         } catch (error) {
-            fileContent =
-                '/** AWS Managed Policy */\n\n/** End AWS Managed Policy */';
+            throw new Error(`Error reading file: ${error}`);
         }
 
         // Find the location to inject the class
