@@ -22,7 +22,8 @@ build({
         'src/constructs/ec2-image-builder-start/handler/index.ts',
         'src/constructs/opensearch-admin-user/handler/on-event/index.ts',
         'src/constructs/friendly-embrace/handler/on-event/index.ts',
-        'src/constructs/iam-server-certificate/handler/on-event/index.ts'
+        'src/constructs/iam-server-certificate/handler/on-event/index.ts',
+        'src/constructs/s3-bucket-cors/handler/on-event/index.ts'
     ],
     outdir: 'lib/constructs'
 });
