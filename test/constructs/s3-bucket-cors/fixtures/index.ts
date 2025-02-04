@@ -23,7 +23,7 @@ export const mockCORSRule: HandlerCORSRule = {
     AllowedMethods: ['PUT'],
     AllowedOrigins: ['https://example.com'],
     AllowedHeaders: ['*'],
-    ExposeHeaders: ['etag'],
+    ExposedHeaders: ['etag'],
     ID: 'TestRule'
 };
 
@@ -34,7 +34,7 @@ export const mockInfrastructureCORSRule: S3BucketCors.CorsRule = {
     allowedMethods: [HttpMethods.PUT],
     allowedOrigins: mockCORSRule.AllowedOrigins!,
     allowedHeaders: mockCORSRule.AllowedHeaders,
-    exposedHeaders: mockCORSRule.ExposeHeaders,
+    exposedHeaders: mockCORSRule.ExposedHeaders,
     id: mockCORSRule.ID
 };
 

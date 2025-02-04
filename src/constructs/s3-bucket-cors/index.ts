@@ -11,12 +11,15 @@ import {
 } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
-import { CorsRule as CdkCorsRule, IBucket } from 'aws-cdk-lib/aws-s3';
+import { HttpMethods, IBucket } from 'aws-cdk-lib/aws-s3';
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 import { LambdaConfiguration } from '../../types';
 import { SecureFunction } from '../secure-function';
-import { ResourceProperties } from './handler/types/resource-properties';
+import {
+    CORSRule,
+    ResourceProperties
+} from './handler/types/resource-properties';
 import { AllRulesMustHaveUniqueIdsException } from './types/exceptions';
 
 /**
@@ -139,12 +142,12 @@ export class S3BucketCors extends Construct {
             BucketName: props.bucket.bucketName,
             Region: props.region,
             Rules:
-                props.corsRules?.map((r) => {
+                props.corsRules?.map<CORSRule>((r) => {
                     return {
                         AllowedMethods: r.allowedMethods,
                         AllowedOrigins: r.allowedOrigins,
                         AllowedHeaders: r.allowedHeaders,
-                        ExposeHeaders: r.exposedHeaders,
+                        ExposedHeaders: r.exposedHeaders,
                         ID: r.id,
                         MaxAgeSeconds: r.maxAge
                     };
@@ -203,13 +206,43 @@ export class S3BucketCors extends Construct {
 
 export namespace S3BucketCors {
     /**
-     * Specifies a cross-origin access rule for an Amazon S3 bucket.
-     * Wraps the CDK rule model to enforce IDs as required
+     * Specifies a cross-origin access rule for an Amazon S3 bucket
      */
-    export interface CorsRule extends CdkCorsRule {
+    export interface CorsRule {
         /**
-         * A unique identifier for this rule.
+         * A unique identifier for this rule
          */
-        readonly id: string; // Forces the ID to be required
+        readonly id: string;
+
+        /**
+         * The time in seconds that your browser is to cache the preflight response for the specified resource
+         *
+         * @default - No caching.
+         */
+        readonly maxAge?: number;
+
+        /**
+         * Headers that are specified in the Access-Control-Request-Headers header
+         *
+         * @default - No headers allowed.
+         */
+        readonly allowedHeaders?: string[];
+
+        /**
+         * An HTTP method that you allow the origin to execute
+         */
+        readonly allowedMethods: HttpMethods[];
+
+        /**
+         * One or more origins you want customers to be able to access the bucket from
+         */
+        readonly allowedOrigins: string[];
+
+        /**
+         * One or more headers in the response that you want customers to be able to access from their applications
+         *
+         * @default - No headers exposed.
+         */
+        readonly exposedHeaders?: string[];
     }
 }

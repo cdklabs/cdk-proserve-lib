@@ -21,6 +21,10 @@ import { RuleSet } from '../types/rule-set';
 
 /**
  * Preprocesses input CORS rules before application to an Amazon S3 bucket
+ *
+ * Preprocessing includes the following actions:
+ *  - Convert all origins to lowercase (origin is case-sensitive and usually lowercase)
+ *
  * @param rules Input rules to be modified
  * @returns CORS rules which have been modified
  */
@@ -173,7 +177,7 @@ async function onUpdate(
         region: props.Region
     });
     const oldClient = new S3({
-        region: props.Region
+        region: oldProps.Region
     });
 
     const newRules = new Map(props.Rules.map((r) => [r.ID, r]));

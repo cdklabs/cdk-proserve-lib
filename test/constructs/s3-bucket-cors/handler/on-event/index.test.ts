@@ -560,7 +560,7 @@ describe('S3BucketCors Custom Resource On Event Handler', () => {
         // Arrange
         const modifyRule: CORSRule = {
             ...mockCORSRule,
-            ExposeHeaders: undefined
+            ExposedHeaders: undefined
         };
         const addRule: CORSRule = {
             ...mockCORSRule,

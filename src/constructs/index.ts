@@ -9,4 +9,5 @@ export * from './iam-server-certificate';
 export * from './network-firewall';
 export * from './network-firewall-endpoints';
 export * from './opensearch-admin-user';
+export * from './s3-bucket-cors';
 export * from './web-application-firewall';

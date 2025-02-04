@@ -1374,6 +1374,145 @@ The tree node.
 ---
 
 
+### S3BucketCors <a name="S3BucketCors" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors"></a>
+
+A construct that creates a Custom Resource to manage CORS rules on an **existing** Amazon S3 bucket.
+
+When creating
+new Amazon S3 buckets via CDK, it is recommended to instead use the `cors` property in the construct props for
+specifying CORS rules.
+
+This Custom Resource works by requiring each and every CORS rule specified has a unique ID. This is used to
+deconflict rules that are provided via this Custom Resource from CORS rules that may already exist on the existing
+bucket. This Custom Resource is only destructive (modifies or deletes) for CORS rules that it creates - it will not
+modify or delete existing CORS rules.
+
+*Example*
+
+```typescript
+import { Bucket, HttpMethods } from 'aws-cdk-lib/aws-s3';
+import { S3BucketCors } from '@cdklabs/cdk-proserve-lib/constructs';
+
+const existingBucket = Bucket.fromBucketName(this, 'Store', 'amzn-s3-demo-bucket');
+
+new S3BucketCors(this, 'Store-CORS', {
+     bucket: existingBucket,
+     corsRules: [
+         {
+             allowedMethods: [HttpMethods.PUT],
+             allowedOrigins: 'https://example.com',
+             id: 'AllowMultiPartUploadFromExample',
+             allowedHeaders: ['*'],
+             exposedHeaders: ['etag']
+         }
+     ]
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+new constructs.S3BucketCors(scope: Construct, id: string, props: S3BucketCorsProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the Custom Resource belongs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for this instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps</code> | Metadata for configuring the Custom Resource. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+Parent to which the Custom Resource belongs.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+Unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps
+
+Metadata for configuring the Custom Resource.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.isConstruct"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+constructs.S3BucketCors.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+
 ### WebApplicationFirewall <a name="WebApplicationFirewall" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall"></a>
 
 Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
@@ -1721,6 +1860,106 @@ public readonly waitForCompletion: boolean;
 ```
 
 - *Type:* boolean
+
+---
+
+### CorsRule <a name="CorsRule" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule"></a>
+
+Specifies a cross-origin access rule for an Amazon S3 bucket.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const corsRule: constructs.S3BucketCors.CorsRule = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.property.allowedMethods">allowedMethods</a></code> | <code>aws-cdk-lib.aws_s3.HttpMethods[]</code> | An HTTP method that you allow the origin to execute. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.property.allowedOrigins">allowedOrigins</a></code> | <code>string[]</code> | One or more origins you want customers to be able to access the bucket from. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.property.id">id</a></code> | <code>string</code> | A unique identifier for this rule. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.property.allowedHeaders">allowedHeaders</a></code> | <code>string[]</code> | Headers that are specified in the Access-Control-Request-Headers header. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.property.exposedHeaders">exposedHeaders</a></code> | <code>string[]</code> | One or more headers in the response that you want customers to be able to access from their applications. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.property.maxAge">maxAge</a></code> | <code>number</code> | The time in seconds that your browser is to cache the preflight response for the specified resource. |
+
+---
+
+##### `allowedMethods`<sup>Required</sup> <a name="allowedMethods" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.property.allowedMethods"></a>
+
+```typescript
+public readonly allowedMethods: HttpMethods[];
+```
+
+- *Type:* aws-cdk-lib.aws_s3.HttpMethods[]
+
+An HTTP method that you allow the origin to execute.
+
+---
+
+##### `allowedOrigins`<sup>Required</sup> <a name="allowedOrigins" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.property.allowedOrigins"></a>
+
+```typescript
+public readonly allowedOrigins: string[];
+```
+
+- *Type:* string[]
+
+One or more origins you want customers to be able to access the bucket from.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+A unique identifier for this rule.
+
+---
+
+##### `allowedHeaders`<sup>Optional</sup> <a name="allowedHeaders" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.property.allowedHeaders"></a>
+
+```typescript
+public readonly allowedHeaders: string[];
+```
+
+- *Type:* string[]
+- *Default:* No headers allowed.
+
+Headers that are specified in the Access-Control-Request-Headers header.
+
+---
+
+##### `exposedHeaders`<sup>Optional</sup> <a name="exposedHeaders" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.property.exposedHeaders"></a>
+
+```typescript
+public readonly exposedHeaders: string[];
+```
+
+- *Type:* string[]
+- *Default:* No headers exposed.
+
+One or more headers in the response that you want customers to be able to access from their applications.
+
+---
+
+##### `maxAge`<sup>Optional</sup> <a name="maxAge" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule.property.maxAge"></a>
+
+```typescript
+public readonly maxAge: number;
+```
+
+- *Type:* number
+- *Default:* No caching.
+
+The time in seconds that your browser is to cache the preflight response for the specified resource.
 
 ---
 
@@ -3171,6 +3410,90 @@ public readonly encryption: IKey;
 - *Type:* aws-cdk-lib.aws_kms.IKey
 
 Optional encryption key that protects the secret.
+
+---
+
+### S3BucketCorsProps <a name="S3BucketCorsProps" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps"></a>
+
+Input metadata for the custom resource.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const s3BucketCorsProps: constructs.S3BucketCorsProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps.property.bucket">bucket</a></code> | <code>aws-cdk-lib.aws_s3.IBucket</code> | Amazon S3 Bucket on which to modify CORS rules. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps.property.corsRules">corsRules</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule[]</code> | Cross-origin access rules to apply to the Amazon S3 bucket. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the framework resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps.property.region">region</a></code> | <code>string</code> | Optional AWS region to which the bucket is deployed If not specified, it is assumed the bucket exists in the same region. |
+
+---
+
+##### `bucket`<sup>Required</sup> <a name="bucket" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps.property.bucket"></a>
+
+```typescript
+public readonly bucket: IBucket;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.IBucket
+
+Amazon S3 Bucket on which to modify CORS rules.
+
+---
+
+##### `corsRules`<sup>Optional</sup> <a name="corsRules" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps.property.corsRules"></a>
+
+```typescript
+public readonly corsRules: CorsRule[];
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.S3BucketCors.CorsRule[]
+
+Cross-origin access rules to apply to the Amazon S3 bucket.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Encryption key for protecting the framework resources.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
+
+##### `region`<sup>Optional</sup> <a name="region" id="@cdklabs/cdk-proserve-lib.constructs.S3BucketCorsProps.property.region"></a>
+
+```typescript
+public readonly region: string;
+```
+
+- *Type:* string
+
+Optional AWS region to which the bucket is deployed If not specified, it is assumed the bucket exists in the same region.
 
 ---
 
