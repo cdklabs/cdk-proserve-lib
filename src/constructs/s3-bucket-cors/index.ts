@@ -14,7 +14,7 @@ import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { CorsRule as CdkCorsRule, IBucket } from 'aws-cdk-lib/aws-s3';
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
-import { LambdaConfiguration } from '../../interfaces';
+import { LambdaConfiguration } from '../../types';
 import { SecureFunction } from '../secure-function';
 import { ResourceProperties } from './handler/types/resource-properties';
 import { AllRulesMustHaveUniqueIdsException } from './types/exceptions';
