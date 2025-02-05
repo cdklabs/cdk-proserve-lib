@@ -70,9 +70,8 @@ export abstract class CommonHost<
      * Create the host
      * @param props Configuration for the host
      */
-    constructor(props: TConfiguration) {
+    constructor(props?: TConfiguration) {
         this.props = Object.assign({}, props);
-
         this.staticFilePath = this.props.staticFilePath ?? '';
     }
 

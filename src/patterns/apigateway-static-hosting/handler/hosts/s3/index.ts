@@ -72,11 +72,8 @@ export class S3Host extends CommonHost<S3HostingConfiguration> {
                 try {
                     const contentType = mime.getType(req.path) ?? 'text/plain';
 
-                    // Remove leading '/'
-                    const partialPrefix = req.path.substring(1);
-
                     // Add additional prefix if necessary
-                    const objectKey = join(this.staticFilePath, partialPrefix);
+                    const objectKey = join(this.staticFilePath, req.path);
 
                     // Attempt to retrieve the object
                     const objectRequest = await this.s3.getObject({
