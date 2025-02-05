@@ -203,11 +203,6 @@
       "type": "override"
     },
     {
-      "name": "jsii",
-      "version": "^5.7.3",
-      "type": "override"
-    },
-    {
       "name": "aws-cdk-lib",
       "version": "^2.177.0",
       "type": "peer"
