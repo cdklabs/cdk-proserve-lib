@@ -289,8 +289,7 @@ project.tasks.tryFind('rosetta:extract')?.updateStep(0, {
  * Set minimum package versions across dependency chain
  */
 project.package.addPackageResolutions(
-    'cross-spawn@^7.0.5', // grype finding nov24
-    'jsii@^5.7.3' // grype finding dec24
+    'cross-spawn@^7.0.5' // grype finding nov24
 );
 
 project.synth();
