@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { CdklabsTypeScriptProject } from 'cdklabs-projen-project-types';
+import { tsNodeCommand } from './common';
 
 /**
  * Configures build settings for the project.
@@ -12,7 +13,7 @@ export const configureBuild = (project: CdklabsTypeScriptProject) => {
         description: 'Builds the Lambda function code and bundles dependencies',
         steps: [
             {
-                exec: 'yarn ts-node esbuild.ts',
+                exec: `${tsNodeCommand} esbuild.ts`,
                 name: 'Run esbuild.'
             }
         ]
@@ -48,4 +49,8 @@ export const configureBuild = (project: CdklabsTypeScriptProject) => {
     });
 
     project.tsconfigDev?.addInclude('utilities/**/*.ts');
+
+    project.package.file.addDeletionOverride('jsii.tsc');
+    project.package.file.addOverride('jsii.tsconfig', 'tsconfig.build.json');
+    project.package.file.addOverride('jsii.validateTsconfig', 'minimal');
 };

@@ -62,8 +62,12 @@
     "@aws-sdk/client-secrets-manager": "3.600.0",
     "@aws-sdk/client-ssm": "3.600.0",
     "@aws-sdk/client-wafv2": "^3.749.0",
+    "@codegenie/serverless-express": "4.16.0",
+    "@smithy/util-stream-node": "4.0.2",
     "@types/aws-lambda": "8.10.141",
+    "@types/express": "5.0.0",
     "@types/jest": "^29.5.14",
+    "@types/morgan": "1.9.9",
     "@types/node": "^18",
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^7",
@@ -83,6 +87,8 @@
     "eslint-import-resolver-typescript": "^3.8.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.3",
+    "express": "5.0.1",
+    "express-async-handler": "1.2.0",
     "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-junit": "^15",
@@ -92,6 +98,8 @@
     "jsii-pacmak": "^1.106.0",
     "jsii-rosetta": "^5.7.5",
     "lint-staged": "^15.4.3",
+    "mime": "4.0.6",
+    "morgan": "1.10.0",
     "prettier": "^3.5.1",
     "projen": "^0.88.0",
     "ts-jest": "^29.2.5",
@@ -194,10 +202,8 @@
         "moduleName": "github.com/cdklabs/cdk-proserve-lib-go"
       }
     },
-    "tsc": {
-      "outDir": "lib",
-      "rootDir": "src"
-    }
+    "tsconfig": "tsconfig.build.json",
+    "validateTsconfig": "minimal"
   },
   "lint-staged": {
     "**/*": [
