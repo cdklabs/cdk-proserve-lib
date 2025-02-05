@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
+import { JsonPatch } from 'projen';
 import {
     YarnNodeLinker,
     NodePackageManager,
@@ -209,6 +210,17 @@ packageLanguageTasks.forEach((l) => {
             condition: `node -e "if (process.env.CI && (process.env.GITHUB_JOB.toLowerCase() === 'build' || process.env.GITHUB_JOB.toLowerCase() === 'release')) process.exit(1)"`
         }
     );
+});
+
+// Fix: double yarn install issue on upgrade dependency tasks
+const upgradeDependencyTasks = [
+    'upgrade-dev-deps',
+    'upgrade-cdklabs-projen-project-types'
+];
+upgradeDependencyTasks.forEach((t) => {
+    project
+        .tryFindObjectFile('.projen/tasks.json')
+        ?.patch(JsonPatch.remove(`/tasks/${t}/steps/3`));
 });
 
 // Lambda Build Task
