@@ -19,8 +19,16 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         `@aws-sdk/client-imagebuilder@${sdkVersion}`,
         `@aws-sdk/client-cloudformation@${sdkVersion}`,
         `@aws-sdk/client-s3@${sdkVersion}`,
+        '@codegenie/serverless-express@4.16.0',
+        '@smithy/util-stream-node@4.0.2',
         '@types/aws-lambda@8.10.141',
+        '@types/express@5.0.0',
+        '@types/morgan@1.9.9',
         'axios@1.7.7',
+        'express@5.0.1',
+        'express-async-handler@1.2.0',
+        'mime@4.0.6',
+        'morgan@1.10.0',
         'uuid@11.0.3'
     ];
 

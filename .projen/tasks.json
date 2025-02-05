@@ -139,7 +139,7 @@
       "description": "Builds the Lambda function code and bundles dependencies",
       "steps": [
         {
-          "exec": "yarn ts-node esbuild.ts",
+          "exec": "yarn ts-node --project tsconfig.dev.json esbuild.ts",
           "name": "Run esbuild."
         }
       ]
@@ -192,7 +192,7 @@
       "description": "Automatically update files with generator scripts.",
       "steps": [
         {
-          "exec": "yarn ts-node ./utilities/generators"
+          "exec": "yarn ts-node --project tsconfig.dev.json ./utilities/generators"
         },
         {
           "spawn": "eslint"
@@ -453,7 +453,7 @@
       "description": "Updates the README with library package information.",
       "steps": [
         {
-          "exec": "yarn ts-node utilities/generators/lib/update-readme-library.ts",
+          "exec": "yarn ts-node --project tsconfig.dev.json utilities/generators/lib/update-readme-library.ts",
           "name": "Runs script to automatically update the README."
         }
       ]
@@ -508,7 +508,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-sdk/client-cloudformation @aws-sdk/client-ec2 @aws-sdk/client-iam @aws-sdk/client-imagebuilder @aws-sdk/client-opensearch @aws-sdk/client-pricing @aws-sdk/client-s3 @aws-sdk/client-secrets-manager @aws-sdk/client-ssm @aws-sdk/client-wafv2 @types/aws-lambda @types/jest @types/node @types/uuid @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock aws-sdk-client-mock-jest axios cdk-nag cloudform-types commit-and-tag-version esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint husky jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii lint-staged prettier ts-jest ts-node typescript uuid @aws-cdk/integ-runner @aws-cdk/integ-tests-alpha"
+          "exec": "yarn upgrade @aws-sdk/client-cloudformation @aws-sdk/client-ec2 @aws-sdk/client-iam @aws-sdk/client-imagebuilder @aws-sdk/client-opensearch @aws-sdk/client-pricing @aws-sdk/client-s3 @aws-sdk/client-secrets-manager @aws-sdk/client-ssm @aws-sdk/client-wafv2 @codegenie/serverless-express @smithy/util-stream-node @types/aws-lambda @types/express @types/jest @types/morgan @types/node @types/uuid @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock aws-sdk-client-mock-jest axios cdk-nag cloudform-types commit-and-tag-version esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint express-async-handler express husky jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii lint-staged mime morgan prettier ts-jest ts-node typescript uuid @aws-cdk/integ-runner @aws-cdk/integ-tests-alpha"
         },
         {
           "exec": "npx projen"

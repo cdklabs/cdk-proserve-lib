@@ -10,7 +10,7 @@ const buildDefaults: Partial<BuildOptions> = {
     bundle: true,
     minify: true,
     platform: 'node',
-    tsconfig: 'tsconfig.json'
+    tsconfig: 'tsconfig.dev.json'
 };
 
 /**
@@ -25,4 +25,13 @@ build({
         'src/constructs/iam-server-certificate/handler/on-event/index.ts'
     ],
     outdir: 'lib/constructs'
+});
+
+/**
+ * Bundling for patterns
+ */
+build({
+    ...buildDefaults,
+    entryPoints: ['src/patterns/apigateway-static-hosting/handler/index.ts'],
+    outdir: 'lib/patterns'
 });
