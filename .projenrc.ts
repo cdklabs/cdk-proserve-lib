@@ -92,6 +92,9 @@ const project = new CdklabsConstructLibrary({
             }
         ]
     },
+    versionrcOptions: {
+        preset: 'conventionalcommits'
+    },
     workflowBootstrapSteps: [
         {
             name: 'Install Corepack',
