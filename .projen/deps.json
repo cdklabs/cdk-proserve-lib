@@ -72,6 +72,11 @@
       "type": "build"
     },
     {
+      "name": "@types/mime",
+      "version": "3.0.0",
+      "type": "build"
+    },
+    {
       "name": "@types/morgan",
       "version": "1.9.9",
       "type": "build"
@@ -79,6 +84,10 @@
     {
       "name": "@types/node",
       "version": "^18",
+      "type": "build"
+    },
+    {
+      "name": "@types/supertest",
       "type": "build"
     },
     {
@@ -202,7 +211,7 @@
     },
     {
       "name": "mime",
-      "version": "4.0.6",
+      "version": "3.0.0",
       "type": "build"
     },
     {
@@ -216,6 +225,10 @@
     },
     {
       "name": "projen",
+      "type": "build"
+    },
+    {
+      "name": "supertest",
       "type": "build"
     },
     {

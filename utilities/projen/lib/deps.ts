@@ -23,28 +23,31 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         '@smithy/util-stream-node@4.0.2',
         '@types/aws-lambda@8.10.141',
         '@types/express@5.0.0',
+        '@types/mime@3.0.0',
         '@types/morgan@1.9.9',
         'axios@1.7.7',
         'express@5.0.1',
         'express-async-handler@1.2.0',
-        'mime@4.0.6',
+        'mime@3.0.0',
         'morgan@1.10.0',
         'uuid@11.0.3'
     ];
 
     const ideAndTestDeps = [
+        '@aws-sdk/client-ec2',
+        '@aws-sdk/client-pricing',
+        '@aws-sdk/client-wafv2',
+        '@types/supertest',
+        '@types/uuid',
         'aws-sdk-client-mock',
         'aws-sdk-client-mock-jest',
+        'cdk-nag@2.34.0',
         'cdklabs-projen-project-types',
         'cloudform-types',
         'esbuild',
         'husky',
         'lint-staged',
-        '@aws-sdk/client-ec2',
-        '@aws-sdk/client-pricing',
-        '@aws-sdk/client-wafv2',
-        '@types/uuid',
-        'cdk-nag@2.34.0'
+        'supertest'
     ];
 
     project.addDevDeps(...lambdaHandlerDeps, ...ideAndTestDeps);
