@@ -54,6 +54,14 @@ function parseApiDoc(filePath: string): {
 
         // Detect items
         if (line.startsWith('### ')) {
+            // Check if the line contains an id with "types" in it
+            if (
+                line.includes('id="') &&
+                line.toLowerCase().includes('.types.')
+            ) {
+                continue; // Skip this item
+            }
+
             if (currentItem) {
                 if (currentItem.description.toLowerCase().includes('pattern')) {
                     patterns.push(currentItem);
@@ -173,7 +181,7 @@ ${markdown}`;
 
 // Replace everything between ## Library and the next section
 const newReadme = readmeContent.replace(
-    /## Library[\s\S]*?(?=\n## |$)/,
+    /## 📚 Library[\s\S]*?(?=\n## |$)/,
     newLibrarySection
 );
 
