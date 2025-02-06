@@ -6,16 +6,18 @@ import { InlineHost } from './hosts/inline';
 import { S3Host } from './hosts/s3';
 import { Configuration, useS3 } from './types/configuration';
 
-const configuration = Configuration.load();
-const host = useS3(configuration)
-    ? new S3Host(configuration)
-    : new InlineHost(configuration);
-
 /**
  * Lambda entry point
  */
 export const handler = SE({
-    app: host.create(),
+    app: () => {
+        const configuration = Configuration.load();
+        const host = useS3(configuration)
+            ? new S3Host(configuration)
+            : new InlineHost(configuration);
+
+        return host.create();
+    },
     binarySettings: {
         contentTypes: ['*/*'] // Forces all responses to come back base64 encoded
     }
