@@ -108,6 +108,13 @@ export class ApiGatewayStaticHosting extends Construct {
     private readonly props: ApiGatewayStaticHostingProps;
 
     /**
+     * Whether or not encryption on the asset deployment worker has already been updated
+     *
+     * Since it is handled by a SingletonFunction, we only need to update permissions once
+     */
+    private assetEncryptionConfigured: boolean = false;
+
+    /**
      * API Gateway REST API URL
      */
     public readonly endpoint: string;
@@ -184,8 +191,12 @@ export class ApiGatewayStaticHosting extends Construct {
             if (this.props.encryption) {
                 // Grant bucket CMK permissions to handler
                 deployAsset.node.children.forEach((c) => {
-                    if (c instanceof SingletonFunction) {
+                    if (
+                        c instanceof SingletonFunction &&
+                        !this.assetEncryptionConfigured
+                    ) {
                         this.props.encryption!.grantEncryptDecrypt(c);
+                        this.assetEncryptionConfigured = true;
                     }
                 });
             }
@@ -218,8 +229,12 @@ export class ApiGatewayStaticHosting extends Construct {
         if (this.props.encryption) {
             // Grant bucket CMK permissions to handler
             deployAsset.node.children.forEach((c) => {
-                if (c instanceof SingletonFunction) {
+                if (
+                    c instanceof SingletonFunction &&
+                    !this.assetEncryptionConfigured
+                ) {
                     this.props.encryption!.grantEncryptDecrypt(c);
+                    this.assetEncryptionConfigured = true;
                 }
             });
         }
@@ -263,7 +278,7 @@ export class ApiGatewayStaticHosting extends Construct {
      * @returns API
      */
     private buildApi(handler: SecureFunction): RestApi {
-        return new RestApi(this, 'Api', {
+        const api = new RestApi(this, 'Api', {
             binaryMediaTypes: ['*/*'],
             defaultCorsPreflightOptions: {
                 allowOrigins: Cors.ALL_ORIGINS
@@ -276,9 +291,12 @@ export class ApiGatewayStaticHosting extends Construct {
             deploy: true,
             description: 'Frontend for static hosting',
             disableExecuteApiEndpoint: this.props.customDomain !== undefined,
-            domainName: this.props.customDomain,
-            endpointTypes: this.props.endpoint?.types
+            domainName: this.props.customDomain
         });
+
+        api.root.addProxy();
+
+        return api;
     }
 }
 
@@ -293,7 +311,9 @@ export namespace ApiGatewayStaticHosting {
         readonly id: string;
 
         /**
-         * Path(s) on the local file system to the static asset
+         * Path(s) on the local file system to the static asset(s)
+         *
+         * Each path must be eihter a directory or zip containing the assets
          */
         readonly path: string | string[];
 
