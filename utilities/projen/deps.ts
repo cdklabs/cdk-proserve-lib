@@ -4,7 +4,10 @@
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
 import { JsonPatch } from 'projen';
 
+// Version of AWS SDK v3 to use
 const sdkVersion = '3.600.0';
+
+// AWS SDK v3 dependencies with pinned versions for Lambda handlers
 const lambdaHandlerDepsPinned = [
     `@aws-sdk/client-iam@${sdkVersion}`,
     `@aws-sdk/client-secrets-manager@${sdkVersion}`,
@@ -14,7 +17,11 @@ const lambdaHandlerDepsPinned = [
     `@aws-sdk/client-cloudformation@${sdkVersion}`,
     `@aws-sdk/client-s3@${sdkVersion}`
 ];
+
+// Core dependencies for Lambda handlers without version pinning
 const lambdaHandlerDeps = ['@types/aws-lambda', 'axios', 'uuid'];
+
+// Development dependencies for IDE and testing
 const ideDeps = [
     'aws-sdk-client-mock',
     'aws-sdk-client-mock-jest',
@@ -25,9 +32,18 @@ const ideDeps = [
     '@aws-sdk/client-wafv2',
     '@types/uuid'
 ];
+
+// Development dependencies with pinned versions
 const ideDepsPinned = ['cdk-nag@2.34.0'];
+
+// CDK Labs specific dependencies
 const cdkLabsDeps = ['cdklabs-projen-project-types'];
 
+/**
+ * Adds all required development dependencies to the project
+ *
+ * @param project - The project to add dependencies to
+ */
 export function addCdkProserveLibDevDeps(project: CdklabsConstructLibrary) {
     project.addDevDeps(
         ...lambdaHandlerDeps,
@@ -38,6 +54,14 @@ export function addCdkProserveLibDevDeps(project: CdklabsConstructLibrary) {
     );
 }
 
+/**
+ * Modifies the upgrade-dev-deps task in the project's tasks.json to handle
+ * dependency updates correctly. This is necessary because running `yarn projen`
+ * will reset dependencies that it manages back. By utilizing this function, we
+ * only bump dependencies that we have added to the project.
+ *
+ * @param project - The CDK Labs construct library project to modify
+ */
 export function fixUpgradeDevDepsTask(project: CdklabsConstructLibrary) {
     project.tryFindObjectFile('.projen/tasks.json')?.patch(
         JsonPatch.replace(`/tasks/upgrade-dev-deps/steps`, [
