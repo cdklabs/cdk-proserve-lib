@@ -133,7 +133,8 @@ project.addFields({
         '**/*': ['prettier --write --ignore-unknown']
     },
     // Represents the structure in the package staging directory
-    main: 'index.js'
+    main: 'index.js',
+    packageManager: 'yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447'
 });
 
 project.addScripts({
