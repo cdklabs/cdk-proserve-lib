@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
-import { JsonPatch } from 'projen';
 import {
     YarnNodeLinker,
     NodePackageManager,
@@ -11,23 +10,10 @@ import {
     ArrowParens,
     EndOfLine
 } from 'projen/lib/javascript';
-
-/**
- * Dependencies
- */
-const sdkVersion = '3.600.0';
-const lambdaHandlerDeps = [
-    `@aws-sdk/client-iam@${sdkVersion}`,
-    `@aws-sdk/client-secrets-manager@${sdkVersion}`,
-    `@aws-sdk/client-ssm@${sdkVersion}`,
-    `@aws-sdk/client-opensearch@${sdkVersion}`,
-    `@aws-sdk/client-imagebuilder@${sdkVersion}`,
-    `@aws-sdk/client-cloudformation@${sdkVersion}`,
-    `@aws-sdk/client-s3@${sdkVersion}`,
-    '@types/aws-lambda@8.10.141',
-    'axios@1.7.7',
-    'uuid@11.0.3'
-];
+import {
+    addCdkProserveLibDevDeps,
+    fixAutoUpgradeTasks
+} from './utilities/projen/deps';
 
 /**
  * Project Definition
@@ -44,19 +30,6 @@ const project = new CdklabsConstructLibrary({
     rosettaOptions: {
         strict: false
     },
-    devDeps: [
-        ...lambdaHandlerDeps,
-        'aws-sdk-client-mock',
-        'aws-sdk-client-mock-jest',
-        'cdklabs-projen-project-types',
-        'cloudform-types',
-        'esbuild',
-        'husky',
-        'lint-staged',
-        '@aws-sdk/client-wafv2',
-        '@types/uuid',
-        'cdk-nag@2.34.0'
-    ],
     name: '@cdklabs/cdk-proserve-lib',
     packageName: '@cdklabs/cdk-proserve-lib',
     description:
@@ -109,6 +82,9 @@ const project = new CdklabsConstructLibrary({
         }
     }
 });
+
+addCdkProserveLibDevDeps(project);
+fixAutoUpgradeTasks(project);
 
 /**
  * Package.json Modifications
@@ -210,17 +186,6 @@ packageLanguageTasks.forEach((l) => {
             condition: `node -e "if (process.env.CI && (process.env.GITHUB_JOB.toLowerCase() === 'build' || process.env.GITHUB_JOB.toLowerCase() === 'release')) process.exit(1)"`
         }
     );
-});
-
-// Fix: double yarn install issue on upgrade dependency tasks
-const upgradeDependencyTasks = [
-    'upgrade-dev-deps',
-    'upgrade-cdklabs-projen-project-types'
-];
-upgradeDependencyTasks.forEach((t) => {
-    project
-        .tryFindObjectFile('.projen/tasks.json')
-        ?.patch(JsonPatch.remove(`/tasks/${t}/steps/3`));
 });
 
 // Lambda Build Task

@@ -41,7 +41,6 @@
     },
     {
       "name": "@types/aws-lambda",
-      "version": "8.10.141",
       "type": "build"
     },
     {
@@ -77,7 +76,6 @@
     },
     {
       "name": "axios",
-      "version": "1.7.7",
       "type": "build"
     },
     {
@@ -184,7 +182,6 @@
     },
     {
       "name": "uuid",
-      "version": "11.0.3",
       "type": "build"
     },
     {
