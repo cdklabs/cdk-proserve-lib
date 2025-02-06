@@ -12,7 +12,7 @@ import {
 } from 'projen/lib/javascript';
 import {
     addCdkProserveLibDevDeps,
-    fixAutoUpgradeTasks
+    fixUpgradeDevDepsTask
 } from './utilities/projen/deps';
 
 /**
@@ -84,7 +84,7 @@ const project = new CdklabsConstructLibrary({
 });
 
 addCdkProserveLibDevDeps(project);
-fixAutoUpgradeTasks(project);
+fixUpgradeDevDepsTask(project);
 
 /**
  * Package.json Modifications

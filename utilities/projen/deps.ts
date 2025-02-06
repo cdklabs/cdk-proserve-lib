@@ -38,7 +38,7 @@ export function addCdkProserveLibDevDeps(project: CdklabsConstructLibrary) {
     );
 }
 
-export function fixAutoUpgradeTasks(project: CdklabsConstructLibrary) {
+export function fixUpgradeDevDepsTask(project: CdklabsConstructLibrary) {
     project.tryFindObjectFile('.projen/tasks.json')?.patch(
         JsonPatch.replace(`/tasks/upgrade-dev-deps/steps`, [
             {
