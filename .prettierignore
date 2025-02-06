@@ -2,7 +2,6 @@
 .projen/*.json
 .eslintrc.json
 .prettierrc.json
-.yarnrc.yml
 API.md
 package.json
 tsconfig.dev.json

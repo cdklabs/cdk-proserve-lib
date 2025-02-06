@@ -5,14 +5,6 @@
 !/.projen/files.json
 !/.github/workflows/pull-request-lint.yml
 !/.github/workflows/auto-approve.yml
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
-!/.yarnrc.yml
 !/package.json
 !/LICENSE
 !/.npmignore
@@ -43,6 +35,8 @@ jspm_packages/
 .python-version
 .nvmrc
 test.json
+.vscode/
+.yarn/
 /test-reports/
 junit.xml
 /coverage/
