@@ -205,8 +205,10 @@
         "moduleName": "github.com/cdklabs/cdk-proserve-lib-go"
       }
     },
-    "tsconfig": "tsconfig.build.json",
-    "validateTsconfig": "minimal"
+    "tsc": {
+      "outDir": "lib",
+      "rootDir": "src"
+    }
   },
   "lint-staged": {
     "**/*": [

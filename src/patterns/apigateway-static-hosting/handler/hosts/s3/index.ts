@@ -5,8 +5,8 @@ import { join } from 'node:path';
 import { NoSuchKey, S3 } from '@aws-sdk/client-s3';
 import { sdkStreamMixin } from '@smithy/util-stream-node';
 import { Handler, Request, Response, NextFunction } from 'express';
-import expressAsyncHandler from 'express-async-handler';
-import mime from 'mime';
+import expressAsyncHandler = require('express-async-handler');
+import { getType } from 'mime';
 import { CommonHostingConfiguration } from '../../types/configuration';
 import { CommonHost } from '../common';
 
@@ -70,7 +70,7 @@ export class S3Host extends CommonHost<S3HostingConfiguration> {
         return expressAsyncHandler(
             async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const contentType = mime.getType(req.path) ?? 'text/plain';
+                    const contentType = getType(req.path) ?? 'text/plain';
 
                     // Add additional prefix if necessary
                     const objectKey = join(this.staticFilePath, req.path);
@@ -100,8 +100,7 @@ export class S3Host extends CommonHost<S3HostingConfiguration> {
                         if (this.defaultKey !== undefined) {
                             try {
                                 const defaultContentType =
-                                    mime.getType(this.defaultKey) ??
-                                    'text/plain';
+                                    getType(this.defaultKey) ?? 'text/plain';
 
                                 // Try to load and stream the default object
                                 const defaultObjectRequest =
