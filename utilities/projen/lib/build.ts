@@ -49,8 +49,4 @@ export const configureBuild = (project: CdklabsTypeScriptProject) => {
     });
 
     project.tsconfigDev?.addInclude('utilities/**/*.ts');
-
-    project.package.file.addDeletionOverride('jsii.tsc');
-    project.package.file.addOverride('jsii.tsconfig', 'tsconfig.build.json');
-    project.package.file.addOverride('jsii.validateTsconfig', 'minimal');
 };

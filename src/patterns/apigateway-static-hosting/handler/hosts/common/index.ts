@@ -1,14 +1,9 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import express, {
-    Express,
-    Handler,
-    NextFunction,
-    Request,
-    Response
-} from 'express';
-import morgan from 'morgan';
+import { Express, Handler, Request, Response, NextFunction } from 'express';
+import express = require('express');
+import morgan = require('morgan');
 import { CommonHostingConfiguration } from '../../types/configuration';
 
 /**
