@@ -54,7 +54,7 @@ export interface ApiGatewayStaticHostingProps {
     /**
      * Metadata about the static assets to host
      */
-    readonly asset: ApiGatewayStaticHosting.IAsset;
+    readonly asset: ApiGatewayStaticHosting.Asset;
 
     /**
      * Whether or not to retain the Amazon S3 bucket where static assets are deployed on stack deletion
@@ -203,7 +203,7 @@ export class ApiGatewayStaticHosting extends Construct {
      * @returns Handler to the deployment
      */
     private provisionAsset(
-        asset: ApiGatewayStaticHosting.IAsset,
+        asset: ApiGatewayStaticHosting.Asset,
         bucket: Bucket
     ): BucketDeployment {
         const deployAsset = new BucketDeployment(this, asset.id, {
@@ -286,7 +286,7 @@ export namespace ApiGatewayStaticHosting {
     /**
      * Static Asset Definition
      */
-    export interface IAsset {
+    export interface Asset {
         /**
          * Unique identifier to delineate an asset from other assets
          */

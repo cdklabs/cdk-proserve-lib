@@ -1716,7 +1716,7 @@ const apiGatewayStaticHostingProps: patterns.ApiGatewayStaticHostingProps = { ..
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.asset">asset</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.IAsset</code> | Metadata about the static assets to host. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.asset">asset</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset</code> | Metadata about the static assets to host. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.customDomain">customDomain</a></code> | <code>aws-cdk-lib.aws_apigateway.DomainNameOptions</code> | Custom Domain to use for the REST API. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the framework resources. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.endpoint">endpoint</a></code> | <code>aws-cdk-lib.aws_apigateway.EndpointConfiguration</code> | Endpoint deployment information for the REST API. |
@@ -1729,10 +1729,10 @@ const apiGatewayStaticHostingProps: patterns.ApiGatewayStaticHostingProps = { ..
 ##### `asset`<sup>Required</sup> <a name="asset" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.asset"></a>
 
 ```typescript
-public readonly asset: IAsset;
+public readonly asset: Asset;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.IAsset
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset
 
 Metadata about the static assets to host.
 
@@ -1853,6 +1853,87 @@ public readonly removalPolicy: RemovalPolicy;
 The removal policy to apply to the resource.
 
 ---
+
+### Asset <a name="Asset" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset"></a>
+
+Static Asset Definition.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const asset: patterns.ApiGatewayStaticHosting.Asset = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.id">id</a></code> | <code>string</code> | Unique identifier to delineate an asset from other assets. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.path">path</a></code> | <code>string \| string[]</code> | Path(s) on the local file system to the static asset. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.destinationPrefix">destinationPrefix</a></code> | <code>string</code> | Location with the store to provision the static asset. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.spaIndexPageName">spaIndexPageName</a></code> | <code>string</code> | Name of the index page for a Single Page Application (SPA). |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Unique identifier to delineate an asset from other assets.
+
+---
+
+##### `path`<sup>Required</sup> <a name="path" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.path"></a>
+
+```typescript
+public readonly path: string | string[];
+```
+
+- *Type:* string | string[]
+
+Path(s) on the local file system to the static asset.
+
+---
+
+##### `destinationPrefix`<sup>Optional</sup> <a name="destinationPrefix" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.destinationPrefix"></a>
+
+```typescript
+public readonly destinationPrefix: string;
+```
+
+- *Type:* string
+- *Default:* undefined Root of the store
+
+Location with the store to provision the static asset.
+
+---
+
+##### `spaIndexPageName`<sup>Optional</sup> <a name="spaIndexPageName" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.spaIndexPageName"></a>
+
+```typescript
+public readonly spaIndexPageName: string;
+```
+
+- *Type:* string
+
+Name of the index page for a Single Page Application (SPA).
+
+This is used as a default key to load when the path provided does not map to a concrete static asset.
+
+---
+
+*Example*
+
+```typescript
+index.html
+```
+
 
 ### AwsCustomResourceLambdaConfiguration <a name="AwsCustomResourceLambdaConfiguration" id="@cdklabs/cdk-proserve-lib.types.AwsCustomResourceLambdaConfiguration"></a>
 
@@ -27829,83 +27910,6 @@ The construct being visited.
 
 
 
-
-## Protocols <a name="Protocols" id="Protocols"></a>
-
-### IAsset <a name="IAsset" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.IAsset"></a>
-
-- *Implemented By:* @cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.IAsset
-
-Static Asset Definition.
-
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.IAsset.property.id">id</a></code> | <code>string</code> | Unique identifier to delineate an asset from other assets. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.IAsset.property.path">path</a></code> | <code>string \| string[]</code> | Path(s) on the local file system to the static asset. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.IAsset.property.destinationPrefix">destinationPrefix</a></code> | <code>string</code> | Location with the store to provision the static asset. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.IAsset.property.spaIndexPageName">spaIndexPageName</a></code> | <code>string</code> | Name of the index page for a Single Page Application (SPA). |
-
----
-
-##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.IAsset.property.id"></a>
-
-```typescript
-public readonly id: string;
-```
-
-- *Type:* string
-
-Unique identifier to delineate an asset from other assets.
-
----
-
-##### `path`<sup>Required</sup> <a name="path" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.IAsset.property.path"></a>
-
-```typescript
-public readonly path: string | string[];
-```
-
-- *Type:* string | string[]
-
-Path(s) on the local file system to the static asset.
-
----
-
-##### `destinationPrefix`<sup>Optional</sup> <a name="destinationPrefix" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.IAsset.property.destinationPrefix"></a>
-
-```typescript
-public readonly destinationPrefix: string;
-```
-
-- *Type:* string
-- *Default:* undefined Root of the store
-
-Location with the store to provision the static asset.
-
----
-
-##### `spaIndexPageName`<sup>Optional</sup> <a name="spaIndexPageName" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.IAsset.property.spaIndexPageName"></a>
-
-```typescript
-public readonly spaIndexPageName: string;
-```
-
-- *Type:* string
-
-Name of the index page for a Single Page Application (SPA).
-
-This is used as a default key to load when the path provided does not map to a concrete static asset.
-
----
-
-*Example*
-
-```typescript
-index.html
-```
 
 
 ## Enums <a name="Enums" id="Enums"></a>
