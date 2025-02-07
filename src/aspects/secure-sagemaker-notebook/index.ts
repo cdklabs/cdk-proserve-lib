@@ -44,9 +44,9 @@ export interface SecureSageMakerNotebookProps {
 }
 
 /**
- * Aspect that secures SageMaker Notebook Instances by enforcing secure settings
- * such as must be in VPC/jobs must be launched into VPC, disable direct
- * internet access and root access.
+ * Aspect that enforces security controls on SageMaker Notebook Instances by
+ * requiring VPC placement, disabling direct internet access, and preventing
+ * root access to the notebook environment.
  *
  * This Aspect enforces these settings through a combination of setting
  * the CloudFormation properties on the Notebook resource and attaching a
@@ -59,7 +59,7 @@ export interface SecureSageMakerNotebookProps {
  * - 'sagemaker:CreateModel',
  * - 'sagemaker:CreateProcessingJob'
  */
-export class SecureSageMakerNotebookAspect implements IAspect {
+export class SecureSageMakerNotebook implements IAspect {
     private static policyByStack: Map<string, ManagedPolicy> = new Map();
     private static importCounter = 0;
 
@@ -93,12 +93,12 @@ export class SecureSageMakerNotebookAspect implements IAspect {
 
         const notebookRole = Role.fromRoleArn(
             notebook,
-            `I${SecureSageMakerNotebookAspect.importCounter++}${notebook.node.id}`,
+            `I${SecureSageMakerNotebook.importCounter++}${notebook.node.id}`,
             notebook.roleArn
         );
 
         // Create policy for this stack if it doesn't exist
-        if (!SecureSageMakerNotebookAspect.policyByStack.has(stackId)) {
+        if (!SecureSageMakerNotebook.policyByStack.has(stackId)) {
             const commonPolicyProps = {
                 actions: [
                     'sagemaker:CreateTrainingJob',
@@ -143,11 +143,10 @@ export class SecureSageMakerNotebookAspect implements IAspect {
                 })
             );
 
-            SecureSageMakerNotebookAspect.policyByStack.set(stackId, policy);
+            SecureSageMakerNotebook.policyByStack.set(stackId, policy);
         }
 
-        const policy =
-            SecureSageMakerNotebookAspect.policyByStack.get(stackId)!;
+        const policy = SecureSageMakerNotebook.policyByStack.get(stackId)!;
         notebookRole.addManagedPolicy(policy);
     }
 

@@ -8,10 +8,10 @@ import { Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { LogGroup } from 'aws-cdk-lib/aws-logs';
 import { CfnNotebookInstance } from 'aws-cdk-lib/aws-sagemaker';
-import { SecureSageMakerNotebookAspect } from '../../../src/aspects/secure-sagemaker-notebook';
+import { SecureSageMakerNotebook } from '../../../src/aspects/secure-sagemaker-notebook';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
-describeCdkTest(SecureSageMakerNotebookAspect, (_, getStack, getTemplate) => {
+describeCdkTest(SecureSageMakerNotebook, (_, getStack, getTemplate) => {
     let stack: Stack;
     let vpc: Vpc;
     let role: Role;
@@ -61,7 +61,7 @@ describeCdkTest(SecureSageMakerNotebookAspect, (_, getStack, getTemplate) => {
 
         // Act
         Aspects.of(stack).add(
-            new SecureSageMakerNotebookAspect({
+            new SecureSageMakerNotebook({
                 notebookSubnet: privateSubnet,
                 allowedLaunchSubnets: vpc.privateSubnets,
                 directInternetAccess: false,
@@ -87,7 +87,7 @@ describeCdkTest(SecureSageMakerNotebookAspect, (_, getStack, getTemplate) => {
 
         // Act
         Aspects.of(stack).add(
-            new SecureSageMakerNotebookAspect({
+            new SecureSageMakerNotebook({
                 notebookSubnet: privateSubnet,
                 allowedLaunchSubnets: vpc.privateSubnets
             })

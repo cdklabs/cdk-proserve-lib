@@ -3219,6 +3219,89 @@ Optional encryption key that protects the secret.
 
 ---
 
+### SecureSageMakerNotebookProps <a name="SecureSageMakerNotebookProps" id="@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebookProps"></a>
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebookProps.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+const secureSageMakerNotebookProps: aspects.SecureSageMakerNotebookProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebookProps.property.allowedLaunchSubnets">allowedLaunchSubnets</a></code> | <code>aws-cdk-lib.aws_ec2.ISubnet[]</code> | Sets the VPC Subnets that the SageMaker Notebook Instance is allowed to launch training and inference jobs into. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebookProps.property.notebookSubnet">notebookSubnet</a></code> | <code>aws-cdk-lib.aws_ec2.ISubnet</code> | Sets the VPC Subnet for the Sagemaker Notebook Instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebookProps.property.directInternetAccess">directInternetAccess</a></code> | <code>boolean</code> | Sets the `directInternetAccess` property on the SageMaker Notebooks. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebookProps.property.rootAccess">rootAccess</a></code> | <code>boolean</code> | Sets the `rootAccess` property on the SageMaker Notebooks. |
+
+---
+
+##### `allowedLaunchSubnets`<sup>Required</sup> <a name="allowedLaunchSubnets" id="@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebookProps.property.allowedLaunchSubnets"></a>
+
+```typescript
+public readonly allowedLaunchSubnets: ISubnet[];
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.ISubnet[]
+
+Sets the VPC Subnets that the SageMaker Notebook Instance is allowed to launch training and inference jobs into.
+
+This is enforced by adding
+DENY statements to the existing role that the Notebook Instance is using.
+
+---
+
+##### `notebookSubnet`<sup>Required</sup> <a name="notebookSubnet" id="@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebookProps.property.notebookSubnet"></a>
+
+```typescript
+public readonly notebookSubnet: ISubnet;
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.ISubnet
+
+Sets the VPC Subnet for the Sagemaker Notebook Instance.
+
+This ensures the
+notebook is locked down to a specific VPC/subnet.
+
+---
+
+##### `directInternetAccess`<sup>Optional</sup> <a name="directInternetAccess" id="@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebookProps.property.directInternetAccess"></a>
+
+```typescript
+public readonly directInternetAccess: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Sets the `directInternetAccess` property on the SageMaker Notebooks.
+
+By default, this is set to false to disable internet access on any
+SageMaker Notebook Instance that this aspect is applied to.
+
+---
+
+##### `rootAccess`<sup>Optional</sup> <a name="rootAccess" id="@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebookProps.property.rootAccess"></a>
+
+```typescript
+public readonly rootAccess: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Sets the `rootAccess` property on the SageMaker Notebooks.
+
+By default, this is set to false to disable root access on any
+SageMaker Notebook Instance that this aspect is applied to.
+
+---
+
 ### SetLogRetentionProps <a name="SetLogRetentionProps" id="@cdklabs/cdk-proserve-lib.aspects.SetLogRetentionProps"></a>
 
 Properties for configuring log retention settings.
@@ -12630,6 +12713,14721 @@ The construct being visited.
 
 
 
+### Ec2InstanceType <a name="Ec2InstanceType" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType"></a>
+
+EC2 Instance Type.
+
+
+
+
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.A1_2XLARGE">A1_2XLARGE</a></code> | <code>string</code> | a1.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.A1_4XLARGE">A1_4XLARGE</a></code> | <code>string</code> | a1.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.A1_LARGE">A1_LARGE</a></code> | <code>string</code> | a1.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.A1_MEDIUM">A1_MEDIUM</a></code> | <code>string</code> | a1.medium vCPUs: 1 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.A1_METAL">A1_METAL</a></code> | <code>string</code> | a1.metal vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.A1_XLARGE">A1_XLARGE</a></code> | <code>string</code> | a1.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C1_MEDIUM">C1_MEDIUM</a></code> | <code>string</code> | c1.medium vCPUs: 2 Memory: 1740 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C1_XLARGE">C1_XLARGE</a></code> | <code>string</code> | c1.xlarge vCPUs: 8 Memory: 7168 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C3_2XLARGE">C3_2XLARGE</a></code> | <code>string</code> | c3.2xlarge vCPUs: 8 Memory: 15360 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C3_4XLARGE">C3_4XLARGE</a></code> | <code>string</code> | c3.4xlarge vCPUs: 16 Memory: 30720 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C3_8XLARGE">C3_8XLARGE</a></code> | <code>string</code> | c3.8xlarge vCPUs: 32 Memory: 61440 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C3_LARGE">C3_LARGE</a></code> | <code>string</code> | c3.large vCPUs: 2 Memory: 3840 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C3_XLARGE">C3_XLARGE</a></code> | <code>string</code> | c3.xlarge vCPUs: 4 Memory: 7680 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C4_2XLARGE">C4_2XLARGE</a></code> | <code>string</code> | c4.2xlarge vCPUs: 8 Memory: 15360 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C4_4XLARGE">C4_4XLARGE</a></code> | <code>string</code> | c4.4xlarge vCPUs: 16 Memory: 30720 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C4_8XLARGE">C4_8XLARGE</a></code> | <code>string</code> | c4.8xlarge vCPUs: 36 Memory: 61440 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C4_LARGE">C4_LARGE</a></code> | <code>string</code> | c4.large vCPUs: 2 Memory: 3840 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C4_XLARGE">C4_XLARGE</a></code> | <code>string</code> | c4.xlarge vCPUs: 4 Memory: 7680 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_12XLARGE">C5_12XLARGE</a></code> | <code>string</code> | c5.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_18XLARGE">C5_18XLARGE</a></code> | <code>string</code> | c5.18xlarge vCPUs: 72 Memory: 147456 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_24XLARGE">C5_24XLARGE</a></code> | <code>string</code> | c5.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_2XLARGE">C5_2XLARGE</a></code> | <code>string</code> | c5.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_4XLARGE">C5_4XLARGE</a></code> | <code>string</code> | c5.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_9XLARGE">C5_9XLARGE</a></code> | <code>string</code> | c5.9xlarge vCPUs: 36 Memory: 73728 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_LARGE">C5_LARGE</a></code> | <code>string</code> | c5.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_METAL">C5_METAL</a></code> | <code>string</code> | c5.metal vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_XLARGE">C5_XLARGE</a></code> | <code>string</code> | c5.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_12XLARGE">C5A_12XLARGE</a></code> | <code>string</code> | c5a.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_16XLARGE">C5A_16XLARGE</a></code> | <code>string</code> | c5a.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_24XLARGE">C5A_24XLARGE</a></code> | <code>string</code> | c5a.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_2XLARGE">C5A_2XLARGE</a></code> | <code>string</code> | c5a.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_4XLARGE">C5A_4XLARGE</a></code> | <code>string</code> | c5a.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_8XLARGE">C5A_8XLARGE</a></code> | <code>string</code> | c5a.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_LARGE">C5A_LARGE</a></code> | <code>string</code> | c5a.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_XLARGE">C5A_XLARGE</a></code> | <code>string</code> | c5a.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_12XLARGE">C5AD_12XLARGE</a></code> | <code>string</code> | c5ad.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_16XLARGE">C5AD_16XLARGE</a></code> | <code>string</code> | c5ad.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_24XLARGE">C5AD_24XLARGE</a></code> | <code>string</code> | c5ad.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_2XLARGE">C5AD_2XLARGE</a></code> | <code>string</code> | c5ad.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_4XLARGE">C5AD_4XLARGE</a></code> | <code>string</code> | c5ad.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_8XLARGE">C5AD_8XLARGE</a></code> | <code>string</code> | c5ad.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_LARGE">C5AD_LARGE</a></code> | <code>string</code> | c5ad.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_XLARGE">C5AD_XLARGE</a></code> | <code>string</code> | c5ad.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_12XLARGE">C5D_12XLARGE</a></code> | <code>string</code> | c5d.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_18XLARGE">C5D_18XLARGE</a></code> | <code>string</code> | c5d.18xlarge vCPUs: 72 Memory: 147456 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_24XLARGE">C5D_24XLARGE</a></code> | <code>string</code> | c5d.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_2XLARGE">C5D_2XLARGE</a></code> | <code>string</code> | c5d.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_4XLARGE">C5D_4XLARGE</a></code> | <code>string</code> | c5d.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_9XLARGE">C5D_9XLARGE</a></code> | <code>string</code> | c5d.9xlarge vCPUs: 36 Memory: 73728 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_LARGE">C5D_LARGE</a></code> | <code>string</code> | c5d.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_METAL">C5D_METAL</a></code> | <code>string</code> | c5d.metal vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_XLARGE">C5D_XLARGE</a></code> | <code>string</code> | c5d.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_18XLARGE">C5N_18XLARGE</a></code> | <code>string</code> | c5n.18xlarge vCPUs: 72 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_2XLARGE">C5N_2XLARGE</a></code> | <code>string</code> | c5n.2xlarge vCPUs: 8 Memory: 21504 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_4XLARGE">C5N_4XLARGE</a></code> | <code>string</code> | c5n.4xlarge vCPUs: 16 Memory: 43008 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_9XLARGE">C5N_9XLARGE</a></code> | <code>string</code> | c5n.9xlarge vCPUs: 36 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_LARGE">C5N_LARGE</a></code> | <code>string</code> | c5n.large vCPUs: 2 Memory: 5376 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_METAL">C5N_METAL</a></code> | <code>string</code> | c5n.metal vCPUs: 72 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_XLARGE">C5N_XLARGE</a></code> | <code>string</code> | c5n.xlarge vCPUs: 4 Memory: 10752 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_12XLARGE">C6A_12XLARGE</a></code> | <code>string</code> | c6a.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_16XLARGE">C6A_16XLARGE</a></code> | <code>string</code> | c6a.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_24XLARGE">C6A_24XLARGE</a></code> | <code>string</code> | c6a.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_2XLARGE">C6A_2XLARGE</a></code> | <code>string</code> | c6a.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_32XLARGE">C6A_32XLARGE</a></code> | <code>string</code> | c6a.32xlarge vCPUs: 128 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_48XLARGE">C6A_48XLARGE</a></code> | <code>string</code> | c6a.48xlarge vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_4XLARGE">C6A_4XLARGE</a></code> | <code>string</code> | c6a.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_8XLARGE">C6A_8XLARGE</a></code> | <code>string</code> | c6a.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_LARGE">C6A_LARGE</a></code> | <code>string</code> | c6a.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_METAL">C6A_METAL</a></code> | <code>string</code> | c6a.metal vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_XLARGE">C6A_XLARGE</a></code> | <code>string</code> | c6a.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_12XLARGE">C6G_12XLARGE</a></code> | <code>string</code> | c6g.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_16XLARGE">C6G_16XLARGE</a></code> | <code>string</code> | c6g.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_2XLARGE">C6G_2XLARGE</a></code> | <code>string</code> | c6g.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_4XLARGE">C6G_4XLARGE</a></code> | <code>string</code> | c6g.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_8XLARGE">C6G_8XLARGE</a></code> | <code>string</code> | c6g.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_LARGE">C6G_LARGE</a></code> | <code>string</code> | c6g.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_MEDIUM">C6G_MEDIUM</a></code> | <code>string</code> | c6g.medium vCPUs: 1 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_METAL">C6G_METAL</a></code> | <code>string</code> | c6g.metal vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_XLARGE">C6G_XLARGE</a></code> | <code>string</code> | c6g.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_12XLARGE">C6GD_12XLARGE</a></code> | <code>string</code> | c6gd.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_16XLARGE">C6GD_16XLARGE</a></code> | <code>string</code> | c6gd.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_2XLARGE">C6GD_2XLARGE</a></code> | <code>string</code> | c6gd.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_4XLARGE">C6GD_4XLARGE</a></code> | <code>string</code> | c6gd.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_8XLARGE">C6GD_8XLARGE</a></code> | <code>string</code> | c6gd.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_LARGE">C6GD_LARGE</a></code> | <code>string</code> | c6gd.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_MEDIUM">C6GD_MEDIUM</a></code> | <code>string</code> | c6gd.medium vCPUs: 1 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_METAL">C6GD_METAL</a></code> | <code>string</code> | c6gd.metal vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_XLARGE">C6GD_XLARGE</a></code> | <code>string</code> | c6gd.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_12XLARGE">C6GN_12XLARGE</a></code> | <code>string</code> | c6gn.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_16XLARGE">C6GN_16XLARGE</a></code> | <code>string</code> | c6gn.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_2XLARGE">C6GN_2XLARGE</a></code> | <code>string</code> | c6gn.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_4XLARGE">C6GN_4XLARGE</a></code> | <code>string</code> | c6gn.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_8XLARGE">C6GN_8XLARGE</a></code> | <code>string</code> | c6gn.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_LARGE">C6GN_LARGE</a></code> | <code>string</code> | c6gn.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_MEDIUM">C6GN_MEDIUM</a></code> | <code>string</code> | c6gn.medium vCPUs: 1 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_XLARGE">C6GN_XLARGE</a></code> | <code>string</code> | c6gn.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_12XLARGE">C6I_12XLARGE</a></code> | <code>string</code> | c6i.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_16XLARGE">C6I_16XLARGE</a></code> | <code>string</code> | c6i.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_24XLARGE">C6I_24XLARGE</a></code> | <code>string</code> | c6i.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_2XLARGE">C6I_2XLARGE</a></code> | <code>string</code> | c6i.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_32XLARGE">C6I_32XLARGE</a></code> | <code>string</code> | c6i.32xlarge vCPUs: 128 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_4XLARGE">C6I_4XLARGE</a></code> | <code>string</code> | c6i.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_8XLARGE">C6I_8XLARGE</a></code> | <code>string</code> | c6i.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_LARGE">C6I_LARGE</a></code> | <code>string</code> | c6i.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_METAL">C6I_METAL</a></code> | <code>string</code> | c6i.metal vCPUs: 128 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_XLARGE">C6I_XLARGE</a></code> | <code>string</code> | c6i.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_12XLARGE">C6ID_12XLARGE</a></code> | <code>string</code> | c6id.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_16XLARGE">C6ID_16XLARGE</a></code> | <code>string</code> | c6id.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_24XLARGE">C6ID_24XLARGE</a></code> | <code>string</code> | c6id.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_2XLARGE">C6ID_2XLARGE</a></code> | <code>string</code> | c6id.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_32XLARGE">C6ID_32XLARGE</a></code> | <code>string</code> | c6id.32xlarge vCPUs: 128 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_4XLARGE">C6ID_4XLARGE</a></code> | <code>string</code> | c6id.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_8XLARGE">C6ID_8XLARGE</a></code> | <code>string</code> | c6id.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_LARGE">C6ID_LARGE</a></code> | <code>string</code> | c6id.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_METAL">C6ID_METAL</a></code> | <code>string</code> | c6id.metal vCPUs: 128 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_XLARGE">C6ID_XLARGE</a></code> | <code>string</code> | c6id.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_12XLARGE">C6IN_12XLARGE</a></code> | <code>string</code> | c6in.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_16XLARGE">C6IN_16XLARGE</a></code> | <code>string</code> | c6in.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_24XLARGE">C6IN_24XLARGE</a></code> | <code>string</code> | c6in.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_2XLARGE">C6IN_2XLARGE</a></code> | <code>string</code> | c6in.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_32XLARGE">C6IN_32XLARGE</a></code> | <code>string</code> | c6in.32xlarge vCPUs: 128 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_4XLARGE">C6IN_4XLARGE</a></code> | <code>string</code> | c6in.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_8XLARGE">C6IN_8XLARGE</a></code> | <code>string</code> | c6in.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_LARGE">C6IN_LARGE</a></code> | <code>string</code> | c6in.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_METAL">C6IN_METAL</a></code> | <code>string</code> | c6in.metal vCPUs: 128 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_XLARGE">C6IN_XLARGE</a></code> | <code>string</code> | c6in.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_12XLARGE">C7A_12XLARGE</a></code> | <code>string</code> | c7a.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_16XLARGE">C7A_16XLARGE</a></code> | <code>string</code> | c7a.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_24XLARGE">C7A_24XLARGE</a></code> | <code>string</code> | c7a.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_2XLARGE">C7A_2XLARGE</a></code> | <code>string</code> | c7a.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_32XLARGE">C7A_32XLARGE</a></code> | <code>string</code> | c7a.32xlarge vCPUs: 128 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_48XLARGE">C7A_48XLARGE</a></code> | <code>string</code> | c7a.48xlarge vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_4XLARGE">C7A_4XLARGE</a></code> | <code>string</code> | c7a.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_8XLARGE">C7A_8XLARGE</a></code> | <code>string</code> | c7a.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_LARGE">C7A_LARGE</a></code> | <code>string</code> | c7a.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_MEDIUM">C7A_MEDIUM</a></code> | <code>string</code> | c7a.medium vCPUs: 1 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_METAL_48XL">C7A_METAL_48XL</a></code> | <code>string</code> | c7a.metal-48xl vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_XLARGE">C7A_XLARGE</a></code> | <code>string</code> | c7a.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_12XLARGE">C7G_12XLARGE</a></code> | <code>string</code> | c7g.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_16XLARGE">C7G_16XLARGE</a></code> | <code>string</code> | c7g.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_2XLARGE">C7G_2XLARGE</a></code> | <code>string</code> | c7g.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_4XLARGE">C7G_4XLARGE</a></code> | <code>string</code> | c7g.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_8XLARGE">C7G_8XLARGE</a></code> | <code>string</code> | c7g.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_LARGE">C7G_LARGE</a></code> | <code>string</code> | c7g.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_MEDIUM">C7G_MEDIUM</a></code> | <code>string</code> | c7g.medium vCPUs: 1 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_METAL">C7G_METAL</a></code> | <code>string</code> | c7g.metal vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_XLARGE">C7G_XLARGE</a></code> | <code>string</code> | c7g.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_12XLARGE">C7GD_12XLARGE</a></code> | <code>string</code> | c7gd.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_16XLARGE">C7GD_16XLARGE</a></code> | <code>string</code> | c7gd.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_2XLARGE">C7GD_2XLARGE</a></code> | <code>string</code> | c7gd.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_4XLARGE">C7GD_4XLARGE</a></code> | <code>string</code> | c7gd.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_8XLARGE">C7GD_8XLARGE</a></code> | <code>string</code> | c7gd.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_LARGE">C7GD_LARGE</a></code> | <code>string</code> | c7gd.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_MEDIUM">C7GD_MEDIUM</a></code> | <code>string</code> | c7gd.medium vCPUs: 1 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_METAL">C7GD_METAL</a></code> | <code>string</code> | c7gd.metal vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_XLARGE">C7GD_XLARGE</a></code> | <code>string</code> | c7gd.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_12XLARGE">C7GN_12XLARGE</a></code> | <code>string</code> | c7gn.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_16XLARGE">C7GN_16XLARGE</a></code> | <code>string</code> | c7gn.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_2XLARGE">C7GN_2XLARGE</a></code> | <code>string</code> | c7gn.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_4XLARGE">C7GN_4XLARGE</a></code> | <code>string</code> | c7gn.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_8XLARGE">C7GN_8XLARGE</a></code> | <code>string</code> | c7gn.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_LARGE">C7GN_LARGE</a></code> | <code>string</code> | c7gn.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_MEDIUM">C7GN_MEDIUM</a></code> | <code>string</code> | c7gn.medium vCPUs: 1 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_METAL">C7GN_METAL</a></code> | <code>string</code> | c7gn.metal vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_XLARGE">C7GN_XLARGE</a></code> | <code>string</code> | c7gn.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_12XLARGE">C7I_12XLARGE</a></code> | <code>string</code> | c7i.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_16XLARGE">C7I_16XLARGE</a></code> | <code>string</code> | c7i.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_24XLARGE">C7I_24XLARGE</a></code> | <code>string</code> | c7i.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_2XLARGE">C7I_2XLARGE</a></code> | <code>string</code> | c7i.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_48XLARGE">C7I_48XLARGE</a></code> | <code>string</code> | c7i.48xlarge vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_4XLARGE">C7I_4XLARGE</a></code> | <code>string</code> | c7i.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_8XLARGE">C7I_8XLARGE</a></code> | <code>string</code> | c7i.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_12XLARGE">C7I_FLEX_12XLARGE</a></code> | <code>string</code> | c7i-flex.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_16XLARGE">C7I_FLEX_16XLARGE</a></code> | <code>string</code> | c7i-flex.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_2XLARGE">C7I_FLEX_2XLARGE</a></code> | <code>string</code> | c7i-flex.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_4XLARGE">C7I_FLEX_4XLARGE</a></code> | <code>string</code> | c7i-flex.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_8XLARGE">C7I_FLEX_8XLARGE</a></code> | <code>string</code> | c7i-flex.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_LARGE">C7I_FLEX_LARGE</a></code> | <code>string</code> | c7i-flex.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_XLARGE">C7I_FLEX_XLARGE</a></code> | <code>string</code> | c7i-flex.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_LARGE">C7I_LARGE</a></code> | <code>string</code> | c7i.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_METAL_24XL">C7I_METAL_24XL</a></code> | <code>string</code> | c7i.metal-24xl vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_METAL_48XL">C7I_METAL_48XL</a></code> | <code>string</code> | c7i.metal-48xl vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_XLARGE">C7I_XLARGE</a></code> | <code>string</code> | c7i.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_12XLARGE">C8G_12XLARGE</a></code> | <code>string</code> | c8g.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_16XLARGE">C8G_16XLARGE</a></code> | <code>string</code> | c8g.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_24XLARGE">C8G_24XLARGE</a></code> | <code>string</code> | c8g.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_2XLARGE">C8G_2XLARGE</a></code> | <code>string</code> | c8g.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_48XLARGE">C8G_48XLARGE</a></code> | <code>string</code> | c8g.48xlarge vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_4XLARGE">C8G_4XLARGE</a></code> | <code>string</code> | c8g.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_8XLARGE">C8G_8XLARGE</a></code> | <code>string</code> | c8g.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_LARGE">C8G_LARGE</a></code> | <code>string</code> | c8g.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_MEDIUM">C8G_MEDIUM</a></code> | <code>string</code> | c8g.medium vCPUs: 1 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_METAL_24XL">C8G_METAL_24XL</a></code> | <code>string</code> | c8g.metal-24xl vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_METAL_48XL">C8G_METAL_48XL</a></code> | <code>string</code> | c8g.metal-48xl vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_XLARGE">C8G_XLARGE</a></code> | <code>string</code> | c8g.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D2_2XLARGE">D2_2XLARGE</a></code> | <code>string</code> | d2.2xlarge vCPUs: 8 Memory: 62464 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D2_4XLARGE">D2_4XLARGE</a></code> | <code>string</code> | d2.4xlarge vCPUs: 16 Memory: 124928 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D2_8XLARGE">D2_8XLARGE</a></code> | <code>string</code> | d2.8xlarge vCPUs: 36 Memory: 249856 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D2_XLARGE">D2_XLARGE</a></code> | <code>string</code> | d2.xlarge vCPUs: 4 Memory: 31232 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3_2XLARGE">D3_2XLARGE</a></code> | <code>string</code> | d3.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3_4XLARGE">D3_4XLARGE</a></code> | <code>string</code> | d3.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3_8XLARGE">D3_8XLARGE</a></code> | <code>string</code> | d3.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3_XLARGE">D3_XLARGE</a></code> | <code>string</code> | d3.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3EN_12XLARGE">D3EN_12XLARGE</a></code> | <code>string</code> | d3en.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3EN_2XLARGE">D3EN_2XLARGE</a></code> | <code>string</code> | d3en.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3EN_4XLARGE">D3EN_4XLARGE</a></code> | <code>string</code> | d3en.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3EN_6XLARGE">D3EN_6XLARGE</a></code> | <code>string</code> | d3en.6xlarge vCPUs: 24 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3EN_8XLARGE">D3EN_8XLARGE</a></code> | <code>string</code> | d3en.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3EN_XLARGE">D3EN_XLARGE</a></code> | <code>string</code> | d3en.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.DL1_24XLARGE">DL1_24XLARGE</a></code> | <code>string</code> | dl1.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.F1_16XLARGE">F1_16XLARGE</a></code> | <code>string</code> | f1.16xlarge vCPUs: 64 Memory: 999424 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.F1_2XLARGE">F1_2XLARGE</a></code> | <code>string</code> | f1.2xlarge vCPUs: 8 Memory: 124928 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.F1_4XLARGE">F1_4XLARGE</a></code> | <code>string</code> | f1.4xlarge vCPUs: 16 Memory: 249856 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.F2_12XLARGE">F2_12XLARGE</a></code> | <code>string</code> | f2.12xlarge vCPUs: 48 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.F2_48XLARGE">F2_48XLARGE</a></code> | <code>string</code> | f2.48xlarge vCPUs: 192 Memory: 2097152 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.F2_6XLARGE">F2_6XLARGE</a></code> | <code>string</code> | f2.6xlarge vCPUs: 24 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4AD_16XLARGE">G4AD_16XLARGE</a></code> | <code>string</code> | g4ad.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4AD_2XLARGE">G4AD_2XLARGE</a></code> | <code>string</code> | g4ad.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4AD_4XLARGE">G4AD_4XLARGE</a></code> | <code>string</code> | g4ad.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4AD_8XLARGE">G4AD_8XLARGE</a></code> | <code>string</code> | g4ad.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4AD_XLARGE">G4AD_XLARGE</a></code> | <code>string</code> | g4ad.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_12XLARGE">G4DN_12XLARGE</a></code> | <code>string</code> | g4dn.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_16XLARGE">G4DN_16XLARGE</a></code> | <code>string</code> | g4dn.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_2XLARGE">G4DN_2XLARGE</a></code> | <code>string</code> | g4dn.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_4XLARGE">G4DN_4XLARGE</a></code> | <code>string</code> | g4dn.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_8XLARGE">G4DN_8XLARGE</a></code> | <code>string</code> | g4dn.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_METAL">G4DN_METAL</a></code> | <code>string</code> | g4dn.metal vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_XLARGE">G4DN_XLARGE</a></code> | <code>string</code> | g4dn.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_12XLARGE">G5_12XLARGE</a></code> | <code>string</code> | g5.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_16XLARGE">G5_16XLARGE</a></code> | <code>string</code> | g5.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_24XLARGE">G5_24XLARGE</a></code> | <code>string</code> | g5.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_2XLARGE">G5_2XLARGE</a></code> | <code>string</code> | g5.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_48XLARGE">G5_48XLARGE</a></code> | <code>string</code> | g5.48xlarge vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_4XLARGE">G5_4XLARGE</a></code> | <code>string</code> | g5.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_8XLARGE">G5_8XLARGE</a></code> | <code>string</code> | g5.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_XLARGE">G5_XLARGE</a></code> | <code>string</code> | g5.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5G_16XLARGE">G5G_16XLARGE</a></code> | <code>string</code> | g5g.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5G_2XLARGE">G5G_2XLARGE</a></code> | <code>string</code> | g5g.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5G_4XLARGE">G5G_4XLARGE</a></code> | <code>string</code> | g5g.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5G_8XLARGE">G5G_8XLARGE</a></code> | <code>string</code> | g5g.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5G_METAL">G5G_METAL</a></code> | <code>string</code> | g5g.metal vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5G_XLARGE">G5G_XLARGE</a></code> | <code>string</code> | g5g.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_12XLARGE">G6_12XLARGE</a></code> | <code>string</code> | g6.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_16XLARGE">G6_16XLARGE</a></code> | <code>string</code> | g6.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_24XLARGE">G6_24XLARGE</a></code> | <code>string</code> | g6.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_2XLARGE">G6_2XLARGE</a></code> | <code>string</code> | g6.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_48XLARGE">G6_48XLARGE</a></code> | <code>string</code> | g6.48xlarge vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_4XLARGE">G6_4XLARGE</a></code> | <code>string</code> | g6.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_8XLARGE">G6_8XLARGE</a></code> | <code>string</code> | g6.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_XLARGE">G6_XLARGE</a></code> | <code>string</code> | g6.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_12XLARGE">G6E_12XLARGE</a></code> | <code>string</code> | g6e.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_16XLARGE">G6E_16XLARGE</a></code> | <code>string</code> | g6e.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_24XLARGE">G6E_24XLARGE</a></code> | <code>string</code> | g6e.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_2XLARGE">G6E_2XLARGE</a></code> | <code>string</code> | g6e.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_48XLARGE">G6E_48XLARGE</a></code> | <code>string</code> | g6e.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_4XLARGE">G6E_4XLARGE</a></code> | <code>string</code> | g6e.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_8XLARGE">G6E_8XLARGE</a></code> | <code>string</code> | g6e.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_XLARGE">G6E_XLARGE</a></code> | <code>string</code> | g6e.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.GR6_4XLARGE">GR6_4XLARGE</a></code> | <code>string</code> | gr6.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.GR6_8XLARGE">GR6_8XLARGE</a></code> | <code>string</code> | gr6.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.H1_16XLARGE">H1_16XLARGE</a></code> | <code>string</code> | h1.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.H1_2XLARGE">H1_2XLARGE</a></code> | <code>string</code> | h1.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.H1_4XLARGE">H1_4XLARGE</a></code> | <code>string</code> | h1.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.H1_8XLARGE">H1_8XLARGE</a></code> | <code>string</code> | h1.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.HPC7G_16XLARGE">HPC7G_16XLARGE</a></code> | <code>string</code> | hpc7g.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.HPC7G_4XLARGE">HPC7G_4XLARGE</a></code> | <code>string</code> | hpc7g.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.HPC7G_8XLARGE">HPC7G_8XLARGE</a></code> | <code>string</code> | hpc7g.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I2_2XLARGE">I2_2XLARGE</a></code> | <code>string</code> | i2.2xlarge vCPUs: 8 Memory: 62464 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I2_4XLARGE">I2_4XLARGE</a></code> | <code>string</code> | i2.4xlarge vCPUs: 16 Memory: 124928 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I2_8XLARGE">I2_8XLARGE</a></code> | <code>string</code> | i2.8xlarge vCPUs: 32 Memory: 249856 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I2_XLARGE">I2_XLARGE</a></code> | <code>string</code> | i2.xlarge vCPUs: 4 Memory: 31232 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_16XLARGE">I3_16XLARGE</a></code> | <code>string</code> | i3.16xlarge vCPUs: 64 Memory: 499712 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_2XLARGE">I3_2XLARGE</a></code> | <code>string</code> | i3.2xlarge vCPUs: 8 Memory: 62464 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_4XLARGE">I3_4XLARGE</a></code> | <code>string</code> | i3.4xlarge vCPUs: 16 Memory: 124928 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_8XLARGE">I3_8XLARGE</a></code> | <code>string</code> | i3.8xlarge vCPUs: 32 Memory: 249856 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_LARGE">I3_LARGE</a></code> | <code>string</code> | i3.large vCPUs: 2 Memory: 15616 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_METAL">I3_METAL</a></code> | <code>string</code> | i3.metal vCPUs: 72 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_XLARGE">I3_XLARGE</a></code> | <code>string</code> | i3.xlarge vCPUs: 4 Memory: 31232 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_12XLARGE">I3EN_12XLARGE</a></code> | <code>string</code> | i3en.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_24XLARGE">I3EN_24XLARGE</a></code> | <code>string</code> | i3en.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_2XLARGE">I3EN_2XLARGE</a></code> | <code>string</code> | i3en.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_3XLARGE">I3EN_3XLARGE</a></code> | <code>string</code> | i3en.3xlarge vCPUs: 12 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_6XLARGE">I3EN_6XLARGE</a></code> | <code>string</code> | i3en.6xlarge vCPUs: 24 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_LARGE">I3EN_LARGE</a></code> | <code>string</code> | i3en.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_METAL">I3EN_METAL</a></code> | <code>string</code> | i3en.metal vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_XLARGE">I3EN_XLARGE</a></code> | <code>string</code> | i3en.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4G_16XLARGE">I4G_16XLARGE</a></code> | <code>string</code> | i4g.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4G_2XLARGE">I4G_2XLARGE</a></code> | <code>string</code> | i4g.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4G_4XLARGE">I4G_4XLARGE</a></code> | <code>string</code> | i4g.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4G_8XLARGE">I4G_8XLARGE</a></code> | <code>string</code> | i4g.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4G_LARGE">I4G_LARGE</a></code> | <code>string</code> | i4g.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4G_XLARGE">I4G_XLARGE</a></code> | <code>string</code> | i4g.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_12XLARGE">I4I_12XLARGE</a></code> | <code>string</code> | i4i.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_16XLARGE">I4I_16XLARGE</a></code> | <code>string</code> | i4i.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_24XLARGE">I4I_24XLARGE</a></code> | <code>string</code> | i4i.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_2XLARGE">I4I_2XLARGE</a></code> | <code>string</code> | i4i.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_32XLARGE">I4I_32XLARGE</a></code> | <code>string</code> | i4i.32xlarge vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_4XLARGE">I4I_4XLARGE</a></code> | <code>string</code> | i4i.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_8XLARGE">I4I_8XLARGE</a></code> | <code>string</code> | i4i.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_LARGE">I4I_LARGE</a></code> | <code>string</code> | i4i.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_METAL">I4I_METAL</a></code> | <code>string</code> | i4i.metal vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_XLARGE">I4I_XLARGE</a></code> | <code>string</code> | i4i.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_12XLARGE">I7IE_12XLARGE</a></code> | <code>string</code> | i7ie.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_18XLARGE">I7IE_18XLARGE</a></code> | <code>string</code> | i7ie.18xlarge vCPUs: 72 Memory: 589824 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_24XLARGE">I7IE_24XLARGE</a></code> | <code>string</code> | i7ie.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_2XLARGE">I7IE_2XLARGE</a></code> | <code>string</code> | i7ie.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_3XLARGE">I7IE_3XLARGE</a></code> | <code>string</code> | i7ie.3xlarge vCPUs: 12 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_48XLARGE">I7IE_48XLARGE</a></code> | <code>string</code> | i7ie.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_6XLARGE">I7IE_6XLARGE</a></code> | <code>string</code> | i7ie.6xlarge vCPUs: 24 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_LARGE">I7IE_LARGE</a></code> | <code>string</code> | i7ie.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_XLARGE">I7IE_XLARGE</a></code> | <code>string</code> | i7ie.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_12XLARGE">I8G_12XLARGE</a></code> | <code>string</code> | i8g.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_16XLARGE">I8G_16XLARGE</a></code> | <code>string</code> | i8g.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_24XLARGE">I8G_24XLARGE</a></code> | <code>string</code> | i8g.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_2XLARGE">I8G_2XLARGE</a></code> | <code>string</code> | i8g.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_4XLARGE">I8G_4XLARGE</a></code> | <code>string</code> | i8g.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_8XLARGE">I8G_8XLARGE</a></code> | <code>string</code> | i8g.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_LARGE">I8G_LARGE</a></code> | <code>string</code> | i8g.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_METAL_24XL">I8G_METAL_24XL</a></code> | <code>string</code> | i8g.metal-24xl vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_XLARGE">I8G_XLARGE</a></code> | <code>string</code> | i8g.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_16XLARGE">IM4GN_16XLARGE</a></code> | <code>string</code> | im4gn.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_2XLARGE">IM4GN_2XLARGE</a></code> | <code>string</code> | im4gn.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_4XLARGE">IM4GN_4XLARGE</a></code> | <code>string</code> | im4gn.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_8XLARGE">IM4GN_8XLARGE</a></code> | <code>string</code> | im4gn.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_LARGE">IM4GN_LARGE</a></code> | <code>string</code> | im4gn.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_XLARGE">IM4GN_XLARGE</a></code> | <code>string</code> | im4gn.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF1_24XLARGE">INF1_24XLARGE</a></code> | <code>string</code> | inf1.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF1_2XLARGE">INF1_2XLARGE</a></code> | <code>string</code> | inf1.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF1_6XLARGE">INF1_6XLARGE</a></code> | <code>string</code> | inf1.6xlarge vCPUs: 24 Memory: 49152 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF1_XLARGE">INF1_XLARGE</a></code> | <code>string</code> | inf1.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF2_24XLARGE">INF2_24XLARGE</a></code> | <code>string</code> | inf2.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF2_48XLARGE">INF2_48XLARGE</a></code> | <code>string</code> | inf2.48xlarge vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF2_8XLARGE">INF2_8XLARGE</a></code> | <code>string</code> | inf2.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF2_XLARGE">INF2_XLARGE</a></code> | <code>string</code> | inf2.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IS4GEN_2XLARGE">IS4GEN_2XLARGE</a></code> | <code>string</code> | is4gen.2xlarge vCPUs: 8 Memory: 49152 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IS4GEN_4XLARGE">IS4GEN_4XLARGE</a></code> | <code>string</code> | is4gen.4xlarge vCPUs: 16 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IS4GEN_8XLARGE">IS4GEN_8XLARGE</a></code> | <code>string</code> | is4gen.8xlarge vCPUs: 32 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IS4GEN_LARGE">IS4GEN_LARGE</a></code> | <code>string</code> | is4gen.large vCPUs: 2 Memory: 12288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IS4GEN_MEDIUM">IS4GEN_MEDIUM</a></code> | <code>string</code> | is4gen.medium vCPUs: 1 Memory: 6144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IS4GEN_XLARGE">IS4GEN_XLARGE</a></code> | <code>string</code> | is4gen.xlarge vCPUs: 4 Memory: 24576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M1_LARGE">M1_LARGE</a></code> | <code>string</code> | m1.large vCPUs: 2 Memory: 7680 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M1_MEDIUM">M1_MEDIUM</a></code> | <code>string</code> | m1.medium vCPUs: 1 Memory: 3788 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M1_SMALL">M1_SMALL</a></code> | <code>string</code> | m1.small vCPUs: 1 Memory: 1740 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M1_XLARGE">M1_XLARGE</a></code> | <code>string</code> | m1.xlarge vCPUs: 4 Memory: 15360 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M2_2XLARGE">M2_2XLARGE</a></code> | <code>string</code> | m2.2xlarge vCPUs: 4 Memory: 35020 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M2_4XLARGE">M2_4XLARGE</a></code> | <code>string</code> | m2.4xlarge vCPUs: 8 Memory: 70041 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M2_XLARGE">M2_XLARGE</a></code> | <code>string</code> | m2.xlarge vCPUs: 2 Memory: 17510 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M3_2XLARGE">M3_2XLARGE</a></code> | <code>string</code> | m3.2xlarge vCPUs: 8 Memory: 30720 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M3_LARGE">M3_LARGE</a></code> | <code>string</code> | m3.large vCPUs: 2 Memory: 7680 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M3_MEDIUM">M3_MEDIUM</a></code> | <code>string</code> | m3.medium vCPUs: 1 Memory: 3840 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M3_XLARGE">M3_XLARGE</a></code> | <code>string</code> | m3.xlarge vCPUs: 4 Memory: 15360 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M4_10XLARGE">M4_10XLARGE</a></code> | <code>string</code> | m4.10xlarge vCPUs: 40 Memory: 163840 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M4_16XLARGE">M4_16XLARGE</a></code> | <code>string</code> | m4.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M4_2XLARGE">M4_2XLARGE</a></code> | <code>string</code> | m4.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M4_4XLARGE">M4_4XLARGE</a></code> | <code>string</code> | m4.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M4_LARGE">M4_LARGE</a></code> | <code>string</code> | m4.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M4_XLARGE">M4_XLARGE</a></code> | <code>string</code> | m4.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_12XLARGE">M5_12XLARGE</a></code> | <code>string</code> | m5.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_16XLARGE">M5_16XLARGE</a></code> | <code>string</code> | m5.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_24XLARGE">M5_24XLARGE</a></code> | <code>string</code> | m5.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_2XLARGE">M5_2XLARGE</a></code> | <code>string</code> | m5.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_4XLARGE">M5_4XLARGE</a></code> | <code>string</code> | m5.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_8XLARGE">M5_8XLARGE</a></code> | <code>string</code> | m5.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_LARGE">M5_LARGE</a></code> | <code>string</code> | m5.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_METAL">M5_METAL</a></code> | <code>string</code> | m5.metal vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_XLARGE">M5_XLARGE</a></code> | <code>string</code> | m5.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_12XLARGE">M5A_12XLARGE</a></code> | <code>string</code> | m5a.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_16XLARGE">M5A_16XLARGE</a></code> | <code>string</code> | m5a.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_24XLARGE">M5A_24XLARGE</a></code> | <code>string</code> | m5a.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_2XLARGE">M5A_2XLARGE</a></code> | <code>string</code> | m5a.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_4XLARGE">M5A_4XLARGE</a></code> | <code>string</code> | m5a.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_8XLARGE">M5A_8XLARGE</a></code> | <code>string</code> | m5a.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_LARGE">M5A_LARGE</a></code> | <code>string</code> | m5a.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_XLARGE">M5A_XLARGE</a></code> | <code>string</code> | m5a.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_12XLARGE">M5AD_12XLARGE</a></code> | <code>string</code> | m5ad.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_16XLARGE">M5AD_16XLARGE</a></code> | <code>string</code> | m5ad.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_24XLARGE">M5AD_24XLARGE</a></code> | <code>string</code> | m5ad.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_2XLARGE">M5AD_2XLARGE</a></code> | <code>string</code> | m5ad.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_4XLARGE">M5AD_4XLARGE</a></code> | <code>string</code> | m5ad.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_8XLARGE">M5AD_8XLARGE</a></code> | <code>string</code> | m5ad.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_LARGE">M5AD_LARGE</a></code> | <code>string</code> | m5ad.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_XLARGE">M5AD_XLARGE</a></code> | <code>string</code> | m5ad.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_12XLARGE">M5D_12XLARGE</a></code> | <code>string</code> | m5d.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_16XLARGE">M5D_16XLARGE</a></code> | <code>string</code> | m5d.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_24XLARGE">M5D_24XLARGE</a></code> | <code>string</code> | m5d.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_2XLARGE">M5D_2XLARGE</a></code> | <code>string</code> | m5d.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_4XLARGE">M5D_4XLARGE</a></code> | <code>string</code> | m5d.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_8XLARGE">M5D_8XLARGE</a></code> | <code>string</code> | m5d.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_LARGE">M5D_LARGE</a></code> | <code>string</code> | m5d.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_METAL">M5D_METAL</a></code> | <code>string</code> | m5d.metal vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_XLARGE">M5D_XLARGE</a></code> | <code>string</code> | m5d.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_12XLARGE">M5DN_12XLARGE</a></code> | <code>string</code> | m5dn.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_16XLARGE">M5DN_16XLARGE</a></code> | <code>string</code> | m5dn.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_24XLARGE">M5DN_24XLARGE</a></code> | <code>string</code> | m5dn.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_2XLARGE">M5DN_2XLARGE</a></code> | <code>string</code> | m5dn.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_4XLARGE">M5DN_4XLARGE</a></code> | <code>string</code> | m5dn.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_8XLARGE">M5DN_8XLARGE</a></code> | <code>string</code> | m5dn.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_LARGE">M5DN_LARGE</a></code> | <code>string</code> | m5dn.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_METAL">M5DN_METAL</a></code> | <code>string</code> | m5dn.metal vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_XLARGE">M5DN_XLARGE</a></code> | <code>string</code> | m5dn.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_12XLARGE">M5N_12XLARGE</a></code> | <code>string</code> | m5n.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_16XLARGE">M5N_16XLARGE</a></code> | <code>string</code> | m5n.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_24XLARGE">M5N_24XLARGE</a></code> | <code>string</code> | m5n.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_2XLARGE">M5N_2XLARGE</a></code> | <code>string</code> | m5n.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_4XLARGE">M5N_4XLARGE</a></code> | <code>string</code> | m5n.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_8XLARGE">M5N_8XLARGE</a></code> | <code>string</code> | m5n.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_LARGE">M5N_LARGE</a></code> | <code>string</code> | m5n.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_METAL">M5N_METAL</a></code> | <code>string</code> | m5n.metal vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_XLARGE">M5N_XLARGE</a></code> | <code>string</code> | m5n.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_12XLARGE">M5ZN_12XLARGE</a></code> | <code>string</code> | m5zn.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_2XLARGE">M5ZN_2XLARGE</a></code> | <code>string</code> | m5zn.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_3XLARGE">M5ZN_3XLARGE</a></code> | <code>string</code> | m5zn.3xlarge vCPUs: 12 Memory: 49152 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_6XLARGE">M5ZN_6XLARGE</a></code> | <code>string</code> | m5zn.6xlarge vCPUs: 24 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_LARGE">M5ZN_LARGE</a></code> | <code>string</code> | m5zn.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_METAL">M5ZN_METAL</a></code> | <code>string</code> | m5zn.metal vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_XLARGE">M5ZN_XLARGE</a></code> | <code>string</code> | m5zn.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_12XLARGE">M6A_12XLARGE</a></code> | <code>string</code> | m6a.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_16XLARGE">M6A_16XLARGE</a></code> | <code>string</code> | m6a.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_24XLARGE">M6A_24XLARGE</a></code> | <code>string</code> | m6a.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_2XLARGE">M6A_2XLARGE</a></code> | <code>string</code> | m6a.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_32XLARGE">M6A_32XLARGE</a></code> | <code>string</code> | m6a.32xlarge vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_48XLARGE">M6A_48XLARGE</a></code> | <code>string</code> | m6a.48xlarge vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_4XLARGE">M6A_4XLARGE</a></code> | <code>string</code> | m6a.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_8XLARGE">M6A_8XLARGE</a></code> | <code>string</code> | m6a.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_LARGE">M6A_LARGE</a></code> | <code>string</code> | m6a.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_METAL">M6A_METAL</a></code> | <code>string</code> | m6a.metal vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_XLARGE">M6A_XLARGE</a></code> | <code>string</code> | m6a.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_12XLARGE">M6G_12XLARGE</a></code> | <code>string</code> | m6g.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_16XLARGE">M6G_16XLARGE</a></code> | <code>string</code> | m6g.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_2XLARGE">M6G_2XLARGE</a></code> | <code>string</code> | m6g.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_4XLARGE">M6G_4XLARGE</a></code> | <code>string</code> | m6g.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_8XLARGE">M6G_8XLARGE</a></code> | <code>string</code> | m6g.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_LARGE">M6G_LARGE</a></code> | <code>string</code> | m6g.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_MEDIUM">M6G_MEDIUM</a></code> | <code>string</code> | m6g.medium vCPUs: 1 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_METAL">M6G_METAL</a></code> | <code>string</code> | m6g.metal vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_XLARGE">M6G_XLARGE</a></code> | <code>string</code> | m6g.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_12XLARGE">M6GD_12XLARGE</a></code> | <code>string</code> | m6gd.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_16XLARGE">M6GD_16XLARGE</a></code> | <code>string</code> | m6gd.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_2XLARGE">M6GD_2XLARGE</a></code> | <code>string</code> | m6gd.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_4XLARGE">M6GD_4XLARGE</a></code> | <code>string</code> | m6gd.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_8XLARGE">M6GD_8XLARGE</a></code> | <code>string</code> | m6gd.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_LARGE">M6GD_LARGE</a></code> | <code>string</code> | m6gd.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_MEDIUM">M6GD_MEDIUM</a></code> | <code>string</code> | m6gd.medium vCPUs: 1 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_METAL">M6GD_METAL</a></code> | <code>string</code> | m6gd.metal vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_XLARGE">M6GD_XLARGE</a></code> | <code>string</code> | m6gd.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_12XLARGE">M6I_12XLARGE</a></code> | <code>string</code> | m6i.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_16XLARGE">M6I_16XLARGE</a></code> | <code>string</code> | m6i.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_24XLARGE">M6I_24XLARGE</a></code> | <code>string</code> | m6i.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_2XLARGE">M6I_2XLARGE</a></code> | <code>string</code> | m6i.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_32XLARGE">M6I_32XLARGE</a></code> | <code>string</code> | m6i.32xlarge vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_4XLARGE">M6I_4XLARGE</a></code> | <code>string</code> | m6i.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_8XLARGE">M6I_8XLARGE</a></code> | <code>string</code> | m6i.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_LARGE">M6I_LARGE</a></code> | <code>string</code> | m6i.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_METAL">M6I_METAL</a></code> | <code>string</code> | m6i.metal vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_XLARGE">M6I_XLARGE</a></code> | <code>string</code> | m6i.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_12XLARGE">M6ID_12XLARGE</a></code> | <code>string</code> | m6id.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_16XLARGE">M6ID_16XLARGE</a></code> | <code>string</code> | m6id.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_24XLARGE">M6ID_24XLARGE</a></code> | <code>string</code> | m6id.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_2XLARGE">M6ID_2XLARGE</a></code> | <code>string</code> | m6id.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_32XLARGE">M6ID_32XLARGE</a></code> | <code>string</code> | m6id.32xlarge vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_4XLARGE">M6ID_4XLARGE</a></code> | <code>string</code> | m6id.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_8XLARGE">M6ID_8XLARGE</a></code> | <code>string</code> | m6id.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_LARGE">M6ID_LARGE</a></code> | <code>string</code> | m6id.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_METAL">M6ID_METAL</a></code> | <code>string</code> | m6id.metal vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_XLARGE">M6ID_XLARGE</a></code> | <code>string</code> | m6id.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_12XLARGE">M6IDN_12XLARGE</a></code> | <code>string</code> | m6idn.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_16XLARGE">M6IDN_16XLARGE</a></code> | <code>string</code> | m6idn.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_24XLARGE">M6IDN_24XLARGE</a></code> | <code>string</code> | m6idn.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_2XLARGE">M6IDN_2XLARGE</a></code> | <code>string</code> | m6idn.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_32XLARGE">M6IDN_32XLARGE</a></code> | <code>string</code> | m6idn.32xlarge vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_4XLARGE">M6IDN_4XLARGE</a></code> | <code>string</code> | m6idn.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_8XLARGE">M6IDN_8XLARGE</a></code> | <code>string</code> | m6idn.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_LARGE">M6IDN_LARGE</a></code> | <code>string</code> | m6idn.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_METAL">M6IDN_METAL</a></code> | <code>string</code> | m6idn.metal vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_XLARGE">M6IDN_XLARGE</a></code> | <code>string</code> | m6idn.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_12XLARGE">M6IN_12XLARGE</a></code> | <code>string</code> | m6in.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_16XLARGE">M6IN_16XLARGE</a></code> | <code>string</code> | m6in.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_24XLARGE">M6IN_24XLARGE</a></code> | <code>string</code> | m6in.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_2XLARGE">M6IN_2XLARGE</a></code> | <code>string</code> | m6in.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_32XLARGE">M6IN_32XLARGE</a></code> | <code>string</code> | m6in.32xlarge vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_4XLARGE">M6IN_4XLARGE</a></code> | <code>string</code> | m6in.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_8XLARGE">M6IN_8XLARGE</a></code> | <code>string</code> | m6in.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_LARGE">M6IN_LARGE</a></code> | <code>string</code> | m6in.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_METAL">M6IN_METAL</a></code> | <code>string</code> | m6in.metal vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_XLARGE">M6IN_XLARGE</a></code> | <code>string</code> | m6in.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_12XLARGE">M7A_12XLARGE</a></code> | <code>string</code> | m7a.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_16XLARGE">M7A_16XLARGE</a></code> | <code>string</code> | m7a.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_24XLARGE">M7A_24XLARGE</a></code> | <code>string</code> | m7a.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_2XLARGE">M7A_2XLARGE</a></code> | <code>string</code> | m7a.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_32XLARGE">M7A_32XLARGE</a></code> | <code>string</code> | m7a.32xlarge vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_48XLARGE">M7A_48XLARGE</a></code> | <code>string</code> | m7a.48xlarge vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_4XLARGE">M7A_4XLARGE</a></code> | <code>string</code> | m7a.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_8XLARGE">M7A_8XLARGE</a></code> | <code>string</code> | m7a.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_LARGE">M7A_LARGE</a></code> | <code>string</code> | m7a.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_MEDIUM">M7A_MEDIUM</a></code> | <code>string</code> | m7a.medium vCPUs: 1 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_METAL_48XL">M7A_METAL_48XL</a></code> | <code>string</code> | m7a.metal-48xl vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_XLARGE">M7A_XLARGE</a></code> | <code>string</code> | m7a.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_12XLARGE">M7G_12XLARGE</a></code> | <code>string</code> | m7g.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_16XLARGE">M7G_16XLARGE</a></code> | <code>string</code> | m7g.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_2XLARGE">M7G_2XLARGE</a></code> | <code>string</code> | m7g.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_4XLARGE">M7G_4XLARGE</a></code> | <code>string</code> | m7g.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_8XLARGE">M7G_8XLARGE</a></code> | <code>string</code> | m7g.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_LARGE">M7G_LARGE</a></code> | <code>string</code> | m7g.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_MEDIUM">M7G_MEDIUM</a></code> | <code>string</code> | m7g.medium vCPUs: 1 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_METAL">M7G_METAL</a></code> | <code>string</code> | m7g.metal vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_XLARGE">M7G_XLARGE</a></code> | <code>string</code> | m7g.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_12XLARGE">M7GD_12XLARGE</a></code> | <code>string</code> | m7gd.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_16XLARGE">M7GD_16XLARGE</a></code> | <code>string</code> | m7gd.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_2XLARGE">M7GD_2XLARGE</a></code> | <code>string</code> | m7gd.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_4XLARGE">M7GD_4XLARGE</a></code> | <code>string</code> | m7gd.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_8XLARGE">M7GD_8XLARGE</a></code> | <code>string</code> | m7gd.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_LARGE">M7GD_LARGE</a></code> | <code>string</code> | m7gd.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_MEDIUM">M7GD_MEDIUM</a></code> | <code>string</code> | m7gd.medium vCPUs: 1 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_METAL">M7GD_METAL</a></code> | <code>string</code> | m7gd.metal vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_XLARGE">M7GD_XLARGE</a></code> | <code>string</code> | m7gd.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_12XLARGE">M7I_12XLARGE</a></code> | <code>string</code> | m7i.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_16XLARGE">M7I_16XLARGE</a></code> | <code>string</code> | m7i.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_24XLARGE">M7I_24XLARGE</a></code> | <code>string</code> | m7i.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_2XLARGE">M7I_2XLARGE</a></code> | <code>string</code> | m7i.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_48XLARGE">M7I_48XLARGE</a></code> | <code>string</code> | m7i.48xlarge vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_4XLARGE">M7I_4XLARGE</a></code> | <code>string</code> | m7i.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_8XLARGE">M7I_8XLARGE</a></code> | <code>string</code> | m7i.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_12XLARGE">M7I_FLEX_12XLARGE</a></code> | <code>string</code> | m7i-flex.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_16XLARGE">M7I_FLEX_16XLARGE</a></code> | <code>string</code> | m7i-flex.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_2XLARGE">M7I_FLEX_2XLARGE</a></code> | <code>string</code> | m7i-flex.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_4XLARGE">M7I_FLEX_4XLARGE</a></code> | <code>string</code> | m7i-flex.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_8XLARGE">M7I_FLEX_8XLARGE</a></code> | <code>string</code> | m7i-flex.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_LARGE">M7I_FLEX_LARGE</a></code> | <code>string</code> | m7i-flex.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_XLARGE">M7I_FLEX_XLARGE</a></code> | <code>string</code> | m7i-flex.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_LARGE">M7I_LARGE</a></code> | <code>string</code> | m7i.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_METAL_24XL">M7I_METAL_24XL</a></code> | <code>string</code> | m7i.metal-24xl vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_METAL_48XL">M7I_METAL_48XL</a></code> | <code>string</code> | m7i.metal-48xl vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_XLARGE">M7I_XLARGE</a></code> | <code>string</code> | m7i.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_12XLARGE">M8G_12XLARGE</a></code> | <code>string</code> | m8g.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_16XLARGE">M8G_16XLARGE</a></code> | <code>string</code> | m8g.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_24XLARGE">M8G_24XLARGE</a></code> | <code>string</code> | m8g.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_2XLARGE">M8G_2XLARGE</a></code> | <code>string</code> | m8g.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_48XLARGE">M8G_48XLARGE</a></code> | <code>string</code> | m8g.48xlarge vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_4XLARGE">M8G_4XLARGE</a></code> | <code>string</code> | m8g.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_8XLARGE">M8G_8XLARGE</a></code> | <code>string</code> | m8g.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_LARGE">M8G_LARGE</a></code> | <code>string</code> | m8g.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_MEDIUM">M8G_MEDIUM</a></code> | <code>string</code> | m8g.medium vCPUs: 1 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_METAL_24XL">M8G_METAL_24XL</a></code> | <code>string</code> | m8g.metal-24xl vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_METAL_48XL">M8G_METAL_48XL</a></code> | <code>string</code> | m8g.metal-48xl vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_XLARGE">M8G_XLARGE</a></code> | <code>string</code> | m8g.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC1_METAL">MAC1_METAL</a></code> | <code>string</code> | mac1.metal vCPUs: 12 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC2_M1ULTRA_METAL">MAC2_M1ULTRA_METAL</a></code> | <code>string</code> | mac2-m1ultra.metal vCPUs: 20 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC2_M2_METAL">MAC2_M2_METAL</a></code> | <code>string</code> | mac2-m2.metal vCPUs: 8 Memory: 24576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC2_M2PRO_METAL">MAC2_M2PRO_METAL</a></code> | <code>string</code> | mac2-m2pro.metal vCPUs: 12 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC2_METAL">MAC2_METAL</a></code> | <code>string</code> | mac2.metal vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P2_16XLARGE">P2_16XLARGE</a></code> | <code>string</code> | p2.16xlarge vCPUs: 64 Memory: 749568 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P2_8XLARGE">P2_8XLARGE</a></code> | <code>string</code> | p2.8xlarge vCPUs: 32 Memory: 499712 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P2_XLARGE">P2_XLARGE</a></code> | <code>string</code> | p2.xlarge vCPUs: 4 Memory: 62464 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P3_16XLARGE">P3_16XLARGE</a></code> | <code>string</code> | p3.16xlarge vCPUs: 64 Memory: 499712 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P3_2XLARGE">P3_2XLARGE</a></code> | <code>string</code> | p3.2xlarge vCPUs: 8 Memory: 62464 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P3_8XLARGE">P3_8XLARGE</a></code> | <code>string</code> | p3.8xlarge vCPUs: 32 Memory: 249856 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P3DN_24XLARGE">P3DN_24XLARGE</a></code> | <code>string</code> | p3dn.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P4D_24XLARGE">P4D_24XLARGE</a></code> | <code>string</code> | p4d.24xlarge vCPUs: 96 Memory: 1179648 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P5_48XLARGE">P5_48XLARGE</a></code> | <code>string</code> | p5.48xlarge vCPUs: 192 Memory: 2097152 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_2XLARGE">R3_2XLARGE</a></code> | <code>string</code> | r3.2xlarge vCPUs: 8 Memory: 62464 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_4XLARGE">R3_4XLARGE</a></code> | <code>string</code> | r3.4xlarge vCPUs: 16 Memory: 124928 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_8XLARGE">R3_8XLARGE</a></code> | <code>string</code> | r3.8xlarge vCPUs: 32 Memory: 249856 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_LARGE">R3_LARGE</a></code> | <code>string</code> | r3.large vCPUs: 2 Memory: 15360 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_XLARGE">R3_XLARGE</a></code> | <code>string</code> | r3.xlarge vCPUs: 4 Memory: 31232 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R4_16XLARGE">R4_16XLARGE</a></code> | <code>string</code> | r4.16xlarge vCPUs: 64 Memory: 499712 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R4_2XLARGE">R4_2XLARGE</a></code> | <code>string</code> | r4.2xlarge vCPUs: 8 Memory: 62464 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R4_4XLARGE">R4_4XLARGE</a></code> | <code>string</code> | r4.4xlarge vCPUs: 16 Memory: 124928 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R4_8XLARGE">R4_8XLARGE</a></code> | <code>string</code> | r4.8xlarge vCPUs: 32 Memory: 249856 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R4_LARGE">R4_LARGE</a></code> | <code>string</code> | r4.large vCPUs: 2 Memory: 15616 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R4_XLARGE">R4_XLARGE</a></code> | <code>string</code> | r4.xlarge vCPUs: 4 Memory: 31232 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_12XLARGE">R5_12XLARGE</a></code> | <code>string</code> | r5.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_16XLARGE">R5_16XLARGE</a></code> | <code>string</code> | r5.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_24XLARGE">R5_24XLARGE</a></code> | <code>string</code> | r5.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_2XLARGE">R5_2XLARGE</a></code> | <code>string</code> | r5.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_4XLARGE">R5_4XLARGE</a></code> | <code>string</code> | r5.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_8XLARGE">R5_8XLARGE</a></code> | <code>string</code> | r5.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_LARGE">R5_LARGE</a></code> | <code>string</code> | r5.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_METAL">R5_METAL</a></code> | <code>string</code> | r5.metal vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_XLARGE">R5_XLARGE</a></code> | <code>string</code> | r5.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_12XLARGE">R5A_12XLARGE</a></code> | <code>string</code> | r5a.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_16XLARGE">R5A_16XLARGE</a></code> | <code>string</code> | r5a.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_24XLARGE">R5A_24XLARGE</a></code> | <code>string</code> | r5a.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_2XLARGE">R5A_2XLARGE</a></code> | <code>string</code> | r5a.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_4XLARGE">R5A_4XLARGE</a></code> | <code>string</code> | r5a.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_8XLARGE">R5A_8XLARGE</a></code> | <code>string</code> | r5a.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_LARGE">R5A_LARGE</a></code> | <code>string</code> | r5a.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_XLARGE">R5A_XLARGE</a></code> | <code>string</code> | r5a.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_12XLARGE">R5AD_12XLARGE</a></code> | <code>string</code> | r5ad.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_16XLARGE">R5AD_16XLARGE</a></code> | <code>string</code> | r5ad.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_24XLARGE">R5AD_24XLARGE</a></code> | <code>string</code> | r5ad.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_2XLARGE">R5AD_2XLARGE</a></code> | <code>string</code> | r5ad.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_4XLARGE">R5AD_4XLARGE</a></code> | <code>string</code> | r5ad.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_8XLARGE">R5AD_8XLARGE</a></code> | <code>string</code> | r5ad.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_LARGE">R5AD_LARGE</a></code> | <code>string</code> | r5ad.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_XLARGE">R5AD_XLARGE</a></code> | <code>string</code> | r5ad.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_12XLARGE">R5B_12XLARGE</a></code> | <code>string</code> | r5b.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_16XLARGE">R5B_16XLARGE</a></code> | <code>string</code> | r5b.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_24XLARGE">R5B_24XLARGE</a></code> | <code>string</code> | r5b.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_2XLARGE">R5B_2XLARGE</a></code> | <code>string</code> | r5b.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_4XLARGE">R5B_4XLARGE</a></code> | <code>string</code> | r5b.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_8XLARGE">R5B_8XLARGE</a></code> | <code>string</code> | r5b.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_LARGE">R5B_LARGE</a></code> | <code>string</code> | r5b.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_METAL">R5B_METAL</a></code> | <code>string</code> | r5b.metal vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_XLARGE">R5B_XLARGE</a></code> | <code>string</code> | r5b.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_12XLARGE">R5D_12XLARGE</a></code> | <code>string</code> | r5d.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_16XLARGE">R5D_16XLARGE</a></code> | <code>string</code> | r5d.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_24XLARGE">R5D_24XLARGE</a></code> | <code>string</code> | r5d.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_2XLARGE">R5D_2XLARGE</a></code> | <code>string</code> | r5d.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_4XLARGE">R5D_4XLARGE</a></code> | <code>string</code> | r5d.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_8XLARGE">R5D_8XLARGE</a></code> | <code>string</code> | r5d.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_LARGE">R5D_LARGE</a></code> | <code>string</code> | r5d.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_METAL">R5D_METAL</a></code> | <code>string</code> | r5d.metal vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_XLARGE">R5D_XLARGE</a></code> | <code>string</code> | r5d.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_12XLARGE">R5DN_12XLARGE</a></code> | <code>string</code> | r5dn.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_16XLARGE">R5DN_16XLARGE</a></code> | <code>string</code> | r5dn.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_24XLARGE">R5DN_24XLARGE</a></code> | <code>string</code> | r5dn.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_2XLARGE">R5DN_2XLARGE</a></code> | <code>string</code> | r5dn.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_4XLARGE">R5DN_4XLARGE</a></code> | <code>string</code> | r5dn.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_8XLARGE">R5DN_8XLARGE</a></code> | <code>string</code> | r5dn.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_LARGE">R5DN_LARGE</a></code> | <code>string</code> | r5dn.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_METAL">R5DN_METAL</a></code> | <code>string</code> | r5dn.metal vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_XLARGE">R5DN_XLARGE</a></code> | <code>string</code> | r5dn.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_12XLARGE">R5N_12XLARGE</a></code> | <code>string</code> | r5n.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_16XLARGE">R5N_16XLARGE</a></code> | <code>string</code> | r5n.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_24XLARGE">R5N_24XLARGE</a></code> | <code>string</code> | r5n.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_2XLARGE">R5N_2XLARGE</a></code> | <code>string</code> | r5n.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_4XLARGE">R5N_4XLARGE</a></code> | <code>string</code> | r5n.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_8XLARGE">R5N_8XLARGE</a></code> | <code>string</code> | r5n.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_LARGE">R5N_LARGE</a></code> | <code>string</code> | r5n.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_METAL">R5N_METAL</a></code> | <code>string</code> | r5n.metal vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_XLARGE">R5N_XLARGE</a></code> | <code>string</code> | r5n.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_12XLARGE">R6A_12XLARGE</a></code> | <code>string</code> | r6a.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_16XLARGE">R6A_16XLARGE</a></code> | <code>string</code> | r6a.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_24XLARGE">R6A_24XLARGE</a></code> | <code>string</code> | r6a.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_2XLARGE">R6A_2XLARGE</a></code> | <code>string</code> | r6a.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_32XLARGE">R6A_32XLARGE</a></code> | <code>string</code> | r6a.32xlarge vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_48XLARGE">R6A_48XLARGE</a></code> | <code>string</code> | r6a.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_4XLARGE">R6A_4XLARGE</a></code> | <code>string</code> | r6a.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_8XLARGE">R6A_8XLARGE</a></code> | <code>string</code> | r6a.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_LARGE">R6A_LARGE</a></code> | <code>string</code> | r6a.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_METAL">R6A_METAL</a></code> | <code>string</code> | r6a.metal vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_XLARGE">R6A_XLARGE</a></code> | <code>string</code> | r6a.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_12XLARGE">R6G_12XLARGE</a></code> | <code>string</code> | r6g.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_16XLARGE">R6G_16XLARGE</a></code> | <code>string</code> | r6g.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_2XLARGE">R6G_2XLARGE</a></code> | <code>string</code> | r6g.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_4XLARGE">R6G_4XLARGE</a></code> | <code>string</code> | r6g.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_8XLARGE">R6G_8XLARGE</a></code> | <code>string</code> | r6g.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_LARGE">R6G_LARGE</a></code> | <code>string</code> | r6g.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_MEDIUM">R6G_MEDIUM</a></code> | <code>string</code> | r6g.medium vCPUs: 1 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_METAL">R6G_METAL</a></code> | <code>string</code> | r6g.metal vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_XLARGE">R6G_XLARGE</a></code> | <code>string</code> | r6g.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_12XLARGE">R6GD_12XLARGE</a></code> | <code>string</code> | r6gd.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_16XLARGE">R6GD_16XLARGE</a></code> | <code>string</code> | r6gd.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_2XLARGE">R6GD_2XLARGE</a></code> | <code>string</code> | r6gd.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_4XLARGE">R6GD_4XLARGE</a></code> | <code>string</code> | r6gd.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_8XLARGE">R6GD_8XLARGE</a></code> | <code>string</code> | r6gd.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_LARGE">R6GD_LARGE</a></code> | <code>string</code> | r6gd.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_MEDIUM">R6GD_MEDIUM</a></code> | <code>string</code> | r6gd.medium vCPUs: 1 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_METAL">R6GD_METAL</a></code> | <code>string</code> | r6gd.metal vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_XLARGE">R6GD_XLARGE</a></code> | <code>string</code> | r6gd.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_12XLARGE">R6I_12XLARGE</a></code> | <code>string</code> | r6i.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_16XLARGE">R6I_16XLARGE</a></code> | <code>string</code> | r6i.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_24XLARGE">R6I_24XLARGE</a></code> | <code>string</code> | r6i.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_2XLARGE">R6I_2XLARGE</a></code> | <code>string</code> | r6i.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_32XLARGE">R6I_32XLARGE</a></code> | <code>string</code> | r6i.32xlarge vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_4XLARGE">R6I_4XLARGE</a></code> | <code>string</code> | r6i.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_8XLARGE">R6I_8XLARGE</a></code> | <code>string</code> | r6i.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_LARGE">R6I_LARGE</a></code> | <code>string</code> | r6i.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_METAL">R6I_METAL</a></code> | <code>string</code> | r6i.metal vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_XLARGE">R6I_XLARGE</a></code> | <code>string</code> | r6i.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_12XLARGE">R6ID_12XLARGE</a></code> | <code>string</code> | r6id.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_16XLARGE">R6ID_16XLARGE</a></code> | <code>string</code> | r6id.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_24XLARGE">R6ID_24XLARGE</a></code> | <code>string</code> | r6id.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_2XLARGE">R6ID_2XLARGE</a></code> | <code>string</code> | r6id.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_32XLARGE">R6ID_32XLARGE</a></code> | <code>string</code> | r6id.32xlarge vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_4XLARGE">R6ID_4XLARGE</a></code> | <code>string</code> | r6id.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_8XLARGE">R6ID_8XLARGE</a></code> | <code>string</code> | r6id.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_LARGE">R6ID_LARGE</a></code> | <code>string</code> | r6id.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_METAL">R6ID_METAL</a></code> | <code>string</code> | r6id.metal vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_XLARGE">R6ID_XLARGE</a></code> | <code>string</code> | r6id.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_12XLARGE">R6IDN_12XLARGE</a></code> | <code>string</code> | r6idn.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_16XLARGE">R6IDN_16XLARGE</a></code> | <code>string</code> | r6idn.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_24XLARGE">R6IDN_24XLARGE</a></code> | <code>string</code> | r6idn.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_2XLARGE">R6IDN_2XLARGE</a></code> | <code>string</code> | r6idn.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_32XLARGE">R6IDN_32XLARGE</a></code> | <code>string</code> | r6idn.32xlarge vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_4XLARGE">R6IDN_4XLARGE</a></code> | <code>string</code> | r6idn.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_8XLARGE">R6IDN_8XLARGE</a></code> | <code>string</code> | r6idn.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_LARGE">R6IDN_LARGE</a></code> | <code>string</code> | r6idn.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_METAL">R6IDN_METAL</a></code> | <code>string</code> | r6idn.metal vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_XLARGE">R6IDN_XLARGE</a></code> | <code>string</code> | r6idn.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_12XLARGE">R6IN_12XLARGE</a></code> | <code>string</code> | r6in.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_16XLARGE">R6IN_16XLARGE</a></code> | <code>string</code> | r6in.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_24XLARGE">R6IN_24XLARGE</a></code> | <code>string</code> | r6in.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_2XLARGE">R6IN_2XLARGE</a></code> | <code>string</code> | r6in.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_32XLARGE">R6IN_32XLARGE</a></code> | <code>string</code> | r6in.32xlarge vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_4XLARGE">R6IN_4XLARGE</a></code> | <code>string</code> | r6in.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_8XLARGE">R6IN_8XLARGE</a></code> | <code>string</code> | r6in.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_LARGE">R6IN_LARGE</a></code> | <code>string</code> | r6in.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_METAL">R6IN_METAL</a></code> | <code>string</code> | r6in.metal vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_XLARGE">R6IN_XLARGE</a></code> | <code>string</code> | r6in.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_12XLARGE">R7A_12XLARGE</a></code> | <code>string</code> | r7a.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_16XLARGE">R7A_16XLARGE</a></code> | <code>string</code> | r7a.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_24XLARGE">R7A_24XLARGE</a></code> | <code>string</code> | r7a.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_2XLARGE">R7A_2XLARGE</a></code> | <code>string</code> | r7a.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_32XLARGE">R7A_32XLARGE</a></code> | <code>string</code> | r7a.32xlarge vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_48XLARGE">R7A_48XLARGE</a></code> | <code>string</code> | r7a.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_4XLARGE">R7A_4XLARGE</a></code> | <code>string</code> | r7a.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_8XLARGE">R7A_8XLARGE</a></code> | <code>string</code> | r7a.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_LARGE">R7A_LARGE</a></code> | <code>string</code> | r7a.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_MEDIUM">R7A_MEDIUM</a></code> | <code>string</code> | r7a.medium vCPUs: 1 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_METAL_48XL">R7A_METAL_48XL</a></code> | <code>string</code> | r7a.metal-48xl vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_XLARGE">R7A_XLARGE</a></code> | <code>string</code> | r7a.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_12XLARGE">R7G_12XLARGE</a></code> | <code>string</code> | r7g.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_16XLARGE">R7G_16XLARGE</a></code> | <code>string</code> | r7g.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_2XLARGE">R7G_2XLARGE</a></code> | <code>string</code> | r7g.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_4XLARGE">R7G_4XLARGE</a></code> | <code>string</code> | r7g.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_8XLARGE">R7G_8XLARGE</a></code> | <code>string</code> | r7g.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_LARGE">R7G_LARGE</a></code> | <code>string</code> | r7g.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_MEDIUM">R7G_MEDIUM</a></code> | <code>string</code> | r7g.medium vCPUs: 1 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_METAL">R7G_METAL</a></code> | <code>string</code> | r7g.metal vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_XLARGE">R7G_XLARGE</a></code> | <code>string</code> | r7g.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_12XLARGE">R7GD_12XLARGE</a></code> | <code>string</code> | r7gd.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_16XLARGE">R7GD_16XLARGE</a></code> | <code>string</code> | r7gd.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_2XLARGE">R7GD_2XLARGE</a></code> | <code>string</code> | r7gd.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_4XLARGE">R7GD_4XLARGE</a></code> | <code>string</code> | r7gd.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_8XLARGE">R7GD_8XLARGE</a></code> | <code>string</code> | r7gd.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_LARGE">R7GD_LARGE</a></code> | <code>string</code> | r7gd.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_MEDIUM">R7GD_MEDIUM</a></code> | <code>string</code> | r7gd.medium vCPUs: 1 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_METAL">R7GD_METAL</a></code> | <code>string</code> | r7gd.metal vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_XLARGE">R7GD_XLARGE</a></code> | <code>string</code> | r7gd.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_12XLARGE">R7I_12XLARGE</a></code> | <code>string</code> | r7i.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_16XLARGE">R7I_16XLARGE</a></code> | <code>string</code> | r7i.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_24XLARGE">R7I_24XLARGE</a></code> | <code>string</code> | r7i.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_2XLARGE">R7I_2XLARGE</a></code> | <code>string</code> | r7i.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_48XLARGE">R7I_48XLARGE</a></code> | <code>string</code> | r7i.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_4XLARGE">R7I_4XLARGE</a></code> | <code>string</code> | r7i.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_8XLARGE">R7I_8XLARGE</a></code> | <code>string</code> | r7i.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_LARGE">R7I_LARGE</a></code> | <code>string</code> | r7i.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_METAL_24XL">R7I_METAL_24XL</a></code> | <code>string</code> | r7i.metal-24xl vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_METAL_48XL">R7I_METAL_48XL</a></code> | <code>string</code> | r7i.metal-48xl vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_XLARGE">R7I_XLARGE</a></code> | <code>string</code> | r7i.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_12XLARGE">R7IZ_12XLARGE</a></code> | <code>string</code> | r7iz.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_16XLARGE">R7IZ_16XLARGE</a></code> | <code>string</code> | r7iz.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_2XLARGE">R7IZ_2XLARGE</a></code> | <code>string</code> | r7iz.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_32XLARGE">R7IZ_32XLARGE</a></code> | <code>string</code> | r7iz.32xlarge vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_4XLARGE">R7IZ_4XLARGE</a></code> | <code>string</code> | r7iz.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_8XLARGE">R7IZ_8XLARGE</a></code> | <code>string</code> | r7iz.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_LARGE">R7IZ_LARGE</a></code> | <code>string</code> | r7iz.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_METAL_16XL">R7IZ_METAL_16XL</a></code> | <code>string</code> | r7iz.metal-16xl vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_METAL_32XL">R7IZ_METAL_32XL</a></code> | <code>string</code> | r7iz.metal-32xl vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_XLARGE">R7IZ_XLARGE</a></code> | <code>string</code> | r7iz.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_12XLARGE">R8G_12XLARGE</a></code> | <code>string</code> | r8g.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_16XLARGE">R8G_16XLARGE</a></code> | <code>string</code> | r8g.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_24XLARGE">R8G_24XLARGE</a></code> | <code>string</code> | r8g.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_2XLARGE">R8G_2XLARGE</a></code> | <code>string</code> | r8g.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_48XLARGE">R8G_48XLARGE</a></code> | <code>string</code> | r8g.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_4XLARGE">R8G_4XLARGE</a></code> | <code>string</code> | r8g.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_8XLARGE">R8G_8XLARGE</a></code> | <code>string</code> | r8g.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_LARGE">R8G_LARGE</a></code> | <code>string</code> | r8g.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_MEDIUM">R8G_MEDIUM</a></code> | <code>string</code> | r8g.medium vCPUs: 1 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_METAL_24XL">R8G_METAL_24XL</a></code> | <code>string</code> | r8g.metal-24xl vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_METAL_48XL">R8G_METAL_48XL</a></code> | <code>string</code> | r8g.metal-48xl vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_XLARGE">R8G_XLARGE</a></code> | <code>string</code> | r8g.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T1_MICRO">T1_MICRO</a></code> | <code>string</code> | t1.micro vCPUs: 1 Memory: 627 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_2XLARGE">T2_2XLARGE</a></code> | <code>string</code> | t2.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_LARGE">T2_LARGE</a></code> | <code>string</code> | t2.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_MEDIUM">T2_MEDIUM</a></code> | <code>string</code> | t2.medium vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_MICRO">T2_MICRO</a></code> | <code>string</code> | t2.micro vCPUs: 1 Memory: 1024 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_NANO">T2_NANO</a></code> | <code>string</code> | t2.nano vCPUs: 1 Memory: 512 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_SMALL">T2_SMALL</a></code> | <code>string</code> | t2.small vCPUs: 1 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_XLARGE">T2_XLARGE</a></code> | <code>string</code> | t2.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_2XLARGE">T3_2XLARGE</a></code> | <code>string</code> | t3.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_LARGE">T3_LARGE</a></code> | <code>string</code> | t3.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_MEDIUM">T3_MEDIUM</a></code> | <code>string</code> | t3.medium vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_MICRO">T3_MICRO</a></code> | <code>string</code> | t3.micro vCPUs: 2 Memory: 1024 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_NANO">T3_NANO</a></code> | <code>string</code> | t3.nano vCPUs: 2 Memory: 512 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_SMALL">T3_SMALL</a></code> | <code>string</code> | t3.small vCPUs: 2 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_XLARGE">T3_XLARGE</a></code> | <code>string</code> | t3.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_2XLARGE">T3A_2XLARGE</a></code> | <code>string</code> | t3a.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_LARGE">T3A_LARGE</a></code> | <code>string</code> | t3a.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_MEDIUM">T3A_MEDIUM</a></code> | <code>string</code> | t3a.medium vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_MICRO">T3A_MICRO</a></code> | <code>string</code> | t3a.micro vCPUs: 2 Memory: 1024 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_NANO">T3A_NANO</a></code> | <code>string</code> | t3a.nano vCPUs: 2 Memory: 512 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_SMALL">T3A_SMALL</a></code> | <code>string</code> | t3a.small vCPUs: 2 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_XLARGE">T3A_XLARGE</a></code> | <code>string</code> | t3a.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_2XLARGE">T4G_2XLARGE</a></code> | <code>string</code> | t4g.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_LARGE">T4G_LARGE</a></code> | <code>string</code> | t4g.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_MEDIUM">T4G_MEDIUM</a></code> | <code>string</code> | t4g.medium vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_MICRO">T4G_MICRO</a></code> | <code>string</code> | t4g.micro vCPUs: 2 Memory: 1024 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_NANO">T4G_NANO</a></code> | <code>string</code> | t4g.nano vCPUs: 2 Memory: 512 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_SMALL">T4G_SMALL</a></code> | <code>string</code> | t4g.small vCPUs: 2 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_XLARGE">T4G_XLARGE</a></code> | <code>string</code> | t4g.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.TRN1_2XLARGE">TRN1_2XLARGE</a></code> | <code>string</code> | trn1.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.TRN1_32XLARGE">TRN1_32XLARGE</a></code> | <code>string</code> | trn1.32xlarge vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.TRN1N_32XLARGE">TRN1N_32XLARGE</a></code> | <code>string</code> | trn1n.32xlarge vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_12TB1_112XLARGE">U_12TB1_112XLARGE</a></code> | <code>string</code> | u-12tb1.112xlarge vCPUs: 448 Memory: 12582912 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_18TB1_112XLARGE">U_18TB1_112XLARGE</a></code> | <code>string</code> | u-18tb1.112xlarge vCPUs: 448 Memory: 18874368 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_24TB1_112XLARGE">U_24TB1_112XLARGE</a></code> | <code>string</code> | u-24tb1.112xlarge vCPUs: 448 Memory: 25165824 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_3TB1_56XLARGE">U_3TB1_56XLARGE</a></code> | <code>string</code> | u-3tb1.56xlarge vCPUs: 224 Memory: 3145728 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_6TB1_112XLARGE">U_6TB1_112XLARGE</a></code> | <code>string</code> | u-6tb1.112xlarge vCPUs: 448 Memory: 6291456 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_6TB1_56XLARGE">U_6TB1_56XLARGE</a></code> | <code>string</code> | u-6tb1.56xlarge vCPUs: 224 Memory: 6291456 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_9TB1_112XLARGE">U_9TB1_112XLARGE</a></code> | <code>string</code> | u-9tb1.112xlarge vCPUs: 448 Memory: 9437184 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7I_12TB_224XLARGE">U7I_12TB_224XLARGE</a></code> | <code>string</code> | u7i-12tb.224xlarge vCPUs: 896 Memory: 12582912 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7I_6TB_112XLARGE">U7I_6TB_112XLARGE</a></code> | <code>string</code> | u7i-6tb.112xlarge vCPUs: 448 Memory: 6291456 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7I_8TB_112XLARGE">U7I_8TB_112XLARGE</a></code> | <code>string</code> | u7i-8tb.112xlarge vCPUs: 448 Memory: 8388608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7IN_16TB_224XLARGE">U7IN_16TB_224XLARGE</a></code> | <code>string</code> | u7in-16tb.224xlarge vCPUs: 896 Memory: 16777216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7IN_24TB_224XLARGE">U7IN_24TB_224XLARGE</a></code> | <code>string</code> | u7in-24tb.224xlarge vCPUs: 896 Memory: 25165824 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7IN_32TB_224XLARGE">U7IN_32TB_224XLARGE</a></code> | <code>string</code> | u7in-32tb.224xlarge vCPUs: 896 Memory: 33554432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.VT1_24XLARGE">VT1_24XLARGE</a></code> | <code>string</code> | vt1.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.VT1_3XLARGE">VT1_3XLARGE</a></code> | <code>string</code> | vt1.3xlarge vCPUs: 12 Memory: 24576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.VT1_6XLARGE">VT1_6XLARGE</a></code> | <code>string</code> | vt1.6xlarge vCPUs: 24 Memory: 49152 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1_16XLARGE">X1_16XLARGE</a></code> | <code>string</code> | x1.16xlarge vCPUs: 64 Memory: 999424 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1_32XLARGE">X1_32XLARGE</a></code> | <code>string</code> | x1.32xlarge vCPUs: 128 Memory: 1998848 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1E_16XLARGE">X1E_16XLARGE</a></code> | <code>string</code> | x1e.16xlarge vCPUs: 64 Memory: 1998848 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1E_2XLARGE">X1E_2XLARGE</a></code> | <code>string</code> | x1e.2xlarge vCPUs: 8 Memory: 249856 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1E_32XLARGE">X1E_32XLARGE</a></code> | <code>string</code> | x1e.32xlarge vCPUs: 128 Memory: 3997696 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1E_4XLARGE">X1E_4XLARGE</a></code> | <code>string</code> | x1e.4xlarge vCPUs: 16 Memory: 499712 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1E_8XLARGE">X1E_8XLARGE</a></code> | <code>string</code> | x1e.8xlarge vCPUs: 32 Memory: 999424 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1E_XLARGE">X1E_XLARGE</a></code> | <code>string</code> | x1e.xlarge vCPUs: 4 Memory: 124928 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_12XLARGE">X2GD_12XLARGE</a></code> | <code>string</code> | x2gd.12xlarge vCPUs: 48 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_16XLARGE">X2GD_16XLARGE</a></code> | <code>string</code> | x2gd.16xlarge vCPUs: 64 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_2XLARGE">X2GD_2XLARGE</a></code> | <code>string</code> | x2gd.2xlarge vCPUs: 8 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_4XLARGE">X2GD_4XLARGE</a></code> | <code>string</code> | x2gd.4xlarge vCPUs: 16 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_8XLARGE">X2GD_8XLARGE</a></code> | <code>string</code> | x2gd.8xlarge vCPUs: 32 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_LARGE">X2GD_LARGE</a></code> | <code>string</code> | x2gd.large vCPUs: 2 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_MEDIUM">X2GD_MEDIUM</a></code> | <code>string</code> | x2gd.medium vCPUs: 1 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_METAL">X2GD_METAL</a></code> | <code>string</code> | x2gd.metal vCPUs: 64 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_XLARGE">X2GD_XLARGE</a></code> | <code>string</code> | x2gd.xlarge vCPUs: 4 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IDN_16XLARGE">X2IDN_16XLARGE</a></code> | <code>string</code> | x2idn.16xlarge vCPUs: 64 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IDN_24XLARGE">X2IDN_24XLARGE</a></code> | <code>string</code> | x2idn.24xlarge vCPUs: 96 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IDN_32XLARGE">X2IDN_32XLARGE</a></code> | <code>string</code> | x2idn.32xlarge vCPUs: 128 Memory: 2097152 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IDN_METAL">X2IDN_METAL</a></code> | <code>string</code> | x2idn.metal vCPUs: 128 Memory: 2097152 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_16XLARGE">X2IEDN_16XLARGE</a></code> | <code>string</code> | x2iedn.16xlarge vCPUs: 64 Memory: 2097152 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_24XLARGE">X2IEDN_24XLARGE</a></code> | <code>string</code> | x2iedn.24xlarge vCPUs: 96 Memory: 3145728 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_2XLARGE">X2IEDN_2XLARGE</a></code> | <code>string</code> | x2iedn.2xlarge vCPUs: 8 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_32XLARGE">X2IEDN_32XLARGE</a></code> | <code>string</code> | x2iedn.32xlarge vCPUs: 128 Memory: 4194304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_4XLARGE">X2IEDN_4XLARGE</a></code> | <code>string</code> | x2iedn.4xlarge vCPUs: 16 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_8XLARGE">X2IEDN_8XLARGE</a></code> | <code>string</code> | x2iedn.8xlarge vCPUs: 32 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_METAL">X2IEDN_METAL</a></code> | <code>string</code> | x2iedn.metal vCPUs: 128 Memory: 4194304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_XLARGE">X2IEDN_XLARGE</a></code> | <code>string</code> | x2iedn.xlarge vCPUs: 4 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEZN_12XLARGE">X2IEZN_12XLARGE</a></code> | <code>string</code> | x2iezn.12xlarge vCPUs: 48 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEZN_2XLARGE">X2IEZN_2XLARGE</a></code> | <code>string</code> | x2iezn.2xlarge vCPUs: 8 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEZN_4XLARGE">X2IEZN_4XLARGE</a></code> | <code>string</code> | x2iezn.4xlarge vCPUs: 16 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEZN_6XLARGE">X2IEZN_6XLARGE</a></code> | <code>string</code> | x2iezn.6xlarge vCPUs: 24 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEZN_8XLARGE">X2IEZN_8XLARGE</a></code> | <code>string</code> | x2iezn.8xlarge vCPUs: 32 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEZN_METAL">X2IEZN_METAL</a></code> | <code>string</code> | x2iezn.metal vCPUs: 48 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_12XLARGE">X8G_12XLARGE</a></code> | <code>string</code> | x8g.12xlarge vCPUs: 48 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_16XLARGE">X8G_16XLARGE</a></code> | <code>string</code> | x8g.16xlarge vCPUs: 64 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_24XLARGE">X8G_24XLARGE</a></code> | <code>string</code> | x8g.24xlarge vCPUs: 96 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_2XLARGE">X8G_2XLARGE</a></code> | <code>string</code> | x8g.2xlarge vCPUs: 8 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_48XLARGE">X8G_48XLARGE</a></code> | <code>string</code> | x8g.48xlarge vCPUs: 192 Memory: 3145728 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_4XLARGE">X8G_4XLARGE</a></code> | <code>string</code> | x8g.4xlarge vCPUs: 16 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_8XLARGE">X8G_8XLARGE</a></code> | <code>string</code> | x8g.8xlarge vCPUs: 32 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_LARGE">X8G_LARGE</a></code> | <code>string</code> | x8g.large vCPUs: 2 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_MEDIUM">X8G_MEDIUM</a></code> | <code>string</code> | x8g.medium vCPUs: 1 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_METAL_24XL">X8G_METAL_24XL</a></code> | <code>string</code> | x8g.metal-24xl vCPUs: 96 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_METAL_48XL">X8G_METAL_48XL</a></code> | <code>string</code> | x8g.metal-48xl vCPUs: 192 Memory: 3145728 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_XLARGE">X8G_XLARGE</a></code> | <code>string</code> | x8g.xlarge vCPUs: 4 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_12XLARGE">Z1D_12XLARGE</a></code> | <code>string</code> | z1d.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_2XLARGE">Z1D_2XLARGE</a></code> | <code>string</code> | z1d.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_3XLARGE">Z1D_3XLARGE</a></code> | <code>string</code> | z1d.3xlarge vCPUs: 12 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_6XLARGE">Z1D_6XLARGE</a></code> | <code>string</code> | z1d.6xlarge vCPUs: 24 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_LARGE">Z1D_LARGE</a></code> | <code>string</code> | z1d.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_METAL">Z1D_METAL</a></code> | <code>string</code> | z1d.metal vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_XLARGE">Z1D_XLARGE</a></code> | <code>string</code> | z1d.xlarge vCPUs: 4 Memory: 32768 MiB. |
+
+---
+
+##### `A1_2XLARGE`<sup>Required</sup> <a name="A1_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.A1_2XLARGE"></a>
+
+```typescript
+public readonly A1_2XLARGE: string;
+```
+
+- *Type:* string
+
+a1.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `A1_4XLARGE`<sup>Required</sup> <a name="A1_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.A1_4XLARGE"></a>
+
+```typescript
+public readonly A1_4XLARGE: string;
+```
+
+- *Type:* string
+
+a1.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `A1_LARGE`<sup>Required</sup> <a name="A1_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.A1_LARGE"></a>
+
+```typescript
+public readonly A1_LARGE: string;
+```
+
+- *Type:* string
+
+a1.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `A1_MEDIUM`<sup>Required</sup> <a name="A1_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.A1_MEDIUM"></a>
+
+```typescript
+public readonly A1_MEDIUM: string;
+```
+
+- *Type:* string
+
+a1.medium vCPUs: 1 Memory: 2048 MiB.
+
+---
+
+##### `A1_METAL`<sup>Required</sup> <a name="A1_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.A1_METAL"></a>
+
+```typescript
+public readonly A1_METAL: string;
+```
+
+- *Type:* string
+
+a1.metal vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `A1_XLARGE`<sup>Required</sup> <a name="A1_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.A1_XLARGE"></a>
+
+```typescript
+public readonly A1_XLARGE: string;
+```
+
+- *Type:* string
+
+a1.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C1_MEDIUM`<sup>Required</sup> <a name="C1_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C1_MEDIUM"></a>
+
+```typescript
+public readonly C1_MEDIUM: string;
+```
+
+- *Type:* string
+
+c1.medium vCPUs: 2 Memory: 1740 MiB.
+
+---
+
+##### `C1_XLARGE`<sup>Required</sup> <a name="C1_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C1_XLARGE"></a>
+
+```typescript
+public readonly C1_XLARGE: string;
+```
+
+- *Type:* string
+
+c1.xlarge vCPUs: 8 Memory: 7168 MiB.
+
+---
+
+##### `C3_2XLARGE`<sup>Required</sup> <a name="C3_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C3_2XLARGE"></a>
+
+```typescript
+public readonly C3_2XLARGE: string;
+```
+
+- *Type:* string
+
+c3.2xlarge vCPUs: 8 Memory: 15360 MiB.
+
+---
+
+##### `C3_4XLARGE`<sup>Required</sup> <a name="C3_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C3_4XLARGE"></a>
+
+```typescript
+public readonly C3_4XLARGE: string;
+```
+
+- *Type:* string
+
+c3.4xlarge vCPUs: 16 Memory: 30720 MiB.
+
+---
+
+##### `C3_8XLARGE`<sup>Required</sup> <a name="C3_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C3_8XLARGE"></a>
+
+```typescript
+public readonly C3_8XLARGE: string;
+```
+
+- *Type:* string
+
+c3.8xlarge vCPUs: 32 Memory: 61440 MiB.
+
+---
+
+##### `C3_LARGE`<sup>Required</sup> <a name="C3_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C3_LARGE"></a>
+
+```typescript
+public readonly C3_LARGE: string;
+```
+
+- *Type:* string
+
+c3.large vCPUs: 2 Memory: 3840 MiB.
+
+---
+
+##### `C3_XLARGE`<sup>Required</sup> <a name="C3_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C3_XLARGE"></a>
+
+```typescript
+public readonly C3_XLARGE: string;
+```
+
+- *Type:* string
+
+c3.xlarge vCPUs: 4 Memory: 7680 MiB.
+
+---
+
+##### `C4_2XLARGE`<sup>Required</sup> <a name="C4_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C4_2XLARGE"></a>
+
+```typescript
+public readonly C4_2XLARGE: string;
+```
+
+- *Type:* string
+
+c4.2xlarge vCPUs: 8 Memory: 15360 MiB.
+
+---
+
+##### `C4_4XLARGE`<sup>Required</sup> <a name="C4_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C4_4XLARGE"></a>
+
+```typescript
+public readonly C4_4XLARGE: string;
+```
+
+- *Type:* string
+
+c4.4xlarge vCPUs: 16 Memory: 30720 MiB.
+
+---
+
+##### `C4_8XLARGE`<sup>Required</sup> <a name="C4_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C4_8XLARGE"></a>
+
+```typescript
+public readonly C4_8XLARGE: string;
+```
+
+- *Type:* string
+
+c4.8xlarge vCPUs: 36 Memory: 61440 MiB.
+
+---
+
+##### `C4_LARGE`<sup>Required</sup> <a name="C4_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C4_LARGE"></a>
+
+```typescript
+public readonly C4_LARGE: string;
+```
+
+- *Type:* string
+
+c4.large vCPUs: 2 Memory: 3840 MiB.
+
+---
+
+##### `C4_XLARGE`<sup>Required</sup> <a name="C4_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C4_XLARGE"></a>
+
+```typescript
+public readonly C4_XLARGE: string;
+```
+
+- *Type:* string
+
+c4.xlarge vCPUs: 4 Memory: 7680 MiB.
+
+---
+
+##### `C5_12XLARGE`<sup>Required</sup> <a name="C5_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_12XLARGE"></a>
+
+```typescript
+public readonly C5_12XLARGE: string;
+```
+
+- *Type:* string
+
+c5.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C5_18XLARGE`<sup>Required</sup> <a name="C5_18XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_18XLARGE"></a>
+
+```typescript
+public readonly C5_18XLARGE: string;
+```
+
+- *Type:* string
+
+c5.18xlarge vCPUs: 72 Memory: 147456 MiB.
+
+---
+
+##### `C5_24XLARGE`<sup>Required</sup> <a name="C5_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_24XLARGE"></a>
+
+```typescript
+public readonly C5_24XLARGE: string;
+```
+
+- *Type:* string
+
+c5.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C5_2XLARGE`<sup>Required</sup> <a name="C5_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_2XLARGE"></a>
+
+```typescript
+public readonly C5_2XLARGE: string;
+```
+
+- *Type:* string
+
+c5.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C5_4XLARGE`<sup>Required</sup> <a name="C5_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_4XLARGE"></a>
+
+```typescript
+public readonly C5_4XLARGE: string;
+```
+
+- *Type:* string
+
+c5.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C5_9XLARGE`<sup>Required</sup> <a name="C5_9XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_9XLARGE"></a>
+
+```typescript
+public readonly C5_9XLARGE: string;
+```
+
+- *Type:* string
+
+c5.9xlarge vCPUs: 36 Memory: 73728 MiB.
+
+---
+
+##### `C5_LARGE`<sup>Required</sup> <a name="C5_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_LARGE"></a>
+
+```typescript
+public readonly C5_LARGE: string;
+```
+
+- *Type:* string
+
+c5.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C5_METAL`<sup>Required</sup> <a name="C5_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_METAL"></a>
+
+```typescript
+public readonly C5_METAL: string;
+```
+
+- *Type:* string
+
+c5.metal vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C5_XLARGE`<sup>Required</sup> <a name="C5_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5_XLARGE"></a>
+
+```typescript
+public readonly C5_XLARGE: string;
+```
+
+- *Type:* string
+
+c5.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C5A_12XLARGE`<sup>Required</sup> <a name="C5A_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_12XLARGE"></a>
+
+```typescript
+public readonly C5A_12XLARGE: string;
+```
+
+- *Type:* string
+
+c5a.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C5A_16XLARGE`<sup>Required</sup> <a name="C5A_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_16XLARGE"></a>
+
+```typescript
+public readonly C5A_16XLARGE: string;
+```
+
+- *Type:* string
+
+c5a.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C5A_24XLARGE`<sup>Required</sup> <a name="C5A_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_24XLARGE"></a>
+
+```typescript
+public readonly C5A_24XLARGE: string;
+```
+
+- *Type:* string
+
+c5a.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C5A_2XLARGE`<sup>Required</sup> <a name="C5A_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_2XLARGE"></a>
+
+```typescript
+public readonly C5A_2XLARGE: string;
+```
+
+- *Type:* string
+
+c5a.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C5A_4XLARGE`<sup>Required</sup> <a name="C5A_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_4XLARGE"></a>
+
+```typescript
+public readonly C5A_4XLARGE: string;
+```
+
+- *Type:* string
+
+c5a.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C5A_8XLARGE`<sup>Required</sup> <a name="C5A_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_8XLARGE"></a>
+
+```typescript
+public readonly C5A_8XLARGE: string;
+```
+
+- *Type:* string
+
+c5a.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C5A_LARGE`<sup>Required</sup> <a name="C5A_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_LARGE"></a>
+
+```typescript
+public readonly C5A_LARGE: string;
+```
+
+- *Type:* string
+
+c5a.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C5A_XLARGE`<sup>Required</sup> <a name="C5A_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5A_XLARGE"></a>
+
+```typescript
+public readonly C5A_XLARGE: string;
+```
+
+- *Type:* string
+
+c5a.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C5AD_12XLARGE`<sup>Required</sup> <a name="C5AD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_12XLARGE"></a>
+
+```typescript
+public readonly C5AD_12XLARGE: string;
+```
+
+- *Type:* string
+
+c5ad.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C5AD_16XLARGE`<sup>Required</sup> <a name="C5AD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_16XLARGE"></a>
+
+```typescript
+public readonly C5AD_16XLARGE: string;
+```
+
+- *Type:* string
+
+c5ad.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C5AD_24XLARGE`<sup>Required</sup> <a name="C5AD_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_24XLARGE"></a>
+
+```typescript
+public readonly C5AD_24XLARGE: string;
+```
+
+- *Type:* string
+
+c5ad.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C5AD_2XLARGE`<sup>Required</sup> <a name="C5AD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_2XLARGE"></a>
+
+```typescript
+public readonly C5AD_2XLARGE: string;
+```
+
+- *Type:* string
+
+c5ad.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C5AD_4XLARGE`<sup>Required</sup> <a name="C5AD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_4XLARGE"></a>
+
+```typescript
+public readonly C5AD_4XLARGE: string;
+```
+
+- *Type:* string
+
+c5ad.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C5AD_8XLARGE`<sup>Required</sup> <a name="C5AD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_8XLARGE"></a>
+
+```typescript
+public readonly C5AD_8XLARGE: string;
+```
+
+- *Type:* string
+
+c5ad.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C5AD_LARGE`<sup>Required</sup> <a name="C5AD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_LARGE"></a>
+
+```typescript
+public readonly C5AD_LARGE: string;
+```
+
+- *Type:* string
+
+c5ad.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C5AD_XLARGE`<sup>Required</sup> <a name="C5AD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5AD_XLARGE"></a>
+
+```typescript
+public readonly C5AD_XLARGE: string;
+```
+
+- *Type:* string
+
+c5ad.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C5D_12XLARGE`<sup>Required</sup> <a name="C5D_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_12XLARGE"></a>
+
+```typescript
+public readonly C5D_12XLARGE: string;
+```
+
+- *Type:* string
+
+c5d.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C5D_18XLARGE`<sup>Required</sup> <a name="C5D_18XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_18XLARGE"></a>
+
+```typescript
+public readonly C5D_18XLARGE: string;
+```
+
+- *Type:* string
+
+c5d.18xlarge vCPUs: 72 Memory: 147456 MiB.
+
+---
+
+##### `C5D_24XLARGE`<sup>Required</sup> <a name="C5D_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_24XLARGE"></a>
+
+```typescript
+public readonly C5D_24XLARGE: string;
+```
+
+- *Type:* string
+
+c5d.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C5D_2XLARGE`<sup>Required</sup> <a name="C5D_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_2XLARGE"></a>
+
+```typescript
+public readonly C5D_2XLARGE: string;
+```
+
+- *Type:* string
+
+c5d.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C5D_4XLARGE`<sup>Required</sup> <a name="C5D_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_4XLARGE"></a>
+
+```typescript
+public readonly C5D_4XLARGE: string;
+```
+
+- *Type:* string
+
+c5d.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C5D_9XLARGE`<sup>Required</sup> <a name="C5D_9XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_9XLARGE"></a>
+
+```typescript
+public readonly C5D_9XLARGE: string;
+```
+
+- *Type:* string
+
+c5d.9xlarge vCPUs: 36 Memory: 73728 MiB.
+
+---
+
+##### `C5D_LARGE`<sup>Required</sup> <a name="C5D_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_LARGE"></a>
+
+```typescript
+public readonly C5D_LARGE: string;
+```
+
+- *Type:* string
+
+c5d.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C5D_METAL`<sup>Required</sup> <a name="C5D_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_METAL"></a>
+
+```typescript
+public readonly C5D_METAL: string;
+```
+
+- *Type:* string
+
+c5d.metal vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C5D_XLARGE`<sup>Required</sup> <a name="C5D_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5D_XLARGE"></a>
+
+```typescript
+public readonly C5D_XLARGE: string;
+```
+
+- *Type:* string
+
+c5d.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C5N_18XLARGE`<sup>Required</sup> <a name="C5N_18XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_18XLARGE"></a>
+
+```typescript
+public readonly C5N_18XLARGE: string;
+```
+
+- *Type:* string
+
+c5n.18xlarge vCPUs: 72 Memory: 196608 MiB.
+
+---
+
+##### `C5N_2XLARGE`<sup>Required</sup> <a name="C5N_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_2XLARGE"></a>
+
+```typescript
+public readonly C5N_2XLARGE: string;
+```
+
+- *Type:* string
+
+c5n.2xlarge vCPUs: 8 Memory: 21504 MiB.
+
+---
+
+##### `C5N_4XLARGE`<sup>Required</sup> <a name="C5N_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_4XLARGE"></a>
+
+```typescript
+public readonly C5N_4XLARGE: string;
+```
+
+- *Type:* string
+
+c5n.4xlarge vCPUs: 16 Memory: 43008 MiB.
+
+---
+
+##### `C5N_9XLARGE`<sup>Required</sup> <a name="C5N_9XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_9XLARGE"></a>
+
+```typescript
+public readonly C5N_9XLARGE: string;
+```
+
+- *Type:* string
+
+c5n.9xlarge vCPUs: 36 Memory: 98304 MiB.
+
+---
+
+##### `C5N_LARGE`<sup>Required</sup> <a name="C5N_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_LARGE"></a>
+
+```typescript
+public readonly C5N_LARGE: string;
+```
+
+- *Type:* string
+
+c5n.large vCPUs: 2 Memory: 5376 MiB.
+
+---
+
+##### `C5N_METAL`<sup>Required</sup> <a name="C5N_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_METAL"></a>
+
+```typescript
+public readonly C5N_METAL: string;
+```
+
+- *Type:* string
+
+c5n.metal vCPUs: 72 Memory: 196608 MiB.
+
+---
+
+##### `C5N_XLARGE`<sup>Required</sup> <a name="C5N_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C5N_XLARGE"></a>
+
+```typescript
+public readonly C5N_XLARGE: string;
+```
+
+- *Type:* string
+
+c5n.xlarge vCPUs: 4 Memory: 10752 MiB.
+
+---
+
+##### `C6A_12XLARGE`<sup>Required</sup> <a name="C6A_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_12XLARGE"></a>
+
+```typescript
+public readonly C6A_12XLARGE: string;
+```
+
+- *Type:* string
+
+c6a.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C6A_16XLARGE`<sup>Required</sup> <a name="C6A_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_16XLARGE"></a>
+
+```typescript
+public readonly C6A_16XLARGE: string;
+```
+
+- *Type:* string
+
+c6a.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C6A_24XLARGE`<sup>Required</sup> <a name="C6A_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_24XLARGE"></a>
+
+```typescript
+public readonly C6A_24XLARGE: string;
+```
+
+- *Type:* string
+
+c6a.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C6A_2XLARGE`<sup>Required</sup> <a name="C6A_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_2XLARGE"></a>
+
+```typescript
+public readonly C6A_2XLARGE: string;
+```
+
+- *Type:* string
+
+c6a.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C6A_32XLARGE`<sup>Required</sup> <a name="C6A_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_32XLARGE"></a>
+
+```typescript
+public readonly C6A_32XLARGE: string;
+```
+
+- *Type:* string
+
+c6a.32xlarge vCPUs: 128 Memory: 262144 MiB.
+
+---
+
+##### `C6A_48XLARGE`<sup>Required</sup> <a name="C6A_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_48XLARGE"></a>
+
+```typescript
+public readonly C6A_48XLARGE: string;
+```
+
+- *Type:* string
+
+c6a.48xlarge vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C6A_4XLARGE`<sup>Required</sup> <a name="C6A_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_4XLARGE"></a>
+
+```typescript
+public readonly C6A_4XLARGE: string;
+```
+
+- *Type:* string
+
+c6a.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C6A_8XLARGE`<sup>Required</sup> <a name="C6A_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_8XLARGE"></a>
+
+```typescript
+public readonly C6A_8XLARGE: string;
+```
+
+- *Type:* string
+
+c6a.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C6A_LARGE`<sup>Required</sup> <a name="C6A_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_LARGE"></a>
+
+```typescript
+public readonly C6A_LARGE: string;
+```
+
+- *Type:* string
+
+c6a.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C6A_METAL`<sup>Required</sup> <a name="C6A_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_METAL"></a>
+
+```typescript
+public readonly C6A_METAL: string;
+```
+
+- *Type:* string
+
+c6a.metal vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C6A_XLARGE`<sup>Required</sup> <a name="C6A_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6A_XLARGE"></a>
+
+```typescript
+public readonly C6A_XLARGE: string;
+```
+
+- *Type:* string
+
+c6a.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C6G_12XLARGE`<sup>Required</sup> <a name="C6G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_12XLARGE"></a>
+
+```typescript
+public readonly C6G_12XLARGE: string;
+```
+
+- *Type:* string
+
+c6g.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C6G_16XLARGE`<sup>Required</sup> <a name="C6G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_16XLARGE"></a>
+
+```typescript
+public readonly C6G_16XLARGE: string;
+```
+
+- *Type:* string
+
+c6g.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C6G_2XLARGE`<sup>Required</sup> <a name="C6G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_2XLARGE"></a>
+
+```typescript
+public readonly C6G_2XLARGE: string;
+```
+
+- *Type:* string
+
+c6g.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C6G_4XLARGE`<sup>Required</sup> <a name="C6G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_4XLARGE"></a>
+
+```typescript
+public readonly C6G_4XLARGE: string;
+```
+
+- *Type:* string
+
+c6g.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C6G_8XLARGE`<sup>Required</sup> <a name="C6G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_8XLARGE"></a>
+
+```typescript
+public readonly C6G_8XLARGE: string;
+```
+
+- *Type:* string
+
+c6g.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C6G_LARGE`<sup>Required</sup> <a name="C6G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_LARGE"></a>
+
+```typescript
+public readonly C6G_LARGE: string;
+```
+
+- *Type:* string
+
+c6g.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C6G_MEDIUM`<sup>Required</sup> <a name="C6G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_MEDIUM"></a>
+
+```typescript
+public readonly C6G_MEDIUM: string;
+```
+
+- *Type:* string
+
+c6g.medium vCPUs: 1 Memory: 2048 MiB.
+
+---
+
+##### `C6G_METAL`<sup>Required</sup> <a name="C6G_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_METAL"></a>
+
+```typescript
+public readonly C6G_METAL: string;
+```
+
+- *Type:* string
+
+c6g.metal vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C6G_XLARGE`<sup>Required</sup> <a name="C6G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6G_XLARGE"></a>
+
+```typescript
+public readonly C6G_XLARGE: string;
+```
+
+- *Type:* string
+
+c6g.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C6GD_12XLARGE`<sup>Required</sup> <a name="C6GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_12XLARGE"></a>
+
+```typescript
+public readonly C6GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+c6gd.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C6GD_16XLARGE`<sup>Required</sup> <a name="C6GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_16XLARGE"></a>
+
+```typescript
+public readonly C6GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+c6gd.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C6GD_2XLARGE`<sup>Required</sup> <a name="C6GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_2XLARGE"></a>
+
+```typescript
+public readonly C6GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+c6gd.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C6GD_4XLARGE`<sup>Required</sup> <a name="C6GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_4XLARGE"></a>
+
+```typescript
+public readonly C6GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+c6gd.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C6GD_8XLARGE`<sup>Required</sup> <a name="C6GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_8XLARGE"></a>
+
+```typescript
+public readonly C6GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+c6gd.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C6GD_LARGE`<sup>Required</sup> <a name="C6GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_LARGE"></a>
+
+```typescript
+public readonly C6GD_LARGE: string;
+```
+
+- *Type:* string
+
+c6gd.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C6GD_MEDIUM`<sup>Required</sup> <a name="C6GD_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_MEDIUM"></a>
+
+```typescript
+public readonly C6GD_MEDIUM: string;
+```
+
+- *Type:* string
+
+c6gd.medium vCPUs: 1 Memory: 2048 MiB.
+
+---
+
+##### `C6GD_METAL`<sup>Required</sup> <a name="C6GD_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_METAL"></a>
+
+```typescript
+public readonly C6GD_METAL: string;
+```
+
+- *Type:* string
+
+c6gd.metal vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C6GD_XLARGE`<sup>Required</sup> <a name="C6GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GD_XLARGE"></a>
+
+```typescript
+public readonly C6GD_XLARGE: string;
+```
+
+- *Type:* string
+
+c6gd.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C6GN_12XLARGE`<sup>Required</sup> <a name="C6GN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_12XLARGE"></a>
+
+```typescript
+public readonly C6GN_12XLARGE: string;
+```
+
+- *Type:* string
+
+c6gn.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C6GN_16XLARGE`<sup>Required</sup> <a name="C6GN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_16XLARGE"></a>
+
+```typescript
+public readonly C6GN_16XLARGE: string;
+```
+
+- *Type:* string
+
+c6gn.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C6GN_2XLARGE`<sup>Required</sup> <a name="C6GN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_2XLARGE"></a>
+
+```typescript
+public readonly C6GN_2XLARGE: string;
+```
+
+- *Type:* string
+
+c6gn.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C6GN_4XLARGE`<sup>Required</sup> <a name="C6GN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_4XLARGE"></a>
+
+```typescript
+public readonly C6GN_4XLARGE: string;
+```
+
+- *Type:* string
+
+c6gn.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C6GN_8XLARGE`<sup>Required</sup> <a name="C6GN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_8XLARGE"></a>
+
+```typescript
+public readonly C6GN_8XLARGE: string;
+```
+
+- *Type:* string
+
+c6gn.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C6GN_LARGE`<sup>Required</sup> <a name="C6GN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_LARGE"></a>
+
+```typescript
+public readonly C6GN_LARGE: string;
+```
+
+- *Type:* string
+
+c6gn.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C6GN_MEDIUM`<sup>Required</sup> <a name="C6GN_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_MEDIUM"></a>
+
+```typescript
+public readonly C6GN_MEDIUM: string;
+```
+
+- *Type:* string
+
+c6gn.medium vCPUs: 1 Memory: 2048 MiB.
+
+---
+
+##### `C6GN_XLARGE`<sup>Required</sup> <a name="C6GN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6GN_XLARGE"></a>
+
+```typescript
+public readonly C6GN_XLARGE: string;
+```
+
+- *Type:* string
+
+c6gn.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C6I_12XLARGE`<sup>Required</sup> <a name="C6I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_12XLARGE"></a>
+
+```typescript
+public readonly C6I_12XLARGE: string;
+```
+
+- *Type:* string
+
+c6i.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C6I_16XLARGE`<sup>Required</sup> <a name="C6I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_16XLARGE"></a>
+
+```typescript
+public readonly C6I_16XLARGE: string;
+```
+
+- *Type:* string
+
+c6i.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C6I_24XLARGE`<sup>Required</sup> <a name="C6I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_24XLARGE"></a>
+
+```typescript
+public readonly C6I_24XLARGE: string;
+```
+
+- *Type:* string
+
+c6i.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C6I_2XLARGE`<sup>Required</sup> <a name="C6I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_2XLARGE"></a>
+
+```typescript
+public readonly C6I_2XLARGE: string;
+```
+
+- *Type:* string
+
+c6i.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C6I_32XLARGE`<sup>Required</sup> <a name="C6I_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_32XLARGE"></a>
+
+```typescript
+public readonly C6I_32XLARGE: string;
+```
+
+- *Type:* string
+
+c6i.32xlarge vCPUs: 128 Memory: 262144 MiB.
+
+---
+
+##### `C6I_4XLARGE`<sup>Required</sup> <a name="C6I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_4XLARGE"></a>
+
+```typescript
+public readonly C6I_4XLARGE: string;
+```
+
+- *Type:* string
+
+c6i.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C6I_8XLARGE`<sup>Required</sup> <a name="C6I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_8XLARGE"></a>
+
+```typescript
+public readonly C6I_8XLARGE: string;
+```
+
+- *Type:* string
+
+c6i.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C6I_LARGE`<sup>Required</sup> <a name="C6I_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_LARGE"></a>
+
+```typescript
+public readonly C6I_LARGE: string;
+```
+
+- *Type:* string
+
+c6i.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C6I_METAL`<sup>Required</sup> <a name="C6I_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_METAL"></a>
+
+```typescript
+public readonly C6I_METAL: string;
+```
+
+- *Type:* string
+
+c6i.metal vCPUs: 128 Memory: 262144 MiB.
+
+---
+
+##### `C6I_XLARGE`<sup>Required</sup> <a name="C6I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6I_XLARGE"></a>
+
+```typescript
+public readonly C6I_XLARGE: string;
+```
+
+- *Type:* string
+
+c6i.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C6ID_12XLARGE`<sup>Required</sup> <a name="C6ID_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_12XLARGE"></a>
+
+```typescript
+public readonly C6ID_12XLARGE: string;
+```
+
+- *Type:* string
+
+c6id.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C6ID_16XLARGE`<sup>Required</sup> <a name="C6ID_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_16XLARGE"></a>
+
+```typescript
+public readonly C6ID_16XLARGE: string;
+```
+
+- *Type:* string
+
+c6id.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C6ID_24XLARGE`<sup>Required</sup> <a name="C6ID_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_24XLARGE"></a>
+
+```typescript
+public readonly C6ID_24XLARGE: string;
+```
+
+- *Type:* string
+
+c6id.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C6ID_2XLARGE`<sup>Required</sup> <a name="C6ID_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_2XLARGE"></a>
+
+```typescript
+public readonly C6ID_2XLARGE: string;
+```
+
+- *Type:* string
+
+c6id.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C6ID_32XLARGE`<sup>Required</sup> <a name="C6ID_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_32XLARGE"></a>
+
+```typescript
+public readonly C6ID_32XLARGE: string;
+```
+
+- *Type:* string
+
+c6id.32xlarge vCPUs: 128 Memory: 262144 MiB.
+
+---
+
+##### `C6ID_4XLARGE`<sup>Required</sup> <a name="C6ID_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_4XLARGE"></a>
+
+```typescript
+public readonly C6ID_4XLARGE: string;
+```
+
+- *Type:* string
+
+c6id.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C6ID_8XLARGE`<sup>Required</sup> <a name="C6ID_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_8XLARGE"></a>
+
+```typescript
+public readonly C6ID_8XLARGE: string;
+```
+
+- *Type:* string
+
+c6id.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C6ID_LARGE`<sup>Required</sup> <a name="C6ID_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_LARGE"></a>
+
+```typescript
+public readonly C6ID_LARGE: string;
+```
+
+- *Type:* string
+
+c6id.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C6ID_METAL`<sup>Required</sup> <a name="C6ID_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_METAL"></a>
+
+```typescript
+public readonly C6ID_METAL: string;
+```
+
+- *Type:* string
+
+c6id.metal vCPUs: 128 Memory: 262144 MiB.
+
+---
+
+##### `C6ID_XLARGE`<sup>Required</sup> <a name="C6ID_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6ID_XLARGE"></a>
+
+```typescript
+public readonly C6ID_XLARGE: string;
+```
+
+- *Type:* string
+
+c6id.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C6IN_12XLARGE`<sup>Required</sup> <a name="C6IN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_12XLARGE"></a>
+
+```typescript
+public readonly C6IN_12XLARGE: string;
+```
+
+- *Type:* string
+
+c6in.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C6IN_16XLARGE`<sup>Required</sup> <a name="C6IN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_16XLARGE"></a>
+
+```typescript
+public readonly C6IN_16XLARGE: string;
+```
+
+- *Type:* string
+
+c6in.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C6IN_24XLARGE`<sup>Required</sup> <a name="C6IN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_24XLARGE"></a>
+
+```typescript
+public readonly C6IN_24XLARGE: string;
+```
+
+- *Type:* string
+
+c6in.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C6IN_2XLARGE`<sup>Required</sup> <a name="C6IN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_2XLARGE"></a>
+
+```typescript
+public readonly C6IN_2XLARGE: string;
+```
+
+- *Type:* string
+
+c6in.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C6IN_32XLARGE`<sup>Required</sup> <a name="C6IN_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_32XLARGE"></a>
+
+```typescript
+public readonly C6IN_32XLARGE: string;
+```
+
+- *Type:* string
+
+c6in.32xlarge vCPUs: 128 Memory: 262144 MiB.
+
+---
+
+##### `C6IN_4XLARGE`<sup>Required</sup> <a name="C6IN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_4XLARGE"></a>
+
+```typescript
+public readonly C6IN_4XLARGE: string;
+```
+
+- *Type:* string
+
+c6in.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C6IN_8XLARGE`<sup>Required</sup> <a name="C6IN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_8XLARGE"></a>
+
+```typescript
+public readonly C6IN_8XLARGE: string;
+```
+
+- *Type:* string
+
+c6in.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C6IN_LARGE`<sup>Required</sup> <a name="C6IN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_LARGE"></a>
+
+```typescript
+public readonly C6IN_LARGE: string;
+```
+
+- *Type:* string
+
+c6in.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C6IN_METAL`<sup>Required</sup> <a name="C6IN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_METAL"></a>
+
+```typescript
+public readonly C6IN_METAL: string;
+```
+
+- *Type:* string
+
+c6in.metal vCPUs: 128 Memory: 262144 MiB.
+
+---
+
+##### `C6IN_XLARGE`<sup>Required</sup> <a name="C6IN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C6IN_XLARGE"></a>
+
+```typescript
+public readonly C6IN_XLARGE: string;
+```
+
+- *Type:* string
+
+c6in.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C7A_12XLARGE`<sup>Required</sup> <a name="C7A_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_12XLARGE"></a>
+
+```typescript
+public readonly C7A_12XLARGE: string;
+```
+
+- *Type:* string
+
+c7a.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C7A_16XLARGE`<sup>Required</sup> <a name="C7A_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_16XLARGE"></a>
+
+```typescript
+public readonly C7A_16XLARGE: string;
+```
+
+- *Type:* string
+
+c7a.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C7A_24XLARGE`<sup>Required</sup> <a name="C7A_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_24XLARGE"></a>
+
+```typescript
+public readonly C7A_24XLARGE: string;
+```
+
+- *Type:* string
+
+c7a.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C7A_2XLARGE`<sup>Required</sup> <a name="C7A_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_2XLARGE"></a>
+
+```typescript
+public readonly C7A_2XLARGE: string;
+```
+
+- *Type:* string
+
+c7a.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C7A_32XLARGE`<sup>Required</sup> <a name="C7A_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_32XLARGE"></a>
+
+```typescript
+public readonly C7A_32XLARGE: string;
+```
+
+- *Type:* string
+
+c7a.32xlarge vCPUs: 128 Memory: 262144 MiB.
+
+---
+
+##### `C7A_48XLARGE`<sup>Required</sup> <a name="C7A_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_48XLARGE"></a>
+
+```typescript
+public readonly C7A_48XLARGE: string;
+```
+
+- *Type:* string
+
+c7a.48xlarge vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C7A_4XLARGE`<sup>Required</sup> <a name="C7A_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_4XLARGE"></a>
+
+```typescript
+public readonly C7A_4XLARGE: string;
+```
+
+- *Type:* string
+
+c7a.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C7A_8XLARGE`<sup>Required</sup> <a name="C7A_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_8XLARGE"></a>
+
+```typescript
+public readonly C7A_8XLARGE: string;
+```
+
+- *Type:* string
+
+c7a.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C7A_LARGE`<sup>Required</sup> <a name="C7A_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_LARGE"></a>
+
+```typescript
+public readonly C7A_LARGE: string;
+```
+
+- *Type:* string
+
+c7a.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C7A_MEDIUM`<sup>Required</sup> <a name="C7A_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_MEDIUM"></a>
+
+```typescript
+public readonly C7A_MEDIUM: string;
+```
+
+- *Type:* string
+
+c7a.medium vCPUs: 1 Memory: 2048 MiB.
+
+---
+
+##### `C7A_METAL_48XL`<sup>Required</sup> <a name="C7A_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_METAL_48XL"></a>
+
+```typescript
+public readonly C7A_METAL_48XL: string;
+```
+
+- *Type:* string
+
+c7a.metal-48xl vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C7A_XLARGE`<sup>Required</sup> <a name="C7A_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7A_XLARGE"></a>
+
+```typescript
+public readonly C7A_XLARGE: string;
+```
+
+- *Type:* string
+
+c7a.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C7G_12XLARGE`<sup>Required</sup> <a name="C7G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_12XLARGE"></a>
+
+```typescript
+public readonly C7G_12XLARGE: string;
+```
+
+- *Type:* string
+
+c7g.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C7G_16XLARGE`<sup>Required</sup> <a name="C7G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_16XLARGE"></a>
+
+```typescript
+public readonly C7G_16XLARGE: string;
+```
+
+- *Type:* string
+
+c7g.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C7G_2XLARGE`<sup>Required</sup> <a name="C7G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_2XLARGE"></a>
+
+```typescript
+public readonly C7G_2XLARGE: string;
+```
+
+- *Type:* string
+
+c7g.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C7G_4XLARGE`<sup>Required</sup> <a name="C7G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_4XLARGE"></a>
+
+```typescript
+public readonly C7G_4XLARGE: string;
+```
+
+- *Type:* string
+
+c7g.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C7G_8XLARGE`<sup>Required</sup> <a name="C7G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_8XLARGE"></a>
+
+```typescript
+public readonly C7G_8XLARGE: string;
+```
+
+- *Type:* string
+
+c7g.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C7G_LARGE`<sup>Required</sup> <a name="C7G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_LARGE"></a>
+
+```typescript
+public readonly C7G_LARGE: string;
+```
+
+- *Type:* string
+
+c7g.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C7G_MEDIUM`<sup>Required</sup> <a name="C7G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_MEDIUM"></a>
+
+```typescript
+public readonly C7G_MEDIUM: string;
+```
+
+- *Type:* string
+
+c7g.medium vCPUs: 1 Memory: 2048 MiB.
+
+---
+
+##### `C7G_METAL`<sup>Required</sup> <a name="C7G_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_METAL"></a>
+
+```typescript
+public readonly C7G_METAL: string;
+```
+
+- *Type:* string
+
+c7g.metal vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C7G_XLARGE`<sup>Required</sup> <a name="C7G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7G_XLARGE"></a>
+
+```typescript
+public readonly C7G_XLARGE: string;
+```
+
+- *Type:* string
+
+c7g.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C7GD_12XLARGE`<sup>Required</sup> <a name="C7GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_12XLARGE"></a>
+
+```typescript
+public readonly C7GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+c7gd.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C7GD_16XLARGE`<sup>Required</sup> <a name="C7GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_16XLARGE"></a>
+
+```typescript
+public readonly C7GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+c7gd.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C7GD_2XLARGE`<sup>Required</sup> <a name="C7GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_2XLARGE"></a>
+
+```typescript
+public readonly C7GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+c7gd.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C7GD_4XLARGE`<sup>Required</sup> <a name="C7GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_4XLARGE"></a>
+
+```typescript
+public readonly C7GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+c7gd.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C7GD_8XLARGE`<sup>Required</sup> <a name="C7GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_8XLARGE"></a>
+
+```typescript
+public readonly C7GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+c7gd.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C7GD_LARGE`<sup>Required</sup> <a name="C7GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_LARGE"></a>
+
+```typescript
+public readonly C7GD_LARGE: string;
+```
+
+- *Type:* string
+
+c7gd.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C7GD_MEDIUM`<sup>Required</sup> <a name="C7GD_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_MEDIUM"></a>
+
+```typescript
+public readonly C7GD_MEDIUM: string;
+```
+
+- *Type:* string
+
+c7gd.medium vCPUs: 1 Memory: 2048 MiB.
+
+---
+
+##### `C7GD_METAL`<sup>Required</sup> <a name="C7GD_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_METAL"></a>
+
+```typescript
+public readonly C7GD_METAL: string;
+```
+
+- *Type:* string
+
+c7gd.metal vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C7GD_XLARGE`<sup>Required</sup> <a name="C7GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GD_XLARGE"></a>
+
+```typescript
+public readonly C7GD_XLARGE: string;
+```
+
+- *Type:* string
+
+c7gd.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C7GN_12XLARGE`<sup>Required</sup> <a name="C7GN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_12XLARGE"></a>
+
+```typescript
+public readonly C7GN_12XLARGE: string;
+```
+
+- *Type:* string
+
+c7gn.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C7GN_16XLARGE`<sup>Required</sup> <a name="C7GN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_16XLARGE"></a>
+
+```typescript
+public readonly C7GN_16XLARGE: string;
+```
+
+- *Type:* string
+
+c7gn.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C7GN_2XLARGE`<sup>Required</sup> <a name="C7GN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_2XLARGE"></a>
+
+```typescript
+public readonly C7GN_2XLARGE: string;
+```
+
+- *Type:* string
+
+c7gn.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C7GN_4XLARGE`<sup>Required</sup> <a name="C7GN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_4XLARGE"></a>
+
+```typescript
+public readonly C7GN_4XLARGE: string;
+```
+
+- *Type:* string
+
+c7gn.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C7GN_8XLARGE`<sup>Required</sup> <a name="C7GN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_8XLARGE"></a>
+
+```typescript
+public readonly C7GN_8XLARGE: string;
+```
+
+- *Type:* string
+
+c7gn.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C7GN_LARGE`<sup>Required</sup> <a name="C7GN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_LARGE"></a>
+
+```typescript
+public readonly C7GN_LARGE: string;
+```
+
+- *Type:* string
+
+c7gn.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C7GN_MEDIUM`<sup>Required</sup> <a name="C7GN_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_MEDIUM"></a>
+
+```typescript
+public readonly C7GN_MEDIUM: string;
+```
+
+- *Type:* string
+
+c7gn.medium vCPUs: 1 Memory: 2048 MiB.
+
+---
+
+##### `C7GN_METAL`<sup>Required</sup> <a name="C7GN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_METAL"></a>
+
+```typescript
+public readonly C7GN_METAL: string;
+```
+
+- *Type:* string
+
+c7gn.metal vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C7GN_XLARGE`<sup>Required</sup> <a name="C7GN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7GN_XLARGE"></a>
+
+```typescript
+public readonly C7GN_XLARGE: string;
+```
+
+- *Type:* string
+
+c7gn.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C7I_12XLARGE`<sup>Required</sup> <a name="C7I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_12XLARGE"></a>
+
+```typescript
+public readonly C7I_12XLARGE: string;
+```
+
+- *Type:* string
+
+c7i.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C7I_16XLARGE`<sup>Required</sup> <a name="C7I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_16XLARGE"></a>
+
+```typescript
+public readonly C7I_16XLARGE: string;
+```
+
+- *Type:* string
+
+c7i.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C7I_24XLARGE`<sup>Required</sup> <a name="C7I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_24XLARGE"></a>
+
+```typescript
+public readonly C7I_24XLARGE: string;
+```
+
+- *Type:* string
+
+c7i.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C7I_2XLARGE`<sup>Required</sup> <a name="C7I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_2XLARGE"></a>
+
+```typescript
+public readonly C7I_2XLARGE: string;
+```
+
+- *Type:* string
+
+c7i.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C7I_48XLARGE`<sup>Required</sup> <a name="C7I_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_48XLARGE"></a>
+
+```typescript
+public readonly C7I_48XLARGE: string;
+```
+
+- *Type:* string
+
+c7i.48xlarge vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C7I_4XLARGE`<sup>Required</sup> <a name="C7I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_4XLARGE"></a>
+
+```typescript
+public readonly C7I_4XLARGE: string;
+```
+
+- *Type:* string
+
+c7i.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C7I_8XLARGE`<sup>Required</sup> <a name="C7I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_8XLARGE"></a>
+
+```typescript
+public readonly C7I_8XLARGE: string;
+```
+
+- *Type:* string
+
+c7i.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C7I_FLEX_12XLARGE`<sup>Required</sup> <a name="C7I_FLEX_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_12XLARGE"></a>
+
+```typescript
+public readonly C7I_FLEX_12XLARGE: string;
+```
+
+- *Type:* string
+
+c7i-flex.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C7I_FLEX_16XLARGE`<sup>Required</sup> <a name="C7I_FLEX_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_16XLARGE"></a>
+
+```typescript
+public readonly C7I_FLEX_16XLARGE: string;
+```
+
+- *Type:* string
+
+c7i-flex.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C7I_FLEX_2XLARGE`<sup>Required</sup> <a name="C7I_FLEX_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_2XLARGE"></a>
+
+```typescript
+public readonly C7I_FLEX_2XLARGE: string;
+```
+
+- *Type:* string
+
+c7i-flex.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C7I_FLEX_4XLARGE`<sup>Required</sup> <a name="C7I_FLEX_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_4XLARGE"></a>
+
+```typescript
+public readonly C7I_FLEX_4XLARGE: string;
+```
+
+- *Type:* string
+
+c7i-flex.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C7I_FLEX_8XLARGE`<sup>Required</sup> <a name="C7I_FLEX_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_8XLARGE"></a>
+
+```typescript
+public readonly C7I_FLEX_8XLARGE: string;
+```
+
+- *Type:* string
+
+c7i-flex.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C7I_FLEX_LARGE`<sup>Required</sup> <a name="C7I_FLEX_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_LARGE"></a>
+
+```typescript
+public readonly C7I_FLEX_LARGE: string;
+```
+
+- *Type:* string
+
+c7i-flex.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C7I_FLEX_XLARGE`<sup>Required</sup> <a name="C7I_FLEX_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_FLEX_XLARGE"></a>
+
+```typescript
+public readonly C7I_FLEX_XLARGE: string;
+```
+
+- *Type:* string
+
+c7i-flex.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C7I_LARGE`<sup>Required</sup> <a name="C7I_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_LARGE"></a>
+
+```typescript
+public readonly C7I_LARGE: string;
+```
+
+- *Type:* string
+
+c7i.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C7I_METAL_24XL`<sup>Required</sup> <a name="C7I_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_METAL_24XL"></a>
+
+```typescript
+public readonly C7I_METAL_24XL: string;
+```
+
+- *Type:* string
+
+c7i.metal-24xl vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C7I_METAL_48XL`<sup>Required</sup> <a name="C7I_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_METAL_48XL"></a>
+
+```typescript
+public readonly C7I_METAL_48XL: string;
+```
+
+- *Type:* string
+
+c7i.metal-48xl vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C7I_XLARGE`<sup>Required</sup> <a name="C7I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C7I_XLARGE"></a>
+
+```typescript
+public readonly C7I_XLARGE: string;
+```
+
+- *Type:* string
+
+c7i.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C8G_12XLARGE`<sup>Required</sup> <a name="C8G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_12XLARGE"></a>
+
+```typescript
+public readonly C8G_12XLARGE: string;
+```
+
+- *Type:* string
+
+c8g.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C8G_16XLARGE`<sup>Required</sup> <a name="C8G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_16XLARGE"></a>
+
+```typescript
+public readonly C8G_16XLARGE: string;
+```
+
+- *Type:* string
+
+c8g.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C8G_24XLARGE`<sup>Required</sup> <a name="C8G_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_24XLARGE"></a>
+
+```typescript
+public readonly C8G_24XLARGE: string;
+```
+
+- *Type:* string
+
+c8g.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C8G_2XLARGE`<sup>Required</sup> <a name="C8G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_2XLARGE"></a>
+
+```typescript
+public readonly C8G_2XLARGE: string;
+```
+
+- *Type:* string
+
+c8g.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C8G_48XLARGE`<sup>Required</sup> <a name="C8G_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_48XLARGE"></a>
+
+```typescript
+public readonly C8G_48XLARGE: string;
+```
+
+- *Type:* string
+
+c8g.48xlarge vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C8G_4XLARGE`<sup>Required</sup> <a name="C8G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_4XLARGE"></a>
+
+```typescript
+public readonly C8G_4XLARGE: string;
+```
+
+- *Type:* string
+
+c8g.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C8G_8XLARGE`<sup>Required</sup> <a name="C8G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_8XLARGE"></a>
+
+```typescript
+public readonly C8G_8XLARGE: string;
+```
+
+- *Type:* string
+
+c8g.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C8G_LARGE`<sup>Required</sup> <a name="C8G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_LARGE"></a>
+
+```typescript
+public readonly C8G_LARGE: string;
+```
+
+- *Type:* string
+
+c8g.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C8G_MEDIUM`<sup>Required</sup> <a name="C8G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_MEDIUM"></a>
+
+```typescript
+public readonly C8G_MEDIUM: string;
+```
+
+- *Type:* string
+
+c8g.medium vCPUs: 1 Memory: 2048 MiB.
+
+---
+
+##### `C8G_METAL_24XL`<sup>Required</sup> <a name="C8G_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_METAL_24XL"></a>
+
+```typescript
+public readonly C8G_METAL_24XL: string;
+```
+
+- *Type:* string
+
+c8g.metal-24xl vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C8G_METAL_48XL`<sup>Required</sup> <a name="C8G_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_METAL_48XL"></a>
+
+```typescript
+public readonly C8G_METAL_48XL: string;
+```
+
+- *Type:* string
+
+c8g.metal-48xl vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C8G_XLARGE`<sup>Required</sup> <a name="C8G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_XLARGE"></a>
+
+```typescript
+public readonly C8G_XLARGE: string;
+```
+
+- *Type:* string
+
+c8g.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `D2_2XLARGE`<sup>Required</sup> <a name="D2_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D2_2XLARGE"></a>
+
+```typescript
+public readonly D2_2XLARGE: string;
+```
+
+- *Type:* string
+
+d2.2xlarge vCPUs: 8 Memory: 62464 MiB.
+
+---
+
+##### `D2_4XLARGE`<sup>Required</sup> <a name="D2_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D2_4XLARGE"></a>
+
+```typescript
+public readonly D2_4XLARGE: string;
+```
+
+- *Type:* string
+
+d2.4xlarge vCPUs: 16 Memory: 124928 MiB.
+
+---
+
+##### `D2_8XLARGE`<sup>Required</sup> <a name="D2_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D2_8XLARGE"></a>
+
+```typescript
+public readonly D2_8XLARGE: string;
+```
+
+- *Type:* string
+
+d2.8xlarge vCPUs: 36 Memory: 249856 MiB.
+
+---
+
+##### `D2_XLARGE`<sup>Required</sup> <a name="D2_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D2_XLARGE"></a>
+
+```typescript
+public readonly D2_XLARGE: string;
+```
+
+- *Type:* string
+
+d2.xlarge vCPUs: 4 Memory: 31232 MiB.
+
+---
+
+##### `D3_2XLARGE`<sup>Required</sup> <a name="D3_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3_2XLARGE"></a>
+
+```typescript
+public readonly D3_2XLARGE: string;
+```
+
+- *Type:* string
+
+d3.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `D3_4XLARGE`<sup>Required</sup> <a name="D3_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3_4XLARGE"></a>
+
+```typescript
+public readonly D3_4XLARGE: string;
+```
+
+- *Type:* string
+
+d3.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `D3_8XLARGE`<sup>Required</sup> <a name="D3_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3_8XLARGE"></a>
+
+```typescript
+public readonly D3_8XLARGE: string;
+```
+
+- *Type:* string
+
+d3.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `D3_XLARGE`<sup>Required</sup> <a name="D3_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3_XLARGE"></a>
+
+```typescript
+public readonly D3_XLARGE: string;
+```
+
+- *Type:* string
+
+d3.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `D3EN_12XLARGE`<sup>Required</sup> <a name="D3EN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3EN_12XLARGE"></a>
+
+```typescript
+public readonly D3EN_12XLARGE: string;
+```
+
+- *Type:* string
+
+d3en.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `D3EN_2XLARGE`<sup>Required</sup> <a name="D3EN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3EN_2XLARGE"></a>
+
+```typescript
+public readonly D3EN_2XLARGE: string;
+```
+
+- *Type:* string
+
+d3en.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `D3EN_4XLARGE`<sup>Required</sup> <a name="D3EN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3EN_4XLARGE"></a>
+
+```typescript
+public readonly D3EN_4XLARGE: string;
+```
+
+- *Type:* string
+
+d3en.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `D3EN_6XLARGE`<sup>Required</sup> <a name="D3EN_6XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3EN_6XLARGE"></a>
+
+```typescript
+public readonly D3EN_6XLARGE: string;
+```
+
+- *Type:* string
+
+d3en.6xlarge vCPUs: 24 Memory: 98304 MiB.
+
+---
+
+##### `D3EN_8XLARGE`<sup>Required</sup> <a name="D3EN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3EN_8XLARGE"></a>
+
+```typescript
+public readonly D3EN_8XLARGE: string;
+```
+
+- *Type:* string
+
+d3en.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `D3EN_XLARGE`<sup>Required</sup> <a name="D3EN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D3EN_XLARGE"></a>
+
+```typescript
+public readonly D3EN_XLARGE: string;
+```
+
+- *Type:* string
+
+d3en.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `DL1_24XLARGE`<sup>Required</sup> <a name="DL1_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.DL1_24XLARGE"></a>
+
+```typescript
+public readonly DL1_24XLARGE: string;
+```
+
+- *Type:* string
+
+dl1.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `F1_16XLARGE`<sup>Required</sup> <a name="F1_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.F1_16XLARGE"></a>
+
+```typescript
+public readonly F1_16XLARGE: string;
+```
+
+- *Type:* string
+
+f1.16xlarge vCPUs: 64 Memory: 999424 MiB.
+
+---
+
+##### `F1_2XLARGE`<sup>Required</sup> <a name="F1_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.F1_2XLARGE"></a>
+
+```typescript
+public readonly F1_2XLARGE: string;
+```
+
+- *Type:* string
+
+f1.2xlarge vCPUs: 8 Memory: 124928 MiB.
+
+---
+
+##### `F1_4XLARGE`<sup>Required</sup> <a name="F1_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.F1_4XLARGE"></a>
+
+```typescript
+public readonly F1_4XLARGE: string;
+```
+
+- *Type:* string
+
+f1.4xlarge vCPUs: 16 Memory: 249856 MiB.
+
+---
+
+##### `F2_12XLARGE`<sup>Required</sup> <a name="F2_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.F2_12XLARGE"></a>
+
+```typescript
+public readonly F2_12XLARGE: string;
+```
+
+- *Type:* string
+
+f2.12xlarge vCPUs: 48 Memory: 524288 MiB.
+
+---
+
+##### `F2_48XLARGE`<sup>Required</sup> <a name="F2_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.F2_48XLARGE"></a>
+
+```typescript
+public readonly F2_48XLARGE: string;
+```
+
+- *Type:* string
+
+f2.48xlarge vCPUs: 192 Memory: 2097152 MiB.
+
+---
+
+##### `F2_6XLARGE`<sup>Required</sup> <a name="F2_6XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.F2_6XLARGE"></a>
+
+```typescript
+public readonly F2_6XLARGE: string;
+```
+
+- *Type:* string
+
+f2.6xlarge vCPUs: 24 Memory: 262144 MiB.
+
+---
+
+##### `G4AD_16XLARGE`<sup>Required</sup> <a name="G4AD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4AD_16XLARGE"></a>
+
+```typescript
+public readonly G4AD_16XLARGE: string;
+```
+
+- *Type:* string
+
+g4ad.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `G4AD_2XLARGE`<sup>Required</sup> <a name="G4AD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4AD_2XLARGE"></a>
+
+```typescript
+public readonly G4AD_2XLARGE: string;
+```
+
+- *Type:* string
+
+g4ad.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `G4AD_4XLARGE`<sup>Required</sup> <a name="G4AD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4AD_4XLARGE"></a>
+
+```typescript
+public readonly G4AD_4XLARGE: string;
+```
+
+- *Type:* string
+
+g4ad.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `G4AD_8XLARGE`<sup>Required</sup> <a name="G4AD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4AD_8XLARGE"></a>
+
+```typescript
+public readonly G4AD_8XLARGE: string;
+```
+
+- *Type:* string
+
+g4ad.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `G4AD_XLARGE`<sup>Required</sup> <a name="G4AD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4AD_XLARGE"></a>
+
+```typescript
+public readonly G4AD_XLARGE: string;
+```
+
+- *Type:* string
+
+g4ad.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `G4DN_12XLARGE`<sup>Required</sup> <a name="G4DN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_12XLARGE"></a>
+
+```typescript
+public readonly G4DN_12XLARGE: string;
+```
+
+- *Type:* string
+
+g4dn.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `G4DN_16XLARGE`<sup>Required</sup> <a name="G4DN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_16XLARGE"></a>
+
+```typescript
+public readonly G4DN_16XLARGE: string;
+```
+
+- *Type:* string
+
+g4dn.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `G4DN_2XLARGE`<sup>Required</sup> <a name="G4DN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_2XLARGE"></a>
+
+```typescript
+public readonly G4DN_2XLARGE: string;
+```
+
+- *Type:* string
+
+g4dn.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `G4DN_4XLARGE`<sup>Required</sup> <a name="G4DN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_4XLARGE"></a>
+
+```typescript
+public readonly G4DN_4XLARGE: string;
+```
+
+- *Type:* string
+
+g4dn.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `G4DN_8XLARGE`<sup>Required</sup> <a name="G4DN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_8XLARGE"></a>
+
+```typescript
+public readonly G4DN_8XLARGE: string;
+```
+
+- *Type:* string
+
+g4dn.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `G4DN_METAL`<sup>Required</sup> <a name="G4DN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_METAL"></a>
+
+```typescript
+public readonly G4DN_METAL: string;
+```
+
+- *Type:* string
+
+g4dn.metal vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `G4DN_XLARGE`<sup>Required</sup> <a name="G4DN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G4DN_XLARGE"></a>
+
+```typescript
+public readonly G4DN_XLARGE: string;
+```
+
+- *Type:* string
+
+g4dn.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `G5_12XLARGE`<sup>Required</sup> <a name="G5_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_12XLARGE"></a>
+
+```typescript
+public readonly G5_12XLARGE: string;
+```
+
+- *Type:* string
+
+g5.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `G5_16XLARGE`<sup>Required</sup> <a name="G5_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_16XLARGE"></a>
+
+```typescript
+public readonly G5_16XLARGE: string;
+```
+
+- *Type:* string
+
+g5.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `G5_24XLARGE`<sup>Required</sup> <a name="G5_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_24XLARGE"></a>
+
+```typescript
+public readonly G5_24XLARGE: string;
+```
+
+- *Type:* string
+
+g5.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `G5_2XLARGE`<sup>Required</sup> <a name="G5_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_2XLARGE"></a>
+
+```typescript
+public readonly G5_2XLARGE: string;
+```
+
+- *Type:* string
+
+g5.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `G5_48XLARGE`<sup>Required</sup> <a name="G5_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_48XLARGE"></a>
+
+```typescript
+public readonly G5_48XLARGE: string;
+```
+
+- *Type:* string
+
+g5.48xlarge vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `G5_4XLARGE`<sup>Required</sup> <a name="G5_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_4XLARGE"></a>
+
+```typescript
+public readonly G5_4XLARGE: string;
+```
+
+- *Type:* string
+
+g5.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `G5_8XLARGE`<sup>Required</sup> <a name="G5_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_8XLARGE"></a>
+
+```typescript
+public readonly G5_8XLARGE: string;
+```
+
+- *Type:* string
+
+g5.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `G5_XLARGE`<sup>Required</sup> <a name="G5_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5_XLARGE"></a>
+
+```typescript
+public readonly G5_XLARGE: string;
+```
+
+- *Type:* string
+
+g5.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `G5G_16XLARGE`<sup>Required</sup> <a name="G5G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5G_16XLARGE"></a>
+
+```typescript
+public readonly G5G_16XLARGE: string;
+```
+
+- *Type:* string
+
+g5g.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `G5G_2XLARGE`<sup>Required</sup> <a name="G5G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5G_2XLARGE"></a>
+
+```typescript
+public readonly G5G_2XLARGE: string;
+```
+
+- *Type:* string
+
+g5g.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `G5G_4XLARGE`<sup>Required</sup> <a name="G5G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5G_4XLARGE"></a>
+
+```typescript
+public readonly G5G_4XLARGE: string;
+```
+
+- *Type:* string
+
+g5g.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `G5G_8XLARGE`<sup>Required</sup> <a name="G5G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5G_8XLARGE"></a>
+
+```typescript
+public readonly G5G_8XLARGE: string;
+```
+
+- *Type:* string
+
+g5g.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `G5G_METAL`<sup>Required</sup> <a name="G5G_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5G_METAL"></a>
+
+```typescript
+public readonly G5G_METAL: string;
+```
+
+- *Type:* string
+
+g5g.metal vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `G5G_XLARGE`<sup>Required</sup> <a name="G5G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G5G_XLARGE"></a>
+
+```typescript
+public readonly G5G_XLARGE: string;
+```
+
+- *Type:* string
+
+g5g.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `G6_12XLARGE`<sup>Required</sup> <a name="G6_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_12XLARGE"></a>
+
+```typescript
+public readonly G6_12XLARGE: string;
+```
+
+- *Type:* string
+
+g6.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `G6_16XLARGE`<sup>Required</sup> <a name="G6_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_16XLARGE"></a>
+
+```typescript
+public readonly G6_16XLARGE: string;
+```
+
+- *Type:* string
+
+g6.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `G6_24XLARGE`<sup>Required</sup> <a name="G6_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_24XLARGE"></a>
+
+```typescript
+public readonly G6_24XLARGE: string;
+```
+
+- *Type:* string
+
+g6.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `G6_2XLARGE`<sup>Required</sup> <a name="G6_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_2XLARGE"></a>
+
+```typescript
+public readonly G6_2XLARGE: string;
+```
+
+- *Type:* string
+
+g6.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `G6_48XLARGE`<sup>Required</sup> <a name="G6_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_48XLARGE"></a>
+
+```typescript
+public readonly G6_48XLARGE: string;
+```
+
+- *Type:* string
+
+g6.48xlarge vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `G6_4XLARGE`<sup>Required</sup> <a name="G6_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_4XLARGE"></a>
+
+```typescript
+public readonly G6_4XLARGE: string;
+```
+
+- *Type:* string
+
+g6.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `G6_8XLARGE`<sup>Required</sup> <a name="G6_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_8XLARGE"></a>
+
+```typescript
+public readonly G6_8XLARGE: string;
+```
+
+- *Type:* string
+
+g6.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `G6_XLARGE`<sup>Required</sup> <a name="G6_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6_XLARGE"></a>
+
+```typescript
+public readonly G6_XLARGE: string;
+```
+
+- *Type:* string
+
+g6.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `G6E_12XLARGE`<sup>Required</sup> <a name="G6E_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_12XLARGE"></a>
+
+```typescript
+public readonly G6E_12XLARGE: string;
+```
+
+- *Type:* string
+
+g6e.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `G6E_16XLARGE`<sup>Required</sup> <a name="G6E_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_16XLARGE"></a>
+
+```typescript
+public readonly G6E_16XLARGE: string;
+```
+
+- *Type:* string
+
+g6e.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `G6E_24XLARGE`<sup>Required</sup> <a name="G6E_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_24XLARGE"></a>
+
+```typescript
+public readonly G6E_24XLARGE: string;
+```
+
+- *Type:* string
+
+g6e.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `G6E_2XLARGE`<sup>Required</sup> <a name="G6E_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_2XLARGE"></a>
+
+```typescript
+public readonly G6E_2XLARGE: string;
+```
+
+- *Type:* string
+
+g6e.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `G6E_48XLARGE`<sup>Required</sup> <a name="G6E_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_48XLARGE"></a>
+
+```typescript
+public readonly G6E_48XLARGE: string;
+```
+
+- *Type:* string
+
+g6e.48xlarge vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `G6E_4XLARGE`<sup>Required</sup> <a name="G6E_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_4XLARGE"></a>
+
+```typescript
+public readonly G6E_4XLARGE: string;
+```
+
+- *Type:* string
+
+g6e.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `G6E_8XLARGE`<sup>Required</sup> <a name="G6E_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_8XLARGE"></a>
+
+```typescript
+public readonly G6E_8XLARGE: string;
+```
+
+- *Type:* string
+
+g6e.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `G6E_XLARGE`<sup>Required</sup> <a name="G6E_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_XLARGE"></a>
+
+```typescript
+public readonly G6E_XLARGE: string;
+```
+
+- *Type:* string
+
+g6e.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `GR6_4XLARGE`<sup>Required</sup> <a name="GR6_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.GR6_4XLARGE"></a>
+
+```typescript
+public readonly GR6_4XLARGE: string;
+```
+
+- *Type:* string
+
+gr6.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `GR6_8XLARGE`<sup>Required</sup> <a name="GR6_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.GR6_8XLARGE"></a>
+
+```typescript
+public readonly GR6_8XLARGE: string;
+```
+
+- *Type:* string
+
+gr6.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `H1_16XLARGE`<sup>Required</sup> <a name="H1_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.H1_16XLARGE"></a>
+
+```typescript
+public readonly H1_16XLARGE: string;
+```
+
+- *Type:* string
+
+h1.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `H1_2XLARGE`<sup>Required</sup> <a name="H1_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.H1_2XLARGE"></a>
+
+```typescript
+public readonly H1_2XLARGE: string;
+```
+
+- *Type:* string
+
+h1.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `H1_4XLARGE`<sup>Required</sup> <a name="H1_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.H1_4XLARGE"></a>
+
+```typescript
+public readonly H1_4XLARGE: string;
+```
+
+- *Type:* string
+
+h1.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `H1_8XLARGE`<sup>Required</sup> <a name="H1_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.H1_8XLARGE"></a>
+
+```typescript
+public readonly H1_8XLARGE: string;
+```
+
+- *Type:* string
+
+h1.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `HPC7G_16XLARGE`<sup>Required</sup> <a name="HPC7G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.HPC7G_16XLARGE"></a>
+
+```typescript
+public readonly HPC7G_16XLARGE: string;
+```
+
+- *Type:* string
+
+hpc7g.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `HPC7G_4XLARGE`<sup>Required</sup> <a name="HPC7G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.HPC7G_4XLARGE"></a>
+
+```typescript
+public readonly HPC7G_4XLARGE: string;
+```
+
+- *Type:* string
+
+hpc7g.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `HPC7G_8XLARGE`<sup>Required</sup> <a name="HPC7G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.HPC7G_8XLARGE"></a>
+
+```typescript
+public readonly HPC7G_8XLARGE: string;
+```
+
+- *Type:* string
+
+hpc7g.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `I2_2XLARGE`<sup>Required</sup> <a name="I2_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I2_2XLARGE"></a>
+
+```typescript
+public readonly I2_2XLARGE: string;
+```
+
+- *Type:* string
+
+i2.2xlarge vCPUs: 8 Memory: 62464 MiB.
+
+---
+
+##### `I2_4XLARGE`<sup>Required</sup> <a name="I2_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I2_4XLARGE"></a>
+
+```typescript
+public readonly I2_4XLARGE: string;
+```
+
+- *Type:* string
+
+i2.4xlarge vCPUs: 16 Memory: 124928 MiB.
+
+---
+
+##### `I2_8XLARGE`<sup>Required</sup> <a name="I2_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I2_8XLARGE"></a>
+
+```typescript
+public readonly I2_8XLARGE: string;
+```
+
+- *Type:* string
+
+i2.8xlarge vCPUs: 32 Memory: 249856 MiB.
+
+---
+
+##### `I2_XLARGE`<sup>Required</sup> <a name="I2_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I2_XLARGE"></a>
+
+```typescript
+public readonly I2_XLARGE: string;
+```
+
+- *Type:* string
+
+i2.xlarge vCPUs: 4 Memory: 31232 MiB.
+
+---
+
+##### `I3_16XLARGE`<sup>Required</sup> <a name="I3_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_16XLARGE"></a>
+
+```typescript
+public readonly I3_16XLARGE: string;
+```
+
+- *Type:* string
+
+i3.16xlarge vCPUs: 64 Memory: 499712 MiB.
+
+---
+
+##### `I3_2XLARGE`<sup>Required</sup> <a name="I3_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_2XLARGE"></a>
+
+```typescript
+public readonly I3_2XLARGE: string;
+```
+
+- *Type:* string
+
+i3.2xlarge vCPUs: 8 Memory: 62464 MiB.
+
+---
+
+##### `I3_4XLARGE`<sup>Required</sup> <a name="I3_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_4XLARGE"></a>
+
+```typescript
+public readonly I3_4XLARGE: string;
+```
+
+- *Type:* string
+
+i3.4xlarge vCPUs: 16 Memory: 124928 MiB.
+
+---
+
+##### `I3_8XLARGE`<sup>Required</sup> <a name="I3_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_8XLARGE"></a>
+
+```typescript
+public readonly I3_8XLARGE: string;
+```
+
+- *Type:* string
+
+i3.8xlarge vCPUs: 32 Memory: 249856 MiB.
+
+---
+
+##### `I3_LARGE`<sup>Required</sup> <a name="I3_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_LARGE"></a>
+
+```typescript
+public readonly I3_LARGE: string;
+```
+
+- *Type:* string
+
+i3.large vCPUs: 2 Memory: 15616 MiB.
+
+---
+
+##### `I3_METAL`<sup>Required</sup> <a name="I3_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_METAL"></a>
+
+```typescript
+public readonly I3_METAL: string;
+```
+
+- *Type:* string
+
+i3.metal vCPUs: 72 Memory: 524288 MiB.
+
+---
+
+##### `I3_XLARGE`<sup>Required</sup> <a name="I3_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_XLARGE"></a>
+
+```typescript
+public readonly I3_XLARGE: string;
+```
+
+- *Type:* string
+
+i3.xlarge vCPUs: 4 Memory: 31232 MiB.
+
+---
+
+##### `I3EN_12XLARGE`<sup>Required</sup> <a name="I3EN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_12XLARGE"></a>
+
+```typescript
+public readonly I3EN_12XLARGE: string;
+```
+
+- *Type:* string
+
+i3en.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `I3EN_24XLARGE`<sup>Required</sup> <a name="I3EN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_24XLARGE"></a>
+
+```typescript
+public readonly I3EN_24XLARGE: string;
+```
+
+- *Type:* string
+
+i3en.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `I3EN_2XLARGE`<sup>Required</sup> <a name="I3EN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_2XLARGE"></a>
+
+```typescript
+public readonly I3EN_2XLARGE: string;
+```
+
+- *Type:* string
+
+i3en.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `I3EN_3XLARGE`<sup>Required</sup> <a name="I3EN_3XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_3XLARGE"></a>
+
+```typescript
+public readonly I3EN_3XLARGE: string;
+```
+
+- *Type:* string
+
+i3en.3xlarge vCPUs: 12 Memory: 98304 MiB.
+
+---
+
+##### `I3EN_6XLARGE`<sup>Required</sup> <a name="I3EN_6XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_6XLARGE"></a>
+
+```typescript
+public readonly I3EN_6XLARGE: string;
+```
+
+- *Type:* string
+
+i3en.6xlarge vCPUs: 24 Memory: 196608 MiB.
+
+---
+
+##### `I3EN_LARGE`<sup>Required</sup> <a name="I3EN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_LARGE"></a>
+
+```typescript
+public readonly I3EN_LARGE: string;
+```
+
+- *Type:* string
+
+i3en.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `I3EN_METAL`<sup>Required</sup> <a name="I3EN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_METAL"></a>
+
+```typescript
+public readonly I3EN_METAL: string;
+```
+
+- *Type:* string
+
+i3en.metal vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `I3EN_XLARGE`<sup>Required</sup> <a name="I3EN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_XLARGE"></a>
+
+```typescript
+public readonly I3EN_XLARGE: string;
+```
+
+- *Type:* string
+
+i3en.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `I4G_16XLARGE`<sup>Required</sup> <a name="I4G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4G_16XLARGE"></a>
+
+```typescript
+public readonly I4G_16XLARGE: string;
+```
+
+- *Type:* string
+
+i4g.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `I4G_2XLARGE`<sup>Required</sup> <a name="I4G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4G_2XLARGE"></a>
+
+```typescript
+public readonly I4G_2XLARGE: string;
+```
+
+- *Type:* string
+
+i4g.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `I4G_4XLARGE`<sup>Required</sup> <a name="I4G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4G_4XLARGE"></a>
+
+```typescript
+public readonly I4G_4XLARGE: string;
+```
+
+- *Type:* string
+
+i4g.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `I4G_8XLARGE`<sup>Required</sup> <a name="I4G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4G_8XLARGE"></a>
+
+```typescript
+public readonly I4G_8XLARGE: string;
+```
+
+- *Type:* string
+
+i4g.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `I4G_LARGE`<sup>Required</sup> <a name="I4G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4G_LARGE"></a>
+
+```typescript
+public readonly I4G_LARGE: string;
+```
+
+- *Type:* string
+
+i4g.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `I4G_XLARGE`<sup>Required</sup> <a name="I4G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4G_XLARGE"></a>
+
+```typescript
+public readonly I4G_XLARGE: string;
+```
+
+- *Type:* string
+
+i4g.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `I4I_12XLARGE`<sup>Required</sup> <a name="I4I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_12XLARGE"></a>
+
+```typescript
+public readonly I4I_12XLARGE: string;
+```
+
+- *Type:* string
+
+i4i.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `I4I_16XLARGE`<sup>Required</sup> <a name="I4I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_16XLARGE"></a>
+
+```typescript
+public readonly I4I_16XLARGE: string;
+```
+
+- *Type:* string
+
+i4i.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `I4I_24XLARGE`<sup>Required</sup> <a name="I4I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_24XLARGE"></a>
+
+```typescript
+public readonly I4I_24XLARGE: string;
+```
+
+- *Type:* string
+
+i4i.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `I4I_2XLARGE`<sup>Required</sup> <a name="I4I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_2XLARGE"></a>
+
+```typescript
+public readonly I4I_2XLARGE: string;
+```
+
+- *Type:* string
+
+i4i.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `I4I_32XLARGE`<sup>Required</sup> <a name="I4I_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_32XLARGE"></a>
+
+```typescript
+public readonly I4I_32XLARGE: string;
+```
+
+- *Type:* string
+
+i4i.32xlarge vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `I4I_4XLARGE`<sup>Required</sup> <a name="I4I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_4XLARGE"></a>
+
+```typescript
+public readonly I4I_4XLARGE: string;
+```
+
+- *Type:* string
+
+i4i.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `I4I_8XLARGE`<sup>Required</sup> <a name="I4I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_8XLARGE"></a>
+
+```typescript
+public readonly I4I_8XLARGE: string;
+```
+
+- *Type:* string
+
+i4i.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `I4I_LARGE`<sup>Required</sup> <a name="I4I_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_LARGE"></a>
+
+```typescript
+public readonly I4I_LARGE: string;
+```
+
+- *Type:* string
+
+i4i.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `I4I_METAL`<sup>Required</sup> <a name="I4I_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_METAL"></a>
+
+```typescript
+public readonly I4I_METAL: string;
+```
+
+- *Type:* string
+
+i4i.metal vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `I4I_XLARGE`<sup>Required</sup> <a name="I4I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_XLARGE"></a>
+
+```typescript
+public readonly I4I_XLARGE: string;
+```
+
+- *Type:* string
+
+i4i.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `I7IE_12XLARGE`<sup>Required</sup> <a name="I7IE_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_12XLARGE"></a>
+
+```typescript
+public readonly I7IE_12XLARGE: string;
+```
+
+- *Type:* string
+
+i7ie.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `I7IE_18XLARGE`<sup>Required</sup> <a name="I7IE_18XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_18XLARGE"></a>
+
+```typescript
+public readonly I7IE_18XLARGE: string;
+```
+
+- *Type:* string
+
+i7ie.18xlarge vCPUs: 72 Memory: 589824 MiB.
+
+---
+
+##### `I7IE_24XLARGE`<sup>Required</sup> <a name="I7IE_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_24XLARGE"></a>
+
+```typescript
+public readonly I7IE_24XLARGE: string;
+```
+
+- *Type:* string
+
+i7ie.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `I7IE_2XLARGE`<sup>Required</sup> <a name="I7IE_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_2XLARGE"></a>
+
+```typescript
+public readonly I7IE_2XLARGE: string;
+```
+
+- *Type:* string
+
+i7ie.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `I7IE_3XLARGE`<sup>Required</sup> <a name="I7IE_3XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_3XLARGE"></a>
+
+```typescript
+public readonly I7IE_3XLARGE: string;
+```
+
+- *Type:* string
+
+i7ie.3xlarge vCPUs: 12 Memory: 98304 MiB.
+
+---
+
+##### `I7IE_48XLARGE`<sup>Required</sup> <a name="I7IE_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_48XLARGE"></a>
+
+```typescript
+public readonly I7IE_48XLARGE: string;
+```
+
+- *Type:* string
+
+i7ie.48xlarge vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `I7IE_6XLARGE`<sup>Required</sup> <a name="I7IE_6XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_6XLARGE"></a>
+
+```typescript
+public readonly I7IE_6XLARGE: string;
+```
+
+- *Type:* string
+
+i7ie.6xlarge vCPUs: 24 Memory: 196608 MiB.
+
+---
+
+##### `I7IE_LARGE`<sup>Required</sup> <a name="I7IE_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_LARGE"></a>
+
+```typescript
+public readonly I7IE_LARGE: string;
+```
+
+- *Type:* string
+
+i7ie.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `I7IE_XLARGE`<sup>Required</sup> <a name="I7IE_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_XLARGE"></a>
+
+```typescript
+public readonly I7IE_XLARGE: string;
+```
+
+- *Type:* string
+
+i7ie.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `I8G_12XLARGE`<sup>Required</sup> <a name="I8G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_12XLARGE"></a>
+
+```typescript
+public readonly I8G_12XLARGE: string;
+```
+
+- *Type:* string
+
+i8g.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `I8G_16XLARGE`<sup>Required</sup> <a name="I8G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_16XLARGE"></a>
+
+```typescript
+public readonly I8G_16XLARGE: string;
+```
+
+- *Type:* string
+
+i8g.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `I8G_24XLARGE`<sup>Required</sup> <a name="I8G_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_24XLARGE"></a>
+
+```typescript
+public readonly I8G_24XLARGE: string;
+```
+
+- *Type:* string
+
+i8g.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `I8G_2XLARGE`<sup>Required</sup> <a name="I8G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_2XLARGE"></a>
+
+```typescript
+public readonly I8G_2XLARGE: string;
+```
+
+- *Type:* string
+
+i8g.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `I8G_4XLARGE`<sup>Required</sup> <a name="I8G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_4XLARGE"></a>
+
+```typescript
+public readonly I8G_4XLARGE: string;
+```
+
+- *Type:* string
+
+i8g.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `I8G_8XLARGE`<sup>Required</sup> <a name="I8G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_8XLARGE"></a>
+
+```typescript
+public readonly I8G_8XLARGE: string;
+```
+
+- *Type:* string
+
+i8g.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `I8G_LARGE`<sup>Required</sup> <a name="I8G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_LARGE"></a>
+
+```typescript
+public readonly I8G_LARGE: string;
+```
+
+- *Type:* string
+
+i8g.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `I8G_METAL_24XL`<sup>Required</sup> <a name="I8G_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_METAL_24XL"></a>
+
+```typescript
+public readonly I8G_METAL_24XL: string;
+```
+
+- *Type:* string
+
+i8g.metal-24xl vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `I8G_XLARGE`<sup>Required</sup> <a name="I8G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_XLARGE"></a>
+
+```typescript
+public readonly I8G_XLARGE: string;
+```
+
+- *Type:* string
+
+i8g.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `IM4GN_16XLARGE`<sup>Required</sup> <a name="IM4GN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_16XLARGE"></a>
+
+```typescript
+public readonly IM4GN_16XLARGE: string;
+```
+
+- *Type:* string
+
+im4gn.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `IM4GN_2XLARGE`<sup>Required</sup> <a name="IM4GN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_2XLARGE"></a>
+
+```typescript
+public readonly IM4GN_2XLARGE: string;
+```
+
+- *Type:* string
+
+im4gn.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `IM4GN_4XLARGE`<sup>Required</sup> <a name="IM4GN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_4XLARGE"></a>
+
+```typescript
+public readonly IM4GN_4XLARGE: string;
+```
+
+- *Type:* string
+
+im4gn.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `IM4GN_8XLARGE`<sup>Required</sup> <a name="IM4GN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_8XLARGE"></a>
+
+```typescript
+public readonly IM4GN_8XLARGE: string;
+```
+
+- *Type:* string
+
+im4gn.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `IM4GN_LARGE`<sup>Required</sup> <a name="IM4GN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_LARGE"></a>
+
+```typescript
+public readonly IM4GN_LARGE: string;
+```
+
+- *Type:* string
+
+im4gn.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `IM4GN_XLARGE`<sup>Required</sup> <a name="IM4GN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_XLARGE"></a>
+
+```typescript
+public readonly IM4GN_XLARGE: string;
+```
+
+- *Type:* string
+
+im4gn.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `INF1_24XLARGE`<sup>Required</sup> <a name="INF1_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF1_24XLARGE"></a>
+
+```typescript
+public readonly INF1_24XLARGE: string;
+```
+
+- *Type:* string
+
+inf1.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `INF1_2XLARGE`<sup>Required</sup> <a name="INF1_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF1_2XLARGE"></a>
+
+```typescript
+public readonly INF1_2XLARGE: string;
+```
+
+- *Type:* string
+
+inf1.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `INF1_6XLARGE`<sup>Required</sup> <a name="INF1_6XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF1_6XLARGE"></a>
+
+```typescript
+public readonly INF1_6XLARGE: string;
+```
+
+- *Type:* string
+
+inf1.6xlarge vCPUs: 24 Memory: 49152 MiB.
+
+---
+
+##### `INF1_XLARGE`<sup>Required</sup> <a name="INF1_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF1_XLARGE"></a>
+
+```typescript
+public readonly INF1_XLARGE: string;
+```
+
+- *Type:* string
+
+inf1.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `INF2_24XLARGE`<sup>Required</sup> <a name="INF2_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF2_24XLARGE"></a>
+
+```typescript
+public readonly INF2_24XLARGE: string;
+```
+
+- *Type:* string
+
+inf2.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `INF2_48XLARGE`<sup>Required</sup> <a name="INF2_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF2_48XLARGE"></a>
+
+```typescript
+public readonly INF2_48XLARGE: string;
+```
+
+- *Type:* string
+
+inf2.48xlarge vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `INF2_8XLARGE`<sup>Required</sup> <a name="INF2_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF2_8XLARGE"></a>
+
+```typescript
+public readonly INF2_8XLARGE: string;
+```
+
+- *Type:* string
+
+inf2.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `INF2_XLARGE`<sup>Required</sup> <a name="INF2_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.INF2_XLARGE"></a>
+
+```typescript
+public readonly INF2_XLARGE: string;
+```
+
+- *Type:* string
+
+inf2.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `IS4GEN_2XLARGE`<sup>Required</sup> <a name="IS4GEN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IS4GEN_2XLARGE"></a>
+
+```typescript
+public readonly IS4GEN_2XLARGE: string;
+```
+
+- *Type:* string
+
+is4gen.2xlarge vCPUs: 8 Memory: 49152 MiB.
+
+---
+
+##### `IS4GEN_4XLARGE`<sup>Required</sup> <a name="IS4GEN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IS4GEN_4XLARGE"></a>
+
+```typescript
+public readonly IS4GEN_4XLARGE: string;
+```
+
+- *Type:* string
+
+is4gen.4xlarge vCPUs: 16 Memory: 98304 MiB.
+
+---
+
+##### `IS4GEN_8XLARGE`<sup>Required</sup> <a name="IS4GEN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IS4GEN_8XLARGE"></a>
+
+```typescript
+public readonly IS4GEN_8XLARGE: string;
+```
+
+- *Type:* string
+
+is4gen.8xlarge vCPUs: 32 Memory: 196608 MiB.
+
+---
+
+##### `IS4GEN_LARGE`<sup>Required</sup> <a name="IS4GEN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IS4GEN_LARGE"></a>
+
+```typescript
+public readonly IS4GEN_LARGE: string;
+```
+
+- *Type:* string
+
+is4gen.large vCPUs: 2 Memory: 12288 MiB.
+
+---
+
+##### `IS4GEN_MEDIUM`<sup>Required</sup> <a name="IS4GEN_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IS4GEN_MEDIUM"></a>
+
+```typescript
+public readonly IS4GEN_MEDIUM: string;
+```
+
+- *Type:* string
+
+is4gen.medium vCPUs: 1 Memory: 6144 MiB.
+
+---
+
+##### `IS4GEN_XLARGE`<sup>Required</sup> <a name="IS4GEN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IS4GEN_XLARGE"></a>
+
+```typescript
+public readonly IS4GEN_XLARGE: string;
+```
+
+- *Type:* string
+
+is4gen.xlarge vCPUs: 4 Memory: 24576 MiB.
+
+---
+
+##### `M1_LARGE`<sup>Required</sup> <a name="M1_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M1_LARGE"></a>
+
+```typescript
+public readonly M1_LARGE: string;
+```
+
+- *Type:* string
+
+m1.large vCPUs: 2 Memory: 7680 MiB.
+
+---
+
+##### `M1_MEDIUM`<sup>Required</sup> <a name="M1_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M1_MEDIUM"></a>
+
+```typescript
+public readonly M1_MEDIUM: string;
+```
+
+- *Type:* string
+
+m1.medium vCPUs: 1 Memory: 3788 MiB.
+
+---
+
+##### `M1_SMALL`<sup>Required</sup> <a name="M1_SMALL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M1_SMALL"></a>
+
+```typescript
+public readonly M1_SMALL: string;
+```
+
+- *Type:* string
+
+m1.small vCPUs: 1 Memory: 1740 MiB.
+
+---
+
+##### `M1_XLARGE`<sup>Required</sup> <a name="M1_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M1_XLARGE"></a>
+
+```typescript
+public readonly M1_XLARGE: string;
+```
+
+- *Type:* string
+
+m1.xlarge vCPUs: 4 Memory: 15360 MiB.
+
+---
+
+##### `M2_2XLARGE`<sup>Required</sup> <a name="M2_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M2_2XLARGE"></a>
+
+```typescript
+public readonly M2_2XLARGE: string;
+```
+
+- *Type:* string
+
+m2.2xlarge vCPUs: 4 Memory: 35020 MiB.
+
+---
+
+##### `M2_4XLARGE`<sup>Required</sup> <a name="M2_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M2_4XLARGE"></a>
+
+```typescript
+public readonly M2_4XLARGE: string;
+```
+
+- *Type:* string
+
+m2.4xlarge vCPUs: 8 Memory: 70041 MiB.
+
+---
+
+##### `M2_XLARGE`<sup>Required</sup> <a name="M2_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M2_XLARGE"></a>
+
+```typescript
+public readonly M2_XLARGE: string;
+```
+
+- *Type:* string
+
+m2.xlarge vCPUs: 2 Memory: 17510 MiB.
+
+---
+
+##### `M3_2XLARGE`<sup>Required</sup> <a name="M3_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M3_2XLARGE"></a>
+
+```typescript
+public readonly M3_2XLARGE: string;
+```
+
+- *Type:* string
+
+m3.2xlarge vCPUs: 8 Memory: 30720 MiB.
+
+---
+
+##### `M3_LARGE`<sup>Required</sup> <a name="M3_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M3_LARGE"></a>
+
+```typescript
+public readonly M3_LARGE: string;
+```
+
+- *Type:* string
+
+m3.large vCPUs: 2 Memory: 7680 MiB.
+
+---
+
+##### `M3_MEDIUM`<sup>Required</sup> <a name="M3_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M3_MEDIUM"></a>
+
+```typescript
+public readonly M3_MEDIUM: string;
+```
+
+- *Type:* string
+
+m3.medium vCPUs: 1 Memory: 3840 MiB.
+
+---
+
+##### `M3_XLARGE`<sup>Required</sup> <a name="M3_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M3_XLARGE"></a>
+
+```typescript
+public readonly M3_XLARGE: string;
+```
+
+- *Type:* string
+
+m3.xlarge vCPUs: 4 Memory: 15360 MiB.
+
+---
+
+##### `M4_10XLARGE`<sup>Required</sup> <a name="M4_10XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M4_10XLARGE"></a>
+
+```typescript
+public readonly M4_10XLARGE: string;
+```
+
+- *Type:* string
+
+m4.10xlarge vCPUs: 40 Memory: 163840 MiB.
+
+---
+
+##### `M4_16XLARGE`<sup>Required</sup> <a name="M4_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M4_16XLARGE"></a>
+
+```typescript
+public readonly M4_16XLARGE: string;
+```
+
+- *Type:* string
+
+m4.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M4_2XLARGE`<sup>Required</sup> <a name="M4_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M4_2XLARGE"></a>
+
+```typescript
+public readonly M4_2XLARGE: string;
+```
+
+- *Type:* string
+
+m4.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M4_4XLARGE`<sup>Required</sup> <a name="M4_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M4_4XLARGE"></a>
+
+```typescript
+public readonly M4_4XLARGE: string;
+```
+
+- *Type:* string
+
+m4.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M4_LARGE`<sup>Required</sup> <a name="M4_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M4_LARGE"></a>
+
+```typescript
+public readonly M4_LARGE: string;
+```
+
+- *Type:* string
+
+m4.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M4_XLARGE`<sup>Required</sup> <a name="M4_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M4_XLARGE"></a>
+
+```typescript
+public readonly M4_XLARGE: string;
+```
+
+- *Type:* string
+
+m4.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M5_12XLARGE`<sup>Required</sup> <a name="M5_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_12XLARGE"></a>
+
+```typescript
+public readonly M5_12XLARGE: string;
+```
+
+- *Type:* string
+
+m5.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M5_16XLARGE`<sup>Required</sup> <a name="M5_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_16XLARGE"></a>
+
+```typescript
+public readonly M5_16XLARGE: string;
+```
+
+- *Type:* string
+
+m5.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M5_24XLARGE`<sup>Required</sup> <a name="M5_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_24XLARGE"></a>
+
+```typescript
+public readonly M5_24XLARGE: string;
+```
+
+- *Type:* string
+
+m5.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M5_2XLARGE`<sup>Required</sup> <a name="M5_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_2XLARGE"></a>
+
+```typescript
+public readonly M5_2XLARGE: string;
+```
+
+- *Type:* string
+
+m5.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M5_4XLARGE`<sup>Required</sup> <a name="M5_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_4XLARGE"></a>
+
+```typescript
+public readonly M5_4XLARGE: string;
+```
+
+- *Type:* string
+
+m5.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M5_8XLARGE`<sup>Required</sup> <a name="M5_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_8XLARGE"></a>
+
+```typescript
+public readonly M5_8XLARGE: string;
+```
+
+- *Type:* string
+
+m5.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M5_LARGE`<sup>Required</sup> <a name="M5_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_LARGE"></a>
+
+```typescript
+public readonly M5_LARGE: string;
+```
+
+- *Type:* string
+
+m5.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M5_METAL`<sup>Required</sup> <a name="M5_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_METAL"></a>
+
+```typescript
+public readonly M5_METAL: string;
+```
+
+- *Type:* string
+
+m5.metal vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M5_XLARGE`<sup>Required</sup> <a name="M5_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5_XLARGE"></a>
+
+```typescript
+public readonly M5_XLARGE: string;
+```
+
+- *Type:* string
+
+m5.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M5A_12XLARGE`<sup>Required</sup> <a name="M5A_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_12XLARGE"></a>
+
+```typescript
+public readonly M5A_12XLARGE: string;
+```
+
+- *Type:* string
+
+m5a.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M5A_16XLARGE`<sup>Required</sup> <a name="M5A_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_16XLARGE"></a>
+
+```typescript
+public readonly M5A_16XLARGE: string;
+```
+
+- *Type:* string
+
+m5a.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M5A_24XLARGE`<sup>Required</sup> <a name="M5A_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_24XLARGE"></a>
+
+```typescript
+public readonly M5A_24XLARGE: string;
+```
+
+- *Type:* string
+
+m5a.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M5A_2XLARGE`<sup>Required</sup> <a name="M5A_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_2XLARGE"></a>
+
+```typescript
+public readonly M5A_2XLARGE: string;
+```
+
+- *Type:* string
+
+m5a.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M5A_4XLARGE`<sup>Required</sup> <a name="M5A_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_4XLARGE"></a>
+
+```typescript
+public readonly M5A_4XLARGE: string;
+```
+
+- *Type:* string
+
+m5a.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M5A_8XLARGE`<sup>Required</sup> <a name="M5A_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_8XLARGE"></a>
+
+```typescript
+public readonly M5A_8XLARGE: string;
+```
+
+- *Type:* string
+
+m5a.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M5A_LARGE`<sup>Required</sup> <a name="M5A_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_LARGE"></a>
+
+```typescript
+public readonly M5A_LARGE: string;
+```
+
+- *Type:* string
+
+m5a.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M5A_XLARGE`<sup>Required</sup> <a name="M5A_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5A_XLARGE"></a>
+
+```typescript
+public readonly M5A_XLARGE: string;
+```
+
+- *Type:* string
+
+m5a.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M5AD_12XLARGE`<sup>Required</sup> <a name="M5AD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_12XLARGE"></a>
+
+```typescript
+public readonly M5AD_12XLARGE: string;
+```
+
+- *Type:* string
+
+m5ad.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M5AD_16XLARGE`<sup>Required</sup> <a name="M5AD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_16XLARGE"></a>
+
+```typescript
+public readonly M5AD_16XLARGE: string;
+```
+
+- *Type:* string
+
+m5ad.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M5AD_24XLARGE`<sup>Required</sup> <a name="M5AD_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_24XLARGE"></a>
+
+```typescript
+public readonly M5AD_24XLARGE: string;
+```
+
+- *Type:* string
+
+m5ad.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M5AD_2XLARGE`<sup>Required</sup> <a name="M5AD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_2XLARGE"></a>
+
+```typescript
+public readonly M5AD_2XLARGE: string;
+```
+
+- *Type:* string
+
+m5ad.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M5AD_4XLARGE`<sup>Required</sup> <a name="M5AD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_4XLARGE"></a>
+
+```typescript
+public readonly M5AD_4XLARGE: string;
+```
+
+- *Type:* string
+
+m5ad.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M5AD_8XLARGE`<sup>Required</sup> <a name="M5AD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_8XLARGE"></a>
+
+```typescript
+public readonly M5AD_8XLARGE: string;
+```
+
+- *Type:* string
+
+m5ad.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M5AD_LARGE`<sup>Required</sup> <a name="M5AD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_LARGE"></a>
+
+```typescript
+public readonly M5AD_LARGE: string;
+```
+
+- *Type:* string
+
+m5ad.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M5AD_XLARGE`<sup>Required</sup> <a name="M5AD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5AD_XLARGE"></a>
+
+```typescript
+public readonly M5AD_XLARGE: string;
+```
+
+- *Type:* string
+
+m5ad.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M5D_12XLARGE`<sup>Required</sup> <a name="M5D_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_12XLARGE"></a>
+
+```typescript
+public readonly M5D_12XLARGE: string;
+```
+
+- *Type:* string
+
+m5d.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M5D_16XLARGE`<sup>Required</sup> <a name="M5D_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_16XLARGE"></a>
+
+```typescript
+public readonly M5D_16XLARGE: string;
+```
+
+- *Type:* string
+
+m5d.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M5D_24XLARGE`<sup>Required</sup> <a name="M5D_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_24XLARGE"></a>
+
+```typescript
+public readonly M5D_24XLARGE: string;
+```
+
+- *Type:* string
+
+m5d.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M5D_2XLARGE`<sup>Required</sup> <a name="M5D_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_2XLARGE"></a>
+
+```typescript
+public readonly M5D_2XLARGE: string;
+```
+
+- *Type:* string
+
+m5d.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M5D_4XLARGE`<sup>Required</sup> <a name="M5D_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_4XLARGE"></a>
+
+```typescript
+public readonly M5D_4XLARGE: string;
+```
+
+- *Type:* string
+
+m5d.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M5D_8XLARGE`<sup>Required</sup> <a name="M5D_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_8XLARGE"></a>
+
+```typescript
+public readonly M5D_8XLARGE: string;
+```
+
+- *Type:* string
+
+m5d.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M5D_LARGE`<sup>Required</sup> <a name="M5D_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_LARGE"></a>
+
+```typescript
+public readonly M5D_LARGE: string;
+```
+
+- *Type:* string
+
+m5d.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M5D_METAL`<sup>Required</sup> <a name="M5D_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_METAL"></a>
+
+```typescript
+public readonly M5D_METAL: string;
+```
+
+- *Type:* string
+
+m5d.metal vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M5D_XLARGE`<sup>Required</sup> <a name="M5D_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5D_XLARGE"></a>
+
+```typescript
+public readonly M5D_XLARGE: string;
+```
+
+- *Type:* string
+
+m5d.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M5DN_12XLARGE`<sup>Required</sup> <a name="M5DN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_12XLARGE"></a>
+
+```typescript
+public readonly M5DN_12XLARGE: string;
+```
+
+- *Type:* string
+
+m5dn.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M5DN_16XLARGE`<sup>Required</sup> <a name="M5DN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_16XLARGE"></a>
+
+```typescript
+public readonly M5DN_16XLARGE: string;
+```
+
+- *Type:* string
+
+m5dn.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M5DN_24XLARGE`<sup>Required</sup> <a name="M5DN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_24XLARGE"></a>
+
+```typescript
+public readonly M5DN_24XLARGE: string;
+```
+
+- *Type:* string
+
+m5dn.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M5DN_2XLARGE`<sup>Required</sup> <a name="M5DN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_2XLARGE"></a>
+
+```typescript
+public readonly M5DN_2XLARGE: string;
+```
+
+- *Type:* string
+
+m5dn.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M5DN_4XLARGE`<sup>Required</sup> <a name="M5DN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_4XLARGE"></a>
+
+```typescript
+public readonly M5DN_4XLARGE: string;
+```
+
+- *Type:* string
+
+m5dn.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M5DN_8XLARGE`<sup>Required</sup> <a name="M5DN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_8XLARGE"></a>
+
+```typescript
+public readonly M5DN_8XLARGE: string;
+```
+
+- *Type:* string
+
+m5dn.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M5DN_LARGE`<sup>Required</sup> <a name="M5DN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_LARGE"></a>
+
+```typescript
+public readonly M5DN_LARGE: string;
+```
+
+- *Type:* string
+
+m5dn.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M5DN_METAL`<sup>Required</sup> <a name="M5DN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_METAL"></a>
+
+```typescript
+public readonly M5DN_METAL: string;
+```
+
+- *Type:* string
+
+m5dn.metal vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M5DN_XLARGE`<sup>Required</sup> <a name="M5DN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5DN_XLARGE"></a>
+
+```typescript
+public readonly M5DN_XLARGE: string;
+```
+
+- *Type:* string
+
+m5dn.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M5N_12XLARGE`<sup>Required</sup> <a name="M5N_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_12XLARGE"></a>
+
+```typescript
+public readonly M5N_12XLARGE: string;
+```
+
+- *Type:* string
+
+m5n.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M5N_16XLARGE`<sup>Required</sup> <a name="M5N_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_16XLARGE"></a>
+
+```typescript
+public readonly M5N_16XLARGE: string;
+```
+
+- *Type:* string
+
+m5n.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M5N_24XLARGE`<sup>Required</sup> <a name="M5N_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_24XLARGE"></a>
+
+```typescript
+public readonly M5N_24XLARGE: string;
+```
+
+- *Type:* string
+
+m5n.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M5N_2XLARGE`<sup>Required</sup> <a name="M5N_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_2XLARGE"></a>
+
+```typescript
+public readonly M5N_2XLARGE: string;
+```
+
+- *Type:* string
+
+m5n.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M5N_4XLARGE`<sup>Required</sup> <a name="M5N_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_4XLARGE"></a>
+
+```typescript
+public readonly M5N_4XLARGE: string;
+```
+
+- *Type:* string
+
+m5n.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M5N_8XLARGE`<sup>Required</sup> <a name="M5N_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_8XLARGE"></a>
+
+```typescript
+public readonly M5N_8XLARGE: string;
+```
+
+- *Type:* string
+
+m5n.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M5N_LARGE`<sup>Required</sup> <a name="M5N_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_LARGE"></a>
+
+```typescript
+public readonly M5N_LARGE: string;
+```
+
+- *Type:* string
+
+m5n.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M5N_METAL`<sup>Required</sup> <a name="M5N_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_METAL"></a>
+
+```typescript
+public readonly M5N_METAL: string;
+```
+
+- *Type:* string
+
+m5n.metal vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M5N_XLARGE`<sup>Required</sup> <a name="M5N_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5N_XLARGE"></a>
+
+```typescript
+public readonly M5N_XLARGE: string;
+```
+
+- *Type:* string
+
+m5n.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M5ZN_12XLARGE`<sup>Required</sup> <a name="M5ZN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_12XLARGE"></a>
+
+```typescript
+public readonly M5ZN_12XLARGE: string;
+```
+
+- *Type:* string
+
+m5zn.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M5ZN_2XLARGE`<sup>Required</sup> <a name="M5ZN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_2XLARGE"></a>
+
+```typescript
+public readonly M5ZN_2XLARGE: string;
+```
+
+- *Type:* string
+
+m5zn.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M5ZN_3XLARGE`<sup>Required</sup> <a name="M5ZN_3XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_3XLARGE"></a>
+
+```typescript
+public readonly M5ZN_3XLARGE: string;
+```
+
+- *Type:* string
+
+m5zn.3xlarge vCPUs: 12 Memory: 49152 MiB.
+
+---
+
+##### `M5ZN_6XLARGE`<sup>Required</sup> <a name="M5ZN_6XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_6XLARGE"></a>
+
+```typescript
+public readonly M5ZN_6XLARGE: string;
+```
+
+- *Type:* string
+
+m5zn.6xlarge vCPUs: 24 Memory: 98304 MiB.
+
+---
+
+##### `M5ZN_LARGE`<sup>Required</sup> <a name="M5ZN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_LARGE"></a>
+
+```typescript
+public readonly M5ZN_LARGE: string;
+```
+
+- *Type:* string
+
+m5zn.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M5ZN_METAL`<sup>Required</sup> <a name="M5ZN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_METAL"></a>
+
+```typescript
+public readonly M5ZN_METAL: string;
+```
+
+- *Type:* string
+
+m5zn.metal vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M5ZN_XLARGE`<sup>Required</sup> <a name="M5ZN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M5ZN_XLARGE"></a>
+
+```typescript
+public readonly M5ZN_XLARGE: string;
+```
+
+- *Type:* string
+
+m5zn.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M6A_12XLARGE`<sup>Required</sup> <a name="M6A_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_12XLARGE"></a>
+
+```typescript
+public readonly M6A_12XLARGE: string;
+```
+
+- *Type:* string
+
+m6a.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M6A_16XLARGE`<sup>Required</sup> <a name="M6A_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_16XLARGE"></a>
+
+```typescript
+public readonly M6A_16XLARGE: string;
+```
+
+- *Type:* string
+
+m6a.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M6A_24XLARGE`<sup>Required</sup> <a name="M6A_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_24XLARGE"></a>
+
+```typescript
+public readonly M6A_24XLARGE: string;
+```
+
+- *Type:* string
+
+m6a.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M6A_2XLARGE`<sup>Required</sup> <a name="M6A_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_2XLARGE"></a>
+
+```typescript
+public readonly M6A_2XLARGE: string;
+```
+
+- *Type:* string
+
+m6a.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M6A_32XLARGE`<sup>Required</sup> <a name="M6A_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_32XLARGE"></a>
+
+```typescript
+public readonly M6A_32XLARGE: string;
+```
+
+- *Type:* string
+
+m6a.32xlarge vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `M6A_48XLARGE`<sup>Required</sup> <a name="M6A_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_48XLARGE"></a>
+
+```typescript
+public readonly M6A_48XLARGE: string;
+```
+
+- *Type:* string
+
+m6a.48xlarge vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `M6A_4XLARGE`<sup>Required</sup> <a name="M6A_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_4XLARGE"></a>
+
+```typescript
+public readonly M6A_4XLARGE: string;
+```
+
+- *Type:* string
+
+m6a.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M6A_8XLARGE`<sup>Required</sup> <a name="M6A_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_8XLARGE"></a>
+
+```typescript
+public readonly M6A_8XLARGE: string;
+```
+
+- *Type:* string
+
+m6a.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M6A_LARGE`<sup>Required</sup> <a name="M6A_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_LARGE"></a>
+
+```typescript
+public readonly M6A_LARGE: string;
+```
+
+- *Type:* string
+
+m6a.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M6A_METAL`<sup>Required</sup> <a name="M6A_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_METAL"></a>
+
+```typescript
+public readonly M6A_METAL: string;
+```
+
+- *Type:* string
+
+m6a.metal vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `M6A_XLARGE`<sup>Required</sup> <a name="M6A_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6A_XLARGE"></a>
+
+```typescript
+public readonly M6A_XLARGE: string;
+```
+
+- *Type:* string
+
+m6a.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M6G_12XLARGE`<sup>Required</sup> <a name="M6G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_12XLARGE"></a>
+
+```typescript
+public readonly M6G_12XLARGE: string;
+```
+
+- *Type:* string
+
+m6g.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M6G_16XLARGE`<sup>Required</sup> <a name="M6G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_16XLARGE"></a>
+
+```typescript
+public readonly M6G_16XLARGE: string;
+```
+
+- *Type:* string
+
+m6g.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M6G_2XLARGE`<sup>Required</sup> <a name="M6G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_2XLARGE"></a>
+
+```typescript
+public readonly M6G_2XLARGE: string;
+```
+
+- *Type:* string
+
+m6g.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M6G_4XLARGE`<sup>Required</sup> <a name="M6G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_4XLARGE"></a>
+
+```typescript
+public readonly M6G_4XLARGE: string;
+```
+
+- *Type:* string
+
+m6g.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M6G_8XLARGE`<sup>Required</sup> <a name="M6G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_8XLARGE"></a>
+
+```typescript
+public readonly M6G_8XLARGE: string;
+```
+
+- *Type:* string
+
+m6g.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M6G_LARGE`<sup>Required</sup> <a name="M6G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_LARGE"></a>
+
+```typescript
+public readonly M6G_LARGE: string;
+```
+
+- *Type:* string
+
+m6g.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M6G_MEDIUM`<sup>Required</sup> <a name="M6G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_MEDIUM"></a>
+
+```typescript
+public readonly M6G_MEDIUM: string;
+```
+
+- *Type:* string
+
+m6g.medium vCPUs: 1 Memory: 4096 MiB.
+
+---
+
+##### `M6G_METAL`<sup>Required</sup> <a name="M6G_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_METAL"></a>
+
+```typescript
+public readonly M6G_METAL: string;
+```
+
+- *Type:* string
+
+m6g.metal vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M6G_XLARGE`<sup>Required</sup> <a name="M6G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6G_XLARGE"></a>
+
+```typescript
+public readonly M6G_XLARGE: string;
+```
+
+- *Type:* string
+
+m6g.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M6GD_12XLARGE`<sup>Required</sup> <a name="M6GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_12XLARGE"></a>
+
+```typescript
+public readonly M6GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+m6gd.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M6GD_16XLARGE`<sup>Required</sup> <a name="M6GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_16XLARGE"></a>
+
+```typescript
+public readonly M6GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+m6gd.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M6GD_2XLARGE`<sup>Required</sup> <a name="M6GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_2XLARGE"></a>
+
+```typescript
+public readonly M6GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+m6gd.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M6GD_4XLARGE`<sup>Required</sup> <a name="M6GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_4XLARGE"></a>
+
+```typescript
+public readonly M6GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+m6gd.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M6GD_8XLARGE`<sup>Required</sup> <a name="M6GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_8XLARGE"></a>
+
+```typescript
+public readonly M6GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+m6gd.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M6GD_LARGE`<sup>Required</sup> <a name="M6GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_LARGE"></a>
+
+```typescript
+public readonly M6GD_LARGE: string;
+```
+
+- *Type:* string
+
+m6gd.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M6GD_MEDIUM`<sup>Required</sup> <a name="M6GD_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_MEDIUM"></a>
+
+```typescript
+public readonly M6GD_MEDIUM: string;
+```
+
+- *Type:* string
+
+m6gd.medium vCPUs: 1 Memory: 4096 MiB.
+
+---
+
+##### `M6GD_METAL`<sup>Required</sup> <a name="M6GD_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_METAL"></a>
+
+```typescript
+public readonly M6GD_METAL: string;
+```
+
+- *Type:* string
+
+m6gd.metal vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M6GD_XLARGE`<sup>Required</sup> <a name="M6GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6GD_XLARGE"></a>
+
+```typescript
+public readonly M6GD_XLARGE: string;
+```
+
+- *Type:* string
+
+m6gd.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M6I_12XLARGE`<sup>Required</sup> <a name="M6I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_12XLARGE"></a>
+
+```typescript
+public readonly M6I_12XLARGE: string;
+```
+
+- *Type:* string
+
+m6i.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M6I_16XLARGE`<sup>Required</sup> <a name="M6I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_16XLARGE"></a>
+
+```typescript
+public readonly M6I_16XLARGE: string;
+```
+
+- *Type:* string
+
+m6i.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M6I_24XLARGE`<sup>Required</sup> <a name="M6I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_24XLARGE"></a>
+
+```typescript
+public readonly M6I_24XLARGE: string;
+```
+
+- *Type:* string
+
+m6i.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M6I_2XLARGE`<sup>Required</sup> <a name="M6I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_2XLARGE"></a>
+
+```typescript
+public readonly M6I_2XLARGE: string;
+```
+
+- *Type:* string
+
+m6i.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M6I_32XLARGE`<sup>Required</sup> <a name="M6I_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_32XLARGE"></a>
+
+```typescript
+public readonly M6I_32XLARGE: string;
+```
+
+- *Type:* string
+
+m6i.32xlarge vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `M6I_4XLARGE`<sup>Required</sup> <a name="M6I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_4XLARGE"></a>
+
+```typescript
+public readonly M6I_4XLARGE: string;
+```
+
+- *Type:* string
+
+m6i.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M6I_8XLARGE`<sup>Required</sup> <a name="M6I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_8XLARGE"></a>
+
+```typescript
+public readonly M6I_8XLARGE: string;
+```
+
+- *Type:* string
+
+m6i.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M6I_LARGE`<sup>Required</sup> <a name="M6I_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_LARGE"></a>
+
+```typescript
+public readonly M6I_LARGE: string;
+```
+
+- *Type:* string
+
+m6i.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M6I_METAL`<sup>Required</sup> <a name="M6I_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_METAL"></a>
+
+```typescript
+public readonly M6I_METAL: string;
+```
+
+- *Type:* string
+
+m6i.metal vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `M6I_XLARGE`<sup>Required</sup> <a name="M6I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6I_XLARGE"></a>
+
+```typescript
+public readonly M6I_XLARGE: string;
+```
+
+- *Type:* string
+
+m6i.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M6ID_12XLARGE`<sup>Required</sup> <a name="M6ID_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_12XLARGE"></a>
+
+```typescript
+public readonly M6ID_12XLARGE: string;
+```
+
+- *Type:* string
+
+m6id.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M6ID_16XLARGE`<sup>Required</sup> <a name="M6ID_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_16XLARGE"></a>
+
+```typescript
+public readonly M6ID_16XLARGE: string;
+```
+
+- *Type:* string
+
+m6id.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M6ID_24XLARGE`<sup>Required</sup> <a name="M6ID_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_24XLARGE"></a>
+
+```typescript
+public readonly M6ID_24XLARGE: string;
+```
+
+- *Type:* string
+
+m6id.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M6ID_2XLARGE`<sup>Required</sup> <a name="M6ID_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_2XLARGE"></a>
+
+```typescript
+public readonly M6ID_2XLARGE: string;
+```
+
+- *Type:* string
+
+m6id.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M6ID_32XLARGE`<sup>Required</sup> <a name="M6ID_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_32XLARGE"></a>
+
+```typescript
+public readonly M6ID_32XLARGE: string;
+```
+
+- *Type:* string
+
+m6id.32xlarge vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `M6ID_4XLARGE`<sup>Required</sup> <a name="M6ID_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_4XLARGE"></a>
+
+```typescript
+public readonly M6ID_4XLARGE: string;
+```
+
+- *Type:* string
+
+m6id.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M6ID_8XLARGE`<sup>Required</sup> <a name="M6ID_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_8XLARGE"></a>
+
+```typescript
+public readonly M6ID_8XLARGE: string;
+```
+
+- *Type:* string
+
+m6id.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M6ID_LARGE`<sup>Required</sup> <a name="M6ID_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_LARGE"></a>
+
+```typescript
+public readonly M6ID_LARGE: string;
+```
+
+- *Type:* string
+
+m6id.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M6ID_METAL`<sup>Required</sup> <a name="M6ID_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_METAL"></a>
+
+```typescript
+public readonly M6ID_METAL: string;
+```
+
+- *Type:* string
+
+m6id.metal vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `M6ID_XLARGE`<sup>Required</sup> <a name="M6ID_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6ID_XLARGE"></a>
+
+```typescript
+public readonly M6ID_XLARGE: string;
+```
+
+- *Type:* string
+
+m6id.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M6IDN_12XLARGE`<sup>Required</sup> <a name="M6IDN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_12XLARGE"></a>
+
+```typescript
+public readonly M6IDN_12XLARGE: string;
+```
+
+- *Type:* string
+
+m6idn.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M6IDN_16XLARGE`<sup>Required</sup> <a name="M6IDN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_16XLARGE"></a>
+
+```typescript
+public readonly M6IDN_16XLARGE: string;
+```
+
+- *Type:* string
+
+m6idn.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M6IDN_24XLARGE`<sup>Required</sup> <a name="M6IDN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_24XLARGE"></a>
+
+```typescript
+public readonly M6IDN_24XLARGE: string;
+```
+
+- *Type:* string
+
+m6idn.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M6IDN_2XLARGE`<sup>Required</sup> <a name="M6IDN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_2XLARGE"></a>
+
+```typescript
+public readonly M6IDN_2XLARGE: string;
+```
+
+- *Type:* string
+
+m6idn.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M6IDN_32XLARGE`<sup>Required</sup> <a name="M6IDN_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_32XLARGE"></a>
+
+```typescript
+public readonly M6IDN_32XLARGE: string;
+```
+
+- *Type:* string
+
+m6idn.32xlarge vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `M6IDN_4XLARGE`<sup>Required</sup> <a name="M6IDN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_4XLARGE"></a>
+
+```typescript
+public readonly M6IDN_4XLARGE: string;
+```
+
+- *Type:* string
+
+m6idn.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M6IDN_8XLARGE`<sup>Required</sup> <a name="M6IDN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_8XLARGE"></a>
+
+```typescript
+public readonly M6IDN_8XLARGE: string;
+```
+
+- *Type:* string
+
+m6idn.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M6IDN_LARGE`<sup>Required</sup> <a name="M6IDN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_LARGE"></a>
+
+```typescript
+public readonly M6IDN_LARGE: string;
+```
+
+- *Type:* string
+
+m6idn.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M6IDN_METAL`<sup>Required</sup> <a name="M6IDN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_METAL"></a>
+
+```typescript
+public readonly M6IDN_METAL: string;
+```
+
+- *Type:* string
+
+m6idn.metal vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `M6IDN_XLARGE`<sup>Required</sup> <a name="M6IDN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IDN_XLARGE"></a>
+
+```typescript
+public readonly M6IDN_XLARGE: string;
+```
+
+- *Type:* string
+
+m6idn.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M6IN_12XLARGE`<sup>Required</sup> <a name="M6IN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_12XLARGE"></a>
+
+```typescript
+public readonly M6IN_12XLARGE: string;
+```
+
+- *Type:* string
+
+m6in.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M6IN_16XLARGE`<sup>Required</sup> <a name="M6IN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_16XLARGE"></a>
+
+```typescript
+public readonly M6IN_16XLARGE: string;
+```
+
+- *Type:* string
+
+m6in.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M6IN_24XLARGE`<sup>Required</sup> <a name="M6IN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_24XLARGE"></a>
+
+```typescript
+public readonly M6IN_24XLARGE: string;
+```
+
+- *Type:* string
+
+m6in.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M6IN_2XLARGE`<sup>Required</sup> <a name="M6IN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_2XLARGE"></a>
+
+```typescript
+public readonly M6IN_2XLARGE: string;
+```
+
+- *Type:* string
+
+m6in.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M6IN_32XLARGE`<sup>Required</sup> <a name="M6IN_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_32XLARGE"></a>
+
+```typescript
+public readonly M6IN_32XLARGE: string;
+```
+
+- *Type:* string
+
+m6in.32xlarge vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `M6IN_4XLARGE`<sup>Required</sup> <a name="M6IN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_4XLARGE"></a>
+
+```typescript
+public readonly M6IN_4XLARGE: string;
+```
+
+- *Type:* string
+
+m6in.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M6IN_8XLARGE`<sup>Required</sup> <a name="M6IN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_8XLARGE"></a>
+
+```typescript
+public readonly M6IN_8XLARGE: string;
+```
+
+- *Type:* string
+
+m6in.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M6IN_LARGE`<sup>Required</sup> <a name="M6IN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_LARGE"></a>
+
+```typescript
+public readonly M6IN_LARGE: string;
+```
+
+- *Type:* string
+
+m6in.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M6IN_METAL`<sup>Required</sup> <a name="M6IN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_METAL"></a>
+
+```typescript
+public readonly M6IN_METAL: string;
+```
+
+- *Type:* string
+
+m6in.metal vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `M6IN_XLARGE`<sup>Required</sup> <a name="M6IN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M6IN_XLARGE"></a>
+
+```typescript
+public readonly M6IN_XLARGE: string;
+```
+
+- *Type:* string
+
+m6in.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M7A_12XLARGE`<sup>Required</sup> <a name="M7A_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_12XLARGE"></a>
+
+```typescript
+public readonly M7A_12XLARGE: string;
+```
+
+- *Type:* string
+
+m7a.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M7A_16XLARGE`<sup>Required</sup> <a name="M7A_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_16XLARGE"></a>
+
+```typescript
+public readonly M7A_16XLARGE: string;
+```
+
+- *Type:* string
+
+m7a.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M7A_24XLARGE`<sup>Required</sup> <a name="M7A_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_24XLARGE"></a>
+
+```typescript
+public readonly M7A_24XLARGE: string;
+```
+
+- *Type:* string
+
+m7a.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M7A_2XLARGE`<sup>Required</sup> <a name="M7A_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_2XLARGE"></a>
+
+```typescript
+public readonly M7A_2XLARGE: string;
+```
+
+- *Type:* string
+
+m7a.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M7A_32XLARGE`<sup>Required</sup> <a name="M7A_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_32XLARGE"></a>
+
+```typescript
+public readonly M7A_32XLARGE: string;
+```
+
+- *Type:* string
+
+m7a.32xlarge vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `M7A_48XLARGE`<sup>Required</sup> <a name="M7A_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_48XLARGE"></a>
+
+```typescript
+public readonly M7A_48XLARGE: string;
+```
+
+- *Type:* string
+
+m7a.48xlarge vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `M7A_4XLARGE`<sup>Required</sup> <a name="M7A_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_4XLARGE"></a>
+
+```typescript
+public readonly M7A_4XLARGE: string;
+```
+
+- *Type:* string
+
+m7a.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M7A_8XLARGE`<sup>Required</sup> <a name="M7A_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_8XLARGE"></a>
+
+```typescript
+public readonly M7A_8XLARGE: string;
+```
+
+- *Type:* string
+
+m7a.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M7A_LARGE`<sup>Required</sup> <a name="M7A_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_LARGE"></a>
+
+```typescript
+public readonly M7A_LARGE: string;
+```
+
+- *Type:* string
+
+m7a.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M7A_MEDIUM`<sup>Required</sup> <a name="M7A_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_MEDIUM"></a>
+
+```typescript
+public readonly M7A_MEDIUM: string;
+```
+
+- *Type:* string
+
+m7a.medium vCPUs: 1 Memory: 4096 MiB.
+
+---
+
+##### `M7A_METAL_48XL`<sup>Required</sup> <a name="M7A_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_METAL_48XL"></a>
+
+```typescript
+public readonly M7A_METAL_48XL: string;
+```
+
+- *Type:* string
+
+m7a.metal-48xl vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `M7A_XLARGE`<sup>Required</sup> <a name="M7A_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7A_XLARGE"></a>
+
+```typescript
+public readonly M7A_XLARGE: string;
+```
+
+- *Type:* string
+
+m7a.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M7G_12XLARGE`<sup>Required</sup> <a name="M7G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_12XLARGE"></a>
+
+```typescript
+public readonly M7G_12XLARGE: string;
+```
+
+- *Type:* string
+
+m7g.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M7G_16XLARGE`<sup>Required</sup> <a name="M7G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_16XLARGE"></a>
+
+```typescript
+public readonly M7G_16XLARGE: string;
+```
+
+- *Type:* string
+
+m7g.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M7G_2XLARGE`<sup>Required</sup> <a name="M7G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_2XLARGE"></a>
+
+```typescript
+public readonly M7G_2XLARGE: string;
+```
+
+- *Type:* string
+
+m7g.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M7G_4XLARGE`<sup>Required</sup> <a name="M7G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_4XLARGE"></a>
+
+```typescript
+public readonly M7G_4XLARGE: string;
+```
+
+- *Type:* string
+
+m7g.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M7G_8XLARGE`<sup>Required</sup> <a name="M7G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_8XLARGE"></a>
+
+```typescript
+public readonly M7G_8XLARGE: string;
+```
+
+- *Type:* string
+
+m7g.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M7G_LARGE`<sup>Required</sup> <a name="M7G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_LARGE"></a>
+
+```typescript
+public readonly M7G_LARGE: string;
+```
+
+- *Type:* string
+
+m7g.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M7G_MEDIUM`<sup>Required</sup> <a name="M7G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_MEDIUM"></a>
+
+```typescript
+public readonly M7G_MEDIUM: string;
+```
+
+- *Type:* string
+
+m7g.medium vCPUs: 1 Memory: 4096 MiB.
+
+---
+
+##### `M7G_METAL`<sup>Required</sup> <a name="M7G_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_METAL"></a>
+
+```typescript
+public readonly M7G_METAL: string;
+```
+
+- *Type:* string
+
+m7g.metal vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M7G_XLARGE`<sup>Required</sup> <a name="M7G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7G_XLARGE"></a>
+
+```typescript
+public readonly M7G_XLARGE: string;
+```
+
+- *Type:* string
+
+m7g.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M7GD_12XLARGE`<sup>Required</sup> <a name="M7GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_12XLARGE"></a>
+
+```typescript
+public readonly M7GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+m7gd.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M7GD_16XLARGE`<sup>Required</sup> <a name="M7GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_16XLARGE"></a>
+
+```typescript
+public readonly M7GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+m7gd.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M7GD_2XLARGE`<sup>Required</sup> <a name="M7GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_2XLARGE"></a>
+
+```typescript
+public readonly M7GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+m7gd.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M7GD_4XLARGE`<sup>Required</sup> <a name="M7GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_4XLARGE"></a>
+
+```typescript
+public readonly M7GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+m7gd.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M7GD_8XLARGE`<sup>Required</sup> <a name="M7GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_8XLARGE"></a>
+
+```typescript
+public readonly M7GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+m7gd.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M7GD_LARGE`<sup>Required</sup> <a name="M7GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_LARGE"></a>
+
+```typescript
+public readonly M7GD_LARGE: string;
+```
+
+- *Type:* string
+
+m7gd.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M7GD_MEDIUM`<sup>Required</sup> <a name="M7GD_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_MEDIUM"></a>
+
+```typescript
+public readonly M7GD_MEDIUM: string;
+```
+
+- *Type:* string
+
+m7gd.medium vCPUs: 1 Memory: 4096 MiB.
+
+---
+
+##### `M7GD_METAL`<sup>Required</sup> <a name="M7GD_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_METAL"></a>
+
+```typescript
+public readonly M7GD_METAL: string;
+```
+
+- *Type:* string
+
+m7gd.metal vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M7GD_XLARGE`<sup>Required</sup> <a name="M7GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7GD_XLARGE"></a>
+
+```typescript
+public readonly M7GD_XLARGE: string;
+```
+
+- *Type:* string
+
+m7gd.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M7I_12XLARGE`<sup>Required</sup> <a name="M7I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_12XLARGE"></a>
+
+```typescript
+public readonly M7I_12XLARGE: string;
+```
+
+- *Type:* string
+
+m7i.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M7I_16XLARGE`<sup>Required</sup> <a name="M7I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_16XLARGE"></a>
+
+```typescript
+public readonly M7I_16XLARGE: string;
+```
+
+- *Type:* string
+
+m7i.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M7I_24XLARGE`<sup>Required</sup> <a name="M7I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_24XLARGE"></a>
+
+```typescript
+public readonly M7I_24XLARGE: string;
+```
+
+- *Type:* string
+
+m7i.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M7I_2XLARGE`<sup>Required</sup> <a name="M7I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_2XLARGE"></a>
+
+```typescript
+public readonly M7I_2XLARGE: string;
+```
+
+- *Type:* string
+
+m7i.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M7I_48XLARGE`<sup>Required</sup> <a name="M7I_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_48XLARGE"></a>
+
+```typescript
+public readonly M7I_48XLARGE: string;
+```
+
+- *Type:* string
+
+m7i.48xlarge vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `M7I_4XLARGE`<sup>Required</sup> <a name="M7I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_4XLARGE"></a>
+
+```typescript
+public readonly M7I_4XLARGE: string;
+```
+
+- *Type:* string
+
+m7i.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M7I_8XLARGE`<sup>Required</sup> <a name="M7I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_8XLARGE"></a>
+
+```typescript
+public readonly M7I_8XLARGE: string;
+```
+
+- *Type:* string
+
+m7i.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M7I_FLEX_12XLARGE`<sup>Required</sup> <a name="M7I_FLEX_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_12XLARGE"></a>
+
+```typescript
+public readonly M7I_FLEX_12XLARGE: string;
+```
+
+- *Type:* string
+
+m7i-flex.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M7I_FLEX_16XLARGE`<sup>Required</sup> <a name="M7I_FLEX_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_16XLARGE"></a>
+
+```typescript
+public readonly M7I_FLEX_16XLARGE: string;
+```
+
+- *Type:* string
+
+m7i-flex.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M7I_FLEX_2XLARGE`<sup>Required</sup> <a name="M7I_FLEX_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_2XLARGE"></a>
+
+```typescript
+public readonly M7I_FLEX_2XLARGE: string;
+```
+
+- *Type:* string
+
+m7i-flex.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M7I_FLEX_4XLARGE`<sup>Required</sup> <a name="M7I_FLEX_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_4XLARGE"></a>
+
+```typescript
+public readonly M7I_FLEX_4XLARGE: string;
+```
+
+- *Type:* string
+
+m7i-flex.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M7I_FLEX_8XLARGE`<sup>Required</sup> <a name="M7I_FLEX_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_8XLARGE"></a>
+
+```typescript
+public readonly M7I_FLEX_8XLARGE: string;
+```
+
+- *Type:* string
+
+m7i-flex.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M7I_FLEX_LARGE`<sup>Required</sup> <a name="M7I_FLEX_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_LARGE"></a>
+
+```typescript
+public readonly M7I_FLEX_LARGE: string;
+```
+
+- *Type:* string
+
+m7i-flex.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M7I_FLEX_XLARGE`<sup>Required</sup> <a name="M7I_FLEX_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_FLEX_XLARGE"></a>
+
+```typescript
+public readonly M7I_FLEX_XLARGE: string;
+```
+
+- *Type:* string
+
+m7i-flex.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M7I_LARGE`<sup>Required</sup> <a name="M7I_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_LARGE"></a>
+
+```typescript
+public readonly M7I_LARGE: string;
+```
+
+- *Type:* string
+
+m7i.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M7I_METAL_24XL`<sup>Required</sup> <a name="M7I_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_METAL_24XL"></a>
+
+```typescript
+public readonly M7I_METAL_24XL: string;
+```
+
+- *Type:* string
+
+m7i.metal-24xl vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M7I_METAL_48XL`<sup>Required</sup> <a name="M7I_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_METAL_48XL"></a>
+
+```typescript
+public readonly M7I_METAL_48XL: string;
+```
+
+- *Type:* string
+
+m7i.metal-48xl vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `M7I_XLARGE`<sup>Required</sup> <a name="M7I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M7I_XLARGE"></a>
+
+```typescript
+public readonly M7I_XLARGE: string;
+```
+
+- *Type:* string
+
+m7i.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M8G_12XLARGE`<sup>Required</sup> <a name="M8G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_12XLARGE"></a>
+
+```typescript
+public readonly M8G_12XLARGE: string;
+```
+
+- *Type:* string
+
+m8g.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M8G_16XLARGE`<sup>Required</sup> <a name="M8G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_16XLARGE"></a>
+
+```typescript
+public readonly M8G_16XLARGE: string;
+```
+
+- *Type:* string
+
+m8g.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M8G_24XLARGE`<sup>Required</sup> <a name="M8G_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_24XLARGE"></a>
+
+```typescript
+public readonly M8G_24XLARGE: string;
+```
+
+- *Type:* string
+
+m8g.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M8G_2XLARGE`<sup>Required</sup> <a name="M8G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_2XLARGE"></a>
+
+```typescript
+public readonly M8G_2XLARGE: string;
+```
+
+- *Type:* string
+
+m8g.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M8G_48XLARGE`<sup>Required</sup> <a name="M8G_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_48XLARGE"></a>
+
+```typescript
+public readonly M8G_48XLARGE: string;
+```
+
+- *Type:* string
+
+m8g.48xlarge vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `M8G_4XLARGE`<sup>Required</sup> <a name="M8G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_4XLARGE"></a>
+
+```typescript
+public readonly M8G_4XLARGE: string;
+```
+
+- *Type:* string
+
+m8g.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M8G_8XLARGE`<sup>Required</sup> <a name="M8G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_8XLARGE"></a>
+
+```typescript
+public readonly M8G_8XLARGE: string;
+```
+
+- *Type:* string
+
+m8g.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M8G_LARGE`<sup>Required</sup> <a name="M8G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_LARGE"></a>
+
+```typescript
+public readonly M8G_LARGE: string;
+```
+
+- *Type:* string
+
+m8g.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M8G_MEDIUM`<sup>Required</sup> <a name="M8G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_MEDIUM"></a>
+
+```typescript
+public readonly M8G_MEDIUM: string;
+```
+
+- *Type:* string
+
+m8g.medium vCPUs: 1 Memory: 4096 MiB.
+
+---
+
+##### `M8G_METAL_24XL`<sup>Required</sup> <a name="M8G_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_METAL_24XL"></a>
+
+```typescript
+public readonly M8G_METAL_24XL: string;
+```
+
+- *Type:* string
+
+m8g.metal-24xl vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M8G_METAL_48XL`<sup>Required</sup> <a name="M8G_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_METAL_48XL"></a>
+
+```typescript
+public readonly M8G_METAL_48XL: string;
+```
+
+- *Type:* string
+
+m8g.metal-48xl vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `M8G_XLARGE`<sup>Required</sup> <a name="M8G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_XLARGE"></a>
+
+```typescript
+public readonly M8G_XLARGE: string;
+```
+
+- *Type:* string
+
+m8g.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `MAC1_METAL`<sup>Required</sup> <a name="MAC1_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC1_METAL"></a>
+
+```typescript
+public readonly MAC1_METAL: string;
+```
+
+- *Type:* string
+
+mac1.metal vCPUs: 12 Memory: 32768 MiB.
+
+---
+
+##### `MAC2_M1ULTRA_METAL`<sup>Required</sup> <a name="MAC2_M1ULTRA_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC2_M1ULTRA_METAL"></a>
+
+```typescript
+public readonly MAC2_M1ULTRA_METAL: string;
+```
+
+- *Type:* string
+
+mac2-m1ultra.metal vCPUs: 20 Memory: 131072 MiB.
+
+---
+
+##### `MAC2_M2_METAL`<sup>Required</sup> <a name="MAC2_M2_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC2_M2_METAL"></a>
+
+```typescript
+public readonly MAC2_M2_METAL: string;
+```
+
+- *Type:* string
+
+mac2-m2.metal vCPUs: 8 Memory: 24576 MiB.
+
+---
+
+##### `MAC2_M2PRO_METAL`<sup>Required</sup> <a name="MAC2_M2PRO_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC2_M2PRO_METAL"></a>
+
+```typescript
+public readonly MAC2_M2PRO_METAL: string;
+```
+
+- *Type:* string
+
+mac2-m2pro.metal vCPUs: 12 Memory: 32768 MiB.
+
+---
+
+##### `MAC2_METAL`<sup>Required</sup> <a name="MAC2_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC2_METAL"></a>
+
+```typescript
+public readonly MAC2_METAL: string;
+```
+
+- *Type:* string
+
+mac2.metal vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `P2_16XLARGE`<sup>Required</sup> <a name="P2_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P2_16XLARGE"></a>
+
+```typescript
+public readonly P2_16XLARGE: string;
+```
+
+- *Type:* string
+
+p2.16xlarge vCPUs: 64 Memory: 749568 MiB.
+
+---
+
+##### `P2_8XLARGE`<sup>Required</sup> <a name="P2_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P2_8XLARGE"></a>
+
+```typescript
+public readonly P2_8XLARGE: string;
+```
+
+- *Type:* string
+
+p2.8xlarge vCPUs: 32 Memory: 499712 MiB.
+
+---
+
+##### `P2_XLARGE`<sup>Required</sup> <a name="P2_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P2_XLARGE"></a>
+
+```typescript
+public readonly P2_XLARGE: string;
+```
+
+- *Type:* string
+
+p2.xlarge vCPUs: 4 Memory: 62464 MiB.
+
+---
+
+##### `P3_16XLARGE`<sup>Required</sup> <a name="P3_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P3_16XLARGE"></a>
+
+```typescript
+public readonly P3_16XLARGE: string;
+```
+
+- *Type:* string
+
+p3.16xlarge vCPUs: 64 Memory: 499712 MiB.
+
+---
+
+##### `P3_2XLARGE`<sup>Required</sup> <a name="P3_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P3_2XLARGE"></a>
+
+```typescript
+public readonly P3_2XLARGE: string;
+```
+
+- *Type:* string
+
+p3.2xlarge vCPUs: 8 Memory: 62464 MiB.
+
+---
+
+##### `P3_8XLARGE`<sup>Required</sup> <a name="P3_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P3_8XLARGE"></a>
+
+```typescript
+public readonly P3_8XLARGE: string;
+```
+
+- *Type:* string
+
+p3.8xlarge vCPUs: 32 Memory: 249856 MiB.
+
+---
+
+##### `P3DN_24XLARGE`<sup>Required</sup> <a name="P3DN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P3DN_24XLARGE"></a>
+
+```typescript
+public readonly P3DN_24XLARGE: string;
+```
+
+- *Type:* string
+
+p3dn.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `P4D_24XLARGE`<sup>Required</sup> <a name="P4D_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P4D_24XLARGE"></a>
+
+```typescript
+public readonly P4D_24XLARGE: string;
+```
+
+- *Type:* string
+
+p4d.24xlarge vCPUs: 96 Memory: 1179648 MiB.
+
+---
+
+##### `P5_48XLARGE`<sup>Required</sup> <a name="P5_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P5_48XLARGE"></a>
+
+```typescript
+public readonly P5_48XLARGE: string;
+```
+
+- *Type:* string
+
+p5.48xlarge vCPUs: 192 Memory: 2097152 MiB.
+
+---
+
+##### `R3_2XLARGE`<sup>Required</sup> <a name="R3_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_2XLARGE"></a>
+
+```typescript
+public readonly R3_2XLARGE: string;
+```
+
+- *Type:* string
+
+r3.2xlarge vCPUs: 8 Memory: 62464 MiB.
+
+---
+
+##### `R3_4XLARGE`<sup>Required</sup> <a name="R3_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_4XLARGE"></a>
+
+```typescript
+public readonly R3_4XLARGE: string;
+```
+
+- *Type:* string
+
+r3.4xlarge vCPUs: 16 Memory: 124928 MiB.
+
+---
+
+##### `R3_8XLARGE`<sup>Required</sup> <a name="R3_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_8XLARGE"></a>
+
+```typescript
+public readonly R3_8XLARGE: string;
+```
+
+- *Type:* string
+
+r3.8xlarge vCPUs: 32 Memory: 249856 MiB.
+
+---
+
+##### `R3_LARGE`<sup>Required</sup> <a name="R3_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_LARGE"></a>
+
+```typescript
+public readonly R3_LARGE: string;
+```
+
+- *Type:* string
+
+r3.large vCPUs: 2 Memory: 15360 MiB.
+
+---
+
+##### `R3_XLARGE`<sup>Required</sup> <a name="R3_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_XLARGE"></a>
+
+```typescript
+public readonly R3_XLARGE: string;
+```
+
+- *Type:* string
+
+r3.xlarge vCPUs: 4 Memory: 31232 MiB.
+
+---
+
+##### `R4_16XLARGE`<sup>Required</sup> <a name="R4_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R4_16XLARGE"></a>
+
+```typescript
+public readonly R4_16XLARGE: string;
+```
+
+- *Type:* string
+
+r4.16xlarge vCPUs: 64 Memory: 499712 MiB.
+
+---
+
+##### `R4_2XLARGE`<sup>Required</sup> <a name="R4_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R4_2XLARGE"></a>
+
+```typescript
+public readonly R4_2XLARGE: string;
+```
+
+- *Type:* string
+
+r4.2xlarge vCPUs: 8 Memory: 62464 MiB.
+
+---
+
+##### `R4_4XLARGE`<sup>Required</sup> <a name="R4_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R4_4XLARGE"></a>
+
+```typescript
+public readonly R4_4XLARGE: string;
+```
+
+- *Type:* string
+
+r4.4xlarge vCPUs: 16 Memory: 124928 MiB.
+
+---
+
+##### `R4_8XLARGE`<sup>Required</sup> <a name="R4_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R4_8XLARGE"></a>
+
+```typescript
+public readonly R4_8XLARGE: string;
+```
+
+- *Type:* string
+
+r4.8xlarge vCPUs: 32 Memory: 249856 MiB.
+
+---
+
+##### `R4_LARGE`<sup>Required</sup> <a name="R4_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R4_LARGE"></a>
+
+```typescript
+public readonly R4_LARGE: string;
+```
+
+- *Type:* string
+
+r4.large vCPUs: 2 Memory: 15616 MiB.
+
+---
+
+##### `R4_XLARGE`<sup>Required</sup> <a name="R4_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R4_XLARGE"></a>
+
+```typescript
+public readonly R4_XLARGE: string;
+```
+
+- *Type:* string
+
+r4.xlarge vCPUs: 4 Memory: 31232 MiB.
+
+---
+
+##### `R5_12XLARGE`<sup>Required</sup> <a name="R5_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_12XLARGE"></a>
+
+```typescript
+public readonly R5_12XLARGE: string;
+```
+
+- *Type:* string
+
+r5.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R5_16XLARGE`<sup>Required</sup> <a name="R5_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_16XLARGE"></a>
+
+```typescript
+public readonly R5_16XLARGE: string;
+```
+
+- *Type:* string
+
+r5.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R5_24XLARGE`<sup>Required</sup> <a name="R5_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_24XLARGE"></a>
+
+```typescript
+public readonly R5_24XLARGE: string;
+```
+
+- *Type:* string
+
+r5.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R5_2XLARGE`<sup>Required</sup> <a name="R5_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_2XLARGE"></a>
+
+```typescript
+public readonly R5_2XLARGE: string;
+```
+
+- *Type:* string
+
+r5.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R5_4XLARGE`<sup>Required</sup> <a name="R5_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_4XLARGE"></a>
+
+```typescript
+public readonly R5_4XLARGE: string;
+```
+
+- *Type:* string
+
+r5.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R5_8XLARGE`<sup>Required</sup> <a name="R5_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_8XLARGE"></a>
+
+```typescript
+public readonly R5_8XLARGE: string;
+```
+
+- *Type:* string
+
+r5.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R5_LARGE`<sup>Required</sup> <a name="R5_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_LARGE"></a>
+
+```typescript
+public readonly R5_LARGE: string;
+```
+
+- *Type:* string
+
+r5.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R5_METAL`<sup>Required</sup> <a name="R5_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_METAL"></a>
+
+```typescript
+public readonly R5_METAL: string;
+```
+
+- *Type:* string
+
+r5.metal vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R5_XLARGE`<sup>Required</sup> <a name="R5_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5_XLARGE"></a>
+
+```typescript
+public readonly R5_XLARGE: string;
+```
+
+- *Type:* string
+
+r5.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R5A_12XLARGE`<sup>Required</sup> <a name="R5A_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_12XLARGE"></a>
+
+```typescript
+public readonly R5A_12XLARGE: string;
+```
+
+- *Type:* string
+
+r5a.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R5A_16XLARGE`<sup>Required</sup> <a name="R5A_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_16XLARGE"></a>
+
+```typescript
+public readonly R5A_16XLARGE: string;
+```
+
+- *Type:* string
+
+r5a.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R5A_24XLARGE`<sup>Required</sup> <a name="R5A_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_24XLARGE"></a>
+
+```typescript
+public readonly R5A_24XLARGE: string;
+```
+
+- *Type:* string
+
+r5a.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R5A_2XLARGE`<sup>Required</sup> <a name="R5A_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_2XLARGE"></a>
+
+```typescript
+public readonly R5A_2XLARGE: string;
+```
+
+- *Type:* string
+
+r5a.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R5A_4XLARGE`<sup>Required</sup> <a name="R5A_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_4XLARGE"></a>
+
+```typescript
+public readonly R5A_4XLARGE: string;
+```
+
+- *Type:* string
+
+r5a.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R5A_8XLARGE`<sup>Required</sup> <a name="R5A_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_8XLARGE"></a>
+
+```typescript
+public readonly R5A_8XLARGE: string;
+```
+
+- *Type:* string
+
+r5a.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R5A_LARGE`<sup>Required</sup> <a name="R5A_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_LARGE"></a>
+
+```typescript
+public readonly R5A_LARGE: string;
+```
+
+- *Type:* string
+
+r5a.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R5A_XLARGE`<sup>Required</sup> <a name="R5A_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5A_XLARGE"></a>
+
+```typescript
+public readonly R5A_XLARGE: string;
+```
+
+- *Type:* string
+
+r5a.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R5AD_12XLARGE`<sup>Required</sup> <a name="R5AD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_12XLARGE"></a>
+
+```typescript
+public readonly R5AD_12XLARGE: string;
+```
+
+- *Type:* string
+
+r5ad.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R5AD_16XLARGE`<sup>Required</sup> <a name="R5AD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_16XLARGE"></a>
+
+```typescript
+public readonly R5AD_16XLARGE: string;
+```
+
+- *Type:* string
+
+r5ad.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R5AD_24XLARGE`<sup>Required</sup> <a name="R5AD_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_24XLARGE"></a>
+
+```typescript
+public readonly R5AD_24XLARGE: string;
+```
+
+- *Type:* string
+
+r5ad.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R5AD_2XLARGE`<sup>Required</sup> <a name="R5AD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_2XLARGE"></a>
+
+```typescript
+public readonly R5AD_2XLARGE: string;
+```
+
+- *Type:* string
+
+r5ad.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R5AD_4XLARGE`<sup>Required</sup> <a name="R5AD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_4XLARGE"></a>
+
+```typescript
+public readonly R5AD_4XLARGE: string;
+```
+
+- *Type:* string
+
+r5ad.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R5AD_8XLARGE`<sup>Required</sup> <a name="R5AD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_8XLARGE"></a>
+
+```typescript
+public readonly R5AD_8XLARGE: string;
+```
+
+- *Type:* string
+
+r5ad.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R5AD_LARGE`<sup>Required</sup> <a name="R5AD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_LARGE"></a>
+
+```typescript
+public readonly R5AD_LARGE: string;
+```
+
+- *Type:* string
+
+r5ad.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R5AD_XLARGE`<sup>Required</sup> <a name="R5AD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5AD_XLARGE"></a>
+
+```typescript
+public readonly R5AD_XLARGE: string;
+```
+
+- *Type:* string
+
+r5ad.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R5B_12XLARGE`<sup>Required</sup> <a name="R5B_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_12XLARGE"></a>
+
+```typescript
+public readonly R5B_12XLARGE: string;
+```
+
+- *Type:* string
+
+r5b.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R5B_16XLARGE`<sup>Required</sup> <a name="R5B_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_16XLARGE"></a>
+
+```typescript
+public readonly R5B_16XLARGE: string;
+```
+
+- *Type:* string
+
+r5b.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R5B_24XLARGE`<sup>Required</sup> <a name="R5B_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_24XLARGE"></a>
+
+```typescript
+public readonly R5B_24XLARGE: string;
+```
+
+- *Type:* string
+
+r5b.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R5B_2XLARGE`<sup>Required</sup> <a name="R5B_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_2XLARGE"></a>
+
+```typescript
+public readonly R5B_2XLARGE: string;
+```
+
+- *Type:* string
+
+r5b.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R5B_4XLARGE`<sup>Required</sup> <a name="R5B_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_4XLARGE"></a>
+
+```typescript
+public readonly R5B_4XLARGE: string;
+```
+
+- *Type:* string
+
+r5b.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R5B_8XLARGE`<sup>Required</sup> <a name="R5B_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_8XLARGE"></a>
+
+```typescript
+public readonly R5B_8XLARGE: string;
+```
+
+- *Type:* string
+
+r5b.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R5B_LARGE`<sup>Required</sup> <a name="R5B_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_LARGE"></a>
+
+```typescript
+public readonly R5B_LARGE: string;
+```
+
+- *Type:* string
+
+r5b.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R5B_METAL`<sup>Required</sup> <a name="R5B_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_METAL"></a>
+
+```typescript
+public readonly R5B_METAL: string;
+```
+
+- *Type:* string
+
+r5b.metal vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R5B_XLARGE`<sup>Required</sup> <a name="R5B_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5B_XLARGE"></a>
+
+```typescript
+public readonly R5B_XLARGE: string;
+```
+
+- *Type:* string
+
+r5b.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R5D_12XLARGE`<sup>Required</sup> <a name="R5D_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_12XLARGE"></a>
+
+```typescript
+public readonly R5D_12XLARGE: string;
+```
+
+- *Type:* string
+
+r5d.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R5D_16XLARGE`<sup>Required</sup> <a name="R5D_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_16XLARGE"></a>
+
+```typescript
+public readonly R5D_16XLARGE: string;
+```
+
+- *Type:* string
+
+r5d.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R5D_24XLARGE`<sup>Required</sup> <a name="R5D_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_24XLARGE"></a>
+
+```typescript
+public readonly R5D_24XLARGE: string;
+```
+
+- *Type:* string
+
+r5d.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R5D_2XLARGE`<sup>Required</sup> <a name="R5D_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_2XLARGE"></a>
+
+```typescript
+public readonly R5D_2XLARGE: string;
+```
+
+- *Type:* string
+
+r5d.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R5D_4XLARGE`<sup>Required</sup> <a name="R5D_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_4XLARGE"></a>
+
+```typescript
+public readonly R5D_4XLARGE: string;
+```
+
+- *Type:* string
+
+r5d.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R5D_8XLARGE`<sup>Required</sup> <a name="R5D_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_8XLARGE"></a>
+
+```typescript
+public readonly R5D_8XLARGE: string;
+```
+
+- *Type:* string
+
+r5d.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R5D_LARGE`<sup>Required</sup> <a name="R5D_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_LARGE"></a>
+
+```typescript
+public readonly R5D_LARGE: string;
+```
+
+- *Type:* string
+
+r5d.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R5D_METAL`<sup>Required</sup> <a name="R5D_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_METAL"></a>
+
+```typescript
+public readonly R5D_METAL: string;
+```
+
+- *Type:* string
+
+r5d.metal vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R5D_XLARGE`<sup>Required</sup> <a name="R5D_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5D_XLARGE"></a>
+
+```typescript
+public readonly R5D_XLARGE: string;
+```
+
+- *Type:* string
+
+r5d.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R5DN_12XLARGE`<sup>Required</sup> <a name="R5DN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_12XLARGE"></a>
+
+```typescript
+public readonly R5DN_12XLARGE: string;
+```
+
+- *Type:* string
+
+r5dn.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R5DN_16XLARGE`<sup>Required</sup> <a name="R5DN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_16XLARGE"></a>
+
+```typescript
+public readonly R5DN_16XLARGE: string;
+```
+
+- *Type:* string
+
+r5dn.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R5DN_24XLARGE`<sup>Required</sup> <a name="R5DN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_24XLARGE"></a>
+
+```typescript
+public readonly R5DN_24XLARGE: string;
+```
+
+- *Type:* string
+
+r5dn.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R5DN_2XLARGE`<sup>Required</sup> <a name="R5DN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_2XLARGE"></a>
+
+```typescript
+public readonly R5DN_2XLARGE: string;
+```
+
+- *Type:* string
+
+r5dn.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R5DN_4XLARGE`<sup>Required</sup> <a name="R5DN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_4XLARGE"></a>
+
+```typescript
+public readonly R5DN_4XLARGE: string;
+```
+
+- *Type:* string
+
+r5dn.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R5DN_8XLARGE`<sup>Required</sup> <a name="R5DN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_8XLARGE"></a>
+
+```typescript
+public readonly R5DN_8XLARGE: string;
+```
+
+- *Type:* string
+
+r5dn.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R5DN_LARGE`<sup>Required</sup> <a name="R5DN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_LARGE"></a>
+
+```typescript
+public readonly R5DN_LARGE: string;
+```
+
+- *Type:* string
+
+r5dn.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R5DN_METAL`<sup>Required</sup> <a name="R5DN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_METAL"></a>
+
+```typescript
+public readonly R5DN_METAL: string;
+```
+
+- *Type:* string
+
+r5dn.metal vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R5DN_XLARGE`<sup>Required</sup> <a name="R5DN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5DN_XLARGE"></a>
+
+```typescript
+public readonly R5DN_XLARGE: string;
+```
+
+- *Type:* string
+
+r5dn.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R5N_12XLARGE`<sup>Required</sup> <a name="R5N_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_12XLARGE"></a>
+
+```typescript
+public readonly R5N_12XLARGE: string;
+```
+
+- *Type:* string
+
+r5n.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R5N_16XLARGE`<sup>Required</sup> <a name="R5N_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_16XLARGE"></a>
+
+```typescript
+public readonly R5N_16XLARGE: string;
+```
+
+- *Type:* string
+
+r5n.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R5N_24XLARGE`<sup>Required</sup> <a name="R5N_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_24XLARGE"></a>
+
+```typescript
+public readonly R5N_24XLARGE: string;
+```
+
+- *Type:* string
+
+r5n.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R5N_2XLARGE`<sup>Required</sup> <a name="R5N_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_2XLARGE"></a>
+
+```typescript
+public readonly R5N_2XLARGE: string;
+```
+
+- *Type:* string
+
+r5n.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R5N_4XLARGE`<sup>Required</sup> <a name="R5N_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_4XLARGE"></a>
+
+```typescript
+public readonly R5N_4XLARGE: string;
+```
+
+- *Type:* string
+
+r5n.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R5N_8XLARGE`<sup>Required</sup> <a name="R5N_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_8XLARGE"></a>
+
+```typescript
+public readonly R5N_8XLARGE: string;
+```
+
+- *Type:* string
+
+r5n.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R5N_LARGE`<sup>Required</sup> <a name="R5N_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_LARGE"></a>
+
+```typescript
+public readonly R5N_LARGE: string;
+```
+
+- *Type:* string
+
+r5n.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R5N_METAL`<sup>Required</sup> <a name="R5N_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_METAL"></a>
+
+```typescript
+public readonly R5N_METAL: string;
+```
+
+- *Type:* string
+
+r5n.metal vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R5N_XLARGE`<sup>Required</sup> <a name="R5N_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R5N_XLARGE"></a>
+
+```typescript
+public readonly R5N_XLARGE: string;
+```
+
+- *Type:* string
+
+r5n.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R6A_12XLARGE`<sup>Required</sup> <a name="R6A_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_12XLARGE"></a>
+
+```typescript
+public readonly R6A_12XLARGE: string;
+```
+
+- *Type:* string
+
+r6a.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R6A_16XLARGE`<sup>Required</sup> <a name="R6A_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_16XLARGE"></a>
+
+```typescript
+public readonly R6A_16XLARGE: string;
+```
+
+- *Type:* string
+
+r6a.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R6A_24XLARGE`<sup>Required</sup> <a name="R6A_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_24XLARGE"></a>
+
+```typescript
+public readonly R6A_24XLARGE: string;
+```
+
+- *Type:* string
+
+r6a.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R6A_2XLARGE`<sup>Required</sup> <a name="R6A_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_2XLARGE"></a>
+
+```typescript
+public readonly R6A_2XLARGE: string;
+```
+
+- *Type:* string
+
+r6a.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R6A_32XLARGE`<sup>Required</sup> <a name="R6A_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_32XLARGE"></a>
+
+```typescript
+public readonly R6A_32XLARGE: string;
+```
+
+- *Type:* string
+
+r6a.32xlarge vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R6A_48XLARGE`<sup>Required</sup> <a name="R6A_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_48XLARGE"></a>
+
+```typescript
+public readonly R6A_48XLARGE: string;
+```
+
+- *Type:* string
+
+r6a.48xlarge vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R6A_4XLARGE`<sup>Required</sup> <a name="R6A_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_4XLARGE"></a>
+
+```typescript
+public readonly R6A_4XLARGE: string;
+```
+
+- *Type:* string
+
+r6a.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R6A_8XLARGE`<sup>Required</sup> <a name="R6A_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_8XLARGE"></a>
+
+```typescript
+public readonly R6A_8XLARGE: string;
+```
+
+- *Type:* string
+
+r6a.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R6A_LARGE`<sup>Required</sup> <a name="R6A_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_LARGE"></a>
+
+```typescript
+public readonly R6A_LARGE: string;
+```
+
+- *Type:* string
+
+r6a.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R6A_METAL`<sup>Required</sup> <a name="R6A_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_METAL"></a>
+
+```typescript
+public readonly R6A_METAL: string;
+```
+
+- *Type:* string
+
+r6a.metal vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R6A_XLARGE`<sup>Required</sup> <a name="R6A_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6A_XLARGE"></a>
+
+```typescript
+public readonly R6A_XLARGE: string;
+```
+
+- *Type:* string
+
+r6a.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R6G_12XLARGE`<sup>Required</sup> <a name="R6G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_12XLARGE"></a>
+
+```typescript
+public readonly R6G_12XLARGE: string;
+```
+
+- *Type:* string
+
+r6g.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R6G_16XLARGE`<sup>Required</sup> <a name="R6G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_16XLARGE"></a>
+
+```typescript
+public readonly R6G_16XLARGE: string;
+```
+
+- *Type:* string
+
+r6g.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R6G_2XLARGE`<sup>Required</sup> <a name="R6G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_2XLARGE"></a>
+
+```typescript
+public readonly R6G_2XLARGE: string;
+```
+
+- *Type:* string
+
+r6g.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R6G_4XLARGE`<sup>Required</sup> <a name="R6G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_4XLARGE"></a>
+
+```typescript
+public readonly R6G_4XLARGE: string;
+```
+
+- *Type:* string
+
+r6g.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R6G_8XLARGE`<sup>Required</sup> <a name="R6G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_8XLARGE"></a>
+
+```typescript
+public readonly R6G_8XLARGE: string;
+```
+
+- *Type:* string
+
+r6g.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R6G_LARGE`<sup>Required</sup> <a name="R6G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_LARGE"></a>
+
+```typescript
+public readonly R6G_LARGE: string;
+```
+
+- *Type:* string
+
+r6g.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R6G_MEDIUM`<sup>Required</sup> <a name="R6G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_MEDIUM"></a>
+
+```typescript
+public readonly R6G_MEDIUM: string;
+```
+
+- *Type:* string
+
+r6g.medium vCPUs: 1 Memory: 8192 MiB.
+
+---
+
+##### `R6G_METAL`<sup>Required</sup> <a name="R6G_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_METAL"></a>
+
+```typescript
+public readonly R6G_METAL: string;
+```
+
+- *Type:* string
+
+r6g.metal vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R6G_XLARGE`<sup>Required</sup> <a name="R6G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6G_XLARGE"></a>
+
+```typescript
+public readonly R6G_XLARGE: string;
+```
+
+- *Type:* string
+
+r6g.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R6GD_12XLARGE`<sup>Required</sup> <a name="R6GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_12XLARGE"></a>
+
+```typescript
+public readonly R6GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+r6gd.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R6GD_16XLARGE`<sup>Required</sup> <a name="R6GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_16XLARGE"></a>
+
+```typescript
+public readonly R6GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+r6gd.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R6GD_2XLARGE`<sup>Required</sup> <a name="R6GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_2XLARGE"></a>
+
+```typescript
+public readonly R6GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+r6gd.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R6GD_4XLARGE`<sup>Required</sup> <a name="R6GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_4XLARGE"></a>
+
+```typescript
+public readonly R6GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+r6gd.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R6GD_8XLARGE`<sup>Required</sup> <a name="R6GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_8XLARGE"></a>
+
+```typescript
+public readonly R6GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+r6gd.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R6GD_LARGE`<sup>Required</sup> <a name="R6GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_LARGE"></a>
+
+```typescript
+public readonly R6GD_LARGE: string;
+```
+
+- *Type:* string
+
+r6gd.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R6GD_MEDIUM`<sup>Required</sup> <a name="R6GD_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_MEDIUM"></a>
+
+```typescript
+public readonly R6GD_MEDIUM: string;
+```
+
+- *Type:* string
+
+r6gd.medium vCPUs: 1 Memory: 8192 MiB.
+
+---
+
+##### `R6GD_METAL`<sup>Required</sup> <a name="R6GD_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_METAL"></a>
+
+```typescript
+public readonly R6GD_METAL: string;
+```
+
+- *Type:* string
+
+r6gd.metal vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R6GD_XLARGE`<sup>Required</sup> <a name="R6GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6GD_XLARGE"></a>
+
+```typescript
+public readonly R6GD_XLARGE: string;
+```
+
+- *Type:* string
+
+r6gd.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R6I_12XLARGE`<sup>Required</sup> <a name="R6I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_12XLARGE"></a>
+
+```typescript
+public readonly R6I_12XLARGE: string;
+```
+
+- *Type:* string
+
+r6i.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R6I_16XLARGE`<sup>Required</sup> <a name="R6I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_16XLARGE"></a>
+
+```typescript
+public readonly R6I_16XLARGE: string;
+```
+
+- *Type:* string
+
+r6i.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R6I_24XLARGE`<sup>Required</sup> <a name="R6I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_24XLARGE"></a>
+
+```typescript
+public readonly R6I_24XLARGE: string;
+```
+
+- *Type:* string
+
+r6i.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R6I_2XLARGE`<sup>Required</sup> <a name="R6I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_2XLARGE"></a>
+
+```typescript
+public readonly R6I_2XLARGE: string;
+```
+
+- *Type:* string
+
+r6i.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R6I_32XLARGE`<sup>Required</sup> <a name="R6I_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_32XLARGE"></a>
+
+```typescript
+public readonly R6I_32XLARGE: string;
+```
+
+- *Type:* string
+
+r6i.32xlarge vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R6I_4XLARGE`<sup>Required</sup> <a name="R6I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_4XLARGE"></a>
+
+```typescript
+public readonly R6I_4XLARGE: string;
+```
+
+- *Type:* string
+
+r6i.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R6I_8XLARGE`<sup>Required</sup> <a name="R6I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_8XLARGE"></a>
+
+```typescript
+public readonly R6I_8XLARGE: string;
+```
+
+- *Type:* string
+
+r6i.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R6I_LARGE`<sup>Required</sup> <a name="R6I_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_LARGE"></a>
+
+```typescript
+public readonly R6I_LARGE: string;
+```
+
+- *Type:* string
+
+r6i.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R6I_METAL`<sup>Required</sup> <a name="R6I_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_METAL"></a>
+
+```typescript
+public readonly R6I_METAL: string;
+```
+
+- *Type:* string
+
+r6i.metal vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R6I_XLARGE`<sup>Required</sup> <a name="R6I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6I_XLARGE"></a>
+
+```typescript
+public readonly R6I_XLARGE: string;
+```
+
+- *Type:* string
+
+r6i.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R6ID_12XLARGE`<sup>Required</sup> <a name="R6ID_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_12XLARGE"></a>
+
+```typescript
+public readonly R6ID_12XLARGE: string;
+```
+
+- *Type:* string
+
+r6id.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R6ID_16XLARGE`<sup>Required</sup> <a name="R6ID_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_16XLARGE"></a>
+
+```typescript
+public readonly R6ID_16XLARGE: string;
+```
+
+- *Type:* string
+
+r6id.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R6ID_24XLARGE`<sup>Required</sup> <a name="R6ID_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_24XLARGE"></a>
+
+```typescript
+public readonly R6ID_24XLARGE: string;
+```
+
+- *Type:* string
+
+r6id.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R6ID_2XLARGE`<sup>Required</sup> <a name="R6ID_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_2XLARGE"></a>
+
+```typescript
+public readonly R6ID_2XLARGE: string;
+```
+
+- *Type:* string
+
+r6id.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R6ID_32XLARGE`<sup>Required</sup> <a name="R6ID_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_32XLARGE"></a>
+
+```typescript
+public readonly R6ID_32XLARGE: string;
+```
+
+- *Type:* string
+
+r6id.32xlarge vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R6ID_4XLARGE`<sup>Required</sup> <a name="R6ID_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_4XLARGE"></a>
+
+```typescript
+public readonly R6ID_4XLARGE: string;
+```
+
+- *Type:* string
+
+r6id.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R6ID_8XLARGE`<sup>Required</sup> <a name="R6ID_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_8XLARGE"></a>
+
+```typescript
+public readonly R6ID_8XLARGE: string;
+```
+
+- *Type:* string
+
+r6id.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R6ID_LARGE`<sup>Required</sup> <a name="R6ID_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_LARGE"></a>
+
+```typescript
+public readonly R6ID_LARGE: string;
+```
+
+- *Type:* string
+
+r6id.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R6ID_METAL`<sup>Required</sup> <a name="R6ID_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_METAL"></a>
+
+```typescript
+public readonly R6ID_METAL: string;
+```
+
+- *Type:* string
+
+r6id.metal vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R6ID_XLARGE`<sup>Required</sup> <a name="R6ID_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6ID_XLARGE"></a>
+
+```typescript
+public readonly R6ID_XLARGE: string;
+```
+
+- *Type:* string
+
+r6id.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R6IDN_12XLARGE`<sup>Required</sup> <a name="R6IDN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_12XLARGE"></a>
+
+```typescript
+public readonly R6IDN_12XLARGE: string;
+```
+
+- *Type:* string
+
+r6idn.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R6IDN_16XLARGE`<sup>Required</sup> <a name="R6IDN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_16XLARGE"></a>
+
+```typescript
+public readonly R6IDN_16XLARGE: string;
+```
+
+- *Type:* string
+
+r6idn.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R6IDN_24XLARGE`<sup>Required</sup> <a name="R6IDN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_24XLARGE"></a>
+
+```typescript
+public readonly R6IDN_24XLARGE: string;
+```
+
+- *Type:* string
+
+r6idn.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R6IDN_2XLARGE`<sup>Required</sup> <a name="R6IDN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_2XLARGE"></a>
+
+```typescript
+public readonly R6IDN_2XLARGE: string;
+```
+
+- *Type:* string
+
+r6idn.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R6IDN_32XLARGE`<sup>Required</sup> <a name="R6IDN_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_32XLARGE"></a>
+
+```typescript
+public readonly R6IDN_32XLARGE: string;
+```
+
+- *Type:* string
+
+r6idn.32xlarge vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R6IDN_4XLARGE`<sup>Required</sup> <a name="R6IDN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_4XLARGE"></a>
+
+```typescript
+public readonly R6IDN_4XLARGE: string;
+```
+
+- *Type:* string
+
+r6idn.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R6IDN_8XLARGE`<sup>Required</sup> <a name="R6IDN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_8XLARGE"></a>
+
+```typescript
+public readonly R6IDN_8XLARGE: string;
+```
+
+- *Type:* string
+
+r6idn.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R6IDN_LARGE`<sup>Required</sup> <a name="R6IDN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_LARGE"></a>
+
+```typescript
+public readonly R6IDN_LARGE: string;
+```
+
+- *Type:* string
+
+r6idn.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R6IDN_METAL`<sup>Required</sup> <a name="R6IDN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_METAL"></a>
+
+```typescript
+public readonly R6IDN_METAL: string;
+```
+
+- *Type:* string
+
+r6idn.metal vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R6IDN_XLARGE`<sup>Required</sup> <a name="R6IDN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IDN_XLARGE"></a>
+
+```typescript
+public readonly R6IDN_XLARGE: string;
+```
+
+- *Type:* string
+
+r6idn.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R6IN_12XLARGE`<sup>Required</sup> <a name="R6IN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_12XLARGE"></a>
+
+```typescript
+public readonly R6IN_12XLARGE: string;
+```
+
+- *Type:* string
+
+r6in.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R6IN_16XLARGE`<sup>Required</sup> <a name="R6IN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_16XLARGE"></a>
+
+```typescript
+public readonly R6IN_16XLARGE: string;
+```
+
+- *Type:* string
+
+r6in.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R6IN_24XLARGE`<sup>Required</sup> <a name="R6IN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_24XLARGE"></a>
+
+```typescript
+public readonly R6IN_24XLARGE: string;
+```
+
+- *Type:* string
+
+r6in.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R6IN_2XLARGE`<sup>Required</sup> <a name="R6IN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_2XLARGE"></a>
+
+```typescript
+public readonly R6IN_2XLARGE: string;
+```
+
+- *Type:* string
+
+r6in.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R6IN_32XLARGE`<sup>Required</sup> <a name="R6IN_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_32XLARGE"></a>
+
+```typescript
+public readonly R6IN_32XLARGE: string;
+```
+
+- *Type:* string
+
+r6in.32xlarge vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R6IN_4XLARGE`<sup>Required</sup> <a name="R6IN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_4XLARGE"></a>
+
+```typescript
+public readonly R6IN_4XLARGE: string;
+```
+
+- *Type:* string
+
+r6in.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R6IN_8XLARGE`<sup>Required</sup> <a name="R6IN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_8XLARGE"></a>
+
+```typescript
+public readonly R6IN_8XLARGE: string;
+```
+
+- *Type:* string
+
+r6in.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R6IN_LARGE`<sup>Required</sup> <a name="R6IN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_LARGE"></a>
+
+```typescript
+public readonly R6IN_LARGE: string;
+```
+
+- *Type:* string
+
+r6in.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R6IN_METAL`<sup>Required</sup> <a name="R6IN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_METAL"></a>
+
+```typescript
+public readonly R6IN_METAL: string;
+```
+
+- *Type:* string
+
+r6in.metal vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R6IN_XLARGE`<sup>Required</sup> <a name="R6IN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R6IN_XLARGE"></a>
+
+```typescript
+public readonly R6IN_XLARGE: string;
+```
+
+- *Type:* string
+
+r6in.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R7A_12XLARGE`<sup>Required</sup> <a name="R7A_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_12XLARGE"></a>
+
+```typescript
+public readonly R7A_12XLARGE: string;
+```
+
+- *Type:* string
+
+r7a.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R7A_16XLARGE`<sup>Required</sup> <a name="R7A_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_16XLARGE"></a>
+
+```typescript
+public readonly R7A_16XLARGE: string;
+```
+
+- *Type:* string
+
+r7a.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R7A_24XLARGE`<sup>Required</sup> <a name="R7A_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_24XLARGE"></a>
+
+```typescript
+public readonly R7A_24XLARGE: string;
+```
+
+- *Type:* string
+
+r7a.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R7A_2XLARGE`<sup>Required</sup> <a name="R7A_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_2XLARGE"></a>
+
+```typescript
+public readonly R7A_2XLARGE: string;
+```
+
+- *Type:* string
+
+r7a.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R7A_32XLARGE`<sup>Required</sup> <a name="R7A_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_32XLARGE"></a>
+
+```typescript
+public readonly R7A_32XLARGE: string;
+```
+
+- *Type:* string
+
+r7a.32xlarge vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R7A_48XLARGE`<sup>Required</sup> <a name="R7A_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_48XLARGE"></a>
+
+```typescript
+public readonly R7A_48XLARGE: string;
+```
+
+- *Type:* string
+
+r7a.48xlarge vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R7A_4XLARGE`<sup>Required</sup> <a name="R7A_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_4XLARGE"></a>
+
+```typescript
+public readonly R7A_4XLARGE: string;
+```
+
+- *Type:* string
+
+r7a.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R7A_8XLARGE`<sup>Required</sup> <a name="R7A_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_8XLARGE"></a>
+
+```typescript
+public readonly R7A_8XLARGE: string;
+```
+
+- *Type:* string
+
+r7a.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R7A_LARGE`<sup>Required</sup> <a name="R7A_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_LARGE"></a>
+
+```typescript
+public readonly R7A_LARGE: string;
+```
+
+- *Type:* string
+
+r7a.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R7A_MEDIUM`<sup>Required</sup> <a name="R7A_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_MEDIUM"></a>
+
+```typescript
+public readonly R7A_MEDIUM: string;
+```
+
+- *Type:* string
+
+r7a.medium vCPUs: 1 Memory: 8192 MiB.
+
+---
+
+##### `R7A_METAL_48XL`<sup>Required</sup> <a name="R7A_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_METAL_48XL"></a>
+
+```typescript
+public readonly R7A_METAL_48XL: string;
+```
+
+- *Type:* string
+
+r7a.metal-48xl vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R7A_XLARGE`<sup>Required</sup> <a name="R7A_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7A_XLARGE"></a>
+
+```typescript
+public readonly R7A_XLARGE: string;
+```
+
+- *Type:* string
+
+r7a.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R7G_12XLARGE`<sup>Required</sup> <a name="R7G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_12XLARGE"></a>
+
+```typescript
+public readonly R7G_12XLARGE: string;
+```
+
+- *Type:* string
+
+r7g.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R7G_16XLARGE`<sup>Required</sup> <a name="R7G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_16XLARGE"></a>
+
+```typescript
+public readonly R7G_16XLARGE: string;
+```
+
+- *Type:* string
+
+r7g.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R7G_2XLARGE`<sup>Required</sup> <a name="R7G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_2XLARGE"></a>
+
+```typescript
+public readonly R7G_2XLARGE: string;
+```
+
+- *Type:* string
+
+r7g.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R7G_4XLARGE`<sup>Required</sup> <a name="R7G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_4XLARGE"></a>
+
+```typescript
+public readonly R7G_4XLARGE: string;
+```
+
+- *Type:* string
+
+r7g.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R7G_8XLARGE`<sup>Required</sup> <a name="R7G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_8XLARGE"></a>
+
+```typescript
+public readonly R7G_8XLARGE: string;
+```
+
+- *Type:* string
+
+r7g.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R7G_LARGE`<sup>Required</sup> <a name="R7G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_LARGE"></a>
+
+```typescript
+public readonly R7G_LARGE: string;
+```
+
+- *Type:* string
+
+r7g.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R7G_MEDIUM`<sup>Required</sup> <a name="R7G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_MEDIUM"></a>
+
+```typescript
+public readonly R7G_MEDIUM: string;
+```
+
+- *Type:* string
+
+r7g.medium vCPUs: 1 Memory: 8192 MiB.
+
+---
+
+##### `R7G_METAL`<sup>Required</sup> <a name="R7G_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_METAL"></a>
+
+```typescript
+public readonly R7G_METAL: string;
+```
+
+- *Type:* string
+
+r7g.metal vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R7G_XLARGE`<sup>Required</sup> <a name="R7G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7G_XLARGE"></a>
+
+```typescript
+public readonly R7G_XLARGE: string;
+```
+
+- *Type:* string
+
+r7g.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R7GD_12XLARGE`<sup>Required</sup> <a name="R7GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_12XLARGE"></a>
+
+```typescript
+public readonly R7GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+r7gd.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R7GD_16XLARGE`<sup>Required</sup> <a name="R7GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_16XLARGE"></a>
+
+```typescript
+public readonly R7GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+r7gd.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R7GD_2XLARGE`<sup>Required</sup> <a name="R7GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_2XLARGE"></a>
+
+```typescript
+public readonly R7GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+r7gd.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R7GD_4XLARGE`<sup>Required</sup> <a name="R7GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_4XLARGE"></a>
+
+```typescript
+public readonly R7GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+r7gd.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R7GD_8XLARGE`<sup>Required</sup> <a name="R7GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_8XLARGE"></a>
+
+```typescript
+public readonly R7GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+r7gd.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R7GD_LARGE`<sup>Required</sup> <a name="R7GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_LARGE"></a>
+
+```typescript
+public readonly R7GD_LARGE: string;
+```
+
+- *Type:* string
+
+r7gd.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R7GD_MEDIUM`<sup>Required</sup> <a name="R7GD_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_MEDIUM"></a>
+
+```typescript
+public readonly R7GD_MEDIUM: string;
+```
+
+- *Type:* string
+
+r7gd.medium vCPUs: 1 Memory: 8192 MiB.
+
+---
+
+##### `R7GD_METAL`<sup>Required</sup> <a name="R7GD_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_METAL"></a>
+
+```typescript
+public readonly R7GD_METAL: string;
+```
+
+- *Type:* string
+
+r7gd.metal vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R7GD_XLARGE`<sup>Required</sup> <a name="R7GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7GD_XLARGE"></a>
+
+```typescript
+public readonly R7GD_XLARGE: string;
+```
+
+- *Type:* string
+
+r7gd.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R7I_12XLARGE`<sup>Required</sup> <a name="R7I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_12XLARGE"></a>
+
+```typescript
+public readonly R7I_12XLARGE: string;
+```
+
+- *Type:* string
+
+r7i.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R7I_16XLARGE`<sup>Required</sup> <a name="R7I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_16XLARGE"></a>
+
+```typescript
+public readonly R7I_16XLARGE: string;
+```
+
+- *Type:* string
+
+r7i.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R7I_24XLARGE`<sup>Required</sup> <a name="R7I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_24XLARGE"></a>
+
+```typescript
+public readonly R7I_24XLARGE: string;
+```
+
+- *Type:* string
+
+r7i.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R7I_2XLARGE`<sup>Required</sup> <a name="R7I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_2XLARGE"></a>
+
+```typescript
+public readonly R7I_2XLARGE: string;
+```
+
+- *Type:* string
+
+r7i.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R7I_48XLARGE`<sup>Required</sup> <a name="R7I_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_48XLARGE"></a>
+
+```typescript
+public readonly R7I_48XLARGE: string;
+```
+
+- *Type:* string
+
+r7i.48xlarge vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R7I_4XLARGE`<sup>Required</sup> <a name="R7I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_4XLARGE"></a>
+
+```typescript
+public readonly R7I_4XLARGE: string;
+```
+
+- *Type:* string
+
+r7i.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R7I_8XLARGE`<sup>Required</sup> <a name="R7I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_8XLARGE"></a>
+
+```typescript
+public readonly R7I_8XLARGE: string;
+```
+
+- *Type:* string
+
+r7i.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R7I_LARGE`<sup>Required</sup> <a name="R7I_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_LARGE"></a>
+
+```typescript
+public readonly R7I_LARGE: string;
+```
+
+- *Type:* string
+
+r7i.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R7I_METAL_24XL`<sup>Required</sup> <a name="R7I_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_METAL_24XL"></a>
+
+```typescript
+public readonly R7I_METAL_24XL: string;
+```
+
+- *Type:* string
+
+r7i.metal-24xl vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R7I_METAL_48XL`<sup>Required</sup> <a name="R7I_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_METAL_48XL"></a>
+
+```typescript
+public readonly R7I_METAL_48XL: string;
+```
+
+- *Type:* string
+
+r7i.metal-48xl vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R7I_XLARGE`<sup>Required</sup> <a name="R7I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7I_XLARGE"></a>
+
+```typescript
+public readonly R7I_XLARGE: string;
+```
+
+- *Type:* string
+
+r7i.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R7IZ_12XLARGE`<sup>Required</sup> <a name="R7IZ_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_12XLARGE"></a>
+
+```typescript
+public readonly R7IZ_12XLARGE: string;
+```
+
+- *Type:* string
+
+r7iz.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R7IZ_16XLARGE`<sup>Required</sup> <a name="R7IZ_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_16XLARGE"></a>
+
+```typescript
+public readonly R7IZ_16XLARGE: string;
+```
+
+- *Type:* string
+
+r7iz.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R7IZ_2XLARGE`<sup>Required</sup> <a name="R7IZ_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_2XLARGE"></a>
+
+```typescript
+public readonly R7IZ_2XLARGE: string;
+```
+
+- *Type:* string
+
+r7iz.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R7IZ_32XLARGE`<sup>Required</sup> <a name="R7IZ_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_32XLARGE"></a>
+
+```typescript
+public readonly R7IZ_32XLARGE: string;
+```
+
+- *Type:* string
+
+r7iz.32xlarge vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R7IZ_4XLARGE`<sup>Required</sup> <a name="R7IZ_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_4XLARGE"></a>
+
+```typescript
+public readonly R7IZ_4XLARGE: string;
+```
+
+- *Type:* string
+
+r7iz.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R7IZ_8XLARGE`<sup>Required</sup> <a name="R7IZ_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_8XLARGE"></a>
+
+```typescript
+public readonly R7IZ_8XLARGE: string;
+```
+
+- *Type:* string
+
+r7iz.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R7IZ_LARGE`<sup>Required</sup> <a name="R7IZ_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_LARGE"></a>
+
+```typescript
+public readonly R7IZ_LARGE: string;
+```
+
+- *Type:* string
+
+r7iz.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R7IZ_METAL_16XL`<sup>Required</sup> <a name="R7IZ_METAL_16XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_METAL_16XL"></a>
+
+```typescript
+public readonly R7IZ_METAL_16XL: string;
+```
+
+- *Type:* string
+
+r7iz.metal-16xl vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R7IZ_METAL_32XL`<sup>Required</sup> <a name="R7IZ_METAL_32XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_METAL_32XL"></a>
+
+```typescript
+public readonly R7IZ_METAL_32XL: string;
+```
+
+- *Type:* string
+
+r7iz.metal-32xl vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R7IZ_XLARGE`<sup>Required</sup> <a name="R7IZ_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R7IZ_XLARGE"></a>
+
+```typescript
+public readonly R7IZ_XLARGE: string;
+```
+
+- *Type:* string
+
+r7iz.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R8G_12XLARGE`<sup>Required</sup> <a name="R8G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_12XLARGE"></a>
+
+```typescript
+public readonly R8G_12XLARGE: string;
+```
+
+- *Type:* string
+
+r8g.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R8G_16XLARGE`<sup>Required</sup> <a name="R8G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_16XLARGE"></a>
+
+```typescript
+public readonly R8G_16XLARGE: string;
+```
+
+- *Type:* string
+
+r8g.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R8G_24XLARGE`<sup>Required</sup> <a name="R8G_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_24XLARGE"></a>
+
+```typescript
+public readonly R8G_24XLARGE: string;
+```
+
+- *Type:* string
+
+r8g.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R8G_2XLARGE`<sup>Required</sup> <a name="R8G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_2XLARGE"></a>
+
+```typescript
+public readonly R8G_2XLARGE: string;
+```
+
+- *Type:* string
+
+r8g.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R8G_48XLARGE`<sup>Required</sup> <a name="R8G_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_48XLARGE"></a>
+
+```typescript
+public readonly R8G_48XLARGE: string;
+```
+
+- *Type:* string
+
+r8g.48xlarge vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R8G_4XLARGE`<sup>Required</sup> <a name="R8G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_4XLARGE"></a>
+
+```typescript
+public readonly R8G_4XLARGE: string;
+```
+
+- *Type:* string
+
+r8g.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R8G_8XLARGE`<sup>Required</sup> <a name="R8G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_8XLARGE"></a>
+
+```typescript
+public readonly R8G_8XLARGE: string;
+```
+
+- *Type:* string
+
+r8g.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R8G_LARGE`<sup>Required</sup> <a name="R8G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_LARGE"></a>
+
+```typescript
+public readonly R8G_LARGE: string;
+```
+
+- *Type:* string
+
+r8g.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R8G_MEDIUM`<sup>Required</sup> <a name="R8G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_MEDIUM"></a>
+
+```typescript
+public readonly R8G_MEDIUM: string;
+```
+
+- *Type:* string
+
+r8g.medium vCPUs: 1 Memory: 8192 MiB.
+
+---
+
+##### `R8G_METAL_24XL`<sup>Required</sup> <a name="R8G_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_METAL_24XL"></a>
+
+```typescript
+public readonly R8G_METAL_24XL: string;
+```
+
+- *Type:* string
+
+r8g.metal-24xl vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R8G_METAL_48XL`<sup>Required</sup> <a name="R8G_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_METAL_48XL"></a>
+
+```typescript
+public readonly R8G_METAL_48XL: string;
+```
+
+- *Type:* string
+
+r8g.metal-48xl vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R8G_XLARGE`<sup>Required</sup> <a name="R8G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_XLARGE"></a>
+
+```typescript
+public readonly R8G_XLARGE: string;
+```
+
+- *Type:* string
+
+r8g.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `T1_MICRO`<sup>Required</sup> <a name="T1_MICRO" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T1_MICRO"></a>
+
+```typescript
+public readonly T1_MICRO: string;
+```
+
+- *Type:* string
+
+t1.micro vCPUs: 1 Memory: 627 MiB.
+
+---
+
+##### `T2_2XLARGE`<sup>Required</sup> <a name="T2_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_2XLARGE"></a>
+
+```typescript
+public readonly T2_2XLARGE: string;
+```
+
+- *Type:* string
+
+t2.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `T2_LARGE`<sup>Required</sup> <a name="T2_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_LARGE"></a>
+
+```typescript
+public readonly T2_LARGE: string;
+```
+
+- *Type:* string
+
+t2.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `T2_MEDIUM`<sup>Required</sup> <a name="T2_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_MEDIUM"></a>
+
+```typescript
+public readonly T2_MEDIUM: string;
+```
+
+- *Type:* string
+
+t2.medium vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `T2_MICRO`<sup>Required</sup> <a name="T2_MICRO" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_MICRO"></a>
+
+```typescript
+public readonly T2_MICRO: string;
+```
+
+- *Type:* string
+
+t2.micro vCPUs: 1 Memory: 1024 MiB.
+
+---
+
+##### `T2_NANO`<sup>Required</sup> <a name="T2_NANO" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_NANO"></a>
+
+```typescript
+public readonly T2_NANO: string;
+```
+
+- *Type:* string
+
+t2.nano vCPUs: 1 Memory: 512 MiB.
+
+---
+
+##### `T2_SMALL`<sup>Required</sup> <a name="T2_SMALL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_SMALL"></a>
+
+```typescript
+public readonly T2_SMALL: string;
+```
+
+- *Type:* string
+
+t2.small vCPUs: 1 Memory: 2048 MiB.
+
+---
+
+##### `T2_XLARGE`<sup>Required</sup> <a name="T2_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_XLARGE"></a>
+
+```typescript
+public readonly T2_XLARGE: string;
+```
+
+- *Type:* string
+
+t2.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `T3_2XLARGE`<sup>Required</sup> <a name="T3_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_2XLARGE"></a>
+
+```typescript
+public readonly T3_2XLARGE: string;
+```
+
+- *Type:* string
+
+t3.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `T3_LARGE`<sup>Required</sup> <a name="T3_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_LARGE"></a>
+
+```typescript
+public readonly T3_LARGE: string;
+```
+
+- *Type:* string
+
+t3.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `T3_MEDIUM`<sup>Required</sup> <a name="T3_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_MEDIUM"></a>
+
+```typescript
+public readonly T3_MEDIUM: string;
+```
+
+- *Type:* string
+
+t3.medium vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `T3_MICRO`<sup>Required</sup> <a name="T3_MICRO" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_MICRO"></a>
+
+```typescript
+public readonly T3_MICRO: string;
+```
+
+- *Type:* string
+
+t3.micro vCPUs: 2 Memory: 1024 MiB.
+
+---
+
+##### `T3_NANO`<sup>Required</sup> <a name="T3_NANO" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_NANO"></a>
+
+```typescript
+public readonly T3_NANO: string;
+```
+
+- *Type:* string
+
+t3.nano vCPUs: 2 Memory: 512 MiB.
+
+---
+
+##### `T3_SMALL`<sup>Required</sup> <a name="T3_SMALL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_SMALL"></a>
+
+```typescript
+public readonly T3_SMALL: string;
+```
+
+- *Type:* string
+
+t3.small vCPUs: 2 Memory: 2048 MiB.
+
+---
+
+##### `T3_XLARGE`<sup>Required</sup> <a name="T3_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3_XLARGE"></a>
+
+```typescript
+public readonly T3_XLARGE: string;
+```
+
+- *Type:* string
+
+t3.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `T3A_2XLARGE`<sup>Required</sup> <a name="T3A_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_2XLARGE"></a>
+
+```typescript
+public readonly T3A_2XLARGE: string;
+```
+
+- *Type:* string
+
+t3a.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `T3A_LARGE`<sup>Required</sup> <a name="T3A_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_LARGE"></a>
+
+```typescript
+public readonly T3A_LARGE: string;
+```
+
+- *Type:* string
+
+t3a.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `T3A_MEDIUM`<sup>Required</sup> <a name="T3A_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_MEDIUM"></a>
+
+```typescript
+public readonly T3A_MEDIUM: string;
+```
+
+- *Type:* string
+
+t3a.medium vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `T3A_MICRO`<sup>Required</sup> <a name="T3A_MICRO" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_MICRO"></a>
+
+```typescript
+public readonly T3A_MICRO: string;
+```
+
+- *Type:* string
+
+t3a.micro vCPUs: 2 Memory: 1024 MiB.
+
+---
+
+##### `T3A_NANO`<sup>Required</sup> <a name="T3A_NANO" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_NANO"></a>
+
+```typescript
+public readonly T3A_NANO: string;
+```
+
+- *Type:* string
+
+t3a.nano vCPUs: 2 Memory: 512 MiB.
+
+---
+
+##### `T3A_SMALL`<sup>Required</sup> <a name="T3A_SMALL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_SMALL"></a>
+
+```typescript
+public readonly T3A_SMALL: string;
+```
+
+- *Type:* string
+
+t3a.small vCPUs: 2 Memory: 2048 MiB.
+
+---
+
+##### `T3A_XLARGE`<sup>Required</sup> <a name="T3A_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T3A_XLARGE"></a>
+
+```typescript
+public readonly T3A_XLARGE: string;
+```
+
+- *Type:* string
+
+t3a.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `T4G_2XLARGE`<sup>Required</sup> <a name="T4G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_2XLARGE"></a>
+
+```typescript
+public readonly T4G_2XLARGE: string;
+```
+
+- *Type:* string
+
+t4g.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `T4G_LARGE`<sup>Required</sup> <a name="T4G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_LARGE"></a>
+
+```typescript
+public readonly T4G_LARGE: string;
+```
+
+- *Type:* string
+
+t4g.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `T4G_MEDIUM`<sup>Required</sup> <a name="T4G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_MEDIUM"></a>
+
+```typescript
+public readonly T4G_MEDIUM: string;
+```
+
+- *Type:* string
+
+t4g.medium vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `T4G_MICRO`<sup>Required</sup> <a name="T4G_MICRO" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_MICRO"></a>
+
+```typescript
+public readonly T4G_MICRO: string;
+```
+
+- *Type:* string
+
+t4g.micro vCPUs: 2 Memory: 1024 MiB.
+
+---
+
+##### `T4G_NANO`<sup>Required</sup> <a name="T4G_NANO" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_NANO"></a>
+
+```typescript
+public readonly T4G_NANO: string;
+```
+
+- *Type:* string
+
+t4g.nano vCPUs: 2 Memory: 512 MiB.
+
+---
+
+##### `T4G_SMALL`<sup>Required</sup> <a name="T4G_SMALL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_SMALL"></a>
+
+```typescript
+public readonly T4G_SMALL: string;
+```
+
+- *Type:* string
+
+t4g.small vCPUs: 2 Memory: 2048 MiB.
+
+---
+
+##### `T4G_XLARGE`<sup>Required</sup> <a name="T4G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T4G_XLARGE"></a>
+
+```typescript
+public readonly T4G_XLARGE: string;
+```
+
+- *Type:* string
+
+t4g.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `TRN1_2XLARGE`<sup>Required</sup> <a name="TRN1_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.TRN1_2XLARGE"></a>
+
+```typescript
+public readonly TRN1_2XLARGE: string;
+```
+
+- *Type:* string
+
+trn1.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `TRN1_32XLARGE`<sup>Required</sup> <a name="TRN1_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.TRN1_32XLARGE"></a>
+
+```typescript
+public readonly TRN1_32XLARGE: string;
+```
+
+- *Type:* string
+
+trn1.32xlarge vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `TRN1N_32XLARGE`<sup>Required</sup> <a name="TRN1N_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.TRN1N_32XLARGE"></a>
+
+```typescript
+public readonly TRN1N_32XLARGE: string;
+```
+
+- *Type:* string
+
+trn1n.32xlarge vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `U_12TB1_112XLARGE`<sup>Required</sup> <a name="U_12TB1_112XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_12TB1_112XLARGE"></a>
+
+```typescript
+public readonly U_12TB1_112XLARGE: string;
+```
+
+- *Type:* string
+
+u-12tb1.112xlarge vCPUs: 448 Memory: 12582912 MiB.
+
+---
+
+##### `U_18TB1_112XLARGE`<sup>Required</sup> <a name="U_18TB1_112XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_18TB1_112XLARGE"></a>
+
+```typescript
+public readonly U_18TB1_112XLARGE: string;
+```
+
+- *Type:* string
+
+u-18tb1.112xlarge vCPUs: 448 Memory: 18874368 MiB.
+
+---
+
+##### `U_24TB1_112XLARGE`<sup>Required</sup> <a name="U_24TB1_112XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_24TB1_112XLARGE"></a>
+
+```typescript
+public readonly U_24TB1_112XLARGE: string;
+```
+
+- *Type:* string
+
+u-24tb1.112xlarge vCPUs: 448 Memory: 25165824 MiB.
+
+---
+
+##### `U_3TB1_56XLARGE`<sup>Required</sup> <a name="U_3TB1_56XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_3TB1_56XLARGE"></a>
+
+```typescript
+public readonly U_3TB1_56XLARGE: string;
+```
+
+- *Type:* string
+
+u-3tb1.56xlarge vCPUs: 224 Memory: 3145728 MiB.
+
+---
+
+##### `U_6TB1_112XLARGE`<sup>Required</sup> <a name="U_6TB1_112XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_6TB1_112XLARGE"></a>
+
+```typescript
+public readonly U_6TB1_112XLARGE: string;
+```
+
+- *Type:* string
+
+u-6tb1.112xlarge vCPUs: 448 Memory: 6291456 MiB.
+
+---
+
+##### `U_6TB1_56XLARGE`<sup>Required</sup> <a name="U_6TB1_56XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_6TB1_56XLARGE"></a>
+
+```typescript
+public readonly U_6TB1_56XLARGE: string;
+```
+
+- *Type:* string
+
+u-6tb1.56xlarge vCPUs: 224 Memory: 6291456 MiB.
+
+---
+
+##### `U_9TB1_112XLARGE`<sup>Required</sup> <a name="U_9TB1_112XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_9TB1_112XLARGE"></a>
+
+```typescript
+public readonly U_9TB1_112XLARGE: string;
+```
+
+- *Type:* string
+
+u-9tb1.112xlarge vCPUs: 448 Memory: 9437184 MiB.
+
+---
+
+##### `U7I_12TB_224XLARGE`<sup>Required</sup> <a name="U7I_12TB_224XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7I_12TB_224XLARGE"></a>
+
+```typescript
+public readonly U7I_12TB_224XLARGE: string;
+```
+
+- *Type:* string
+
+u7i-12tb.224xlarge vCPUs: 896 Memory: 12582912 MiB.
+
+---
+
+##### `U7I_6TB_112XLARGE`<sup>Required</sup> <a name="U7I_6TB_112XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7I_6TB_112XLARGE"></a>
+
+```typescript
+public readonly U7I_6TB_112XLARGE: string;
+```
+
+- *Type:* string
+
+u7i-6tb.112xlarge vCPUs: 448 Memory: 6291456 MiB.
+
+---
+
+##### `U7I_8TB_112XLARGE`<sup>Required</sup> <a name="U7I_8TB_112XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7I_8TB_112XLARGE"></a>
+
+```typescript
+public readonly U7I_8TB_112XLARGE: string;
+```
+
+- *Type:* string
+
+u7i-8tb.112xlarge vCPUs: 448 Memory: 8388608 MiB.
+
+---
+
+##### `U7IN_16TB_224XLARGE`<sup>Required</sup> <a name="U7IN_16TB_224XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7IN_16TB_224XLARGE"></a>
+
+```typescript
+public readonly U7IN_16TB_224XLARGE: string;
+```
+
+- *Type:* string
+
+u7in-16tb.224xlarge vCPUs: 896 Memory: 16777216 MiB.
+
+---
+
+##### `U7IN_24TB_224XLARGE`<sup>Required</sup> <a name="U7IN_24TB_224XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7IN_24TB_224XLARGE"></a>
+
+```typescript
+public readonly U7IN_24TB_224XLARGE: string;
+```
+
+- *Type:* string
+
+u7in-24tb.224xlarge vCPUs: 896 Memory: 25165824 MiB.
+
+---
+
+##### `U7IN_32TB_224XLARGE`<sup>Required</sup> <a name="U7IN_32TB_224XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7IN_32TB_224XLARGE"></a>
+
+```typescript
+public readonly U7IN_32TB_224XLARGE: string;
+```
+
+- *Type:* string
+
+u7in-32tb.224xlarge vCPUs: 896 Memory: 33554432 MiB.
+
+---
+
+##### `VT1_24XLARGE`<sup>Required</sup> <a name="VT1_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.VT1_24XLARGE"></a>
+
+```typescript
+public readonly VT1_24XLARGE: string;
+```
+
+- *Type:* string
+
+vt1.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `VT1_3XLARGE`<sup>Required</sup> <a name="VT1_3XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.VT1_3XLARGE"></a>
+
+```typescript
+public readonly VT1_3XLARGE: string;
+```
+
+- *Type:* string
+
+vt1.3xlarge vCPUs: 12 Memory: 24576 MiB.
+
+---
+
+##### `VT1_6XLARGE`<sup>Required</sup> <a name="VT1_6XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.VT1_6XLARGE"></a>
+
+```typescript
+public readonly VT1_6XLARGE: string;
+```
+
+- *Type:* string
+
+vt1.6xlarge vCPUs: 24 Memory: 49152 MiB.
+
+---
+
+##### `X1_16XLARGE`<sup>Required</sup> <a name="X1_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1_16XLARGE"></a>
+
+```typescript
+public readonly X1_16XLARGE: string;
+```
+
+- *Type:* string
+
+x1.16xlarge vCPUs: 64 Memory: 999424 MiB.
+
+---
+
+##### `X1_32XLARGE`<sup>Required</sup> <a name="X1_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1_32XLARGE"></a>
+
+```typescript
+public readonly X1_32XLARGE: string;
+```
+
+- *Type:* string
+
+x1.32xlarge vCPUs: 128 Memory: 1998848 MiB.
+
+---
+
+##### `X1E_16XLARGE`<sup>Required</sup> <a name="X1E_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1E_16XLARGE"></a>
+
+```typescript
+public readonly X1E_16XLARGE: string;
+```
+
+- *Type:* string
+
+x1e.16xlarge vCPUs: 64 Memory: 1998848 MiB.
+
+---
+
+##### `X1E_2XLARGE`<sup>Required</sup> <a name="X1E_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1E_2XLARGE"></a>
+
+```typescript
+public readonly X1E_2XLARGE: string;
+```
+
+- *Type:* string
+
+x1e.2xlarge vCPUs: 8 Memory: 249856 MiB.
+
+---
+
+##### `X1E_32XLARGE`<sup>Required</sup> <a name="X1E_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1E_32XLARGE"></a>
+
+```typescript
+public readonly X1E_32XLARGE: string;
+```
+
+- *Type:* string
+
+x1e.32xlarge vCPUs: 128 Memory: 3997696 MiB.
+
+---
+
+##### `X1E_4XLARGE`<sup>Required</sup> <a name="X1E_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1E_4XLARGE"></a>
+
+```typescript
+public readonly X1E_4XLARGE: string;
+```
+
+- *Type:* string
+
+x1e.4xlarge vCPUs: 16 Memory: 499712 MiB.
+
+---
+
+##### `X1E_8XLARGE`<sup>Required</sup> <a name="X1E_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1E_8XLARGE"></a>
+
+```typescript
+public readonly X1E_8XLARGE: string;
+```
+
+- *Type:* string
+
+x1e.8xlarge vCPUs: 32 Memory: 999424 MiB.
+
+---
+
+##### `X1E_XLARGE`<sup>Required</sup> <a name="X1E_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X1E_XLARGE"></a>
+
+```typescript
+public readonly X1E_XLARGE: string;
+```
+
+- *Type:* string
+
+x1e.xlarge vCPUs: 4 Memory: 124928 MiB.
+
+---
+
+##### `X2GD_12XLARGE`<sup>Required</sup> <a name="X2GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_12XLARGE"></a>
+
+```typescript
+public readonly X2GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+x2gd.12xlarge vCPUs: 48 Memory: 786432 MiB.
+
+---
+
+##### `X2GD_16XLARGE`<sup>Required</sup> <a name="X2GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_16XLARGE"></a>
+
+```typescript
+public readonly X2GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+x2gd.16xlarge vCPUs: 64 Memory: 1048576 MiB.
+
+---
+
+##### `X2GD_2XLARGE`<sup>Required</sup> <a name="X2GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_2XLARGE"></a>
+
+```typescript
+public readonly X2GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+x2gd.2xlarge vCPUs: 8 Memory: 131072 MiB.
+
+---
+
+##### `X2GD_4XLARGE`<sup>Required</sup> <a name="X2GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_4XLARGE"></a>
+
+```typescript
+public readonly X2GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+x2gd.4xlarge vCPUs: 16 Memory: 262144 MiB.
+
+---
+
+##### `X2GD_8XLARGE`<sup>Required</sup> <a name="X2GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_8XLARGE"></a>
+
+```typescript
+public readonly X2GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+x2gd.8xlarge vCPUs: 32 Memory: 524288 MiB.
+
+---
+
+##### `X2GD_LARGE`<sup>Required</sup> <a name="X2GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_LARGE"></a>
+
+```typescript
+public readonly X2GD_LARGE: string;
+```
+
+- *Type:* string
+
+x2gd.large vCPUs: 2 Memory: 32768 MiB.
+
+---
+
+##### `X2GD_MEDIUM`<sup>Required</sup> <a name="X2GD_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_MEDIUM"></a>
+
+```typescript
+public readonly X2GD_MEDIUM: string;
+```
+
+- *Type:* string
+
+x2gd.medium vCPUs: 1 Memory: 16384 MiB.
+
+---
+
+##### `X2GD_METAL`<sup>Required</sup> <a name="X2GD_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_METAL"></a>
+
+```typescript
+public readonly X2GD_METAL: string;
+```
+
+- *Type:* string
+
+x2gd.metal vCPUs: 64 Memory: 1048576 MiB.
+
+---
+
+##### `X2GD_XLARGE`<sup>Required</sup> <a name="X2GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2GD_XLARGE"></a>
+
+```typescript
+public readonly X2GD_XLARGE: string;
+```
+
+- *Type:* string
+
+x2gd.xlarge vCPUs: 4 Memory: 65536 MiB.
+
+---
+
+##### `X2IDN_16XLARGE`<sup>Required</sup> <a name="X2IDN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IDN_16XLARGE"></a>
+
+```typescript
+public readonly X2IDN_16XLARGE: string;
+```
+
+- *Type:* string
+
+x2idn.16xlarge vCPUs: 64 Memory: 1048576 MiB.
+
+---
+
+##### `X2IDN_24XLARGE`<sup>Required</sup> <a name="X2IDN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IDN_24XLARGE"></a>
+
+```typescript
+public readonly X2IDN_24XLARGE: string;
+```
+
+- *Type:* string
+
+x2idn.24xlarge vCPUs: 96 Memory: 1572864 MiB.
+
+---
+
+##### `X2IDN_32XLARGE`<sup>Required</sup> <a name="X2IDN_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IDN_32XLARGE"></a>
+
+```typescript
+public readonly X2IDN_32XLARGE: string;
+```
+
+- *Type:* string
+
+x2idn.32xlarge vCPUs: 128 Memory: 2097152 MiB.
+
+---
+
+##### `X2IDN_METAL`<sup>Required</sup> <a name="X2IDN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IDN_METAL"></a>
+
+```typescript
+public readonly X2IDN_METAL: string;
+```
+
+- *Type:* string
+
+x2idn.metal vCPUs: 128 Memory: 2097152 MiB.
+
+---
+
+##### `X2IEDN_16XLARGE`<sup>Required</sup> <a name="X2IEDN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_16XLARGE"></a>
+
+```typescript
+public readonly X2IEDN_16XLARGE: string;
+```
+
+- *Type:* string
+
+x2iedn.16xlarge vCPUs: 64 Memory: 2097152 MiB.
+
+---
+
+##### `X2IEDN_24XLARGE`<sup>Required</sup> <a name="X2IEDN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_24XLARGE"></a>
+
+```typescript
+public readonly X2IEDN_24XLARGE: string;
+```
+
+- *Type:* string
+
+x2iedn.24xlarge vCPUs: 96 Memory: 3145728 MiB.
+
+---
+
+##### `X2IEDN_2XLARGE`<sup>Required</sup> <a name="X2IEDN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_2XLARGE"></a>
+
+```typescript
+public readonly X2IEDN_2XLARGE: string;
+```
+
+- *Type:* string
+
+x2iedn.2xlarge vCPUs: 8 Memory: 262144 MiB.
+
+---
+
+##### `X2IEDN_32XLARGE`<sup>Required</sup> <a name="X2IEDN_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_32XLARGE"></a>
+
+```typescript
+public readonly X2IEDN_32XLARGE: string;
+```
+
+- *Type:* string
+
+x2iedn.32xlarge vCPUs: 128 Memory: 4194304 MiB.
+
+---
+
+##### `X2IEDN_4XLARGE`<sup>Required</sup> <a name="X2IEDN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_4XLARGE"></a>
+
+```typescript
+public readonly X2IEDN_4XLARGE: string;
+```
+
+- *Type:* string
+
+x2iedn.4xlarge vCPUs: 16 Memory: 524288 MiB.
+
+---
+
+##### `X2IEDN_8XLARGE`<sup>Required</sup> <a name="X2IEDN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_8XLARGE"></a>
+
+```typescript
+public readonly X2IEDN_8XLARGE: string;
+```
+
+- *Type:* string
+
+x2iedn.8xlarge vCPUs: 32 Memory: 1048576 MiB.
+
+---
+
+##### `X2IEDN_METAL`<sup>Required</sup> <a name="X2IEDN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_METAL"></a>
+
+```typescript
+public readonly X2IEDN_METAL: string;
+```
+
+- *Type:* string
+
+x2iedn.metal vCPUs: 128 Memory: 4194304 MiB.
+
+---
+
+##### `X2IEDN_XLARGE`<sup>Required</sup> <a name="X2IEDN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEDN_XLARGE"></a>
+
+```typescript
+public readonly X2IEDN_XLARGE: string;
+```
+
+- *Type:* string
+
+x2iedn.xlarge vCPUs: 4 Memory: 131072 MiB.
+
+---
+
+##### `X2IEZN_12XLARGE`<sup>Required</sup> <a name="X2IEZN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEZN_12XLARGE"></a>
+
+```typescript
+public readonly X2IEZN_12XLARGE: string;
+```
+
+- *Type:* string
+
+x2iezn.12xlarge vCPUs: 48 Memory: 1572864 MiB.
+
+---
+
+##### `X2IEZN_2XLARGE`<sup>Required</sup> <a name="X2IEZN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEZN_2XLARGE"></a>
+
+```typescript
+public readonly X2IEZN_2XLARGE: string;
+```
+
+- *Type:* string
+
+x2iezn.2xlarge vCPUs: 8 Memory: 262144 MiB.
+
+---
+
+##### `X2IEZN_4XLARGE`<sup>Required</sup> <a name="X2IEZN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEZN_4XLARGE"></a>
+
+```typescript
+public readonly X2IEZN_4XLARGE: string;
+```
+
+- *Type:* string
+
+x2iezn.4xlarge vCPUs: 16 Memory: 524288 MiB.
+
+---
+
+##### `X2IEZN_6XLARGE`<sup>Required</sup> <a name="X2IEZN_6XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEZN_6XLARGE"></a>
+
+```typescript
+public readonly X2IEZN_6XLARGE: string;
+```
+
+- *Type:* string
+
+x2iezn.6xlarge vCPUs: 24 Memory: 786432 MiB.
+
+---
+
+##### `X2IEZN_8XLARGE`<sup>Required</sup> <a name="X2IEZN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEZN_8XLARGE"></a>
+
+```typescript
+public readonly X2IEZN_8XLARGE: string;
+```
+
+- *Type:* string
+
+x2iezn.8xlarge vCPUs: 32 Memory: 1048576 MiB.
+
+---
+
+##### `X2IEZN_METAL`<sup>Required</sup> <a name="X2IEZN_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X2IEZN_METAL"></a>
+
+```typescript
+public readonly X2IEZN_METAL: string;
+```
+
+- *Type:* string
+
+x2iezn.metal vCPUs: 48 Memory: 1572864 MiB.
+
+---
+
+##### `X8G_12XLARGE`<sup>Required</sup> <a name="X8G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_12XLARGE"></a>
+
+```typescript
+public readonly X8G_12XLARGE: string;
+```
+
+- *Type:* string
+
+x8g.12xlarge vCPUs: 48 Memory: 786432 MiB.
+
+---
+
+##### `X8G_16XLARGE`<sup>Required</sup> <a name="X8G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_16XLARGE"></a>
+
+```typescript
+public readonly X8G_16XLARGE: string;
+```
+
+- *Type:* string
+
+x8g.16xlarge vCPUs: 64 Memory: 1048576 MiB.
+
+---
+
+##### `X8G_24XLARGE`<sup>Required</sup> <a name="X8G_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_24XLARGE"></a>
+
+```typescript
+public readonly X8G_24XLARGE: string;
+```
+
+- *Type:* string
+
+x8g.24xlarge vCPUs: 96 Memory: 1572864 MiB.
+
+---
+
+##### `X8G_2XLARGE`<sup>Required</sup> <a name="X8G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_2XLARGE"></a>
+
+```typescript
+public readonly X8G_2XLARGE: string;
+```
+
+- *Type:* string
+
+x8g.2xlarge vCPUs: 8 Memory: 131072 MiB.
+
+---
+
+##### `X8G_48XLARGE`<sup>Required</sup> <a name="X8G_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_48XLARGE"></a>
+
+```typescript
+public readonly X8G_48XLARGE: string;
+```
+
+- *Type:* string
+
+x8g.48xlarge vCPUs: 192 Memory: 3145728 MiB.
+
+---
+
+##### `X8G_4XLARGE`<sup>Required</sup> <a name="X8G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_4XLARGE"></a>
+
+```typescript
+public readonly X8G_4XLARGE: string;
+```
+
+- *Type:* string
+
+x8g.4xlarge vCPUs: 16 Memory: 262144 MiB.
+
+---
+
+##### `X8G_8XLARGE`<sup>Required</sup> <a name="X8G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_8XLARGE"></a>
+
+```typescript
+public readonly X8G_8XLARGE: string;
+```
+
+- *Type:* string
+
+x8g.8xlarge vCPUs: 32 Memory: 524288 MiB.
+
+---
+
+##### `X8G_LARGE`<sup>Required</sup> <a name="X8G_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_LARGE"></a>
+
+```typescript
+public readonly X8G_LARGE: string;
+```
+
+- *Type:* string
+
+x8g.large vCPUs: 2 Memory: 32768 MiB.
+
+---
+
+##### `X8G_MEDIUM`<sup>Required</sup> <a name="X8G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_MEDIUM"></a>
+
+```typescript
+public readonly X8G_MEDIUM: string;
+```
+
+- *Type:* string
+
+x8g.medium vCPUs: 1 Memory: 16384 MiB.
+
+---
+
+##### `X8G_METAL_24XL`<sup>Required</sup> <a name="X8G_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_METAL_24XL"></a>
+
+```typescript
+public readonly X8G_METAL_24XL: string;
+```
+
+- *Type:* string
+
+x8g.metal-24xl vCPUs: 96 Memory: 1572864 MiB.
+
+---
+
+##### `X8G_METAL_48XL`<sup>Required</sup> <a name="X8G_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_METAL_48XL"></a>
+
+```typescript
+public readonly X8G_METAL_48XL: string;
+```
+
+- *Type:* string
+
+x8g.metal-48xl vCPUs: 192 Memory: 3145728 MiB.
+
+---
+
+##### `X8G_XLARGE`<sup>Required</sup> <a name="X8G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.X8G_XLARGE"></a>
+
+```typescript
+public readonly X8G_XLARGE: string;
+```
+
+- *Type:* string
+
+x8g.xlarge vCPUs: 4 Memory: 65536 MiB.
+
+---
+
+##### `Z1D_12XLARGE`<sup>Required</sup> <a name="Z1D_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_12XLARGE"></a>
+
+```typescript
+public readonly Z1D_12XLARGE: string;
+```
+
+- *Type:* string
+
+z1d.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `Z1D_2XLARGE`<sup>Required</sup> <a name="Z1D_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_2XLARGE"></a>
+
+```typescript
+public readonly Z1D_2XLARGE: string;
+```
+
+- *Type:* string
+
+z1d.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `Z1D_3XLARGE`<sup>Required</sup> <a name="Z1D_3XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_3XLARGE"></a>
+
+```typescript
+public readonly Z1D_3XLARGE: string;
+```
+
+- *Type:* string
+
+z1d.3xlarge vCPUs: 12 Memory: 98304 MiB.
+
+---
+
+##### `Z1D_6XLARGE`<sup>Required</sup> <a name="Z1D_6XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_6XLARGE"></a>
+
+```typescript
+public readonly Z1D_6XLARGE: string;
+```
+
+- *Type:* string
+
+z1d.6xlarge vCPUs: 24 Memory: 196608 MiB.
+
+---
+
+##### `Z1D_LARGE`<sup>Required</sup> <a name="Z1D_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_LARGE"></a>
+
+```typescript
+public readonly Z1D_LARGE: string;
+```
+
+- *Type:* string
+
+z1d.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `Z1D_METAL`<sup>Required</sup> <a name="Z1D_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_METAL"></a>
+
+```typescript
+public readonly Z1D_METAL: string;
+```
+
+- *Type:* string
+
+z1d.metal vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `Z1D_XLARGE`<sup>Required</sup> <a name="Z1D_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.Z1D_XLARGE"></a>
+
+```typescript
+public readonly Z1D_XLARGE: string;
+```
+
+- *Type:* string
+
+z1d.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+### SageMakerNotebookInstanceType <a name="SageMakerNotebookInstanceType" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType"></a>
+
+SageMaker Instance Type.
+
+
+
+
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C4_2XLARGE">ML_C4_2XLARGE</a></code> | <code>string</code> | ml.c4.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C4_4XLARGE">ML_C4_4XLARGE</a></code> | <code>string</code> | ml.c4.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C4_8XLARGE">ML_C4_8XLARGE</a></code> | <code>string</code> | ml.c4.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C4_LARGE">ML_C4_LARGE</a></code> | <code>string</code> | ml.c4.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C4_XLARGE">ML_C4_XLARGE</a></code> | <code>string</code> | ml.c4.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_12XLARGE">ML_C5_12XLARGE</a></code> | <code>string</code> | ml.c5.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_18XLARGE">ML_C5_18XLARGE</a></code> | <code>string</code> | ml.c5.18xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_24XLARGE">ML_C5_24XLARGE</a></code> | <code>string</code> | ml.c5.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_2XLARGE">ML_C5_2XLARGE</a></code> | <code>string</code> | ml.c5.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_4XLARGE">ML_C5_4XLARGE</a></code> | <code>string</code> | ml.c5.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_9XLARGE">ML_C5_9XLARGE</a></code> | <code>string</code> | ml.c5.9xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_LARGE">ML_C5_LARGE</a></code> | <code>string</code> | ml.c5.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_XLARGE">ML_C5_XLARGE</a></code> | <code>string</code> | ml.c5.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5D_18XLARGE">ML_C5D_18XLARGE</a></code> | <code>string</code> | ml.c5d.18xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5D_2XLARGE">ML_C5D_2XLARGE</a></code> | <code>string</code> | ml.c5d.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5D_4XLARGE">ML_C5D_4XLARGE</a></code> | <code>string</code> | ml.c5d.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5D_9XLARGE">ML_C5D_9XLARGE</a></code> | <code>string</code> | ml.c5d.9xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5D_LARGE">ML_C5D_LARGE</a></code> | <code>string</code> | ml.c5d.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5D_XLARGE">ML_C5D_XLARGE</a></code> | <code>string</code> | ml.c5d.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5N_18XLARGE">ML_C5N_18XLARGE</a></code> | <code>string</code> | ml.c5n.18xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5N_2XLARGE">ML_C5N_2XLARGE</a></code> | <code>string</code> | ml.c5n.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5N_4XLARGE">ML_C5N_4XLARGE</a></code> | <code>string</code> | ml.c5n.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5N_9XLARGE">ML_C5N_9XLARGE</a></code> | <code>string</code> | ml.c5n.9xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5N_LARGE">ML_C5N_LARGE</a></code> | <code>string</code> | ml.c5n.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5N_XLARGE">ML_C5N_XLARGE</a></code> | <code>string</code> | ml.c5n.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_12XLARGE">ML_C6G_12XLARGE</a></code> | <code>string</code> | ml.c6g.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_16XLARGE">ML_C6G_16XLARGE</a></code> | <code>string</code> | ml.c6g.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_2XLARGE">ML_C6G_2XLARGE</a></code> | <code>string</code> | ml.c6g.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_4XLARGE">ML_C6G_4XLARGE</a></code> | <code>string</code> | ml.c6g.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_8XLARGE">ML_C6G_8XLARGE</a></code> | <code>string</code> | ml.c6g.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_LARGE">ML_C6G_LARGE</a></code> | <code>string</code> | ml.c6g.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_XLARGE">ML_C6G_XLARGE</a></code> | <code>string</code> | ml.c6g.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_12XLARGE">ML_C6GD_12XLARGE</a></code> | <code>string</code> | ml.c6gd.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_16XLARGE">ML_C6GD_16XLARGE</a></code> | <code>string</code> | ml.c6gd.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_2XLARGE">ML_C6GD_2XLARGE</a></code> | <code>string</code> | ml.c6gd.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_4XLARGE">ML_C6GD_4XLARGE</a></code> | <code>string</code> | ml.c6gd.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_8XLARGE">ML_C6GD_8XLARGE</a></code> | <code>string</code> | ml.c6gd.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_LARGE">ML_C6GD_LARGE</a></code> | <code>string</code> | ml.c6gd.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_XLARGE">ML_C6GD_XLARGE</a></code> | <code>string</code> | ml.c6gd.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_12XLARGE">ML_C6GN_12XLARGE</a></code> | <code>string</code> | ml.c6gn.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_16XLARGE">ML_C6GN_16XLARGE</a></code> | <code>string</code> | ml.c6gn.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_2XLARGE">ML_C6GN_2XLARGE</a></code> | <code>string</code> | ml.c6gn.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_4XLARGE">ML_C6GN_4XLARGE</a></code> | <code>string</code> | ml.c6gn.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_8XLARGE">ML_C6GN_8XLARGE</a></code> | <code>string</code> | ml.c6gn.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_LARGE">ML_C6GN_LARGE</a></code> | <code>string</code> | ml.c6gn.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_XLARGE">ML_C6GN_XLARGE</a></code> | <code>string</code> | ml.c6gn.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_12XLARGE">ML_C6I_12XLARGE</a></code> | <code>string</code> | ml.c6i.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_16XLARGE">ML_C6I_16XLARGE</a></code> | <code>string</code> | ml.c6i.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_24XLARGE">ML_C6I_24XLARGE</a></code> | <code>string</code> | ml.c6i.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_2XLARGE">ML_C6I_2XLARGE</a></code> | <code>string</code> | ml.c6i.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_32XLARGE">ML_C6I_32XLARGE</a></code> | <code>string</code> | ml.c6i.32xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_4XLARGE">ML_C6I_4XLARGE</a></code> | <code>string</code> | ml.c6i.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_8XLARGE">ML_C6I_8XLARGE</a></code> | <code>string</code> | ml.c6i.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_LARGE">ML_C6I_LARGE</a></code> | <code>string</code> | ml.c6i.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_XLARGE">ML_C6I_XLARGE</a></code> | <code>string</code> | ml.c6i.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_12XLARGE">ML_C6ID_12XLARGE</a></code> | <code>string</code> | ml.c6id.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_16XLARGE">ML_C6ID_16XLARGE</a></code> | <code>string</code> | ml.c6id.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_24XLARGE">ML_C6ID_24XLARGE</a></code> | <code>string</code> | ml.c6id.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_2XLARGE">ML_C6ID_2XLARGE</a></code> | <code>string</code> | ml.c6id.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_32XLARGE">ML_C6ID_32XLARGE</a></code> | <code>string</code> | ml.c6id.32xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_4XLARGE">ML_C6ID_4XLARGE</a></code> | <code>string</code> | ml.c6id.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_8XLARGE">ML_C6ID_8XLARGE</a></code> | <code>string</code> | ml.c6id.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_LARGE">ML_C6ID_LARGE</a></code> | <code>string</code> | ml.c6id.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_XLARGE">ML_C6ID_XLARGE</a></code> | <code>string</code> | ml.c6id.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_12XLARGE">ML_C7G_12XLARGE</a></code> | <code>string</code> | ml.c7g.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_16XLARGE">ML_C7G_16XLARGE</a></code> | <code>string</code> | ml.c7g.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_2XLARGE">ML_C7G_2XLARGE</a></code> | <code>string</code> | ml.c7g.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_4XLARGE">ML_C7G_4XLARGE</a></code> | <code>string</code> | ml.c7g.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_8XLARGE">ML_C7G_8XLARGE</a></code> | <code>string</code> | ml.c7g.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_LARGE">ML_C7G_LARGE</a></code> | <code>string</code> | ml.c7g.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_XLARGE">ML_C7G_XLARGE</a></code> | <code>string</code> | ml.c7g.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_12XLARGE">ML_C7I_12XLARGE</a></code> | <code>string</code> | ml.c7i.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_16XLARGE">ML_C7I_16XLARGE</a></code> | <code>string</code> | ml.c7i.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_24XLARGE">ML_C7I_24XLARGE</a></code> | <code>string</code> | ml.c7i.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_2XLARGE">ML_C7I_2XLARGE</a></code> | <code>string</code> | ml.c7i.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_48XLARGE">ML_C7I_48XLARGE</a></code> | <code>string</code> | ml.c7i.48xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_4XLARGE">ML_C7I_4XLARGE</a></code> | <code>string</code> | ml.c7i.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_8XLARGE">ML_C7I_8XLARGE</a></code> | <code>string</code> | ml.c7i.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_LARGE">ML_C7I_LARGE</a></code> | <code>string</code> | ml.c7i.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_XLARGE">ML_C7I_XLARGE</a></code> | <code>string</code> | ml.c7i.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G4DN_12XLARGE">ML_G4DN_12XLARGE</a></code> | <code>string</code> | ml.g4dn.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G4DN_16XLARGE">ML_G4DN_16XLARGE</a></code> | <code>string</code> | ml.g4dn.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G4DN_2XLARGE">ML_G4DN_2XLARGE</a></code> | <code>string</code> | ml.g4dn.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G4DN_4XLARGE">ML_G4DN_4XLARGE</a></code> | <code>string</code> | ml.g4dn.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G4DN_8XLARGE">ML_G4DN_8XLARGE</a></code> | <code>string</code> | ml.g4dn.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G4DN_XLARGE">ML_G4DN_XLARGE</a></code> | <code>string</code> | ml.g4dn.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_12XLARGE">ML_G5_12XLARGE</a></code> | <code>string</code> | ml.g5.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_16XLARGE">ML_G5_16XLARGE</a></code> | <code>string</code> | ml.g5.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_24XLARGE">ML_G5_24XLARGE</a></code> | <code>string</code> | ml.g5.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_2XLARGE">ML_G5_2XLARGE</a></code> | <code>string</code> | ml.g5.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_48XLARGE">ML_G5_48XLARGE</a></code> | <code>string</code> | ml.g5.48xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_4XLARGE">ML_G5_4XLARGE</a></code> | <code>string</code> | ml.g5.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_8XLARGE">ML_G5_8XLARGE</a></code> | <code>string</code> | ml.g5.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_XLARGE">ML_G5_XLARGE</a></code> | <code>string</code> | ml.g5.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_12XLARGE">ML_G6_12XLARGE</a></code> | <code>string</code> | ml.g6.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_16XLARGE">ML_G6_16XLARGE</a></code> | <code>string</code> | ml.g6.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_24XLARGE">ML_G6_24XLARGE</a></code> | <code>string</code> | ml.g6.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_2XLARGE">ML_G6_2XLARGE</a></code> | <code>string</code> | ml.g6.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_48XLARGE">ML_G6_48XLARGE</a></code> | <code>string</code> | ml.g6.48xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_4XLARGE">ML_G6_4XLARGE</a></code> | <code>string</code> | ml.g6.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_8XLARGE">ML_G6_8XLARGE</a></code> | <code>string</code> | ml.g6.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_XLARGE">ML_G6_XLARGE</a></code> | <code>string</code> | ml.g6.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_12XLARGE">ML_G6E_12XLARGE</a></code> | <code>string</code> | ml.g6e.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_16XLARGE">ML_G6E_16XLARGE</a></code> | <code>string</code> | ml.g6e.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_24XLARGE">ML_G6E_24XLARGE</a></code> | <code>string</code> | ml.g6e.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_2XLARGE">ML_G6E_2XLARGE</a></code> | <code>string</code> | ml.g6e.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_48XLARGE">ML_G6E_48XLARGE</a></code> | <code>string</code> | ml.g6e.48xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_4XLARGE">ML_G6E_4XLARGE</a></code> | <code>string</code> | ml.g6e.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_8XLARGE">ML_G6E_8XLARGE</a></code> | <code>string</code> | ml.g6e.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_XLARGE">ML_G6E_XLARGE</a></code> | <code>string</code> | ml.g6e.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_GR6_4XLARGE">ML_GR6_4XLARGE</a></code> | <code>string</code> | ml.gr6.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_GR6_8XLARGE">ML_GR6_8XLARGE</a></code> | <code>string</code> | ml.gr6.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF1_24XLARGE">ML_INF1_24XLARGE</a></code> | <code>string</code> | ml.inf1.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF1_2XLARGE">ML_INF1_2XLARGE</a></code> | <code>string</code> | ml.inf1.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF1_6XLARGE">ML_INF1_6XLARGE</a></code> | <code>string</code> | ml.inf1.6xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF1_XLARGE">ML_INF1_XLARGE</a></code> | <code>string</code> | ml.inf1.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF2_24XLARGE">ML_INF2_24XLARGE</a></code> | <code>string</code> | ml.inf2.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF2_48XLARGE">ML_INF2_48XLARGE</a></code> | <code>string</code> | ml.inf2.48xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF2_8XLARGE">ML_INF2_8XLARGE</a></code> | <code>string</code> | ml.inf2.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF2_XLARGE">ML_INF2_XLARGE</a></code> | <code>string</code> | ml.inf2.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M4_10XLARGE">ML_M4_10XLARGE</a></code> | <code>string</code> | ml.m4.10xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M4_16XLARGE">ML_M4_16XLARGE</a></code> | <code>string</code> | ml.m4.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M4_2XLARGE">ML_M4_2XLARGE</a></code> | <code>string</code> | ml.m4.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M4_4XLARGE">ML_M4_4XLARGE</a></code> | <code>string</code> | ml.m4.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M4_XLARGE">ML_M4_XLARGE</a></code> | <code>string</code> | ml.m4.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_12XLARGE">ML_M5_12XLARGE</a></code> | <code>string</code> | ml.m5.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_16XLARGE">ML_M5_16XLARGE</a></code> | <code>string</code> | ml.m5.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_24XLARGE">ML_M5_24XLARGE</a></code> | <code>string</code> | ml.m5.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_2XLARGE">ML_M5_2XLARGE</a></code> | <code>string</code> | ml.m5.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_4XLARGE">ML_M5_4XLARGE</a></code> | <code>string</code> | ml.m5.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_8XLARGE">ML_M5_8XLARGE</a></code> | <code>string</code> | ml.m5.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_LARGE">ML_M5_LARGE</a></code> | <code>string</code> | ml.m5.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_XLARGE">ML_M5_XLARGE</a></code> | <code>string</code> | ml.m5.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_12XLARGE">ML_M5D_12XLARGE</a></code> | <code>string</code> | ml.m5d.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_16XLARGE">ML_M5D_16XLARGE</a></code> | <code>string</code> | ml.m5d.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_24XLARGE">ML_M5D_24XLARGE</a></code> | <code>string</code> | ml.m5d.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_2XLARGE">ML_M5D_2XLARGE</a></code> | <code>string</code> | ml.m5d.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_4XLARGE">ML_M5D_4XLARGE</a></code> | <code>string</code> | ml.m5d.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_8XLARGE">ML_M5D_8XLARGE</a></code> | <code>string</code> | ml.m5d.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_LARGE">ML_M5D_LARGE</a></code> | <code>string</code> | ml.m5d.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_XLARGE">ML_M5D_XLARGE</a></code> | <code>string</code> | ml.m5d.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_12XLARGE">ML_M6G_12XLARGE</a></code> | <code>string</code> | ml.m6g.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_16XLARGE">ML_M6G_16XLARGE</a></code> | <code>string</code> | ml.m6g.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_2XLARGE">ML_M6G_2XLARGE</a></code> | <code>string</code> | ml.m6g.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_4XLARGE">ML_M6G_4XLARGE</a></code> | <code>string</code> | ml.m6g.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_8XLARGE">ML_M6G_8XLARGE</a></code> | <code>string</code> | ml.m6g.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_LARGE">ML_M6G_LARGE</a></code> | <code>string</code> | ml.m6g.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_XLARGE">ML_M6G_XLARGE</a></code> | <code>string</code> | ml.m6g.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_12XLARGE">ML_M6GD_12XLARGE</a></code> | <code>string</code> | ml.m6gd.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_16XLARGE">ML_M6GD_16XLARGE</a></code> | <code>string</code> | ml.m6gd.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_2XLARGE">ML_M6GD_2XLARGE</a></code> | <code>string</code> | ml.m6gd.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_4XLARGE">ML_M6GD_4XLARGE</a></code> | <code>string</code> | ml.m6gd.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_8XLARGE">ML_M6GD_8XLARGE</a></code> | <code>string</code> | ml.m6gd.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_LARGE">ML_M6GD_LARGE</a></code> | <code>string</code> | ml.m6gd.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_XLARGE">ML_M6GD_XLARGE</a></code> | <code>string</code> | ml.m6gd.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_12XLARGE">ML_M6I_12XLARGE</a></code> | <code>string</code> | ml.m6i.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_16XLARGE">ML_M6I_16XLARGE</a></code> | <code>string</code> | ml.m6i.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_24XLARGE">ML_M6I_24XLARGE</a></code> | <code>string</code> | ml.m6i.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_2XLARGE">ML_M6I_2XLARGE</a></code> | <code>string</code> | ml.m6i.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_32XLARGE">ML_M6I_32XLARGE</a></code> | <code>string</code> | ml.m6i.32xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_4XLARGE">ML_M6I_4XLARGE</a></code> | <code>string</code> | ml.m6i.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_8XLARGE">ML_M6I_8XLARGE</a></code> | <code>string</code> | ml.m6i.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_LARGE">ML_M6I_LARGE</a></code> | <code>string</code> | ml.m6i.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_XLARGE">ML_M6I_XLARGE</a></code> | <code>string</code> | ml.m6i.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_12XLARGE">ML_M6ID_12XLARGE</a></code> | <code>string</code> | ml.m6id.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_16XLARGE">ML_M6ID_16XLARGE</a></code> | <code>string</code> | ml.m6id.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_24XLARGE">ML_M6ID_24XLARGE</a></code> | <code>string</code> | ml.m6id.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_2XLARGE">ML_M6ID_2XLARGE</a></code> | <code>string</code> | ml.m6id.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_32XLARGE">ML_M6ID_32XLARGE</a></code> | <code>string</code> | ml.m6id.32xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_4XLARGE">ML_M6ID_4XLARGE</a></code> | <code>string</code> | ml.m6id.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_8XLARGE">ML_M6ID_8XLARGE</a></code> | <code>string</code> | ml.m6id.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_LARGE">ML_M6ID_LARGE</a></code> | <code>string</code> | ml.m6id.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_XLARGE">ML_M6ID_XLARGE</a></code> | <code>string</code> | ml.m6id.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_12XLARGE">ML_M7I_12XLARGE</a></code> | <code>string</code> | ml.m7i.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_16XLARGE">ML_M7I_16XLARGE</a></code> | <code>string</code> | ml.m7i.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_24XLARGE">ML_M7I_24XLARGE</a></code> | <code>string</code> | ml.m7i.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_2XLARGE">ML_M7I_2XLARGE</a></code> | <code>string</code> | ml.m7i.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_48XLARGE">ML_M7I_48XLARGE</a></code> | <code>string</code> | ml.m7i.48xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_4XLARGE">ML_M7I_4XLARGE</a></code> | <code>string</code> | ml.m7i.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_8XLARGE">ML_M7I_8XLARGE</a></code> | <code>string</code> | ml.m7i.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_LARGE">ML_M7I_LARGE</a></code> | <code>string</code> | ml.m7i.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_XLARGE">ML_M7I_XLARGE</a></code> | <code>string</code> | ml.m7i.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P2_16XLARGE">ML_P2_16XLARGE</a></code> | <code>string</code> | ml.p2.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P2_8XLARGE">ML_P2_8XLARGE</a></code> | <code>string</code> | ml.p2.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P2_XLARGE">ML_P2_XLARGE</a></code> | <code>string</code> | ml.p2.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P3_16XLARGE">ML_P3_16XLARGE</a></code> | <code>string</code> | ml.p3.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P3_2XLARGE">ML_P3_2XLARGE</a></code> | <code>string</code> | ml.p3.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P3_8XLARGE">ML_P3_8XLARGE</a></code> | <code>string</code> | ml.p3.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P3DN_24XLARGE">ML_P3DN_24XLARGE</a></code> | <code>string</code> | ml.p3dn.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P4D_24XLARGE">ML_P4D_24XLARGE</a></code> | <code>string</code> | ml.p4d.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P4DE_24XLARGE">ML_P4DE_24XLARGE</a></code> | <code>string</code> | ml.p4de.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P5_48XLARGE">ML_P5_48XLARGE</a></code> | <code>string</code> | ml.p5.48xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_12XLARGE">ML_R5_12XLARGE</a></code> | <code>string</code> | ml.r5.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_16XLARGE">ML_R5_16XLARGE</a></code> | <code>string</code> | ml.r5.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_24XLARGE">ML_R5_24XLARGE</a></code> | <code>string</code> | ml.r5.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_2XLARGE">ML_R5_2XLARGE</a></code> | <code>string</code> | ml.r5.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_4XLARGE">ML_R5_4XLARGE</a></code> | <code>string</code> | ml.r5.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_8XLARGE">ML_R5_8XLARGE</a></code> | <code>string</code> | ml.r5.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_LARGE">ML_R5_LARGE</a></code> | <code>string</code> | ml.r5.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_XLARGE">ML_R5_XLARGE</a></code> | <code>string</code> | ml.r5.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_12XLARGE">ML_R5D_12XLARGE</a></code> | <code>string</code> | ml.r5d.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_16XLARGE">ML_R5D_16XLARGE</a></code> | <code>string</code> | ml.r5d.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_24XLARGE">ML_R5D_24XLARGE</a></code> | <code>string</code> | ml.r5d.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_2XLARGE">ML_R5D_2XLARGE</a></code> | <code>string</code> | ml.r5d.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_4XLARGE">ML_R5D_4XLARGE</a></code> | <code>string</code> | ml.r5d.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_8XLARGE">ML_R5D_8XLARGE</a></code> | <code>string</code> | ml.r5d.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_LARGE">ML_R5D_LARGE</a></code> | <code>string</code> | ml.r5d.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_XLARGE">ML_R5D_XLARGE</a></code> | <code>string</code> | ml.r5d.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_12XLARGE">ML_R6G_12XLARGE</a></code> | <code>string</code> | ml.r6g.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_16XLARGE">ML_R6G_16XLARGE</a></code> | <code>string</code> | ml.r6g.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_2XLARGE">ML_R6G_2XLARGE</a></code> | <code>string</code> | ml.r6g.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_4XLARGE">ML_R6G_4XLARGE</a></code> | <code>string</code> | ml.r6g.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_8XLARGE">ML_R6G_8XLARGE</a></code> | <code>string</code> | ml.r6g.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_LARGE">ML_R6G_LARGE</a></code> | <code>string</code> | ml.r6g.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_XLARGE">ML_R6G_XLARGE</a></code> | <code>string</code> | ml.r6g.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_12XLARGE">ML_R6GD_12XLARGE</a></code> | <code>string</code> | ml.r6gd.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_16XLARGE">ML_R6GD_16XLARGE</a></code> | <code>string</code> | ml.r6gd.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_2XLARGE">ML_R6GD_2XLARGE</a></code> | <code>string</code> | ml.r6gd.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_4XLARGE">ML_R6GD_4XLARGE</a></code> | <code>string</code> | ml.r6gd.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_8XLARGE">ML_R6GD_8XLARGE</a></code> | <code>string</code> | ml.r6gd.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_LARGE">ML_R6GD_LARGE</a></code> | <code>string</code> | ml.r6gd.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_XLARGE">ML_R6GD_XLARGE</a></code> | <code>string</code> | ml.r6gd.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_12XLARGE">ML_R6I_12XLARGE</a></code> | <code>string</code> | ml.r6i.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_16XLARGE">ML_R6I_16XLARGE</a></code> | <code>string</code> | ml.r6i.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_24XLARGE">ML_R6I_24XLARGE</a></code> | <code>string</code> | ml.r6i.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_2XLARGE">ML_R6I_2XLARGE</a></code> | <code>string</code> | ml.r6i.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_32XLARGE">ML_R6I_32XLARGE</a></code> | <code>string</code> | ml.r6i.32xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_4XLARGE">ML_R6I_4XLARGE</a></code> | <code>string</code> | ml.r6i.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_8XLARGE">ML_R6I_8XLARGE</a></code> | <code>string</code> | ml.r6i.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_LARGE">ML_R6I_LARGE</a></code> | <code>string</code> | ml.r6i.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_XLARGE">ML_R6I_XLARGE</a></code> | <code>string</code> | ml.r6i.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_12XLARGE">ML_R6ID_12XLARGE</a></code> | <code>string</code> | ml.r6id.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_16XLARGE">ML_R6ID_16XLARGE</a></code> | <code>string</code> | ml.r6id.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_24XLARGE">ML_R6ID_24XLARGE</a></code> | <code>string</code> | ml.r6id.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_2XLARGE">ML_R6ID_2XLARGE</a></code> | <code>string</code> | ml.r6id.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_32XLARGE">ML_R6ID_32XLARGE</a></code> | <code>string</code> | ml.r6id.32xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_4XLARGE">ML_R6ID_4XLARGE</a></code> | <code>string</code> | ml.r6id.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_8XLARGE">ML_R6ID_8XLARGE</a></code> | <code>string</code> | ml.r6id.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_LARGE">ML_R6ID_LARGE</a></code> | <code>string</code> | ml.r6id.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_XLARGE">ML_R6ID_XLARGE</a></code> | <code>string</code> | ml.r6id.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_12XLARGE">ML_R7I_12XLARGE</a></code> | <code>string</code> | ml.r7i.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_16XLARGE">ML_R7I_16XLARGE</a></code> | <code>string</code> | ml.r7i.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_24XLARGE">ML_R7I_24XLARGE</a></code> | <code>string</code> | ml.r7i.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_2XLARGE">ML_R7I_2XLARGE</a></code> | <code>string</code> | ml.r7i.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_48XLARGE">ML_R7I_48XLARGE</a></code> | <code>string</code> | ml.r7i.48xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_4XLARGE">ML_R7I_4XLARGE</a></code> | <code>string</code> | ml.r7i.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_8XLARGE">ML_R7I_8XLARGE</a></code> | <code>string</code> | ml.r7i.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_LARGE">ML_R7I_LARGE</a></code> | <code>string</code> | ml.r7i.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_XLARGE">ML_R7I_XLARGE</a></code> | <code>string</code> | ml.r7i.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T2_2XLARGE">ML_T2_2XLARGE</a></code> | <code>string</code> | ml.t2.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T2_LARGE">ML_T2_LARGE</a></code> | <code>string</code> | ml.t2.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T2_MEDIUM">ML_T2_MEDIUM</a></code> | <code>string</code> | ml.t2.medium Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T2_XLARGE">ML_T2_XLARGE</a></code> | <code>string</code> | ml.t2.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T3_2XLARGE">ML_T3_2XLARGE</a></code> | <code>string</code> | ml.t3.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T3_LARGE">ML_T3_LARGE</a></code> | <code>string</code> | ml.t3.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T3_MEDIUM">ML_T3_MEDIUM</a></code> | <code>string</code> | ml.t3.medium Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T3_XLARGE">ML_T3_XLARGE</a></code> | <code>string</code> | ml.t3.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_TRN1_2XLARGE">ML_TRN1_2XLARGE</a></code> | <code>string</code> | ml.trn1.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_TRN1_32XLARGE">ML_TRN1_32XLARGE</a></code> | <code>string</code> | ml.trn1.32xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_TRN1N_32XLARGE">ML_TRN1N_32XLARGE</a></code> | <code>string</code> | ml.trn1n.32xlarge Notebook Instance Type. |
+
+---
+
+##### `ML_C4_2XLARGE`<sup>Required</sup> <a name="ML_C4_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C4_2XLARGE"></a>
+
+```typescript
+public readonly ML_C4_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c4.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C4_4XLARGE`<sup>Required</sup> <a name="ML_C4_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C4_4XLARGE"></a>
+
+```typescript
+public readonly ML_C4_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c4.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C4_8XLARGE`<sup>Required</sup> <a name="ML_C4_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C4_8XLARGE"></a>
+
+```typescript
+public readonly ML_C4_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c4.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C4_LARGE`<sup>Required</sup> <a name="ML_C4_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C4_LARGE"></a>
+
+```typescript
+public readonly ML_C4_LARGE: string;
+```
+
+- *Type:* string
+
+ml.c4.large Notebook Instance Type.
+
+---
+
+##### `ML_C4_XLARGE`<sup>Required</sup> <a name="ML_C4_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C4_XLARGE"></a>
+
+```typescript
+public readonly ML_C4_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c4.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5_12XLARGE`<sup>Required</sup> <a name="ML_C5_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_12XLARGE"></a>
+
+```typescript
+public readonly ML_C5_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5_18XLARGE`<sup>Required</sup> <a name="ML_C5_18XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_18XLARGE"></a>
+
+```typescript
+public readonly ML_C5_18XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5.18xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5_24XLARGE`<sup>Required</sup> <a name="ML_C5_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_24XLARGE"></a>
+
+```typescript
+public readonly ML_C5_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5_2XLARGE`<sup>Required</sup> <a name="ML_C5_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_2XLARGE"></a>
+
+```typescript
+public readonly ML_C5_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5_4XLARGE`<sup>Required</sup> <a name="ML_C5_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_4XLARGE"></a>
+
+```typescript
+public readonly ML_C5_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5_9XLARGE`<sup>Required</sup> <a name="ML_C5_9XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_9XLARGE"></a>
+
+```typescript
+public readonly ML_C5_9XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5.9xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5_LARGE`<sup>Required</sup> <a name="ML_C5_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_LARGE"></a>
+
+```typescript
+public readonly ML_C5_LARGE: string;
+```
+
+- *Type:* string
+
+ml.c5.large Notebook Instance Type.
+
+---
+
+##### `ML_C5_XLARGE`<sup>Required</sup> <a name="ML_C5_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5_XLARGE"></a>
+
+```typescript
+public readonly ML_C5_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5D_18XLARGE`<sup>Required</sup> <a name="ML_C5D_18XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5D_18XLARGE"></a>
+
+```typescript
+public readonly ML_C5D_18XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5d.18xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5D_2XLARGE`<sup>Required</sup> <a name="ML_C5D_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5D_2XLARGE"></a>
+
+```typescript
+public readonly ML_C5D_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5d.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5D_4XLARGE`<sup>Required</sup> <a name="ML_C5D_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5D_4XLARGE"></a>
+
+```typescript
+public readonly ML_C5D_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5d.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5D_9XLARGE`<sup>Required</sup> <a name="ML_C5D_9XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5D_9XLARGE"></a>
+
+```typescript
+public readonly ML_C5D_9XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5d.9xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5D_LARGE`<sup>Required</sup> <a name="ML_C5D_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5D_LARGE"></a>
+
+```typescript
+public readonly ML_C5D_LARGE: string;
+```
+
+- *Type:* string
+
+ml.c5d.large Notebook Instance Type.
+
+---
+
+##### `ML_C5D_XLARGE`<sup>Required</sup> <a name="ML_C5D_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5D_XLARGE"></a>
+
+```typescript
+public readonly ML_C5D_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5d.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5N_18XLARGE`<sup>Required</sup> <a name="ML_C5N_18XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5N_18XLARGE"></a>
+
+```typescript
+public readonly ML_C5N_18XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5n.18xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5N_2XLARGE`<sup>Required</sup> <a name="ML_C5N_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5N_2XLARGE"></a>
+
+```typescript
+public readonly ML_C5N_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5n.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5N_4XLARGE`<sup>Required</sup> <a name="ML_C5N_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5N_4XLARGE"></a>
+
+```typescript
+public readonly ML_C5N_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5n.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5N_9XLARGE`<sup>Required</sup> <a name="ML_C5N_9XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5N_9XLARGE"></a>
+
+```typescript
+public readonly ML_C5N_9XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5n.9xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C5N_LARGE`<sup>Required</sup> <a name="ML_C5N_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5N_LARGE"></a>
+
+```typescript
+public readonly ML_C5N_LARGE: string;
+```
+
+- *Type:* string
+
+ml.c5n.large Notebook Instance Type.
+
+---
+
+##### `ML_C5N_XLARGE`<sup>Required</sup> <a name="ML_C5N_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C5N_XLARGE"></a>
+
+```typescript
+public readonly ML_C5N_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c5n.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6G_12XLARGE`<sup>Required</sup> <a name="ML_C6G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_12XLARGE"></a>
+
+```typescript
+public readonly ML_C6G_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6g.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6G_16XLARGE`<sup>Required</sup> <a name="ML_C6G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_16XLARGE"></a>
+
+```typescript
+public readonly ML_C6G_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6g.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6G_2XLARGE`<sup>Required</sup> <a name="ML_C6G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_2XLARGE"></a>
+
+```typescript
+public readonly ML_C6G_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6g.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6G_4XLARGE`<sup>Required</sup> <a name="ML_C6G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_4XLARGE"></a>
+
+```typescript
+public readonly ML_C6G_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6g.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6G_8XLARGE`<sup>Required</sup> <a name="ML_C6G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_8XLARGE"></a>
+
+```typescript
+public readonly ML_C6G_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6g.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6G_LARGE`<sup>Required</sup> <a name="ML_C6G_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_LARGE"></a>
+
+```typescript
+public readonly ML_C6G_LARGE: string;
+```
+
+- *Type:* string
+
+ml.c6g.large Notebook Instance Type.
+
+---
+
+##### `ML_C6G_XLARGE`<sup>Required</sup> <a name="ML_C6G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6G_XLARGE"></a>
+
+```typescript
+public readonly ML_C6G_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6g.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6GD_12XLARGE`<sup>Required</sup> <a name="ML_C6GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_12XLARGE"></a>
+
+```typescript
+public readonly ML_C6GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gd.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6GD_16XLARGE`<sup>Required</sup> <a name="ML_C6GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_16XLARGE"></a>
+
+```typescript
+public readonly ML_C6GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gd.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6GD_2XLARGE`<sup>Required</sup> <a name="ML_C6GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_2XLARGE"></a>
+
+```typescript
+public readonly ML_C6GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gd.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6GD_4XLARGE`<sup>Required</sup> <a name="ML_C6GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_4XLARGE"></a>
+
+```typescript
+public readonly ML_C6GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gd.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6GD_8XLARGE`<sup>Required</sup> <a name="ML_C6GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_8XLARGE"></a>
+
+```typescript
+public readonly ML_C6GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gd.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6GD_LARGE`<sup>Required</sup> <a name="ML_C6GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_LARGE"></a>
+
+```typescript
+public readonly ML_C6GD_LARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gd.large Notebook Instance Type.
+
+---
+
+##### `ML_C6GD_XLARGE`<sup>Required</sup> <a name="ML_C6GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GD_XLARGE"></a>
+
+```typescript
+public readonly ML_C6GD_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gd.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6GN_12XLARGE`<sup>Required</sup> <a name="ML_C6GN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_12XLARGE"></a>
+
+```typescript
+public readonly ML_C6GN_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gn.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6GN_16XLARGE`<sup>Required</sup> <a name="ML_C6GN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_16XLARGE"></a>
+
+```typescript
+public readonly ML_C6GN_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gn.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6GN_2XLARGE`<sup>Required</sup> <a name="ML_C6GN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_2XLARGE"></a>
+
+```typescript
+public readonly ML_C6GN_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gn.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6GN_4XLARGE`<sup>Required</sup> <a name="ML_C6GN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_4XLARGE"></a>
+
+```typescript
+public readonly ML_C6GN_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gn.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6GN_8XLARGE`<sup>Required</sup> <a name="ML_C6GN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_8XLARGE"></a>
+
+```typescript
+public readonly ML_C6GN_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gn.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6GN_LARGE`<sup>Required</sup> <a name="ML_C6GN_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_LARGE"></a>
+
+```typescript
+public readonly ML_C6GN_LARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gn.large Notebook Instance Type.
+
+---
+
+##### `ML_C6GN_XLARGE`<sup>Required</sup> <a name="ML_C6GN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6GN_XLARGE"></a>
+
+```typescript
+public readonly ML_C6GN_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6gn.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6I_12XLARGE`<sup>Required</sup> <a name="ML_C6I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_12XLARGE"></a>
+
+```typescript
+public readonly ML_C6I_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6i.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6I_16XLARGE`<sup>Required</sup> <a name="ML_C6I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_16XLARGE"></a>
+
+```typescript
+public readonly ML_C6I_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6i.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6I_24XLARGE`<sup>Required</sup> <a name="ML_C6I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_24XLARGE"></a>
+
+```typescript
+public readonly ML_C6I_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6i.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6I_2XLARGE`<sup>Required</sup> <a name="ML_C6I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_2XLARGE"></a>
+
+```typescript
+public readonly ML_C6I_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6i.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6I_32XLARGE`<sup>Required</sup> <a name="ML_C6I_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_32XLARGE"></a>
+
+```typescript
+public readonly ML_C6I_32XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6i.32xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6I_4XLARGE`<sup>Required</sup> <a name="ML_C6I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_4XLARGE"></a>
+
+```typescript
+public readonly ML_C6I_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6i.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6I_8XLARGE`<sup>Required</sup> <a name="ML_C6I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_8XLARGE"></a>
+
+```typescript
+public readonly ML_C6I_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6i.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6I_LARGE`<sup>Required</sup> <a name="ML_C6I_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_LARGE"></a>
+
+```typescript
+public readonly ML_C6I_LARGE: string;
+```
+
+- *Type:* string
+
+ml.c6i.large Notebook Instance Type.
+
+---
+
+##### `ML_C6I_XLARGE`<sup>Required</sup> <a name="ML_C6I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6I_XLARGE"></a>
+
+```typescript
+public readonly ML_C6I_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6i.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6ID_12XLARGE`<sup>Required</sup> <a name="ML_C6ID_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_12XLARGE"></a>
+
+```typescript
+public readonly ML_C6ID_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6id.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6ID_16XLARGE`<sup>Required</sup> <a name="ML_C6ID_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_16XLARGE"></a>
+
+```typescript
+public readonly ML_C6ID_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6id.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6ID_24XLARGE`<sup>Required</sup> <a name="ML_C6ID_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_24XLARGE"></a>
+
+```typescript
+public readonly ML_C6ID_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6id.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6ID_2XLARGE`<sup>Required</sup> <a name="ML_C6ID_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_2XLARGE"></a>
+
+```typescript
+public readonly ML_C6ID_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6id.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6ID_32XLARGE`<sup>Required</sup> <a name="ML_C6ID_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_32XLARGE"></a>
+
+```typescript
+public readonly ML_C6ID_32XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6id.32xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6ID_4XLARGE`<sup>Required</sup> <a name="ML_C6ID_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_4XLARGE"></a>
+
+```typescript
+public readonly ML_C6ID_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6id.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6ID_8XLARGE`<sup>Required</sup> <a name="ML_C6ID_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_8XLARGE"></a>
+
+```typescript
+public readonly ML_C6ID_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6id.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C6ID_LARGE`<sup>Required</sup> <a name="ML_C6ID_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_LARGE"></a>
+
+```typescript
+public readonly ML_C6ID_LARGE: string;
+```
+
+- *Type:* string
+
+ml.c6id.large Notebook Instance Type.
+
+---
+
+##### `ML_C6ID_XLARGE`<sup>Required</sup> <a name="ML_C6ID_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C6ID_XLARGE"></a>
+
+```typescript
+public readonly ML_C6ID_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c6id.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7G_12XLARGE`<sup>Required</sup> <a name="ML_C7G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_12XLARGE"></a>
+
+```typescript
+public readonly ML_C7G_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7g.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7G_16XLARGE`<sup>Required</sup> <a name="ML_C7G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_16XLARGE"></a>
+
+```typescript
+public readonly ML_C7G_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7g.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7G_2XLARGE`<sup>Required</sup> <a name="ML_C7G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_2XLARGE"></a>
+
+```typescript
+public readonly ML_C7G_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7g.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7G_4XLARGE`<sup>Required</sup> <a name="ML_C7G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_4XLARGE"></a>
+
+```typescript
+public readonly ML_C7G_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7g.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7G_8XLARGE`<sup>Required</sup> <a name="ML_C7G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_8XLARGE"></a>
+
+```typescript
+public readonly ML_C7G_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7g.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7G_LARGE`<sup>Required</sup> <a name="ML_C7G_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_LARGE"></a>
+
+```typescript
+public readonly ML_C7G_LARGE: string;
+```
+
+- *Type:* string
+
+ml.c7g.large Notebook Instance Type.
+
+---
+
+##### `ML_C7G_XLARGE`<sup>Required</sup> <a name="ML_C7G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_XLARGE"></a>
+
+```typescript
+public readonly ML_C7G_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7g.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7I_12XLARGE`<sup>Required</sup> <a name="ML_C7I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_12XLARGE"></a>
+
+```typescript
+public readonly ML_C7I_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7i.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7I_16XLARGE`<sup>Required</sup> <a name="ML_C7I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_16XLARGE"></a>
+
+```typescript
+public readonly ML_C7I_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7i.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7I_24XLARGE`<sup>Required</sup> <a name="ML_C7I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_24XLARGE"></a>
+
+```typescript
+public readonly ML_C7I_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7i.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7I_2XLARGE`<sup>Required</sup> <a name="ML_C7I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_2XLARGE"></a>
+
+```typescript
+public readonly ML_C7I_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7i.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7I_48XLARGE`<sup>Required</sup> <a name="ML_C7I_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_48XLARGE"></a>
+
+```typescript
+public readonly ML_C7I_48XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7i.48xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7I_4XLARGE`<sup>Required</sup> <a name="ML_C7I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_4XLARGE"></a>
+
+```typescript
+public readonly ML_C7I_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7i.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7I_8XLARGE`<sup>Required</sup> <a name="ML_C7I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_8XLARGE"></a>
+
+```typescript
+public readonly ML_C7I_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7i.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_C7I_LARGE`<sup>Required</sup> <a name="ML_C7I_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_LARGE"></a>
+
+```typescript
+public readonly ML_C7I_LARGE: string;
+```
+
+- *Type:* string
+
+ml.c7i.large Notebook Instance Type.
+
+---
+
+##### `ML_C7I_XLARGE`<sup>Required</sup> <a name="ML_C7I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_XLARGE"></a>
+
+```typescript
+public readonly ML_C7I_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.c7i.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G4DN_12XLARGE`<sup>Required</sup> <a name="ML_G4DN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G4DN_12XLARGE"></a>
+
+```typescript
+public readonly ML_G4DN_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g4dn.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G4DN_16XLARGE`<sup>Required</sup> <a name="ML_G4DN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G4DN_16XLARGE"></a>
+
+```typescript
+public readonly ML_G4DN_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g4dn.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G4DN_2XLARGE`<sup>Required</sup> <a name="ML_G4DN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G4DN_2XLARGE"></a>
+
+```typescript
+public readonly ML_G4DN_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g4dn.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G4DN_4XLARGE`<sup>Required</sup> <a name="ML_G4DN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G4DN_4XLARGE"></a>
+
+```typescript
+public readonly ML_G4DN_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g4dn.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G4DN_8XLARGE`<sup>Required</sup> <a name="ML_G4DN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G4DN_8XLARGE"></a>
+
+```typescript
+public readonly ML_G4DN_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g4dn.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G4DN_XLARGE`<sup>Required</sup> <a name="ML_G4DN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G4DN_XLARGE"></a>
+
+```typescript
+public readonly ML_G4DN_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g4dn.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G5_12XLARGE`<sup>Required</sup> <a name="ML_G5_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_12XLARGE"></a>
+
+```typescript
+public readonly ML_G5_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g5.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G5_16XLARGE`<sup>Required</sup> <a name="ML_G5_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_16XLARGE"></a>
+
+```typescript
+public readonly ML_G5_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g5.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G5_24XLARGE`<sup>Required</sup> <a name="ML_G5_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_24XLARGE"></a>
+
+```typescript
+public readonly ML_G5_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g5.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G5_2XLARGE`<sup>Required</sup> <a name="ML_G5_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_2XLARGE"></a>
+
+```typescript
+public readonly ML_G5_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g5.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G5_48XLARGE`<sup>Required</sup> <a name="ML_G5_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_48XLARGE"></a>
+
+```typescript
+public readonly ML_G5_48XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g5.48xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G5_4XLARGE`<sup>Required</sup> <a name="ML_G5_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_4XLARGE"></a>
+
+```typescript
+public readonly ML_G5_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g5.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G5_8XLARGE`<sup>Required</sup> <a name="ML_G5_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_8XLARGE"></a>
+
+```typescript
+public readonly ML_G5_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g5.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G5_XLARGE`<sup>Required</sup> <a name="ML_G5_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G5_XLARGE"></a>
+
+```typescript
+public readonly ML_G5_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g5.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6_12XLARGE`<sup>Required</sup> <a name="ML_G6_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_12XLARGE"></a>
+
+```typescript
+public readonly ML_G6_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6_16XLARGE`<sup>Required</sup> <a name="ML_G6_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_16XLARGE"></a>
+
+```typescript
+public readonly ML_G6_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6_24XLARGE`<sup>Required</sup> <a name="ML_G6_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_24XLARGE"></a>
+
+```typescript
+public readonly ML_G6_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6_2XLARGE`<sup>Required</sup> <a name="ML_G6_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_2XLARGE"></a>
+
+```typescript
+public readonly ML_G6_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6_48XLARGE`<sup>Required</sup> <a name="ML_G6_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_48XLARGE"></a>
+
+```typescript
+public readonly ML_G6_48XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6.48xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6_4XLARGE`<sup>Required</sup> <a name="ML_G6_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_4XLARGE"></a>
+
+```typescript
+public readonly ML_G6_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6_8XLARGE`<sup>Required</sup> <a name="ML_G6_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_8XLARGE"></a>
+
+```typescript
+public readonly ML_G6_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6_XLARGE`<sup>Required</sup> <a name="ML_G6_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6_XLARGE"></a>
+
+```typescript
+public readonly ML_G6_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6E_12XLARGE`<sup>Required</sup> <a name="ML_G6E_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_12XLARGE"></a>
+
+```typescript
+public readonly ML_G6E_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6e.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6E_16XLARGE`<sup>Required</sup> <a name="ML_G6E_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_16XLARGE"></a>
+
+```typescript
+public readonly ML_G6E_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6e.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6E_24XLARGE`<sup>Required</sup> <a name="ML_G6E_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_24XLARGE"></a>
+
+```typescript
+public readonly ML_G6E_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6e.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6E_2XLARGE`<sup>Required</sup> <a name="ML_G6E_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_2XLARGE"></a>
+
+```typescript
+public readonly ML_G6E_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6e.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6E_48XLARGE`<sup>Required</sup> <a name="ML_G6E_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_48XLARGE"></a>
+
+```typescript
+public readonly ML_G6E_48XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6e.48xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6E_4XLARGE`<sup>Required</sup> <a name="ML_G6E_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_4XLARGE"></a>
+
+```typescript
+public readonly ML_G6E_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6e.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6E_8XLARGE`<sup>Required</sup> <a name="ML_G6E_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_8XLARGE"></a>
+
+```typescript
+public readonly ML_G6E_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6e.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_G6E_XLARGE`<sup>Required</sup> <a name="ML_G6E_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_G6E_XLARGE"></a>
+
+```typescript
+public readonly ML_G6E_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.g6e.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_GR6_4XLARGE`<sup>Required</sup> <a name="ML_GR6_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_GR6_4XLARGE"></a>
+
+```typescript
+public readonly ML_GR6_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.gr6.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_GR6_8XLARGE`<sup>Required</sup> <a name="ML_GR6_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_GR6_8XLARGE"></a>
+
+```typescript
+public readonly ML_GR6_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.gr6.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_INF1_24XLARGE`<sup>Required</sup> <a name="ML_INF1_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF1_24XLARGE"></a>
+
+```typescript
+public readonly ML_INF1_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.inf1.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_INF1_2XLARGE`<sup>Required</sup> <a name="ML_INF1_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF1_2XLARGE"></a>
+
+```typescript
+public readonly ML_INF1_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.inf1.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_INF1_6XLARGE`<sup>Required</sup> <a name="ML_INF1_6XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF1_6XLARGE"></a>
+
+```typescript
+public readonly ML_INF1_6XLARGE: string;
+```
+
+- *Type:* string
+
+ml.inf1.6xlarge Notebook Instance Type.
+
+---
+
+##### `ML_INF1_XLARGE`<sup>Required</sup> <a name="ML_INF1_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF1_XLARGE"></a>
+
+```typescript
+public readonly ML_INF1_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.inf1.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_INF2_24XLARGE`<sup>Required</sup> <a name="ML_INF2_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF2_24XLARGE"></a>
+
+```typescript
+public readonly ML_INF2_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.inf2.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_INF2_48XLARGE`<sup>Required</sup> <a name="ML_INF2_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF2_48XLARGE"></a>
+
+```typescript
+public readonly ML_INF2_48XLARGE: string;
+```
+
+- *Type:* string
+
+ml.inf2.48xlarge Notebook Instance Type.
+
+---
+
+##### `ML_INF2_8XLARGE`<sup>Required</sup> <a name="ML_INF2_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF2_8XLARGE"></a>
+
+```typescript
+public readonly ML_INF2_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.inf2.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_INF2_XLARGE`<sup>Required</sup> <a name="ML_INF2_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_INF2_XLARGE"></a>
+
+```typescript
+public readonly ML_INF2_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.inf2.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M4_10XLARGE`<sup>Required</sup> <a name="ML_M4_10XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M4_10XLARGE"></a>
+
+```typescript
+public readonly ML_M4_10XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m4.10xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M4_16XLARGE`<sup>Required</sup> <a name="ML_M4_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M4_16XLARGE"></a>
+
+```typescript
+public readonly ML_M4_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m4.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M4_2XLARGE`<sup>Required</sup> <a name="ML_M4_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M4_2XLARGE"></a>
+
+```typescript
+public readonly ML_M4_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m4.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M4_4XLARGE`<sup>Required</sup> <a name="ML_M4_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M4_4XLARGE"></a>
+
+```typescript
+public readonly ML_M4_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m4.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M4_XLARGE`<sup>Required</sup> <a name="ML_M4_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M4_XLARGE"></a>
+
+```typescript
+public readonly ML_M4_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m4.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5_12XLARGE`<sup>Required</sup> <a name="ML_M5_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_12XLARGE"></a>
+
+```typescript
+public readonly ML_M5_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5_16XLARGE`<sup>Required</sup> <a name="ML_M5_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_16XLARGE"></a>
+
+```typescript
+public readonly ML_M5_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5_24XLARGE`<sup>Required</sup> <a name="ML_M5_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_24XLARGE"></a>
+
+```typescript
+public readonly ML_M5_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5_2XLARGE`<sup>Required</sup> <a name="ML_M5_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_2XLARGE"></a>
+
+```typescript
+public readonly ML_M5_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5_4XLARGE`<sup>Required</sup> <a name="ML_M5_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_4XLARGE"></a>
+
+```typescript
+public readonly ML_M5_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5_8XLARGE`<sup>Required</sup> <a name="ML_M5_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_8XLARGE"></a>
+
+```typescript
+public readonly ML_M5_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5_LARGE`<sup>Required</sup> <a name="ML_M5_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_LARGE"></a>
+
+```typescript
+public readonly ML_M5_LARGE: string;
+```
+
+- *Type:* string
+
+ml.m5.large Notebook Instance Type.
+
+---
+
+##### `ML_M5_XLARGE`<sup>Required</sup> <a name="ML_M5_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5_XLARGE"></a>
+
+```typescript
+public readonly ML_M5_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5D_12XLARGE`<sup>Required</sup> <a name="ML_M5D_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_12XLARGE"></a>
+
+```typescript
+public readonly ML_M5D_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5d.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5D_16XLARGE`<sup>Required</sup> <a name="ML_M5D_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_16XLARGE"></a>
+
+```typescript
+public readonly ML_M5D_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5d.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5D_24XLARGE`<sup>Required</sup> <a name="ML_M5D_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_24XLARGE"></a>
+
+```typescript
+public readonly ML_M5D_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5d.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5D_2XLARGE`<sup>Required</sup> <a name="ML_M5D_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_2XLARGE"></a>
+
+```typescript
+public readonly ML_M5D_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5d.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5D_4XLARGE`<sup>Required</sup> <a name="ML_M5D_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_4XLARGE"></a>
+
+```typescript
+public readonly ML_M5D_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5d.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5D_8XLARGE`<sup>Required</sup> <a name="ML_M5D_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_8XLARGE"></a>
+
+```typescript
+public readonly ML_M5D_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5d.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M5D_LARGE`<sup>Required</sup> <a name="ML_M5D_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_LARGE"></a>
+
+```typescript
+public readonly ML_M5D_LARGE: string;
+```
+
+- *Type:* string
+
+ml.m5d.large Notebook Instance Type.
+
+---
+
+##### `ML_M5D_XLARGE`<sup>Required</sup> <a name="ML_M5D_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M5D_XLARGE"></a>
+
+```typescript
+public readonly ML_M5D_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m5d.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6G_12XLARGE`<sup>Required</sup> <a name="ML_M6G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_12XLARGE"></a>
+
+```typescript
+public readonly ML_M6G_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6g.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6G_16XLARGE`<sup>Required</sup> <a name="ML_M6G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_16XLARGE"></a>
+
+```typescript
+public readonly ML_M6G_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6g.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6G_2XLARGE`<sup>Required</sup> <a name="ML_M6G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_2XLARGE"></a>
+
+```typescript
+public readonly ML_M6G_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6g.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6G_4XLARGE`<sup>Required</sup> <a name="ML_M6G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_4XLARGE"></a>
+
+```typescript
+public readonly ML_M6G_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6g.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6G_8XLARGE`<sup>Required</sup> <a name="ML_M6G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_8XLARGE"></a>
+
+```typescript
+public readonly ML_M6G_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6g.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6G_LARGE`<sup>Required</sup> <a name="ML_M6G_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_LARGE"></a>
+
+```typescript
+public readonly ML_M6G_LARGE: string;
+```
+
+- *Type:* string
+
+ml.m6g.large Notebook Instance Type.
+
+---
+
+##### `ML_M6G_XLARGE`<sup>Required</sup> <a name="ML_M6G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6G_XLARGE"></a>
+
+```typescript
+public readonly ML_M6G_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6g.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6GD_12XLARGE`<sup>Required</sup> <a name="ML_M6GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_12XLARGE"></a>
+
+```typescript
+public readonly ML_M6GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6gd.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6GD_16XLARGE`<sup>Required</sup> <a name="ML_M6GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_16XLARGE"></a>
+
+```typescript
+public readonly ML_M6GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6gd.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6GD_2XLARGE`<sup>Required</sup> <a name="ML_M6GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_2XLARGE"></a>
+
+```typescript
+public readonly ML_M6GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6gd.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6GD_4XLARGE`<sup>Required</sup> <a name="ML_M6GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_4XLARGE"></a>
+
+```typescript
+public readonly ML_M6GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6gd.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6GD_8XLARGE`<sup>Required</sup> <a name="ML_M6GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_8XLARGE"></a>
+
+```typescript
+public readonly ML_M6GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6gd.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6GD_LARGE`<sup>Required</sup> <a name="ML_M6GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_LARGE"></a>
+
+```typescript
+public readonly ML_M6GD_LARGE: string;
+```
+
+- *Type:* string
+
+ml.m6gd.large Notebook Instance Type.
+
+---
+
+##### `ML_M6GD_XLARGE`<sup>Required</sup> <a name="ML_M6GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6GD_XLARGE"></a>
+
+```typescript
+public readonly ML_M6GD_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6gd.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6I_12XLARGE`<sup>Required</sup> <a name="ML_M6I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_12XLARGE"></a>
+
+```typescript
+public readonly ML_M6I_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6i.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6I_16XLARGE`<sup>Required</sup> <a name="ML_M6I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_16XLARGE"></a>
+
+```typescript
+public readonly ML_M6I_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6i.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6I_24XLARGE`<sup>Required</sup> <a name="ML_M6I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_24XLARGE"></a>
+
+```typescript
+public readonly ML_M6I_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6i.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6I_2XLARGE`<sup>Required</sup> <a name="ML_M6I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_2XLARGE"></a>
+
+```typescript
+public readonly ML_M6I_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6i.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6I_32XLARGE`<sup>Required</sup> <a name="ML_M6I_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_32XLARGE"></a>
+
+```typescript
+public readonly ML_M6I_32XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6i.32xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6I_4XLARGE`<sup>Required</sup> <a name="ML_M6I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_4XLARGE"></a>
+
+```typescript
+public readonly ML_M6I_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6i.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6I_8XLARGE`<sup>Required</sup> <a name="ML_M6I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_8XLARGE"></a>
+
+```typescript
+public readonly ML_M6I_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6i.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6I_LARGE`<sup>Required</sup> <a name="ML_M6I_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_LARGE"></a>
+
+```typescript
+public readonly ML_M6I_LARGE: string;
+```
+
+- *Type:* string
+
+ml.m6i.large Notebook Instance Type.
+
+---
+
+##### `ML_M6I_XLARGE`<sup>Required</sup> <a name="ML_M6I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6I_XLARGE"></a>
+
+```typescript
+public readonly ML_M6I_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6i.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6ID_12XLARGE`<sup>Required</sup> <a name="ML_M6ID_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_12XLARGE"></a>
+
+```typescript
+public readonly ML_M6ID_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6id.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6ID_16XLARGE`<sup>Required</sup> <a name="ML_M6ID_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_16XLARGE"></a>
+
+```typescript
+public readonly ML_M6ID_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6id.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6ID_24XLARGE`<sup>Required</sup> <a name="ML_M6ID_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_24XLARGE"></a>
+
+```typescript
+public readonly ML_M6ID_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6id.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6ID_2XLARGE`<sup>Required</sup> <a name="ML_M6ID_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_2XLARGE"></a>
+
+```typescript
+public readonly ML_M6ID_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6id.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6ID_32XLARGE`<sup>Required</sup> <a name="ML_M6ID_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_32XLARGE"></a>
+
+```typescript
+public readonly ML_M6ID_32XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6id.32xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6ID_4XLARGE`<sup>Required</sup> <a name="ML_M6ID_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_4XLARGE"></a>
+
+```typescript
+public readonly ML_M6ID_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6id.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6ID_8XLARGE`<sup>Required</sup> <a name="ML_M6ID_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_8XLARGE"></a>
+
+```typescript
+public readonly ML_M6ID_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6id.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M6ID_LARGE`<sup>Required</sup> <a name="ML_M6ID_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_LARGE"></a>
+
+```typescript
+public readonly ML_M6ID_LARGE: string;
+```
+
+- *Type:* string
+
+ml.m6id.large Notebook Instance Type.
+
+---
+
+##### `ML_M6ID_XLARGE`<sup>Required</sup> <a name="ML_M6ID_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M6ID_XLARGE"></a>
+
+```typescript
+public readonly ML_M6ID_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m6id.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M7I_12XLARGE`<sup>Required</sup> <a name="ML_M7I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_12XLARGE"></a>
+
+```typescript
+public readonly ML_M7I_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m7i.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M7I_16XLARGE`<sup>Required</sup> <a name="ML_M7I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_16XLARGE"></a>
+
+```typescript
+public readonly ML_M7I_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m7i.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M7I_24XLARGE`<sup>Required</sup> <a name="ML_M7I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_24XLARGE"></a>
+
+```typescript
+public readonly ML_M7I_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m7i.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M7I_2XLARGE`<sup>Required</sup> <a name="ML_M7I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_2XLARGE"></a>
+
+```typescript
+public readonly ML_M7I_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m7i.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M7I_48XLARGE`<sup>Required</sup> <a name="ML_M7I_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_48XLARGE"></a>
+
+```typescript
+public readonly ML_M7I_48XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m7i.48xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M7I_4XLARGE`<sup>Required</sup> <a name="ML_M7I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_4XLARGE"></a>
+
+```typescript
+public readonly ML_M7I_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m7i.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M7I_8XLARGE`<sup>Required</sup> <a name="ML_M7I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_8XLARGE"></a>
+
+```typescript
+public readonly ML_M7I_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m7i.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_M7I_LARGE`<sup>Required</sup> <a name="ML_M7I_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_LARGE"></a>
+
+```typescript
+public readonly ML_M7I_LARGE: string;
+```
+
+- *Type:* string
+
+ml.m7i.large Notebook Instance Type.
+
+---
+
+##### `ML_M7I_XLARGE`<sup>Required</sup> <a name="ML_M7I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_M7I_XLARGE"></a>
+
+```typescript
+public readonly ML_M7I_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.m7i.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_P2_16XLARGE`<sup>Required</sup> <a name="ML_P2_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P2_16XLARGE"></a>
+
+```typescript
+public readonly ML_P2_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p2.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_P2_8XLARGE`<sup>Required</sup> <a name="ML_P2_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P2_8XLARGE"></a>
+
+```typescript
+public readonly ML_P2_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p2.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_P2_XLARGE`<sup>Required</sup> <a name="ML_P2_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P2_XLARGE"></a>
+
+```typescript
+public readonly ML_P2_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p2.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_P3_16XLARGE`<sup>Required</sup> <a name="ML_P3_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P3_16XLARGE"></a>
+
+```typescript
+public readonly ML_P3_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p3.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_P3_2XLARGE`<sup>Required</sup> <a name="ML_P3_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P3_2XLARGE"></a>
+
+```typescript
+public readonly ML_P3_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p3.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_P3_8XLARGE`<sup>Required</sup> <a name="ML_P3_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P3_8XLARGE"></a>
+
+```typescript
+public readonly ML_P3_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p3.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_P3DN_24XLARGE`<sup>Required</sup> <a name="ML_P3DN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P3DN_24XLARGE"></a>
+
+```typescript
+public readonly ML_P3DN_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p3dn.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_P4D_24XLARGE`<sup>Required</sup> <a name="ML_P4D_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P4D_24XLARGE"></a>
+
+```typescript
+public readonly ML_P4D_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p4d.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_P4DE_24XLARGE`<sup>Required</sup> <a name="ML_P4DE_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P4DE_24XLARGE"></a>
+
+```typescript
+public readonly ML_P4DE_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p4de.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_P5_48XLARGE`<sup>Required</sup> <a name="ML_P5_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P5_48XLARGE"></a>
+
+```typescript
+public readonly ML_P5_48XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p5.48xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5_12XLARGE`<sup>Required</sup> <a name="ML_R5_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_12XLARGE"></a>
+
+```typescript
+public readonly ML_R5_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5_16XLARGE`<sup>Required</sup> <a name="ML_R5_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_16XLARGE"></a>
+
+```typescript
+public readonly ML_R5_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5_24XLARGE`<sup>Required</sup> <a name="ML_R5_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_24XLARGE"></a>
+
+```typescript
+public readonly ML_R5_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5_2XLARGE`<sup>Required</sup> <a name="ML_R5_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_2XLARGE"></a>
+
+```typescript
+public readonly ML_R5_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5_4XLARGE`<sup>Required</sup> <a name="ML_R5_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_4XLARGE"></a>
+
+```typescript
+public readonly ML_R5_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5_8XLARGE`<sup>Required</sup> <a name="ML_R5_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_8XLARGE"></a>
+
+```typescript
+public readonly ML_R5_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5_LARGE`<sup>Required</sup> <a name="ML_R5_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_LARGE"></a>
+
+```typescript
+public readonly ML_R5_LARGE: string;
+```
+
+- *Type:* string
+
+ml.r5.large Notebook Instance Type.
+
+---
+
+##### `ML_R5_XLARGE`<sup>Required</sup> <a name="ML_R5_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_XLARGE"></a>
+
+```typescript
+public readonly ML_R5_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5D_12XLARGE`<sup>Required</sup> <a name="ML_R5D_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_12XLARGE"></a>
+
+```typescript
+public readonly ML_R5D_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5d.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5D_16XLARGE`<sup>Required</sup> <a name="ML_R5D_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_16XLARGE"></a>
+
+```typescript
+public readonly ML_R5D_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5d.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5D_24XLARGE`<sup>Required</sup> <a name="ML_R5D_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_24XLARGE"></a>
+
+```typescript
+public readonly ML_R5D_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5d.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5D_2XLARGE`<sup>Required</sup> <a name="ML_R5D_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_2XLARGE"></a>
+
+```typescript
+public readonly ML_R5D_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5d.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5D_4XLARGE`<sup>Required</sup> <a name="ML_R5D_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_4XLARGE"></a>
+
+```typescript
+public readonly ML_R5D_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5d.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5D_8XLARGE`<sup>Required</sup> <a name="ML_R5D_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_8XLARGE"></a>
+
+```typescript
+public readonly ML_R5D_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5d.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R5D_LARGE`<sup>Required</sup> <a name="ML_R5D_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_LARGE"></a>
+
+```typescript
+public readonly ML_R5D_LARGE: string;
+```
+
+- *Type:* string
+
+ml.r5d.large Notebook Instance Type.
+
+---
+
+##### `ML_R5D_XLARGE`<sup>Required</sup> <a name="ML_R5D_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5D_XLARGE"></a>
+
+```typescript
+public readonly ML_R5D_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r5d.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6G_12XLARGE`<sup>Required</sup> <a name="ML_R6G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_12XLARGE"></a>
+
+```typescript
+public readonly ML_R6G_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6g.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6G_16XLARGE`<sup>Required</sup> <a name="ML_R6G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_16XLARGE"></a>
+
+```typescript
+public readonly ML_R6G_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6g.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6G_2XLARGE`<sup>Required</sup> <a name="ML_R6G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_2XLARGE"></a>
+
+```typescript
+public readonly ML_R6G_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6g.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6G_4XLARGE`<sup>Required</sup> <a name="ML_R6G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_4XLARGE"></a>
+
+```typescript
+public readonly ML_R6G_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6g.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6G_8XLARGE`<sup>Required</sup> <a name="ML_R6G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_8XLARGE"></a>
+
+```typescript
+public readonly ML_R6G_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6g.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6G_LARGE`<sup>Required</sup> <a name="ML_R6G_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_LARGE"></a>
+
+```typescript
+public readonly ML_R6G_LARGE: string;
+```
+
+- *Type:* string
+
+ml.r6g.large Notebook Instance Type.
+
+---
+
+##### `ML_R6G_XLARGE`<sup>Required</sup> <a name="ML_R6G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6G_XLARGE"></a>
+
+```typescript
+public readonly ML_R6G_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6g.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6GD_12XLARGE`<sup>Required</sup> <a name="ML_R6GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_12XLARGE"></a>
+
+```typescript
+public readonly ML_R6GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6gd.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6GD_16XLARGE`<sup>Required</sup> <a name="ML_R6GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_16XLARGE"></a>
+
+```typescript
+public readonly ML_R6GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6gd.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6GD_2XLARGE`<sup>Required</sup> <a name="ML_R6GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_2XLARGE"></a>
+
+```typescript
+public readonly ML_R6GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6gd.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6GD_4XLARGE`<sup>Required</sup> <a name="ML_R6GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_4XLARGE"></a>
+
+```typescript
+public readonly ML_R6GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6gd.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6GD_8XLARGE`<sup>Required</sup> <a name="ML_R6GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_8XLARGE"></a>
+
+```typescript
+public readonly ML_R6GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6gd.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6GD_LARGE`<sup>Required</sup> <a name="ML_R6GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_LARGE"></a>
+
+```typescript
+public readonly ML_R6GD_LARGE: string;
+```
+
+- *Type:* string
+
+ml.r6gd.large Notebook Instance Type.
+
+---
+
+##### `ML_R6GD_XLARGE`<sup>Required</sup> <a name="ML_R6GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6GD_XLARGE"></a>
+
+```typescript
+public readonly ML_R6GD_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6gd.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6I_12XLARGE`<sup>Required</sup> <a name="ML_R6I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_12XLARGE"></a>
+
+```typescript
+public readonly ML_R6I_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6i.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6I_16XLARGE`<sup>Required</sup> <a name="ML_R6I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_16XLARGE"></a>
+
+```typescript
+public readonly ML_R6I_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6i.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6I_24XLARGE`<sup>Required</sup> <a name="ML_R6I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_24XLARGE"></a>
+
+```typescript
+public readonly ML_R6I_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6i.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6I_2XLARGE`<sup>Required</sup> <a name="ML_R6I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_2XLARGE"></a>
+
+```typescript
+public readonly ML_R6I_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6i.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6I_32XLARGE`<sup>Required</sup> <a name="ML_R6I_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_32XLARGE"></a>
+
+```typescript
+public readonly ML_R6I_32XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6i.32xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6I_4XLARGE`<sup>Required</sup> <a name="ML_R6I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_4XLARGE"></a>
+
+```typescript
+public readonly ML_R6I_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6i.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6I_8XLARGE`<sup>Required</sup> <a name="ML_R6I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_8XLARGE"></a>
+
+```typescript
+public readonly ML_R6I_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6i.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6I_LARGE`<sup>Required</sup> <a name="ML_R6I_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_LARGE"></a>
+
+```typescript
+public readonly ML_R6I_LARGE: string;
+```
+
+- *Type:* string
+
+ml.r6i.large Notebook Instance Type.
+
+---
+
+##### `ML_R6I_XLARGE`<sup>Required</sup> <a name="ML_R6I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6I_XLARGE"></a>
+
+```typescript
+public readonly ML_R6I_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6i.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6ID_12XLARGE`<sup>Required</sup> <a name="ML_R6ID_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_12XLARGE"></a>
+
+```typescript
+public readonly ML_R6ID_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6id.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6ID_16XLARGE`<sup>Required</sup> <a name="ML_R6ID_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_16XLARGE"></a>
+
+```typescript
+public readonly ML_R6ID_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6id.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6ID_24XLARGE`<sup>Required</sup> <a name="ML_R6ID_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_24XLARGE"></a>
+
+```typescript
+public readonly ML_R6ID_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6id.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6ID_2XLARGE`<sup>Required</sup> <a name="ML_R6ID_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_2XLARGE"></a>
+
+```typescript
+public readonly ML_R6ID_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6id.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6ID_32XLARGE`<sup>Required</sup> <a name="ML_R6ID_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_32XLARGE"></a>
+
+```typescript
+public readonly ML_R6ID_32XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6id.32xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6ID_4XLARGE`<sup>Required</sup> <a name="ML_R6ID_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_4XLARGE"></a>
+
+```typescript
+public readonly ML_R6ID_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6id.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6ID_8XLARGE`<sup>Required</sup> <a name="ML_R6ID_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_8XLARGE"></a>
+
+```typescript
+public readonly ML_R6ID_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6id.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R6ID_LARGE`<sup>Required</sup> <a name="ML_R6ID_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_LARGE"></a>
+
+```typescript
+public readonly ML_R6ID_LARGE: string;
+```
+
+- *Type:* string
+
+ml.r6id.large Notebook Instance Type.
+
+---
+
+##### `ML_R6ID_XLARGE`<sup>Required</sup> <a name="ML_R6ID_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R6ID_XLARGE"></a>
+
+```typescript
+public readonly ML_R6ID_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r6id.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R7I_12XLARGE`<sup>Required</sup> <a name="ML_R7I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_12XLARGE"></a>
+
+```typescript
+public readonly ML_R7I_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r7i.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R7I_16XLARGE`<sup>Required</sup> <a name="ML_R7I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_16XLARGE"></a>
+
+```typescript
+public readonly ML_R7I_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r7i.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R7I_24XLARGE`<sup>Required</sup> <a name="ML_R7I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_24XLARGE"></a>
+
+```typescript
+public readonly ML_R7I_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r7i.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R7I_2XLARGE`<sup>Required</sup> <a name="ML_R7I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_2XLARGE"></a>
+
+```typescript
+public readonly ML_R7I_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r7i.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R7I_48XLARGE`<sup>Required</sup> <a name="ML_R7I_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_48XLARGE"></a>
+
+```typescript
+public readonly ML_R7I_48XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r7i.48xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R7I_4XLARGE`<sup>Required</sup> <a name="ML_R7I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_4XLARGE"></a>
+
+```typescript
+public readonly ML_R7I_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r7i.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R7I_8XLARGE`<sup>Required</sup> <a name="ML_R7I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_8XLARGE"></a>
+
+```typescript
+public readonly ML_R7I_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r7i.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R7I_LARGE`<sup>Required</sup> <a name="ML_R7I_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_LARGE"></a>
+
+```typescript
+public readonly ML_R7I_LARGE: string;
+```
+
+- *Type:* string
+
+ml.r7i.large Notebook Instance Type.
+
+---
+
+##### `ML_R7I_XLARGE`<sup>Required</sup> <a name="ML_R7I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_XLARGE"></a>
+
+```typescript
+public readonly ML_R7I_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r7i.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_T2_2XLARGE`<sup>Required</sup> <a name="ML_T2_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T2_2XLARGE"></a>
+
+```typescript
+public readonly ML_T2_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.t2.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_T2_LARGE`<sup>Required</sup> <a name="ML_T2_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T2_LARGE"></a>
+
+```typescript
+public readonly ML_T2_LARGE: string;
+```
+
+- *Type:* string
+
+ml.t2.large Notebook Instance Type.
+
+---
+
+##### `ML_T2_MEDIUM`<sup>Required</sup> <a name="ML_T2_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T2_MEDIUM"></a>
+
+```typescript
+public readonly ML_T2_MEDIUM: string;
+```
+
+- *Type:* string
+
+ml.t2.medium Notebook Instance Type.
+
+---
+
+##### `ML_T2_XLARGE`<sup>Required</sup> <a name="ML_T2_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T2_XLARGE"></a>
+
+```typescript
+public readonly ML_T2_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.t2.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_T3_2XLARGE`<sup>Required</sup> <a name="ML_T3_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T3_2XLARGE"></a>
+
+```typescript
+public readonly ML_T3_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.t3.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_T3_LARGE`<sup>Required</sup> <a name="ML_T3_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T3_LARGE"></a>
+
+```typescript
+public readonly ML_T3_LARGE: string;
+```
+
+- *Type:* string
+
+ml.t3.large Notebook Instance Type.
+
+---
+
+##### `ML_T3_MEDIUM`<sup>Required</sup> <a name="ML_T3_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T3_MEDIUM"></a>
+
+```typescript
+public readonly ML_T3_MEDIUM: string;
+```
+
+- *Type:* string
+
+ml.t3.medium Notebook Instance Type.
+
+---
+
+##### `ML_T3_XLARGE`<sup>Required</sup> <a name="ML_T3_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T3_XLARGE"></a>
+
+```typescript
+public readonly ML_T3_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.t3.xlarge Notebook Instance Type.
+
+---
+
+##### `ML_TRN1_2XLARGE`<sup>Required</sup> <a name="ML_TRN1_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_TRN1_2XLARGE"></a>
+
+```typescript
+public readonly ML_TRN1_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.trn1.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_TRN1_32XLARGE`<sup>Required</sup> <a name="ML_TRN1_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_TRN1_32XLARGE"></a>
+
+```typescript
+public readonly ML_TRN1_32XLARGE: string;
+```
+
+- *Type:* string
+
+ml.trn1.32xlarge Notebook Instance Type.
+
+---
+
+##### `ML_TRN1N_32XLARGE`<sup>Required</sup> <a name="ML_TRN1N_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_TRN1N_32XLARGE"></a>
+
+```typescript
+public readonly ML_TRN1N_32XLARGE: string;
+```
+
+- *Type:* string
+
+ml.trn1n.32xlarge Notebook Instance Type.
+
+---
+
+### SecureSageMakerNotebook <a name="SecureSageMakerNotebook" id="@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebook"></a>
+
+- *Implements:* aws-cdk-lib.IAspect
+
+Aspect that enforces security controls on SageMaker Notebook Instances by requiring VPC placement, disabling direct internet access, and preventing root access to the notebook environment.
+
+This Aspect enforces these settings through a combination of setting
+the CloudFormation properties on the Notebook resource and attaching a
+DENY policy to the role that is used by the notebook. The policy will enforce
+that the following API actions contain the correct properties to ensure
+network isolation and that the VPC subnets are set:
+
+- 'sagemaker:CreateTrainingJob',
+- 'sagemaker:CreateHyperParameterTuningJob',
+- 'sagemaker:CreateModel',
+- 'sagemaker:CreateProcessingJob'
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebook.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+new aspects.SecureSageMakerNotebook(props: SecureSageMakerNotebookProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebook.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebookProps</code> | *No description.* |
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebook.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebookProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebook.visit">visit</a></code> | All aspects can visit an IConstruct. |
+
+---
+
+##### `visit` <a name="visit" id="@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebook.visit"></a>
+
+```typescript
+public visit(node: IConstruct): void
+```
+
+All aspects can visit an IConstruct.
+
+###### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.aspects.SecureSageMakerNotebook.visit.parameter.node"></a>
+
+- *Type:* constructs.IConstruct
+
+---
+
+
+
+
 ### SetLogRetention <a name="SetLogRetention" id="@cdklabs/cdk-proserve-lib.aspects.SetLogRetention"></a>
 
 - *Implements:* aws-cdk-lib.IAspect
@@ -12967,7 +27765,7 @@ Image Builder Component.
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EC2_NETWORK_ROUTE_TEST_WINDOWS">EC2_NETWORK_ROUTE_TEST_WINDOWS</a></code> | Test to ensure all required EC2 network routes exist in the route table. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EC2LAUNCH_V2_WINDOWS">EC2LAUNCH_V2_WINDOWS</a></code> | Installs the latest version of EC2Launch v2. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ECS_OPTIMIZED_AMI_WINDOWS">ECS_OPTIMIZED_AMI_WINDOWS</a></code> | Installs Amazon ECS-optimized Windows artifacts. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EKS_OPTIMIZED_AMI_WINDOWS">EKS_OPTIMIZED_AMI_WINDOWS</a></code> | Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.30. This includes kubelet version 1.30.8, containerd version 1.7.14, and CSI Proxy version 1.1.2. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EKS_OPTIMIZED_AMI_WINDOWS">EKS_OPTIMIZED_AMI_WINDOWS</a></code> | Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.32. This includes kubelet version 1.32.0, containerd version 1.7.20, and CSI Proxy version 1.1.2. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ENI_ATTACHMENT_TEST_LINUX">ENI_ATTACHMENT_TEST_LINUX</a></code> | The ENI attachment test performs the following actions: 1) It creates an elastic network interface (ENI) and attaches it to the instance. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ENI_ATTACHMENT_TEST_WINDOWS">ENI_ATTACHMENT_TEST_WINDOWS</a></code> | The ENI attachment test performs the following actions: 1) It creates an elastic network interface (ENI) and attaches it to the instance. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.GO_STABLE_LINUX">GO_STABLE_LINUX</a></code> | Installs the latest stable release of the Go programming language using the release information from https://go.dev/dl/. |
@@ -12993,7 +27791,7 @@ Image Builder Component.
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_TEST_WINDOWS">REBOOT_TEST_WINDOWS</a></code> | Tests whether the system can reboot successfully. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_WINDOWS">REBOOT_WINDOWS</a></code> | Reboots the system. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SAN_SIFT_LINUX">SAN_SIFT_LINUX</a></code> | Installs SANS SIFT v1.14.0 on Ubuntu, allowing you to leverage a suite of forensics tools. For more information, see https://www.sans.org/tools/sift-workstation/. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_LINUX">SCAP_COMPLIANCE_CHECKER_LINUX</a></code> | Installs and runs SCAP Compliance Checker (SCC) 5.8 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04 with all current STIG Q4 2023 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_LINUX">SCAP_COMPLIANCE_CHECKER_LINUX</a></code> | Installs and runs SCAP Compliance Checker (SCC) 5.10 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04/22.04 with all current STIG Q1 2025 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported or contain issues within the EC2 environment. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_WINDOWS">SCAP_COMPLIANCE_CHECKER_WINDOWS</a></code> | Installs and runs SCAP Compliance Checker (SCC) 5.10 for Windows with all current STIG Q3 2024 benchmarks. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-builder-stig.html. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SIMPLE_BOOT_TEST_LINUX">SIMPLE_BOOT_TEST_LINUX</a></code> | Executes a simple boot test. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SIMPLE_BOOT_TEST_WINDOWS">SIMPLE_BOOT_TEST_WINDOWS</a></code> | Executes a simple boot test. |
@@ -13385,7 +28183,7 @@ This includes latest Amazon ECS Container Agent and Docker CE version 20.10.21.
 
 ##### `EKS_OPTIMIZED_AMI_WINDOWS` <a name="EKS_OPTIMIZED_AMI_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EKS_OPTIMIZED_AMI_WINDOWS"></a>
 
-Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.30. This includes kubelet version 1.30.8, containerd version 1.7.14, and CSI Proxy version 1.1.2.
+Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.32. This includes kubelet version 1.32.0, containerd version 1.7.20, and CSI Proxy version 1.1.2.
 
 ---
 
@@ -13577,7 +28375,7 @@ Installs SANS SIFT v1.14.0 on Ubuntu, allowing you to leverage a suite of forens
 
 ##### `SCAP_COMPLIANCE_CHECKER_LINUX` <a name="SCAP_COMPLIANCE_CHECKER_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_LINUX"></a>
 
-Installs and runs SCAP Compliance Checker (SCC) 5.8 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04 with all current STIG Q4 2023 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html.
+Installs and runs SCAP Compliance Checker (SCC) 5.10 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04/22.04 with all current STIG Q1 2025 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported or contain issues within the EC2 environment. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html.
 
 ---
 
