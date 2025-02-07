@@ -13,22 +13,17 @@ import { CfnNotebookInstance } from 'aws-cdk-lib/aws-sagemaker';
 
 export interface SecureSageMakerNotebookProps {
     /**
-     * Sets the VPC Subnet for the Sagemaker Notebook Instance. This only sets
-     * the subnet if you supply one. It is recommended to set this to ensure
-     * the notebook is locked down to a specific VPC/subnet.
-     *
-     * *You MUST set this property if you want to enforce this.*
+     * Sets the VPC Subnet for the Sagemaker Notebook Instance. This ensures the
+     * notebook is locked down to a specific VPC/subnet.
      */
-    readonly notebookSubnet?: ISubnet;
+    readonly notebookSubnet: ISubnet;
 
     /**
      * Sets the VPC Subnets that the SageMaker Notebook Instance is allowed to
      * launch training and inference jobs into. This is enforced by adding
      * DENY statements to the existing role that the Notebook Instance is using.
-     *
-     * *You MUST set this property if you want to enforce this.*
      */
-    readonly allowedSubnets?: ISubnet[];
+    readonly allowedLaunchSubnets: ISubnet[];
 
     /**
      * Sets the `directInternetAccess` property on the SageMaker Notebooks.
@@ -75,10 +70,10 @@ export class SecureSageMakerNotebookAspect implements IAspect {
             return;
         }
         const notebook = node as CfnNotebookInstance;
-        if (this.props.allowedSubnets) {
+        if (this.props.allowedLaunchSubnets) {
             this.secureSageMakerNotebookRole(
                 notebook,
-                this.props.allowedSubnets
+                this.props.allowedLaunchSubnets
             );
         }
         this.secureSageMakerNotebookInstance(notebook);
