@@ -10,6 +10,7 @@ import {
     Role
 } from 'aws-cdk-lib/aws-iam';
 import { CfnNotebookInstance } from 'aws-cdk-lib/aws-sagemaker';
+import { IConstruct } from 'constructs';
 
 export interface SecureSageMakerNotebookProps {
     /**
@@ -60,12 +61,15 @@ export interface SecureSageMakerNotebookProps {
  */
 export class SecureSageMakerNotebookAspect implements IAspect {
     private static policyByStack: Map<string, ManagedPolicy> = new Map();
+    private static importCounter = 0;
 
     constructor(private readonly props: SecureSageMakerNotebookProps) {}
 
-    visit(node: CfnResource): void {
+    visit(node: IConstruct): void {
+        const cfnResource = node as CfnResource;
         if (
-            node.cfnResourceType !== CfnNotebookInstance.CFN_RESOURCE_TYPE_NAME
+            cfnResource.cfnResourceType !==
+            CfnNotebookInstance.CFN_RESOURCE_TYPE_NAME
         ) {
             return;
         }
@@ -84,14 +88,14 @@ export class SecureSageMakerNotebookAspect implements IAspect {
         allowedSubnets: ISubnet[]
     ): void {
         // Add security policies to the notebook's role
-        const notebookRole = Role.fromRoleArn(
-            notebook,
-            'ImportedNotebookRole',
-            notebook.roleArn
-        );
-
         const stack = Stack.of(notebook);
         const stackId = stack.stackId;
+
+        const notebookRole = Role.fromRoleArn(
+            notebook,
+            `I${SecureSageMakerNotebookAspect.importCounter++}${notebook.node.id}`,
+            notebook.roleArn
+        );
 
         // Create policy for this stack if it doesn't exist
         if (!SecureSageMakerNotebookAspect.policyByStack.has(stackId)) {
