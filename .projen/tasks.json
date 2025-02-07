@@ -499,13 +499,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@aws-sdk/client-wafv2,@types/jest,@types/uuid,aws-sdk-client-mock,aws-sdk-client-mock-jest,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,husky,jest,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,prettier,ts-jest,ts-node,typescript"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@aws-sdk/client-ec2,@aws-sdk/client-pricing,@aws-sdk/client-wafv2,@types/jest,@types/uuid,aws-sdk-client-mock,aws-sdk-client-mock-jest,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,husky,jest,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,prettier,ts-jest,ts-node,typescript"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-sdk/client-cloudformation @aws-sdk/client-iam @aws-sdk/client-imagebuilder @aws-sdk/client-opensearch @aws-sdk/client-s3 @aws-sdk/client-secrets-manager @aws-sdk/client-ssm @aws-sdk/client-wafv2 @types/aws-lambda @types/jest @types/node @types/uuid @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock aws-sdk-client-mock-jest axios cdk-nag cloudform-types commit-and-tag-version esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint husky jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii lint-staged prettier ts-jest ts-node typescript uuid @aws-cdk/integ-runner @aws-cdk/integ-tests-alpha"
+          "exec": "yarn upgrade @aws-sdk/client-cloudformation @aws-sdk/client-ec2 @aws-sdk/client-iam @aws-sdk/client-imagebuilder @aws-sdk/client-opensearch @aws-sdk/client-pricing @aws-sdk/client-s3 @aws-sdk/client-secrets-manager @aws-sdk/client-ssm @aws-sdk/client-wafv2 @types/aws-lambda @types/jest @types/node @types/uuid @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock aws-sdk-client-mock-jest axios cdk-nag cloudform-types commit-and-tag-version esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint husky jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii lint-staged prettier ts-jest ts-node typescript uuid @aws-cdk/integ-runner @aws-cdk/integ-tests-alpha"
         },
         {
           "exec": "npx projen"

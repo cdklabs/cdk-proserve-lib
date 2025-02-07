@@ -1,7 +1,8 @@
-// utilities/generators/lib/ec2-instance-types.ts
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
 
-import { EC2 } from '@aws-sdk/client-ec2';
 import { readFileSync, writeFileSync } from 'fs';
+import { EC2 } from '@aws-sdk/client-ec2';
 
 function formatInstanceTypeName(name: string): string {
     // Convert instance type (e.g., "t2.micro") to uppercase with underscores
