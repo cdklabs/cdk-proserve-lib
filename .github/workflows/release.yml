@@ -28,14 +28,12 @@ jobs:
         run: |-
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-      - name: Install Corepack
-        run: sudo corepack enable
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
       - name: Install dependencies
-        run: yarn install --immutable
+        run: yarn install --check-files --frozen-lockfile
       - name: release
         run: npx projen release
       - name: Check if version has already been tagged
@@ -111,14 +109,12 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Install Corepack
-        run: sudo corepack enable
       - name: Checkout
         uses: actions/checkout@v4
         with:
           path: .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --immutable
+        run: cd .repo && yarn install --check-files --frozen-lockfile
       - name: Extract build artifact
         run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
       - name: Move build artifact out of the way
@@ -157,14 +153,12 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Install Corepack
-        run: sudo corepack enable
       - name: Checkout
         uses: actions/checkout@v4
         with:
           path: .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --immutable
+        run: cd .repo && yarn install --check-files --frozen-lockfile
       - name: Extract build artifact
         run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
       - name: Move build artifact out of the way
@@ -204,14 +198,12 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Install Corepack
-        run: sudo corepack enable
       - name: Checkout
         uses: actions/checkout@v4
         with:
           path: .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --immutable
+        run: cd .repo && yarn install --check-files --frozen-lockfile
       - name: Extract build artifact
         run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
       - name: Move build artifact out of the way
@@ -247,14 +239,12 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Install Corepack
-        run: sudo corepack enable
       - name: Checkout
         uses: actions/checkout@v4
         with:
           path: .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --immutable
+        run: cd .repo && yarn install --check-files --frozen-lockfile
       - name: Extract build artifact
         run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
       - name: Move build artifact out of the way
@@ -289,14 +279,12 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Install Corepack
-        run: sudo corepack enable
       - name: Checkout
         uses: actions/checkout@v4
         with:
           path: .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --immutable
+        run: cd .repo && yarn install --check-files --frozen-lockfile
       - name: Extract build artifact
         run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
       - name: Move build artifact out of the way
