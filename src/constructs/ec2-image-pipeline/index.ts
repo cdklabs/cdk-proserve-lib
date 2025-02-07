@@ -448,7 +448,7 @@ export namespace Ec2ImagePipeline {
         /** Installs Amazon ECS-optimized Windows artifacts. This includes latest Amazon ECS Container Agent and Docker CE version 20.10.21. */
         ECS_OPTIMIZED_AMI_WINDOWS = 'ecs-optimized-ami-windows',
 
-        /** Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.30. This includes kubelet version 1.30.8, containerd version 1.7.14, and CSI Proxy version 1.1.2. */
+        /** Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.32. This includes kubelet version 1.32.0, containerd version 1.7.20, and CSI Proxy version 1.1.2. */
         EKS_OPTIMIZED_AMI_WINDOWS = 'eks-optimized-ami-windows',
 
         /** The ENI attachment test performs the following actions: 1) It creates an elastic network interface (ENI) and attaches it to the instance. 2) It validates that the attached ENI has an IP address. 3) It detaches and deletes the ENI. To perform this test, an IAM policy with the following actions is required: ec2:AttachNetworkInterface, ec2:CreateNetworkInterface, ec2:CreateTags, ec2:DeleteNetworkInterface, ec2:DescribeNetworkInterfaces, ec2:DescribeNetworkInterfaceAttribute, and ec2:DetachNetworkInterface. */
@@ -526,7 +526,7 @@ export namespace Ec2ImagePipeline {
         /** Installs SANS SIFT v1.14.0 on Ubuntu, allowing you to leverage a suite of forensics tools. For more information, see https://www.sans.org/tools/sift-workstation/ */
         SAN_SIFT_LINUX = 'san-sift-linux',
 
-        /** Installs and runs SCAP Compliance Checker (SCC) 5.8 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04 with all current STIG Q4 2023 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. */
+        /** Installs and runs SCAP Compliance Checker (SCC) 5.10 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04/22.04 with all current STIG Q1 2025 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported or contain issues within the EC2 environment. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. */
         SCAP_COMPLIANCE_CHECKER_LINUX = 'scap-compliance-checker-linux',
 
         /** Installs and runs SCAP Compliance Checker (SCC) 5.10 for Windows with all current STIG Q3 2024 benchmarks. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-builder-stig.html. */

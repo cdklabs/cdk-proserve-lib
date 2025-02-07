@@ -23,7 +23,7 @@ function formatPolicyName(name: string): string {
     return finalName;
 }
 
-export async function generateAndInjectAWSManagedPolicyClass() {
+export async function generateAndInjectAwsManagedPolicyClass() {
     try {
         let allPolicies: any[] = [];
         let marker: string | undefined;

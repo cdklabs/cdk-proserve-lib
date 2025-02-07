@@ -3,3 +3,5 @@
 
 export * from './aws-managed-policy';
 export * from './lambda-configuration';
+export * from './ec2-instance-type';
+export * from './sagemaker-notebook-instance-type';
