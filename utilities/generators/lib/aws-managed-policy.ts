@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { IAM } from '@aws-sdk/client-iam';
 
 function formatPolicyName(name: string): string {

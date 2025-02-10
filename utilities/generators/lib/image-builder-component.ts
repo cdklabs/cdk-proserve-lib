@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { Imagebuilder } from '@aws-sdk/client-imagebuilder';
 
 // Function to format component name

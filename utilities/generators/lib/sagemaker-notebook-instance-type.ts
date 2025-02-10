@@ -1,13 +1,33 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { Pricing } from '@aws-sdk/client-pricing';
 
+/**
+ * Formats an instance type name by converting to uppercase and replacing dots
+ * with underscores.
+ *
+ * @param name - The instance type name to format
+ * @returns The formatted instance type name
+ */
 function formatInstanceTypeName(name: string): string {
     return name.toUpperCase().replace(/\./g, '_');
 }
 
+/**
+ * Generates and injects SageMaker instance types into a TypeScript class file.
+ *
+ * This function performs the following steps:
+ * 1. Queries the AWS Pricing API to get all SageMaker ML instance types
+ * 2. Formats the instance types into TypeScript class members
+ * 3. Generates a class containing static members for each instance type
+ * 4. Injects the generated class into a target file between specific markers
+ *
+ * The function queries only us-east-1 region and filters for ML Instance product
+ * family. The generated class prevents instantiation and provides static access
+ * to instance types.
+ */
 export async function generateAndInjectSageMakerInstanceTypes() {
     try {
         // Create Pricing client

@@ -1,14 +1,31 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { EC2 } from '@aws-sdk/client-ec2';
 
+/**
+ * Formats an EC2 instance type name to a standardized format.
+ * Converts instance types (e.g., "t2.micro") to uppercase with underscores
+ * replacing dots and hyphens.
+ *
+ * @param name - The EC2 instance type name to format
+ * @returns The formatted instance type name
+ */
 function formatInstanceTypeName(name: string): string {
     // Convert instance type (e.g., "t2.micro") to uppercase with underscores
     return name.toUpperCase().replace(/[\.-]/g, '_');
 }
 
+/**
+ * Generates and injects EC2 instance type definitions into a TypeScript file.
+ *
+ * This function:
+ * 1. Fetches all EC2 instance types from AWS using the EC2 API
+ * 2. Creates a map of instance types with their vCPU and memory specifications
+ * 3. Generates a TypeScript class with static members for each instance type
+ * 4. Injects the generated class into a target file between specified markers
+ */
 export async function generateAndInjectEc2InstanceTypes() {
     try {
         let allInstanceTypes: any[] = [];
