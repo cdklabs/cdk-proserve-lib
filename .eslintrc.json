@@ -61,6 +61,7 @@
           "**/test/**",
           "**/build-tools/**",
           "**/handler/**/*.ts",
+          "**/utilities/**/*.ts",
           ".projenrc.ts",
           "projenrc/**/*.ts"
         ],
