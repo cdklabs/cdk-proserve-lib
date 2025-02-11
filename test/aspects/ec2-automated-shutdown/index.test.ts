@@ -182,7 +182,6 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
             enableKeyRotation: true,
             description: 'Key for encrypting resources'
         });
-
         new Instance(stack, 'TestInstance', {
             vpc,
             vpcSubnets: {
