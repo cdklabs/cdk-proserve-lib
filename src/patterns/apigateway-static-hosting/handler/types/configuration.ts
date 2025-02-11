@@ -33,18 +33,6 @@ export type HostingConfiguration =
     | S3HostingConfiguration;
 
 /**
- * Determines if Amazon S3 is being used as the backend store for static assets
- * @param config The loaded hosting configuration
- * @returns True if the hosting configuration is for an Amazon S3 backed store, false otherwise
- */
-export function useS3(
-    config: HostingConfiguration
-): config is S3HostingConfiguration {
-    const nameProp: keyof S3HostingConfiguration = 'bucketName';
-    return nameProp in config;
-}
-
-/**
  * Utilities for manipulating the handler configuration
  */
 export class Configuration {
@@ -61,5 +49,17 @@ export class Configuration {
         }
 
         return JSON.parse(config) as HostingConfiguration;
+    }
+
+    /**
+     * Determines if Amazon S3 is being used as the backend store for static assets
+     * @param config The loaded hosting configuration
+     * @returns True if the hosting configuration is for an Amazon S3 backed store, false otherwise
+     */
+    static useS3(
+        config: HostingConfiguration
+    ): config is S3HostingConfiguration {
+        const nameProp: keyof S3HostingConfiguration = 'bucketName';
+        return nameProp in config;
     }
 }

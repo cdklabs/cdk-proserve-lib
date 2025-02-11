@@ -7,7 +7,9 @@ import {
     Cors,
     DomainNameOptions,
     EndpointConfiguration,
+    IAccessLogDestination,
     LambdaIntegration,
+    MethodLoggingLevel,
     RestApi
 } from 'aws-cdk-lib/aws-apigateway';
 import { IKey } from 'aws-cdk-lib/aws-kms';
@@ -16,9 +18,11 @@ import {
     BlockPublicAccess,
     Bucket,
     BucketAccessControl,
-    BucketEncryption
+    BucketEncryption,
+    IBucket
 } from 'aws-cdk-lib/aws-s3';
 import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
+import { CfnWebACL, CfnWebACLAssociation } from 'aws-cdk-lib/aws-wafv2';
 import { Construct } from 'constructs';
 import { SecureFunction } from '../../constructs/secure-function';
 import { LambdaConfiguration } from '../../types';
@@ -61,6 +65,22 @@ export interface ApiGatewayStaticHostingProps {
      * @default false The Amazon S3 bucket and all assets contained within will be deleted
      */
     readonly retainStoreOnDeletion?: boolean;
+
+    /**
+     * Amazon S3 bucket where access logs should be stored
+     * @default undefined A new bucket will be created for storing access logs
+     */
+    readonly accessLoggingBucket?: IBucket;
+
+    /**
+     * AWS Web Application Firewall ACLs to add to the API
+     */
+    readonly acls?: CfnWebACL[];
+
+    /**
+     * Destination where Amazon API Gateway logs can be sent
+     */
+    readonly apiLogDestination?: IAccessLogDestination;
 
     /**
      * A version identifier to deploy to the Amazon S3 bucket to help with rapid identification of current deployment
@@ -167,6 +187,10 @@ export class ApiGatewayStaticHosting extends Construct {
             removalPolicy: this.props.retainStoreOnDeletion
                 ? RemovalPolicy.RETAIN
                 : RemovalPolicy.DESTROY,
+            serverAccessLogsBucket: this.props.accessLoggingBucket,
+            serverAccessLogsPrefix: this.props.accessLoggingBucket
+                ? 'apigateway-static-hosting-store'
+                : undefined,
             versioned: true
         });
     }
@@ -287,6 +311,10 @@ export class ApiGatewayStaticHosting extends Construct {
                 proxy: true,
                 timeout: Duration.seconds(29)
             }),
+            deployOptions: {
+                accessLogDestination: this.props.apiLogDestination,
+                loggingLevel: MethodLoggingLevel.ERROR
+            },
             endpointConfiguration: this.props.endpoint,
             deploy: true,
             description: 'Frontend for static hosting',
@@ -295,6 +323,13 @@ export class ApiGatewayStaticHosting extends Construct {
         });
 
         api.root.addProxy();
+
+        this.props.acls?.forEach((a, i) => {
+            new CfnWebACLAssociation(this, `ApiAcl${i}`, {
+                resourceArn: api.deploymentStage.stageArn,
+                webAclArn: a.attrArn
+            });
+        });
 
         return api;
     }
