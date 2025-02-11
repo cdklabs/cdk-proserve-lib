@@ -1,8 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { EC2Client } from '@aws-sdk/client-ec2';
 import { Context } from 'aws-lambda';
-import { EC2Client, StopInstancesCommand } from '@aws-sdk/client-ec2';
 import { handler } from '../../../../src/aspects/ec2-automated-shutdown/handler';
 
 jest.mock('@aws-sdk/client-ec2');
@@ -20,49 +20,62 @@ describe('Lambda Handler', () => {
         } as Context;
 
         mockEvent = {
-            version: '0',
-            id: 'test-id',
-            'detail-type': 'CloudWatch Alarm State Change',
-            source: 'aws.cloudwatch',
-            account: '123456789012',
-            time: '2024-02-11T00:00:00Z',
-            region: 'us-east-1',
-            resources: ['arn:aws:cloudwatch:us-east-1:123456789012:alarm:LowCPUUtilizationAlarm-i-1234567890abcdef0'],
-            detail: {
-                alarmName: 'LowCPUUtilizationAlarm-i-1234567890abcdef0',
-                state: {
-                    value: 'ALARM',
-                    reason: 'Threshold Crossed',
-                    reasonData: '{}',
-                    timestamp: '2024-02-11T00:00:00Z'
-                },
-                previousState: {
-                    value: 'OK',
-                    reason: 'Threshold Crossed',
-                    reasonData: '{}',
-                    timestamp: '2024-02-11T00:00:00Z'
-                },
-                configuration: {
-                    description: 'CPU utilization below threshold',
-                    metrics: [{
-                        id: 'metric1',
-                        metricStat: {
-                            metric: {
-                                dimensions: [{
-                                    name: 'InstanceId',
-                                    value: 'i-1234567890abcdef0'
-                                }]
+            Records: [
+                {
+                    Sns: {
+                        Message: JSON.stringify({
+                            version: '0',
+                            id: 'test-id',
+                            'detail-type': 'CloudWatch Alarm State Change',
+                            source: 'aws.cloudwatch',
+                            account: '123456789012',
+                            time: '2024-02-11T00:00:00Z',
+                            region: 'us-east-1',
+                            resources: [
+                                'arn:aws:cloudwatch:us-east-1:123456789012:alarm:LowCPUAlarm-1'
+                            ],
+                            detail: {
+                                alarmName: 'LowCPUAlarm-1',
+                                state: {
+                                    value: 'ALARM',
+                                    reason: 'Threshold Crossed',
+                                    reasonData: '{}',
+                                    timestamp: '2024-02-11T00:00:00Z'
+                                },
+                                previousState: {
+                                    value: 'OK',
+                                    reason: 'Threshold Crossed',
+                                    reasonData: '{}',
+                                    timestamp: '2024-02-11T00:00:00Z'
+                                },
+                                configuration: {
+                                    description:
+                                        'CPU utilization below threshold',
+                                    metrics: [
+                                        {
+                                            id: 'metric1',
+                                            metricStat: {
+                                                metric: {
+                                                    dimensions: [
+                                                        {
+                                                            name: 'InstanceId',
+                                                            value: 'i-1234567890abcdef0'
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
                             }
-                        }
-                    }]
+                        })
+                    }
                 }
-            }
+            ]
         };
 
         // Mock the EC2 client constructor
         (EC2Client as jest.Mock).mockImplementation(() => mockEC2Client);
-        
-        // Reset the mock implementation for each test
         mockEC2Client.send.mockReset();
     });
 
@@ -73,8 +86,10 @@ describe('Lambda Handler', () => {
     it('should stop EC2 instance when alarm is in ALARM state', async () => {
         // Arrange
         const instanceId = 'i-1234567890abcdef0';
-        mockEC2Client.send.mockResolvedValueOnce({ 
-            StoppingInstances: [{ InstanceId: instanceId }] 
+        mockEC2Client.send.mockImplementation(() => {
+            return Promise.resolve({
+                StoppingInstances: [{ InstanceId: instanceId }]
+            });
         });
 
         // Act
@@ -83,17 +98,19 @@ describe('Lambda Handler', () => {
         // Assert
         expect(EC2Client).toHaveBeenCalledTimes(1);
         expect(mockEC2Client.send).toHaveBeenCalledWith(
-            expect.any(StopInstancesCommand)
+            expect.objectContaining({
+                input: {
+                    InstanceIds: [instanceId]
+                }
+            })
         );
-        const command = mockEC2Client.send.mock.calls[0][0];
-        expect(command.input).toEqual({
-            InstanceIds: [instanceId]
-        });
     });
 
     it('should not stop EC2 instance when alarm is not in ALARM state', async () => {
         // Arrange
-        mockEvent.detail.state.value = 'OK';
+        const message = JSON.parse(mockEvent.Records[0].Sns.Message);
+        message.detail.state.value = 'OK';
+        mockEvent.Records[0].Sns.Message = JSON.stringify(message);
 
         // Act
         await handler(mockEvent, mockContext);
@@ -102,13 +119,16 @@ describe('Lambda Handler', () => {
         expect(mockEC2Client.send).not.toHaveBeenCalled();
     });
 
-    it('should throw error when instance ID cannot be extracted from alarm name', async () => {
+    it('should throw error when instance ID is not found in metrics', async () => {
         // Arrange
-        mockEvent.detail.alarmName = 'InvalidAlarmName';
+        const message = JSON.parse(mockEvent.Records[0].Sns.Message);
+        message.detail.configuration.metrics[0].metricStat.metric.dimensions =
+            [];
+        mockEvent.Records[0].Sns.Message = JSON.stringify(message);
 
         // Act & Assert
         await expect(handler(mockEvent, mockContext)).rejects.toThrow(
-            'Instance ID not found in alarm name'
+            'Instance ID not found in alarm metrics'
         );
     });
 
@@ -118,14 +138,34 @@ describe('Lambda Handler', () => {
         mockEC2Client.send.mockRejectedValueOnce(error);
 
         // Act & Assert
-        await expect(handler(mockEvent, mockContext)).rejects.toThrow('EC2 API Error');
+        await expect(handler(mockEvent, mockContext)).rejects.toThrow(
+            'EC2 API Error'
+        );
     });
 
-    it('should log event details', async () => {
+    it('should handle malformed SNS message', async () => {
+        // Arrange
+        mockEvent.Records[0].Sns.Message = 'invalid json';
+
+        // Act & Assert
+        await expect(handler(mockEvent, mockContext)).rejects.toThrow();
+    });
+
+    it('should handle missing SNS records', async () => {
+        // Arrange
+        mockEvent.Records = [];
+
+        // Act & Assert
+        await expect(handler(mockEvent, mockContext)).rejects.toThrow();
+    });
+
+    it('should log event details and success message', async () => {
         // Arrange
         const consoleSpy = jest.spyOn(console, 'info');
-        mockEC2Client.send.mockResolvedValueOnce({ 
-            StoppingInstances: [{ InstanceId: 'i-1234567890abcdef0' }] 
+        mockEC2Client.send.mockImplementation(() => {
+            return Promise.resolve({
+                StoppingInstances: [{ InstanceId: 'i-1234567890abcdef0' }]
+            });
         });
 
         // Act
@@ -133,11 +173,50 @@ describe('Lambda Handler', () => {
 
         // Assert
         expect(consoleSpy).toHaveBeenCalledWith(
-            'Received event:',
+            'Received SNS event:',
             expect.any(String)
         );
         expect(consoleSpy).toHaveBeenCalledWith(
-            expect.stringContaining('Successfully initiated shutdown for instance')
+            'Parsed CloudWatch event:',
+            expect.any(String)
         );
+        expect(consoleSpy).toHaveBeenCalledWith(
+            expect.stringContaining(
+                'Successfully initiated shutdown for instance'
+            )
+        );
+    });
+
+    it('should handle missing metric dimensions', async () => {
+        // Arrange
+        const message = JSON.parse(mockEvent.Records[0].Sns.Message);
+        delete message.detail.configuration.metrics[0].metricStat.metric
+            .dimensions;
+        mockEvent.Records[0].Sns.Message = JSON.stringify(message);
+
+        // Act & Assert
+        await expect(handler(mockEvent, mockContext)).rejects.toThrow(
+            'Instance ID not found in alarm metrics'
+        );
+    });
+
+    it('should handle missing metrics configuration', async () => {
+        // Arrange
+        const message = JSON.parse(mockEvent.Records[0].Sns.Message);
+        delete message.detail.configuration.metrics;
+        mockEvent.Records[0].Sns.Message = JSON.stringify(message);
+
+        // Act & Assert
+        await expect(handler(mockEvent, mockContext)).rejects.toThrow(
+            'Instance ID not found in alarm metrics'
+        );
+    });
+
+    it('should handle invalid SNS event structure', async () => {
+        // Arrange
+        delete mockEvent.Records[0].Sns;
+
+        // Act & Assert
+        await expect(handler(mockEvent, mockContext)).rejects.toThrow();
     });
 });

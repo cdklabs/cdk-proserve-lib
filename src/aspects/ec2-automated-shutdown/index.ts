@@ -2,21 +2,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { join } from 'path';
-import { Topic } from 'aws-cdk-lib/aws-sns';
-import { Stack, Duration } from 'aws-cdk-lib';
-import { PolicyStatement, Effect, AnyPrincipal } from 'aws-cdk-lib/aws-iam';
-import { Code } from 'aws-cdk-lib/aws-lambda';
-import { IKey } from 'aws-cdk-lib/aws-kms';
+import { Stack, Duration, IAspect } from 'aws-cdk-lib';
 import { Metric, Alarm, ComparisonOperator } from 'aws-cdk-lib/aws-cloudwatch';
 import { SnsAction } from 'aws-cdk-lib/aws-cloudwatch-actions';
-import { SnsEventSource} from 'aws-cdk-lib/aws-lambda-event-sources';
-import { IAspect } from 'aws-cdk-lib';
 import { Instance, CfnInstance } from 'aws-cdk-lib/aws-ec2';
+import { PolicyStatement, Effect, AnyPrincipal } from 'aws-cdk-lib/aws-iam';
+import { IKey } from 'aws-cdk-lib/aws-kms';
+import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { SnsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
+import { Topic } from 'aws-cdk-lib/aws-sns';
 import { IConstruct } from 'constructs';
 import { SecureFunction } from '../../constructs/secure-function';
-import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { LambdaConfiguration } from '../../interfaces/lambda-configuration';
-
 
 export interface EC2ShutdownProps {
     /**
@@ -27,12 +24,12 @@ export interface EC2ShutdownProps {
     /**
      * Optional Lambda configuration settings.
      */
-     readonly lambdaConfiguration?: LambdaConfiguration
+    readonly lambdaConfiguration?: LambdaConfiguration;
 
     /**
      * Optional KMS Encryption Key to use for encrypting resources.
      */
-    readonly encryption?: IKey; 
+    readonly encryption?: IKey;
 }
 
 /**
@@ -43,7 +40,7 @@ export interface EC2ShutdownProps {
 export class Ec2AutomatedShutdown implements IAspect {
     private lambdaFunction!: SecureFunction;
     private processedStacks: Set<Stack> = new Set();
-    private counter = 0; 
+    private counter = 0;
 
     constructor(private readonly props: EC2ShutdownProps) {
         if (props.cpuThreshold <= 0 || props.cpuThreshold > 100) {
@@ -55,7 +52,7 @@ export class Ec2AutomatedShutdown implements IAspect {
         if (!(node instanceof Instance) && !(node instanceof CfnInstance)) {
             return;
         }
-    
+
         const stack = Stack.of(node);
 
         if (!this.processedStacks.has(stack)) {
@@ -68,14 +65,18 @@ export class Ec2AutomatedShutdown implements IAspect {
 
     private ensureLambdaFunction(stack: Stack): void {
         if (!this.lambdaFunction) {
-            this.lambdaFunction = new SecureFunction(stack, 'EC2ShutdownFunction', {
-                code: Code.fromAsset(join(__dirname, 'handler')),
-                runtime: Runtime.NODEJS_20_X,
-                handler: 'index.handler',
-                timeout: Duration.seconds(15),
-                encryption: this.props.encryption,  
-                ...this.props.lambdaConfiguration
-            });
+            this.lambdaFunction = new SecureFunction(
+                stack,
+                'EC2ShutdownFunction',
+                {
+                    code: Code.fromAsset(join(__dirname, 'handler')),
+                    runtime: Runtime.NODEJS_20_X,
+                    handler: 'index.handler',
+                    timeout: Duration.seconds(15),
+                    encryption: this.props.encryption,
+                    ...this.props.lambdaConfiguration
+                }
+            );
 
             this.lambdaFunction.role.addToPolicy(
                 new PolicyStatement({
@@ -104,19 +105,21 @@ export class Ec2AutomatedShutdown implements IAspect {
         const topic = new Topic(instance, `ShutdownTopic-${uniqueId}}`);
         this.lambdaFunction.function.addEventSource(new SnsEventSource(topic));
 
-        //Enforce SSL for Topic 
-        topic.addToResourcePolicy(new PolicyStatement({
-            sid: 'AllowPublishThroughSSLOnly',
-            effect: Effect.DENY,
-            principals: [new AnyPrincipal()],
-            actions: ['sns:Publish'],
-            resources: [topic.topicArn],
-            conditions: {
-                'Bool': {
-                    'aws:SecureTransport': 'false'
+        //Enforce SSL for Topic
+        topic.addToResourcePolicy(
+            new PolicyStatement({
+                sid: 'AllowPublishThroughSSLOnly',
+                effect: Effect.DENY,
+                principals: [new AnyPrincipal()],
+                actions: ['sns:Publish'],
+                resources: [topic.topicArn],
+                conditions: {
+                    Bool: {
+                        'aws:SecureTransport': 'false'
+                    }
                 }
-            }
-        }));
+            })
+        );
 
         const metric = new Metric({
             namespace: 'AWS/EC2',
@@ -131,7 +134,7 @@ export class Ec2AutomatedShutdown implements IAspect {
             threshold: this.props.cpuThreshold,
             evaluationPeriods: 2,
             comparisonOperator: ComparisonOperator.LESS_THAN_THRESHOLD,
-            datapointsToAlarm: 2,
+            datapointsToAlarm: 2
         });
 
         alarm.addAlarmAction(new SnsAction(topic));

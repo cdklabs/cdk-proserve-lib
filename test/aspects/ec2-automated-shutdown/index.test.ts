@@ -2,11 +2,23 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { Aspects, Stack } from 'aws-cdk-lib';
-import { Instance, InstanceType, InstanceClass, InstanceSize, AmazonLinuxImage, Vpc, SubnetType, SecurityGroup, FlowLogDestination, FlowLogTrafficType, BlockDeviceVolume } from 'aws-cdk-lib/aws-ec2';
-import { NagSuppressions } from 'cdk-nag';
 import { Template } from 'aws-cdk-lib/assertions';
-import { Ec2AutomatedShutdown } from '../../../src/aspects/ec2-automated-shutdown';
+import {
+    Instance,
+    InstanceType,
+    InstanceClass,
+    InstanceSize,
+    AmazonLinuxImage,
+    Vpc,
+    SubnetType,
+    SecurityGroup,
+    FlowLogDestination,
+    FlowLogTrafficType,
+    BlockDeviceVolume
+} from 'aws-cdk-lib/aws-ec2';
 import { Key } from 'aws-cdk-lib/aws-kms';
+import { NagSuppressions } from 'cdk-nag';
+import { Ec2AutomatedShutdown } from '../../../src/aspects/ec2-automated-shutdown';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
 describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
@@ -60,8 +72,8 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
             {
                 id: 'NIST.800.53.R5-S3DefaultEncryptionKMS',
                 reason: 'This S3 bucket is just used for flow logs for the VPC testing the Aspect.'
-            },
-            ]);
+            }
+        ]);
     });
 
     it('should create alarm and lambda when visiting an EC2 instance', () => {
@@ -77,20 +89,17 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
             ],
             // Enable flow logs
             flowLogs: {
-                's3': {
+                s3: {
                     destination: FlowLogDestination.toS3(),
                     trafficType: FlowLogTrafficType.ALL
                 }
             }
         });
-
-    
-        
         const encryptionKey = new Key(stack, 'EncryptionKey', {
             enableKeyRotation: true,
             description: 'Key for encrypting resources'
         });
-        
+
         new Instance(stack, 'TestInstance', {
             vpc,
             vpcSubnets: {
@@ -105,19 +114,23 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
             }),
             requireImdsv2: true,
             // Enable EBS encryption
-            blockDevices: [{
-                deviceName: '/dev/xvda',
-                volume: BlockDeviceVolume.ebs(8, {
-                    encrypted: true,
-                    kmsKey: encryptionKey
-                })
-            }]
+            blockDevices: [
+                {
+                    deviceName: '/dev/xvda',
+                    volume: BlockDeviceVolume.ebs(8, {
+                        encrypted: true,
+                        kmsKey: encryptionKey
+                    })
+                }
+            ]
         });
 
         // Act
-        Aspects.of(stack).add(new Ec2AutomatedShutdown({
-            cpuThreshold: 10
-        }));
+        Aspects.of(stack).add(
+            new Ec2AutomatedShutdown({
+                cpuThreshold: 10
+            })
+        );
 
         template = getTemplate();
 
@@ -128,9 +141,11 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
 
     it('should not create resources when no EC2 instances exist', () => {
         // Arrange & Act
-        Aspects.of(stack).add(new Ec2AutomatedShutdown({
-            cpuThreshold: 10
-        }));
+        Aspects.of(stack).add(
+            new Ec2AutomatedShutdown({
+                cpuThreshold: 10
+            })
+        );
 
         // Get template once
         template = getTemplate();
