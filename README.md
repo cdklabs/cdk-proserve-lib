@@ -76,14 +76,15 @@ go get github.com/cdklabs/cdk-proserve-lib-go/cdklabscdkproservelib
 
 The library consists of [constructs](#-constructs), [aspects](#-aspects), and [patterns](#-patterns) that you can utilize in AWS CDK applications.
 
-Total: 15
+Total: 16
 
 ### 🧱 Constructs
 
 Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) applications. A construct is a component within your application that represents one or more AWS CloudFormation resources and their configuration. You build your application, piece by piece, by importing and configuring constructs. To learn more about constructs, check out the [AWS CDK documentation](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html).
 
-Count: 9
+Count: 10
 
+- [**ApiGatewayStaticHosting**](API.md#apigatewaystatichosting-): A construct that deploys resources to support the hosting of static assets within an AWS account.
 - [**Ec2ImageBuilderGetImage**](API.md#ec2imagebuildergetimage-): Retrieves an EC2 Image Builder image build version.
 - [**Ec2ImageBuilderStart**](API.md#ec2imagebuilderstart-): Starts an EC2 Image Builder Pipeline and optionally waits for the build to complete.
 - [**Ec2ImagePipeline**](API.md#ec2imagepipeline-): An EC2 Image Pipeline that can be used to build a Amazon Machine Image (AMI) automatically.
