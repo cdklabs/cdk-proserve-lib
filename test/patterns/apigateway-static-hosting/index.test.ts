@@ -2,15 +2,20 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { Stack } from 'aws-cdk-lib';
-import { Match, Template } from 'aws-cdk-lib/assertions';
+import { Match } from 'aws-cdk-lib/assertions';
 
 import {
     EndpointConfiguration,
-    EndpointType
+    EndpointType,
+    LogGroupLogDestination
 } from 'aws-cdk-lib/aws-apigateway';
 import { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
 import { InterfaceVpcEndpoint } from 'aws-cdk-lib/aws-ec2';
 import { Key } from 'aws-cdk-lib/aws-kms';
+import { LogGroup } from 'aws-cdk-lib/aws-logs';
+import { Bucket } from 'aws-cdk-lib/aws-s3';
+import { CfnWebACL } from 'aws-cdk-lib/aws-wafv2';
+import { NagSuppressions } from 'cdk-nag';
 import { BasePathMappingProperties } from 'cloudform-types/types/apiGateway/basePathMapping';
 import { DomainNameProperties } from 'cloudform-types/types/apiGateway/domainName';
 import {
@@ -22,7 +27,7 @@ import { RestApiProperties } from 'cloudform-types/types/apiGateway/restApi';
 import { PolicyProperties } from 'cloudform-types/types/iam/policy';
 import { FunctionProperties } from 'cloudform-types/types/lambda/function';
 import { DeletionPolicy } from 'cloudform-types/types/resource';
-import Bucket from 'cloudform-types/types/s3/bucket';
+import CfnBucketElement from 'cloudform-types/types/s3/bucket';
 import { BucketPolicyProperties } from 'cloudform-types/types/s3/bucketPolicy';
 import {
     mockBadAssetPath,
@@ -31,15 +36,102 @@ import {
     mockMissingAssetPath,
     mockZipAssetPath
 } from './fixtures';
-import { ApiGatewayStaticHosting } from '../../../src/patterns/apigateway-static-hosting';
+import {
+    ApiGatewayStaticHosting,
+    ApiGatewayStaticHostingProps
+} from '../../../src/patterns/apigateway-static-hosting';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 import { buildMockArn, mockAccount, mockRegion } from '../../fixtures/account';
 
-describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
+type TestPatternCreator = () => ApiGatewayStaticHosting;
+
+function createPatternUnderTest(
+    stack: Stack,
+    id: string,
+    nagProps: Partial<ApiGatewayStaticHostingProps>,
+    testProps: ApiGatewayStaticHostingProps,
+    deferred?: boolean
+): ApiGatewayStaticHosting | TestPatternCreator {
+    const creator: TestPatternCreator = () => {
+        return new ApiGatewayStaticHosting(stack, id, {
+            ...nagProps,
+            ...testProps
+        });
+    };
+
+    return deferred ? creator : creator();
+}
+
+describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
     let stack: Stack;
+    let commonNagProps: Partial<ApiGatewayStaticHostingProps>;
 
     beforeEach(() => {
         stack = getStack();
+
+        const nagLoggingBucket = new Bucket(stack, 'NagLoggingBucket');
+        const nagApiLogging = new LogGroupLogDestination(
+            new LogGroup(stack, 'NagApiLogging')
+        );
+        const nagWafAcl = new CfnWebACL(stack, 'NagWafAcl', {
+            defaultAction: {
+                allow: {}
+            },
+            scope: 'REGIONAL',
+            visibilityConfig: {
+                cloudWatchMetricsEnabled: false,
+                metricName: 'test',
+                sampledRequestsEnabled: false
+            }
+        });
+
+        commonNagProps = {
+            accessLoggingBucket: nagLoggingBucket,
+            acls: [nagWafAcl],
+            apiLogDestination: nagApiLogging
+        };
+
+        NagSuppressions.addStackSuppressions(stack, [
+            {
+                id: 'AwsSolutions-APIG4',
+                reason: 'The consumer of this pattern is required to enforce access restrictions prior to the API if desired.'
+            },
+            {
+                id: 'AwsSolutions-COG4',
+                reason: 'The consumer of this pattern is required to enforce access restrictions prior to the API if desired.'
+            },
+            {
+                id: 'NIST.800.53.R5-APIGWSSLEnabled',
+                reason: 'The default execution endpoint and custom domain endpoints have server-side SSL certificates. Client-side SSL certificates are out of scope for this pattern.'
+            },
+            {
+                id: 'NIST.800.53.R5-S3DefaultEncryptionKMS',
+                reason: 'The buckets are encrypted using the S3 managed key and the consumer can provide a KMS key if desired.'
+            },
+            {
+                id: 'AwsSolutions-IAM5',
+                reason: 'Permissions are tightly scoped by CDK grants and otherwise set to the required permissions for updating CloudFormation stacks.'
+            },
+            {
+                id: 'AwsSolutions-IAM4',
+                appliesTo: [
+                    'Policy::arn:<AWS::Partition>:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs'
+                ],
+                reason: 'This policy is required for API Gateway to function.'
+            },
+            {
+                id: 'NIST.800.53.R5-APIGWCacheEnabledAndEncrypted',
+                reason: 'Given the dynamic nature of the pattern, only the consumer would know how to configure and enable caching.'
+            },
+            {
+                id: 'AwsSolutions-APIG2',
+                reason: 'Given the dynamic nature of the pattern, only the consumer would know how to configure and enable request validation.'
+            },
+            {
+                id: 'NIST.800.53.R5-S3BucketReplicationEnabled',
+                reason: 'Given the assets in this bucket can easily be redeployed with IaC, replication is out of scope.'
+            }
+        ]);
     });
 
     /**
@@ -73,24 +165,20 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
      */
     const apiPartialName = Match.stringLikeRegexp(`${id}Api`);
 
-    const getTemplate = () => {
-        return Template.fromStack(stack);
-    };
-
     describe('Storage', () => {
         it('Creates an Amazon S3 bucket to store static assets', () => {
             // Arrange
             // No action
 
             // Act
-            new ApiGatewayStaticHosting(stack, id, {
+            createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset
             });
 
             // Assert
             const template = getTemplate();
 
-            const store: Partial<Bucket> = {
+            const store: Partial<CfnBucketElement> = {
                 Properties: {
                     AccessControl: 'Private',
                     BucketEncryption: {
@@ -145,7 +233,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // No action
 
             // Act
-            new ApiGatewayStaticHosting(stack, id, {
+            createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset,
                 retainStoreOnDeletion: true
             });
@@ -153,7 +241,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // Assert
             const template = getTemplate();
 
-            const store: Partial<Bucket> = {
+            const store: Partial<CfnBucketElement> = {
                 DeletionPolicy: DeletionPolicy.Retain
             };
             template.hasResource('AWS::S3::Bucket', Match.objectLike(store));
@@ -164,7 +252,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // No action
 
             // Act
-            new ApiGatewayStaticHosting(stack, id, {
+            createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset
             });
 
@@ -193,11 +281,15 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // No action
 
             // Act
-            const construct = () => {
-                new ApiGatewayStaticHosting(stack, id, {
+            const construct = createPatternUnderTest(
+                stack,
+                id,
+                commonNagProps,
+                {
                     asset: mockFolderAsset
-                });
-            };
+                },
+                true
+            );
 
             // Assert
             expect(construct).not.toThrow();
@@ -208,14 +300,18 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // No action
 
             // Act
-            const construct = () => {
-                new ApiGatewayStaticHosting(stack, id, {
+            const construct = createPatternUnderTest(
+                stack,
+                id,
+                commonNagProps,
+                {
                     asset: {
                         id: 'zip',
                         path: mockZipAssetPath
                     }
-                });
-            };
+                },
+                true
+            );
 
             // Assert
             expect(construct).not.toThrow();
@@ -226,14 +322,18 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // No action
 
             // Act
-            const construct = () => {
-                new ApiGatewayStaticHosting(stack, id, {
+            const construct = createPatternUnderTest(
+                stack,
+                id,
+                commonNagProps,
+                {
                     asset: {
                         id: 'missing',
                         path: mockMissingAssetPath
                     }
-                });
-            };
+                },
+                true
+            );
 
             // Assert
             expect(construct).toThrow();
@@ -244,14 +344,18 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // No action
 
             // Act
-            const construct = () => {
-                new ApiGatewayStaticHosting(stack, id, {
+            const construct = createPatternUnderTest(
+                stack,
+                id,
+                commonNagProps,
+                {
                     asset: {
                         id: 'bad',
                         path: mockBadAssetPath
                     }
-                });
-            };
+                },
+                true
+            );
 
             // Assert
             expect(construct).toThrow();
@@ -262,7 +366,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // No action
 
             // Act
-            new ApiGatewayStaticHosting(stack, id, {
+            createPatternUnderTest(stack, id, commonNagProps, {
                 asset: {
                     id: 'multi',
                     path: [mockFolderAssetPath, mockZipAssetPath]
@@ -294,7 +398,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // No action
 
             // Act
-            new ApiGatewayStaticHosting(stack, id, {
+            createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset,
                 versionTag: '1.0.0'
             });
@@ -332,7 +436,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             const key = new Key(stack, 'Encryption');
 
             // Act
-            new ApiGatewayStaticHosting(stack, id, {
+            createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset,
                 versionTag: '1.0.0',
                 encryption: key
@@ -341,7 +445,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // Assert
             const template = getTemplate();
 
-            const store: Partial<Bucket> = {
+            const store: Partial<CfnBucketElement> = {
                 Properties: {
                     BucketEncryption: {
                         ServerSideEncryptionConfiguration: [
@@ -371,7 +475,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             const key = new Key(stack, 'Encryption');
 
             // Act
-            new ApiGatewayStaticHosting(stack, id, {
+            createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset,
                 encryption: key
             });
@@ -379,7 +483,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // Assert
             const template = getTemplate();
 
-            const store: Partial<Bucket> = {
+            const store: Partial<CfnBucketElement> = {
                 Properties: {
                     BucketEncryption: {
                         ServerSideEncryptionConfiguration: [
@@ -411,7 +515,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // No action
 
             // Act
-            new ApiGatewayStaticHosting(stack, id, {
+            createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset
             });
 
@@ -480,7 +584,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             // No action
 
             // Act
-            new ApiGatewayStaticHosting(stack, id, {
+            createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset
             });
 
@@ -600,7 +704,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             };
 
             // Act
-            new ApiGatewayStaticHosting(stack, id, {
+            createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset,
                 endpoint: endpointConfig
             });
@@ -634,7 +738,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, _getTemplate) => {
             );
 
             // Act
-            new ApiGatewayStaticHosting(stack, id, {
+            createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset,
                 customDomain: {
                     certificate: Certificate.fromCertificateArn(

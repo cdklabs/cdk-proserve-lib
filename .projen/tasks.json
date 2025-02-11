@@ -24,6 +24,24 @@
         }
       ]
     },
+    "build:compile": {
+      "name": "build:compile",
+      "description": "Performs a full build without packaging",
+      "steps": [
+        {
+          "spawn": "default"
+        },
+        {
+          "spawn": "pre-compile"
+        },
+        {
+          "spawn": "compile"
+        },
+        {
+          "spawn": "post-compile"
+        }
+      ]
+    },
     "bump": {
       "name": "bump",
       "description": "Bumps version based on latest git tag and generates a changelog entry",

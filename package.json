@@ -7,6 +7,7 @@
   },
   "scripts": {
     "build": "npx projen build",
+    "build:compile": "npx projen build:compile",
     "bump": "npx projen bump",
     "bundle": "npx projen bundle",
     "clean": "npx projen clean",

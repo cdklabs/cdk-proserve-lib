@@ -1717,6 +1717,9 @@ const apiGatewayStaticHostingProps: patterns.ApiGatewayStaticHostingProps = { ..
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.asset">asset</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset</code> | Metadata about the static assets to host. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.accessLoggingBucket">accessLoggingBucket</a></code> | <code>aws-cdk-lib.aws_s3.IBucket</code> | Amazon S3 bucket where access logs should be stored. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.acls">acls</a></code> | <code>aws-cdk-lib.aws_wafv2.CfnWebACL[]</code> | AWS Web Application Firewall ACLs to add to the API. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.apiLogDestination">apiLogDestination</a></code> | <code>aws-cdk-lib.aws_apigateway.IAccessLogDestination</code> | Destination where Amazon API Gateway logs can be sent. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.customDomain">customDomain</a></code> | <code>aws-cdk-lib.aws_apigateway.DomainNameOptions</code> | Custom Domain to use for the REST API. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the framework resources. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.endpoint">endpoint</a></code> | <code>aws-cdk-lib.aws_apigateway.EndpointConfiguration</code> | Endpoint deployment information for the REST API. |
@@ -1735,6 +1738,43 @@ public readonly asset: Asset;
 - *Type:* @cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset
 
 Metadata about the static assets to host.
+
+---
+
+##### `accessLoggingBucket`<sup>Optional</sup> <a name="accessLoggingBucket" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.accessLoggingBucket"></a>
+
+```typescript
+public readonly accessLoggingBucket: IBucket;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.IBucket
+- *Default:* undefined A new bucket will be created for storing access logs
+
+Amazon S3 bucket where access logs should be stored.
+
+---
+
+##### `acls`<sup>Optional</sup> <a name="acls" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.acls"></a>
+
+```typescript
+public readonly acls: CfnWebACL[];
+```
+
+- *Type:* aws-cdk-lib.aws_wafv2.CfnWebACL[]
+
+AWS Web Application Firewall ACLs to add to the API.
+
+---
+
+##### `apiLogDestination`<sup>Optional</sup> <a name="apiLogDestination" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.apiLogDestination"></a>
+
+```typescript
+public readonly apiLogDestination: IAccessLogDestination;
+```
+
+- *Type:* aws-cdk-lib.aws_apigateway.IAccessLogDestination
+
+Destination where Amazon API Gateway logs can be sent.
 
 ---
 
@@ -1871,7 +1911,7 @@ const asset: patterns.ApiGatewayStaticHosting.Asset = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.id">id</a></code> | <code>string</code> | Unique identifier to delineate an asset from other assets. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.path">path</a></code> | <code>string \| string[]</code> | Path(s) on the local file system to the static asset. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.path">path</a></code> | <code>string \| string[]</code> | Path(s) on the local file system to the static asset(s). |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.destinationPrefix">destinationPrefix</a></code> | <code>string</code> | Location with the store to provision the static asset. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.spaIndexPageName">spaIndexPageName</a></code> | <code>string</code> | Name of the index page for a Single Page Application (SPA). |
 
@@ -1897,7 +1937,9 @@ public readonly path: string | string[];
 
 - *Type:* string | string[]
 
-Path(s) on the local file system to the static asset.
+Path(s) on the local file system to the static asset(s).
+
+Each path must be eihter a directory or zip containing the assets
 
 ---
 
