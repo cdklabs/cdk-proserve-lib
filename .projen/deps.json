@@ -6,6 +6,10 @@
       "type": "build"
     },
     {
+      "name": "@aws-sdk/client-ec2",
+      "type": "build"
+    },
+    {
       "name": "@aws-sdk/client-iam",
       "version": "3.600.0",
       "type": "build"
@@ -18,6 +22,10 @@
     {
       "name": "@aws-sdk/client-opensearch",
       "version": "3.600.0",
+      "type": "build"
+    },
+    {
+      "name": "@aws-sdk/client-pricing",
       "type": "build"
     },
     {

@@ -1,9 +1,15 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { WAFV2 } from '@aws-sdk/client-wafv2';
 
+/**
+ * Formats AWS WAF rule group names into a consistent enum format.
+
+ * @param name - The original rule group name
+ * @returns The formatted name in format ex: EXAMPLE_RULE_GROUP
+ */
 function formatRuleGroupName(name: string): string {
     let formattedName = name.replace(/^AWSManagedRules/, '');
 
@@ -16,6 +22,19 @@ function formatRuleGroupName(name: string): string {
     return formattedName;
 }
 
+/**
+ * Generates and injects an enum of AWS WAF managed rule groups into a specified file.
+ *
+ * This function:
+ * 1. Fetches available AWS WAF managed rule groups using the WAFV2 client
+ * 2. Formats the rule group names and their descriptions
+ * 3. Generates an enum TypeScript code block
+ * 4. Injects the generated enum into a target file between specified markers
+ *
+ * The target file must contain the markers:
+ * - "/** WAF Managed Rule Groups *​/"
+ * - "/** End WAF Managed Rule Groups *​/"
+ */
 export async function generateAndInjectAwsManagedRuleEnum() {
     try {
         const client = new WAFV2({ region: 'us-east-1' });

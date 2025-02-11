@@ -3,14 +3,18 @@
 
 import { generateAndInjectAwsManagedRuleEnum } from './lib/aws-managed-rule-groups';
 import { generateAndInjectImageBuilderComponentEnum } from './lib/image-builder-component';
-import { generateAndInjectAWSManagedPolicyClass } from './lib/aws-managed-policy';
+import { generateAndInjectAwsManagedPolicyClass } from './lib/aws-managed-policy';
+import { generateAndInjectEc2InstanceTypes } from './lib/ec2-instance-type';
+import { generateAndInjectSageMakerInstanceTypes } from './lib/sagemaker-notebook-instance-type';
 
 async function main() {
     try {
         await Promise.all([
             generateAndInjectAwsManagedRuleEnum(),
             generateAndInjectImageBuilderComponentEnum(),
-            generateAndInjectAWSManagedPolicyClass()
+            generateAndInjectAwsManagedPolicyClass(),
+            generateAndInjectEc2InstanceTypes(),
+            generateAndInjectSageMakerInstanceTypes()
         ]);
     } catch (error) {
         console.error('Error running generators:', error);

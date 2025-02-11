@@ -1,8 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { readFileSync, writeFileSync } from 'fs';
-import { IAM } from '@aws-sdk/client-iam';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { IAM, Policy } from '@aws-sdk/client-iam';
 
 function formatPolicyName(name: string): string {
     let processedName = name.replace(/-/g, '_');
@@ -23,9 +23,9 @@ function formatPolicyName(name: string): string {
     return finalName;
 }
 
-export async function generateAndInjectAWSManagedPolicyClass() {
+export async function generateAndInjectAwsManagedPolicyClass() {
     try {
-        let allPolicies: any[] = [];
+        let allPolicies: Policy[] = [];
         let marker: string | undefined;
 
         do {
