@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { readFileSync, writeFileSync } from 'node:fs';
-import { Imagebuilder } from '@aws-sdk/client-imagebuilder';
+import { Imagebuilder, ComponentVersion } from '@aws-sdk/client-imagebuilder';
 
 // Function to format component name
 function formatComponentName(name: string): string {
@@ -14,7 +14,7 @@ export async function generateAndInjectImageBuilderComponentEnum() {
     try {
         // Create an ImageBuilder client
         const client = new Imagebuilder({ region: 'us-east-1' });
-        let allComponents: any[] = [];
+        let allComponents: ComponentVersion[] = [];
         let nextToken: string | undefined;
 
         do {

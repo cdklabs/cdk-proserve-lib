@@ -74,12 +74,10 @@ export class SecureSageMakerNotebook implements IAspect {
             return;
         }
         const notebook = node as CfnNotebookInstance;
-        if (this.props.allowedLaunchSubnets) {
-            this.secureSageMakerNotebookRole(
-                notebook,
-                this.props.allowedLaunchSubnets
-            );
-        }
+        this.secureSageMakerNotebookRole(
+            notebook,
+            this.props.allowedLaunchSubnets
+        );
         this.secureSageMakerNotebookInstance(notebook);
     }
 

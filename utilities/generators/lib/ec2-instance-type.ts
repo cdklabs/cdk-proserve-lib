@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { readFileSync, writeFileSync } from 'node:fs';
-import { EC2 } from '@aws-sdk/client-ec2';
+import { EC2, InstanceTypeInfo } from '@aws-sdk/client-ec2';
 
 /**
  * Formats an EC2 instance type name to a standardized format.
@@ -28,7 +28,7 @@ function formatInstanceTypeName(name: string): string {
  */
 export async function generateAndInjectEc2InstanceTypes() {
     try {
-        let allInstanceTypes: any[] = [];
+        let allInstanceTypes: InstanceTypeInfo[] = [];
         let nextToken: string | undefined;
 
         // Create EC2 client

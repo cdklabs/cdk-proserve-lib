@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { readFileSync, writeFileSync } from 'node:fs';
-import { IAM } from '@aws-sdk/client-iam';
+import { IAM, Policy } from '@aws-sdk/client-iam';
 
 function formatPolicyName(name: string): string {
     let processedName = name.replace(/-/g, '_');
@@ -25,7 +25,7 @@ function formatPolicyName(name: string): string {
 
 export async function generateAndInjectAwsManagedPolicyClass() {
     try {
-        let allPolicies: any[] = [];
+        let allPolicies: Policy[] = [];
         let marker: string | undefined;
 
         do {
