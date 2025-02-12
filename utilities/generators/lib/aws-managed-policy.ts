@@ -69,7 +69,7 @@ export async function generateAndInjectAwsManagedPolicyClass() {
                     throw new Error('Policy name is undefined');
                 }
                 const name = formatPolicyName(policyName);
-                return `    public static readonly ${name} = ManagedPolicy.fromAwsManagedPolicyName('${policyName}');`;
+                return `    public static readonly ${name} = '${policyName}';`;
             }
         );
 

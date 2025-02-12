@@ -3665,8993 +3665,8993 @@ AWS Managed Policy.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ADMINISTRATOR_ACCESS">ADMINISTRATOR_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ADMINISTRATOR_ACCESS_AMPLIFY">ADMINISTRATOR_ACCESS_AMPLIFY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ADMINISTRATOR_ACCESS_AWS_ELASTIC_BEANSTALK">ADMINISTRATOR_ACCESS_AWS_ELASTIC_BEANSTALK</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_ASSISTANT_POLICY">AI_OPS_ASSISTANT_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_CONSOLE_ADMIN_POLICY">AI_OPS_CONSOLE_ADMIN_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_OPERATOR_ACCESS">AI_OPS_OPERATOR_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_READ_ONLY_ACCESS">AI_OPS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_DEVICE_SETUP">ALEXA_FOR_BUSINESS_DEVICE_SETUP</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_FULL_ACCESS">ALEXA_FOR_BUSINESS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_GATEWAY_EXECUTION">ALEXA_FOR_BUSINESS_GATEWAY_EXECUTION</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_LIFESIZE_DELEGATED_ACCESS_POLICY">ALEXA_FOR_BUSINESS_LIFESIZE_DELEGATED_ACCESS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_POLY_DELEGATED_ACCESS_POLICY">ALEXA_FOR_BUSINESS_POLY_DELEGATED_ACCESS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_READ_ONLY_ACCESS">ALEXA_FOR_BUSINESS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_API_GATEWAY_ADMINISTRATOR">AMAZON_API_GATEWAY_ADMINISTRATOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_API_GATEWAY_INVOKE_FULL_ACCESS">AMAZON_API_GATEWAY_INVOKE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_APP_FLOW_FULL_ACCESS">AMAZON_APP_FLOW_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_APP_FLOW_READ_ONLY_ACCESS">AMAZON_APP_FLOW_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_APP_STREAM_FULL_ACCESS">AMAZON_APP_STREAM_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_APP_STREAM_READ_ONLY_ACCESS">AMAZON_APP_STREAM_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ATHENA_FULL_ACCESS">AMAZON_ATHENA_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AUGMENTED_AI_FULL_ACCESS">AMAZON_AUGMENTED_AI_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AUGMENTED_AI_HUMAN_LOOP_FULL_ACCESS">AMAZON_AUGMENTED_AI_HUMAN_LOOP_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AUGMENTED_AI_INTEGRATED_API_ACCESS">AMAZON_AUGMENTED_AI_INTEGRATED_API_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AURORA_DSQL_CONSOLE_FULL_ACCESS">AMAZON_AURORA_DSQL_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AURORA_DSQL_FULL_ACCESS">AMAZON_AURORA_DSQL_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AURORA_DSQL_READ_ONLY_ACCESS">AMAZON_AURORA_DSQL_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_FULL_ACCESS">AMAZON_BEDROCK_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_READ_ONLY">AMAZON_BEDROCK_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_STUDIO_PERMISSIONS_BOUNDARY">AMAZON_BEDROCK_STUDIO_PERMISSIONS_BOUNDARY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BRAKET_FULL_ACCESS">AMAZON_BRAKET_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BRAKET_JOBS_EXECUTION_POLICY">AMAZON_BRAKET_JOBS_EXECUTION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CHIME_FULL_ACCESS">AMAZON_CHIME_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CHIME_READ_ONLY">AMAZON_CHIME_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CHIME_SDK">AMAZON_CHIME_SDK</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CHIME_USER_MANAGEMENT">AMAZON_CHIME_USER_MANAGEMENT</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_DIRECTORY_FULL_ACCESS">AMAZON_CLOUD_DIRECTORY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_DIRECTORY_READ_ONLY_ACCESS">AMAZON_CLOUD_DIRECTORY_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_WATCH_EVIDENTLY_FULL_ACCESS">AMAZON_CLOUD_WATCH_EVIDENTLY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_WATCH_EVIDENTLY_READ_ONLY_ACCESS">AMAZON_CLOUD_WATCH_EVIDENTLY_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_WATCH_RUM_FULL_ACCESS">AMAZON_CLOUD_WATCH_RUM_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_WATCH_RUM_READ_ONLY_ACCESS">AMAZON_CLOUD_WATCH_RUM_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_CATALYST_FULL_ACCESS">AMAZON_CODE_CATALYST_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_CATALYST_READ_ONLY_ACCESS">AMAZON_CODE_CATALYST_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_PROFILER_AGENT_ACCESS">AMAZON_CODE_GURU_PROFILER_AGENT_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_PROFILER_FULL_ACCESS">AMAZON_CODE_GURU_PROFILER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_PROFILER_READ_ONLY_ACCESS">AMAZON_CODE_GURU_PROFILER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_REVIEWER_FULL_ACCESS">AMAZON_CODE_GURU_REVIEWER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_REVIEWER_READ_ONLY_ACCESS">AMAZON_CODE_GURU_REVIEWER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_SECURITY_FULL_ACCESS">AMAZON_CODE_GURU_SECURITY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_SECURITY_SCAN_ACCESS">AMAZON_CODE_GURU_SECURITY_SCAN_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_DEVELOPER_AUTHENTICATED_IDENTITIES">AMAZON_COGNITO_DEVELOPER_AUTHENTICATED_IDENTITIES</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_POWER_USER">AMAZON_COGNITO_POWER_USER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_READ_ONLY">AMAZON_COGNITO_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_UN_AUTHED_IDENTITIES_SESSION_POLICY">AMAZON_COGNITO_UN_AUTHED_IDENTITIES_SESSION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_UNAUTHENTICATED_IDENTITIES">AMAZON_COGNITO_UNAUTHENTICATED_IDENTITIES</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CONNECT_FULL_ACCESS">AMAZON_CONNECT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CONNECT_READ_ONLY_ACCESS">AMAZON_CONNECT_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CONNECT_VOICE_ID_FULL_ACCESS">AMAZON_CONNECT_VOICE_ID_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY">AMAZON_DATA_ZONE_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_FULL_ACCESS">AMAZON_DATA_ZONE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_FULL_USER_ACCESS">AMAZON_DATA_ZONE_FULL_USER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_REDSHIFT_GLUE_PROVISIONING_POLICY">AMAZON_DATA_ZONE_REDSHIFT_GLUE_PROVISIONING_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_SAGE_MAKER_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY">AMAZON_DATA_ZONE_SAGE_MAKER_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_SAGE_MAKER_MANAGE_ACCESS_ROLE_POLICY">AMAZON_DATA_ZONE_SAGE_MAKER_MANAGE_ACCESS_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_SAGE_MAKER_PROVISIONING_ROLE_POLICY">AMAZON_DATA_ZONE_SAGE_MAKER_PROVISIONING_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DETECTIVE_FULL_ACCESS">AMAZON_DETECTIVE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DETECTIVE_INVESTIGATOR_ACCESS">AMAZON_DETECTIVE_INVESTIGATOR_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DETECTIVE_MEMBER_ACCESS">AMAZON_DETECTIVE_MEMBER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DETECTIVE_ORGANIZATIONS_ACCESS">AMAZON_DETECTIVE_ORGANIZATIONS_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DEV_OPS_GURU_CONSOLE_FULL_ACCESS">AMAZON_DEV_OPS_GURU_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DEV_OPS_GURU_FULL_ACCESS">AMAZON_DEV_OPS_GURU_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DEV_OPS_GURU_ORGANIZATIONS_ACCESS">AMAZON_DEV_OPS_GURU_ORGANIZATIONS_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DEV_OPS_GURU_READ_ONLY_ACCESS">AMAZON_DEV_OPS_GURU_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_CONSOLE_FULL_ACCESS">AMAZON_DOC_DB_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_ELASTIC_FULL_ACCESS">AMAZON_DOC_DB_ELASTIC_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_ELASTIC_READ_ONLY_ACCESS">AMAZON_DOC_DB_ELASTIC_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_FULL_ACCESS">AMAZON_DOC_DB_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_READ_ONLY_ACCESS">AMAZON_DOC_DB_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DRSVPC_MANAGEMENT">AMAZON_DRSVPC_MANAGEMENT</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_FULL_ACCESS">AMAZON_DYNAMO_DB_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE">AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_READ_ONLY_ACCESS">AMAZON_DYNAMO_DB_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_FULL_ACCESS">AMAZON_EC2_CONTAINER_REGISTRY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_POWER_USER">AMAZON_EC2_CONTAINER_REGISTRY_POWER_USER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_PULL_ONLY">AMAZON_EC2_CONTAINER_REGISTRY_PULL_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_READ_ONLY">AMAZON_EC2_CONTAINER_REGISTRY_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_FULL_ACCESS">AMAZON_EC2_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_READ_ONLY_ACCESS">AMAZON_EC2_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_ROLE_POLICY_FOR_LAUNCH_WIZARD">AMAZON_EC2_ROLE_POLICY_FOR_LAUNCH_WIZARD</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_FULL_ACCESS">AMAZON_ECS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE">AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_BLOCK_STORAGE_POLICY">AMAZON_EKS_BLOCK_STORAGE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_CLUSTER_POLICY">AMAZON_EKS_CLUSTER_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_CNI_POLICY">AMAZON_EKS_CNI_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_COMPUTE_POLICY">AMAZON_EKS_COMPUTE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_FARGATE_POD_EXECUTION_ROLE_POLICY">AMAZON_EKS_FARGATE_POD_EXECUTION_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_LOAD_BALANCING_POLICY">AMAZON_EKS_LOAD_BALANCING_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_LOCAL_OUTPOST_CLUSTER_POLICY">AMAZON_EKS_LOCAL_OUTPOST_CLUSTER_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_NETWORKING_POLICY">AMAZON_EKS_NETWORKING_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_SERVICE_POLICY">AMAZON_EKS_SERVICE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_WORKER_NODE_MINIMAL_POLICY">AMAZON_EKS_WORKER_NODE_MINIMAL_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_WORKER_NODE_POLICY">AMAZON_EKS_WORKER_NODE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKSVPC_RESOURCE_CONTROLLER">AMAZON_EKSVPC_RESOURCE_CONTROLLER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTI_CACHE_FULL_ACCESS">AMAZON_ELASTI_CACHE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTI_CACHE_READ_ONLY_ACCESS">AMAZON_ELASTI_CACHE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_FULL_ACCESS">AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_POWER_USER">AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_POWER_USER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_READ_ONLY">AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_FULL_ACCESS">AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_ONLY_ACCESS">AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_WRITE_ACCESS">AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_WRITE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_FULL_ACCESS">AMAZON_ELASTIC_FILE_SYSTEM_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_READ_ONLY_ACCESS">AMAZON_ELASTIC_FILE_SYSTEM_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEMS_UTILS">AMAZON_ELASTIC_FILE_SYSTEMS_UTILS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_MAP_REDUCE_FULL_ACCESS">AMAZON_ELASTIC_MAP_REDUCE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_MAP_REDUCE_PLACEMENT_GROUP_POLICY">AMAZON_ELASTIC_MAP_REDUCE_PLACEMENT_GROUP_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_MAP_REDUCE_READ_ONLY_ACCESS">AMAZON_ELASTIC_MAP_REDUCE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_TRANSCODER_FULL_ACCESS">AMAZON_ELASTIC_TRANSCODER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_TRANSCODER_JOBS_SUBMITTER">AMAZON_ELASTIC_TRANSCODER_JOBS_SUBMITTER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_TRANSCODER_READ_ONLY_ACCESS">AMAZON_ELASTIC_TRANSCODER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EMR_FULL_ACCESS_POLICY_V2">AMAZON_EMR_FULL_ACCESS_POLICY_V2</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EMR_READ_ONLY_ACCESS_POLICY_V2">AMAZON_EMR_READ_ONLY_ACCESS_POLICY_V2</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ES_COGNITO_ACCESS">AMAZON_ES_COGNITO_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ES_FULL_ACCESS">AMAZON_ES_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ES_READ_ONLY_ACCESS">AMAZON_ES_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_FULL_ACCESS">AMAZON_EVENT_BRIDGE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_PIPES_FULL_ACCESS">AMAZON_EVENT_BRIDGE_PIPES_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_PIPES_OPERATOR_ACCESS">AMAZON_EVENT_BRIDGE_PIPES_OPERATOR_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_PIPES_READ_ONLY_ACCESS">AMAZON_EVENT_BRIDGE_PIPES_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_READ_ONLY_ACCESS">AMAZON_EVENT_BRIDGE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_SCHEDULER_FULL_ACCESS">AMAZON_EVENT_BRIDGE_SCHEDULER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_SCHEDULER_READ_ONLY_ACCESS">AMAZON_EVENT_BRIDGE_SCHEDULER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_SCHEMAS_FULL_ACCESS">AMAZON_EVENT_BRIDGE_SCHEMAS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_SCHEMAS_READ_ONLY_ACCESS">AMAZON_EVENT_BRIDGE_SCHEMAS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_F_SX_CONSOLE_FULL_ACCESS">AMAZON_F_SX_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_F_SX_CONSOLE_READ_ONLY_ACCESS">AMAZON_F_SX_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_F_SX_FULL_ACCESS">AMAZON_F_SX_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_F_SX_READ_ONLY_ACCESS">AMAZON_F_SX_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_FORECAST_FULL_ACCESS">AMAZON_FORECAST_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_FRAUD_DETECTOR_FULL_ACCESS_POLICY">AMAZON_FRAUD_DETECTOR_FULL_ACCESS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_FREE_RTOS_FULL_ACCESS">AMAZON_FREE_RTOS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GLACIER_FULL_ACCESS">AMAZON_GLACIER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GLACIER_READ_ONLY_ACCESS">AMAZON_GLACIER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GUARD_DUTY_FULL_ACCESS">AMAZON_GUARD_DUTY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GUARD_DUTY_READ_ONLY_ACCESS">AMAZON_GUARD_DUTY_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HEALTH_LAKE_FULL_ACCESS">AMAZON_HEALTH_LAKE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HEALTH_LAKE_READ_ONLY_ACCESS">AMAZON_HEALTH_LAKE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_FULL_ACCESS">AMAZON_HONEYCODE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_READ_ONLY_ACCESS">AMAZON_HONEYCODE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_TEAM_ASSOCIATION_FULL_ACCESS">AMAZON_HONEYCODE_TEAM_ASSOCIATION_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_TEAM_ASSOCIATION_READ_ONLY_ACCESS">AMAZON_HONEYCODE_TEAM_ASSOCIATION_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_WORKBOOK_FULL_ACCESS">AMAZON_HONEYCODE_WORKBOOK_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_WORKBOOK_READ_ONLY_ACCESS">AMAZON_HONEYCODE_WORKBOOK_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR_FULL_ACCESS">AMAZON_INSPECTOR_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR_READ_ONLY_ACCESS">AMAZON_INSPECTOR_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_FULL_ACCESS">AMAZON_INSPECTOR2_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_MANAGED_CIS_POLICY">AMAZON_INSPECTOR2_MANAGED_CIS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_READ_ONLY_ACCESS">AMAZON_INSPECTOR2_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KENDRA_FULL_ACCESS">AMAZON_KENDRA_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KENDRA_READ_ONLY_ACCESS">AMAZON_KENDRA_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KEYSPACES_FULL_ACCESS">AMAZON_KEYSPACES_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KEYSPACES_READ_ONLY_ACCESS">AMAZON_KEYSPACES_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KEYSPACES_READ_ONLY_ACCESS_V2">AMAZON_KEYSPACES_READ_ONLY_ACCESS_V2</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_ANALYTICS_FULL_ACCESS">AMAZON_KINESIS_ANALYTICS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_ANALYTICS_READ_ONLY">AMAZON_KINESIS_ANALYTICS_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_FIREHOSE_FULL_ACCESS">AMAZON_KINESIS_FIREHOSE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_FIREHOSE_READ_ONLY_ACCESS">AMAZON_KINESIS_FIREHOSE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_FULL_ACCESS">AMAZON_KINESIS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_READ_ONLY_ACCESS">AMAZON_KINESIS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_VIDEO_STREAMS_FULL_ACCESS">AMAZON_KINESIS_VIDEO_STREAMS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_VIDEO_STREAMS_READ_ONLY_ACCESS">AMAZON_KINESIS_VIDEO_STREAMS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LAUNCH_WIZARD_FULL_ACCESS_V2">AMAZON_LAUNCH_WIZARD_FULL_ACCESS_V2</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LEX_FULL_ACCESS">AMAZON_LEX_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LEX_READ_ONLY">AMAZON_LEX_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LEX_RUN_BOTS_ONLY">AMAZON_LEX_RUN_BOTS_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_EQUIPMENT_FULL_ACCESS">AMAZON_LOOKOUT_EQUIPMENT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_EQUIPMENT_READ_ONLY_ACCESS">AMAZON_LOOKOUT_EQUIPMENT_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_METRICS_FULL_ACCESS">AMAZON_LOOKOUT_METRICS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_METRICS_READ_ONLY_ACCESS">AMAZON_LOOKOUT_METRICS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_VISION_CONSOLE_FULL_ACCESS">AMAZON_LOOKOUT_VISION_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_VISION_CONSOLE_READ_ONLY_ACCESS">AMAZON_LOOKOUT_VISION_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_VISION_FULL_ACCESS">AMAZON_LOOKOUT_VISION_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_VISION_READ_ONLY_ACCESS">AMAZON_LOOKOUT_VISION_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_BATCH_PREDICTIONS_ACCESS">AMAZON_MACHINE_LEARNING_BATCH_PREDICTIONS_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_CREATE_ONLY_ACCESS">AMAZON_MACHINE_LEARNING_CREATE_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_FULL_ACCESS">AMAZON_MACHINE_LEARNING_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_MANAGE_REAL_TIME_ENDPOINT_ONLY_ACCESS">AMAZON_MACHINE_LEARNING_MANAGE_REAL_TIME_ENDPOINT_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_READ_ONLY_ACCESS">AMAZON_MACHINE_LEARNING_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_REAL_TIME_PREDICTION_ONLY_ACCESS">AMAZON_MACHINE_LEARNING_REAL_TIME_PREDICTION_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACIE_FULL_ACCESS">AMAZON_MACIE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACIE_READ_ONLY_ACCESS">AMAZON_MACIE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MANAGED_BLOCKCHAIN_CONSOLE_FULL_ACCESS">AMAZON_MANAGED_BLOCKCHAIN_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MANAGED_BLOCKCHAIN_FULL_ACCESS">AMAZON_MANAGED_BLOCKCHAIN_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MANAGED_BLOCKCHAIN_READ_ONLY_ACCESS">AMAZON_MANAGED_BLOCKCHAIN_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MCS_FULL_ACCESS">AMAZON_MCS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MCS_READ_ONLY_ACCESS">AMAZON_MCS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MECHANICAL_TURK_FULL_ACCESS">AMAZON_MECHANICAL_TURK_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MECHANICAL_TURK_READ_ONLY">AMAZON_MECHANICAL_TURK_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MEMORY_DB_FULL_ACCESS">AMAZON_MEMORY_DB_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MEMORY_DB_READ_ONLY_ACCESS">AMAZON_MEMORY_DB_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MOBILE_ANALYTICS_FINANCIAL_REPORT_ACCESS">AMAZON_MOBILE_ANALYTICS_FINANCIAL_REPORT_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MOBILE_ANALYTICS_FULL_ACCESS">AMAZON_MOBILE_ANALYTICS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MOBILE_ANALYTICS_NON_FINANCIAL_REPORT_ACCESS">AMAZON_MOBILE_ANALYTICS_NON_FINANCIAL_REPORT_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MOBILE_ANALYTICS_WRITE_ONLY_ACCESS">AMAZON_MOBILE_ANALYTICS_WRITE_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MONITRON_FULL_ACCESS">AMAZON_MONITRON_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MQ_API_FULL_ACCESS">AMAZON_MQ_API_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MQ_API_READ_ONLY_ACCESS">AMAZON_MQ_API_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MQ_FULL_ACCESS">AMAZON_MQ_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MQ_READ_ONLY_ACCESS">AMAZON_MQ_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MSK_CONNECT_READ_ONLY_ACCESS">AMAZON_MSK_CONNECT_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MSK_FULL_ACCESS">AMAZON_MSK_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MSK_READ_ONLY_ACCESS">AMAZON_MSK_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_NIMBLE_STUDIO_LAUNCH_PROFILE_WORKER">AMAZON_NIMBLE_STUDIO_LAUNCH_PROFILE_WORKER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_NIMBLE_STUDIO_STUDIO_ADMIN">AMAZON_NIMBLE_STUDIO_STUDIO_ADMIN</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_NIMBLE_STUDIO_STUDIO_USER">AMAZON_NIMBLE_STUDIO_STUDIO_USER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OMICS_FULL_ACCESS">AMAZON_OMICS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OMICS_READ_ONLY_ACCESS">AMAZON_OMICS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ONE_ENTERPRISE_FULL_ACCESS">AMAZON_ONE_ENTERPRISE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ONE_ENTERPRISE_INSTALLER_ACCESS">AMAZON_ONE_ENTERPRISE_INSTALLER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ONE_ENTERPRISE_READ_ONLY_ACCESS">AMAZON_ONE_ENTERPRISE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_DIRECT_QUERY_GLUE_CREATE_ACCESS">AMAZON_OPEN_SEARCH_DIRECT_QUERY_GLUE_CREATE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_INGESTION_FULL_ACCESS">AMAZON_OPEN_SEARCH_INGESTION_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_INGESTION_READ_ONLY_ACCESS">AMAZON_OPEN_SEARCH_INGESTION_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_SERVICE_COGNITO_ACCESS">AMAZON_OPEN_SEARCH_SERVICE_COGNITO_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_SERVICE_FULL_ACCESS">AMAZON_OPEN_SEARCH_SERVICE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_SERVICE_READ_ONLY_ACCESS">AMAZON_OPEN_SEARCH_SERVICE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_POLLY_FULL_ACCESS">AMAZON_POLLY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_POLLY_READ_ONLY_ACCESS">AMAZON_POLLY_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_PROMETHEUS_CONSOLE_FULL_ACCESS">AMAZON_PROMETHEUS_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_PROMETHEUS_FULL_ACCESS">AMAZON_PROMETHEUS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_PROMETHEUS_QUERY_ACCESS">AMAZON_PROMETHEUS_QUERY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_PROMETHEUS_REMOTE_WRITE_ACCESS">AMAZON_PROMETHEUS_REMOTE_WRITE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_Q_DEVELOPER_ACCESS">AMAZON_Q_DEVELOPER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_Q_FULL_ACCESS">AMAZON_Q_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_QLDB_CONSOLE_FULL_ACCESS">AMAZON_QLDB_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_QLDB_FULL_ACCESS">AMAZON_QLDB_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_QLDB_READ_ONLY">AMAZON_QLDB_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_CUSTOM_INSTANCE_PROFILE_ROLE_POLICY">AMAZON_RDS_CUSTOM_INSTANCE_PROFILE_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_DATA_FULL_ACCESS">AMAZON_RDS_DATA_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_FULL_ACCESS">AMAZON_RDS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_PERFORMANCE_INSIGHTS_FULL_ACCESS">AMAZON_RDS_PERFORMANCE_INSIGHTS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_PERFORMANCE_INSIGHTS_READ_ONLY">AMAZON_RDS_PERFORMANCE_INSIGHTS_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_READ_ONLY_ACCESS">AMAZON_RDS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_ALL_COMMANDS_FULL_ACCESS">AMAZON_REDSHIFT_ALL_COMMANDS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_DATA_FULL_ACCESS">AMAZON_REDSHIFT_DATA_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_FULL_ACCESS">AMAZON_REDSHIFT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR">AMAZON_REDSHIFT_QUERY_EDITOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR_V2_FULL_ACCESS">AMAZON_REDSHIFT_QUERY_EDITOR_V2_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR_V2_NO_SHARING">AMAZON_REDSHIFT_QUERY_EDITOR_V2_NO_SHARING</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_SHARING">AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_SHARING</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_WRITE_SHARING">AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_WRITE_SHARING</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_READ_ONLY_ACCESS">AMAZON_REDSHIFT_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REKOGNITION_CUSTOM_LABELS_FULL_ACCESS">AMAZON_REKOGNITION_CUSTOM_LABELS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REKOGNITION_FULL_ACCESS">AMAZON_REKOGNITION_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REKOGNITION_READ_ONLY_ACCESS">AMAZON_REKOGNITION_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_AUTO_NAMING_FULL_ACCESS">AMAZON_ROUTE53_AUTO_NAMING_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_AUTO_NAMING_READ_ONLY_ACCESS">AMAZON_ROUTE53_AUTO_NAMING_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_AUTO_NAMING_REGISTRANT_ACCESS">AMAZON_ROUTE53_AUTO_NAMING_REGISTRANT_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_DOMAINS_FULL_ACCESS">AMAZON_ROUTE53_DOMAINS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_DOMAINS_READ_ONLY_ACCESS">AMAZON_ROUTE53_DOMAINS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_FULL_ACCESS">AMAZON_ROUTE53_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_PROFILES_FULL_ACCESS">AMAZON_ROUTE53_PROFILES_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_PROFILES_READ_ONLY_ACCESS">AMAZON_ROUTE53_PROFILES_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_READ_ONLY_ACCESS">AMAZON_ROUTE53_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_CLUSTER_FULL_ACCESS">AMAZON_ROUTE53_RECOVERY_CLUSTER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_CLUSTER_READ_ONLY_ACCESS">AMAZON_ROUTE53_RECOVERY_CLUSTER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_FULL_ACCESS">AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_READ_ONLY_ACCESS">AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_READINESS_FULL_ACCESS">AMAZON_ROUTE53_RECOVERY_READINESS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_READINESS_READ_ONLY_ACCESS">AMAZON_ROUTE53_RECOVERY_READINESS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RESOLVER_FULL_ACCESS">AMAZON_ROUTE53_RESOLVER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RESOLVER_READ_ONLY_ACCESS">AMAZON_ROUTE53_RESOLVER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_FULL_ACCESS">AMAZON_S3_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_OUTPOSTS_FULL_ACCESS">AMAZON_S3_OUTPOSTS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_OUTPOSTS_READ_ONLY_ACCESS">AMAZON_S3_OUTPOSTS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_READ_ONLY_ACCESS">AMAZON_S3_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_TABLES_FULL_ACCESS">AMAZON_S3_TABLES_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_TABLES_READ_ONLY_ACCESS">AMAZON_S3_TABLES_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_ADMIN_SERVICE_CATALOG_PRODUCTS_SERVICE_ROLE_POLICY">AMAZON_SAGE_MAKER_ADMIN_SERVICE_CATALOG_PRODUCTS_SERVICE_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_AI_SERVICES_ACCESS">AMAZON_SAGE_MAKER_CANVAS_AI_SERVICES_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_BEDROCK_ACCESS">AMAZON_SAGE_MAKER_CANVAS_BEDROCK_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_DATA_PREP_FULL_ACCESS">AMAZON_SAGE_MAKER_CANVAS_DATA_PREP_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_EMR_SERVERLESS_EXECUTION_ROLE_POLICY">AMAZON_SAGE_MAKER_CANVAS_EMR_SERVERLESS_EXECUTION_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_FULL_ACCESS">AMAZON_SAGE_MAKER_CANVAS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_SM_DATA_SCIENCE_ASSISTANT_ACCESS">AMAZON_SAGE_MAKER_CANVAS_SM_DATA_SCIENCE_ASSISTANT_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CLUSTER_INSTANCE_ROLE_POLICY">AMAZON_SAGE_MAKER_CLUSTER_INSTANCE_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_FEATURE_STORE_ACCESS">AMAZON_SAGE_MAKER_FEATURE_STORE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_FULL_ACCESS">AMAZON_SAGE_MAKER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_GROUND_TRUTH_EXECUTION">AMAZON_SAGE_MAKER_GROUND_TRUTH_EXECUTION</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS">AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MODEL_GOVERNANCE_USE_ACCESS">AMAZON_SAGE_MAKER_MODEL_GOVERNANCE_USE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MODEL_REGISTRY_FULL_ACCESS">AMAZON_SAGE_MAKER_MODEL_REGISTRY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_PARTNER_APPS_FULL_ACCESS">AMAZON_SAGE_MAKER_PARTNER_APPS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_PIPELINES_INTEGRATIONS">AMAZON_SAGE_MAKER_PIPELINES_INTEGRATIONS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_READ_ONLY">AMAZON_SAGE_MAKER_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_SERVICE_CATALOG_PRODUCTS_CODE_BUILD_SERVICE_ROLE_POLICY">AMAZON_SAGE_MAKER_SERVICE_CATALOG_PRODUCTS_CODE_BUILD_SERVICE_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_TRAINING_PLAN_CREATE_ACCESS">AMAZON_SAGE_MAKER_TRAINING_PLAN_CREATE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SECURITY_LAKE_ADMINISTRATOR">AMAZON_SECURITY_LAKE_ADMINISTRATOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SECURITY_LAKE_PERMISSIONS_BOUNDARY">AMAZON_SECURITY_LAKE_PERMISSIONS_BOUNDARY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SES_FULL_ACCESS">AMAZON_SES_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SES_READ_ONLY_ACCESS">AMAZON_SES_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SNS_FULL_ACCESS">AMAZON_SNS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SNS_READ_ONLY_ACCESS">AMAZON_SNS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SQS_FULL_ACCESS">AMAZON_SQS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SQS_READ_ONLY_ACCESS">AMAZON_SQS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_AUTOMATION_APPROVER_ACCESS">AMAZON_SSM_AUTOMATION_APPROVER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_DIRECTORY_SERVICE_ACCESS">AMAZON_SSM_DIRECTORY_SERVICE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_FULL_ACCESS">AMAZON_SSM_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_MANAGED_EC2_INSTANCE_DEFAULT_POLICY">AMAZON_SSM_MANAGED_EC2_INSTANCE_DEFAULT_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_MANAGED_INSTANCE_CORE">AMAZON_SSM_MANAGED_INSTANCE_CORE</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_PATCH_ASSOCIATION">AMAZON_SSM_PATCH_ASSOCIATION</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_READ_ONLY_ACCESS">AMAZON_SSM_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TEXTRACT_FULL_ACCESS">AMAZON_TEXTRACT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_CONSOLE_FULL_ACCESS">AMAZON_TIMESTREAM_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_FULL_ACCESS">AMAZON_TIMESTREAM_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS">AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_READ_ONLY_ACCESS">AMAZON_TIMESTREAM_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TRANSCRIBE_FULL_ACCESS">AMAZON_TRANSCRIBE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TRANSCRIBE_READ_ONLY_ACCESS">AMAZON_TRANSCRIBE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VERIFIED_PERMISSIONS_FULL_ACCESS">AMAZON_VERIFIED_PERMISSIONS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VERIFIED_PERMISSIONS_READ_ONLY_ACCESS">AMAZON_VERIFIED_PERMISSIONS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_CROSS_ACCOUNT_NETWORK_INTERFACE_OPERATIONS">AMAZON_VPC_CROSS_ACCOUNT_NETWORK_INTERFACE_OPERATIONS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_FULL_ACCESS">AMAZON_VPC_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_NETWORK_ACCESS_ANALYZER_FULL_ACCESS_POLICY">AMAZON_VPC_NETWORK_ACCESS_ANALYZER_FULL_ACCESS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_REACHABILITY_ANALYZER_FULL_ACCESS_POLICY">AMAZON_VPC_REACHABILITY_ANALYZER_FULL_ACCESS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_REACHABILITY_ANALYZER_PATH_COMPONENT_READ_POLICY">AMAZON_VPC_REACHABILITY_ANALYZER_PATH_COMPONENT_READ_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_READ_ONLY_ACCESS">AMAZON_VPC_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_DOCS_FULL_ACCESS">AMAZON_WORK_DOCS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_DOCS_READ_ONLY_ACCESS">AMAZON_WORK_DOCS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_MAIL_FULL_ACCESS">AMAZON_WORK_MAIL_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_MAIL_MESSAGE_FLOW_FULL_ACCESS">AMAZON_WORK_MAIL_MESSAGE_FLOW_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_MAIL_MESSAGE_FLOW_READ_ONLY_ACCESS">AMAZON_WORK_MAIL_MESSAGE_FLOW_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_MAIL_READ_ONLY_ACCESS">AMAZON_WORK_MAIL_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_ADMIN">AMAZON_WORK_SPACES_ADMIN</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_APPLICATION_MANAGER_ADMIN_ACCESS">AMAZON_WORK_SPACES_APPLICATION_MANAGER_ADMIN_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_POOL_SERVICE_ACCESS">AMAZON_WORK_SPACES_POOL_SERVICE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_SECURE_BROWSER_READ_ONLY">AMAZON_WORK_SPACES_SECURE_BROWSER_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_SELF_SERVICE_ACCESS">AMAZON_WORK_SPACES_SELF_SERVICE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_SERVICE_ACCESS">AMAZON_WORK_SPACES_SERVICE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_THIN_CLIENT_FULL_ACCESS">AMAZON_WORK_SPACES_THIN_CLIENT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_THIN_CLIENT_READ_ONLY_ACCESS">AMAZON_WORK_SPACES_THIN_CLIENT_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_WEB_READ_ONLY">AMAZON_WORK_SPACES_WEB_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORKSPACES_PCA_ACCESS">AMAZON_WORKSPACES_PCA_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ZOCALO_FULL_ACCESS">AMAZON_ZOCALO_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ZOCALO_READ_ONLY_ACCESS">AMAZON_ZOCALO_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AUTO_SCALING_CONSOLE_FULL_ACCESS">AUTO_SCALING_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AUTO_SCALING_CONSOLE_READ_ONLY_ACCESS">AUTO_SCALING_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AUTO_SCALING_FULL_ACCESS">AUTO_SCALING_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AUTO_SCALING_READ_ONLY_ACCESS">AUTO_SCALING_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ACCOUNT_ACTIVITY_ACCESS">AWS_ACCOUNT_ACTIVITY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ACCOUNT_MANAGEMENT_FULL_ACCESS">AWS_ACCOUNT_MANAGEMENT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ACCOUNT_MANAGEMENT_READ_ONLY_ACCESS">AWS_ACCOUNT_MANAGEMENT_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ACCOUNT_USAGE_REPORT_ACCESS">AWS_ACCOUNT_USAGE_REPORT_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_AGENTLESS_DISCOVERY_SERVICE">AWS_AGENTLESS_DISCOVERY_SERVICE</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_FABRIC_FULL_ACCESS">AWS_APP_FABRIC_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_FABRIC_READ_ONLY_ACCESS">AWS_APP_FABRIC_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_MESH_ENVOY_ACCESS">AWS_APP_MESH_ENVOY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_MESH_FULL_ACCESS">AWS_APP_MESH_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_MESH_PREVIEW_ENVOY_ACCESS">AWS_APP_MESH_PREVIEW_ENVOY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_MESH_READ_ONLY">AWS_APP_MESH_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_RUNNER_FULL_ACCESS">AWS_APP_RUNNER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_RUNNER_READ_ONLY_ACCESS">AWS_APP_RUNNER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_SYNC_ADMINISTRATOR">AWS_APP_SYNC_ADMINISTRATOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_SYNC_INVOKE_FULL_ACCESS">AWS_APP_SYNC_INVOKE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_SYNC_SCHEMA_AUTHOR">AWS_APP_SYNC_SCHEMA_AUTHOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_DISCOVERY_AGENT_ACCESS">AWS_APPLICATION_DISCOVERY_AGENT_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_DISCOVERY_AGENTLESS_COLLECTOR_ACCESS">AWS_APPLICATION_DISCOVERY_AGENTLESS_COLLECTOR_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_DISCOVERY_SERVICE_FULL_ACCESS">AWS_APPLICATION_DISCOVERY_SERVICE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_AGENT_INSTALLATION_POLICY">AWS_APPLICATION_MIGRATION_AGENT_INSTALLATION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_AGENT_POLICY">AWS_APPLICATION_MIGRATION_AGENT_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_EC2_ACCESS">AWS_APPLICATION_MIGRATION_EC2_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_FULL_ACCESS">AWS_APPLICATION_MIGRATION_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_READ_ONLY_ACCESS">AWS_APPLICATION_MIGRATION_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_SERVICE_EC2_INSTANCE_POLICY">AWS_APPLICATION_MIGRATION_SERVICE_EC2_INSTANCE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_SSM_ACCESS">AWS_APPLICATION_MIGRATION_SSM_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_V_CENTER_CLIENT_POLICY">AWS_APPLICATION_MIGRATION_V_CENTER_CLIENT_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ARTIFACT_AGREEMENTS_FULL_ACCESS">AWS_ARTIFACT_AGREEMENTS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ARTIFACT_AGREEMENTS_READ_ONLY_ACCESS">AWS_ARTIFACT_AGREEMENTS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ARTIFACT_REPORTS_READ_ONLY_ACCESS">AWS_ARTIFACT_REPORTS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_AUDIT_MANAGER_ADMINISTRATOR_ACCESS">AWS_AUDIT_MANAGER_ADMINISTRATOR_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_AUDIT_ACCESS">AWS_BACKUP_AUDIT_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_DATA_TRANSFER_ACCESS">AWS_BACKUP_DATA_TRANSFER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_FULL_ACCESS">AWS_BACKUP_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_OPERATOR_ACCESS">AWS_BACKUP_OPERATOR_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_ORGANIZATION_ADMIN_ACCESS">AWS_BACKUP_ORGANIZATION_ADMIN_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_RESTORE_ACCESS_FOR_SAPHANA">AWS_BACKUP_RESTORE_ACCESS_FOR_SAPHANA</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_INDEXING">AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_INDEXING</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_ITEM_RESTORES">AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_ITEM_RESTORES</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_BACKUP">AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_BACKUP</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_RESTORE">AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_RESTORE</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BATCH_FULL_ACCESS">AWS_BATCH_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BILLING_CONDUCTOR_FULL_ACCESS">AWS_BILLING_CONDUCTOR_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BILLING_CONDUCTOR_READ_ONLY_ACCESS">AWS_BILLING_CONDUCTOR_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BILLING_READ_ONLY_ACCESS">AWS_BILLING_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUDGETS_ACTIONS_ROLE_POLICY_FOR_RESOURCE_ADMINISTRATION_WITH_SSM">AWS_BUDGETS_ACTIONS_ROLE_POLICY_FOR_RESOURCE_ADMINISTRATION_WITH_SSM</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUDGETS_ACTIONS_WITH_AWS_RESOURCE_CONTROL_ACCESS">AWS_BUDGETS_ACTIONS_WITH_AWS_RESOURCE_CONTROL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUDGETS_READ_ONLY_ACCESS">AWS_BUDGETS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUG_BUST_FULL_ACCESS">AWS_BUG_BUST_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUG_BUST_PLAYER_ACCESS">AWS_BUG_BUST_PLAYER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_FULL_ACCESS">AWS_CERTIFICATE_MANAGER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_AUDITOR">AWS_CERTIFICATE_MANAGER_PRIVATE_CA_AUDITOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_FULL_ACCESS">AWS_CERTIFICATE_MANAGER_PRIVATE_CA_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_PRIVILEGED_USER">AWS_CERTIFICATE_MANAGER_PRIVATE_CA_PRIVILEGED_USER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_READ_ONLY">AWS_CERTIFICATE_MANAGER_PRIVATE_CA_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_USER">AWS_CERTIFICATE_MANAGER_PRIVATE_CA_USER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_READ_ONLY">AWS_CERTIFICATE_MANAGER_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_FULL_ACCESS">AWS_CLEAN_ROOMS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_FULL_ACCESS_NO_QUERYING">AWS_CLEAN_ROOMS_FULL_ACCESS_NO_QUERYING</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_ML_FULL_ACCESS">AWS_CLEAN_ROOMS_ML_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_ML_READ_ONLY_ACCESS">AWS_CLEAN_ROOMS_ML_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_READ_ONLY_ACCESS">AWS_CLEAN_ROOMS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_FORMATION_FULL_ACCESS">AWS_CLOUD_FORMATION_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_FORMATION_READ_ONLY_ACCESS">AWS_CLOUD_FORMATION_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_HSM_FULL_ACCESS">AWS_CLOUD_HSM_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_HSM_READ_ONLY_ACCESS">AWS_CLOUD_HSM_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_MAP_DISCOVER_INSTANCE_ACCESS">AWS_CLOUD_MAP_DISCOVER_INSTANCE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_MAP_FULL_ACCESS">AWS_CLOUD_MAP_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_MAP_READ_ONLY_ACCESS">AWS_CLOUD_MAP_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_MAP_REGISTER_INSTANCE_ACCESS">AWS_CLOUD_MAP_REGISTER_INSTANCE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_SHELL_FULL_ACCESS">AWS_CLOUD_SHELL_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_TRAIL_FULL_ACCESS">AWS_CLOUD_TRAIL_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_TRAIL_READ_ONLY_ACCESS">AWS_CLOUD_TRAIL_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD9_ADMINISTRATOR">AWS_CLOUD9_ADMINISTRATOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD9_ENVIRONMENT_MEMBER">AWS_CLOUD9_ENVIRONMENT_MEMBER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD9_SSM_INSTANCE_PROFILE">AWS_CLOUD9_SSM_INSTANCE_PROFILE</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD9_USER">AWS_CLOUD9_USER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_ARTIFACT_ADMIN_ACCESS">AWS_CODE_ARTIFACT_ADMIN_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_ARTIFACT_READ_ONLY_ACCESS">AWS_CODE_ARTIFACT_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_BUILD_ADMIN_ACCESS">AWS_CODE_BUILD_ADMIN_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_BUILD_DEVELOPER_ACCESS">AWS_CODE_BUILD_DEVELOPER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_BUILD_READ_ONLY_ACCESS">AWS_CODE_BUILD_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_COMMIT_FULL_ACCESS">AWS_CODE_COMMIT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_COMMIT_POWER_USER">AWS_CODE_COMMIT_POWER_USER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_COMMIT_READ_ONLY">AWS_CODE_COMMIT_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_DEPLOYER_ACCESS">AWS_CODE_DEPLOY_DEPLOYER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_FULL_ACCESS">AWS_CODE_DEPLOY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_READ_ONLY_ACCESS">AWS_CODE_DEPLOY_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_ROLE_FOR_ECS">AWS_CODE_DEPLOY_ROLE_FOR_ECS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_ROLE_FOR_ECS_LIMITED">AWS_CODE_DEPLOY_ROLE_FOR_ECS_LIMITED</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_PIPELINE_APPROVER_ACCESS">AWS_CODE_PIPELINE_APPROVER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_PIPELINE_CUSTOM_ACTION_ACCESS">AWS_CODE_PIPELINE_CUSTOM_ACTION_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_PIPELINE_FULL_ACCESS">AWS_CODE_PIPELINE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_PIPELINE_READ_ONLY_ACCESS">AWS_CODE_PIPELINE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_STAR_FULL_ACCESS">AWS_CODE_STAR_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_COMPROMISED_KEY_QUARANTINE">AWS_COMPROMISED_KEY_QUARANTINE</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_COMPROMISED_KEY_QUARANTINE_V2">AWS_COMPROMISED_KEY_QUARANTINE_V2</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_COMPROMISED_KEY_QUARANTINE_V3">AWS_COMPROMISED_KEY_QUARANTINE_V3</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CONFIG_USER_ACCESS">AWS_CONFIG_USER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CONNECTOR">AWS_CONNECTOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_DATA_GRANT_OWNER_FULL_ACCESS">AWS_DATA_EXCHANGE_DATA_GRANT_OWNER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_DATA_GRANT_RECEIVER_FULL_ACCESS">AWS_DATA_EXCHANGE_DATA_GRANT_RECEIVER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_FULL_ACCESS">AWS_DATA_EXCHANGE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_PROVIDER_FULL_ACCESS">AWS_DATA_EXCHANGE_PROVIDER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_READ_ONLY">AWS_DATA_EXCHANGE_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_SUBSCRIBER_FULL_ACCESS">AWS_DATA_EXCHANGE_SUBSCRIBER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_PIPELINE_FULL_ACCESS">AWS_DATA_PIPELINE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_PIPELINE_POWER_USER">AWS_DATA_PIPELINE_POWER_USER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_SYNC_FULL_ACCESS">AWS_DATA_SYNC_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_SYNC_READ_ONLY_ACCESS">AWS_DATA_SYNC_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_FLEET_WORKER">AWS_DEADLINE_CLOUD_FLEET_WORKER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_USER_ACCESS_FARMS">AWS_DEADLINE_CLOUD_USER_ACCESS_FARMS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_USER_ACCESS_FLEETS">AWS_DEADLINE_CLOUD_USER_ACCESS_FLEETS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_USER_ACCESS_JOBS">AWS_DEADLINE_CLOUD_USER_ACCESS_JOBS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_USER_ACCESS_QUEUES">AWS_DEADLINE_CLOUD_USER_ACCESS_QUEUES</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_WORKER_HOST">AWS_DEADLINE_CLOUD_WORKER_HOST</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_LENS_LAMBDA_FUNCTION_ACCESS_POLICY">AWS_DEEP_LENS_LAMBDA_FUNCTION_ACCESS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_ACCOUNT_ADMIN_ACCESS">AWS_DEEP_RACER_ACCOUNT_ADMIN_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_CLOUD_FORMATION_ACCESS_POLICY">AWS_DEEP_RACER_CLOUD_FORMATION_ACCESS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_DEFAULT_MULTI_USER_ACCESS">AWS_DEEP_RACER_DEFAULT_MULTI_USER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_FULL_ACCESS">AWS_DEEP_RACER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_ROBO_MAKER_ACCESS_POLICY">AWS_DEEP_RACER_ROBO_MAKER_ACCESS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DENY_ALL">AWS_DENY_ALL</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEVICE_FARM_FULL_ACCESS">AWS_DEVICE_FARM_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECT_CONNECT_FULL_ACCESS">AWS_DIRECT_CONNECT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECT_CONNECT_READ_ONLY_ACCESS">AWS_DIRECT_CONNECT_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECTORY_SERVICE_DATA_FULL_ACCESS">AWS_DIRECTORY_SERVICE_DATA_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECTORY_SERVICE_DATA_READ_ONLY_ACCESS">AWS_DIRECTORY_SERVICE_DATA_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECTORY_SERVICE_FULL_ACCESS">AWS_DIRECTORY_SERVICE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECTORY_SERVICE_READ_ONLY_ACCESS">AWS_DIRECTORY_SERVICE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DISCOVERY_CONTINUOUS_EXPORT_FIREHOSE_POLICY">AWS_DISCOVERY_CONTINUOUS_EXPORT_FIREHOSE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_EC2_VSS_SNAPSHOT_POLICY">AWS_EC2_VSS_SNAPSHOT_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_CUSTOM_PLATFORMFOR_EC2_ROLE">AWS_ELASTIC_BEANSTALK_CUSTOM_PLATFORMFOR_EC2_ROLE</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_MANAGED_UPDATES_CUSTOMER_ROLE_POLICY">AWS_ELASTIC_BEANSTALK_MANAGED_UPDATES_CUSTOMER_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_MULTICONTAINER_DOCKER">AWS_ELASTIC_BEANSTALK_MULTICONTAINER_DOCKER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_READ_ONLY">AWS_ELASTIC_BEANSTALK_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_WEB_TIER">AWS_ELASTIC_BEANSTALK_WEB_TIER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_WORKER_TIER">AWS_ELASTIC_BEANSTALK_WORKER_TIER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_AGENT_INSTALLATION_POLICY">AWS_ELASTIC_DISASTER_RECOVERY_AGENT_INSTALLATION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS">AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS_V2">AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS_V2</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_FAILBACK_INSTALLATION_POLICY">AWS_ELASTIC_DISASTER_RECOVERY_FAILBACK_INSTALLATION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_LAUNCH_ACTIONS_POLICY">AWS_ELASTIC_DISASTER_RECOVERY_LAUNCH_ACTIONS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_READ_ONLY_ACCESS">AWS_ELASTIC_DISASTER_RECOVERY_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONVERT_READ_ONLY">AWS_ELEMENTAL_MEDIA_CONVERT_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_LIVE_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_LIVE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_LIVE_READ_ONLY">AWS_ELEMENTAL_MEDIA_LIVE_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_PACKAGE_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_PACKAGE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_PACKAGE_READ_ONLY">AWS_ELEMENTAL_MEDIA_PACKAGE_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_PACKAGE_V2_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_PACKAGE_V2_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_PACKAGE_V2_READ_ONLY">AWS_ELEMENTAL_MEDIA_PACKAGE_V2_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_STORE_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_STORE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_STORE_READ_ONLY">AWS_ELEMENTAL_MEDIA_STORE_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_TAILOR_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_TAILOR_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_TAILOR_READ_ONLY">AWS_ELEMENTAL_MEDIA_TAILOR_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ENTITY_RESOLUTION_CONSOLE_FULL_ACCESS">AWS_ENTITY_RESOLUTION_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ENTITY_RESOLUTION_CONSOLE_READ_ONLY_ACCESS">AWS_ENTITY_RESOLUTION_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_FM_ADMIN_FULL_ACCESS">AWS_FM_ADMIN_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_FM_ADMIN_READ_ONLY_ACCESS">AWS_FM_ADMIN_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_FM_MEMBER_READ_ONLY_ACCESS">AWS_FM_MEMBER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_FOR_WORD_PRESS_PLUGIN_POLICY">AWS_FOR_WORD_PRESS_PLUGIN_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_CONSOLE_FULL_ACCESS">AWS_GLUE_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_CONSOLE_SAGE_MAKER_NOTEBOOK_FULL_ACCESS">AWS_GLUE_CONSOLE_SAGE_MAKER_NOTEBOOK_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_DATA_BREW_FULL_ACCESS_POLICY">AWS_GLUE_DATA_BREW_FULL_ACCESS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_SCHEMA_REGISTRY_FULL_ACCESS">AWS_GLUE_SCHEMA_REGISTRY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_SCHEMA_REGISTRY_READONLY_ACCESS">AWS_GLUE_SCHEMA_REGISTRY_READONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_SESSION_USER_RESTRICTED_NOTEBOOK_POLICY">AWS_GLUE_SESSION_USER_RESTRICTED_NOTEBOOK_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_SESSION_USER_RESTRICTED_POLICY">AWS_GLUE_SESSION_USER_RESTRICTED_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GRAFANA_ACCOUNT_ADMINISTRATOR">AWS_GRAFANA_ACCOUNT_ADMINISTRATOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GRAFANA_CONSOLE_READ_ONLY_ACCESS">AWS_GRAFANA_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT">AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT_V2">AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT_V2</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GREENGRASS_FULL_ACCESS">AWS_GREENGRASS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GREENGRASS_READ_ONLY_ACCESS">AWS_GREENGRASS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GROUND_STATION_AGENT_INSTANCE_POLICY">AWS_GROUND_STATION_AGENT_INSTANCE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_HEALTH_FULL_ACCESS">AWS_HEALTH_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_HEALTH_IMAGING_FULL_ACCESS">AWS_HEALTH_IMAGING_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_HEALTH_IMAGING_READ_ONLY_ACCESS">AWS_HEALTH_IMAGING_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IAM_IDENTITY_CENTER_ALLOW_LIST_FOR_IDENTITY_CONTEXT">AWS_IAM_IDENTITY_CENTER_ALLOW_LIST_FOR_IDENTITY_CONTEXT</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IDENTITY_SYNC_FULL_ACCESS">AWS_IDENTITY_SYNC_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IDENTITY_SYNC_READ_ONLY_ACCESS">AWS_IDENTITY_SYNC_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IMAGE_BUILDER_FULL_ACCESS">AWS_IMAGE_BUILDER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IMAGE_BUILDER_READ_ONLY_ACCESS">AWS_IMAGE_BUILDER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IMPORT_EXPORT_FULL_ACCESS">AWS_IMPORT_EXPORT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IMPORT_EXPORT_READ_ONLY_ACCESS">AWS_IMPORT_EXPORT_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_INCIDENT_MANAGER_INCIDENT_ACCESS_SERVICE_ROLE_POLICY">AWS_INCIDENT_MANAGER_INCIDENT_ACCESS_SERVICE_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_INCIDENT_MANAGER_RESOLVER_ACCESS">AWS_INCIDENT_MANAGER_RESOLVER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_ANALYTICS_FULL_ACCESS">AWS_IO_T_ANALYTICS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_ANALYTICS_READ_ONLY_ACCESS">AWS_IO_T_ANALYTICS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_CONFIG_ACCESS">AWS_IO_T_CONFIG_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_CONFIG_READ_ONLY_ACCESS">AWS_IO_T_CONFIG_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_DATA_ACCESS">AWS_IO_T_DATA_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_DEVICE_TESTER_FOR_FREE_RTOS_FULL_ACCESS">AWS_IO_T_DEVICE_TESTER_FOR_FREE_RTOS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_DEVICE_TESTER_FOR_GREENGRASS_FULL_ACCESS">AWS_IO_T_DEVICE_TESTER_FOR_GREENGRASS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_EVENTS_FULL_ACCESS">AWS_IO_T_EVENTS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_EVENTS_READ_ONLY_ACCESS">AWS_IO_T_EVENTS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_FULL_ACCESS">AWS_IO_T_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS">AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_FULL_ACCESS">AWS_IO_T_SITE_WISE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_READ_ONLY_ACCESS">AWS_IO_T_SITE_WISE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_DATA_ACCESS">AWS_IO_T_WIRELESS_DATA_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_FULL_ACCESS">AWS_IO_T_WIRELESS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_FULL_PUBLISH_ACCESS">AWS_IO_T_WIRELESS_FULL_PUBLISH_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_GATEWAY_CERT_MANAGER">AWS_IO_T_WIRELESS_GATEWAY_CERT_MANAGER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_LOGGING">AWS_IO_T_WIRELESS_LOGGING</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_READ_ONLY_ACCESS">AWS_IO_T_WIRELESS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T1_CLICK_FULL_ACCESS">AWS_IO_T1_CLICK_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T1_CLICK_READ_ONLY_ACCESS">AWS_IO_T1_CLICK_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IQ_FULL_ACCESS">AWS_IQ_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_KEY_MANAGEMENT_SERVICE_POWER_USER">AWS_KEY_MANAGEMENT_SERVICE_POWER_USER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAKE_FORMATION_CROSS_ACCOUNT_MANAGER">AWS_LAKE_FORMATION_CROSS_ACCOUNT_MANAGER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAKE_FORMATION_DATA_ADMIN">AWS_LAKE_FORMATION_DATA_ADMIN</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_EXECUTE">AWS_LAMBDA_EXECUTE</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_FULL_ACCESS">AWS_LAMBDA_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_INVOCATION_DYNAMO_DB">AWS_LAMBDA_INVOCATION_DYNAMO_DB</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_READ_ONLY_ACCESS">AWS_LAMBDA_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_AMI_INGESTION">AWS_MARKETPLACE_AMI_INGESTION</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_FULL_ACCESS">AWS_MARKETPLACE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_GET_ENTITLEMENTS">AWS_MARKETPLACE_GET_ENTITLEMENTS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS">AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_MANAGE_SUBSCRIPTIONS">AWS_MARKETPLACE_MANAGE_SUBSCRIPTIONS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_METERING_FULL_ACCESS">AWS_MARKETPLACE_METERING_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_METERING_REGISTER_USAGE">AWS_MARKETPLACE_METERING_REGISTER_USAGE</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_PROCUREMENT_SYSTEM_ADMIN_FULL_ACCESS">AWS_MARKETPLACE_PROCUREMENT_SYSTEM_ADMIN_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_READ_ONLY">AWS_MARKETPLACE_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_SELLER_FULL_ACCESS">AWS_MARKETPLACE_SELLER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_SELLER_OFFER_MANAGEMENT">AWS_MARKETPLACE_SELLER_OFFER_MANAGEMENT</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_SELLER_PRODUCTS_FULL_ACCESS">AWS_MARKETPLACE_SELLER_PRODUCTS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_SELLER_PRODUCTS_READ_ONLY">AWS_MARKETPLACE_SELLER_PRODUCTS_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_FULL_ACCESS">AWS_MIGRATION_HUB_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_ORCHESTRATOR_CONSOLE_FULL_ACCESS">AWS_MIGRATION_HUB_ORCHESTRATOR_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_ORCHESTRATOR_INSTANCE_ROLE_POLICY">AWS_MIGRATION_HUB_ORCHESTRATOR_INSTANCE_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_ORCHESTRATOR_PLUGIN">AWS_MIGRATION_HUB_ORCHESTRATOR_PLUGIN</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_REFACTOR_SPACES_ENVIRONMENTS_WITHOUT_BRIDGES_FULL_ACCESS">AWS_MIGRATION_HUB_REFACTOR_SPACES_ENVIRONMENTS_WITHOUT_BRIDGES_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_REFACTOR_SPACES_FULL_ACCESS">AWS_MIGRATION_HUB_REFACTOR_SPACES_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_STRATEGY_COLLECTOR">AWS_MIGRATION_HUB_STRATEGY_COLLECTOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_STRATEGY_CONSOLE_FULL_ACCESS">AWS_MIGRATION_HUB_STRATEGY_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_MANAGER_FULL_ACCESS">AWS_NETWORK_MANAGER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_MANAGER_READ_ONLY_ACCESS">AWS_NETWORK_MANAGER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_CLOUD_WATCH_LOGS">AWS_OPS_WORKS_CLOUD_WATCH_LOGS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE">AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_FULL_ACCESS">AWS_OPS_WORKS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_INSTANCE_REGISTRATION">AWS_OPS_WORKS_INSTANCE_REGISTRATION</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_REGISTER_CLI_EC2">AWS_OPS_WORKS_REGISTER_CLI_EC2</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES">AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ORGANIZATIONS_FULL_ACCESS">AWS_ORGANIZATIONS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ORGANIZATIONS_READ_ONLY_ACCESS">AWS_ORGANIZATIONS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OUTPOSTS_AUTHORIZE_SERVER_POLICY">AWS_OUTPOSTS_AUTHORIZE_SERVER_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PANORAMA_FULL_ACCESS">AWS_PANORAMA_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_FULL_ACCESS">AWS_PARTNER_CENTRAL_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_OPPORTUNITY_MANAGEMENT">AWS_PARTNER_CENTRAL_OPPORTUNITY_MANAGEMENT</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_SANDBOX_FULL_ACCESS">AWS_PARTNER_CENTRAL_SANDBOX_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_SELLING_RESOURCE_SNAPSHOT_JOB_EXECUTION_ROLE_POLICY">AWS_PARTNER_CENTRAL_SELLING_RESOURCE_SNAPSHOT_JOB_EXECUTION_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_LED_SUPPORT_READ_ONLY_ACCESS">AWS_PARTNER_LED_SUPPORT_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRICE_LIST_SERVICE_FULL_ACCESS">AWS_PRICE_LIST_SERVICE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_AUDITOR">AWS_PRIVATE_CA_AUDITOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_FULL_ACCESS">AWS_PRIVATE_CA_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_PRIVILEGED_USER">AWS_PRIVATE_CA_PRIVILEGED_USER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_READ_ONLY">AWS_PRIVATE_CA_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_USER">AWS_PRIVATE_CA_USER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_MARKETPLACE_ADMIN_FULL_ACCESS">AWS_PRIVATE_MARKETPLACE_ADMIN_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_MARKETPLACE_REQUESTS">AWS_PRIVATE_MARKETPLACE_REQUESTS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PROTON_CODE_BUILD_PROVISIONING_BASIC_ACCESS">AWS_PROTON_CODE_BUILD_PROVISIONING_BASIC_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PROTON_DEVELOPER_ACCESS">AWS_PROTON_DEVELOPER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PROTON_FULL_ACCESS">AWS_PROTON_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PROTON_READ_ONLY_ACCESS">AWS_PROTON_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PURCHASE_ORDERS_SERVICE_ROLE_POLICY">AWS_PURCHASE_ORDERS_SERVICE_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_CFGC_PACKS_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_CFGC_PACKS_PERMISSIONS_BOUNDARY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_DEPLOYMENT_ROLE_POLICY">AWS_QUICK_SETUP_DEPLOYMENT_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_DEV_OPS_GURU_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_DEV_OPS_GURU_PERMISSIONS_BOUNDARY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_DISTRIBUTOR_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_DISTRIBUTOR_PERMISSIONS_BOUNDARY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_ENABLE_AREX_EXECUTION_POLICY">AWS_QUICK_SETUP_ENABLE_AREX_EXECUTION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_ENABLE_DHMC_EXECUTION_POLICY">AWS_QUICK_SETUP_ENABLE_DHMC_EXECUTION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY">AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_PATCH_POLICY_BASELINE_ACCESS">AWS_QUICK_SETUP_PATCH_POLICY_BASELINE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_PATCH_POLICY_DEPLOYMENT_ROLE_POLICY">AWS_QUICK_SETUP_PATCH_POLICY_DEPLOYMENT_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_PATCH_POLICY_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_PATCH_POLICY_PERMISSIONS_BOUNDARY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SCHEDULER_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_SCHEDULER_PERMISSIONS_BOUNDARY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_DEPLOYMENT_ROLE_POLICY">AWS_QUICK_SETUP_SSM_DEPLOYMENT_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_DEPLOYMENT_S3_BUCKET_ROLE_POLICY">AWS_QUICK_SETUP_SSM_DEPLOYMENT_S3_BUCKET_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_HOST_MGMT_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_SSM_HOST_MGMT_PERMISSIONS_BOUNDARY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_LIFECYCLE_MANAGEMENT_EXECUTION_POLICY">AWS_QUICK_SETUP_SSM_LIFECYCLE_MANAGEMENT_EXECUTION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_MANAGE_RESOURCES_EXECUTION_POLICY">AWS_QUICK_SETUP_SSM_MANAGE_RESOURCES_EXECUTION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY">AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_ASSET_BUNDLE_IMPORT_POLICY">AWS_QUICK_SIGHT_ASSET_BUNDLE_IMPORT_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_IO_T_ANALYTICS_ACCESS">AWS_QUICK_SIGHT_IO_T_ANALYTICS_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_REFACTORING_TOOLKIT_FULL_ACCESS">AWS_REFACTORING_TOOLKIT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_REFACTORING_TOOLKIT_SIDECAR_POLICY">AWS_REFACTORING_TOOLKIT_SIDECAR_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_REPOST_SPACE_SUPPORT_OPERATIONS_POLICY">AWS_REPOST_SPACE_SUPPORT_OPERATIONS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESILIENCE_HUB_ASSSESSMENT_EXECUTION_POLICY">AWS_RESILIENCE_HUB_ASSSESSMENT_EXECUTION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_ACCESS_MANAGER_FULL_ACCESS">AWS_RESOURCE_ACCESS_MANAGER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_ACCESS_MANAGER_READ_ONLY_ACCESS">AWS_RESOURCE_ACCESS_MANAGER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_ACCESS_MANAGER_RESOURCE_SHARE_PARTICIPANT_ACCESS">AWS_RESOURCE_ACCESS_MANAGER_RESOURCE_SHARE_PARTICIPANT_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_EXPLORER_FULL_ACCESS">AWS_RESOURCE_EXPLORER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_EXPLORER_ORGANIZATIONS_ACCESS">AWS_RESOURCE_EXPLORER_ORGANIZATIONS_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_EXPLORER_READ_ONLY_ACCESS">AWS_RESOURCE_EXPLORER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_GROUPS_READ_ONLY_ACCESS">AWS_RESOURCE_GROUPS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROBO_MAKER_FULL_ACCESS">AWS_ROBO_MAKER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROBO_MAKER_READ_ONLY_ACCESS">AWS_ROBO_MAKER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROBO_MAKER_SERVICE_ROLE_POLICY">AWS_ROBO_MAKER_SERVICE_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SAVINGS_PLANS_FULL_ACCESS">AWS_SAVINGS_PLANS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SAVINGS_PLANS_READ_ONLY_ACCESS">AWS_SAVINGS_PLANS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_HUB_FULL_ACCESS">AWS_SECURITY_HUB_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_HUB_ORGANIZATIONS_ACCESS">AWS_SECURITY_HUB_ORGANIZATIONS_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_HUB_READ_ONLY_ACCESS">AWS_SECURITY_HUB_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_INCIDENT_RESPONSE_CASE_FULL_ACCESS">AWS_SECURITY_INCIDENT_RESPONSE_CASE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_INCIDENT_RESPONSE_FULL_ACCESS">AWS_SECURITY_INCIDENT_RESPONSE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_INCIDENT_RESPONSE_READ_ONLY_ACCESS">AWS_SECURITY_INCIDENT_RESPONSE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_ADMIN_FULL_ACCESS">AWS_SERVICE_CATALOG_ADMIN_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_ADMIN_READ_ONLY_ACCESS">AWS_SERVICE_CATALOG_ADMIN_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_APP_REGISTRY_FULL_ACCESS">AWS_SERVICE_CATALOG_APP_REGISTRY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_APP_REGISTRY_READ_ONLY_ACCESS">AWS_SERVICE_CATALOG_APP_REGISTRY_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_END_USER_FULL_ACCESS">AWS_SERVICE_CATALOG_END_USER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_END_USER_READ_ONLY_ACCESS">AWS_SERVICE_CATALOG_END_USER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_AUTOMATION_DIAGNOSIS_BUCKET_POLICY">AWS_SSM_AUTOMATION_DIAGNOSIS_BUCKET_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_DIAGNOSIS_AUTOMATION_ADMINISTRATION_ROLE_POLICY">AWS_SSM_DIAGNOSIS_AUTOMATION_ADMINISTRATION_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_DIAGNOSIS_AUTOMATION_EXECUTION_ROLE_POLICY">AWS_SSM_DIAGNOSIS_AUTOMATION_EXECUTION_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_DIAGNOSIS_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY">AWS_SSM_DIAGNOSIS_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_REMEDIATION_AUTOMATION_ADMINISTRATION_ROLE_POLICY">AWS_SSM_REMEDIATION_AUTOMATION_ADMINISTRATION_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_REMEDIATION_AUTOMATION_EXECUTION_ROLE_POLICY">AWS_SSM_REMEDIATION_AUTOMATION_EXECUTION_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_REMEDIATION_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY">AWS_SSM_REMEDIATION_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_DIRECTORY_ADMINISTRATOR">AWS_SSO_DIRECTORY_ADMINISTRATOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_DIRECTORY_READ_ONLY">AWS_SSO_DIRECTORY_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_MASTER_ACCOUNT_ADMINISTRATOR">AWS_SSO_MASTER_ACCOUNT_ADMINISTRATOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_MEMBER_ACCOUNT_ADMINISTRATOR">AWS_SSO_MEMBER_ACCOUNT_ADMINISTRATOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_READ_ONLY">AWS_SSO_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STEP_FUNCTIONS_CONSOLE_FULL_ACCESS">AWS_STEP_FUNCTIONS_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STEP_FUNCTIONS_FULL_ACCESS">AWS_STEP_FUNCTIONS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STEP_FUNCTIONS_READ_ONLY_ACCESS">AWS_STEP_FUNCTIONS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STORAGE_GATEWAY_FULL_ACCESS">AWS_STORAGE_GATEWAY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STORAGE_GATEWAY_READ_ONLY_ACCESS">AWS_STORAGE_GATEWAY_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_ACCESS">AWS_SUPPORT_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_APP_FULL_ACCESS">AWS_SUPPORT_APP_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_APP_READ_ONLY_ACCESS">AWS_SUPPORT_APP_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_PLANS_FULL_ACCESS">AWS_SUPPORT_PLANS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_PLANS_READ_ONLY_ACCESS">AWS_SUPPORT_PLANS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_ENABLE_CONFIG_RECORDING_EXECUTION_POLICY">AWS_SYSTEMS_MANAGER_ENABLE_CONFIG_RECORDING_EXECUTION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_ENABLE_EXPLORER_EXECUTION_POLICY">AWS_SYSTEMS_MANAGER_ENABLE_EXPLORER_EXECUTION_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_FOR_SAP_FULL_ACCESS">AWS_SYSTEMS_MANAGER_FOR_SAP_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_FOR_SAP_READ_ONLY_ACCESS">AWS_SYSTEMS_MANAGER_FOR_SAP_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_ASSET_SERVER_POLICY">AWS_THINKBOX_ASSET_SERVER_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_AWS_PORTAL_ADMIN_POLICY">AWS_THINKBOX_AWS_PORTAL_ADMIN_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_AWS_PORTAL_GATEWAY_POLICY">AWS_THINKBOX_AWS_PORTAL_GATEWAY_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_AWS_PORTAL_WORKER_POLICY">AWS_THINKBOX_AWS_PORTAL_WORKER_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ACCESS_POLICY">AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ACCESS_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ADMIN_POLICY">AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ADMIN_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_ADMIN_POLICY">AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_ADMIN_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_WORKER_POLICY">AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_WORKER_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRANSFER_CONSOLE_FULL_ACCESS">AWS_TRANSFER_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRANSFER_FULL_ACCESS">AWS_TRANSFER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRANSFER_READ_ONLY_ACCESS">AWS_TRANSFER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRUSTED_ADVISOR_PRIORITY_FULL_ACCESS">AWS_TRUSTED_ADVISOR_PRIORITY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRUSTED_ADVISOR_PRIORITY_READ_ONLY_ACCESS">AWS_TRUSTED_ADVISOR_PRIORITY_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_VENDOR_INSIGHTS_ASSESSOR_FULL_ACCESS">AWS_VENDOR_INSIGHTS_ASSESSOR_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_VENDOR_INSIGHTS_ASSESSOR_READ_ONLY">AWS_VENDOR_INSIGHTS_ASSESSOR_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_VENDOR_INSIGHTS_VENDOR_FULL_ACCESS">AWS_VENDOR_INSIGHTS_VENDOR_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_VENDOR_INSIGHTS_VENDOR_READ_ONLY">AWS_VENDOR_INSIGHTS_VENDOR_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WAF_CONSOLE_FULL_ACCESS">AWS_WAF_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WAF_CONSOLE_READ_ONLY_ACCESS">AWS_WAF_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WAF_FULL_ACCESS">AWS_WAF_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WAF_READ_ONLY_ACCESS">AWS_WAF_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WICKR_FULL_ACCESS">AWS_WICKR_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_X_RAY_DAEMON_WRITE_ACCESS">AWS_X_RAY_DAEMON_WRITE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_CROSS_ACCOUNT_SHARING_CONFIGURATION">AWS_XRAY_CROSS_ACCOUNT_SHARING_CONFIGURATION</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_FULL_ACCESS">AWS_XRAY_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_READ_ONLY_ACCESS">AWS_XRAY_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_WRITE_ONLY_ACCESS">AWS_XRAY_WRITE_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_FRONT_FULL_ACCESS">CLOUD_FRONT_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_FRONT_READ_ONLY_ACCESS">CLOUD_FRONT_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_SEARCH_FULL_ACCESS">CLOUD_SEARCH_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_SEARCH_READ_ONLY_ACCESS">CLOUD_SEARCH_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_ACTIONS_EC2_ACCESS">CLOUD_WATCH_ACTIONS_EC2_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_AGENT_ADMIN_POLICY">CLOUD_WATCH_AGENT_ADMIN_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_AGENT_SERVER_POLICY">CLOUD_WATCH_AGENT_SERVER_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_APPLICATION_INSIGHTS_FULL_ACCESS">CLOUD_WATCH_APPLICATION_INSIGHTS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_APPLICATION_INSIGHTS_READ_ONLY_ACCESS">CLOUD_WATCH_APPLICATION_INSIGHTS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_APPLICATION_SIGNALS_FULL_ACCESS">CLOUD_WATCH_APPLICATION_SIGNALS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_APPLICATION_SIGNALS_READ_ONLY_ACCESS">CLOUD_WATCH_APPLICATION_SIGNALS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_AUTOMATIC_DASHBOARDS_ACCESS">CLOUD_WATCH_AUTOMATIC_DASHBOARDS_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_CROSS_ACCOUNT_SHARING_CONFIGURATION">CLOUD_WATCH_CROSS_ACCOUNT_SHARING_CONFIGURATION</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_EVENTS_FULL_ACCESS">CLOUD_WATCH_EVENTS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_EVENTS_READ_ONLY_ACCESS">CLOUD_WATCH_EVENTS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_FULL_ACCESS">CLOUD_WATCH_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_FULL_ACCESS_V2">CLOUD_WATCH_FULL_ACCESS_V2</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_INTERNET_MONITOR_FULL_ACCESS">CLOUD_WATCH_INTERNET_MONITOR_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_INTERNET_MONITOR_READ_ONLY_ACCESS">CLOUD_WATCH_INTERNET_MONITOR_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LAMBDA_APPLICATION_SIGNALS_EXECUTION_ROLE_POLICY">CLOUD_WATCH_LAMBDA_APPLICATION_SIGNALS_EXECUTION_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LAMBDA_INSIGHTS_EXECUTION_ROLE_POLICY">CLOUD_WATCH_LAMBDA_INSIGHTS_EXECUTION_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LOGS_CROSS_ACCOUNT_SHARING_CONFIGURATION">CLOUD_WATCH_LOGS_CROSS_ACCOUNT_SHARING_CONFIGURATION</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LOGS_FULL_ACCESS">CLOUD_WATCH_LOGS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LOGS_READ_ONLY_ACCESS">CLOUD_WATCH_LOGS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_NETWORK_FLOW_MONITOR_AGENT_PUBLISH_POLICY">CLOUD_WATCH_NETWORK_FLOW_MONITOR_AGENT_PUBLISH_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_OPEN_SEARCH_DASHBOARD_ACCESS">CLOUD_WATCH_OPEN_SEARCH_DASHBOARD_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_OPEN_SEARCH_DASHBOARDS_FULL_ACCESS">CLOUD_WATCH_OPEN_SEARCH_DASHBOARDS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_READ_ONLY_ACCESS">CLOUD_WATCH_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_SYNTHETICS_FULL_ACCESS">CLOUD_WATCH_SYNTHETICS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_SYNTHETICS_READ_ONLY_ACCESS">CLOUD_WATCH_SYNTHETICS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COMPREHEND_FULL_ACCESS">COMPREHEND_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COMPREHEND_MEDICAL_FULL_ACCESS">COMPREHEND_MEDICAL_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COMPREHEND_READ_ONLY">COMPREHEND_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COMPUTE_OPTIMIZER_READ_ONLY_ACCESS">COMPUTE_OPTIMIZER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COST_OPTIMIZATION_HUB_ADMIN_ACCESS">COST_OPTIMIZATION_HUB_ADMIN_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COST_OPTIMIZATION_HUB_READ_ONLY_ACCESS">COST_OPTIMIZATION_HUB_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_FAST_LAUNCH_FULL_ACCESS">EC2_FAST_LAUNCH_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_IMAGE_BUILDER_CROSS_ACCOUNT_DISTRIBUTION_ACCESS">EC2_IMAGE_BUILDER_CROSS_ACCOUNT_DISTRIBUTION_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_INSTANCE_CONNECT">EC2_INSTANCE_CONNECT</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER">EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER_ECR_CONTAINER_BUILDS">EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER_ECR_CONTAINER_BUILDS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELASTIC_LOAD_BALANCING_FULL_ACCESS">ELASTIC_LOAD_BALANCING_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELASTIC_LOAD_BALANCING_READ_ONLY">ELASTIC_LOAD_BALANCING_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_ACTIVATIONS_DOWNLOAD_SOFTWARE_ACCESS">ELEMENTAL_ACTIVATIONS_DOWNLOAD_SOFTWARE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_ACTIVATIONS_FULL_ACCESS">ELEMENTAL_ACTIVATIONS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_ACTIVATIONS_GENERATE_LICENSES">ELEMENTAL_ACTIVATIONS_GENERATE_LICENSES</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_ACTIVATIONS_READ_ONLY_ACCESS">ELEMENTAL_ACTIVATIONS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_APPLIANCES_SOFTWARE_FULL_ACCESS">ELEMENTAL_APPLIANCES_SOFTWARE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_APPLIANCES_SOFTWARE_READ_ONLY_ACCESS">ELEMENTAL_APPLIANCES_SOFTWARE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_SUPPORT_CENTER_FULL_ACCESS">ELEMENTAL_SUPPORT_CENTER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GAME_LIFT_CONTAINER_FLEET_POLICY">GAME_LIFT_CONTAINER_FLEET_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GAME_LIFT_GAME_SERVER_GROUP_POLICY">GAME_LIFT_GAME_SERVER_GROUP_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GLOBAL_ACCELERATOR_FULL_ACCESS">GLOBAL_ACCELERATOR_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GLOBAL_ACCELERATOR_READ_ONLY_ACCESS">GLOBAL_ACCELERATOR_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS">GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS">GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_ACCESS_ADVISOR_READ_ONLY">IAM_ACCESS_ADVISOR_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_ACCESS_ANALYZER_FULL_ACCESS">IAM_ACCESS_ANALYZER_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_ACCESS_ANALYZER_READ_ONLY_ACCESS">IAM_ACCESS_ANALYZER_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_FULL_ACCESS">IAM_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_READ_ONLY_ACCESS">IAM_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_SELF_MANAGE_SERVICE_SPECIFIC_CREDENTIALS">IAM_SELF_MANAGE_SERVICE_SPECIFIC_CREDENTIALS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_USER_CHANGE_PASSWORD">IAM_USER_CHANGE_PASSWORD</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_USER_SSH_KEYS">IAM_USER_SSH_KEYS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IVS_FULL_ACCESS">IVS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IVS_READ_ONLY_ACCESS">IVS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.MEDIA_CONNECT_GATEWAY_INSTANCE_ROLE_POLICY">MEDIA_CONNECT_GATEWAY_INSTANCE_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_CONSOLE_FULL_ACCESS">NEPTUNE_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_FULL_ACCESS">NEPTUNE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_GRAPH_READ_ONLY_ACCESS">NEPTUNE_GRAPH_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_READ_ONLY_ACCESS">NEPTUNE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.OAM_FULL_ACCESS">OAM_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.OAM_READ_ONLY_ACCESS">OAM_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.PARTNER_CENTRAL_ACCOUNT_MANAGEMENT_USER_ROLE_ASSOCIATION">PARTNER_CENTRAL_ACCOUNT_MANAGEMENT_USER_ROLE_ASSOCIATION</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.POWER_USER_ACCESS">POWER_USER_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.Q_BUSINESS_QUICKSIGHT_PLUGIN_POLICY">Q_BUSINESS_QUICKSIGHT_PLUGIN_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.READ_ONLY_ACCESS">READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.RESOURCE_GROUPS_AND_TAG_EDITOR_FULL_ACCESS">RESOURCE_GROUPS_AND_TAG_EDITOR_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.RESOURCE_GROUPS_AND_TAG_EDITOR_READ_ONLY_ACCESS">RESOURCE_GROUPS_AND_TAG_EDITOR_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.RESOURCE_GROUPS_TAGGING_API_TAG_UNTAG_SUPPORTED_RESOURCES">RESOURCE_GROUPS_TAGGING_API_TAG_UNTAG_SUPPORTED_RESOURCES</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ROSA_MANAGE_SUBSCRIPTION">ROSA_MANAGE_SUBSCRIPTION</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_FULL_ACCESS">SAGE_MAKER_STUDIO_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_PROJECT_ROLE_MACHINE_LEARNING_POLICY">SAGE_MAKER_STUDIO_PROJECT_ROLE_MACHINE_LEARNING_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_PERMISSIONS_BOUNDARY">SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_PERMISSIONS_BOUNDARY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_POLICY">SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SECRETS_MANAGER_READ_WRITE">SECRETS_MANAGER_READ_WRITE</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SECURITY_AUDIT">SECURITY_AUDIT</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVER_MIGRATION_CONNECTOR">SERVER_MIGRATION_CONNECTOR</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVER_MIGRATION_SERVICE_CONSOLE_FULL_ACCESS">SERVER_MIGRATION_SERVICE_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVICE_QUOTAS_FULL_ACCESS">SERVICE_QUOTAS_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVICE_QUOTAS_READ_ONLY_ACCESS">SERVICE_QUOTAS_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SIMPLE_WORKFLOW_FULL_ACCESS">SIMPLE_WORKFLOW_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.TRANSLATE_FULL_ACCESS">TRANSLATE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.TRANSLATE_READ_ONLY">TRANSLATE_READ_ONLY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.VPC_LATTICE_FULL_ACCESS">VPC_LATTICE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.VPC_LATTICE_READ_ONLY_ACCESS">VPC_LATTICE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.VPC_LATTICE_SERVICES_INVOKE_ACCESS">VPC_LATTICE_SERVICES_INVOKE_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.WELL_ARCHITECTED_CONSOLE_FULL_ACCESS">WELL_ARCHITECTED_CONSOLE_FULL_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.WELL_ARCHITECTED_CONSOLE_READ_ONLY_ACCESS">WELL_ARCHITECTED_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.WORK_LINK_SERVICE_ROLE_POLICY">WORK_LINK_SERVICE_ROLE_POLICY</a></code> | <code>aws-cdk-lib.aws_iam.IManagedPolicy</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ADMINISTRATOR_ACCESS">ADMINISTRATOR_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ADMINISTRATOR_ACCESS_AMPLIFY">ADMINISTRATOR_ACCESS_AMPLIFY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ADMINISTRATOR_ACCESS_AWS_ELASTIC_BEANSTALK">ADMINISTRATOR_ACCESS_AWS_ELASTIC_BEANSTALK</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_ASSISTANT_POLICY">AI_OPS_ASSISTANT_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_CONSOLE_ADMIN_POLICY">AI_OPS_CONSOLE_ADMIN_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_OPERATOR_ACCESS">AI_OPS_OPERATOR_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_READ_ONLY_ACCESS">AI_OPS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_DEVICE_SETUP">ALEXA_FOR_BUSINESS_DEVICE_SETUP</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_FULL_ACCESS">ALEXA_FOR_BUSINESS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_GATEWAY_EXECUTION">ALEXA_FOR_BUSINESS_GATEWAY_EXECUTION</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_LIFESIZE_DELEGATED_ACCESS_POLICY">ALEXA_FOR_BUSINESS_LIFESIZE_DELEGATED_ACCESS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_POLY_DELEGATED_ACCESS_POLICY">ALEXA_FOR_BUSINESS_POLY_DELEGATED_ACCESS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_READ_ONLY_ACCESS">ALEXA_FOR_BUSINESS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_API_GATEWAY_ADMINISTRATOR">AMAZON_API_GATEWAY_ADMINISTRATOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_API_GATEWAY_INVOKE_FULL_ACCESS">AMAZON_API_GATEWAY_INVOKE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_APP_FLOW_FULL_ACCESS">AMAZON_APP_FLOW_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_APP_FLOW_READ_ONLY_ACCESS">AMAZON_APP_FLOW_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_APP_STREAM_FULL_ACCESS">AMAZON_APP_STREAM_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_APP_STREAM_READ_ONLY_ACCESS">AMAZON_APP_STREAM_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ATHENA_FULL_ACCESS">AMAZON_ATHENA_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AUGMENTED_AI_FULL_ACCESS">AMAZON_AUGMENTED_AI_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AUGMENTED_AI_HUMAN_LOOP_FULL_ACCESS">AMAZON_AUGMENTED_AI_HUMAN_LOOP_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AUGMENTED_AI_INTEGRATED_API_ACCESS">AMAZON_AUGMENTED_AI_INTEGRATED_API_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AURORA_DSQL_CONSOLE_FULL_ACCESS">AMAZON_AURORA_DSQL_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AURORA_DSQL_FULL_ACCESS">AMAZON_AURORA_DSQL_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AURORA_DSQL_READ_ONLY_ACCESS">AMAZON_AURORA_DSQL_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_FULL_ACCESS">AMAZON_BEDROCK_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_READ_ONLY">AMAZON_BEDROCK_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_STUDIO_PERMISSIONS_BOUNDARY">AMAZON_BEDROCK_STUDIO_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BRAKET_FULL_ACCESS">AMAZON_BRAKET_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BRAKET_JOBS_EXECUTION_POLICY">AMAZON_BRAKET_JOBS_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CHIME_FULL_ACCESS">AMAZON_CHIME_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CHIME_READ_ONLY">AMAZON_CHIME_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CHIME_SDK">AMAZON_CHIME_SDK</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CHIME_USER_MANAGEMENT">AMAZON_CHIME_USER_MANAGEMENT</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_DIRECTORY_FULL_ACCESS">AMAZON_CLOUD_DIRECTORY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_DIRECTORY_READ_ONLY_ACCESS">AMAZON_CLOUD_DIRECTORY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_WATCH_EVIDENTLY_FULL_ACCESS">AMAZON_CLOUD_WATCH_EVIDENTLY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_WATCH_EVIDENTLY_READ_ONLY_ACCESS">AMAZON_CLOUD_WATCH_EVIDENTLY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_WATCH_RUM_FULL_ACCESS">AMAZON_CLOUD_WATCH_RUM_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_WATCH_RUM_READ_ONLY_ACCESS">AMAZON_CLOUD_WATCH_RUM_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_CATALYST_FULL_ACCESS">AMAZON_CODE_CATALYST_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_CATALYST_READ_ONLY_ACCESS">AMAZON_CODE_CATALYST_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_PROFILER_AGENT_ACCESS">AMAZON_CODE_GURU_PROFILER_AGENT_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_PROFILER_FULL_ACCESS">AMAZON_CODE_GURU_PROFILER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_PROFILER_READ_ONLY_ACCESS">AMAZON_CODE_GURU_PROFILER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_REVIEWER_FULL_ACCESS">AMAZON_CODE_GURU_REVIEWER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_REVIEWER_READ_ONLY_ACCESS">AMAZON_CODE_GURU_REVIEWER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_SECURITY_FULL_ACCESS">AMAZON_CODE_GURU_SECURITY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_SECURITY_SCAN_ACCESS">AMAZON_CODE_GURU_SECURITY_SCAN_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_DEVELOPER_AUTHENTICATED_IDENTITIES">AMAZON_COGNITO_DEVELOPER_AUTHENTICATED_IDENTITIES</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_POWER_USER">AMAZON_COGNITO_POWER_USER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_READ_ONLY">AMAZON_COGNITO_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_UN_AUTHED_IDENTITIES_SESSION_POLICY">AMAZON_COGNITO_UN_AUTHED_IDENTITIES_SESSION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_UNAUTHENTICATED_IDENTITIES">AMAZON_COGNITO_UNAUTHENTICATED_IDENTITIES</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CONNECT_FULL_ACCESS">AMAZON_CONNECT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CONNECT_READ_ONLY_ACCESS">AMAZON_CONNECT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CONNECT_VOICE_ID_FULL_ACCESS">AMAZON_CONNECT_VOICE_ID_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY">AMAZON_DATA_ZONE_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_FULL_ACCESS">AMAZON_DATA_ZONE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_FULL_USER_ACCESS">AMAZON_DATA_ZONE_FULL_USER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_REDSHIFT_GLUE_PROVISIONING_POLICY">AMAZON_DATA_ZONE_REDSHIFT_GLUE_PROVISIONING_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_SAGE_MAKER_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY">AMAZON_DATA_ZONE_SAGE_MAKER_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_SAGE_MAKER_MANAGE_ACCESS_ROLE_POLICY">AMAZON_DATA_ZONE_SAGE_MAKER_MANAGE_ACCESS_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_SAGE_MAKER_PROVISIONING_ROLE_POLICY">AMAZON_DATA_ZONE_SAGE_MAKER_PROVISIONING_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DETECTIVE_FULL_ACCESS">AMAZON_DETECTIVE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DETECTIVE_INVESTIGATOR_ACCESS">AMAZON_DETECTIVE_INVESTIGATOR_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DETECTIVE_MEMBER_ACCESS">AMAZON_DETECTIVE_MEMBER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DETECTIVE_ORGANIZATIONS_ACCESS">AMAZON_DETECTIVE_ORGANIZATIONS_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DEV_OPS_GURU_CONSOLE_FULL_ACCESS">AMAZON_DEV_OPS_GURU_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DEV_OPS_GURU_FULL_ACCESS">AMAZON_DEV_OPS_GURU_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DEV_OPS_GURU_ORGANIZATIONS_ACCESS">AMAZON_DEV_OPS_GURU_ORGANIZATIONS_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DEV_OPS_GURU_READ_ONLY_ACCESS">AMAZON_DEV_OPS_GURU_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_CONSOLE_FULL_ACCESS">AMAZON_DOC_DB_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_ELASTIC_FULL_ACCESS">AMAZON_DOC_DB_ELASTIC_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_ELASTIC_READ_ONLY_ACCESS">AMAZON_DOC_DB_ELASTIC_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_FULL_ACCESS">AMAZON_DOC_DB_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_READ_ONLY_ACCESS">AMAZON_DOC_DB_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DRSVPC_MANAGEMENT">AMAZON_DRSVPC_MANAGEMENT</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_FULL_ACCESS">AMAZON_DYNAMO_DB_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE">AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_READ_ONLY_ACCESS">AMAZON_DYNAMO_DB_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_FULL_ACCESS">AMAZON_EC2_CONTAINER_REGISTRY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_POWER_USER">AMAZON_EC2_CONTAINER_REGISTRY_POWER_USER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_PULL_ONLY">AMAZON_EC2_CONTAINER_REGISTRY_PULL_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_READ_ONLY">AMAZON_EC2_CONTAINER_REGISTRY_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_FULL_ACCESS">AMAZON_EC2_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_READ_ONLY_ACCESS">AMAZON_EC2_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_ROLE_POLICY_FOR_LAUNCH_WIZARD">AMAZON_EC2_ROLE_POLICY_FOR_LAUNCH_WIZARD</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_FULL_ACCESS">AMAZON_ECS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE">AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_BLOCK_STORAGE_POLICY">AMAZON_EKS_BLOCK_STORAGE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_CLUSTER_POLICY">AMAZON_EKS_CLUSTER_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_CNI_POLICY">AMAZON_EKS_CNI_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_COMPUTE_POLICY">AMAZON_EKS_COMPUTE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_FARGATE_POD_EXECUTION_ROLE_POLICY">AMAZON_EKS_FARGATE_POD_EXECUTION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_LOAD_BALANCING_POLICY">AMAZON_EKS_LOAD_BALANCING_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_LOCAL_OUTPOST_CLUSTER_POLICY">AMAZON_EKS_LOCAL_OUTPOST_CLUSTER_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_NETWORKING_POLICY">AMAZON_EKS_NETWORKING_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_SERVICE_POLICY">AMAZON_EKS_SERVICE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_WORKER_NODE_MINIMAL_POLICY">AMAZON_EKS_WORKER_NODE_MINIMAL_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_WORKER_NODE_POLICY">AMAZON_EKS_WORKER_NODE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKSVPC_RESOURCE_CONTROLLER">AMAZON_EKSVPC_RESOURCE_CONTROLLER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTI_CACHE_FULL_ACCESS">AMAZON_ELASTI_CACHE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTI_CACHE_READ_ONLY_ACCESS">AMAZON_ELASTI_CACHE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_FULL_ACCESS">AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_POWER_USER">AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_POWER_USER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_READ_ONLY">AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_FULL_ACCESS">AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_ONLY_ACCESS">AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_WRITE_ACCESS">AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_WRITE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_FULL_ACCESS">AMAZON_ELASTIC_FILE_SYSTEM_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_READ_ONLY_ACCESS">AMAZON_ELASTIC_FILE_SYSTEM_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEMS_UTILS">AMAZON_ELASTIC_FILE_SYSTEMS_UTILS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_MAP_REDUCE_FULL_ACCESS">AMAZON_ELASTIC_MAP_REDUCE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_MAP_REDUCE_PLACEMENT_GROUP_POLICY">AMAZON_ELASTIC_MAP_REDUCE_PLACEMENT_GROUP_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_MAP_REDUCE_READ_ONLY_ACCESS">AMAZON_ELASTIC_MAP_REDUCE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_TRANSCODER_FULL_ACCESS">AMAZON_ELASTIC_TRANSCODER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_TRANSCODER_JOBS_SUBMITTER">AMAZON_ELASTIC_TRANSCODER_JOBS_SUBMITTER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_TRANSCODER_READ_ONLY_ACCESS">AMAZON_ELASTIC_TRANSCODER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EMR_FULL_ACCESS_POLICY_V2">AMAZON_EMR_FULL_ACCESS_POLICY_V2</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EMR_READ_ONLY_ACCESS_POLICY_V2">AMAZON_EMR_READ_ONLY_ACCESS_POLICY_V2</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ES_COGNITO_ACCESS">AMAZON_ES_COGNITO_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ES_FULL_ACCESS">AMAZON_ES_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ES_READ_ONLY_ACCESS">AMAZON_ES_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_FULL_ACCESS">AMAZON_EVENT_BRIDGE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_PIPES_FULL_ACCESS">AMAZON_EVENT_BRIDGE_PIPES_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_PIPES_OPERATOR_ACCESS">AMAZON_EVENT_BRIDGE_PIPES_OPERATOR_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_PIPES_READ_ONLY_ACCESS">AMAZON_EVENT_BRIDGE_PIPES_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_READ_ONLY_ACCESS">AMAZON_EVENT_BRIDGE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_SCHEDULER_FULL_ACCESS">AMAZON_EVENT_BRIDGE_SCHEDULER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_SCHEDULER_READ_ONLY_ACCESS">AMAZON_EVENT_BRIDGE_SCHEDULER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_SCHEMAS_FULL_ACCESS">AMAZON_EVENT_BRIDGE_SCHEMAS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_SCHEMAS_READ_ONLY_ACCESS">AMAZON_EVENT_BRIDGE_SCHEMAS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_F_SX_CONSOLE_FULL_ACCESS">AMAZON_F_SX_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_F_SX_CONSOLE_READ_ONLY_ACCESS">AMAZON_F_SX_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_F_SX_FULL_ACCESS">AMAZON_F_SX_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_F_SX_READ_ONLY_ACCESS">AMAZON_F_SX_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_FORECAST_FULL_ACCESS">AMAZON_FORECAST_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_FRAUD_DETECTOR_FULL_ACCESS_POLICY">AMAZON_FRAUD_DETECTOR_FULL_ACCESS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_FREE_RTOS_FULL_ACCESS">AMAZON_FREE_RTOS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GLACIER_FULL_ACCESS">AMAZON_GLACIER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GLACIER_READ_ONLY_ACCESS">AMAZON_GLACIER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GUARD_DUTY_FULL_ACCESS">AMAZON_GUARD_DUTY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GUARD_DUTY_READ_ONLY_ACCESS">AMAZON_GUARD_DUTY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HEALTH_LAKE_FULL_ACCESS">AMAZON_HEALTH_LAKE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HEALTH_LAKE_READ_ONLY_ACCESS">AMAZON_HEALTH_LAKE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_FULL_ACCESS">AMAZON_HONEYCODE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_READ_ONLY_ACCESS">AMAZON_HONEYCODE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_TEAM_ASSOCIATION_FULL_ACCESS">AMAZON_HONEYCODE_TEAM_ASSOCIATION_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_TEAM_ASSOCIATION_READ_ONLY_ACCESS">AMAZON_HONEYCODE_TEAM_ASSOCIATION_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_WORKBOOK_FULL_ACCESS">AMAZON_HONEYCODE_WORKBOOK_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_WORKBOOK_READ_ONLY_ACCESS">AMAZON_HONEYCODE_WORKBOOK_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR_FULL_ACCESS">AMAZON_INSPECTOR_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR_READ_ONLY_ACCESS">AMAZON_INSPECTOR_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_FULL_ACCESS">AMAZON_INSPECTOR2_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_MANAGED_CIS_POLICY">AMAZON_INSPECTOR2_MANAGED_CIS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_READ_ONLY_ACCESS">AMAZON_INSPECTOR2_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KENDRA_FULL_ACCESS">AMAZON_KENDRA_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KENDRA_READ_ONLY_ACCESS">AMAZON_KENDRA_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KEYSPACES_FULL_ACCESS">AMAZON_KEYSPACES_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KEYSPACES_READ_ONLY_ACCESS">AMAZON_KEYSPACES_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KEYSPACES_READ_ONLY_ACCESS_V2">AMAZON_KEYSPACES_READ_ONLY_ACCESS_V2</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_ANALYTICS_FULL_ACCESS">AMAZON_KINESIS_ANALYTICS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_ANALYTICS_READ_ONLY">AMAZON_KINESIS_ANALYTICS_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_FIREHOSE_FULL_ACCESS">AMAZON_KINESIS_FIREHOSE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_FIREHOSE_READ_ONLY_ACCESS">AMAZON_KINESIS_FIREHOSE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_FULL_ACCESS">AMAZON_KINESIS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_READ_ONLY_ACCESS">AMAZON_KINESIS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_VIDEO_STREAMS_FULL_ACCESS">AMAZON_KINESIS_VIDEO_STREAMS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_VIDEO_STREAMS_READ_ONLY_ACCESS">AMAZON_KINESIS_VIDEO_STREAMS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LAUNCH_WIZARD_FULL_ACCESS_V2">AMAZON_LAUNCH_WIZARD_FULL_ACCESS_V2</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LEX_FULL_ACCESS">AMAZON_LEX_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LEX_READ_ONLY">AMAZON_LEX_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LEX_RUN_BOTS_ONLY">AMAZON_LEX_RUN_BOTS_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_EQUIPMENT_FULL_ACCESS">AMAZON_LOOKOUT_EQUIPMENT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_EQUIPMENT_READ_ONLY_ACCESS">AMAZON_LOOKOUT_EQUIPMENT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_METRICS_FULL_ACCESS">AMAZON_LOOKOUT_METRICS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_METRICS_READ_ONLY_ACCESS">AMAZON_LOOKOUT_METRICS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_VISION_CONSOLE_FULL_ACCESS">AMAZON_LOOKOUT_VISION_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_VISION_CONSOLE_READ_ONLY_ACCESS">AMAZON_LOOKOUT_VISION_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_VISION_FULL_ACCESS">AMAZON_LOOKOUT_VISION_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_VISION_READ_ONLY_ACCESS">AMAZON_LOOKOUT_VISION_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_BATCH_PREDICTIONS_ACCESS">AMAZON_MACHINE_LEARNING_BATCH_PREDICTIONS_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_CREATE_ONLY_ACCESS">AMAZON_MACHINE_LEARNING_CREATE_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_FULL_ACCESS">AMAZON_MACHINE_LEARNING_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_MANAGE_REAL_TIME_ENDPOINT_ONLY_ACCESS">AMAZON_MACHINE_LEARNING_MANAGE_REAL_TIME_ENDPOINT_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_READ_ONLY_ACCESS">AMAZON_MACHINE_LEARNING_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_REAL_TIME_PREDICTION_ONLY_ACCESS">AMAZON_MACHINE_LEARNING_REAL_TIME_PREDICTION_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACIE_FULL_ACCESS">AMAZON_MACIE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACIE_READ_ONLY_ACCESS">AMAZON_MACIE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MANAGED_BLOCKCHAIN_CONSOLE_FULL_ACCESS">AMAZON_MANAGED_BLOCKCHAIN_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MANAGED_BLOCKCHAIN_FULL_ACCESS">AMAZON_MANAGED_BLOCKCHAIN_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MANAGED_BLOCKCHAIN_READ_ONLY_ACCESS">AMAZON_MANAGED_BLOCKCHAIN_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MCS_FULL_ACCESS">AMAZON_MCS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MCS_READ_ONLY_ACCESS">AMAZON_MCS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MECHANICAL_TURK_FULL_ACCESS">AMAZON_MECHANICAL_TURK_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MECHANICAL_TURK_READ_ONLY">AMAZON_MECHANICAL_TURK_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MEMORY_DB_FULL_ACCESS">AMAZON_MEMORY_DB_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MEMORY_DB_READ_ONLY_ACCESS">AMAZON_MEMORY_DB_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MOBILE_ANALYTICS_FINANCIAL_REPORT_ACCESS">AMAZON_MOBILE_ANALYTICS_FINANCIAL_REPORT_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MOBILE_ANALYTICS_FULL_ACCESS">AMAZON_MOBILE_ANALYTICS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MOBILE_ANALYTICS_NON_FINANCIAL_REPORT_ACCESS">AMAZON_MOBILE_ANALYTICS_NON_FINANCIAL_REPORT_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MOBILE_ANALYTICS_WRITE_ONLY_ACCESS">AMAZON_MOBILE_ANALYTICS_WRITE_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MONITRON_FULL_ACCESS">AMAZON_MONITRON_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MQ_API_FULL_ACCESS">AMAZON_MQ_API_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MQ_API_READ_ONLY_ACCESS">AMAZON_MQ_API_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MQ_FULL_ACCESS">AMAZON_MQ_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MQ_READ_ONLY_ACCESS">AMAZON_MQ_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MSK_CONNECT_READ_ONLY_ACCESS">AMAZON_MSK_CONNECT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MSK_FULL_ACCESS">AMAZON_MSK_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MSK_READ_ONLY_ACCESS">AMAZON_MSK_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_NIMBLE_STUDIO_LAUNCH_PROFILE_WORKER">AMAZON_NIMBLE_STUDIO_LAUNCH_PROFILE_WORKER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_NIMBLE_STUDIO_STUDIO_ADMIN">AMAZON_NIMBLE_STUDIO_STUDIO_ADMIN</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_NIMBLE_STUDIO_STUDIO_USER">AMAZON_NIMBLE_STUDIO_STUDIO_USER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OMICS_FULL_ACCESS">AMAZON_OMICS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OMICS_READ_ONLY_ACCESS">AMAZON_OMICS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ONE_ENTERPRISE_FULL_ACCESS">AMAZON_ONE_ENTERPRISE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ONE_ENTERPRISE_INSTALLER_ACCESS">AMAZON_ONE_ENTERPRISE_INSTALLER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ONE_ENTERPRISE_READ_ONLY_ACCESS">AMAZON_ONE_ENTERPRISE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_DIRECT_QUERY_GLUE_CREATE_ACCESS">AMAZON_OPEN_SEARCH_DIRECT_QUERY_GLUE_CREATE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_INGESTION_FULL_ACCESS">AMAZON_OPEN_SEARCH_INGESTION_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_INGESTION_READ_ONLY_ACCESS">AMAZON_OPEN_SEARCH_INGESTION_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_SERVICE_COGNITO_ACCESS">AMAZON_OPEN_SEARCH_SERVICE_COGNITO_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_SERVICE_FULL_ACCESS">AMAZON_OPEN_SEARCH_SERVICE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_SERVICE_READ_ONLY_ACCESS">AMAZON_OPEN_SEARCH_SERVICE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_POLLY_FULL_ACCESS">AMAZON_POLLY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_POLLY_READ_ONLY_ACCESS">AMAZON_POLLY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_PROMETHEUS_CONSOLE_FULL_ACCESS">AMAZON_PROMETHEUS_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_PROMETHEUS_FULL_ACCESS">AMAZON_PROMETHEUS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_PROMETHEUS_QUERY_ACCESS">AMAZON_PROMETHEUS_QUERY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_PROMETHEUS_REMOTE_WRITE_ACCESS">AMAZON_PROMETHEUS_REMOTE_WRITE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_Q_DEVELOPER_ACCESS">AMAZON_Q_DEVELOPER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_Q_FULL_ACCESS">AMAZON_Q_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_QLDB_CONSOLE_FULL_ACCESS">AMAZON_QLDB_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_QLDB_FULL_ACCESS">AMAZON_QLDB_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_QLDB_READ_ONLY">AMAZON_QLDB_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_CUSTOM_INSTANCE_PROFILE_ROLE_POLICY">AMAZON_RDS_CUSTOM_INSTANCE_PROFILE_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_DATA_FULL_ACCESS">AMAZON_RDS_DATA_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_FULL_ACCESS">AMAZON_RDS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_PERFORMANCE_INSIGHTS_FULL_ACCESS">AMAZON_RDS_PERFORMANCE_INSIGHTS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_PERFORMANCE_INSIGHTS_READ_ONLY">AMAZON_RDS_PERFORMANCE_INSIGHTS_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_READ_ONLY_ACCESS">AMAZON_RDS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_ALL_COMMANDS_FULL_ACCESS">AMAZON_REDSHIFT_ALL_COMMANDS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_DATA_FULL_ACCESS">AMAZON_REDSHIFT_DATA_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_FULL_ACCESS">AMAZON_REDSHIFT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR">AMAZON_REDSHIFT_QUERY_EDITOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR_V2_FULL_ACCESS">AMAZON_REDSHIFT_QUERY_EDITOR_V2_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR_V2_NO_SHARING">AMAZON_REDSHIFT_QUERY_EDITOR_V2_NO_SHARING</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_SHARING">AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_SHARING</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_WRITE_SHARING">AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_WRITE_SHARING</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_READ_ONLY_ACCESS">AMAZON_REDSHIFT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REKOGNITION_CUSTOM_LABELS_FULL_ACCESS">AMAZON_REKOGNITION_CUSTOM_LABELS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REKOGNITION_FULL_ACCESS">AMAZON_REKOGNITION_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REKOGNITION_READ_ONLY_ACCESS">AMAZON_REKOGNITION_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_AUTO_NAMING_FULL_ACCESS">AMAZON_ROUTE53_AUTO_NAMING_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_AUTO_NAMING_READ_ONLY_ACCESS">AMAZON_ROUTE53_AUTO_NAMING_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_AUTO_NAMING_REGISTRANT_ACCESS">AMAZON_ROUTE53_AUTO_NAMING_REGISTRANT_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_DOMAINS_FULL_ACCESS">AMAZON_ROUTE53_DOMAINS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_DOMAINS_READ_ONLY_ACCESS">AMAZON_ROUTE53_DOMAINS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_FULL_ACCESS">AMAZON_ROUTE53_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_PROFILES_FULL_ACCESS">AMAZON_ROUTE53_PROFILES_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_PROFILES_READ_ONLY_ACCESS">AMAZON_ROUTE53_PROFILES_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_READ_ONLY_ACCESS">AMAZON_ROUTE53_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_CLUSTER_FULL_ACCESS">AMAZON_ROUTE53_RECOVERY_CLUSTER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_CLUSTER_READ_ONLY_ACCESS">AMAZON_ROUTE53_RECOVERY_CLUSTER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_FULL_ACCESS">AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_READ_ONLY_ACCESS">AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_READINESS_FULL_ACCESS">AMAZON_ROUTE53_RECOVERY_READINESS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_READINESS_READ_ONLY_ACCESS">AMAZON_ROUTE53_RECOVERY_READINESS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RESOLVER_FULL_ACCESS">AMAZON_ROUTE53_RESOLVER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RESOLVER_READ_ONLY_ACCESS">AMAZON_ROUTE53_RESOLVER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_FULL_ACCESS">AMAZON_S3_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_OUTPOSTS_FULL_ACCESS">AMAZON_S3_OUTPOSTS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_OUTPOSTS_READ_ONLY_ACCESS">AMAZON_S3_OUTPOSTS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_READ_ONLY_ACCESS">AMAZON_S3_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_TABLES_FULL_ACCESS">AMAZON_S3_TABLES_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_TABLES_READ_ONLY_ACCESS">AMAZON_S3_TABLES_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_ADMIN_SERVICE_CATALOG_PRODUCTS_SERVICE_ROLE_POLICY">AMAZON_SAGE_MAKER_ADMIN_SERVICE_CATALOG_PRODUCTS_SERVICE_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_AI_SERVICES_ACCESS">AMAZON_SAGE_MAKER_CANVAS_AI_SERVICES_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_BEDROCK_ACCESS">AMAZON_SAGE_MAKER_CANVAS_BEDROCK_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_DATA_PREP_FULL_ACCESS">AMAZON_SAGE_MAKER_CANVAS_DATA_PREP_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_EMR_SERVERLESS_EXECUTION_ROLE_POLICY">AMAZON_SAGE_MAKER_CANVAS_EMR_SERVERLESS_EXECUTION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_FULL_ACCESS">AMAZON_SAGE_MAKER_CANVAS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_SM_DATA_SCIENCE_ASSISTANT_ACCESS">AMAZON_SAGE_MAKER_CANVAS_SM_DATA_SCIENCE_ASSISTANT_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CLUSTER_INSTANCE_ROLE_POLICY">AMAZON_SAGE_MAKER_CLUSTER_INSTANCE_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_FEATURE_STORE_ACCESS">AMAZON_SAGE_MAKER_FEATURE_STORE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_FULL_ACCESS">AMAZON_SAGE_MAKER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_GROUND_TRUTH_EXECUTION">AMAZON_SAGE_MAKER_GROUND_TRUTH_EXECUTION</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS">AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MODEL_GOVERNANCE_USE_ACCESS">AMAZON_SAGE_MAKER_MODEL_GOVERNANCE_USE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MODEL_REGISTRY_FULL_ACCESS">AMAZON_SAGE_MAKER_MODEL_REGISTRY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_PARTNER_APPS_FULL_ACCESS">AMAZON_SAGE_MAKER_PARTNER_APPS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_PIPELINES_INTEGRATIONS">AMAZON_SAGE_MAKER_PIPELINES_INTEGRATIONS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_READ_ONLY">AMAZON_SAGE_MAKER_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_SERVICE_CATALOG_PRODUCTS_CODE_BUILD_SERVICE_ROLE_POLICY">AMAZON_SAGE_MAKER_SERVICE_CATALOG_PRODUCTS_CODE_BUILD_SERVICE_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_TRAINING_PLAN_CREATE_ACCESS">AMAZON_SAGE_MAKER_TRAINING_PLAN_CREATE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SECURITY_LAKE_ADMINISTRATOR">AMAZON_SECURITY_LAKE_ADMINISTRATOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SECURITY_LAKE_PERMISSIONS_BOUNDARY">AMAZON_SECURITY_LAKE_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SES_FULL_ACCESS">AMAZON_SES_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SES_READ_ONLY_ACCESS">AMAZON_SES_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SNS_FULL_ACCESS">AMAZON_SNS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SNS_READ_ONLY_ACCESS">AMAZON_SNS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SQS_FULL_ACCESS">AMAZON_SQS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SQS_READ_ONLY_ACCESS">AMAZON_SQS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_AUTOMATION_APPROVER_ACCESS">AMAZON_SSM_AUTOMATION_APPROVER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_DIRECTORY_SERVICE_ACCESS">AMAZON_SSM_DIRECTORY_SERVICE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_FULL_ACCESS">AMAZON_SSM_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_MANAGED_EC2_INSTANCE_DEFAULT_POLICY">AMAZON_SSM_MANAGED_EC2_INSTANCE_DEFAULT_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_MANAGED_INSTANCE_CORE">AMAZON_SSM_MANAGED_INSTANCE_CORE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_PATCH_ASSOCIATION">AMAZON_SSM_PATCH_ASSOCIATION</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_READ_ONLY_ACCESS">AMAZON_SSM_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TEXTRACT_FULL_ACCESS">AMAZON_TEXTRACT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_CONSOLE_FULL_ACCESS">AMAZON_TIMESTREAM_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_FULL_ACCESS">AMAZON_TIMESTREAM_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS">AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_READ_ONLY_ACCESS">AMAZON_TIMESTREAM_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TRANSCRIBE_FULL_ACCESS">AMAZON_TRANSCRIBE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TRANSCRIBE_READ_ONLY_ACCESS">AMAZON_TRANSCRIBE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VERIFIED_PERMISSIONS_FULL_ACCESS">AMAZON_VERIFIED_PERMISSIONS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VERIFIED_PERMISSIONS_READ_ONLY_ACCESS">AMAZON_VERIFIED_PERMISSIONS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_CROSS_ACCOUNT_NETWORK_INTERFACE_OPERATIONS">AMAZON_VPC_CROSS_ACCOUNT_NETWORK_INTERFACE_OPERATIONS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_FULL_ACCESS">AMAZON_VPC_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_NETWORK_ACCESS_ANALYZER_FULL_ACCESS_POLICY">AMAZON_VPC_NETWORK_ACCESS_ANALYZER_FULL_ACCESS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_REACHABILITY_ANALYZER_FULL_ACCESS_POLICY">AMAZON_VPC_REACHABILITY_ANALYZER_FULL_ACCESS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_REACHABILITY_ANALYZER_PATH_COMPONENT_READ_POLICY">AMAZON_VPC_REACHABILITY_ANALYZER_PATH_COMPONENT_READ_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_READ_ONLY_ACCESS">AMAZON_VPC_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_DOCS_FULL_ACCESS">AMAZON_WORK_DOCS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_DOCS_READ_ONLY_ACCESS">AMAZON_WORK_DOCS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_MAIL_FULL_ACCESS">AMAZON_WORK_MAIL_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_MAIL_MESSAGE_FLOW_FULL_ACCESS">AMAZON_WORK_MAIL_MESSAGE_FLOW_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_MAIL_MESSAGE_FLOW_READ_ONLY_ACCESS">AMAZON_WORK_MAIL_MESSAGE_FLOW_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_MAIL_READ_ONLY_ACCESS">AMAZON_WORK_MAIL_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_ADMIN">AMAZON_WORK_SPACES_ADMIN</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_APPLICATION_MANAGER_ADMIN_ACCESS">AMAZON_WORK_SPACES_APPLICATION_MANAGER_ADMIN_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_POOL_SERVICE_ACCESS">AMAZON_WORK_SPACES_POOL_SERVICE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_SECURE_BROWSER_READ_ONLY">AMAZON_WORK_SPACES_SECURE_BROWSER_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_SELF_SERVICE_ACCESS">AMAZON_WORK_SPACES_SELF_SERVICE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_SERVICE_ACCESS">AMAZON_WORK_SPACES_SERVICE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_THIN_CLIENT_FULL_ACCESS">AMAZON_WORK_SPACES_THIN_CLIENT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_THIN_CLIENT_READ_ONLY_ACCESS">AMAZON_WORK_SPACES_THIN_CLIENT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_WEB_READ_ONLY">AMAZON_WORK_SPACES_WEB_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORKSPACES_PCA_ACCESS">AMAZON_WORKSPACES_PCA_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ZOCALO_FULL_ACCESS">AMAZON_ZOCALO_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ZOCALO_READ_ONLY_ACCESS">AMAZON_ZOCALO_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AUTO_SCALING_CONSOLE_FULL_ACCESS">AUTO_SCALING_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AUTO_SCALING_CONSOLE_READ_ONLY_ACCESS">AUTO_SCALING_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AUTO_SCALING_FULL_ACCESS">AUTO_SCALING_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AUTO_SCALING_READ_ONLY_ACCESS">AUTO_SCALING_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ACCOUNT_ACTIVITY_ACCESS">AWS_ACCOUNT_ACTIVITY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ACCOUNT_MANAGEMENT_FULL_ACCESS">AWS_ACCOUNT_MANAGEMENT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ACCOUNT_MANAGEMENT_READ_ONLY_ACCESS">AWS_ACCOUNT_MANAGEMENT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ACCOUNT_USAGE_REPORT_ACCESS">AWS_ACCOUNT_USAGE_REPORT_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_AGENTLESS_DISCOVERY_SERVICE">AWS_AGENTLESS_DISCOVERY_SERVICE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_FABRIC_FULL_ACCESS">AWS_APP_FABRIC_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_FABRIC_READ_ONLY_ACCESS">AWS_APP_FABRIC_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_MESH_ENVOY_ACCESS">AWS_APP_MESH_ENVOY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_MESH_FULL_ACCESS">AWS_APP_MESH_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_MESH_PREVIEW_ENVOY_ACCESS">AWS_APP_MESH_PREVIEW_ENVOY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_MESH_READ_ONLY">AWS_APP_MESH_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_RUNNER_FULL_ACCESS">AWS_APP_RUNNER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_RUNNER_READ_ONLY_ACCESS">AWS_APP_RUNNER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_SYNC_ADMINISTRATOR">AWS_APP_SYNC_ADMINISTRATOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_SYNC_INVOKE_FULL_ACCESS">AWS_APP_SYNC_INVOKE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_SYNC_SCHEMA_AUTHOR">AWS_APP_SYNC_SCHEMA_AUTHOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_DISCOVERY_AGENT_ACCESS">AWS_APPLICATION_DISCOVERY_AGENT_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_DISCOVERY_AGENTLESS_COLLECTOR_ACCESS">AWS_APPLICATION_DISCOVERY_AGENTLESS_COLLECTOR_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_DISCOVERY_SERVICE_FULL_ACCESS">AWS_APPLICATION_DISCOVERY_SERVICE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_AGENT_INSTALLATION_POLICY">AWS_APPLICATION_MIGRATION_AGENT_INSTALLATION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_AGENT_POLICY">AWS_APPLICATION_MIGRATION_AGENT_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_EC2_ACCESS">AWS_APPLICATION_MIGRATION_EC2_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_FULL_ACCESS">AWS_APPLICATION_MIGRATION_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_READ_ONLY_ACCESS">AWS_APPLICATION_MIGRATION_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_SERVICE_EC2_INSTANCE_POLICY">AWS_APPLICATION_MIGRATION_SERVICE_EC2_INSTANCE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_SSM_ACCESS">AWS_APPLICATION_MIGRATION_SSM_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_V_CENTER_CLIENT_POLICY">AWS_APPLICATION_MIGRATION_V_CENTER_CLIENT_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ARTIFACT_AGREEMENTS_FULL_ACCESS">AWS_ARTIFACT_AGREEMENTS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ARTIFACT_AGREEMENTS_READ_ONLY_ACCESS">AWS_ARTIFACT_AGREEMENTS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ARTIFACT_REPORTS_READ_ONLY_ACCESS">AWS_ARTIFACT_REPORTS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_AUDIT_MANAGER_ADMINISTRATOR_ACCESS">AWS_AUDIT_MANAGER_ADMINISTRATOR_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_AUDIT_ACCESS">AWS_BACKUP_AUDIT_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_DATA_TRANSFER_ACCESS">AWS_BACKUP_DATA_TRANSFER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_FULL_ACCESS">AWS_BACKUP_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_OPERATOR_ACCESS">AWS_BACKUP_OPERATOR_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_ORGANIZATION_ADMIN_ACCESS">AWS_BACKUP_ORGANIZATION_ADMIN_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_RESTORE_ACCESS_FOR_SAPHANA">AWS_BACKUP_RESTORE_ACCESS_FOR_SAPHANA</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_INDEXING">AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_INDEXING</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_ITEM_RESTORES">AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_ITEM_RESTORES</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_BACKUP">AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_BACKUP</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_RESTORE">AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_RESTORE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BATCH_FULL_ACCESS">AWS_BATCH_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BILLING_CONDUCTOR_FULL_ACCESS">AWS_BILLING_CONDUCTOR_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BILLING_CONDUCTOR_READ_ONLY_ACCESS">AWS_BILLING_CONDUCTOR_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BILLING_READ_ONLY_ACCESS">AWS_BILLING_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUDGETS_ACTIONS_ROLE_POLICY_FOR_RESOURCE_ADMINISTRATION_WITH_SSM">AWS_BUDGETS_ACTIONS_ROLE_POLICY_FOR_RESOURCE_ADMINISTRATION_WITH_SSM</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUDGETS_ACTIONS_WITH_AWS_RESOURCE_CONTROL_ACCESS">AWS_BUDGETS_ACTIONS_WITH_AWS_RESOURCE_CONTROL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUDGETS_READ_ONLY_ACCESS">AWS_BUDGETS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUG_BUST_FULL_ACCESS">AWS_BUG_BUST_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUG_BUST_PLAYER_ACCESS">AWS_BUG_BUST_PLAYER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_FULL_ACCESS">AWS_CERTIFICATE_MANAGER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_AUDITOR">AWS_CERTIFICATE_MANAGER_PRIVATE_CA_AUDITOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_FULL_ACCESS">AWS_CERTIFICATE_MANAGER_PRIVATE_CA_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_PRIVILEGED_USER">AWS_CERTIFICATE_MANAGER_PRIVATE_CA_PRIVILEGED_USER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_READ_ONLY">AWS_CERTIFICATE_MANAGER_PRIVATE_CA_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_USER">AWS_CERTIFICATE_MANAGER_PRIVATE_CA_USER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_READ_ONLY">AWS_CERTIFICATE_MANAGER_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_FULL_ACCESS">AWS_CLEAN_ROOMS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_FULL_ACCESS_NO_QUERYING">AWS_CLEAN_ROOMS_FULL_ACCESS_NO_QUERYING</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_ML_FULL_ACCESS">AWS_CLEAN_ROOMS_ML_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_ML_READ_ONLY_ACCESS">AWS_CLEAN_ROOMS_ML_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_READ_ONLY_ACCESS">AWS_CLEAN_ROOMS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_FORMATION_FULL_ACCESS">AWS_CLOUD_FORMATION_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_FORMATION_READ_ONLY_ACCESS">AWS_CLOUD_FORMATION_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_HSM_FULL_ACCESS">AWS_CLOUD_HSM_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_HSM_READ_ONLY_ACCESS">AWS_CLOUD_HSM_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_MAP_DISCOVER_INSTANCE_ACCESS">AWS_CLOUD_MAP_DISCOVER_INSTANCE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_MAP_FULL_ACCESS">AWS_CLOUD_MAP_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_MAP_READ_ONLY_ACCESS">AWS_CLOUD_MAP_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_MAP_REGISTER_INSTANCE_ACCESS">AWS_CLOUD_MAP_REGISTER_INSTANCE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_SHELL_FULL_ACCESS">AWS_CLOUD_SHELL_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_TRAIL_FULL_ACCESS">AWS_CLOUD_TRAIL_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_TRAIL_READ_ONLY_ACCESS">AWS_CLOUD_TRAIL_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD9_ADMINISTRATOR">AWS_CLOUD9_ADMINISTRATOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD9_ENVIRONMENT_MEMBER">AWS_CLOUD9_ENVIRONMENT_MEMBER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD9_SSM_INSTANCE_PROFILE">AWS_CLOUD9_SSM_INSTANCE_PROFILE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD9_USER">AWS_CLOUD9_USER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_ARTIFACT_ADMIN_ACCESS">AWS_CODE_ARTIFACT_ADMIN_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_ARTIFACT_READ_ONLY_ACCESS">AWS_CODE_ARTIFACT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_BUILD_ADMIN_ACCESS">AWS_CODE_BUILD_ADMIN_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_BUILD_DEVELOPER_ACCESS">AWS_CODE_BUILD_DEVELOPER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_BUILD_READ_ONLY_ACCESS">AWS_CODE_BUILD_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_COMMIT_FULL_ACCESS">AWS_CODE_COMMIT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_COMMIT_POWER_USER">AWS_CODE_COMMIT_POWER_USER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_COMMIT_READ_ONLY">AWS_CODE_COMMIT_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_DEPLOYER_ACCESS">AWS_CODE_DEPLOY_DEPLOYER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_FULL_ACCESS">AWS_CODE_DEPLOY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_READ_ONLY_ACCESS">AWS_CODE_DEPLOY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_ROLE_FOR_ECS">AWS_CODE_DEPLOY_ROLE_FOR_ECS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_ROLE_FOR_ECS_LIMITED">AWS_CODE_DEPLOY_ROLE_FOR_ECS_LIMITED</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_PIPELINE_APPROVER_ACCESS">AWS_CODE_PIPELINE_APPROVER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_PIPELINE_CUSTOM_ACTION_ACCESS">AWS_CODE_PIPELINE_CUSTOM_ACTION_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_PIPELINE_FULL_ACCESS">AWS_CODE_PIPELINE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_PIPELINE_READ_ONLY_ACCESS">AWS_CODE_PIPELINE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_STAR_FULL_ACCESS">AWS_CODE_STAR_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_COMPROMISED_KEY_QUARANTINE">AWS_COMPROMISED_KEY_QUARANTINE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_COMPROMISED_KEY_QUARANTINE_V2">AWS_COMPROMISED_KEY_QUARANTINE_V2</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_COMPROMISED_KEY_QUARANTINE_V3">AWS_COMPROMISED_KEY_QUARANTINE_V3</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CONFIG_USER_ACCESS">AWS_CONFIG_USER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CONNECTOR">AWS_CONNECTOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_DATA_GRANT_OWNER_FULL_ACCESS">AWS_DATA_EXCHANGE_DATA_GRANT_OWNER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_DATA_GRANT_RECEIVER_FULL_ACCESS">AWS_DATA_EXCHANGE_DATA_GRANT_RECEIVER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_FULL_ACCESS">AWS_DATA_EXCHANGE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_PROVIDER_FULL_ACCESS">AWS_DATA_EXCHANGE_PROVIDER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_READ_ONLY">AWS_DATA_EXCHANGE_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_SUBSCRIBER_FULL_ACCESS">AWS_DATA_EXCHANGE_SUBSCRIBER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_PIPELINE_FULL_ACCESS">AWS_DATA_PIPELINE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_PIPELINE_POWER_USER">AWS_DATA_PIPELINE_POWER_USER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_SYNC_FULL_ACCESS">AWS_DATA_SYNC_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_SYNC_READ_ONLY_ACCESS">AWS_DATA_SYNC_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_FLEET_WORKER">AWS_DEADLINE_CLOUD_FLEET_WORKER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_USER_ACCESS_FARMS">AWS_DEADLINE_CLOUD_USER_ACCESS_FARMS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_USER_ACCESS_FLEETS">AWS_DEADLINE_CLOUD_USER_ACCESS_FLEETS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_USER_ACCESS_JOBS">AWS_DEADLINE_CLOUD_USER_ACCESS_JOBS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_USER_ACCESS_QUEUES">AWS_DEADLINE_CLOUD_USER_ACCESS_QUEUES</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_WORKER_HOST">AWS_DEADLINE_CLOUD_WORKER_HOST</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_LENS_LAMBDA_FUNCTION_ACCESS_POLICY">AWS_DEEP_LENS_LAMBDA_FUNCTION_ACCESS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_ACCOUNT_ADMIN_ACCESS">AWS_DEEP_RACER_ACCOUNT_ADMIN_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_CLOUD_FORMATION_ACCESS_POLICY">AWS_DEEP_RACER_CLOUD_FORMATION_ACCESS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_DEFAULT_MULTI_USER_ACCESS">AWS_DEEP_RACER_DEFAULT_MULTI_USER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_FULL_ACCESS">AWS_DEEP_RACER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_ROBO_MAKER_ACCESS_POLICY">AWS_DEEP_RACER_ROBO_MAKER_ACCESS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DENY_ALL">AWS_DENY_ALL</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEVICE_FARM_FULL_ACCESS">AWS_DEVICE_FARM_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECT_CONNECT_FULL_ACCESS">AWS_DIRECT_CONNECT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECT_CONNECT_READ_ONLY_ACCESS">AWS_DIRECT_CONNECT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECTORY_SERVICE_DATA_FULL_ACCESS">AWS_DIRECTORY_SERVICE_DATA_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECTORY_SERVICE_DATA_READ_ONLY_ACCESS">AWS_DIRECTORY_SERVICE_DATA_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECTORY_SERVICE_FULL_ACCESS">AWS_DIRECTORY_SERVICE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECTORY_SERVICE_READ_ONLY_ACCESS">AWS_DIRECTORY_SERVICE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DISCOVERY_CONTINUOUS_EXPORT_FIREHOSE_POLICY">AWS_DISCOVERY_CONTINUOUS_EXPORT_FIREHOSE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_EC2_VSS_SNAPSHOT_POLICY">AWS_EC2_VSS_SNAPSHOT_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_CUSTOM_PLATFORMFOR_EC2_ROLE">AWS_ELASTIC_BEANSTALK_CUSTOM_PLATFORMFOR_EC2_ROLE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_MANAGED_UPDATES_CUSTOMER_ROLE_POLICY">AWS_ELASTIC_BEANSTALK_MANAGED_UPDATES_CUSTOMER_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_MULTICONTAINER_DOCKER">AWS_ELASTIC_BEANSTALK_MULTICONTAINER_DOCKER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_READ_ONLY">AWS_ELASTIC_BEANSTALK_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_WEB_TIER">AWS_ELASTIC_BEANSTALK_WEB_TIER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_WORKER_TIER">AWS_ELASTIC_BEANSTALK_WORKER_TIER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_AGENT_INSTALLATION_POLICY">AWS_ELASTIC_DISASTER_RECOVERY_AGENT_INSTALLATION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS">AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS_V2">AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS_V2</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_FAILBACK_INSTALLATION_POLICY">AWS_ELASTIC_DISASTER_RECOVERY_FAILBACK_INSTALLATION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_LAUNCH_ACTIONS_POLICY">AWS_ELASTIC_DISASTER_RECOVERY_LAUNCH_ACTIONS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_READ_ONLY_ACCESS">AWS_ELASTIC_DISASTER_RECOVERY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONVERT_READ_ONLY">AWS_ELEMENTAL_MEDIA_CONVERT_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_LIVE_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_LIVE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_LIVE_READ_ONLY">AWS_ELEMENTAL_MEDIA_LIVE_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_PACKAGE_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_PACKAGE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_PACKAGE_READ_ONLY">AWS_ELEMENTAL_MEDIA_PACKAGE_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_PACKAGE_V2_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_PACKAGE_V2_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_PACKAGE_V2_READ_ONLY">AWS_ELEMENTAL_MEDIA_PACKAGE_V2_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_STORE_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_STORE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_STORE_READ_ONLY">AWS_ELEMENTAL_MEDIA_STORE_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_TAILOR_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_TAILOR_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_TAILOR_READ_ONLY">AWS_ELEMENTAL_MEDIA_TAILOR_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ENTITY_RESOLUTION_CONSOLE_FULL_ACCESS">AWS_ENTITY_RESOLUTION_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ENTITY_RESOLUTION_CONSOLE_READ_ONLY_ACCESS">AWS_ENTITY_RESOLUTION_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_FM_ADMIN_FULL_ACCESS">AWS_FM_ADMIN_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_FM_ADMIN_READ_ONLY_ACCESS">AWS_FM_ADMIN_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_FM_MEMBER_READ_ONLY_ACCESS">AWS_FM_MEMBER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_FOR_WORD_PRESS_PLUGIN_POLICY">AWS_FOR_WORD_PRESS_PLUGIN_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_CONSOLE_FULL_ACCESS">AWS_GLUE_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_CONSOLE_SAGE_MAKER_NOTEBOOK_FULL_ACCESS">AWS_GLUE_CONSOLE_SAGE_MAKER_NOTEBOOK_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_DATA_BREW_FULL_ACCESS_POLICY">AWS_GLUE_DATA_BREW_FULL_ACCESS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_SCHEMA_REGISTRY_FULL_ACCESS">AWS_GLUE_SCHEMA_REGISTRY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_SCHEMA_REGISTRY_READONLY_ACCESS">AWS_GLUE_SCHEMA_REGISTRY_READONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_SESSION_USER_RESTRICTED_NOTEBOOK_POLICY">AWS_GLUE_SESSION_USER_RESTRICTED_NOTEBOOK_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_SESSION_USER_RESTRICTED_POLICY">AWS_GLUE_SESSION_USER_RESTRICTED_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GRAFANA_ACCOUNT_ADMINISTRATOR">AWS_GRAFANA_ACCOUNT_ADMINISTRATOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GRAFANA_CONSOLE_READ_ONLY_ACCESS">AWS_GRAFANA_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT">AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT_V2">AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT_V2</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GREENGRASS_FULL_ACCESS">AWS_GREENGRASS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GREENGRASS_READ_ONLY_ACCESS">AWS_GREENGRASS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GROUND_STATION_AGENT_INSTANCE_POLICY">AWS_GROUND_STATION_AGENT_INSTANCE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_HEALTH_FULL_ACCESS">AWS_HEALTH_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_HEALTH_IMAGING_FULL_ACCESS">AWS_HEALTH_IMAGING_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_HEALTH_IMAGING_READ_ONLY_ACCESS">AWS_HEALTH_IMAGING_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IAM_IDENTITY_CENTER_ALLOW_LIST_FOR_IDENTITY_CONTEXT">AWS_IAM_IDENTITY_CENTER_ALLOW_LIST_FOR_IDENTITY_CONTEXT</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IDENTITY_SYNC_FULL_ACCESS">AWS_IDENTITY_SYNC_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IDENTITY_SYNC_READ_ONLY_ACCESS">AWS_IDENTITY_SYNC_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IMAGE_BUILDER_FULL_ACCESS">AWS_IMAGE_BUILDER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IMAGE_BUILDER_READ_ONLY_ACCESS">AWS_IMAGE_BUILDER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IMPORT_EXPORT_FULL_ACCESS">AWS_IMPORT_EXPORT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IMPORT_EXPORT_READ_ONLY_ACCESS">AWS_IMPORT_EXPORT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_INCIDENT_MANAGER_INCIDENT_ACCESS_SERVICE_ROLE_POLICY">AWS_INCIDENT_MANAGER_INCIDENT_ACCESS_SERVICE_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_INCIDENT_MANAGER_RESOLVER_ACCESS">AWS_INCIDENT_MANAGER_RESOLVER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_ANALYTICS_FULL_ACCESS">AWS_IO_T_ANALYTICS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_ANALYTICS_READ_ONLY_ACCESS">AWS_IO_T_ANALYTICS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_CONFIG_ACCESS">AWS_IO_T_CONFIG_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_CONFIG_READ_ONLY_ACCESS">AWS_IO_T_CONFIG_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_DATA_ACCESS">AWS_IO_T_DATA_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_DEVICE_TESTER_FOR_FREE_RTOS_FULL_ACCESS">AWS_IO_T_DEVICE_TESTER_FOR_FREE_RTOS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_DEVICE_TESTER_FOR_GREENGRASS_FULL_ACCESS">AWS_IO_T_DEVICE_TESTER_FOR_GREENGRASS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_EVENTS_FULL_ACCESS">AWS_IO_T_EVENTS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_EVENTS_READ_ONLY_ACCESS">AWS_IO_T_EVENTS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_FULL_ACCESS">AWS_IO_T_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS">AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_FULL_ACCESS">AWS_IO_T_SITE_WISE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_READ_ONLY_ACCESS">AWS_IO_T_SITE_WISE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_DATA_ACCESS">AWS_IO_T_WIRELESS_DATA_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_FULL_ACCESS">AWS_IO_T_WIRELESS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_FULL_PUBLISH_ACCESS">AWS_IO_T_WIRELESS_FULL_PUBLISH_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_GATEWAY_CERT_MANAGER">AWS_IO_T_WIRELESS_GATEWAY_CERT_MANAGER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_LOGGING">AWS_IO_T_WIRELESS_LOGGING</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_READ_ONLY_ACCESS">AWS_IO_T_WIRELESS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T1_CLICK_FULL_ACCESS">AWS_IO_T1_CLICK_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T1_CLICK_READ_ONLY_ACCESS">AWS_IO_T1_CLICK_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IQ_FULL_ACCESS">AWS_IQ_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_KEY_MANAGEMENT_SERVICE_POWER_USER">AWS_KEY_MANAGEMENT_SERVICE_POWER_USER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAKE_FORMATION_CROSS_ACCOUNT_MANAGER">AWS_LAKE_FORMATION_CROSS_ACCOUNT_MANAGER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAKE_FORMATION_DATA_ADMIN">AWS_LAKE_FORMATION_DATA_ADMIN</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_EXECUTE">AWS_LAMBDA_EXECUTE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_FULL_ACCESS">AWS_LAMBDA_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_INVOCATION_DYNAMO_DB">AWS_LAMBDA_INVOCATION_DYNAMO_DB</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_READ_ONLY_ACCESS">AWS_LAMBDA_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_AMI_INGESTION">AWS_MARKETPLACE_AMI_INGESTION</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_FULL_ACCESS">AWS_MARKETPLACE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_GET_ENTITLEMENTS">AWS_MARKETPLACE_GET_ENTITLEMENTS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS">AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_MANAGE_SUBSCRIPTIONS">AWS_MARKETPLACE_MANAGE_SUBSCRIPTIONS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_METERING_FULL_ACCESS">AWS_MARKETPLACE_METERING_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_METERING_REGISTER_USAGE">AWS_MARKETPLACE_METERING_REGISTER_USAGE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_PROCUREMENT_SYSTEM_ADMIN_FULL_ACCESS">AWS_MARKETPLACE_PROCUREMENT_SYSTEM_ADMIN_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_READ_ONLY">AWS_MARKETPLACE_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_SELLER_FULL_ACCESS">AWS_MARKETPLACE_SELLER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_SELLER_OFFER_MANAGEMENT">AWS_MARKETPLACE_SELLER_OFFER_MANAGEMENT</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_SELLER_PRODUCTS_FULL_ACCESS">AWS_MARKETPLACE_SELLER_PRODUCTS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_SELLER_PRODUCTS_READ_ONLY">AWS_MARKETPLACE_SELLER_PRODUCTS_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_FULL_ACCESS">AWS_MIGRATION_HUB_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_ORCHESTRATOR_CONSOLE_FULL_ACCESS">AWS_MIGRATION_HUB_ORCHESTRATOR_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_ORCHESTRATOR_INSTANCE_ROLE_POLICY">AWS_MIGRATION_HUB_ORCHESTRATOR_INSTANCE_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_ORCHESTRATOR_PLUGIN">AWS_MIGRATION_HUB_ORCHESTRATOR_PLUGIN</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_REFACTOR_SPACES_ENVIRONMENTS_WITHOUT_BRIDGES_FULL_ACCESS">AWS_MIGRATION_HUB_REFACTOR_SPACES_ENVIRONMENTS_WITHOUT_BRIDGES_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_REFACTOR_SPACES_FULL_ACCESS">AWS_MIGRATION_HUB_REFACTOR_SPACES_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_STRATEGY_COLLECTOR">AWS_MIGRATION_HUB_STRATEGY_COLLECTOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_STRATEGY_CONSOLE_FULL_ACCESS">AWS_MIGRATION_HUB_STRATEGY_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_MANAGER_FULL_ACCESS">AWS_NETWORK_MANAGER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_MANAGER_READ_ONLY_ACCESS">AWS_NETWORK_MANAGER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_CLOUD_WATCH_LOGS">AWS_OPS_WORKS_CLOUD_WATCH_LOGS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE">AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_FULL_ACCESS">AWS_OPS_WORKS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_INSTANCE_REGISTRATION">AWS_OPS_WORKS_INSTANCE_REGISTRATION</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_REGISTER_CLI_EC2">AWS_OPS_WORKS_REGISTER_CLI_EC2</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES">AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ORGANIZATIONS_FULL_ACCESS">AWS_ORGANIZATIONS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ORGANIZATIONS_READ_ONLY_ACCESS">AWS_ORGANIZATIONS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OUTPOSTS_AUTHORIZE_SERVER_POLICY">AWS_OUTPOSTS_AUTHORIZE_SERVER_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PANORAMA_FULL_ACCESS">AWS_PANORAMA_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_FULL_ACCESS">AWS_PARTNER_CENTRAL_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_OPPORTUNITY_MANAGEMENT">AWS_PARTNER_CENTRAL_OPPORTUNITY_MANAGEMENT</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_SANDBOX_FULL_ACCESS">AWS_PARTNER_CENTRAL_SANDBOX_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_SELLING_RESOURCE_SNAPSHOT_JOB_EXECUTION_ROLE_POLICY">AWS_PARTNER_CENTRAL_SELLING_RESOURCE_SNAPSHOT_JOB_EXECUTION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_LED_SUPPORT_READ_ONLY_ACCESS">AWS_PARTNER_LED_SUPPORT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRICE_LIST_SERVICE_FULL_ACCESS">AWS_PRICE_LIST_SERVICE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_AUDITOR">AWS_PRIVATE_CA_AUDITOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_FULL_ACCESS">AWS_PRIVATE_CA_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_PRIVILEGED_USER">AWS_PRIVATE_CA_PRIVILEGED_USER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_READ_ONLY">AWS_PRIVATE_CA_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_USER">AWS_PRIVATE_CA_USER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_MARKETPLACE_ADMIN_FULL_ACCESS">AWS_PRIVATE_MARKETPLACE_ADMIN_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_MARKETPLACE_REQUESTS">AWS_PRIVATE_MARKETPLACE_REQUESTS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PROTON_CODE_BUILD_PROVISIONING_BASIC_ACCESS">AWS_PROTON_CODE_BUILD_PROVISIONING_BASIC_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PROTON_DEVELOPER_ACCESS">AWS_PROTON_DEVELOPER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PROTON_FULL_ACCESS">AWS_PROTON_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PROTON_READ_ONLY_ACCESS">AWS_PROTON_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PURCHASE_ORDERS_SERVICE_ROLE_POLICY">AWS_PURCHASE_ORDERS_SERVICE_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_CFGC_PACKS_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_CFGC_PACKS_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_DEPLOYMENT_ROLE_POLICY">AWS_QUICK_SETUP_DEPLOYMENT_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_DEV_OPS_GURU_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_DEV_OPS_GURU_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_DISTRIBUTOR_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_DISTRIBUTOR_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_ENABLE_AREX_EXECUTION_POLICY">AWS_QUICK_SETUP_ENABLE_AREX_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_ENABLE_DHMC_EXECUTION_POLICY">AWS_QUICK_SETUP_ENABLE_DHMC_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY">AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_PATCH_POLICY_BASELINE_ACCESS">AWS_QUICK_SETUP_PATCH_POLICY_BASELINE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_PATCH_POLICY_DEPLOYMENT_ROLE_POLICY">AWS_QUICK_SETUP_PATCH_POLICY_DEPLOYMENT_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_PATCH_POLICY_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_PATCH_POLICY_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SCHEDULER_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_SCHEDULER_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_DEPLOYMENT_ROLE_POLICY">AWS_QUICK_SETUP_SSM_DEPLOYMENT_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_DEPLOYMENT_S3_BUCKET_ROLE_POLICY">AWS_QUICK_SETUP_SSM_DEPLOYMENT_S3_BUCKET_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_HOST_MGMT_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_SSM_HOST_MGMT_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_LIFECYCLE_MANAGEMENT_EXECUTION_POLICY">AWS_QUICK_SETUP_SSM_LIFECYCLE_MANAGEMENT_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_MANAGE_RESOURCES_EXECUTION_POLICY">AWS_QUICK_SETUP_SSM_MANAGE_RESOURCES_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY">AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_ASSET_BUNDLE_IMPORT_POLICY">AWS_QUICK_SIGHT_ASSET_BUNDLE_IMPORT_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_IO_T_ANALYTICS_ACCESS">AWS_QUICK_SIGHT_IO_T_ANALYTICS_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_REFACTORING_TOOLKIT_FULL_ACCESS">AWS_REFACTORING_TOOLKIT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_REFACTORING_TOOLKIT_SIDECAR_POLICY">AWS_REFACTORING_TOOLKIT_SIDECAR_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_REPOST_SPACE_SUPPORT_OPERATIONS_POLICY">AWS_REPOST_SPACE_SUPPORT_OPERATIONS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESILIENCE_HUB_ASSSESSMENT_EXECUTION_POLICY">AWS_RESILIENCE_HUB_ASSSESSMENT_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_ACCESS_MANAGER_FULL_ACCESS">AWS_RESOURCE_ACCESS_MANAGER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_ACCESS_MANAGER_READ_ONLY_ACCESS">AWS_RESOURCE_ACCESS_MANAGER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_ACCESS_MANAGER_RESOURCE_SHARE_PARTICIPANT_ACCESS">AWS_RESOURCE_ACCESS_MANAGER_RESOURCE_SHARE_PARTICIPANT_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_EXPLORER_FULL_ACCESS">AWS_RESOURCE_EXPLORER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_EXPLORER_ORGANIZATIONS_ACCESS">AWS_RESOURCE_EXPLORER_ORGANIZATIONS_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_EXPLORER_READ_ONLY_ACCESS">AWS_RESOURCE_EXPLORER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_GROUPS_READ_ONLY_ACCESS">AWS_RESOURCE_GROUPS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROBO_MAKER_FULL_ACCESS">AWS_ROBO_MAKER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROBO_MAKER_READ_ONLY_ACCESS">AWS_ROBO_MAKER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROBO_MAKER_SERVICE_ROLE_POLICY">AWS_ROBO_MAKER_SERVICE_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SAVINGS_PLANS_FULL_ACCESS">AWS_SAVINGS_PLANS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SAVINGS_PLANS_READ_ONLY_ACCESS">AWS_SAVINGS_PLANS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_HUB_FULL_ACCESS">AWS_SECURITY_HUB_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_HUB_ORGANIZATIONS_ACCESS">AWS_SECURITY_HUB_ORGANIZATIONS_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_HUB_READ_ONLY_ACCESS">AWS_SECURITY_HUB_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_INCIDENT_RESPONSE_CASE_FULL_ACCESS">AWS_SECURITY_INCIDENT_RESPONSE_CASE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_INCIDENT_RESPONSE_FULL_ACCESS">AWS_SECURITY_INCIDENT_RESPONSE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_INCIDENT_RESPONSE_READ_ONLY_ACCESS">AWS_SECURITY_INCIDENT_RESPONSE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_ADMIN_FULL_ACCESS">AWS_SERVICE_CATALOG_ADMIN_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_ADMIN_READ_ONLY_ACCESS">AWS_SERVICE_CATALOG_ADMIN_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_APP_REGISTRY_FULL_ACCESS">AWS_SERVICE_CATALOG_APP_REGISTRY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_APP_REGISTRY_READ_ONLY_ACCESS">AWS_SERVICE_CATALOG_APP_REGISTRY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_END_USER_FULL_ACCESS">AWS_SERVICE_CATALOG_END_USER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_END_USER_READ_ONLY_ACCESS">AWS_SERVICE_CATALOG_END_USER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_AUTOMATION_DIAGNOSIS_BUCKET_POLICY">AWS_SSM_AUTOMATION_DIAGNOSIS_BUCKET_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_DIAGNOSIS_AUTOMATION_ADMINISTRATION_ROLE_POLICY">AWS_SSM_DIAGNOSIS_AUTOMATION_ADMINISTRATION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_DIAGNOSIS_AUTOMATION_EXECUTION_ROLE_POLICY">AWS_SSM_DIAGNOSIS_AUTOMATION_EXECUTION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_DIAGNOSIS_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY">AWS_SSM_DIAGNOSIS_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_REMEDIATION_AUTOMATION_ADMINISTRATION_ROLE_POLICY">AWS_SSM_REMEDIATION_AUTOMATION_ADMINISTRATION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_REMEDIATION_AUTOMATION_EXECUTION_ROLE_POLICY">AWS_SSM_REMEDIATION_AUTOMATION_EXECUTION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_REMEDIATION_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY">AWS_SSM_REMEDIATION_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_DIRECTORY_ADMINISTRATOR">AWS_SSO_DIRECTORY_ADMINISTRATOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_DIRECTORY_READ_ONLY">AWS_SSO_DIRECTORY_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_MASTER_ACCOUNT_ADMINISTRATOR">AWS_SSO_MASTER_ACCOUNT_ADMINISTRATOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_MEMBER_ACCOUNT_ADMINISTRATOR">AWS_SSO_MEMBER_ACCOUNT_ADMINISTRATOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_READ_ONLY">AWS_SSO_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STEP_FUNCTIONS_CONSOLE_FULL_ACCESS">AWS_STEP_FUNCTIONS_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STEP_FUNCTIONS_FULL_ACCESS">AWS_STEP_FUNCTIONS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STEP_FUNCTIONS_READ_ONLY_ACCESS">AWS_STEP_FUNCTIONS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STORAGE_GATEWAY_FULL_ACCESS">AWS_STORAGE_GATEWAY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STORAGE_GATEWAY_READ_ONLY_ACCESS">AWS_STORAGE_GATEWAY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_ACCESS">AWS_SUPPORT_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_APP_FULL_ACCESS">AWS_SUPPORT_APP_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_APP_READ_ONLY_ACCESS">AWS_SUPPORT_APP_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_PLANS_FULL_ACCESS">AWS_SUPPORT_PLANS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_PLANS_READ_ONLY_ACCESS">AWS_SUPPORT_PLANS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_ENABLE_CONFIG_RECORDING_EXECUTION_POLICY">AWS_SYSTEMS_MANAGER_ENABLE_CONFIG_RECORDING_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_ENABLE_EXPLORER_EXECUTION_POLICY">AWS_SYSTEMS_MANAGER_ENABLE_EXPLORER_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_FOR_SAP_FULL_ACCESS">AWS_SYSTEMS_MANAGER_FOR_SAP_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_FOR_SAP_READ_ONLY_ACCESS">AWS_SYSTEMS_MANAGER_FOR_SAP_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_ASSET_SERVER_POLICY">AWS_THINKBOX_ASSET_SERVER_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_AWS_PORTAL_ADMIN_POLICY">AWS_THINKBOX_AWS_PORTAL_ADMIN_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_AWS_PORTAL_GATEWAY_POLICY">AWS_THINKBOX_AWS_PORTAL_GATEWAY_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_AWS_PORTAL_WORKER_POLICY">AWS_THINKBOX_AWS_PORTAL_WORKER_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ACCESS_POLICY">AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ACCESS_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ADMIN_POLICY">AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ADMIN_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_ADMIN_POLICY">AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_ADMIN_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_WORKER_POLICY">AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_WORKER_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRANSFER_CONSOLE_FULL_ACCESS">AWS_TRANSFER_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRANSFER_FULL_ACCESS">AWS_TRANSFER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRANSFER_READ_ONLY_ACCESS">AWS_TRANSFER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRUSTED_ADVISOR_PRIORITY_FULL_ACCESS">AWS_TRUSTED_ADVISOR_PRIORITY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRUSTED_ADVISOR_PRIORITY_READ_ONLY_ACCESS">AWS_TRUSTED_ADVISOR_PRIORITY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_VENDOR_INSIGHTS_ASSESSOR_FULL_ACCESS">AWS_VENDOR_INSIGHTS_ASSESSOR_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_VENDOR_INSIGHTS_ASSESSOR_READ_ONLY">AWS_VENDOR_INSIGHTS_ASSESSOR_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_VENDOR_INSIGHTS_VENDOR_FULL_ACCESS">AWS_VENDOR_INSIGHTS_VENDOR_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_VENDOR_INSIGHTS_VENDOR_READ_ONLY">AWS_VENDOR_INSIGHTS_VENDOR_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WAF_CONSOLE_FULL_ACCESS">AWS_WAF_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WAF_CONSOLE_READ_ONLY_ACCESS">AWS_WAF_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WAF_FULL_ACCESS">AWS_WAF_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WAF_READ_ONLY_ACCESS">AWS_WAF_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WICKR_FULL_ACCESS">AWS_WICKR_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_X_RAY_DAEMON_WRITE_ACCESS">AWS_X_RAY_DAEMON_WRITE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_CROSS_ACCOUNT_SHARING_CONFIGURATION">AWS_XRAY_CROSS_ACCOUNT_SHARING_CONFIGURATION</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_FULL_ACCESS">AWS_XRAY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_READ_ONLY_ACCESS">AWS_XRAY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_WRITE_ONLY_ACCESS">AWS_XRAY_WRITE_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_FRONT_FULL_ACCESS">CLOUD_FRONT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_FRONT_READ_ONLY_ACCESS">CLOUD_FRONT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_SEARCH_FULL_ACCESS">CLOUD_SEARCH_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_SEARCH_READ_ONLY_ACCESS">CLOUD_SEARCH_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_ACTIONS_EC2_ACCESS">CLOUD_WATCH_ACTIONS_EC2_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_AGENT_ADMIN_POLICY">CLOUD_WATCH_AGENT_ADMIN_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_AGENT_SERVER_POLICY">CLOUD_WATCH_AGENT_SERVER_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_APPLICATION_INSIGHTS_FULL_ACCESS">CLOUD_WATCH_APPLICATION_INSIGHTS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_APPLICATION_INSIGHTS_READ_ONLY_ACCESS">CLOUD_WATCH_APPLICATION_INSIGHTS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_APPLICATION_SIGNALS_FULL_ACCESS">CLOUD_WATCH_APPLICATION_SIGNALS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_APPLICATION_SIGNALS_READ_ONLY_ACCESS">CLOUD_WATCH_APPLICATION_SIGNALS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_AUTOMATIC_DASHBOARDS_ACCESS">CLOUD_WATCH_AUTOMATIC_DASHBOARDS_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_CROSS_ACCOUNT_SHARING_CONFIGURATION">CLOUD_WATCH_CROSS_ACCOUNT_SHARING_CONFIGURATION</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_EVENTS_FULL_ACCESS">CLOUD_WATCH_EVENTS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_EVENTS_READ_ONLY_ACCESS">CLOUD_WATCH_EVENTS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_FULL_ACCESS">CLOUD_WATCH_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_FULL_ACCESS_V2">CLOUD_WATCH_FULL_ACCESS_V2</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_INTERNET_MONITOR_FULL_ACCESS">CLOUD_WATCH_INTERNET_MONITOR_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_INTERNET_MONITOR_READ_ONLY_ACCESS">CLOUD_WATCH_INTERNET_MONITOR_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LAMBDA_APPLICATION_SIGNALS_EXECUTION_ROLE_POLICY">CLOUD_WATCH_LAMBDA_APPLICATION_SIGNALS_EXECUTION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LAMBDA_INSIGHTS_EXECUTION_ROLE_POLICY">CLOUD_WATCH_LAMBDA_INSIGHTS_EXECUTION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LOGS_CROSS_ACCOUNT_SHARING_CONFIGURATION">CLOUD_WATCH_LOGS_CROSS_ACCOUNT_SHARING_CONFIGURATION</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LOGS_FULL_ACCESS">CLOUD_WATCH_LOGS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LOGS_READ_ONLY_ACCESS">CLOUD_WATCH_LOGS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_NETWORK_FLOW_MONITOR_AGENT_PUBLISH_POLICY">CLOUD_WATCH_NETWORK_FLOW_MONITOR_AGENT_PUBLISH_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_OPEN_SEARCH_DASHBOARD_ACCESS">CLOUD_WATCH_OPEN_SEARCH_DASHBOARD_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_OPEN_SEARCH_DASHBOARDS_FULL_ACCESS">CLOUD_WATCH_OPEN_SEARCH_DASHBOARDS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_READ_ONLY_ACCESS">CLOUD_WATCH_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_SYNTHETICS_FULL_ACCESS">CLOUD_WATCH_SYNTHETICS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_SYNTHETICS_READ_ONLY_ACCESS">CLOUD_WATCH_SYNTHETICS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COMPREHEND_FULL_ACCESS">COMPREHEND_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COMPREHEND_MEDICAL_FULL_ACCESS">COMPREHEND_MEDICAL_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COMPREHEND_READ_ONLY">COMPREHEND_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COMPUTE_OPTIMIZER_READ_ONLY_ACCESS">COMPUTE_OPTIMIZER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COST_OPTIMIZATION_HUB_ADMIN_ACCESS">COST_OPTIMIZATION_HUB_ADMIN_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COST_OPTIMIZATION_HUB_READ_ONLY_ACCESS">COST_OPTIMIZATION_HUB_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_FAST_LAUNCH_FULL_ACCESS">EC2_FAST_LAUNCH_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_IMAGE_BUILDER_CROSS_ACCOUNT_DISTRIBUTION_ACCESS">EC2_IMAGE_BUILDER_CROSS_ACCOUNT_DISTRIBUTION_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_INSTANCE_CONNECT">EC2_INSTANCE_CONNECT</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER">EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER_ECR_CONTAINER_BUILDS">EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER_ECR_CONTAINER_BUILDS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELASTIC_LOAD_BALANCING_FULL_ACCESS">ELASTIC_LOAD_BALANCING_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELASTIC_LOAD_BALANCING_READ_ONLY">ELASTIC_LOAD_BALANCING_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_ACTIVATIONS_DOWNLOAD_SOFTWARE_ACCESS">ELEMENTAL_ACTIVATIONS_DOWNLOAD_SOFTWARE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_ACTIVATIONS_FULL_ACCESS">ELEMENTAL_ACTIVATIONS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_ACTIVATIONS_GENERATE_LICENSES">ELEMENTAL_ACTIVATIONS_GENERATE_LICENSES</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_ACTIVATIONS_READ_ONLY_ACCESS">ELEMENTAL_ACTIVATIONS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_APPLIANCES_SOFTWARE_FULL_ACCESS">ELEMENTAL_APPLIANCES_SOFTWARE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_APPLIANCES_SOFTWARE_READ_ONLY_ACCESS">ELEMENTAL_APPLIANCES_SOFTWARE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_SUPPORT_CENTER_FULL_ACCESS">ELEMENTAL_SUPPORT_CENTER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GAME_LIFT_CONTAINER_FLEET_POLICY">GAME_LIFT_CONTAINER_FLEET_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GAME_LIFT_GAME_SERVER_GROUP_POLICY">GAME_LIFT_GAME_SERVER_GROUP_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GLOBAL_ACCELERATOR_FULL_ACCESS">GLOBAL_ACCELERATOR_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GLOBAL_ACCELERATOR_READ_ONLY_ACCESS">GLOBAL_ACCELERATOR_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS">GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS">GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_ACCESS_ADVISOR_READ_ONLY">IAM_ACCESS_ADVISOR_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_ACCESS_ANALYZER_FULL_ACCESS">IAM_ACCESS_ANALYZER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_ACCESS_ANALYZER_READ_ONLY_ACCESS">IAM_ACCESS_ANALYZER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_FULL_ACCESS">IAM_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_READ_ONLY_ACCESS">IAM_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_SELF_MANAGE_SERVICE_SPECIFIC_CREDENTIALS">IAM_SELF_MANAGE_SERVICE_SPECIFIC_CREDENTIALS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_USER_CHANGE_PASSWORD">IAM_USER_CHANGE_PASSWORD</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_USER_SSH_KEYS">IAM_USER_SSH_KEYS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IVS_FULL_ACCESS">IVS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IVS_READ_ONLY_ACCESS">IVS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.MEDIA_CONNECT_GATEWAY_INSTANCE_ROLE_POLICY">MEDIA_CONNECT_GATEWAY_INSTANCE_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_CONSOLE_FULL_ACCESS">NEPTUNE_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_FULL_ACCESS">NEPTUNE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_GRAPH_READ_ONLY_ACCESS">NEPTUNE_GRAPH_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_READ_ONLY_ACCESS">NEPTUNE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.OAM_FULL_ACCESS">OAM_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.OAM_READ_ONLY_ACCESS">OAM_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.PARTNER_CENTRAL_ACCOUNT_MANAGEMENT_USER_ROLE_ASSOCIATION">PARTNER_CENTRAL_ACCOUNT_MANAGEMENT_USER_ROLE_ASSOCIATION</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.POWER_USER_ACCESS">POWER_USER_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.Q_BUSINESS_QUICKSIGHT_PLUGIN_POLICY">Q_BUSINESS_QUICKSIGHT_PLUGIN_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.READ_ONLY_ACCESS">READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.RESOURCE_GROUPS_AND_TAG_EDITOR_FULL_ACCESS">RESOURCE_GROUPS_AND_TAG_EDITOR_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.RESOURCE_GROUPS_AND_TAG_EDITOR_READ_ONLY_ACCESS">RESOURCE_GROUPS_AND_TAG_EDITOR_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.RESOURCE_GROUPS_TAGGING_API_TAG_UNTAG_SUPPORTED_RESOURCES">RESOURCE_GROUPS_TAGGING_API_TAG_UNTAG_SUPPORTED_RESOURCES</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ROSA_MANAGE_SUBSCRIPTION">ROSA_MANAGE_SUBSCRIPTION</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_FULL_ACCESS">SAGE_MAKER_STUDIO_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_PROJECT_ROLE_MACHINE_LEARNING_POLICY">SAGE_MAKER_STUDIO_PROJECT_ROLE_MACHINE_LEARNING_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_PERMISSIONS_BOUNDARY">SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_POLICY">SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SECRETS_MANAGER_READ_WRITE">SECRETS_MANAGER_READ_WRITE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SECURITY_AUDIT">SECURITY_AUDIT</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVER_MIGRATION_CONNECTOR">SERVER_MIGRATION_CONNECTOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVER_MIGRATION_SERVICE_CONSOLE_FULL_ACCESS">SERVER_MIGRATION_SERVICE_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVICE_QUOTAS_FULL_ACCESS">SERVICE_QUOTAS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVICE_QUOTAS_READ_ONLY_ACCESS">SERVICE_QUOTAS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SIMPLE_WORKFLOW_FULL_ACCESS">SIMPLE_WORKFLOW_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.TRANSLATE_FULL_ACCESS">TRANSLATE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.TRANSLATE_READ_ONLY">TRANSLATE_READ_ONLY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.VPC_LATTICE_FULL_ACCESS">VPC_LATTICE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.VPC_LATTICE_READ_ONLY_ACCESS">VPC_LATTICE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.VPC_LATTICE_SERVICES_INVOKE_ACCESS">VPC_LATTICE_SERVICES_INVOKE_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.WELL_ARCHITECTED_CONSOLE_FULL_ACCESS">WELL_ARCHITECTED_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.WELL_ARCHITECTED_CONSOLE_READ_ONLY_ACCESS">WELL_ARCHITECTED_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.WORK_LINK_SERVICE_ROLE_POLICY">WORK_LINK_SERVICE_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
 
 ---
 
 ##### `ADMINISTRATOR_ACCESS`<sup>Required</sup> <a name="ADMINISTRATOR_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ADMINISTRATOR_ACCESS"></a>
 
 ```typescript
-public readonly ADMINISTRATOR_ACCESS: IManagedPolicy;
+public readonly ADMINISTRATOR_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ADMINISTRATOR_ACCESS_AMPLIFY`<sup>Required</sup> <a name="ADMINISTRATOR_ACCESS_AMPLIFY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ADMINISTRATOR_ACCESS_AMPLIFY"></a>
 
 ```typescript
-public readonly ADMINISTRATOR_ACCESS_AMPLIFY: IManagedPolicy;
+public readonly ADMINISTRATOR_ACCESS_AMPLIFY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ADMINISTRATOR_ACCESS_AWS_ELASTIC_BEANSTALK`<sup>Required</sup> <a name="ADMINISTRATOR_ACCESS_AWS_ELASTIC_BEANSTALK" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ADMINISTRATOR_ACCESS_AWS_ELASTIC_BEANSTALK"></a>
 
 ```typescript
-public readonly ADMINISTRATOR_ACCESS_AWS_ELASTIC_BEANSTALK: IManagedPolicy;
+public readonly ADMINISTRATOR_ACCESS_AWS_ELASTIC_BEANSTALK: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AI_OPS_ASSISTANT_POLICY`<sup>Required</sup> <a name="AI_OPS_ASSISTANT_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_ASSISTANT_POLICY"></a>
 
 ```typescript
-public readonly AI_OPS_ASSISTANT_POLICY: IManagedPolicy;
+public readonly AI_OPS_ASSISTANT_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AI_OPS_CONSOLE_ADMIN_POLICY`<sup>Required</sup> <a name="AI_OPS_CONSOLE_ADMIN_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_CONSOLE_ADMIN_POLICY"></a>
 
 ```typescript
-public readonly AI_OPS_CONSOLE_ADMIN_POLICY: IManagedPolicy;
+public readonly AI_OPS_CONSOLE_ADMIN_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AI_OPS_OPERATOR_ACCESS`<sup>Required</sup> <a name="AI_OPS_OPERATOR_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_OPERATOR_ACCESS"></a>
 
 ```typescript
-public readonly AI_OPS_OPERATOR_ACCESS: IManagedPolicy;
+public readonly AI_OPS_OPERATOR_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AI_OPS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AI_OPS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AI_OPS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AI_OPS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ALEXA_FOR_BUSINESS_DEVICE_SETUP`<sup>Required</sup> <a name="ALEXA_FOR_BUSINESS_DEVICE_SETUP" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_DEVICE_SETUP"></a>
 
 ```typescript
-public readonly ALEXA_FOR_BUSINESS_DEVICE_SETUP: IManagedPolicy;
+public readonly ALEXA_FOR_BUSINESS_DEVICE_SETUP: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ALEXA_FOR_BUSINESS_FULL_ACCESS`<sup>Required</sup> <a name="ALEXA_FOR_BUSINESS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly ALEXA_FOR_BUSINESS_FULL_ACCESS: IManagedPolicy;
+public readonly ALEXA_FOR_BUSINESS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ALEXA_FOR_BUSINESS_GATEWAY_EXECUTION`<sup>Required</sup> <a name="ALEXA_FOR_BUSINESS_GATEWAY_EXECUTION" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_GATEWAY_EXECUTION"></a>
 
 ```typescript
-public readonly ALEXA_FOR_BUSINESS_GATEWAY_EXECUTION: IManagedPolicy;
+public readonly ALEXA_FOR_BUSINESS_GATEWAY_EXECUTION: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ALEXA_FOR_BUSINESS_LIFESIZE_DELEGATED_ACCESS_POLICY`<sup>Required</sup> <a name="ALEXA_FOR_BUSINESS_LIFESIZE_DELEGATED_ACCESS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_LIFESIZE_DELEGATED_ACCESS_POLICY"></a>
 
 ```typescript
-public readonly ALEXA_FOR_BUSINESS_LIFESIZE_DELEGATED_ACCESS_POLICY: IManagedPolicy;
+public readonly ALEXA_FOR_BUSINESS_LIFESIZE_DELEGATED_ACCESS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ALEXA_FOR_BUSINESS_POLY_DELEGATED_ACCESS_POLICY`<sup>Required</sup> <a name="ALEXA_FOR_BUSINESS_POLY_DELEGATED_ACCESS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_POLY_DELEGATED_ACCESS_POLICY"></a>
 
 ```typescript
-public readonly ALEXA_FOR_BUSINESS_POLY_DELEGATED_ACCESS_POLICY: IManagedPolicy;
+public readonly ALEXA_FOR_BUSINESS_POLY_DELEGATED_ACCESS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ALEXA_FOR_BUSINESS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="ALEXA_FOR_BUSINESS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ALEXA_FOR_BUSINESS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly ALEXA_FOR_BUSINESS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly ALEXA_FOR_BUSINESS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_API_GATEWAY_ADMINISTRATOR`<sup>Required</sup> <a name="AMAZON_API_GATEWAY_ADMINISTRATOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_API_GATEWAY_ADMINISTRATOR"></a>
 
 ```typescript
-public readonly AMAZON_API_GATEWAY_ADMINISTRATOR: IManagedPolicy;
+public readonly AMAZON_API_GATEWAY_ADMINISTRATOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_API_GATEWAY_INVOKE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_API_GATEWAY_INVOKE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_API_GATEWAY_INVOKE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_API_GATEWAY_INVOKE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_API_GATEWAY_INVOKE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_APP_FLOW_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_APP_FLOW_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_APP_FLOW_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_APP_FLOW_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_APP_FLOW_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_APP_FLOW_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_APP_FLOW_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_APP_FLOW_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_APP_FLOW_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_APP_FLOW_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_APP_STREAM_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_APP_STREAM_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_APP_STREAM_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_APP_STREAM_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_APP_STREAM_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_APP_STREAM_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_APP_STREAM_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_APP_STREAM_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_APP_STREAM_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_APP_STREAM_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ATHENA_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ATHENA_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ATHENA_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ATHENA_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ATHENA_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_AUGMENTED_AI_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_AUGMENTED_AI_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AUGMENTED_AI_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_AUGMENTED_AI_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_AUGMENTED_AI_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_AUGMENTED_AI_HUMAN_LOOP_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_AUGMENTED_AI_HUMAN_LOOP_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AUGMENTED_AI_HUMAN_LOOP_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_AUGMENTED_AI_HUMAN_LOOP_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_AUGMENTED_AI_HUMAN_LOOP_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_AUGMENTED_AI_INTEGRATED_API_ACCESS`<sup>Required</sup> <a name="AMAZON_AUGMENTED_AI_INTEGRATED_API_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AUGMENTED_AI_INTEGRATED_API_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_AUGMENTED_AI_INTEGRATED_API_ACCESS: IManagedPolicy;
+public readonly AMAZON_AUGMENTED_AI_INTEGRATED_API_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_AURORA_DSQL_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_AURORA_DSQL_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AURORA_DSQL_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_AURORA_DSQL_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_AURORA_DSQL_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_AURORA_DSQL_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_AURORA_DSQL_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AURORA_DSQL_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_AURORA_DSQL_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_AURORA_DSQL_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_AURORA_DSQL_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_AURORA_DSQL_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AURORA_DSQL_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_AURORA_DSQL_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_AURORA_DSQL_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_BEDROCK_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_BEDROCK_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_BEDROCK_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_BEDROCK_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_BEDROCK_READ_ONLY`<sup>Required</sup> <a name="AMAZON_BEDROCK_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_BEDROCK_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_BEDROCK_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_BEDROCK_STUDIO_PERMISSIONS_BOUNDARY`<sup>Required</sup> <a name="AMAZON_BEDROCK_STUDIO_PERMISSIONS_BOUNDARY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_STUDIO_PERMISSIONS_BOUNDARY"></a>
 
 ```typescript
-public readonly AMAZON_BEDROCK_STUDIO_PERMISSIONS_BOUNDARY: IManagedPolicy;
+public readonly AMAZON_BEDROCK_STUDIO_PERMISSIONS_BOUNDARY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_BRAKET_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_BRAKET_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BRAKET_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_BRAKET_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_BRAKET_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_BRAKET_JOBS_EXECUTION_POLICY`<sup>Required</sup> <a name="AMAZON_BRAKET_JOBS_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BRAKET_JOBS_EXECUTION_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_BRAKET_JOBS_EXECUTION_POLICY: IManagedPolicy;
+public readonly AMAZON_BRAKET_JOBS_EXECUTION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CHIME_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_CHIME_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CHIME_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CHIME_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_CHIME_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CHIME_READ_ONLY`<sup>Required</sup> <a name="AMAZON_CHIME_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CHIME_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_CHIME_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_CHIME_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CHIME_SDK`<sup>Required</sup> <a name="AMAZON_CHIME_SDK" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CHIME_SDK"></a>
 
 ```typescript
-public readonly AMAZON_CHIME_SDK: IManagedPolicy;
+public readonly AMAZON_CHIME_SDK: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CHIME_USER_MANAGEMENT`<sup>Required</sup> <a name="AMAZON_CHIME_USER_MANAGEMENT" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CHIME_USER_MANAGEMENT"></a>
 
 ```typescript
-public readonly AMAZON_CHIME_USER_MANAGEMENT: IManagedPolicy;
+public readonly AMAZON_CHIME_USER_MANAGEMENT: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CLOUD_DIRECTORY_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_CLOUD_DIRECTORY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_DIRECTORY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CLOUD_DIRECTORY_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_CLOUD_DIRECTORY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CLOUD_DIRECTORY_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_CLOUD_DIRECTORY_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_DIRECTORY_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CLOUD_DIRECTORY_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_CLOUD_DIRECTORY_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CLOUD_WATCH_EVIDENTLY_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_CLOUD_WATCH_EVIDENTLY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_WATCH_EVIDENTLY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CLOUD_WATCH_EVIDENTLY_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_CLOUD_WATCH_EVIDENTLY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CLOUD_WATCH_EVIDENTLY_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_CLOUD_WATCH_EVIDENTLY_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_WATCH_EVIDENTLY_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CLOUD_WATCH_EVIDENTLY_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_CLOUD_WATCH_EVIDENTLY_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CLOUD_WATCH_RUM_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_CLOUD_WATCH_RUM_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_WATCH_RUM_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CLOUD_WATCH_RUM_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_CLOUD_WATCH_RUM_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CLOUD_WATCH_RUM_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_CLOUD_WATCH_RUM_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CLOUD_WATCH_RUM_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CLOUD_WATCH_RUM_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_CLOUD_WATCH_RUM_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CODE_CATALYST_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_CODE_CATALYST_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_CATALYST_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CODE_CATALYST_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_CODE_CATALYST_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CODE_CATALYST_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_CODE_CATALYST_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_CATALYST_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CODE_CATALYST_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_CODE_CATALYST_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CODE_GURU_PROFILER_AGENT_ACCESS`<sup>Required</sup> <a name="AMAZON_CODE_GURU_PROFILER_AGENT_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_PROFILER_AGENT_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CODE_GURU_PROFILER_AGENT_ACCESS: IManagedPolicy;
+public readonly AMAZON_CODE_GURU_PROFILER_AGENT_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CODE_GURU_PROFILER_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_CODE_GURU_PROFILER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_PROFILER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CODE_GURU_PROFILER_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_CODE_GURU_PROFILER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CODE_GURU_PROFILER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_CODE_GURU_PROFILER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_PROFILER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CODE_GURU_PROFILER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_CODE_GURU_PROFILER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CODE_GURU_REVIEWER_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_CODE_GURU_REVIEWER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_REVIEWER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CODE_GURU_REVIEWER_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_CODE_GURU_REVIEWER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CODE_GURU_REVIEWER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_CODE_GURU_REVIEWER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_REVIEWER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CODE_GURU_REVIEWER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_CODE_GURU_REVIEWER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CODE_GURU_SECURITY_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_CODE_GURU_SECURITY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_SECURITY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CODE_GURU_SECURITY_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_CODE_GURU_SECURITY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CODE_GURU_SECURITY_SCAN_ACCESS`<sup>Required</sup> <a name="AMAZON_CODE_GURU_SECURITY_SCAN_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CODE_GURU_SECURITY_SCAN_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CODE_GURU_SECURITY_SCAN_ACCESS: IManagedPolicy;
+public readonly AMAZON_CODE_GURU_SECURITY_SCAN_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_COGNITO_DEVELOPER_AUTHENTICATED_IDENTITIES`<sup>Required</sup> <a name="AMAZON_COGNITO_DEVELOPER_AUTHENTICATED_IDENTITIES" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_DEVELOPER_AUTHENTICATED_IDENTITIES"></a>
 
 ```typescript
-public readonly AMAZON_COGNITO_DEVELOPER_AUTHENTICATED_IDENTITIES: IManagedPolicy;
+public readonly AMAZON_COGNITO_DEVELOPER_AUTHENTICATED_IDENTITIES: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_COGNITO_POWER_USER`<sup>Required</sup> <a name="AMAZON_COGNITO_POWER_USER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_POWER_USER"></a>
 
 ```typescript
-public readonly AMAZON_COGNITO_POWER_USER: IManagedPolicy;
+public readonly AMAZON_COGNITO_POWER_USER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_COGNITO_READ_ONLY`<sup>Required</sup> <a name="AMAZON_COGNITO_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_COGNITO_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_COGNITO_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_COGNITO_UN_AUTHED_IDENTITIES_SESSION_POLICY`<sup>Required</sup> <a name="AMAZON_COGNITO_UN_AUTHED_IDENTITIES_SESSION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_UN_AUTHED_IDENTITIES_SESSION_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_COGNITO_UN_AUTHED_IDENTITIES_SESSION_POLICY: IManagedPolicy;
+public readonly AMAZON_COGNITO_UN_AUTHED_IDENTITIES_SESSION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_COGNITO_UNAUTHENTICATED_IDENTITIES`<sup>Required</sup> <a name="AMAZON_COGNITO_UNAUTHENTICATED_IDENTITIES" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_COGNITO_UNAUTHENTICATED_IDENTITIES"></a>
 
 ```typescript
-public readonly AMAZON_COGNITO_UNAUTHENTICATED_IDENTITIES: IManagedPolicy;
+public readonly AMAZON_COGNITO_UNAUTHENTICATED_IDENTITIES: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CONNECT_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_CONNECT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CONNECT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CONNECT_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_CONNECT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CONNECT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_CONNECT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CONNECT_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CONNECT_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_CONNECT_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_CONNECT_VOICE_ID_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_CONNECT_VOICE_ID_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_CONNECT_VOICE_ID_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_CONNECT_VOICE_ID_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_CONNECT_VOICE_ID_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DATA_ZONE_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY`<sup>Required</sup> <a name="AMAZON_DATA_ZONE_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY"></a>
 
 ```typescript
-public readonly AMAZON_DATA_ZONE_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY: IManagedPolicy;
+public readonly AMAZON_DATA_ZONE_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DATA_ZONE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_DATA_ZONE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DATA_ZONE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_DATA_ZONE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DATA_ZONE_FULL_USER_ACCESS`<sup>Required</sup> <a name="AMAZON_DATA_ZONE_FULL_USER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_FULL_USER_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DATA_ZONE_FULL_USER_ACCESS: IManagedPolicy;
+public readonly AMAZON_DATA_ZONE_FULL_USER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DATA_ZONE_REDSHIFT_GLUE_PROVISIONING_POLICY`<sup>Required</sup> <a name="AMAZON_DATA_ZONE_REDSHIFT_GLUE_PROVISIONING_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_REDSHIFT_GLUE_PROVISIONING_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_DATA_ZONE_REDSHIFT_GLUE_PROVISIONING_POLICY: IManagedPolicy;
+public readonly AMAZON_DATA_ZONE_REDSHIFT_GLUE_PROVISIONING_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DATA_ZONE_SAGE_MAKER_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY`<sup>Required</sup> <a name="AMAZON_DATA_ZONE_SAGE_MAKER_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_SAGE_MAKER_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY"></a>
 
 ```typescript
-public readonly AMAZON_DATA_ZONE_SAGE_MAKER_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY: IManagedPolicy;
+public readonly AMAZON_DATA_ZONE_SAGE_MAKER_ENVIRONMENT_ROLE_PERMISSIONS_BOUNDARY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DATA_ZONE_SAGE_MAKER_MANAGE_ACCESS_ROLE_POLICY`<sup>Required</sup> <a name="AMAZON_DATA_ZONE_SAGE_MAKER_MANAGE_ACCESS_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_SAGE_MAKER_MANAGE_ACCESS_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_DATA_ZONE_SAGE_MAKER_MANAGE_ACCESS_ROLE_POLICY: IManagedPolicy;
+public readonly AMAZON_DATA_ZONE_SAGE_MAKER_MANAGE_ACCESS_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DATA_ZONE_SAGE_MAKER_PROVISIONING_ROLE_POLICY`<sup>Required</sup> <a name="AMAZON_DATA_ZONE_SAGE_MAKER_PROVISIONING_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DATA_ZONE_SAGE_MAKER_PROVISIONING_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_DATA_ZONE_SAGE_MAKER_PROVISIONING_ROLE_POLICY: IManagedPolicy;
+public readonly AMAZON_DATA_ZONE_SAGE_MAKER_PROVISIONING_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DETECTIVE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_DETECTIVE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DETECTIVE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DETECTIVE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_DETECTIVE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DETECTIVE_INVESTIGATOR_ACCESS`<sup>Required</sup> <a name="AMAZON_DETECTIVE_INVESTIGATOR_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DETECTIVE_INVESTIGATOR_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DETECTIVE_INVESTIGATOR_ACCESS: IManagedPolicy;
+public readonly AMAZON_DETECTIVE_INVESTIGATOR_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DETECTIVE_MEMBER_ACCESS`<sup>Required</sup> <a name="AMAZON_DETECTIVE_MEMBER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DETECTIVE_MEMBER_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DETECTIVE_MEMBER_ACCESS: IManagedPolicy;
+public readonly AMAZON_DETECTIVE_MEMBER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DETECTIVE_ORGANIZATIONS_ACCESS`<sup>Required</sup> <a name="AMAZON_DETECTIVE_ORGANIZATIONS_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DETECTIVE_ORGANIZATIONS_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DETECTIVE_ORGANIZATIONS_ACCESS: IManagedPolicy;
+public readonly AMAZON_DETECTIVE_ORGANIZATIONS_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DEV_OPS_GURU_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_DEV_OPS_GURU_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DEV_OPS_GURU_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DEV_OPS_GURU_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_DEV_OPS_GURU_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DEV_OPS_GURU_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_DEV_OPS_GURU_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DEV_OPS_GURU_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DEV_OPS_GURU_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_DEV_OPS_GURU_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DEV_OPS_GURU_ORGANIZATIONS_ACCESS`<sup>Required</sup> <a name="AMAZON_DEV_OPS_GURU_ORGANIZATIONS_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DEV_OPS_GURU_ORGANIZATIONS_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DEV_OPS_GURU_ORGANIZATIONS_ACCESS: IManagedPolicy;
+public readonly AMAZON_DEV_OPS_GURU_ORGANIZATIONS_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DEV_OPS_GURU_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_DEV_OPS_GURU_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DEV_OPS_GURU_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DEV_OPS_GURU_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_DEV_OPS_GURU_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DOC_DB_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_DOC_DB_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DOC_DB_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_DOC_DB_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DOC_DB_ELASTIC_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_DOC_DB_ELASTIC_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_ELASTIC_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DOC_DB_ELASTIC_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_DOC_DB_ELASTIC_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DOC_DB_ELASTIC_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_DOC_DB_ELASTIC_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_ELASTIC_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DOC_DB_ELASTIC_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_DOC_DB_ELASTIC_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DOC_DB_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_DOC_DB_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DOC_DB_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_DOC_DB_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DOC_DB_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_DOC_DB_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DOC_DB_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_DOC_DB_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DRSVPC_MANAGEMENT`<sup>Required</sup> <a name="AMAZON_DRSVPC_MANAGEMENT" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DRSVPC_MANAGEMENT"></a>
 
 ```typescript
-public readonly AMAZON_DRSVPC_MANAGEMENT: IManagedPolicy;
+public readonly AMAZON_DRSVPC_MANAGEMENT: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DYNAMO_DB_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_DYNAMO_DB_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DYNAMO_DB_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_DYNAMO_DB_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE`<sup>Required</sup> <a name="AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE"></a>
 
 ```typescript
-public readonly AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE: IManagedPolicy;
+public readonly AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_DYNAMO_DB_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_DYNAMO_DB_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_DYNAMO_DB_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_DYNAMO_DB_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EC2_CONTAINER_REGISTRY_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_EC2_CONTAINER_REGISTRY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_EC2_CONTAINER_REGISTRY_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_EC2_CONTAINER_REGISTRY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EC2_CONTAINER_REGISTRY_POWER_USER`<sup>Required</sup> <a name="AMAZON_EC2_CONTAINER_REGISTRY_POWER_USER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_POWER_USER"></a>
 
 ```typescript
-public readonly AMAZON_EC2_CONTAINER_REGISTRY_POWER_USER: IManagedPolicy;
+public readonly AMAZON_EC2_CONTAINER_REGISTRY_POWER_USER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EC2_CONTAINER_REGISTRY_PULL_ONLY`<sup>Required</sup> <a name="AMAZON_EC2_CONTAINER_REGISTRY_PULL_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_PULL_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_EC2_CONTAINER_REGISTRY_PULL_ONLY: IManagedPolicy;
+public readonly AMAZON_EC2_CONTAINER_REGISTRY_PULL_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EC2_CONTAINER_REGISTRY_READ_ONLY`<sup>Required</sup> <a name="AMAZON_EC2_CONTAINER_REGISTRY_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_EC2_CONTAINER_REGISTRY_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_EC2_CONTAINER_REGISTRY_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EC2_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_EC2_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_EC2_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_EC2_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EC2_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_EC2_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_EC2_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_EC2_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EC2_ROLE_POLICY_FOR_LAUNCH_WIZARD`<sup>Required</sup> <a name="AMAZON_EC2_ROLE_POLICY_FOR_LAUNCH_WIZARD" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_ROLE_POLICY_FOR_LAUNCH_WIZARD"></a>
 
 ```typescript
-public readonly AMAZON_EC2_ROLE_POLICY_FOR_LAUNCH_WIZARD: IManagedPolicy;
+public readonly AMAZON_EC2_ROLE_POLICY_FOR_LAUNCH_WIZARD: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ECS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ECS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ECS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ECS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE`<sup>Required</sup> <a name="AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE"></a>
 
 ```typescript
-public readonly AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE: IManagedPolicy;
+public readonly AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EKS_BLOCK_STORAGE_POLICY`<sup>Required</sup> <a name="AMAZON_EKS_BLOCK_STORAGE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_BLOCK_STORAGE_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_EKS_BLOCK_STORAGE_POLICY: IManagedPolicy;
+public readonly AMAZON_EKS_BLOCK_STORAGE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EKS_CLUSTER_POLICY`<sup>Required</sup> <a name="AMAZON_EKS_CLUSTER_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_CLUSTER_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_EKS_CLUSTER_POLICY: IManagedPolicy;
+public readonly AMAZON_EKS_CLUSTER_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EKS_CNI_POLICY`<sup>Required</sup> <a name="AMAZON_EKS_CNI_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_CNI_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_EKS_CNI_POLICY: IManagedPolicy;
+public readonly AMAZON_EKS_CNI_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EKS_COMPUTE_POLICY`<sup>Required</sup> <a name="AMAZON_EKS_COMPUTE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_COMPUTE_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_EKS_COMPUTE_POLICY: IManagedPolicy;
+public readonly AMAZON_EKS_COMPUTE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EKS_FARGATE_POD_EXECUTION_ROLE_POLICY`<sup>Required</sup> <a name="AMAZON_EKS_FARGATE_POD_EXECUTION_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_FARGATE_POD_EXECUTION_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_EKS_FARGATE_POD_EXECUTION_ROLE_POLICY: IManagedPolicy;
+public readonly AMAZON_EKS_FARGATE_POD_EXECUTION_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EKS_LOAD_BALANCING_POLICY`<sup>Required</sup> <a name="AMAZON_EKS_LOAD_BALANCING_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_LOAD_BALANCING_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_EKS_LOAD_BALANCING_POLICY: IManagedPolicy;
+public readonly AMAZON_EKS_LOAD_BALANCING_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EKS_LOCAL_OUTPOST_CLUSTER_POLICY`<sup>Required</sup> <a name="AMAZON_EKS_LOCAL_OUTPOST_CLUSTER_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_LOCAL_OUTPOST_CLUSTER_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_EKS_LOCAL_OUTPOST_CLUSTER_POLICY: IManagedPolicy;
+public readonly AMAZON_EKS_LOCAL_OUTPOST_CLUSTER_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EKS_NETWORKING_POLICY`<sup>Required</sup> <a name="AMAZON_EKS_NETWORKING_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_NETWORKING_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_EKS_NETWORKING_POLICY: IManagedPolicy;
+public readonly AMAZON_EKS_NETWORKING_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EKS_SERVICE_POLICY`<sup>Required</sup> <a name="AMAZON_EKS_SERVICE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_SERVICE_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_EKS_SERVICE_POLICY: IManagedPolicy;
+public readonly AMAZON_EKS_SERVICE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EKS_WORKER_NODE_MINIMAL_POLICY`<sup>Required</sup> <a name="AMAZON_EKS_WORKER_NODE_MINIMAL_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_WORKER_NODE_MINIMAL_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_EKS_WORKER_NODE_MINIMAL_POLICY: IManagedPolicy;
+public readonly AMAZON_EKS_WORKER_NODE_MINIMAL_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EKS_WORKER_NODE_POLICY`<sup>Required</sup> <a name="AMAZON_EKS_WORKER_NODE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_WORKER_NODE_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_EKS_WORKER_NODE_POLICY: IManagedPolicy;
+public readonly AMAZON_EKS_WORKER_NODE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EKSVPC_RESOURCE_CONTROLLER`<sup>Required</sup> <a name="AMAZON_EKSVPC_RESOURCE_CONTROLLER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKSVPC_RESOURCE_CONTROLLER"></a>
 
 ```typescript
-public readonly AMAZON_EKSVPC_RESOURCE_CONTROLLER: IManagedPolicy;
+public readonly AMAZON_EKSVPC_RESOURCE_CONTROLLER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTI_CACHE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ELASTI_CACHE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTI_CACHE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTI_CACHE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ELASTI_CACHE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTI_CACHE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ELASTI_CACHE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTI_CACHE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTI_CACHE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ELASTI_CACHE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_POWER_USER`<sup>Required</sup> <a name="AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_POWER_USER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_POWER_USER"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_POWER_USER: IManagedPolicy;
+public readonly AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_POWER_USER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_READ_ONLY`<sup>Required</sup> <a name="AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_ELASTIC_CONTAINER_REGISTRY_PUBLIC_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_WRITE_ACCESS`<sup>Required</sup> <a name="AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_WRITE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_WRITE_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_WRITE_ACCESS: IManagedPolicy;
+public readonly AMAZON_ELASTIC_FILE_SYSTEM_CLIENT_READ_WRITE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_FILE_SYSTEM_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ELASTIC_FILE_SYSTEM_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_FILE_SYSTEM_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ELASTIC_FILE_SYSTEM_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_FILE_SYSTEM_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ELASTIC_FILE_SYSTEM_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEM_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_FILE_SYSTEM_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ELASTIC_FILE_SYSTEM_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_FILE_SYSTEMS_UTILS`<sup>Required</sup> <a name="AMAZON_ELASTIC_FILE_SYSTEMS_UTILS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_FILE_SYSTEMS_UTILS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_FILE_SYSTEMS_UTILS: IManagedPolicy;
+public readonly AMAZON_ELASTIC_FILE_SYSTEMS_UTILS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_MAP_REDUCE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ELASTIC_MAP_REDUCE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_MAP_REDUCE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_MAP_REDUCE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ELASTIC_MAP_REDUCE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_MAP_REDUCE_PLACEMENT_GROUP_POLICY`<sup>Required</sup> <a name="AMAZON_ELASTIC_MAP_REDUCE_PLACEMENT_GROUP_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_MAP_REDUCE_PLACEMENT_GROUP_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_MAP_REDUCE_PLACEMENT_GROUP_POLICY: IManagedPolicy;
+public readonly AMAZON_ELASTIC_MAP_REDUCE_PLACEMENT_GROUP_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_MAP_REDUCE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ELASTIC_MAP_REDUCE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_MAP_REDUCE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_MAP_REDUCE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ELASTIC_MAP_REDUCE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_TRANSCODER_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ELASTIC_TRANSCODER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_TRANSCODER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_TRANSCODER_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ELASTIC_TRANSCODER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_TRANSCODER_JOBS_SUBMITTER`<sup>Required</sup> <a name="AMAZON_ELASTIC_TRANSCODER_JOBS_SUBMITTER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_TRANSCODER_JOBS_SUBMITTER"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_TRANSCODER_JOBS_SUBMITTER: IManagedPolicy;
+public readonly AMAZON_ELASTIC_TRANSCODER_JOBS_SUBMITTER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ELASTIC_TRANSCODER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ELASTIC_TRANSCODER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ELASTIC_TRANSCODER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ELASTIC_TRANSCODER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ELASTIC_TRANSCODER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EMR_FULL_ACCESS_POLICY_V2`<sup>Required</sup> <a name="AMAZON_EMR_FULL_ACCESS_POLICY_V2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EMR_FULL_ACCESS_POLICY_V2"></a>
 
 ```typescript
-public readonly AMAZON_EMR_FULL_ACCESS_POLICY_V2: IManagedPolicy;
+public readonly AMAZON_EMR_FULL_ACCESS_POLICY_V2: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EMR_READ_ONLY_ACCESS_POLICY_V2`<sup>Required</sup> <a name="AMAZON_EMR_READ_ONLY_ACCESS_POLICY_V2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EMR_READ_ONLY_ACCESS_POLICY_V2"></a>
 
 ```typescript
-public readonly AMAZON_EMR_READ_ONLY_ACCESS_POLICY_V2: IManagedPolicy;
+public readonly AMAZON_EMR_READ_ONLY_ACCESS_POLICY_V2: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ES_COGNITO_ACCESS`<sup>Required</sup> <a name="AMAZON_ES_COGNITO_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ES_COGNITO_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ES_COGNITO_ACCESS: IManagedPolicy;
+public readonly AMAZON_ES_COGNITO_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ES_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ES_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ES_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ES_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ES_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ES_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ES_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ES_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ES_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ES_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EVENT_BRIDGE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_EVENT_BRIDGE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_EVENT_BRIDGE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_EVENT_BRIDGE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EVENT_BRIDGE_PIPES_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_EVENT_BRIDGE_PIPES_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_PIPES_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_EVENT_BRIDGE_PIPES_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_EVENT_BRIDGE_PIPES_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EVENT_BRIDGE_PIPES_OPERATOR_ACCESS`<sup>Required</sup> <a name="AMAZON_EVENT_BRIDGE_PIPES_OPERATOR_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_PIPES_OPERATOR_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_EVENT_BRIDGE_PIPES_OPERATOR_ACCESS: IManagedPolicy;
+public readonly AMAZON_EVENT_BRIDGE_PIPES_OPERATOR_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EVENT_BRIDGE_PIPES_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_EVENT_BRIDGE_PIPES_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_PIPES_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_EVENT_BRIDGE_PIPES_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_EVENT_BRIDGE_PIPES_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EVENT_BRIDGE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_EVENT_BRIDGE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_EVENT_BRIDGE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_EVENT_BRIDGE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EVENT_BRIDGE_SCHEDULER_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_EVENT_BRIDGE_SCHEDULER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_SCHEDULER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_EVENT_BRIDGE_SCHEDULER_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_EVENT_BRIDGE_SCHEDULER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EVENT_BRIDGE_SCHEDULER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_EVENT_BRIDGE_SCHEDULER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_SCHEDULER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_EVENT_BRIDGE_SCHEDULER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_EVENT_BRIDGE_SCHEDULER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EVENT_BRIDGE_SCHEMAS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_EVENT_BRIDGE_SCHEMAS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_SCHEMAS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_EVENT_BRIDGE_SCHEMAS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_EVENT_BRIDGE_SCHEMAS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_EVENT_BRIDGE_SCHEMAS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_EVENT_BRIDGE_SCHEMAS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EVENT_BRIDGE_SCHEMAS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_EVENT_BRIDGE_SCHEMAS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_EVENT_BRIDGE_SCHEMAS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_F_SX_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_F_SX_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_F_SX_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_F_SX_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_F_SX_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_F_SX_CONSOLE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_F_SX_CONSOLE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_F_SX_CONSOLE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_F_SX_CONSOLE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_F_SX_CONSOLE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_F_SX_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_F_SX_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_F_SX_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_F_SX_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_F_SX_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_F_SX_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_F_SX_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_F_SX_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_F_SX_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_F_SX_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_FORECAST_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_FORECAST_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_FORECAST_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_FORECAST_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_FORECAST_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_FRAUD_DETECTOR_FULL_ACCESS_POLICY`<sup>Required</sup> <a name="AMAZON_FRAUD_DETECTOR_FULL_ACCESS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_FRAUD_DETECTOR_FULL_ACCESS_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_FRAUD_DETECTOR_FULL_ACCESS_POLICY: IManagedPolicy;
+public readonly AMAZON_FRAUD_DETECTOR_FULL_ACCESS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_FREE_RTOS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_FREE_RTOS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_FREE_RTOS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_FREE_RTOS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_FREE_RTOS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_GLACIER_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_GLACIER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GLACIER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_GLACIER_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_GLACIER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_GLACIER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_GLACIER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GLACIER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_GLACIER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_GLACIER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_GUARD_DUTY_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_GUARD_DUTY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GUARD_DUTY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_GUARD_DUTY_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_GUARD_DUTY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_GUARD_DUTY_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_GUARD_DUTY_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GUARD_DUTY_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_GUARD_DUTY_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_GUARD_DUTY_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_HEALTH_LAKE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_HEALTH_LAKE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HEALTH_LAKE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_HEALTH_LAKE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_HEALTH_LAKE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_HEALTH_LAKE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_HEALTH_LAKE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HEALTH_LAKE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_HEALTH_LAKE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_HEALTH_LAKE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_HONEYCODE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_HONEYCODE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_HONEYCODE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_HONEYCODE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_HONEYCODE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_HONEYCODE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_HONEYCODE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_HONEYCODE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_HONEYCODE_TEAM_ASSOCIATION_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_HONEYCODE_TEAM_ASSOCIATION_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_TEAM_ASSOCIATION_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_HONEYCODE_TEAM_ASSOCIATION_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_HONEYCODE_TEAM_ASSOCIATION_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_HONEYCODE_TEAM_ASSOCIATION_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_HONEYCODE_TEAM_ASSOCIATION_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_TEAM_ASSOCIATION_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_HONEYCODE_TEAM_ASSOCIATION_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_HONEYCODE_TEAM_ASSOCIATION_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_HONEYCODE_WORKBOOK_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_HONEYCODE_WORKBOOK_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_WORKBOOK_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_HONEYCODE_WORKBOOK_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_HONEYCODE_WORKBOOK_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_HONEYCODE_WORKBOOK_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_HONEYCODE_WORKBOOK_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HONEYCODE_WORKBOOK_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_HONEYCODE_WORKBOOK_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_HONEYCODE_WORKBOOK_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_INSPECTOR_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_INSPECTOR_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_INSPECTOR_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_INSPECTOR_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_INSPECTOR_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_INSPECTOR_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_INSPECTOR_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_INSPECTOR_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_INSPECTOR2_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_INSPECTOR2_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_INSPECTOR2_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_INSPECTOR2_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_INSPECTOR2_MANAGED_CIS_POLICY`<sup>Required</sup> <a name="AMAZON_INSPECTOR2_MANAGED_CIS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_MANAGED_CIS_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_INSPECTOR2_MANAGED_CIS_POLICY: IManagedPolicy;
+public readonly AMAZON_INSPECTOR2_MANAGED_CIS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_INSPECTOR2_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_INSPECTOR2_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_INSPECTOR2_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_INSPECTOR2_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KENDRA_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_KENDRA_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KENDRA_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_KENDRA_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_KENDRA_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KENDRA_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_KENDRA_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KENDRA_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_KENDRA_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_KENDRA_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KEYSPACES_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_KEYSPACES_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KEYSPACES_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_KEYSPACES_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_KEYSPACES_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KEYSPACES_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_KEYSPACES_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KEYSPACES_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_KEYSPACES_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_KEYSPACES_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KEYSPACES_READ_ONLY_ACCESS_V2`<sup>Required</sup> <a name="AMAZON_KEYSPACES_READ_ONLY_ACCESS_V2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KEYSPACES_READ_ONLY_ACCESS_V2"></a>
 
 ```typescript
-public readonly AMAZON_KEYSPACES_READ_ONLY_ACCESS_V2: IManagedPolicy;
+public readonly AMAZON_KEYSPACES_READ_ONLY_ACCESS_V2: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KINESIS_ANALYTICS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_KINESIS_ANALYTICS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_ANALYTICS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_KINESIS_ANALYTICS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_KINESIS_ANALYTICS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KINESIS_ANALYTICS_READ_ONLY`<sup>Required</sup> <a name="AMAZON_KINESIS_ANALYTICS_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_ANALYTICS_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_KINESIS_ANALYTICS_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_KINESIS_ANALYTICS_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KINESIS_FIREHOSE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_KINESIS_FIREHOSE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_FIREHOSE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_KINESIS_FIREHOSE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_KINESIS_FIREHOSE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KINESIS_FIREHOSE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_KINESIS_FIREHOSE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_FIREHOSE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_KINESIS_FIREHOSE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_KINESIS_FIREHOSE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KINESIS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_KINESIS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_KINESIS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_KINESIS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KINESIS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_KINESIS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_KINESIS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_KINESIS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KINESIS_VIDEO_STREAMS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_KINESIS_VIDEO_STREAMS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_VIDEO_STREAMS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_KINESIS_VIDEO_STREAMS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_KINESIS_VIDEO_STREAMS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_KINESIS_VIDEO_STREAMS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_KINESIS_VIDEO_STREAMS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KINESIS_VIDEO_STREAMS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_KINESIS_VIDEO_STREAMS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_KINESIS_VIDEO_STREAMS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_LAUNCH_WIZARD_FULL_ACCESS_V2`<sup>Required</sup> <a name="AMAZON_LAUNCH_WIZARD_FULL_ACCESS_V2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LAUNCH_WIZARD_FULL_ACCESS_V2"></a>
 
 ```typescript
-public readonly AMAZON_LAUNCH_WIZARD_FULL_ACCESS_V2: IManagedPolicy;
+public readonly AMAZON_LAUNCH_WIZARD_FULL_ACCESS_V2: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_LEX_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_LEX_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LEX_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_LEX_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_LEX_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_LEX_READ_ONLY`<sup>Required</sup> <a name="AMAZON_LEX_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LEX_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_LEX_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_LEX_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_LEX_RUN_BOTS_ONLY`<sup>Required</sup> <a name="AMAZON_LEX_RUN_BOTS_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LEX_RUN_BOTS_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_LEX_RUN_BOTS_ONLY: IManagedPolicy;
+public readonly AMAZON_LEX_RUN_BOTS_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_LOOKOUT_EQUIPMENT_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_LOOKOUT_EQUIPMENT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_EQUIPMENT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_LOOKOUT_EQUIPMENT_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_LOOKOUT_EQUIPMENT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_LOOKOUT_EQUIPMENT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_LOOKOUT_EQUIPMENT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_EQUIPMENT_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_LOOKOUT_EQUIPMENT_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_LOOKOUT_EQUIPMENT_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_LOOKOUT_METRICS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_LOOKOUT_METRICS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_METRICS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_LOOKOUT_METRICS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_LOOKOUT_METRICS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_LOOKOUT_METRICS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_LOOKOUT_METRICS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_METRICS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_LOOKOUT_METRICS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_LOOKOUT_METRICS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_LOOKOUT_VISION_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_LOOKOUT_VISION_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_VISION_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_LOOKOUT_VISION_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_LOOKOUT_VISION_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_LOOKOUT_VISION_CONSOLE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_LOOKOUT_VISION_CONSOLE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_VISION_CONSOLE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_LOOKOUT_VISION_CONSOLE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_LOOKOUT_VISION_CONSOLE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_LOOKOUT_VISION_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_LOOKOUT_VISION_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_VISION_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_LOOKOUT_VISION_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_LOOKOUT_VISION_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_LOOKOUT_VISION_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_LOOKOUT_VISION_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_LOOKOUT_VISION_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_LOOKOUT_VISION_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_LOOKOUT_VISION_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MACHINE_LEARNING_BATCH_PREDICTIONS_ACCESS`<sup>Required</sup> <a name="AMAZON_MACHINE_LEARNING_BATCH_PREDICTIONS_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_BATCH_PREDICTIONS_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MACHINE_LEARNING_BATCH_PREDICTIONS_ACCESS: IManagedPolicy;
+public readonly AMAZON_MACHINE_LEARNING_BATCH_PREDICTIONS_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MACHINE_LEARNING_CREATE_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MACHINE_LEARNING_CREATE_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_CREATE_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MACHINE_LEARNING_CREATE_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MACHINE_LEARNING_CREATE_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MACHINE_LEARNING_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_MACHINE_LEARNING_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MACHINE_LEARNING_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_MACHINE_LEARNING_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MACHINE_LEARNING_MANAGE_REAL_TIME_ENDPOINT_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MACHINE_LEARNING_MANAGE_REAL_TIME_ENDPOINT_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_MANAGE_REAL_TIME_ENDPOINT_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MACHINE_LEARNING_MANAGE_REAL_TIME_ENDPOINT_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MACHINE_LEARNING_MANAGE_REAL_TIME_ENDPOINT_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MACHINE_LEARNING_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MACHINE_LEARNING_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MACHINE_LEARNING_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MACHINE_LEARNING_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MACHINE_LEARNING_REAL_TIME_PREDICTION_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MACHINE_LEARNING_REAL_TIME_PREDICTION_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACHINE_LEARNING_REAL_TIME_PREDICTION_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MACHINE_LEARNING_REAL_TIME_PREDICTION_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MACHINE_LEARNING_REAL_TIME_PREDICTION_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MACIE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_MACIE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACIE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MACIE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_MACIE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MACIE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MACIE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MACIE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MACIE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MACIE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MANAGED_BLOCKCHAIN_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_MANAGED_BLOCKCHAIN_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MANAGED_BLOCKCHAIN_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MANAGED_BLOCKCHAIN_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_MANAGED_BLOCKCHAIN_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MANAGED_BLOCKCHAIN_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_MANAGED_BLOCKCHAIN_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MANAGED_BLOCKCHAIN_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MANAGED_BLOCKCHAIN_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_MANAGED_BLOCKCHAIN_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MANAGED_BLOCKCHAIN_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MANAGED_BLOCKCHAIN_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MANAGED_BLOCKCHAIN_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MANAGED_BLOCKCHAIN_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MANAGED_BLOCKCHAIN_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MCS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_MCS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MCS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MCS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_MCS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MCS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MCS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MCS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MCS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MCS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MECHANICAL_TURK_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_MECHANICAL_TURK_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MECHANICAL_TURK_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MECHANICAL_TURK_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_MECHANICAL_TURK_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MECHANICAL_TURK_READ_ONLY`<sup>Required</sup> <a name="AMAZON_MECHANICAL_TURK_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MECHANICAL_TURK_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_MECHANICAL_TURK_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_MECHANICAL_TURK_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MEMORY_DB_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_MEMORY_DB_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MEMORY_DB_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MEMORY_DB_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_MEMORY_DB_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MEMORY_DB_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MEMORY_DB_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MEMORY_DB_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MEMORY_DB_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MEMORY_DB_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MOBILE_ANALYTICS_FINANCIAL_REPORT_ACCESS`<sup>Required</sup> <a name="AMAZON_MOBILE_ANALYTICS_FINANCIAL_REPORT_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MOBILE_ANALYTICS_FINANCIAL_REPORT_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MOBILE_ANALYTICS_FINANCIAL_REPORT_ACCESS: IManagedPolicy;
+public readonly AMAZON_MOBILE_ANALYTICS_FINANCIAL_REPORT_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MOBILE_ANALYTICS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_MOBILE_ANALYTICS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MOBILE_ANALYTICS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MOBILE_ANALYTICS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_MOBILE_ANALYTICS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MOBILE_ANALYTICS_NON_FINANCIAL_REPORT_ACCESS`<sup>Required</sup> <a name="AMAZON_MOBILE_ANALYTICS_NON_FINANCIAL_REPORT_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MOBILE_ANALYTICS_NON_FINANCIAL_REPORT_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MOBILE_ANALYTICS_NON_FINANCIAL_REPORT_ACCESS: IManagedPolicy;
+public readonly AMAZON_MOBILE_ANALYTICS_NON_FINANCIAL_REPORT_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MOBILE_ANALYTICS_WRITE_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MOBILE_ANALYTICS_WRITE_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MOBILE_ANALYTICS_WRITE_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MOBILE_ANALYTICS_WRITE_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MOBILE_ANALYTICS_WRITE_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MONITRON_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_MONITRON_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MONITRON_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MONITRON_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_MONITRON_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MQ_API_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_MQ_API_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MQ_API_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MQ_API_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_MQ_API_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MQ_API_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MQ_API_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MQ_API_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MQ_API_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MQ_API_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MQ_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_MQ_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MQ_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MQ_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_MQ_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MQ_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MQ_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MQ_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MQ_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MQ_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MSK_CONNECT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MSK_CONNECT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MSK_CONNECT_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MSK_CONNECT_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MSK_CONNECT_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MSK_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_MSK_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MSK_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MSK_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_MSK_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_MSK_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_MSK_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_MSK_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_MSK_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_MSK_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_NIMBLE_STUDIO_LAUNCH_PROFILE_WORKER`<sup>Required</sup> <a name="AMAZON_NIMBLE_STUDIO_LAUNCH_PROFILE_WORKER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_NIMBLE_STUDIO_LAUNCH_PROFILE_WORKER"></a>
 
 ```typescript
-public readonly AMAZON_NIMBLE_STUDIO_LAUNCH_PROFILE_WORKER: IManagedPolicy;
+public readonly AMAZON_NIMBLE_STUDIO_LAUNCH_PROFILE_WORKER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_NIMBLE_STUDIO_STUDIO_ADMIN`<sup>Required</sup> <a name="AMAZON_NIMBLE_STUDIO_STUDIO_ADMIN" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_NIMBLE_STUDIO_STUDIO_ADMIN"></a>
 
 ```typescript
-public readonly AMAZON_NIMBLE_STUDIO_STUDIO_ADMIN: IManagedPolicy;
+public readonly AMAZON_NIMBLE_STUDIO_STUDIO_ADMIN: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_NIMBLE_STUDIO_STUDIO_USER`<sup>Required</sup> <a name="AMAZON_NIMBLE_STUDIO_STUDIO_USER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_NIMBLE_STUDIO_STUDIO_USER"></a>
 
 ```typescript
-public readonly AMAZON_NIMBLE_STUDIO_STUDIO_USER: IManagedPolicy;
+public readonly AMAZON_NIMBLE_STUDIO_STUDIO_USER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_OMICS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_OMICS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OMICS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_OMICS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_OMICS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_OMICS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_OMICS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OMICS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_OMICS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_OMICS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ONE_ENTERPRISE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ONE_ENTERPRISE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ONE_ENTERPRISE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ONE_ENTERPRISE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ONE_ENTERPRISE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ONE_ENTERPRISE_INSTALLER_ACCESS`<sup>Required</sup> <a name="AMAZON_ONE_ENTERPRISE_INSTALLER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ONE_ENTERPRISE_INSTALLER_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ONE_ENTERPRISE_INSTALLER_ACCESS: IManagedPolicy;
+public readonly AMAZON_ONE_ENTERPRISE_INSTALLER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ONE_ENTERPRISE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ONE_ENTERPRISE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ONE_ENTERPRISE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ONE_ENTERPRISE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ONE_ENTERPRISE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_OPEN_SEARCH_DIRECT_QUERY_GLUE_CREATE_ACCESS`<sup>Required</sup> <a name="AMAZON_OPEN_SEARCH_DIRECT_QUERY_GLUE_CREATE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_DIRECT_QUERY_GLUE_CREATE_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_OPEN_SEARCH_DIRECT_QUERY_GLUE_CREATE_ACCESS: IManagedPolicy;
+public readonly AMAZON_OPEN_SEARCH_DIRECT_QUERY_GLUE_CREATE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_OPEN_SEARCH_INGESTION_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_OPEN_SEARCH_INGESTION_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_INGESTION_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_OPEN_SEARCH_INGESTION_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_OPEN_SEARCH_INGESTION_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_OPEN_SEARCH_INGESTION_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_OPEN_SEARCH_INGESTION_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_INGESTION_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_OPEN_SEARCH_INGESTION_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_OPEN_SEARCH_INGESTION_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_OPEN_SEARCH_SERVICE_COGNITO_ACCESS`<sup>Required</sup> <a name="AMAZON_OPEN_SEARCH_SERVICE_COGNITO_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_SERVICE_COGNITO_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_OPEN_SEARCH_SERVICE_COGNITO_ACCESS: IManagedPolicy;
+public readonly AMAZON_OPEN_SEARCH_SERVICE_COGNITO_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_OPEN_SEARCH_SERVICE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_OPEN_SEARCH_SERVICE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_SERVICE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_OPEN_SEARCH_SERVICE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_OPEN_SEARCH_SERVICE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_OPEN_SEARCH_SERVICE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_OPEN_SEARCH_SERVICE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_OPEN_SEARCH_SERVICE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_OPEN_SEARCH_SERVICE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_OPEN_SEARCH_SERVICE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_POLLY_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_POLLY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_POLLY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_POLLY_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_POLLY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_POLLY_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_POLLY_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_POLLY_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_POLLY_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_POLLY_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_PROMETHEUS_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_PROMETHEUS_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_PROMETHEUS_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_PROMETHEUS_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_PROMETHEUS_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_PROMETHEUS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_PROMETHEUS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_PROMETHEUS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_PROMETHEUS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_PROMETHEUS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_PROMETHEUS_QUERY_ACCESS`<sup>Required</sup> <a name="AMAZON_PROMETHEUS_QUERY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_PROMETHEUS_QUERY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_PROMETHEUS_QUERY_ACCESS: IManagedPolicy;
+public readonly AMAZON_PROMETHEUS_QUERY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_PROMETHEUS_REMOTE_WRITE_ACCESS`<sup>Required</sup> <a name="AMAZON_PROMETHEUS_REMOTE_WRITE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_PROMETHEUS_REMOTE_WRITE_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_PROMETHEUS_REMOTE_WRITE_ACCESS: IManagedPolicy;
+public readonly AMAZON_PROMETHEUS_REMOTE_WRITE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_Q_DEVELOPER_ACCESS`<sup>Required</sup> <a name="AMAZON_Q_DEVELOPER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_Q_DEVELOPER_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_Q_DEVELOPER_ACCESS: IManagedPolicy;
+public readonly AMAZON_Q_DEVELOPER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_Q_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_Q_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_Q_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_Q_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_Q_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_QLDB_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_QLDB_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_QLDB_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_QLDB_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_QLDB_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_QLDB_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_QLDB_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_QLDB_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_QLDB_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_QLDB_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_QLDB_READ_ONLY`<sup>Required</sup> <a name="AMAZON_QLDB_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_QLDB_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_QLDB_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_QLDB_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_RDS_CUSTOM_INSTANCE_PROFILE_ROLE_POLICY`<sup>Required</sup> <a name="AMAZON_RDS_CUSTOM_INSTANCE_PROFILE_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_CUSTOM_INSTANCE_PROFILE_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_RDS_CUSTOM_INSTANCE_PROFILE_ROLE_POLICY: IManagedPolicy;
+public readonly AMAZON_RDS_CUSTOM_INSTANCE_PROFILE_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_RDS_DATA_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_RDS_DATA_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_DATA_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_RDS_DATA_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_RDS_DATA_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_RDS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_RDS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_RDS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_RDS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_RDS_PERFORMANCE_INSIGHTS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_RDS_PERFORMANCE_INSIGHTS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_PERFORMANCE_INSIGHTS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_RDS_PERFORMANCE_INSIGHTS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_RDS_PERFORMANCE_INSIGHTS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_RDS_PERFORMANCE_INSIGHTS_READ_ONLY`<sup>Required</sup> <a name="AMAZON_RDS_PERFORMANCE_INSIGHTS_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_PERFORMANCE_INSIGHTS_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_RDS_PERFORMANCE_INSIGHTS_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_RDS_PERFORMANCE_INSIGHTS_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_RDS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_RDS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_RDS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_RDS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_RDS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_REDSHIFT_ALL_COMMANDS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_REDSHIFT_ALL_COMMANDS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_ALL_COMMANDS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_REDSHIFT_ALL_COMMANDS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_REDSHIFT_ALL_COMMANDS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_REDSHIFT_DATA_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_REDSHIFT_DATA_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_DATA_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_REDSHIFT_DATA_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_REDSHIFT_DATA_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_REDSHIFT_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_REDSHIFT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_REDSHIFT_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_REDSHIFT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_REDSHIFT_QUERY_EDITOR`<sup>Required</sup> <a name="AMAZON_REDSHIFT_QUERY_EDITOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR"></a>
 
 ```typescript
-public readonly AMAZON_REDSHIFT_QUERY_EDITOR: IManagedPolicy;
+public readonly AMAZON_REDSHIFT_QUERY_EDITOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_REDSHIFT_QUERY_EDITOR_V2_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_REDSHIFT_QUERY_EDITOR_V2_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR_V2_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_REDSHIFT_QUERY_EDITOR_V2_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_REDSHIFT_QUERY_EDITOR_V2_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_REDSHIFT_QUERY_EDITOR_V2_NO_SHARING`<sup>Required</sup> <a name="AMAZON_REDSHIFT_QUERY_EDITOR_V2_NO_SHARING" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR_V2_NO_SHARING"></a>
 
 ```typescript
-public readonly AMAZON_REDSHIFT_QUERY_EDITOR_V2_NO_SHARING: IManagedPolicy;
+public readonly AMAZON_REDSHIFT_QUERY_EDITOR_V2_NO_SHARING: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_SHARING`<sup>Required</sup> <a name="AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_SHARING" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_SHARING"></a>
 
 ```typescript
-public readonly AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_SHARING: IManagedPolicy;
+public readonly AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_SHARING: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_WRITE_SHARING`<sup>Required</sup> <a name="AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_WRITE_SHARING" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_WRITE_SHARING"></a>
 
 ```typescript
-public readonly AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_WRITE_SHARING: IManagedPolicy;
+public readonly AMAZON_REDSHIFT_QUERY_EDITOR_V2_READ_WRITE_SHARING: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_REDSHIFT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_REDSHIFT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REDSHIFT_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_REDSHIFT_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_REDSHIFT_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_REKOGNITION_CUSTOM_LABELS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_REKOGNITION_CUSTOM_LABELS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REKOGNITION_CUSTOM_LABELS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_REKOGNITION_CUSTOM_LABELS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_REKOGNITION_CUSTOM_LABELS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_REKOGNITION_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_REKOGNITION_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REKOGNITION_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_REKOGNITION_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_REKOGNITION_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_REKOGNITION_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_REKOGNITION_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_REKOGNITION_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_REKOGNITION_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_REKOGNITION_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_AUTO_NAMING_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_AUTO_NAMING_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_AUTO_NAMING_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_AUTO_NAMING_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_AUTO_NAMING_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_AUTO_NAMING_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_AUTO_NAMING_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_AUTO_NAMING_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_AUTO_NAMING_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_AUTO_NAMING_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_AUTO_NAMING_REGISTRANT_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_AUTO_NAMING_REGISTRANT_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_AUTO_NAMING_REGISTRANT_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_AUTO_NAMING_REGISTRANT_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_AUTO_NAMING_REGISTRANT_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_DOMAINS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_DOMAINS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_DOMAINS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_DOMAINS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_DOMAINS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_DOMAINS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_DOMAINS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_DOMAINS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_DOMAINS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_DOMAINS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_PROFILES_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_PROFILES_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_PROFILES_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_PROFILES_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_PROFILES_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_PROFILES_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_PROFILES_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_PROFILES_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_PROFILES_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_PROFILES_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_RECOVERY_CLUSTER_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_RECOVERY_CLUSTER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_CLUSTER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_RECOVERY_CLUSTER_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_RECOVERY_CLUSTER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_RECOVERY_CLUSTER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_RECOVERY_CLUSTER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_CLUSTER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_RECOVERY_CLUSTER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_RECOVERY_CLUSTER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_RECOVERY_CONTROL_CONFIG_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_RECOVERY_READINESS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_RECOVERY_READINESS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_READINESS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_RECOVERY_READINESS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_RECOVERY_READINESS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_RECOVERY_READINESS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_RECOVERY_READINESS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RECOVERY_READINESS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_RECOVERY_READINESS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_RECOVERY_READINESS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_RESOLVER_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_RESOLVER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RESOLVER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_RESOLVER_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_RESOLVER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ROUTE53_RESOLVER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ROUTE53_RESOLVER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ROUTE53_RESOLVER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ROUTE53_RESOLVER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ROUTE53_RESOLVER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_S3_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_S3_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_S3_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_S3_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_S3_OUTPOSTS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_S3_OUTPOSTS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_OUTPOSTS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_S3_OUTPOSTS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_S3_OUTPOSTS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_S3_OUTPOSTS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_S3_OUTPOSTS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_OUTPOSTS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_S3_OUTPOSTS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_S3_OUTPOSTS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_S3_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_S3_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_S3_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_S3_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_S3_TABLES_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_S3_TABLES_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_TABLES_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_S3_TABLES_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_S3_TABLES_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_S3_TABLES_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_S3_TABLES_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_S3_TABLES_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_S3_TABLES_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_S3_TABLES_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_ADMIN_SERVICE_CATALOG_PRODUCTS_SERVICE_ROLE_POLICY`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_ADMIN_SERVICE_CATALOG_PRODUCTS_SERVICE_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_ADMIN_SERVICE_CATALOG_PRODUCTS_SERVICE_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_ADMIN_SERVICE_CATALOG_PRODUCTS_SERVICE_ROLE_POLICY: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_ADMIN_SERVICE_CATALOG_PRODUCTS_SERVICE_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_CANVAS_AI_SERVICES_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_CANVAS_AI_SERVICES_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_AI_SERVICES_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_CANVAS_AI_SERVICES_ACCESS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_CANVAS_AI_SERVICES_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_CANVAS_BEDROCK_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_CANVAS_BEDROCK_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_BEDROCK_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_CANVAS_BEDROCK_ACCESS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_CANVAS_BEDROCK_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_CANVAS_DATA_PREP_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_CANVAS_DATA_PREP_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_DATA_PREP_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_CANVAS_DATA_PREP_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_CANVAS_DATA_PREP_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_CANVAS_EMR_SERVERLESS_EXECUTION_ROLE_POLICY`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_CANVAS_EMR_SERVERLESS_EXECUTION_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_EMR_SERVERLESS_EXECUTION_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_CANVAS_EMR_SERVERLESS_EXECUTION_ROLE_POLICY: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_CANVAS_EMR_SERVERLESS_EXECUTION_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_CANVAS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_CANVAS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_CANVAS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_CANVAS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_CANVAS_SM_DATA_SCIENCE_ASSISTANT_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_CANVAS_SM_DATA_SCIENCE_ASSISTANT_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CANVAS_SM_DATA_SCIENCE_ASSISTANT_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_CANVAS_SM_DATA_SCIENCE_ASSISTANT_ACCESS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_CANVAS_SM_DATA_SCIENCE_ASSISTANT_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_CLUSTER_INSTANCE_ROLE_POLICY`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_CLUSTER_INSTANCE_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_CLUSTER_INSTANCE_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_CLUSTER_INSTANCE_ROLE_POLICY: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_CLUSTER_INSTANCE_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_FEATURE_STORE_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_FEATURE_STORE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_FEATURE_STORE_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_FEATURE_STORE_ACCESS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_FEATURE_STORE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_GROUND_TRUTH_EXECUTION`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_GROUND_TRUTH_EXECUTION" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_GROUND_TRUTH_EXECUTION"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_GROUND_TRUTH_EXECUTION: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_GROUND_TRUTH_EXECUTION: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_MODEL_GOVERNANCE_USE_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_MODEL_GOVERNANCE_USE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MODEL_GOVERNANCE_USE_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_MODEL_GOVERNANCE_USE_ACCESS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_MODEL_GOVERNANCE_USE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_MODEL_REGISTRY_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_MODEL_REGISTRY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MODEL_REGISTRY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_MODEL_REGISTRY_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_MODEL_REGISTRY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_PARTNER_APPS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_PARTNER_APPS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_PARTNER_APPS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_PARTNER_APPS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_PARTNER_APPS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_PIPELINES_INTEGRATIONS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_PIPELINES_INTEGRATIONS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_PIPELINES_INTEGRATIONS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_PIPELINES_INTEGRATIONS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_PIPELINES_INTEGRATIONS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_READ_ONLY`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_SERVICE_CATALOG_PRODUCTS_CODE_BUILD_SERVICE_ROLE_POLICY`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_SERVICE_CATALOG_PRODUCTS_CODE_BUILD_SERVICE_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_SERVICE_CATALOG_PRODUCTS_CODE_BUILD_SERVICE_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_SERVICE_CATALOG_PRODUCTS_CODE_BUILD_SERVICE_ROLE_POLICY: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_SERVICE_CATALOG_PRODUCTS_CODE_BUILD_SERVICE_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SAGE_MAKER_TRAINING_PLAN_CREATE_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_TRAINING_PLAN_CREATE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_TRAINING_PLAN_CREATE_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SAGE_MAKER_TRAINING_PLAN_CREATE_ACCESS: IManagedPolicy;
+public readonly AMAZON_SAGE_MAKER_TRAINING_PLAN_CREATE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SECURITY_LAKE_ADMINISTRATOR`<sup>Required</sup> <a name="AMAZON_SECURITY_LAKE_ADMINISTRATOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SECURITY_LAKE_ADMINISTRATOR"></a>
 
 ```typescript
-public readonly AMAZON_SECURITY_LAKE_ADMINISTRATOR: IManagedPolicy;
+public readonly AMAZON_SECURITY_LAKE_ADMINISTRATOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SECURITY_LAKE_PERMISSIONS_BOUNDARY`<sup>Required</sup> <a name="AMAZON_SECURITY_LAKE_PERMISSIONS_BOUNDARY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SECURITY_LAKE_PERMISSIONS_BOUNDARY"></a>
 
 ```typescript
-public readonly AMAZON_SECURITY_LAKE_PERMISSIONS_BOUNDARY: IManagedPolicy;
+public readonly AMAZON_SECURITY_LAKE_PERMISSIONS_BOUNDARY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SES_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_SES_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SES_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SES_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_SES_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SES_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_SES_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SES_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SES_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_SES_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SNS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_SNS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SNS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SNS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_SNS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SNS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_SNS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SNS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SNS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_SNS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SQS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_SQS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SQS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SQS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_SQS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SQS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_SQS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SQS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SQS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_SQS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SSM_AUTOMATION_APPROVER_ACCESS`<sup>Required</sup> <a name="AMAZON_SSM_AUTOMATION_APPROVER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_AUTOMATION_APPROVER_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SSM_AUTOMATION_APPROVER_ACCESS: IManagedPolicy;
+public readonly AMAZON_SSM_AUTOMATION_APPROVER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SSM_DIRECTORY_SERVICE_ACCESS`<sup>Required</sup> <a name="AMAZON_SSM_DIRECTORY_SERVICE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_DIRECTORY_SERVICE_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SSM_DIRECTORY_SERVICE_ACCESS: IManagedPolicy;
+public readonly AMAZON_SSM_DIRECTORY_SERVICE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SSM_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_SSM_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SSM_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_SSM_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SSM_MANAGED_EC2_INSTANCE_DEFAULT_POLICY`<sup>Required</sup> <a name="AMAZON_SSM_MANAGED_EC2_INSTANCE_DEFAULT_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_MANAGED_EC2_INSTANCE_DEFAULT_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_SSM_MANAGED_EC2_INSTANCE_DEFAULT_POLICY: IManagedPolicy;
+public readonly AMAZON_SSM_MANAGED_EC2_INSTANCE_DEFAULT_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SSM_MANAGED_INSTANCE_CORE`<sup>Required</sup> <a name="AMAZON_SSM_MANAGED_INSTANCE_CORE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_MANAGED_INSTANCE_CORE"></a>
 
 ```typescript
-public readonly AMAZON_SSM_MANAGED_INSTANCE_CORE: IManagedPolicy;
+public readonly AMAZON_SSM_MANAGED_INSTANCE_CORE: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SSM_PATCH_ASSOCIATION`<sup>Required</sup> <a name="AMAZON_SSM_PATCH_ASSOCIATION" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_PATCH_ASSOCIATION"></a>
 
 ```typescript
-public readonly AMAZON_SSM_PATCH_ASSOCIATION: IManagedPolicy;
+public readonly AMAZON_SSM_PATCH_ASSOCIATION: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_SSM_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_SSM_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SSM_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_SSM_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_SSM_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_TEXTRACT_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_TEXTRACT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TEXTRACT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_TEXTRACT_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_TEXTRACT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_TIMESTREAM_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_TIMESTREAM_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_TIMESTREAM_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_TIMESTREAM_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_TIMESTREAM_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_TIMESTREAM_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_TIMESTREAM_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_TIMESTREAM_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_TIMESTREAM_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_TIMESTREAM_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_TIMESTREAM_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_TIMESTREAM_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_TRANSCRIBE_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_TRANSCRIBE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TRANSCRIBE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_TRANSCRIBE_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_TRANSCRIBE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_TRANSCRIBE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_TRANSCRIBE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TRANSCRIBE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_TRANSCRIBE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_TRANSCRIBE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_VERIFIED_PERMISSIONS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_VERIFIED_PERMISSIONS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VERIFIED_PERMISSIONS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_VERIFIED_PERMISSIONS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_VERIFIED_PERMISSIONS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_VERIFIED_PERMISSIONS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_VERIFIED_PERMISSIONS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VERIFIED_PERMISSIONS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_VERIFIED_PERMISSIONS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_VERIFIED_PERMISSIONS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_VPC_CROSS_ACCOUNT_NETWORK_INTERFACE_OPERATIONS`<sup>Required</sup> <a name="AMAZON_VPC_CROSS_ACCOUNT_NETWORK_INTERFACE_OPERATIONS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_CROSS_ACCOUNT_NETWORK_INTERFACE_OPERATIONS"></a>
 
 ```typescript
-public readonly AMAZON_VPC_CROSS_ACCOUNT_NETWORK_INTERFACE_OPERATIONS: IManagedPolicy;
+public readonly AMAZON_VPC_CROSS_ACCOUNT_NETWORK_INTERFACE_OPERATIONS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_VPC_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_VPC_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_VPC_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_VPC_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_VPC_NETWORK_ACCESS_ANALYZER_FULL_ACCESS_POLICY`<sup>Required</sup> <a name="AMAZON_VPC_NETWORK_ACCESS_ANALYZER_FULL_ACCESS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_NETWORK_ACCESS_ANALYZER_FULL_ACCESS_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_VPC_NETWORK_ACCESS_ANALYZER_FULL_ACCESS_POLICY: IManagedPolicy;
+public readonly AMAZON_VPC_NETWORK_ACCESS_ANALYZER_FULL_ACCESS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_VPC_REACHABILITY_ANALYZER_FULL_ACCESS_POLICY`<sup>Required</sup> <a name="AMAZON_VPC_REACHABILITY_ANALYZER_FULL_ACCESS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_REACHABILITY_ANALYZER_FULL_ACCESS_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_VPC_REACHABILITY_ANALYZER_FULL_ACCESS_POLICY: IManagedPolicy;
+public readonly AMAZON_VPC_REACHABILITY_ANALYZER_FULL_ACCESS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_VPC_REACHABILITY_ANALYZER_PATH_COMPONENT_READ_POLICY`<sup>Required</sup> <a name="AMAZON_VPC_REACHABILITY_ANALYZER_PATH_COMPONENT_READ_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_REACHABILITY_ANALYZER_PATH_COMPONENT_READ_POLICY"></a>
 
 ```typescript
-public readonly AMAZON_VPC_REACHABILITY_ANALYZER_PATH_COMPONENT_READ_POLICY: IManagedPolicy;
+public readonly AMAZON_VPC_REACHABILITY_ANALYZER_PATH_COMPONENT_READ_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_VPC_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_VPC_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_VPC_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_VPC_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_VPC_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_DOCS_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_WORK_DOCS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_DOCS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORK_DOCS_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORK_DOCS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_DOCS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_WORK_DOCS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_DOCS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORK_DOCS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORK_DOCS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_MAIL_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_WORK_MAIL_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_MAIL_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORK_MAIL_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORK_MAIL_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_MAIL_MESSAGE_FLOW_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_WORK_MAIL_MESSAGE_FLOW_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_MAIL_MESSAGE_FLOW_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORK_MAIL_MESSAGE_FLOW_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORK_MAIL_MESSAGE_FLOW_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_MAIL_MESSAGE_FLOW_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_WORK_MAIL_MESSAGE_FLOW_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_MAIL_MESSAGE_FLOW_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORK_MAIL_MESSAGE_FLOW_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORK_MAIL_MESSAGE_FLOW_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_MAIL_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_WORK_MAIL_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_MAIL_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORK_MAIL_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORK_MAIL_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_SPACES_ADMIN`<sup>Required</sup> <a name="AMAZON_WORK_SPACES_ADMIN" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_ADMIN"></a>
 
 ```typescript
-public readonly AMAZON_WORK_SPACES_ADMIN: IManagedPolicy;
+public readonly AMAZON_WORK_SPACES_ADMIN: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_SPACES_APPLICATION_MANAGER_ADMIN_ACCESS`<sup>Required</sup> <a name="AMAZON_WORK_SPACES_APPLICATION_MANAGER_ADMIN_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_APPLICATION_MANAGER_ADMIN_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORK_SPACES_APPLICATION_MANAGER_ADMIN_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORK_SPACES_APPLICATION_MANAGER_ADMIN_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_SPACES_POOL_SERVICE_ACCESS`<sup>Required</sup> <a name="AMAZON_WORK_SPACES_POOL_SERVICE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_POOL_SERVICE_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORK_SPACES_POOL_SERVICE_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORK_SPACES_POOL_SERVICE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_SPACES_SECURE_BROWSER_READ_ONLY`<sup>Required</sup> <a name="AMAZON_WORK_SPACES_SECURE_BROWSER_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_SECURE_BROWSER_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_WORK_SPACES_SECURE_BROWSER_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_WORK_SPACES_SECURE_BROWSER_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_SPACES_SELF_SERVICE_ACCESS`<sup>Required</sup> <a name="AMAZON_WORK_SPACES_SELF_SERVICE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_SELF_SERVICE_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORK_SPACES_SELF_SERVICE_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORK_SPACES_SELF_SERVICE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_SPACES_SERVICE_ACCESS`<sup>Required</sup> <a name="AMAZON_WORK_SPACES_SERVICE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_SERVICE_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORK_SPACES_SERVICE_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORK_SPACES_SERVICE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_SPACES_THIN_CLIENT_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_WORK_SPACES_THIN_CLIENT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_THIN_CLIENT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORK_SPACES_THIN_CLIENT_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORK_SPACES_THIN_CLIENT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_SPACES_THIN_CLIENT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_WORK_SPACES_THIN_CLIENT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_THIN_CLIENT_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORK_SPACES_THIN_CLIENT_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORK_SPACES_THIN_CLIENT_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORK_SPACES_WEB_READ_ONLY`<sup>Required</sup> <a name="AMAZON_WORK_SPACES_WEB_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORK_SPACES_WEB_READ_ONLY"></a>
 
 ```typescript
-public readonly AMAZON_WORK_SPACES_WEB_READ_ONLY: IManagedPolicy;
+public readonly AMAZON_WORK_SPACES_WEB_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_WORKSPACES_PCA_ACCESS`<sup>Required</sup> <a name="AMAZON_WORKSPACES_PCA_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_WORKSPACES_PCA_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_WORKSPACES_PCA_ACCESS: IManagedPolicy;
+public readonly AMAZON_WORKSPACES_PCA_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ZOCALO_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_ZOCALO_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ZOCALO_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ZOCALO_FULL_ACCESS: IManagedPolicy;
+public readonly AMAZON_ZOCALO_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AMAZON_ZOCALO_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_ZOCALO_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ZOCALO_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AMAZON_ZOCALO_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AMAZON_ZOCALO_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AUTO_SCALING_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AUTO_SCALING_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AUTO_SCALING_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AUTO_SCALING_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AUTO_SCALING_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AUTO_SCALING_CONSOLE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AUTO_SCALING_CONSOLE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AUTO_SCALING_CONSOLE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AUTO_SCALING_CONSOLE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AUTO_SCALING_CONSOLE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AUTO_SCALING_FULL_ACCESS`<sup>Required</sup> <a name="AUTO_SCALING_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AUTO_SCALING_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AUTO_SCALING_FULL_ACCESS: IManagedPolicy;
+public readonly AUTO_SCALING_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AUTO_SCALING_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AUTO_SCALING_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AUTO_SCALING_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AUTO_SCALING_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AUTO_SCALING_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ACCOUNT_ACTIVITY_ACCESS`<sup>Required</sup> <a name="AWS_ACCOUNT_ACTIVITY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ACCOUNT_ACTIVITY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ACCOUNT_ACTIVITY_ACCESS: IManagedPolicy;
+public readonly AWS_ACCOUNT_ACTIVITY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ACCOUNT_MANAGEMENT_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ACCOUNT_MANAGEMENT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ACCOUNT_MANAGEMENT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ACCOUNT_MANAGEMENT_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_ACCOUNT_MANAGEMENT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ACCOUNT_MANAGEMENT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_ACCOUNT_MANAGEMENT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ACCOUNT_MANAGEMENT_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ACCOUNT_MANAGEMENT_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_ACCOUNT_MANAGEMENT_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ACCOUNT_USAGE_REPORT_ACCESS`<sup>Required</sup> <a name="AWS_ACCOUNT_USAGE_REPORT_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ACCOUNT_USAGE_REPORT_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ACCOUNT_USAGE_REPORT_ACCESS: IManagedPolicy;
+public readonly AWS_ACCOUNT_USAGE_REPORT_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_AGENTLESS_DISCOVERY_SERVICE`<sup>Required</sup> <a name="AWS_AGENTLESS_DISCOVERY_SERVICE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_AGENTLESS_DISCOVERY_SERVICE"></a>
 
 ```typescript
-public readonly AWS_AGENTLESS_DISCOVERY_SERVICE: IManagedPolicy;
+public readonly AWS_AGENTLESS_DISCOVERY_SERVICE: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APP_FABRIC_FULL_ACCESS`<sup>Required</sup> <a name="AWS_APP_FABRIC_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_FABRIC_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APP_FABRIC_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_APP_FABRIC_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APP_FABRIC_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_APP_FABRIC_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_FABRIC_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APP_FABRIC_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_APP_FABRIC_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APP_MESH_ENVOY_ACCESS`<sup>Required</sup> <a name="AWS_APP_MESH_ENVOY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_MESH_ENVOY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APP_MESH_ENVOY_ACCESS: IManagedPolicy;
+public readonly AWS_APP_MESH_ENVOY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APP_MESH_FULL_ACCESS`<sup>Required</sup> <a name="AWS_APP_MESH_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_MESH_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APP_MESH_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_APP_MESH_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APP_MESH_PREVIEW_ENVOY_ACCESS`<sup>Required</sup> <a name="AWS_APP_MESH_PREVIEW_ENVOY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_MESH_PREVIEW_ENVOY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APP_MESH_PREVIEW_ENVOY_ACCESS: IManagedPolicy;
+public readonly AWS_APP_MESH_PREVIEW_ENVOY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APP_MESH_READ_ONLY`<sup>Required</sup> <a name="AWS_APP_MESH_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_MESH_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_APP_MESH_READ_ONLY: IManagedPolicy;
+public readonly AWS_APP_MESH_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APP_RUNNER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_APP_RUNNER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_RUNNER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APP_RUNNER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_APP_RUNNER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APP_RUNNER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_APP_RUNNER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_RUNNER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APP_RUNNER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_APP_RUNNER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APP_SYNC_ADMINISTRATOR`<sup>Required</sup> <a name="AWS_APP_SYNC_ADMINISTRATOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_SYNC_ADMINISTRATOR"></a>
 
 ```typescript
-public readonly AWS_APP_SYNC_ADMINISTRATOR: IManagedPolicy;
+public readonly AWS_APP_SYNC_ADMINISTRATOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APP_SYNC_INVOKE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_APP_SYNC_INVOKE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_SYNC_INVOKE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APP_SYNC_INVOKE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_APP_SYNC_INVOKE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APP_SYNC_SCHEMA_AUTHOR`<sup>Required</sup> <a name="AWS_APP_SYNC_SCHEMA_AUTHOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APP_SYNC_SCHEMA_AUTHOR"></a>
 
 ```typescript
-public readonly AWS_APP_SYNC_SCHEMA_AUTHOR: IManagedPolicy;
+public readonly AWS_APP_SYNC_SCHEMA_AUTHOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APPLICATION_DISCOVERY_AGENT_ACCESS`<sup>Required</sup> <a name="AWS_APPLICATION_DISCOVERY_AGENT_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_DISCOVERY_AGENT_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APPLICATION_DISCOVERY_AGENT_ACCESS: IManagedPolicy;
+public readonly AWS_APPLICATION_DISCOVERY_AGENT_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APPLICATION_DISCOVERY_AGENTLESS_COLLECTOR_ACCESS`<sup>Required</sup> <a name="AWS_APPLICATION_DISCOVERY_AGENTLESS_COLLECTOR_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_DISCOVERY_AGENTLESS_COLLECTOR_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APPLICATION_DISCOVERY_AGENTLESS_COLLECTOR_ACCESS: IManagedPolicy;
+public readonly AWS_APPLICATION_DISCOVERY_AGENTLESS_COLLECTOR_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APPLICATION_DISCOVERY_SERVICE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_APPLICATION_DISCOVERY_SERVICE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_DISCOVERY_SERVICE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APPLICATION_DISCOVERY_SERVICE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_APPLICATION_DISCOVERY_SERVICE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APPLICATION_MIGRATION_AGENT_INSTALLATION_POLICY`<sup>Required</sup> <a name="AWS_APPLICATION_MIGRATION_AGENT_INSTALLATION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_AGENT_INSTALLATION_POLICY"></a>
 
 ```typescript
-public readonly AWS_APPLICATION_MIGRATION_AGENT_INSTALLATION_POLICY: IManagedPolicy;
+public readonly AWS_APPLICATION_MIGRATION_AGENT_INSTALLATION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APPLICATION_MIGRATION_AGENT_POLICY`<sup>Required</sup> <a name="AWS_APPLICATION_MIGRATION_AGENT_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_AGENT_POLICY"></a>
 
 ```typescript
-public readonly AWS_APPLICATION_MIGRATION_AGENT_POLICY: IManagedPolicy;
+public readonly AWS_APPLICATION_MIGRATION_AGENT_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APPLICATION_MIGRATION_EC2_ACCESS`<sup>Required</sup> <a name="AWS_APPLICATION_MIGRATION_EC2_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_EC2_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APPLICATION_MIGRATION_EC2_ACCESS: IManagedPolicy;
+public readonly AWS_APPLICATION_MIGRATION_EC2_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APPLICATION_MIGRATION_FULL_ACCESS`<sup>Required</sup> <a name="AWS_APPLICATION_MIGRATION_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APPLICATION_MIGRATION_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_APPLICATION_MIGRATION_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APPLICATION_MIGRATION_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_APPLICATION_MIGRATION_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APPLICATION_MIGRATION_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_APPLICATION_MIGRATION_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APPLICATION_MIGRATION_SERVICE_EC2_INSTANCE_POLICY`<sup>Required</sup> <a name="AWS_APPLICATION_MIGRATION_SERVICE_EC2_INSTANCE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_SERVICE_EC2_INSTANCE_POLICY"></a>
 
 ```typescript
-public readonly AWS_APPLICATION_MIGRATION_SERVICE_EC2_INSTANCE_POLICY: IManagedPolicy;
+public readonly AWS_APPLICATION_MIGRATION_SERVICE_EC2_INSTANCE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APPLICATION_MIGRATION_SSM_ACCESS`<sup>Required</sup> <a name="AWS_APPLICATION_MIGRATION_SSM_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_SSM_ACCESS"></a>
 
 ```typescript
-public readonly AWS_APPLICATION_MIGRATION_SSM_ACCESS: IManagedPolicy;
+public readonly AWS_APPLICATION_MIGRATION_SSM_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_APPLICATION_MIGRATION_V_CENTER_CLIENT_POLICY`<sup>Required</sup> <a name="AWS_APPLICATION_MIGRATION_V_CENTER_CLIENT_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_APPLICATION_MIGRATION_V_CENTER_CLIENT_POLICY"></a>
 
 ```typescript
-public readonly AWS_APPLICATION_MIGRATION_V_CENTER_CLIENT_POLICY: IManagedPolicy;
+public readonly AWS_APPLICATION_MIGRATION_V_CENTER_CLIENT_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ARTIFACT_AGREEMENTS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ARTIFACT_AGREEMENTS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ARTIFACT_AGREEMENTS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ARTIFACT_AGREEMENTS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_ARTIFACT_AGREEMENTS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ARTIFACT_AGREEMENTS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_ARTIFACT_AGREEMENTS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ARTIFACT_AGREEMENTS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ARTIFACT_AGREEMENTS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_ARTIFACT_AGREEMENTS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ARTIFACT_REPORTS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_ARTIFACT_REPORTS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ARTIFACT_REPORTS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ARTIFACT_REPORTS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_ARTIFACT_REPORTS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_AUDIT_MANAGER_ADMINISTRATOR_ACCESS`<sup>Required</sup> <a name="AWS_AUDIT_MANAGER_ADMINISTRATOR_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_AUDIT_MANAGER_ADMINISTRATOR_ACCESS"></a>
 
 ```typescript
-public readonly AWS_AUDIT_MANAGER_ADMINISTRATOR_ACCESS: IManagedPolicy;
+public readonly AWS_AUDIT_MANAGER_ADMINISTRATOR_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BACKUP_AUDIT_ACCESS`<sup>Required</sup> <a name="AWS_BACKUP_AUDIT_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_AUDIT_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BACKUP_AUDIT_ACCESS: IManagedPolicy;
+public readonly AWS_BACKUP_AUDIT_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BACKUP_DATA_TRANSFER_ACCESS`<sup>Required</sup> <a name="AWS_BACKUP_DATA_TRANSFER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_DATA_TRANSFER_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BACKUP_DATA_TRANSFER_ACCESS: IManagedPolicy;
+public readonly AWS_BACKUP_DATA_TRANSFER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BACKUP_FULL_ACCESS`<sup>Required</sup> <a name="AWS_BACKUP_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BACKUP_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_BACKUP_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BACKUP_OPERATOR_ACCESS`<sup>Required</sup> <a name="AWS_BACKUP_OPERATOR_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_OPERATOR_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BACKUP_OPERATOR_ACCESS: IManagedPolicy;
+public readonly AWS_BACKUP_OPERATOR_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BACKUP_ORGANIZATION_ADMIN_ACCESS`<sup>Required</sup> <a name="AWS_BACKUP_ORGANIZATION_ADMIN_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_ORGANIZATION_ADMIN_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BACKUP_ORGANIZATION_ADMIN_ACCESS: IManagedPolicy;
+public readonly AWS_BACKUP_ORGANIZATION_ADMIN_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BACKUP_RESTORE_ACCESS_FOR_SAPHANA`<sup>Required</sup> <a name="AWS_BACKUP_RESTORE_ACCESS_FOR_SAPHANA" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_RESTORE_ACCESS_FOR_SAPHANA"></a>
 
 ```typescript
-public readonly AWS_BACKUP_RESTORE_ACCESS_FOR_SAPHANA: IManagedPolicy;
+public readonly AWS_BACKUP_RESTORE_ACCESS_FOR_SAPHANA: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_INDEXING`<sup>Required</sup> <a name="AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_INDEXING" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_INDEXING"></a>
 
 ```typescript
-public readonly AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_INDEXING: IManagedPolicy;
+public readonly AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_INDEXING: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_ITEM_RESTORES`<sup>Required</sup> <a name="AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_ITEM_RESTORES" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_ITEM_RESTORES"></a>
 
 ```typescript
-public readonly AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_ITEM_RESTORES: IManagedPolicy;
+public readonly AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_ITEM_RESTORES: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_BACKUP`<sup>Required</sup> <a name="AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_BACKUP" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_BACKUP"></a>
 
 ```typescript
-public readonly AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_BACKUP: IManagedPolicy;
+public readonly AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_BACKUP: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_RESTORE`<sup>Required</sup> <a name="AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_RESTORE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_RESTORE"></a>
 
 ```typescript
-public readonly AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_RESTORE: IManagedPolicy;
+public readonly AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_RESTORE: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BATCH_FULL_ACCESS`<sup>Required</sup> <a name="AWS_BATCH_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BATCH_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BATCH_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_BATCH_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BILLING_CONDUCTOR_FULL_ACCESS`<sup>Required</sup> <a name="AWS_BILLING_CONDUCTOR_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BILLING_CONDUCTOR_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BILLING_CONDUCTOR_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_BILLING_CONDUCTOR_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BILLING_CONDUCTOR_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_BILLING_CONDUCTOR_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BILLING_CONDUCTOR_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BILLING_CONDUCTOR_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_BILLING_CONDUCTOR_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BILLING_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_BILLING_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BILLING_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BILLING_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_BILLING_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BUDGETS_ACTIONS_ROLE_POLICY_FOR_RESOURCE_ADMINISTRATION_WITH_SSM`<sup>Required</sup> <a name="AWS_BUDGETS_ACTIONS_ROLE_POLICY_FOR_RESOURCE_ADMINISTRATION_WITH_SSM" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUDGETS_ACTIONS_ROLE_POLICY_FOR_RESOURCE_ADMINISTRATION_WITH_SSM"></a>
 
 ```typescript
-public readonly AWS_BUDGETS_ACTIONS_ROLE_POLICY_FOR_RESOURCE_ADMINISTRATION_WITH_SSM: IManagedPolicy;
+public readonly AWS_BUDGETS_ACTIONS_ROLE_POLICY_FOR_RESOURCE_ADMINISTRATION_WITH_SSM: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BUDGETS_ACTIONS_WITH_AWS_RESOURCE_CONTROL_ACCESS`<sup>Required</sup> <a name="AWS_BUDGETS_ACTIONS_WITH_AWS_RESOURCE_CONTROL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUDGETS_ACTIONS_WITH_AWS_RESOURCE_CONTROL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BUDGETS_ACTIONS_WITH_AWS_RESOURCE_CONTROL_ACCESS: IManagedPolicy;
+public readonly AWS_BUDGETS_ACTIONS_WITH_AWS_RESOURCE_CONTROL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BUDGETS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_BUDGETS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUDGETS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BUDGETS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_BUDGETS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BUG_BUST_FULL_ACCESS`<sup>Required</sup> <a name="AWS_BUG_BUST_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUG_BUST_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BUG_BUST_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_BUG_BUST_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_BUG_BUST_PLAYER_ACCESS`<sup>Required</sup> <a name="AWS_BUG_BUST_PLAYER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BUG_BUST_PLAYER_ACCESS"></a>
 
 ```typescript
-public readonly AWS_BUG_BUST_PLAYER_ACCESS: IManagedPolicy;
+public readonly AWS_BUG_BUST_PLAYER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CERTIFICATE_MANAGER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CERTIFICATE_MANAGER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CERTIFICATE_MANAGER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CERTIFICATE_MANAGER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CERTIFICATE_MANAGER_PRIVATE_CA_AUDITOR`<sup>Required</sup> <a name="AWS_CERTIFICATE_MANAGER_PRIVATE_CA_AUDITOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_AUDITOR"></a>
 
 ```typescript
-public readonly AWS_CERTIFICATE_MANAGER_PRIVATE_CA_AUDITOR: IManagedPolicy;
+public readonly AWS_CERTIFICATE_MANAGER_PRIVATE_CA_AUDITOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CERTIFICATE_MANAGER_PRIVATE_CA_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CERTIFICATE_MANAGER_PRIVATE_CA_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CERTIFICATE_MANAGER_PRIVATE_CA_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CERTIFICATE_MANAGER_PRIVATE_CA_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CERTIFICATE_MANAGER_PRIVATE_CA_PRIVILEGED_USER`<sup>Required</sup> <a name="AWS_CERTIFICATE_MANAGER_PRIVATE_CA_PRIVILEGED_USER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_PRIVILEGED_USER"></a>
 
 ```typescript
-public readonly AWS_CERTIFICATE_MANAGER_PRIVATE_CA_PRIVILEGED_USER: IManagedPolicy;
+public readonly AWS_CERTIFICATE_MANAGER_PRIVATE_CA_PRIVILEGED_USER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CERTIFICATE_MANAGER_PRIVATE_CA_READ_ONLY`<sup>Required</sup> <a name="AWS_CERTIFICATE_MANAGER_PRIVATE_CA_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_CERTIFICATE_MANAGER_PRIVATE_CA_READ_ONLY: IManagedPolicy;
+public readonly AWS_CERTIFICATE_MANAGER_PRIVATE_CA_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CERTIFICATE_MANAGER_PRIVATE_CA_USER`<sup>Required</sup> <a name="AWS_CERTIFICATE_MANAGER_PRIVATE_CA_USER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_PRIVATE_CA_USER"></a>
 
 ```typescript
-public readonly AWS_CERTIFICATE_MANAGER_PRIVATE_CA_USER: IManagedPolicy;
+public readonly AWS_CERTIFICATE_MANAGER_PRIVATE_CA_USER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CERTIFICATE_MANAGER_READ_ONLY`<sup>Required</sup> <a name="AWS_CERTIFICATE_MANAGER_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CERTIFICATE_MANAGER_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_CERTIFICATE_MANAGER_READ_ONLY: IManagedPolicy;
+public readonly AWS_CERTIFICATE_MANAGER_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLEAN_ROOMS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CLEAN_ROOMS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLEAN_ROOMS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CLEAN_ROOMS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLEAN_ROOMS_FULL_ACCESS_NO_QUERYING`<sup>Required</sup> <a name="AWS_CLEAN_ROOMS_FULL_ACCESS_NO_QUERYING" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_FULL_ACCESS_NO_QUERYING"></a>
 
 ```typescript
-public readonly AWS_CLEAN_ROOMS_FULL_ACCESS_NO_QUERYING: IManagedPolicy;
+public readonly AWS_CLEAN_ROOMS_FULL_ACCESS_NO_QUERYING: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLEAN_ROOMS_ML_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CLEAN_ROOMS_ML_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_ML_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLEAN_ROOMS_ML_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CLEAN_ROOMS_ML_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLEAN_ROOMS_ML_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_CLEAN_ROOMS_ML_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_ML_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLEAN_ROOMS_ML_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_CLEAN_ROOMS_ML_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLEAN_ROOMS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_CLEAN_ROOMS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLEAN_ROOMS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLEAN_ROOMS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_CLEAN_ROOMS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD_FORMATION_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CLOUD_FORMATION_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_FORMATION_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLOUD_FORMATION_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CLOUD_FORMATION_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD_FORMATION_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_CLOUD_FORMATION_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_FORMATION_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLOUD_FORMATION_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_CLOUD_FORMATION_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD_HSM_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CLOUD_HSM_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_HSM_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLOUD_HSM_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CLOUD_HSM_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD_HSM_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_CLOUD_HSM_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_HSM_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLOUD_HSM_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_CLOUD_HSM_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD_MAP_DISCOVER_INSTANCE_ACCESS`<sup>Required</sup> <a name="AWS_CLOUD_MAP_DISCOVER_INSTANCE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_MAP_DISCOVER_INSTANCE_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLOUD_MAP_DISCOVER_INSTANCE_ACCESS: IManagedPolicy;
+public readonly AWS_CLOUD_MAP_DISCOVER_INSTANCE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD_MAP_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CLOUD_MAP_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_MAP_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLOUD_MAP_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CLOUD_MAP_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD_MAP_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_CLOUD_MAP_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_MAP_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLOUD_MAP_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_CLOUD_MAP_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD_MAP_REGISTER_INSTANCE_ACCESS`<sup>Required</sup> <a name="AWS_CLOUD_MAP_REGISTER_INSTANCE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_MAP_REGISTER_INSTANCE_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLOUD_MAP_REGISTER_INSTANCE_ACCESS: IManagedPolicy;
+public readonly AWS_CLOUD_MAP_REGISTER_INSTANCE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD_SHELL_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CLOUD_SHELL_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_SHELL_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLOUD_SHELL_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CLOUD_SHELL_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD_TRAIL_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CLOUD_TRAIL_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_TRAIL_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLOUD_TRAIL_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CLOUD_TRAIL_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD_TRAIL_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_CLOUD_TRAIL_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD_TRAIL_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CLOUD_TRAIL_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_CLOUD_TRAIL_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD9_ADMINISTRATOR`<sup>Required</sup> <a name="AWS_CLOUD9_ADMINISTRATOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD9_ADMINISTRATOR"></a>
 
 ```typescript
-public readonly AWS_CLOUD9_ADMINISTRATOR: IManagedPolicy;
+public readonly AWS_CLOUD9_ADMINISTRATOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD9_ENVIRONMENT_MEMBER`<sup>Required</sup> <a name="AWS_CLOUD9_ENVIRONMENT_MEMBER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD9_ENVIRONMENT_MEMBER"></a>
 
 ```typescript
-public readonly AWS_CLOUD9_ENVIRONMENT_MEMBER: IManagedPolicy;
+public readonly AWS_CLOUD9_ENVIRONMENT_MEMBER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD9_SSM_INSTANCE_PROFILE`<sup>Required</sup> <a name="AWS_CLOUD9_SSM_INSTANCE_PROFILE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD9_SSM_INSTANCE_PROFILE"></a>
 
 ```typescript
-public readonly AWS_CLOUD9_SSM_INSTANCE_PROFILE: IManagedPolicy;
+public readonly AWS_CLOUD9_SSM_INSTANCE_PROFILE: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CLOUD9_USER`<sup>Required</sup> <a name="AWS_CLOUD9_USER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CLOUD9_USER"></a>
 
 ```typescript
-public readonly AWS_CLOUD9_USER: IManagedPolicy;
+public readonly AWS_CLOUD9_USER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_ARTIFACT_ADMIN_ACCESS`<sup>Required</sup> <a name="AWS_CODE_ARTIFACT_ADMIN_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_ARTIFACT_ADMIN_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_ARTIFACT_ADMIN_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_ARTIFACT_ADMIN_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_ARTIFACT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_CODE_ARTIFACT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_ARTIFACT_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_ARTIFACT_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_ARTIFACT_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_BUILD_ADMIN_ACCESS`<sup>Required</sup> <a name="AWS_CODE_BUILD_ADMIN_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_BUILD_ADMIN_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_BUILD_ADMIN_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_BUILD_ADMIN_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_BUILD_DEVELOPER_ACCESS`<sup>Required</sup> <a name="AWS_CODE_BUILD_DEVELOPER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_BUILD_DEVELOPER_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_BUILD_DEVELOPER_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_BUILD_DEVELOPER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_BUILD_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_CODE_BUILD_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_BUILD_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_BUILD_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_BUILD_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_COMMIT_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CODE_COMMIT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_COMMIT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_COMMIT_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_COMMIT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_COMMIT_POWER_USER`<sup>Required</sup> <a name="AWS_CODE_COMMIT_POWER_USER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_COMMIT_POWER_USER"></a>
 
 ```typescript
-public readonly AWS_CODE_COMMIT_POWER_USER: IManagedPolicy;
+public readonly AWS_CODE_COMMIT_POWER_USER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_COMMIT_READ_ONLY`<sup>Required</sup> <a name="AWS_CODE_COMMIT_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_COMMIT_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_CODE_COMMIT_READ_ONLY: IManagedPolicy;
+public readonly AWS_CODE_COMMIT_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_DEPLOY_DEPLOYER_ACCESS`<sup>Required</sup> <a name="AWS_CODE_DEPLOY_DEPLOYER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_DEPLOYER_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_DEPLOY_DEPLOYER_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_DEPLOY_DEPLOYER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_DEPLOY_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CODE_DEPLOY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_DEPLOY_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_DEPLOY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_DEPLOY_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_CODE_DEPLOY_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_DEPLOY_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_DEPLOY_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_DEPLOY_ROLE_FOR_ECS`<sup>Required</sup> <a name="AWS_CODE_DEPLOY_ROLE_FOR_ECS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_ROLE_FOR_ECS"></a>
 
 ```typescript
-public readonly AWS_CODE_DEPLOY_ROLE_FOR_ECS: IManagedPolicy;
+public readonly AWS_CODE_DEPLOY_ROLE_FOR_ECS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_DEPLOY_ROLE_FOR_ECS_LIMITED`<sup>Required</sup> <a name="AWS_CODE_DEPLOY_ROLE_FOR_ECS_LIMITED" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_DEPLOY_ROLE_FOR_ECS_LIMITED"></a>
 
 ```typescript
-public readonly AWS_CODE_DEPLOY_ROLE_FOR_ECS_LIMITED: IManagedPolicy;
+public readonly AWS_CODE_DEPLOY_ROLE_FOR_ECS_LIMITED: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_PIPELINE_APPROVER_ACCESS`<sup>Required</sup> <a name="AWS_CODE_PIPELINE_APPROVER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_PIPELINE_APPROVER_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_PIPELINE_APPROVER_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_PIPELINE_APPROVER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_PIPELINE_CUSTOM_ACTION_ACCESS`<sup>Required</sup> <a name="AWS_CODE_PIPELINE_CUSTOM_ACTION_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_PIPELINE_CUSTOM_ACTION_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_PIPELINE_CUSTOM_ACTION_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_PIPELINE_CUSTOM_ACTION_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_PIPELINE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CODE_PIPELINE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_PIPELINE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_PIPELINE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_PIPELINE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_PIPELINE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_CODE_PIPELINE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_PIPELINE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_PIPELINE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_PIPELINE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CODE_STAR_FULL_ACCESS`<sup>Required</sup> <a name="AWS_CODE_STAR_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CODE_STAR_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CODE_STAR_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_CODE_STAR_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_COMPROMISED_KEY_QUARANTINE`<sup>Required</sup> <a name="AWS_COMPROMISED_KEY_QUARANTINE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_COMPROMISED_KEY_QUARANTINE"></a>
 
 ```typescript
-public readonly AWS_COMPROMISED_KEY_QUARANTINE: IManagedPolicy;
+public readonly AWS_COMPROMISED_KEY_QUARANTINE: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_COMPROMISED_KEY_QUARANTINE_V2`<sup>Required</sup> <a name="AWS_COMPROMISED_KEY_QUARANTINE_V2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_COMPROMISED_KEY_QUARANTINE_V2"></a>
 
 ```typescript
-public readonly AWS_COMPROMISED_KEY_QUARANTINE_V2: IManagedPolicy;
+public readonly AWS_COMPROMISED_KEY_QUARANTINE_V2: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_COMPROMISED_KEY_QUARANTINE_V3`<sup>Required</sup> <a name="AWS_COMPROMISED_KEY_QUARANTINE_V3" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_COMPROMISED_KEY_QUARANTINE_V3"></a>
 
 ```typescript
-public readonly AWS_COMPROMISED_KEY_QUARANTINE_V3: IManagedPolicy;
+public readonly AWS_COMPROMISED_KEY_QUARANTINE_V3: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CONFIG_USER_ACCESS`<sup>Required</sup> <a name="AWS_CONFIG_USER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CONFIG_USER_ACCESS"></a>
 
 ```typescript
-public readonly AWS_CONFIG_USER_ACCESS: IManagedPolicy;
+public readonly AWS_CONFIG_USER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_CONNECTOR`<sup>Required</sup> <a name="AWS_CONNECTOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_CONNECTOR"></a>
 
 ```typescript
-public readonly AWS_CONNECTOR: IManagedPolicy;
+public readonly AWS_CONNECTOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DATA_EXCHANGE_DATA_GRANT_OWNER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_DATA_EXCHANGE_DATA_GRANT_OWNER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_DATA_GRANT_OWNER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DATA_EXCHANGE_DATA_GRANT_OWNER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_DATA_EXCHANGE_DATA_GRANT_OWNER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DATA_EXCHANGE_DATA_GRANT_RECEIVER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_DATA_EXCHANGE_DATA_GRANT_RECEIVER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_DATA_GRANT_RECEIVER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DATA_EXCHANGE_DATA_GRANT_RECEIVER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_DATA_EXCHANGE_DATA_GRANT_RECEIVER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DATA_EXCHANGE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_DATA_EXCHANGE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DATA_EXCHANGE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_DATA_EXCHANGE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DATA_EXCHANGE_PROVIDER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_DATA_EXCHANGE_PROVIDER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_PROVIDER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DATA_EXCHANGE_PROVIDER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_DATA_EXCHANGE_PROVIDER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DATA_EXCHANGE_READ_ONLY`<sup>Required</sup> <a name="AWS_DATA_EXCHANGE_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_DATA_EXCHANGE_READ_ONLY: IManagedPolicy;
+public readonly AWS_DATA_EXCHANGE_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DATA_EXCHANGE_SUBSCRIBER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_DATA_EXCHANGE_SUBSCRIBER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_EXCHANGE_SUBSCRIBER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DATA_EXCHANGE_SUBSCRIBER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_DATA_EXCHANGE_SUBSCRIBER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DATA_PIPELINE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_DATA_PIPELINE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_PIPELINE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DATA_PIPELINE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_DATA_PIPELINE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DATA_PIPELINE_POWER_USER`<sup>Required</sup> <a name="AWS_DATA_PIPELINE_POWER_USER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_PIPELINE_POWER_USER"></a>
 
 ```typescript
-public readonly AWS_DATA_PIPELINE_POWER_USER: IManagedPolicy;
+public readonly AWS_DATA_PIPELINE_POWER_USER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DATA_SYNC_FULL_ACCESS`<sup>Required</sup> <a name="AWS_DATA_SYNC_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_SYNC_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DATA_SYNC_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_DATA_SYNC_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DATA_SYNC_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_DATA_SYNC_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DATA_SYNC_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DATA_SYNC_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_DATA_SYNC_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEADLINE_CLOUD_FLEET_WORKER`<sup>Required</sup> <a name="AWS_DEADLINE_CLOUD_FLEET_WORKER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_FLEET_WORKER"></a>
 
 ```typescript
-public readonly AWS_DEADLINE_CLOUD_FLEET_WORKER: IManagedPolicy;
+public readonly AWS_DEADLINE_CLOUD_FLEET_WORKER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEADLINE_CLOUD_USER_ACCESS_FARMS`<sup>Required</sup> <a name="AWS_DEADLINE_CLOUD_USER_ACCESS_FARMS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_USER_ACCESS_FARMS"></a>
 
 ```typescript
-public readonly AWS_DEADLINE_CLOUD_USER_ACCESS_FARMS: IManagedPolicy;
+public readonly AWS_DEADLINE_CLOUD_USER_ACCESS_FARMS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEADLINE_CLOUD_USER_ACCESS_FLEETS`<sup>Required</sup> <a name="AWS_DEADLINE_CLOUD_USER_ACCESS_FLEETS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_USER_ACCESS_FLEETS"></a>
 
 ```typescript
-public readonly AWS_DEADLINE_CLOUD_USER_ACCESS_FLEETS: IManagedPolicy;
+public readonly AWS_DEADLINE_CLOUD_USER_ACCESS_FLEETS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEADLINE_CLOUD_USER_ACCESS_JOBS`<sup>Required</sup> <a name="AWS_DEADLINE_CLOUD_USER_ACCESS_JOBS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_USER_ACCESS_JOBS"></a>
 
 ```typescript
-public readonly AWS_DEADLINE_CLOUD_USER_ACCESS_JOBS: IManagedPolicy;
+public readonly AWS_DEADLINE_CLOUD_USER_ACCESS_JOBS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEADLINE_CLOUD_USER_ACCESS_QUEUES`<sup>Required</sup> <a name="AWS_DEADLINE_CLOUD_USER_ACCESS_QUEUES" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_USER_ACCESS_QUEUES"></a>
 
 ```typescript
-public readonly AWS_DEADLINE_CLOUD_USER_ACCESS_QUEUES: IManagedPolicy;
+public readonly AWS_DEADLINE_CLOUD_USER_ACCESS_QUEUES: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEADLINE_CLOUD_WORKER_HOST`<sup>Required</sup> <a name="AWS_DEADLINE_CLOUD_WORKER_HOST" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEADLINE_CLOUD_WORKER_HOST"></a>
 
 ```typescript
-public readonly AWS_DEADLINE_CLOUD_WORKER_HOST: IManagedPolicy;
+public readonly AWS_DEADLINE_CLOUD_WORKER_HOST: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEEP_LENS_LAMBDA_FUNCTION_ACCESS_POLICY`<sup>Required</sup> <a name="AWS_DEEP_LENS_LAMBDA_FUNCTION_ACCESS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_LENS_LAMBDA_FUNCTION_ACCESS_POLICY"></a>
 
 ```typescript
-public readonly AWS_DEEP_LENS_LAMBDA_FUNCTION_ACCESS_POLICY: IManagedPolicy;
+public readonly AWS_DEEP_LENS_LAMBDA_FUNCTION_ACCESS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEEP_RACER_ACCOUNT_ADMIN_ACCESS`<sup>Required</sup> <a name="AWS_DEEP_RACER_ACCOUNT_ADMIN_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_ACCOUNT_ADMIN_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DEEP_RACER_ACCOUNT_ADMIN_ACCESS: IManagedPolicy;
+public readonly AWS_DEEP_RACER_ACCOUNT_ADMIN_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEEP_RACER_CLOUD_FORMATION_ACCESS_POLICY`<sup>Required</sup> <a name="AWS_DEEP_RACER_CLOUD_FORMATION_ACCESS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_CLOUD_FORMATION_ACCESS_POLICY"></a>
 
 ```typescript
-public readonly AWS_DEEP_RACER_CLOUD_FORMATION_ACCESS_POLICY: IManagedPolicy;
+public readonly AWS_DEEP_RACER_CLOUD_FORMATION_ACCESS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEEP_RACER_DEFAULT_MULTI_USER_ACCESS`<sup>Required</sup> <a name="AWS_DEEP_RACER_DEFAULT_MULTI_USER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_DEFAULT_MULTI_USER_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DEEP_RACER_DEFAULT_MULTI_USER_ACCESS: IManagedPolicy;
+public readonly AWS_DEEP_RACER_DEFAULT_MULTI_USER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEEP_RACER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_DEEP_RACER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DEEP_RACER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_DEEP_RACER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEEP_RACER_ROBO_MAKER_ACCESS_POLICY`<sup>Required</sup> <a name="AWS_DEEP_RACER_ROBO_MAKER_ACCESS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEEP_RACER_ROBO_MAKER_ACCESS_POLICY"></a>
 
 ```typescript
-public readonly AWS_DEEP_RACER_ROBO_MAKER_ACCESS_POLICY: IManagedPolicy;
+public readonly AWS_DEEP_RACER_ROBO_MAKER_ACCESS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DENY_ALL`<sup>Required</sup> <a name="AWS_DENY_ALL" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DENY_ALL"></a>
 
 ```typescript
-public readonly AWS_DENY_ALL: IManagedPolicy;
+public readonly AWS_DENY_ALL: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DEVICE_FARM_FULL_ACCESS`<sup>Required</sup> <a name="AWS_DEVICE_FARM_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DEVICE_FARM_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DEVICE_FARM_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_DEVICE_FARM_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DIRECT_CONNECT_FULL_ACCESS`<sup>Required</sup> <a name="AWS_DIRECT_CONNECT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECT_CONNECT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DIRECT_CONNECT_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_DIRECT_CONNECT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DIRECT_CONNECT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_DIRECT_CONNECT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECT_CONNECT_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DIRECT_CONNECT_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_DIRECT_CONNECT_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DIRECTORY_SERVICE_DATA_FULL_ACCESS`<sup>Required</sup> <a name="AWS_DIRECTORY_SERVICE_DATA_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECTORY_SERVICE_DATA_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DIRECTORY_SERVICE_DATA_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_DIRECTORY_SERVICE_DATA_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DIRECTORY_SERVICE_DATA_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_DIRECTORY_SERVICE_DATA_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECTORY_SERVICE_DATA_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DIRECTORY_SERVICE_DATA_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_DIRECTORY_SERVICE_DATA_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DIRECTORY_SERVICE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_DIRECTORY_SERVICE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECTORY_SERVICE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DIRECTORY_SERVICE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_DIRECTORY_SERVICE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DIRECTORY_SERVICE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_DIRECTORY_SERVICE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DIRECTORY_SERVICE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_DIRECTORY_SERVICE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_DIRECTORY_SERVICE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_DISCOVERY_CONTINUOUS_EXPORT_FIREHOSE_POLICY`<sup>Required</sup> <a name="AWS_DISCOVERY_CONTINUOUS_EXPORT_FIREHOSE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_DISCOVERY_CONTINUOUS_EXPORT_FIREHOSE_POLICY"></a>
 
 ```typescript
-public readonly AWS_DISCOVERY_CONTINUOUS_EXPORT_FIREHOSE_POLICY: IManagedPolicy;
+public readonly AWS_DISCOVERY_CONTINUOUS_EXPORT_FIREHOSE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_EC2_VSS_SNAPSHOT_POLICY`<sup>Required</sup> <a name="AWS_EC2_VSS_SNAPSHOT_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_EC2_VSS_SNAPSHOT_POLICY"></a>
 
 ```typescript
-public readonly AWS_EC2_VSS_SNAPSHOT_POLICY: IManagedPolicy;
+public readonly AWS_EC2_VSS_SNAPSHOT_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELASTIC_BEANSTALK_CUSTOM_PLATFORMFOR_EC2_ROLE`<sup>Required</sup> <a name="AWS_ELASTIC_BEANSTALK_CUSTOM_PLATFORMFOR_EC2_ROLE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_CUSTOM_PLATFORMFOR_EC2_ROLE"></a>
 
 ```typescript
-public readonly AWS_ELASTIC_BEANSTALK_CUSTOM_PLATFORMFOR_EC2_ROLE: IManagedPolicy;
+public readonly AWS_ELASTIC_BEANSTALK_CUSTOM_PLATFORMFOR_EC2_ROLE: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELASTIC_BEANSTALK_MANAGED_UPDATES_CUSTOMER_ROLE_POLICY`<sup>Required</sup> <a name="AWS_ELASTIC_BEANSTALK_MANAGED_UPDATES_CUSTOMER_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_MANAGED_UPDATES_CUSTOMER_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_ELASTIC_BEANSTALK_MANAGED_UPDATES_CUSTOMER_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_ELASTIC_BEANSTALK_MANAGED_UPDATES_CUSTOMER_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELASTIC_BEANSTALK_MULTICONTAINER_DOCKER`<sup>Required</sup> <a name="AWS_ELASTIC_BEANSTALK_MULTICONTAINER_DOCKER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_MULTICONTAINER_DOCKER"></a>
 
 ```typescript
-public readonly AWS_ELASTIC_BEANSTALK_MULTICONTAINER_DOCKER: IManagedPolicy;
+public readonly AWS_ELASTIC_BEANSTALK_MULTICONTAINER_DOCKER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELASTIC_BEANSTALK_READ_ONLY`<sup>Required</sup> <a name="AWS_ELASTIC_BEANSTALK_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_ELASTIC_BEANSTALK_READ_ONLY: IManagedPolicy;
+public readonly AWS_ELASTIC_BEANSTALK_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELASTIC_BEANSTALK_WEB_TIER`<sup>Required</sup> <a name="AWS_ELASTIC_BEANSTALK_WEB_TIER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_WEB_TIER"></a>
 
 ```typescript
-public readonly AWS_ELASTIC_BEANSTALK_WEB_TIER: IManagedPolicy;
+public readonly AWS_ELASTIC_BEANSTALK_WEB_TIER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELASTIC_BEANSTALK_WORKER_TIER`<sup>Required</sup> <a name="AWS_ELASTIC_BEANSTALK_WORKER_TIER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_BEANSTALK_WORKER_TIER"></a>
 
 ```typescript
-public readonly AWS_ELASTIC_BEANSTALK_WORKER_TIER: IManagedPolicy;
+public readonly AWS_ELASTIC_BEANSTALK_WORKER_TIER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELASTIC_DISASTER_RECOVERY_AGENT_INSTALLATION_POLICY`<sup>Required</sup> <a name="AWS_ELASTIC_DISASTER_RECOVERY_AGENT_INSTALLATION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_AGENT_INSTALLATION_POLICY"></a>
 
 ```typescript
-public readonly AWS_ELASTIC_DISASTER_RECOVERY_AGENT_INSTALLATION_POLICY: IManagedPolicy;
+public readonly AWS_ELASTIC_DISASTER_RECOVERY_AGENT_INSTALLATION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS_V2`<sup>Required</sup> <a name="AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS_V2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS_V2"></a>
 
 ```typescript
-public readonly AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS_V2: IManagedPolicy;
+public readonly AWS_ELASTIC_DISASTER_RECOVERY_CONSOLE_FULL_ACCESS_V2: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELASTIC_DISASTER_RECOVERY_FAILBACK_INSTALLATION_POLICY`<sup>Required</sup> <a name="AWS_ELASTIC_DISASTER_RECOVERY_FAILBACK_INSTALLATION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_FAILBACK_INSTALLATION_POLICY"></a>
 
 ```typescript
-public readonly AWS_ELASTIC_DISASTER_RECOVERY_FAILBACK_INSTALLATION_POLICY: IManagedPolicy;
+public readonly AWS_ELASTIC_DISASTER_RECOVERY_FAILBACK_INSTALLATION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELASTIC_DISASTER_RECOVERY_LAUNCH_ACTIONS_POLICY`<sup>Required</sup> <a name="AWS_ELASTIC_DISASTER_RECOVERY_LAUNCH_ACTIONS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_LAUNCH_ACTIONS_POLICY"></a>
 
 ```typescript
-public readonly AWS_ELASTIC_DISASTER_RECOVERY_LAUNCH_ACTIONS_POLICY: IManagedPolicy;
+public readonly AWS_ELASTIC_DISASTER_RECOVERY_LAUNCH_ACTIONS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELASTIC_DISASTER_RECOVERY_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_ELASTIC_DISASTER_RECOVERY_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ELASTIC_DISASTER_RECOVERY_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_ELASTIC_DISASTER_RECOVERY_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELEMENTAL_MEDIA_CONVERT_READ_ONLY`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_CONVERT_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONVERT_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_ELEMENTAL_MEDIA_CONVERT_READ_ONLY: IManagedPolicy;
+public readonly AWS_ELEMENTAL_MEDIA_CONVERT_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELEMENTAL_MEDIA_LIVE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_LIVE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_LIVE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ELEMENTAL_MEDIA_LIVE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_ELEMENTAL_MEDIA_LIVE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELEMENTAL_MEDIA_LIVE_READ_ONLY`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_LIVE_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_LIVE_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_ELEMENTAL_MEDIA_LIVE_READ_ONLY: IManagedPolicy;
+public readonly AWS_ELEMENTAL_MEDIA_LIVE_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELEMENTAL_MEDIA_PACKAGE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_PACKAGE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_PACKAGE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ELEMENTAL_MEDIA_PACKAGE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_ELEMENTAL_MEDIA_PACKAGE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELEMENTAL_MEDIA_PACKAGE_READ_ONLY`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_PACKAGE_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_PACKAGE_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_ELEMENTAL_MEDIA_PACKAGE_READ_ONLY: IManagedPolicy;
+public readonly AWS_ELEMENTAL_MEDIA_PACKAGE_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELEMENTAL_MEDIA_PACKAGE_V2_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_PACKAGE_V2_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_PACKAGE_V2_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ELEMENTAL_MEDIA_PACKAGE_V2_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_ELEMENTAL_MEDIA_PACKAGE_V2_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELEMENTAL_MEDIA_PACKAGE_V2_READ_ONLY`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_PACKAGE_V2_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_PACKAGE_V2_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_ELEMENTAL_MEDIA_PACKAGE_V2_READ_ONLY: IManagedPolicy;
+public readonly AWS_ELEMENTAL_MEDIA_PACKAGE_V2_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELEMENTAL_MEDIA_STORE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_STORE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_STORE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ELEMENTAL_MEDIA_STORE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_ELEMENTAL_MEDIA_STORE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELEMENTAL_MEDIA_STORE_READ_ONLY`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_STORE_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_STORE_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_ELEMENTAL_MEDIA_STORE_READ_ONLY: IManagedPolicy;
+public readonly AWS_ELEMENTAL_MEDIA_STORE_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELEMENTAL_MEDIA_TAILOR_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_TAILOR_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_TAILOR_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ELEMENTAL_MEDIA_TAILOR_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_ELEMENTAL_MEDIA_TAILOR_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ELEMENTAL_MEDIA_TAILOR_READ_ONLY`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_TAILOR_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_TAILOR_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_ELEMENTAL_MEDIA_TAILOR_READ_ONLY: IManagedPolicy;
+public readonly AWS_ELEMENTAL_MEDIA_TAILOR_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ENTITY_RESOLUTION_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ENTITY_RESOLUTION_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ENTITY_RESOLUTION_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ENTITY_RESOLUTION_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_ENTITY_RESOLUTION_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ENTITY_RESOLUTION_CONSOLE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_ENTITY_RESOLUTION_CONSOLE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ENTITY_RESOLUTION_CONSOLE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ENTITY_RESOLUTION_CONSOLE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_ENTITY_RESOLUTION_CONSOLE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_FM_ADMIN_FULL_ACCESS`<sup>Required</sup> <a name="AWS_FM_ADMIN_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_FM_ADMIN_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_FM_ADMIN_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_FM_ADMIN_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_FM_ADMIN_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_FM_ADMIN_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_FM_ADMIN_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_FM_ADMIN_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_FM_ADMIN_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_FM_MEMBER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_FM_MEMBER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_FM_MEMBER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_FM_MEMBER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_FM_MEMBER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_FOR_WORD_PRESS_PLUGIN_POLICY`<sup>Required</sup> <a name="AWS_FOR_WORD_PRESS_PLUGIN_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_FOR_WORD_PRESS_PLUGIN_POLICY"></a>
 
 ```typescript
-public readonly AWS_FOR_WORD_PRESS_PLUGIN_POLICY: IManagedPolicy;
+public readonly AWS_FOR_WORD_PRESS_PLUGIN_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GLUE_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_GLUE_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_GLUE_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_GLUE_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GLUE_CONSOLE_SAGE_MAKER_NOTEBOOK_FULL_ACCESS`<sup>Required</sup> <a name="AWS_GLUE_CONSOLE_SAGE_MAKER_NOTEBOOK_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_CONSOLE_SAGE_MAKER_NOTEBOOK_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_GLUE_CONSOLE_SAGE_MAKER_NOTEBOOK_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_GLUE_CONSOLE_SAGE_MAKER_NOTEBOOK_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GLUE_DATA_BREW_FULL_ACCESS_POLICY`<sup>Required</sup> <a name="AWS_GLUE_DATA_BREW_FULL_ACCESS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_DATA_BREW_FULL_ACCESS_POLICY"></a>
 
 ```typescript
-public readonly AWS_GLUE_DATA_BREW_FULL_ACCESS_POLICY: IManagedPolicy;
+public readonly AWS_GLUE_DATA_BREW_FULL_ACCESS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GLUE_SCHEMA_REGISTRY_FULL_ACCESS`<sup>Required</sup> <a name="AWS_GLUE_SCHEMA_REGISTRY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_SCHEMA_REGISTRY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_GLUE_SCHEMA_REGISTRY_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_GLUE_SCHEMA_REGISTRY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GLUE_SCHEMA_REGISTRY_READONLY_ACCESS`<sup>Required</sup> <a name="AWS_GLUE_SCHEMA_REGISTRY_READONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_SCHEMA_REGISTRY_READONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_GLUE_SCHEMA_REGISTRY_READONLY_ACCESS: IManagedPolicy;
+public readonly AWS_GLUE_SCHEMA_REGISTRY_READONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GLUE_SESSION_USER_RESTRICTED_NOTEBOOK_POLICY`<sup>Required</sup> <a name="AWS_GLUE_SESSION_USER_RESTRICTED_NOTEBOOK_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_SESSION_USER_RESTRICTED_NOTEBOOK_POLICY"></a>
 
 ```typescript
-public readonly AWS_GLUE_SESSION_USER_RESTRICTED_NOTEBOOK_POLICY: IManagedPolicy;
+public readonly AWS_GLUE_SESSION_USER_RESTRICTED_NOTEBOOK_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GLUE_SESSION_USER_RESTRICTED_POLICY`<sup>Required</sup> <a name="AWS_GLUE_SESSION_USER_RESTRICTED_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GLUE_SESSION_USER_RESTRICTED_POLICY"></a>
 
 ```typescript
-public readonly AWS_GLUE_SESSION_USER_RESTRICTED_POLICY: IManagedPolicy;
+public readonly AWS_GLUE_SESSION_USER_RESTRICTED_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GRAFANA_ACCOUNT_ADMINISTRATOR`<sup>Required</sup> <a name="AWS_GRAFANA_ACCOUNT_ADMINISTRATOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GRAFANA_ACCOUNT_ADMINISTRATOR"></a>
 
 ```typescript
-public readonly AWS_GRAFANA_ACCOUNT_ADMINISTRATOR: IManagedPolicy;
+public readonly AWS_GRAFANA_ACCOUNT_ADMINISTRATOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GRAFANA_CONSOLE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_GRAFANA_CONSOLE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GRAFANA_CONSOLE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_GRAFANA_CONSOLE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_GRAFANA_CONSOLE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT`<sup>Required</sup> <a name="AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT"></a>
 
 ```typescript
-public readonly AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT: IManagedPolicy;
+public readonly AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT_V2`<sup>Required</sup> <a name="AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT_V2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT_V2"></a>
 
 ```typescript
-public readonly AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT_V2: IManagedPolicy;
+public readonly AWS_GRAFANA_WORKSPACE_PERMISSION_MANAGEMENT_V2: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GREENGRASS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_GREENGRASS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GREENGRASS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_GREENGRASS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_GREENGRASS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GREENGRASS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_GREENGRASS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GREENGRASS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_GREENGRASS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_GREENGRASS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_GROUND_STATION_AGENT_INSTANCE_POLICY`<sup>Required</sup> <a name="AWS_GROUND_STATION_AGENT_INSTANCE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_GROUND_STATION_AGENT_INSTANCE_POLICY"></a>
 
 ```typescript
-public readonly AWS_GROUND_STATION_AGENT_INSTANCE_POLICY: IManagedPolicy;
+public readonly AWS_GROUND_STATION_AGENT_INSTANCE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_HEALTH_FULL_ACCESS`<sup>Required</sup> <a name="AWS_HEALTH_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_HEALTH_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_HEALTH_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_HEALTH_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_HEALTH_IMAGING_FULL_ACCESS`<sup>Required</sup> <a name="AWS_HEALTH_IMAGING_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_HEALTH_IMAGING_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_HEALTH_IMAGING_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_HEALTH_IMAGING_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_HEALTH_IMAGING_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_HEALTH_IMAGING_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_HEALTH_IMAGING_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_HEALTH_IMAGING_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_HEALTH_IMAGING_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IAM_IDENTITY_CENTER_ALLOW_LIST_FOR_IDENTITY_CONTEXT`<sup>Required</sup> <a name="AWS_IAM_IDENTITY_CENTER_ALLOW_LIST_FOR_IDENTITY_CONTEXT" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IAM_IDENTITY_CENTER_ALLOW_LIST_FOR_IDENTITY_CONTEXT"></a>
 
 ```typescript
-public readonly AWS_IAM_IDENTITY_CENTER_ALLOW_LIST_FOR_IDENTITY_CONTEXT: IManagedPolicy;
+public readonly AWS_IAM_IDENTITY_CENTER_ALLOW_LIST_FOR_IDENTITY_CONTEXT: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IDENTITY_SYNC_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IDENTITY_SYNC_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IDENTITY_SYNC_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IDENTITY_SYNC_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IDENTITY_SYNC_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IDENTITY_SYNC_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_IDENTITY_SYNC_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IDENTITY_SYNC_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IDENTITY_SYNC_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_IDENTITY_SYNC_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IMAGE_BUILDER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IMAGE_BUILDER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IMAGE_BUILDER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IMAGE_BUILDER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IMAGE_BUILDER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IMAGE_BUILDER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_IMAGE_BUILDER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IMAGE_BUILDER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IMAGE_BUILDER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_IMAGE_BUILDER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IMPORT_EXPORT_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IMPORT_EXPORT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IMPORT_EXPORT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IMPORT_EXPORT_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IMPORT_EXPORT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IMPORT_EXPORT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_IMPORT_EXPORT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IMPORT_EXPORT_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IMPORT_EXPORT_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_IMPORT_EXPORT_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_INCIDENT_MANAGER_INCIDENT_ACCESS_SERVICE_ROLE_POLICY`<sup>Required</sup> <a name="AWS_INCIDENT_MANAGER_INCIDENT_ACCESS_SERVICE_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_INCIDENT_MANAGER_INCIDENT_ACCESS_SERVICE_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_INCIDENT_MANAGER_INCIDENT_ACCESS_SERVICE_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_INCIDENT_MANAGER_INCIDENT_ACCESS_SERVICE_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_INCIDENT_MANAGER_RESOLVER_ACCESS`<sup>Required</sup> <a name="AWS_INCIDENT_MANAGER_RESOLVER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_INCIDENT_MANAGER_RESOLVER_ACCESS"></a>
 
 ```typescript
-public readonly AWS_INCIDENT_MANAGER_RESOLVER_ACCESS: IManagedPolicy;
+public readonly AWS_INCIDENT_MANAGER_RESOLVER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_ANALYTICS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_ANALYTICS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_ANALYTICS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_ANALYTICS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_ANALYTICS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_ANALYTICS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_ANALYTICS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_ANALYTICS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_ANALYTICS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_ANALYTICS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_CONFIG_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_CONFIG_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_CONFIG_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_CONFIG_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_CONFIG_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_CONFIG_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_CONFIG_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_CONFIG_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_CONFIG_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_CONFIG_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_DATA_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_DATA_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_DATA_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_DATA_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_DATA_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_DEVICE_TESTER_FOR_FREE_RTOS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_DEVICE_TESTER_FOR_FREE_RTOS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_DEVICE_TESTER_FOR_FREE_RTOS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_DEVICE_TESTER_FOR_FREE_RTOS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_DEVICE_TESTER_FOR_FREE_RTOS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_DEVICE_TESTER_FOR_GREENGRASS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_DEVICE_TESTER_FOR_GREENGRASS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_DEVICE_TESTER_FOR_GREENGRASS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_DEVICE_TESTER_FOR_GREENGRASS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_DEVICE_TESTER_FOR_GREENGRASS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_EVENTS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_EVENTS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_EVENTS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_EVENTS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_EVENTS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_EVENTS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_EVENTS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_EVENTS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_EVENTS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_EVENTS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_SITE_WISE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_SITE_WISE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_SITE_WISE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_SITE_WISE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_SITE_WISE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_SITE_WISE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_SITE_WISE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_SITE_WISE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_WIRELESS_DATA_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_WIRELESS_DATA_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_DATA_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_WIRELESS_DATA_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_WIRELESS_DATA_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_WIRELESS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_WIRELESS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_WIRELESS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_WIRELESS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_WIRELESS_FULL_PUBLISH_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_WIRELESS_FULL_PUBLISH_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_FULL_PUBLISH_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_WIRELESS_FULL_PUBLISH_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_WIRELESS_FULL_PUBLISH_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_WIRELESS_GATEWAY_CERT_MANAGER`<sup>Required</sup> <a name="AWS_IO_T_WIRELESS_GATEWAY_CERT_MANAGER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_GATEWAY_CERT_MANAGER"></a>
 
 ```typescript
-public readonly AWS_IO_T_WIRELESS_GATEWAY_CERT_MANAGER: IManagedPolicy;
+public readonly AWS_IO_T_WIRELESS_GATEWAY_CERT_MANAGER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_WIRELESS_LOGGING`<sup>Required</sup> <a name="AWS_IO_T_WIRELESS_LOGGING" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_LOGGING"></a>
 
 ```typescript
-public readonly AWS_IO_T_WIRELESS_LOGGING: IManagedPolicy;
+public readonly AWS_IO_T_WIRELESS_LOGGING: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T_WIRELESS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_WIRELESS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T_WIRELESS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T_WIRELESS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T1_CLICK_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IO_T1_CLICK_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T1_CLICK_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T1_CLICK_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T1_CLICK_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IO_T1_CLICK_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_IO_T1_CLICK_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T1_CLICK_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IO_T1_CLICK_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_IO_T1_CLICK_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_IQ_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IQ_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IQ_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_IQ_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_IQ_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_KEY_MANAGEMENT_SERVICE_POWER_USER`<sup>Required</sup> <a name="AWS_KEY_MANAGEMENT_SERVICE_POWER_USER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_KEY_MANAGEMENT_SERVICE_POWER_USER"></a>
 
 ```typescript
-public readonly AWS_KEY_MANAGEMENT_SERVICE_POWER_USER: IManagedPolicy;
+public readonly AWS_KEY_MANAGEMENT_SERVICE_POWER_USER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_LAKE_FORMATION_CROSS_ACCOUNT_MANAGER`<sup>Required</sup> <a name="AWS_LAKE_FORMATION_CROSS_ACCOUNT_MANAGER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAKE_FORMATION_CROSS_ACCOUNT_MANAGER"></a>
 
 ```typescript
-public readonly AWS_LAKE_FORMATION_CROSS_ACCOUNT_MANAGER: IManagedPolicy;
+public readonly AWS_LAKE_FORMATION_CROSS_ACCOUNT_MANAGER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_LAKE_FORMATION_DATA_ADMIN`<sup>Required</sup> <a name="AWS_LAKE_FORMATION_DATA_ADMIN" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAKE_FORMATION_DATA_ADMIN"></a>
 
 ```typescript
-public readonly AWS_LAKE_FORMATION_DATA_ADMIN: IManagedPolicy;
+public readonly AWS_LAKE_FORMATION_DATA_ADMIN: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_LAMBDA_EXECUTE`<sup>Required</sup> <a name="AWS_LAMBDA_EXECUTE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_EXECUTE"></a>
 
 ```typescript
-public readonly AWS_LAMBDA_EXECUTE: IManagedPolicy;
+public readonly AWS_LAMBDA_EXECUTE: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_LAMBDA_FULL_ACCESS`<sup>Required</sup> <a name="AWS_LAMBDA_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_LAMBDA_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_LAMBDA_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_LAMBDA_INVOCATION_DYNAMO_DB`<sup>Required</sup> <a name="AWS_LAMBDA_INVOCATION_DYNAMO_DB" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_INVOCATION_DYNAMO_DB"></a>
 
 ```typescript
-public readonly AWS_LAMBDA_INVOCATION_DYNAMO_DB: IManagedPolicy;
+public readonly AWS_LAMBDA_INVOCATION_DYNAMO_DB: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_LAMBDA_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_LAMBDA_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_LAMBDA_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_LAMBDA_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_AMI_INGESTION`<sup>Required</sup> <a name="AWS_MARKETPLACE_AMI_INGESTION" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_AMI_INGESTION"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_AMI_INGESTION: IManagedPolicy;
+public readonly AWS_MARKETPLACE_AMI_INGESTION: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_MARKETPLACE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_MARKETPLACE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_GET_ENTITLEMENTS`<sup>Required</sup> <a name="AWS_MARKETPLACE_GET_ENTITLEMENTS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_GET_ENTITLEMENTS"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_GET_ENTITLEMENTS: IManagedPolicy;
+public readonly AWS_MARKETPLACE_GET_ENTITLEMENTS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS`<sup>Required</sup> <a name="AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_MANAGE_SUBSCRIPTIONS`<sup>Required</sup> <a name="AWS_MARKETPLACE_MANAGE_SUBSCRIPTIONS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_MANAGE_SUBSCRIPTIONS"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_MANAGE_SUBSCRIPTIONS: IManagedPolicy;
+public readonly AWS_MARKETPLACE_MANAGE_SUBSCRIPTIONS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_METERING_FULL_ACCESS`<sup>Required</sup> <a name="AWS_MARKETPLACE_METERING_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_METERING_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_METERING_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_MARKETPLACE_METERING_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_METERING_REGISTER_USAGE`<sup>Required</sup> <a name="AWS_MARKETPLACE_METERING_REGISTER_USAGE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_METERING_REGISTER_USAGE"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_METERING_REGISTER_USAGE: IManagedPolicy;
+public readonly AWS_MARKETPLACE_METERING_REGISTER_USAGE: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_PROCUREMENT_SYSTEM_ADMIN_FULL_ACCESS`<sup>Required</sup> <a name="AWS_MARKETPLACE_PROCUREMENT_SYSTEM_ADMIN_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_PROCUREMENT_SYSTEM_ADMIN_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_PROCUREMENT_SYSTEM_ADMIN_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_MARKETPLACE_PROCUREMENT_SYSTEM_ADMIN_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_READ_ONLY`<sup>Required</sup> <a name="AWS_MARKETPLACE_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_READ_ONLY: IManagedPolicy;
+public readonly AWS_MARKETPLACE_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_SELLER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_MARKETPLACE_SELLER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_SELLER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_SELLER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_MARKETPLACE_SELLER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_SELLER_OFFER_MANAGEMENT`<sup>Required</sup> <a name="AWS_MARKETPLACE_SELLER_OFFER_MANAGEMENT" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_SELLER_OFFER_MANAGEMENT"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_SELLER_OFFER_MANAGEMENT: IManagedPolicy;
+public readonly AWS_MARKETPLACE_SELLER_OFFER_MANAGEMENT: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_SELLER_PRODUCTS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_MARKETPLACE_SELLER_PRODUCTS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_SELLER_PRODUCTS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_SELLER_PRODUCTS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_MARKETPLACE_SELLER_PRODUCTS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MARKETPLACE_SELLER_PRODUCTS_READ_ONLY`<sup>Required</sup> <a name="AWS_MARKETPLACE_SELLER_PRODUCTS_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_SELLER_PRODUCTS_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_MARKETPLACE_SELLER_PRODUCTS_READ_ONLY: IManagedPolicy;
+public readonly AWS_MARKETPLACE_SELLER_PRODUCTS_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MIGRATION_HUB_FULL_ACCESS`<sup>Required</sup> <a name="AWS_MIGRATION_HUB_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_MIGRATION_HUB_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_MIGRATION_HUB_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MIGRATION_HUB_ORCHESTRATOR_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_MIGRATION_HUB_ORCHESTRATOR_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_ORCHESTRATOR_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_MIGRATION_HUB_ORCHESTRATOR_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_MIGRATION_HUB_ORCHESTRATOR_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MIGRATION_HUB_ORCHESTRATOR_INSTANCE_ROLE_POLICY`<sup>Required</sup> <a name="AWS_MIGRATION_HUB_ORCHESTRATOR_INSTANCE_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_ORCHESTRATOR_INSTANCE_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_MIGRATION_HUB_ORCHESTRATOR_INSTANCE_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_MIGRATION_HUB_ORCHESTRATOR_INSTANCE_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MIGRATION_HUB_ORCHESTRATOR_PLUGIN`<sup>Required</sup> <a name="AWS_MIGRATION_HUB_ORCHESTRATOR_PLUGIN" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_ORCHESTRATOR_PLUGIN"></a>
 
 ```typescript
-public readonly AWS_MIGRATION_HUB_ORCHESTRATOR_PLUGIN: IManagedPolicy;
+public readonly AWS_MIGRATION_HUB_ORCHESTRATOR_PLUGIN: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MIGRATION_HUB_REFACTOR_SPACES_ENVIRONMENTS_WITHOUT_BRIDGES_FULL_ACCESS`<sup>Required</sup> <a name="AWS_MIGRATION_HUB_REFACTOR_SPACES_ENVIRONMENTS_WITHOUT_BRIDGES_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_REFACTOR_SPACES_ENVIRONMENTS_WITHOUT_BRIDGES_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_MIGRATION_HUB_REFACTOR_SPACES_ENVIRONMENTS_WITHOUT_BRIDGES_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_MIGRATION_HUB_REFACTOR_SPACES_ENVIRONMENTS_WITHOUT_BRIDGES_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MIGRATION_HUB_REFACTOR_SPACES_FULL_ACCESS`<sup>Required</sup> <a name="AWS_MIGRATION_HUB_REFACTOR_SPACES_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_REFACTOR_SPACES_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_MIGRATION_HUB_REFACTOR_SPACES_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_MIGRATION_HUB_REFACTOR_SPACES_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MIGRATION_HUB_STRATEGY_COLLECTOR`<sup>Required</sup> <a name="AWS_MIGRATION_HUB_STRATEGY_COLLECTOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_STRATEGY_COLLECTOR"></a>
 
 ```typescript
-public readonly AWS_MIGRATION_HUB_STRATEGY_COLLECTOR: IManagedPolicy;
+public readonly AWS_MIGRATION_HUB_STRATEGY_COLLECTOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_MIGRATION_HUB_STRATEGY_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_MIGRATION_HUB_STRATEGY_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_STRATEGY_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_MIGRATION_HUB_STRATEGY_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_MIGRATION_HUB_STRATEGY_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_NETWORK_MANAGER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_NETWORK_MANAGER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_MANAGER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_NETWORK_MANAGER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_NETWORK_MANAGER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_NETWORK_MANAGER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_NETWORK_MANAGER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_MANAGER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_NETWORK_MANAGER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_NETWORK_MANAGER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_OPS_WORKS_CLOUD_WATCH_LOGS`<sup>Required</sup> <a name="AWS_OPS_WORKS_CLOUD_WATCH_LOGS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_CLOUD_WATCH_LOGS"></a>
 
 ```typescript
-public readonly AWS_OPS_WORKS_CLOUD_WATCH_LOGS: IManagedPolicy;
+public readonly AWS_OPS_WORKS_CLOUD_WATCH_LOGS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE`<sup>Required</sup> <a name="AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE"></a>
 
 ```typescript
-public readonly AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE: IManagedPolicy;
+public readonly AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_OPS_WORKS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_OPS_WORKS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_OPS_WORKS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_OPS_WORKS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_OPS_WORKS_INSTANCE_REGISTRATION`<sup>Required</sup> <a name="AWS_OPS_WORKS_INSTANCE_REGISTRATION" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_INSTANCE_REGISTRATION"></a>
 
 ```typescript
-public readonly AWS_OPS_WORKS_INSTANCE_REGISTRATION: IManagedPolicy;
+public readonly AWS_OPS_WORKS_INSTANCE_REGISTRATION: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_OPS_WORKS_REGISTER_CLI_EC2`<sup>Required</sup> <a name="AWS_OPS_WORKS_REGISTER_CLI_EC2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_REGISTER_CLI_EC2"></a>
 
 ```typescript
-public readonly AWS_OPS_WORKS_REGISTER_CLI_EC2: IManagedPolicy;
+public readonly AWS_OPS_WORKS_REGISTER_CLI_EC2: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES`<sup>Required</sup> <a name="AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES"></a>
 
 ```typescript
-public readonly AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES: IManagedPolicy;
+public readonly AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ORGANIZATIONS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ORGANIZATIONS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ORGANIZATIONS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ORGANIZATIONS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_ORGANIZATIONS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ORGANIZATIONS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_ORGANIZATIONS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ORGANIZATIONS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ORGANIZATIONS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_ORGANIZATIONS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_OUTPOSTS_AUTHORIZE_SERVER_POLICY`<sup>Required</sup> <a name="AWS_OUTPOSTS_AUTHORIZE_SERVER_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OUTPOSTS_AUTHORIZE_SERVER_POLICY"></a>
 
 ```typescript
-public readonly AWS_OUTPOSTS_AUTHORIZE_SERVER_POLICY: IManagedPolicy;
+public readonly AWS_OUTPOSTS_AUTHORIZE_SERVER_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PANORAMA_FULL_ACCESS`<sup>Required</sup> <a name="AWS_PANORAMA_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PANORAMA_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_PANORAMA_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_PANORAMA_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PARTNER_CENTRAL_FULL_ACCESS`<sup>Required</sup> <a name="AWS_PARTNER_CENTRAL_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_PARTNER_CENTRAL_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_PARTNER_CENTRAL_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PARTNER_CENTRAL_OPPORTUNITY_MANAGEMENT`<sup>Required</sup> <a name="AWS_PARTNER_CENTRAL_OPPORTUNITY_MANAGEMENT" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_OPPORTUNITY_MANAGEMENT"></a>
 
 ```typescript
-public readonly AWS_PARTNER_CENTRAL_OPPORTUNITY_MANAGEMENT: IManagedPolicy;
+public readonly AWS_PARTNER_CENTRAL_OPPORTUNITY_MANAGEMENT: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PARTNER_CENTRAL_SANDBOX_FULL_ACCESS`<sup>Required</sup> <a name="AWS_PARTNER_CENTRAL_SANDBOX_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_SANDBOX_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_PARTNER_CENTRAL_SANDBOX_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_PARTNER_CENTRAL_SANDBOX_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PARTNER_CENTRAL_SELLING_RESOURCE_SNAPSHOT_JOB_EXECUTION_ROLE_POLICY`<sup>Required</sup> <a name="AWS_PARTNER_CENTRAL_SELLING_RESOURCE_SNAPSHOT_JOB_EXECUTION_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_SELLING_RESOURCE_SNAPSHOT_JOB_EXECUTION_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_PARTNER_CENTRAL_SELLING_RESOURCE_SNAPSHOT_JOB_EXECUTION_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_PARTNER_CENTRAL_SELLING_RESOURCE_SNAPSHOT_JOB_EXECUTION_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PARTNER_LED_SUPPORT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_PARTNER_LED_SUPPORT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_LED_SUPPORT_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_PARTNER_LED_SUPPORT_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_PARTNER_LED_SUPPORT_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PRICE_LIST_SERVICE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_PRICE_LIST_SERVICE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRICE_LIST_SERVICE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_PRICE_LIST_SERVICE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_PRICE_LIST_SERVICE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PRIVATE_CA_AUDITOR`<sup>Required</sup> <a name="AWS_PRIVATE_CA_AUDITOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_AUDITOR"></a>
 
 ```typescript
-public readonly AWS_PRIVATE_CA_AUDITOR: IManagedPolicy;
+public readonly AWS_PRIVATE_CA_AUDITOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PRIVATE_CA_FULL_ACCESS`<sup>Required</sup> <a name="AWS_PRIVATE_CA_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_PRIVATE_CA_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_PRIVATE_CA_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PRIVATE_CA_PRIVILEGED_USER`<sup>Required</sup> <a name="AWS_PRIVATE_CA_PRIVILEGED_USER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_PRIVILEGED_USER"></a>
 
 ```typescript
-public readonly AWS_PRIVATE_CA_PRIVILEGED_USER: IManagedPolicy;
+public readonly AWS_PRIVATE_CA_PRIVILEGED_USER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PRIVATE_CA_READ_ONLY`<sup>Required</sup> <a name="AWS_PRIVATE_CA_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_PRIVATE_CA_READ_ONLY: IManagedPolicy;
+public readonly AWS_PRIVATE_CA_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PRIVATE_CA_USER`<sup>Required</sup> <a name="AWS_PRIVATE_CA_USER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_USER"></a>
 
 ```typescript
-public readonly AWS_PRIVATE_CA_USER: IManagedPolicy;
+public readonly AWS_PRIVATE_CA_USER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PRIVATE_MARKETPLACE_ADMIN_FULL_ACCESS`<sup>Required</sup> <a name="AWS_PRIVATE_MARKETPLACE_ADMIN_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_MARKETPLACE_ADMIN_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_PRIVATE_MARKETPLACE_ADMIN_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_PRIVATE_MARKETPLACE_ADMIN_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PRIVATE_MARKETPLACE_REQUESTS`<sup>Required</sup> <a name="AWS_PRIVATE_MARKETPLACE_REQUESTS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_MARKETPLACE_REQUESTS"></a>
 
 ```typescript
-public readonly AWS_PRIVATE_MARKETPLACE_REQUESTS: IManagedPolicy;
+public readonly AWS_PRIVATE_MARKETPLACE_REQUESTS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PROTON_CODE_BUILD_PROVISIONING_BASIC_ACCESS`<sup>Required</sup> <a name="AWS_PROTON_CODE_BUILD_PROVISIONING_BASIC_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PROTON_CODE_BUILD_PROVISIONING_BASIC_ACCESS"></a>
 
 ```typescript
-public readonly AWS_PROTON_CODE_BUILD_PROVISIONING_BASIC_ACCESS: IManagedPolicy;
+public readonly AWS_PROTON_CODE_BUILD_PROVISIONING_BASIC_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PROTON_DEVELOPER_ACCESS`<sup>Required</sup> <a name="AWS_PROTON_DEVELOPER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PROTON_DEVELOPER_ACCESS"></a>
 
 ```typescript
-public readonly AWS_PROTON_DEVELOPER_ACCESS: IManagedPolicy;
+public readonly AWS_PROTON_DEVELOPER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PROTON_FULL_ACCESS`<sup>Required</sup> <a name="AWS_PROTON_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PROTON_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_PROTON_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_PROTON_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PROTON_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_PROTON_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PROTON_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_PROTON_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_PROTON_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_PURCHASE_ORDERS_SERVICE_ROLE_POLICY`<sup>Required</sup> <a name="AWS_PURCHASE_ORDERS_SERVICE_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PURCHASE_ORDERS_SERVICE_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_PURCHASE_ORDERS_SERVICE_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_PURCHASE_ORDERS_SERVICE_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_CFGC_PACKS_PERMISSIONS_BOUNDARY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_CFGC_PACKS_PERMISSIONS_BOUNDARY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_CFGC_PACKS_PERMISSIONS_BOUNDARY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_CFGC_PACKS_PERMISSIONS_BOUNDARY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_CFGC_PACKS_PERMISSIONS_BOUNDARY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_DEPLOYMENT_ROLE_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_DEPLOYMENT_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_DEPLOYMENT_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_DEPLOYMENT_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_DEPLOYMENT_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_DEV_OPS_GURU_PERMISSIONS_BOUNDARY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_DEV_OPS_GURU_PERMISSIONS_BOUNDARY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_DEV_OPS_GURU_PERMISSIONS_BOUNDARY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_DEV_OPS_GURU_PERMISSIONS_BOUNDARY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_DEV_OPS_GURU_PERMISSIONS_BOUNDARY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_DISTRIBUTOR_PERMISSIONS_BOUNDARY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_DISTRIBUTOR_PERMISSIONS_BOUNDARY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_DISTRIBUTOR_PERMISSIONS_BOUNDARY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_DISTRIBUTOR_PERMISSIONS_BOUNDARY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_DISTRIBUTOR_PERMISSIONS_BOUNDARY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_ENABLE_AREX_EXECUTION_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_ENABLE_AREX_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_ENABLE_AREX_EXECUTION_POLICY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_ENABLE_AREX_EXECUTION_POLICY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_ENABLE_AREX_EXECUTION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_ENABLE_DHMC_EXECUTION_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_ENABLE_DHMC_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_ENABLE_DHMC_EXECUTION_POLICY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_ENABLE_DHMC_EXECUTION_POLICY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_ENABLE_DHMC_EXECUTION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_PATCH_POLICY_BASELINE_ACCESS`<sup>Required</sup> <a name="AWS_QUICK_SETUP_PATCH_POLICY_BASELINE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_PATCH_POLICY_BASELINE_ACCESS"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_PATCH_POLICY_BASELINE_ACCESS: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_PATCH_POLICY_BASELINE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_PATCH_POLICY_DEPLOYMENT_ROLE_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_PATCH_POLICY_DEPLOYMENT_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_PATCH_POLICY_DEPLOYMENT_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_PATCH_POLICY_DEPLOYMENT_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_PATCH_POLICY_DEPLOYMENT_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_PATCH_POLICY_PERMISSIONS_BOUNDARY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_PATCH_POLICY_PERMISSIONS_BOUNDARY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_PATCH_POLICY_PERMISSIONS_BOUNDARY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_PATCH_POLICY_PERMISSIONS_BOUNDARY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_PATCH_POLICY_PERMISSIONS_BOUNDARY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_SCHEDULER_PERMISSIONS_BOUNDARY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_SCHEDULER_PERMISSIONS_BOUNDARY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SCHEDULER_PERMISSIONS_BOUNDARY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_SCHEDULER_PERMISSIONS_BOUNDARY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_SCHEDULER_PERMISSIONS_BOUNDARY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_SSM_DEPLOYMENT_ROLE_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_SSM_DEPLOYMENT_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_DEPLOYMENT_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_SSM_DEPLOYMENT_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_SSM_DEPLOYMENT_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_SSM_DEPLOYMENT_S3_BUCKET_ROLE_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_SSM_DEPLOYMENT_S3_BUCKET_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_DEPLOYMENT_S3_BUCKET_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_SSM_DEPLOYMENT_S3_BUCKET_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_SSM_DEPLOYMENT_S3_BUCKET_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_SSM_HOST_MGMT_PERMISSIONS_BOUNDARY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_SSM_HOST_MGMT_PERMISSIONS_BOUNDARY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_HOST_MGMT_PERMISSIONS_BOUNDARY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_SSM_HOST_MGMT_PERMISSIONS_BOUNDARY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_SSM_HOST_MGMT_PERMISSIONS_BOUNDARY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_SSM_LIFECYCLE_MANAGEMENT_EXECUTION_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_SSM_LIFECYCLE_MANAGEMENT_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_LIFECYCLE_MANAGEMENT_EXECUTION_POLICY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_SSM_LIFECYCLE_MANAGEMENT_EXECUTION_POLICY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_SSM_LIFECYCLE_MANAGEMENT_EXECUTION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SETUP_SSM_MANAGE_RESOURCES_EXECUTION_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_SSM_MANAGE_RESOURCES_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_MANAGE_RESOURCES_EXECUTION_POLICY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SETUP_SSM_MANAGE_RESOURCES_EXECUTION_POLICY: IManagedPolicy;
+public readonly AWS_QUICK_SETUP_SSM_MANAGE_RESOURCES_EXECUTION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY: IManagedPolicy;
+public readonly AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SIGHT_ASSET_BUNDLE_IMPORT_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SIGHT_ASSET_BUNDLE_IMPORT_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_ASSET_BUNDLE_IMPORT_POLICY"></a>
 
 ```typescript
-public readonly AWS_QUICK_SIGHT_ASSET_BUNDLE_IMPORT_POLICY: IManagedPolicy;
+public readonly AWS_QUICK_SIGHT_ASSET_BUNDLE_IMPORT_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_QUICK_SIGHT_IO_T_ANALYTICS_ACCESS`<sup>Required</sup> <a name="AWS_QUICK_SIGHT_IO_T_ANALYTICS_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_IO_T_ANALYTICS_ACCESS"></a>
 
 ```typescript
-public readonly AWS_QUICK_SIGHT_IO_T_ANALYTICS_ACCESS: IManagedPolicy;
+public readonly AWS_QUICK_SIGHT_IO_T_ANALYTICS_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_REFACTORING_TOOLKIT_FULL_ACCESS`<sup>Required</sup> <a name="AWS_REFACTORING_TOOLKIT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_REFACTORING_TOOLKIT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_REFACTORING_TOOLKIT_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_REFACTORING_TOOLKIT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_REFACTORING_TOOLKIT_SIDECAR_POLICY`<sup>Required</sup> <a name="AWS_REFACTORING_TOOLKIT_SIDECAR_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_REFACTORING_TOOLKIT_SIDECAR_POLICY"></a>
 
 ```typescript
-public readonly AWS_REFACTORING_TOOLKIT_SIDECAR_POLICY: IManagedPolicy;
+public readonly AWS_REFACTORING_TOOLKIT_SIDECAR_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_REPOST_SPACE_SUPPORT_OPERATIONS_POLICY`<sup>Required</sup> <a name="AWS_REPOST_SPACE_SUPPORT_OPERATIONS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_REPOST_SPACE_SUPPORT_OPERATIONS_POLICY"></a>
 
 ```typescript
-public readonly AWS_REPOST_SPACE_SUPPORT_OPERATIONS_POLICY: IManagedPolicy;
+public readonly AWS_REPOST_SPACE_SUPPORT_OPERATIONS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_RESILIENCE_HUB_ASSSESSMENT_EXECUTION_POLICY`<sup>Required</sup> <a name="AWS_RESILIENCE_HUB_ASSSESSMENT_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESILIENCE_HUB_ASSSESSMENT_EXECUTION_POLICY"></a>
 
 ```typescript
-public readonly AWS_RESILIENCE_HUB_ASSSESSMENT_EXECUTION_POLICY: IManagedPolicy;
+public readonly AWS_RESILIENCE_HUB_ASSSESSMENT_EXECUTION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_RESOURCE_ACCESS_MANAGER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_RESOURCE_ACCESS_MANAGER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_ACCESS_MANAGER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_RESOURCE_ACCESS_MANAGER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_RESOURCE_ACCESS_MANAGER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_RESOURCE_ACCESS_MANAGER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_RESOURCE_ACCESS_MANAGER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_ACCESS_MANAGER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_RESOURCE_ACCESS_MANAGER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_RESOURCE_ACCESS_MANAGER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_RESOURCE_ACCESS_MANAGER_RESOURCE_SHARE_PARTICIPANT_ACCESS`<sup>Required</sup> <a name="AWS_RESOURCE_ACCESS_MANAGER_RESOURCE_SHARE_PARTICIPANT_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_ACCESS_MANAGER_RESOURCE_SHARE_PARTICIPANT_ACCESS"></a>
 
 ```typescript
-public readonly AWS_RESOURCE_ACCESS_MANAGER_RESOURCE_SHARE_PARTICIPANT_ACCESS: IManagedPolicy;
+public readonly AWS_RESOURCE_ACCESS_MANAGER_RESOURCE_SHARE_PARTICIPANT_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_RESOURCE_EXPLORER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_RESOURCE_EXPLORER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_EXPLORER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_RESOURCE_EXPLORER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_RESOURCE_EXPLORER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_RESOURCE_EXPLORER_ORGANIZATIONS_ACCESS`<sup>Required</sup> <a name="AWS_RESOURCE_EXPLORER_ORGANIZATIONS_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_EXPLORER_ORGANIZATIONS_ACCESS"></a>
 
 ```typescript
-public readonly AWS_RESOURCE_EXPLORER_ORGANIZATIONS_ACCESS: IManagedPolicy;
+public readonly AWS_RESOURCE_EXPLORER_ORGANIZATIONS_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_RESOURCE_EXPLORER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_RESOURCE_EXPLORER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_EXPLORER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_RESOURCE_EXPLORER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_RESOURCE_EXPLORER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_RESOURCE_GROUPS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_RESOURCE_GROUPS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_RESOURCE_GROUPS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_RESOURCE_GROUPS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_RESOURCE_GROUPS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ROBO_MAKER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ROBO_MAKER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROBO_MAKER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ROBO_MAKER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_ROBO_MAKER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ROBO_MAKER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_ROBO_MAKER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROBO_MAKER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_ROBO_MAKER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_ROBO_MAKER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_ROBO_MAKER_SERVICE_ROLE_POLICY`<sup>Required</sup> <a name="AWS_ROBO_MAKER_SERVICE_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROBO_MAKER_SERVICE_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_ROBO_MAKER_SERVICE_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_ROBO_MAKER_SERVICE_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SAVINGS_PLANS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_SAVINGS_PLANS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SAVINGS_PLANS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SAVINGS_PLANS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_SAVINGS_PLANS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SAVINGS_PLANS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_SAVINGS_PLANS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SAVINGS_PLANS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SAVINGS_PLANS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_SAVINGS_PLANS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SECURITY_HUB_FULL_ACCESS`<sup>Required</sup> <a name="AWS_SECURITY_HUB_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_HUB_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SECURITY_HUB_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_SECURITY_HUB_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SECURITY_HUB_ORGANIZATIONS_ACCESS`<sup>Required</sup> <a name="AWS_SECURITY_HUB_ORGANIZATIONS_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_HUB_ORGANIZATIONS_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SECURITY_HUB_ORGANIZATIONS_ACCESS: IManagedPolicy;
+public readonly AWS_SECURITY_HUB_ORGANIZATIONS_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SECURITY_HUB_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_SECURITY_HUB_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_HUB_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SECURITY_HUB_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_SECURITY_HUB_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SECURITY_INCIDENT_RESPONSE_CASE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_SECURITY_INCIDENT_RESPONSE_CASE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_INCIDENT_RESPONSE_CASE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SECURITY_INCIDENT_RESPONSE_CASE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_SECURITY_INCIDENT_RESPONSE_CASE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SECURITY_INCIDENT_RESPONSE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_SECURITY_INCIDENT_RESPONSE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_INCIDENT_RESPONSE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SECURITY_INCIDENT_RESPONSE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_SECURITY_INCIDENT_RESPONSE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SECURITY_INCIDENT_RESPONSE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_SECURITY_INCIDENT_RESPONSE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_INCIDENT_RESPONSE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SECURITY_INCIDENT_RESPONSE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_SECURITY_INCIDENT_RESPONSE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SERVICE_CATALOG_ADMIN_FULL_ACCESS`<sup>Required</sup> <a name="AWS_SERVICE_CATALOG_ADMIN_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_ADMIN_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SERVICE_CATALOG_ADMIN_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_SERVICE_CATALOG_ADMIN_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SERVICE_CATALOG_ADMIN_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_SERVICE_CATALOG_ADMIN_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_ADMIN_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SERVICE_CATALOG_ADMIN_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_SERVICE_CATALOG_ADMIN_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SERVICE_CATALOG_APP_REGISTRY_FULL_ACCESS`<sup>Required</sup> <a name="AWS_SERVICE_CATALOG_APP_REGISTRY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_APP_REGISTRY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SERVICE_CATALOG_APP_REGISTRY_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_SERVICE_CATALOG_APP_REGISTRY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SERVICE_CATALOG_APP_REGISTRY_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_SERVICE_CATALOG_APP_REGISTRY_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_APP_REGISTRY_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SERVICE_CATALOG_APP_REGISTRY_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_SERVICE_CATALOG_APP_REGISTRY_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SERVICE_CATALOG_END_USER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_SERVICE_CATALOG_END_USER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_END_USER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SERVICE_CATALOG_END_USER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_SERVICE_CATALOG_END_USER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SERVICE_CATALOG_END_USER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_SERVICE_CATALOG_END_USER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SERVICE_CATALOG_END_USER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SERVICE_CATALOG_END_USER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_SERVICE_CATALOG_END_USER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SSM_AUTOMATION_DIAGNOSIS_BUCKET_POLICY`<sup>Required</sup> <a name="AWS_SSM_AUTOMATION_DIAGNOSIS_BUCKET_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_AUTOMATION_DIAGNOSIS_BUCKET_POLICY"></a>
 
 ```typescript
-public readonly AWS_SSM_AUTOMATION_DIAGNOSIS_BUCKET_POLICY: IManagedPolicy;
+public readonly AWS_SSM_AUTOMATION_DIAGNOSIS_BUCKET_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SSM_DIAGNOSIS_AUTOMATION_ADMINISTRATION_ROLE_POLICY`<sup>Required</sup> <a name="AWS_SSM_DIAGNOSIS_AUTOMATION_ADMINISTRATION_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_DIAGNOSIS_AUTOMATION_ADMINISTRATION_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_SSM_DIAGNOSIS_AUTOMATION_ADMINISTRATION_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_SSM_DIAGNOSIS_AUTOMATION_ADMINISTRATION_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SSM_DIAGNOSIS_AUTOMATION_EXECUTION_ROLE_POLICY`<sup>Required</sup> <a name="AWS_SSM_DIAGNOSIS_AUTOMATION_EXECUTION_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_DIAGNOSIS_AUTOMATION_EXECUTION_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_SSM_DIAGNOSIS_AUTOMATION_EXECUTION_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_SSM_DIAGNOSIS_AUTOMATION_EXECUTION_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SSM_DIAGNOSIS_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY`<sup>Required</sup> <a name="AWS_SSM_DIAGNOSIS_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_DIAGNOSIS_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_SSM_DIAGNOSIS_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_SSM_DIAGNOSIS_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SSM_REMEDIATION_AUTOMATION_ADMINISTRATION_ROLE_POLICY`<sup>Required</sup> <a name="AWS_SSM_REMEDIATION_AUTOMATION_ADMINISTRATION_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_REMEDIATION_AUTOMATION_ADMINISTRATION_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_SSM_REMEDIATION_AUTOMATION_ADMINISTRATION_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_SSM_REMEDIATION_AUTOMATION_ADMINISTRATION_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SSM_REMEDIATION_AUTOMATION_EXECUTION_ROLE_POLICY`<sup>Required</sup> <a name="AWS_SSM_REMEDIATION_AUTOMATION_EXECUTION_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_REMEDIATION_AUTOMATION_EXECUTION_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_SSM_REMEDIATION_AUTOMATION_EXECUTION_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_SSM_REMEDIATION_AUTOMATION_EXECUTION_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SSM_REMEDIATION_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY`<sup>Required</sup> <a name="AWS_SSM_REMEDIATION_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSM_REMEDIATION_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY"></a>
 
 ```typescript
-public readonly AWS_SSM_REMEDIATION_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY: IManagedPolicy;
+public readonly AWS_SSM_REMEDIATION_AUTOMATION_OPERATIONAL_ACCOUNT_ADMINISTRATION_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SSO_DIRECTORY_ADMINISTRATOR`<sup>Required</sup> <a name="AWS_SSO_DIRECTORY_ADMINISTRATOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_DIRECTORY_ADMINISTRATOR"></a>
 
 ```typescript
-public readonly AWS_SSO_DIRECTORY_ADMINISTRATOR: IManagedPolicy;
+public readonly AWS_SSO_DIRECTORY_ADMINISTRATOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SSO_DIRECTORY_READ_ONLY`<sup>Required</sup> <a name="AWS_SSO_DIRECTORY_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_DIRECTORY_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_SSO_DIRECTORY_READ_ONLY: IManagedPolicy;
+public readonly AWS_SSO_DIRECTORY_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SSO_MASTER_ACCOUNT_ADMINISTRATOR`<sup>Required</sup> <a name="AWS_SSO_MASTER_ACCOUNT_ADMINISTRATOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_MASTER_ACCOUNT_ADMINISTRATOR"></a>
 
 ```typescript
-public readonly AWS_SSO_MASTER_ACCOUNT_ADMINISTRATOR: IManagedPolicy;
+public readonly AWS_SSO_MASTER_ACCOUNT_ADMINISTRATOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SSO_MEMBER_ACCOUNT_ADMINISTRATOR`<sup>Required</sup> <a name="AWS_SSO_MEMBER_ACCOUNT_ADMINISTRATOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_MEMBER_ACCOUNT_ADMINISTRATOR"></a>
 
 ```typescript
-public readonly AWS_SSO_MEMBER_ACCOUNT_ADMINISTRATOR: IManagedPolicy;
+public readonly AWS_SSO_MEMBER_ACCOUNT_ADMINISTRATOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SSO_READ_ONLY`<sup>Required</sup> <a name="AWS_SSO_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SSO_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_SSO_READ_ONLY: IManagedPolicy;
+public readonly AWS_SSO_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_STEP_FUNCTIONS_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_STEP_FUNCTIONS_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STEP_FUNCTIONS_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_STEP_FUNCTIONS_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_STEP_FUNCTIONS_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_STEP_FUNCTIONS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_STEP_FUNCTIONS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STEP_FUNCTIONS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_STEP_FUNCTIONS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_STEP_FUNCTIONS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_STEP_FUNCTIONS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_STEP_FUNCTIONS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STEP_FUNCTIONS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_STEP_FUNCTIONS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_STEP_FUNCTIONS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_STORAGE_GATEWAY_FULL_ACCESS`<sup>Required</sup> <a name="AWS_STORAGE_GATEWAY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STORAGE_GATEWAY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_STORAGE_GATEWAY_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_STORAGE_GATEWAY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_STORAGE_GATEWAY_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_STORAGE_GATEWAY_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_STORAGE_GATEWAY_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_STORAGE_GATEWAY_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_STORAGE_GATEWAY_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SUPPORT_ACCESS`<sup>Required</sup> <a name="AWS_SUPPORT_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SUPPORT_ACCESS: IManagedPolicy;
+public readonly AWS_SUPPORT_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SUPPORT_APP_FULL_ACCESS`<sup>Required</sup> <a name="AWS_SUPPORT_APP_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_APP_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SUPPORT_APP_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_SUPPORT_APP_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SUPPORT_APP_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_SUPPORT_APP_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_APP_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SUPPORT_APP_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_SUPPORT_APP_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SUPPORT_PLANS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_SUPPORT_PLANS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_PLANS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SUPPORT_PLANS_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_SUPPORT_PLANS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SUPPORT_PLANS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_SUPPORT_PLANS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SUPPORT_PLANS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SUPPORT_PLANS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_SUPPORT_PLANS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SYSTEMS_MANAGER_ENABLE_CONFIG_RECORDING_EXECUTION_POLICY`<sup>Required</sup> <a name="AWS_SYSTEMS_MANAGER_ENABLE_CONFIG_RECORDING_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_ENABLE_CONFIG_RECORDING_EXECUTION_POLICY"></a>
 
 ```typescript
-public readonly AWS_SYSTEMS_MANAGER_ENABLE_CONFIG_RECORDING_EXECUTION_POLICY: IManagedPolicy;
+public readonly AWS_SYSTEMS_MANAGER_ENABLE_CONFIG_RECORDING_EXECUTION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SYSTEMS_MANAGER_ENABLE_EXPLORER_EXECUTION_POLICY`<sup>Required</sup> <a name="AWS_SYSTEMS_MANAGER_ENABLE_EXPLORER_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_ENABLE_EXPLORER_EXECUTION_POLICY"></a>
 
 ```typescript
-public readonly AWS_SYSTEMS_MANAGER_ENABLE_EXPLORER_EXECUTION_POLICY: IManagedPolicy;
+public readonly AWS_SYSTEMS_MANAGER_ENABLE_EXPLORER_EXECUTION_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SYSTEMS_MANAGER_FOR_SAP_FULL_ACCESS`<sup>Required</sup> <a name="AWS_SYSTEMS_MANAGER_FOR_SAP_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_FOR_SAP_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SYSTEMS_MANAGER_FOR_SAP_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_SYSTEMS_MANAGER_FOR_SAP_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_SYSTEMS_MANAGER_FOR_SAP_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_SYSTEMS_MANAGER_FOR_SAP_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_FOR_SAP_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_SYSTEMS_MANAGER_FOR_SAP_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_SYSTEMS_MANAGER_FOR_SAP_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_THINKBOX_ASSET_SERVER_POLICY`<sup>Required</sup> <a name="AWS_THINKBOX_ASSET_SERVER_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_ASSET_SERVER_POLICY"></a>
 
 ```typescript
-public readonly AWS_THINKBOX_ASSET_SERVER_POLICY: IManagedPolicy;
+public readonly AWS_THINKBOX_ASSET_SERVER_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_THINKBOX_AWS_PORTAL_ADMIN_POLICY`<sup>Required</sup> <a name="AWS_THINKBOX_AWS_PORTAL_ADMIN_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_AWS_PORTAL_ADMIN_POLICY"></a>
 
 ```typescript
-public readonly AWS_THINKBOX_AWS_PORTAL_ADMIN_POLICY: IManagedPolicy;
+public readonly AWS_THINKBOX_AWS_PORTAL_ADMIN_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_THINKBOX_AWS_PORTAL_GATEWAY_POLICY`<sup>Required</sup> <a name="AWS_THINKBOX_AWS_PORTAL_GATEWAY_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_AWS_PORTAL_GATEWAY_POLICY"></a>
 
 ```typescript
-public readonly AWS_THINKBOX_AWS_PORTAL_GATEWAY_POLICY: IManagedPolicy;
+public readonly AWS_THINKBOX_AWS_PORTAL_GATEWAY_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_THINKBOX_AWS_PORTAL_WORKER_POLICY`<sup>Required</sup> <a name="AWS_THINKBOX_AWS_PORTAL_WORKER_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_AWS_PORTAL_WORKER_POLICY"></a>
 
 ```typescript
-public readonly AWS_THINKBOX_AWS_PORTAL_WORKER_POLICY: IManagedPolicy;
+public readonly AWS_THINKBOX_AWS_PORTAL_WORKER_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ACCESS_POLICY`<sup>Required</sup> <a name="AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ACCESS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ACCESS_POLICY"></a>
 
 ```typescript
-public readonly AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ACCESS_POLICY: IManagedPolicy;
+public readonly AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ACCESS_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ADMIN_POLICY`<sup>Required</sup> <a name="AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ADMIN_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ADMIN_POLICY"></a>
 
 ```typescript
-public readonly AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ADMIN_POLICY: IManagedPolicy;
+public readonly AWS_THINKBOX_DEADLINE_RESOURCE_TRACKER_ADMIN_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_ADMIN_POLICY`<sup>Required</sup> <a name="AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_ADMIN_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_ADMIN_POLICY"></a>
 
 ```typescript
-public readonly AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_ADMIN_POLICY: IManagedPolicy;
+public readonly AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_ADMIN_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_WORKER_POLICY`<sup>Required</sup> <a name="AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_WORKER_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_WORKER_POLICY"></a>
 
 ```typescript
-public readonly AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_WORKER_POLICY: IManagedPolicy;
+public readonly AWS_THINKBOX_DEADLINE_SPOT_EVENT_PLUGIN_WORKER_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_TRANSFER_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_TRANSFER_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRANSFER_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_TRANSFER_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_TRANSFER_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_TRANSFER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_TRANSFER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRANSFER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_TRANSFER_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_TRANSFER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_TRANSFER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_TRANSFER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRANSFER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_TRANSFER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_TRANSFER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_TRUSTED_ADVISOR_PRIORITY_FULL_ACCESS`<sup>Required</sup> <a name="AWS_TRUSTED_ADVISOR_PRIORITY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRUSTED_ADVISOR_PRIORITY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_TRUSTED_ADVISOR_PRIORITY_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_TRUSTED_ADVISOR_PRIORITY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_TRUSTED_ADVISOR_PRIORITY_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_TRUSTED_ADVISOR_PRIORITY_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_TRUSTED_ADVISOR_PRIORITY_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_TRUSTED_ADVISOR_PRIORITY_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_TRUSTED_ADVISOR_PRIORITY_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_VENDOR_INSIGHTS_ASSESSOR_FULL_ACCESS`<sup>Required</sup> <a name="AWS_VENDOR_INSIGHTS_ASSESSOR_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_VENDOR_INSIGHTS_ASSESSOR_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_VENDOR_INSIGHTS_ASSESSOR_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_VENDOR_INSIGHTS_ASSESSOR_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_VENDOR_INSIGHTS_ASSESSOR_READ_ONLY`<sup>Required</sup> <a name="AWS_VENDOR_INSIGHTS_ASSESSOR_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_VENDOR_INSIGHTS_ASSESSOR_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_VENDOR_INSIGHTS_ASSESSOR_READ_ONLY: IManagedPolicy;
+public readonly AWS_VENDOR_INSIGHTS_ASSESSOR_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_VENDOR_INSIGHTS_VENDOR_FULL_ACCESS`<sup>Required</sup> <a name="AWS_VENDOR_INSIGHTS_VENDOR_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_VENDOR_INSIGHTS_VENDOR_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_VENDOR_INSIGHTS_VENDOR_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_VENDOR_INSIGHTS_VENDOR_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_VENDOR_INSIGHTS_VENDOR_READ_ONLY`<sup>Required</sup> <a name="AWS_VENDOR_INSIGHTS_VENDOR_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_VENDOR_INSIGHTS_VENDOR_READ_ONLY"></a>
 
 ```typescript
-public readonly AWS_VENDOR_INSIGHTS_VENDOR_READ_ONLY: IManagedPolicy;
+public readonly AWS_VENDOR_INSIGHTS_VENDOR_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_WAF_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_WAF_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WAF_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_WAF_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_WAF_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_WAF_CONSOLE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_WAF_CONSOLE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WAF_CONSOLE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_WAF_CONSOLE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_WAF_CONSOLE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_WAF_FULL_ACCESS`<sup>Required</sup> <a name="AWS_WAF_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WAF_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_WAF_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_WAF_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_WAF_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_WAF_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WAF_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_WAF_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_WAF_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_WICKR_FULL_ACCESS`<sup>Required</sup> <a name="AWS_WICKR_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_WICKR_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_WICKR_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_WICKR_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_X_RAY_DAEMON_WRITE_ACCESS`<sup>Required</sup> <a name="AWS_X_RAY_DAEMON_WRITE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_X_RAY_DAEMON_WRITE_ACCESS"></a>
 
 ```typescript
-public readonly AWS_X_RAY_DAEMON_WRITE_ACCESS: IManagedPolicy;
+public readonly AWS_X_RAY_DAEMON_WRITE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_XRAY_CROSS_ACCOUNT_SHARING_CONFIGURATION`<sup>Required</sup> <a name="AWS_XRAY_CROSS_ACCOUNT_SHARING_CONFIGURATION" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_CROSS_ACCOUNT_SHARING_CONFIGURATION"></a>
 
 ```typescript
-public readonly AWS_XRAY_CROSS_ACCOUNT_SHARING_CONFIGURATION: IManagedPolicy;
+public readonly AWS_XRAY_CROSS_ACCOUNT_SHARING_CONFIGURATION: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_XRAY_FULL_ACCESS`<sup>Required</sup> <a name="AWS_XRAY_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_FULL_ACCESS"></a>
 
 ```typescript
-public readonly AWS_XRAY_FULL_ACCESS: IManagedPolicy;
+public readonly AWS_XRAY_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_XRAY_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_XRAY_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_XRAY_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_XRAY_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `AWS_XRAY_WRITE_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_XRAY_WRITE_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_WRITE_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly AWS_XRAY_WRITE_ONLY_ACCESS: IManagedPolicy;
+public readonly AWS_XRAY_WRITE_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_FRONT_FULL_ACCESS`<sup>Required</sup> <a name="CLOUD_FRONT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_FRONT_FULL_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_FRONT_FULL_ACCESS: IManagedPolicy;
+public readonly CLOUD_FRONT_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_FRONT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="CLOUD_FRONT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_FRONT_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_FRONT_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly CLOUD_FRONT_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_SEARCH_FULL_ACCESS`<sup>Required</sup> <a name="CLOUD_SEARCH_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_SEARCH_FULL_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_SEARCH_FULL_ACCESS: IManagedPolicy;
+public readonly CLOUD_SEARCH_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_SEARCH_READ_ONLY_ACCESS`<sup>Required</sup> <a name="CLOUD_SEARCH_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_SEARCH_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_SEARCH_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly CLOUD_SEARCH_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_ACTIONS_EC2_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_ACTIONS_EC2_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_ACTIONS_EC2_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_ACTIONS_EC2_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_ACTIONS_EC2_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_AGENT_ADMIN_POLICY`<sup>Required</sup> <a name="CLOUD_WATCH_AGENT_ADMIN_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_AGENT_ADMIN_POLICY"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_AGENT_ADMIN_POLICY: IManagedPolicy;
+public readonly CLOUD_WATCH_AGENT_ADMIN_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_AGENT_SERVER_POLICY`<sup>Required</sup> <a name="CLOUD_WATCH_AGENT_SERVER_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_AGENT_SERVER_POLICY"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_AGENT_SERVER_POLICY: IManagedPolicy;
+public readonly CLOUD_WATCH_AGENT_SERVER_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_APPLICATION_INSIGHTS_FULL_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_APPLICATION_INSIGHTS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_APPLICATION_INSIGHTS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_APPLICATION_INSIGHTS_FULL_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_APPLICATION_INSIGHTS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_APPLICATION_INSIGHTS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_APPLICATION_INSIGHTS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_APPLICATION_INSIGHTS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_APPLICATION_INSIGHTS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_APPLICATION_INSIGHTS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_APPLICATION_SIGNALS_FULL_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_APPLICATION_SIGNALS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_APPLICATION_SIGNALS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_APPLICATION_SIGNALS_FULL_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_APPLICATION_SIGNALS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_APPLICATION_SIGNALS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_APPLICATION_SIGNALS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_APPLICATION_SIGNALS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_APPLICATION_SIGNALS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_APPLICATION_SIGNALS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_AUTOMATIC_DASHBOARDS_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_AUTOMATIC_DASHBOARDS_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_AUTOMATIC_DASHBOARDS_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_AUTOMATIC_DASHBOARDS_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_AUTOMATIC_DASHBOARDS_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_CROSS_ACCOUNT_SHARING_CONFIGURATION`<sup>Required</sup> <a name="CLOUD_WATCH_CROSS_ACCOUNT_SHARING_CONFIGURATION" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_CROSS_ACCOUNT_SHARING_CONFIGURATION"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_CROSS_ACCOUNT_SHARING_CONFIGURATION: IManagedPolicy;
+public readonly CLOUD_WATCH_CROSS_ACCOUNT_SHARING_CONFIGURATION: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_EVENTS_FULL_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_EVENTS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_EVENTS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_EVENTS_FULL_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_EVENTS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_EVENTS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_EVENTS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_EVENTS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_EVENTS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_EVENTS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_FULL_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_FULL_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_FULL_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_FULL_ACCESS_V2`<sup>Required</sup> <a name="CLOUD_WATCH_FULL_ACCESS_V2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_FULL_ACCESS_V2"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_FULL_ACCESS_V2: IManagedPolicy;
+public readonly CLOUD_WATCH_FULL_ACCESS_V2: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_INTERNET_MONITOR_FULL_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_INTERNET_MONITOR_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_INTERNET_MONITOR_FULL_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_INTERNET_MONITOR_FULL_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_INTERNET_MONITOR_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_INTERNET_MONITOR_READ_ONLY_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_INTERNET_MONITOR_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_INTERNET_MONITOR_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_INTERNET_MONITOR_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_INTERNET_MONITOR_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_LAMBDA_APPLICATION_SIGNALS_EXECUTION_ROLE_POLICY`<sup>Required</sup> <a name="CLOUD_WATCH_LAMBDA_APPLICATION_SIGNALS_EXECUTION_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LAMBDA_APPLICATION_SIGNALS_EXECUTION_ROLE_POLICY"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_LAMBDA_APPLICATION_SIGNALS_EXECUTION_ROLE_POLICY: IManagedPolicy;
+public readonly CLOUD_WATCH_LAMBDA_APPLICATION_SIGNALS_EXECUTION_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_LAMBDA_INSIGHTS_EXECUTION_ROLE_POLICY`<sup>Required</sup> <a name="CLOUD_WATCH_LAMBDA_INSIGHTS_EXECUTION_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LAMBDA_INSIGHTS_EXECUTION_ROLE_POLICY"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_LAMBDA_INSIGHTS_EXECUTION_ROLE_POLICY: IManagedPolicy;
+public readonly CLOUD_WATCH_LAMBDA_INSIGHTS_EXECUTION_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_LOGS_CROSS_ACCOUNT_SHARING_CONFIGURATION`<sup>Required</sup> <a name="CLOUD_WATCH_LOGS_CROSS_ACCOUNT_SHARING_CONFIGURATION" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LOGS_CROSS_ACCOUNT_SHARING_CONFIGURATION"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_LOGS_CROSS_ACCOUNT_SHARING_CONFIGURATION: IManagedPolicy;
+public readonly CLOUD_WATCH_LOGS_CROSS_ACCOUNT_SHARING_CONFIGURATION: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_LOGS_FULL_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_LOGS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LOGS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_LOGS_FULL_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_LOGS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_LOGS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_LOGS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_LOGS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_LOGS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_LOGS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_NETWORK_FLOW_MONITOR_AGENT_PUBLISH_POLICY`<sup>Required</sup> <a name="CLOUD_WATCH_NETWORK_FLOW_MONITOR_AGENT_PUBLISH_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_NETWORK_FLOW_MONITOR_AGENT_PUBLISH_POLICY"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_NETWORK_FLOW_MONITOR_AGENT_PUBLISH_POLICY: IManagedPolicy;
+public readonly CLOUD_WATCH_NETWORK_FLOW_MONITOR_AGENT_PUBLISH_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_OPEN_SEARCH_DASHBOARD_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_OPEN_SEARCH_DASHBOARD_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_OPEN_SEARCH_DASHBOARD_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_OPEN_SEARCH_DASHBOARD_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_OPEN_SEARCH_DASHBOARD_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_OPEN_SEARCH_DASHBOARDS_FULL_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_OPEN_SEARCH_DASHBOARDS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_OPEN_SEARCH_DASHBOARDS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_OPEN_SEARCH_DASHBOARDS_FULL_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_OPEN_SEARCH_DASHBOARDS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_READ_ONLY_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_SYNTHETICS_FULL_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_SYNTHETICS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_SYNTHETICS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_SYNTHETICS_FULL_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_SYNTHETICS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `CLOUD_WATCH_SYNTHETICS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="CLOUD_WATCH_SYNTHETICS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_WATCH_SYNTHETICS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly CLOUD_WATCH_SYNTHETICS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly CLOUD_WATCH_SYNTHETICS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `COMPREHEND_FULL_ACCESS`<sup>Required</sup> <a name="COMPREHEND_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COMPREHEND_FULL_ACCESS"></a>
 
 ```typescript
-public readonly COMPREHEND_FULL_ACCESS: IManagedPolicy;
+public readonly COMPREHEND_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `COMPREHEND_MEDICAL_FULL_ACCESS`<sup>Required</sup> <a name="COMPREHEND_MEDICAL_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COMPREHEND_MEDICAL_FULL_ACCESS"></a>
 
 ```typescript
-public readonly COMPREHEND_MEDICAL_FULL_ACCESS: IManagedPolicy;
+public readonly COMPREHEND_MEDICAL_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `COMPREHEND_READ_ONLY`<sup>Required</sup> <a name="COMPREHEND_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COMPREHEND_READ_ONLY"></a>
 
 ```typescript
-public readonly COMPREHEND_READ_ONLY: IManagedPolicy;
+public readonly COMPREHEND_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `COMPUTE_OPTIMIZER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="COMPUTE_OPTIMIZER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COMPUTE_OPTIMIZER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly COMPUTE_OPTIMIZER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly COMPUTE_OPTIMIZER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `COST_OPTIMIZATION_HUB_ADMIN_ACCESS`<sup>Required</sup> <a name="COST_OPTIMIZATION_HUB_ADMIN_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COST_OPTIMIZATION_HUB_ADMIN_ACCESS"></a>
 
 ```typescript
-public readonly COST_OPTIMIZATION_HUB_ADMIN_ACCESS: IManagedPolicy;
+public readonly COST_OPTIMIZATION_HUB_ADMIN_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `COST_OPTIMIZATION_HUB_READ_ONLY_ACCESS`<sup>Required</sup> <a name="COST_OPTIMIZATION_HUB_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.COST_OPTIMIZATION_HUB_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly COST_OPTIMIZATION_HUB_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly COST_OPTIMIZATION_HUB_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `EC2_FAST_LAUNCH_FULL_ACCESS`<sup>Required</sup> <a name="EC2_FAST_LAUNCH_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_FAST_LAUNCH_FULL_ACCESS"></a>
 
 ```typescript
-public readonly EC2_FAST_LAUNCH_FULL_ACCESS: IManagedPolicy;
+public readonly EC2_FAST_LAUNCH_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `EC2_IMAGE_BUILDER_CROSS_ACCOUNT_DISTRIBUTION_ACCESS`<sup>Required</sup> <a name="EC2_IMAGE_BUILDER_CROSS_ACCOUNT_DISTRIBUTION_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_IMAGE_BUILDER_CROSS_ACCOUNT_DISTRIBUTION_ACCESS"></a>
 
 ```typescript
-public readonly EC2_IMAGE_BUILDER_CROSS_ACCOUNT_DISTRIBUTION_ACCESS: IManagedPolicy;
+public readonly EC2_IMAGE_BUILDER_CROSS_ACCOUNT_DISTRIBUTION_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `EC2_INSTANCE_CONNECT`<sup>Required</sup> <a name="EC2_INSTANCE_CONNECT" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_INSTANCE_CONNECT"></a>
 
 ```typescript
-public readonly EC2_INSTANCE_CONNECT: IManagedPolicy;
+public readonly EC2_INSTANCE_CONNECT: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER`<sup>Required</sup> <a name="EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER"></a>
 
 ```typescript
-public readonly EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER: IManagedPolicy;
+public readonly EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER_ECR_CONTAINER_BUILDS`<sup>Required</sup> <a name="EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER_ECR_CONTAINER_BUILDS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER_ECR_CONTAINER_BUILDS"></a>
 
 ```typescript
-public readonly EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER_ECR_CONTAINER_BUILDS: IManagedPolicy;
+public readonly EC2_INSTANCE_PROFILE_FOR_IMAGE_BUILDER_ECR_CONTAINER_BUILDS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ELASTIC_LOAD_BALANCING_FULL_ACCESS`<sup>Required</sup> <a name="ELASTIC_LOAD_BALANCING_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELASTIC_LOAD_BALANCING_FULL_ACCESS"></a>
 
 ```typescript
-public readonly ELASTIC_LOAD_BALANCING_FULL_ACCESS: IManagedPolicy;
+public readonly ELASTIC_LOAD_BALANCING_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ELASTIC_LOAD_BALANCING_READ_ONLY`<sup>Required</sup> <a name="ELASTIC_LOAD_BALANCING_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELASTIC_LOAD_BALANCING_READ_ONLY"></a>
 
 ```typescript
-public readonly ELASTIC_LOAD_BALANCING_READ_ONLY: IManagedPolicy;
+public readonly ELASTIC_LOAD_BALANCING_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ELEMENTAL_ACTIVATIONS_DOWNLOAD_SOFTWARE_ACCESS`<sup>Required</sup> <a name="ELEMENTAL_ACTIVATIONS_DOWNLOAD_SOFTWARE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_ACTIVATIONS_DOWNLOAD_SOFTWARE_ACCESS"></a>
 
 ```typescript
-public readonly ELEMENTAL_ACTIVATIONS_DOWNLOAD_SOFTWARE_ACCESS: IManagedPolicy;
+public readonly ELEMENTAL_ACTIVATIONS_DOWNLOAD_SOFTWARE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ELEMENTAL_ACTIVATIONS_FULL_ACCESS`<sup>Required</sup> <a name="ELEMENTAL_ACTIVATIONS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_ACTIVATIONS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly ELEMENTAL_ACTIVATIONS_FULL_ACCESS: IManagedPolicy;
+public readonly ELEMENTAL_ACTIVATIONS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ELEMENTAL_ACTIVATIONS_GENERATE_LICENSES`<sup>Required</sup> <a name="ELEMENTAL_ACTIVATIONS_GENERATE_LICENSES" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_ACTIVATIONS_GENERATE_LICENSES"></a>
 
 ```typescript
-public readonly ELEMENTAL_ACTIVATIONS_GENERATE_LICENSES: IManagedPolicy;
+public readonly ELEMENTAL_ACTIVATIONS_GENERATE_LICENSES: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ELEMENTAL_ACTIVATIONS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="ELEMENTAL_ACTIVATIONS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_ACTIVATIONS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly ELEMENTAL_ACTIVATIONS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly ELEMENTAL_ACTIVATIONS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ELEMENTAL_APPLIANCES_SOFTWARE_FULL_ACCESS`<sup>Required</sup> <a name="ELEMENTAL_APPLIANCES_SOFTWARE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_APPLIANCES_SOFTWARE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly ELEMENTAL_APPLIANCES_SOFTWARE_FULL_ACCESS: IManagedPolicy;
+public readonly ELEMENTAL_APPLIANCES_SOFTWARE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ELEMENTAL_APPLIANCES_SOFTWARE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="ELEMENTAL_APPLIANCES_SOFTWARE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_APPLIANCES_SOFTWARE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly ELEMENTAL_APPLIANCES_SOFTWARE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly ELEMENTAL_APPLIANCES_SOFTWARE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ELEMENTAL_SUPPORT_CENTER_FULL_ACCESS`<sup>Required</sup> <a name="ELEMENTAL_SUPPORT_CENTER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_SUPPORT_CENTER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly ELEMENTAL_SUPPORT_CENTER_FULL_ACCESS: IManagedPolicy;
+public readonly ELEMENTAL_SUPPORT_CENTER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `GAME_LIFT_CONTAINER_FLEET_POLICY`<sup>Required</sup> <a name="GAME_LIFT_CONTAINER_FLEET_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GAME_LIFT_CONTAINER_FLEET_POLICY"></a>
 
 ```typescript
-public readonly GAME_LIFT_CONTAINER_FLEET_POLICY: IManagedPolicy;
+public readonly GAME_LIFT_CONTAINER_FLEET_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `GAME_LIFT_GAME_SERVER_GROUP_POLICY`<sup>Required</sup> <a name="GAME_LIFT_GAME_SERVER_GROUP_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GAME_LIFT_GAME_SERVER_GROUP_POLICY"></a>
 
 ```typescript
-public readonly GAME_LIFT_GAME_SERVER_GROUP_POLICY: IManagedPolicy;
+public readonly GAME_LIFT_GAME_SERVER_GROUP_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `GLOBAL_ACCELERATOR_FULL_ACCESS`<sup>Required</sup> <a name="GLOBAL_ACCELERATOR_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GLOBAL_ACCELERATOR_FULL_ACCESS"></a>
 
 ```typescript
-public readonly GLOBAL_ACCELERATOR_FULL_ACCESS: IManagedPolicy;
+public readonly GLOBAL_ACCELERATOR_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `GLOBAL_ACCELERATOR_READ_ONLY_ACCESS`<sup>Required</sup> <a name="GLOBAL_ACCELERATOR_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GLOBAL_ACCELERATOR_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly GLOBAL_ACCELERATOR_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly GLOBAL_ACCELERATOR_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `IAM_ACCESS_ADVISOR_READ_ONLY`<sup>Required</sup> <a name="IAM_ACCESS_ADVISOR_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_ACCESS_ADVISOR_READ_ONLY"></a>
 
 ```typescript
-public readonly IAM_ACCESS_ADVISOR_READ_ONLY: IManagedPolicy;
+public readonly IAM_ACCESS_ADVISOR_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `IAM_ACCESS_ANALYZER_FULL_ACCESS`<sup>Required</sup> <a name="IAM_ACCESS_ANALYZER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_ACCESS_ANALYZER_FULL_ACCESS"></a>
 
 ```typescript
-public readonly IAM_ACCESS_ANALYZER_FULL_ACCESS: IManagedPolicy;
+public readonly IAM_ACCESS_ANALYZER_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `IAM_ACCESS_ANALYZER_READ_ONLY_ACCESS`<sup>Required</sup> <a name="IAM_ACCESS_ANALYZER_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_ACCESS_ANALYZER_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly IAM_ACCESS_ANALYZER_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly IAM_ACCESS_ANALYZER_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `IAM_FULL_ACCESS`<sup>Required</sup> <a name="IAM_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_FULL_ACCESS"></a>
 
 ```typescript
-public readonly IAM_FULL_ACCESS: IManagedPolicy;
+public readonly IAM_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `IAM_READ_ONLY_ACCESS`<sup>Required</sup> <a name="IAM_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly IAM_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly IAM_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `IAM_SELF_MANAGE_SERVICE_SPECIFIC_CREDENTIALS`<sup>Required</sup> <a name="IAM_SELF_MANAGE_SERVICE_SPECIFIC_CREDENTIALS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_SELF_MANAGE_SERVICE_SPECIFIC_CREDENTIALS"></a>
 
 ```typescript
-public readonly IAM_SELF_MANAGE_SERVICE_SPECIFIC_CREDENTIALS: IManagedPolicy;
+public readonly IAM_SELF_MANAGE_SERVICE_SPECIFIC_CREDENTIALS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `IAM_USER_CHANGE_PASSWORD`<sup>Required</sup> <a name="IAM_USER_CHANGE_PASSWORD" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_USER_CHANGE_PASSWORD"></a>
 
 ```typescript
-public readonly IAM_USER_CHANGE_PASSWORD: IManagedPolicy;
+public readonly IAM_USER_CHANGE_PASSWORD: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `IAM_USER_SSH_KEYS`<sup>Required</sup> <a name="IAM_USER_SSH_KEYS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_USER_SSH_KEYS"></a>
 
 ```typescript
-public readonly IAM_USER_SSH_KEYS: IManagedPolicy;
+public readonly IAM_USER_SSH_KEYS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `IVS_FULL_ACCESS`<sup>Required</sup> <a name="IVS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IVS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly IVS_FULL_ACCESS: IManagedPolicy;
+public readonly IVS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `IVS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="IVS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IVS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly IVS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly IVS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `MEDIA_CONNECT_GATEWAY_INSTANCE_ROLE_POLICY`<sup>Required</sup> <a name="MEDIA_CONNECT_GATEWAY_INSTANCE_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.MEDIA_CONNECT_GATEWAY_INSTANCE_ROLE_POLICY"></a>
 
 ```typescript
-public readonly MEDIA_CONNECT_GATEWAY_INSTANCE_ROLE_POLICY: IManagedPolicy;
+public readonly MEDIA_CONNECT_GATEWAY_INSTANCE_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `NEPTUNE_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="NEPTUNE_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly NEPTUNE_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly NEPTUNE_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `NEPTUNE_FULL_ACCESS`<sup>Required</sup> <a name="NEPTUNE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly NEPTUNE_FULL_ACCESS: IManagedPolicy;
+public readonly NEPTUNE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `NEPTUNE_GRAPH_READ_ONLY_ACCESS`<sup>Required</sup> <a name="NEPTUNE_GRAPH_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_GRAPH_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly NEPTUNE_GRAPH_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly NEPTUNE_GRAPH_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `NEPTUNE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="NEPTUNE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly NEPTUNE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly NEPTUNE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `OAM_FULL_ACCESS`<sup>Required</sup> <a name="OAM_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.OAM_FULL_ACCESS"></a>
 
 ```typescript
-public readonly OAM_FULL_ACCESS: IManagedPolicy;
+public readonly OAM_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `OAM_READ_ONLY_ACCESS`<sup>Required</sup> <a name="OAM_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.OAM_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly OAM_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly OAM_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `PARTNER_CENTRAL_ACCOUNT_MANAGEMENT_USER_ROLE_ASSOCIATION`<sup>Required</sup> <a name="PARTNER_CENTRAL_ACCOUNT_MANAGEMENT_USER_ROLE_ASSOCIATION" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.PARTNER_CENTRAL_ACCOUNT_MANAGEMENT_USER_ROLE_ASSOCIATION"></a>
 
 ```typescript
-public readonly PARTNER_CENTRAL_ACCOUNT_MANAGEMENT_USER_ROLE_ASSOCIATION: IManagedPolicy;
+public readonly PARTNER_CENTRAL_ACCOUNT_MANAGEMENT_USER_ROLE_ASSOCIATION: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `POWER_USER_ACCESS`<sup>Required</sup> <a name="POWER_USER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.POWER_USER_ACCESS"></a>
 
 ```typescript
-public readonly POWER_USER_ACCESS: IManagedPolicy;
+public readonly POWER_USER_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `Q_BUSINESS_QUICKSIGHT_PLUGIN_POLICY`<sup>Required</sup> <a name="Q_BUSINESS_QUICKSIGHT_PLUGIN_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.Q_BUSINESS_QUICKSIGHT_PLUGIN_POLICY"></a>
 
 ```typescript
-public readonly Q_BUSINESS_QUICKSIGHT_PLUGIN_POLICY: IManagedPolicy;
+public readonly Q_BUSINESS_QUICKSIGHT_PLUGIN_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `READ_ONLY_ACCESS`<sup>Required</sup> <a name="READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly READ_ONLY_ACCESS: IManagedPolicy;
+public readonly READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `RESOURCE_GROUPS_AND_TAG_EDITOR_FULL_ACCESS`<sup>Required</sup> <a name="RESOURCE_GROUPS_AND_TAG_EDITOR_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.RESOURCE_GROUPS_AND_TAG_EDITOR_FULL_ACCESS"></a>
 
 ```typescript
-public readonly RESOURCE_GROUPS_AND_TAG_EDITOR_FULL_ACCESS: IManagedPolicy;
+public readonly RESOURCE_GROUPS_AND_TAG_EDITOR_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `RESOURCE_GROUPS_AND_TAG_EDITOR_READ_ONLY_ACCESS`<sup>Required</sup> <a name="RESOURCE_GROUPS_AND_TAG_EDITOR_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.RESOURCE_GROUPS_AND_TAG_EDITOR_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly RESOURCE_GROUPS_AND_TAG_EDITOR_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly RESOURCE_GROUPS_AND_TAG_EDITOR_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `RESOURCE_GROUPS_TAGGING_API_TAG_UNTAG_SUPPORTED_RESOURCES`<sup>Required</sup> <a name="RESOURCE_GROUPS_TAGGING_API_TAG_UNTAG_SUPPORTED_RESOURCES" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.RESOURCE_GROUPS_TAGGING_API_TAG_UNTAG_SUPPORTED_RESOURCES"></a>
 
 ```typescript
-public readonly RESOURCE_GROUPS_TAGGING_API_TAG_UNTAG_SUPPORTED_RESOURCES: IManagedPolicy;
+public readonly RESOURCE_GROUPS_TAGGING_API_TAG_UNTAG_SUPPORTED_RESOURCES: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `ROSA_MANAGE_SUBSCRIPTION`<sup>Required</sup> <a name="ROSA_MANAGE_SUBSCRIPTION" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ROSA_MANAGE_SUBSCRIPTION"></a>
 
 ```typescript
-public readonly ROSA_MANAGE_SUBSCRIPTION: IManagedPolicy;
+public readonly ROSA_MANAGE_SUBSCRIPTION: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `SAGE_MAKER_STUDIO_FULL_ACCESS`<sup>Required</sup> <a name="SAGE_MAKER_STUDIO_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_FULL_ACCESS"></a>
 
 ```typescript
-public readonly SAGE_MAKER_STUDIO_FULL_ACCESS: IManagedPolicy;
+public readonly SAGE_MAKER_STUDIO_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `SAGE_MAKER_STUDIO_PROJECT_ROLE_MACHINE_LEARNING_POLICY`<sup>Required</sup> <a name="SAGE_MAKER_STUDIO_PROJECT_ROLE_MACHINE_LEARNING_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_PROJECT_ROLE_MACHINE_LEARNING_POLICY"></a>
 
 ```typescript
-public readonly SAGE_MAKER_STUDIO_PROJECT_ROLE_MACHINE_LEARNING_POLICY: IManagedPolicy;
+public readonly SAGE_MAKER_STUDIO_PROJECT_ROLE_MACHINE_LEARNING_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_PERMISSIONS_BOUNDARY`<sup>Required</sup> <a name="SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_PERMISSIONS_BOUNDARY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_PERMISSIONS_BOUNDARY"></a>
 
 ```typescript
-public readonly SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_PERMISSIONS_BOUNDARY: IManagedPolicy;
+public readonly SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_PERMISSIONS_BOUNDARY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_POLICY`<sup>Required</sup> <a name="SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_POLICY"></a>
 
 ```typescript
-public readonly SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_POLICY: IManagedPolicy;
+public readonly SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `SECRETS_MANAGER_READ_WRITE`<sup>Required</sup> <a name="SECRETS_MANAGER_READ_WRITE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SECRETS_MANAGER_READ_WRITE"></a>
 
 ```typescript
-public readonly SECRETS_MANAGER_READ_WRITE: IManagedPolicy;
+public readonly SECRETS_MANAGER_READ_WRITE: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `SECURITY_AUDIT`<sup>Required</sup> <a name="SECURITY_AUDIT" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SECURITY_AUDIT"></a>
 
 ```typescript
-public readonly SECURITY_AUDIT: IManagedPolicy;
+public readonly SECURITY_AUDIT: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `SERVER_MIGRATION_CONNECTOR`<sup>Required</sup> <a name="SERVER_MIGRATION_CONNECTOR" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVER_MIGRATION_CONNECTOR"></a>
 
 ```typescript
-public readonly SERVER_MIGRATION_CONNECTOR: IManagedPolicy;
+public readonly SERVER_MIGRATION_CONNECTOR: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `SERVER_MIGRATION_SERVICE_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="SERVER_MIGRATION_SERVICE_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVER_MIGRATION_SERVICE_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly SERVER_MIGRATION_SERVICE_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly SERVER_MIGRATION_SERVICE_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `SERVICE_QUOTAS_FULL_ACCESS`<sup>Required</sup> <a name="SERVICE_QUOTAS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVICE_QUOTAS_FULL_ACCESS"></a>
 
 ```typescript
-public readonly SERVICE_QUOTAS_FULL_ACCESS: IManagedPolicy;
+public readonly SERVICE_QUOTAS_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `SERVICE_QUOTAS_READ_ONLY_ACCESS`<sup>Required</sup> <a name="SERVICE_QUOTAS_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVICE_QUOTAS_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly SERVICE_QUOTAS_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly SERVICE_QUOTAS_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `SIMPLE_WORKFLOW_FULL_ACCESS`<sup>Required</sup> <a name="SIMPLE_WORKFLOW_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SIMPLE_WORKFLOW_FULL_ACCESS"></a>
 
 ```typescript
-public readonly SIMPLE_WORKFLOW_FULL_ACCESS: IManagedPolicy;
+public readonly SIMPLE_WORKFLOW_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `TRANSLATE_FULL_ACCESS`<sup>Required</sup> <a name="TRANSLATE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.TRANSLATE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly TRANSLATE_FULL_ACCESS: IManagedPolicy;
+public readonly TRANSLATE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `TRANSLATE_READ_ONLY`<sup>Required</sup> <a name="TRANSLATE_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.TRANSLATE_READ_ONLY"></a>
 
 ```typescript
-public readonly TRANSLATE_READ_ONLY: IManagedPolicy;
+public readonly TRANSLATE_READ_ONLY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `VPC_LATTICE_FULL_ACCESS`<sup>Required</sup> <a name="VPC_LATTICE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.VPC_LATTICE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly VPC_LATTICE_FULL_ACCESS: IManagedPolicy;
+public readonly VPC_LATTICE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `VPC_LATTICE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="VPC_LATTICE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.VPC_LATTICE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly VPC_LATTICE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly VPC_LATTICE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `VPC_LATTICE_SERVICES_INVOKE_ACCESS`<sup>Required</sup> <a name="VPC_LATTICE_SERVICES_INVOKE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.VPC_LATTICE_SERVICES_INVOKE_ACCESS"></a>
 
 ```typescript
-public readonly VPC_LATTICE_SERVICES_INVOKE_ACCESS: IManagedPolicy;
+public readonly VPC_LATTICE_SERVICES_INVOKE_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `WELL_ARCHITECTED_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="WELL_ARCHITECTED_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.WELL_ARCHITECTED_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
-public readonly WELL_ARCHITECTED_CONSOLE_FULL_ACCESS: IManagedPolicy;
+public readonly WELL_ARCHITECTED_CONSOLE_FULL_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `WELL_ARCHITECTED_CONSOLE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="WELL_ARCHITECTED_CONSOLE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.WELL_ARCHITECTED_CONSOLE_READ_ONLY_ACCESS"></a>
 
 ```typescript
-public readonly WELL_ARCHITECTED_CONSOLE_READ_ONLY_ACCESS: IManagedPolicy;
+public readonly WELL_ARCHITECTED_CONSOLE_READ_ONLY_ACCESS: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
 ##### `WORK_LINK_SERVICE_ROLE_POLICY`<sup>Required</sup> <a name="WORK_LINK_SERVICE_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.WORK_LINK_SERVICE_ROLE_POLICY"></a>
 
 ```typescript
-public readonly WORK_LINK_SERVICE_ROLE_POLICY: IManagedPolicy;
+public readonly WORK_LINK_SERVICE_ROLE_POLICY: string;
 ```
 
-- *Type:* aws-cdk-lib.aws_iam.IManagedPolicy
+- *Type:* string
 
 ---
 
