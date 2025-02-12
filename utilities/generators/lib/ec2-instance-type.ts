@@ -54,12 +54,18 @@ export async function generateAndInjectEc2InstanceTypes() {
         // Create map of instance types with their descriptions
         const instanceTypeMap = new Map(
             allInstanceTypes
-                .filter((instance) => instance.InstanceType)
+                .filter(
+                    (
+                        instance
+                    ): instance is InstanceTypeInfo & {
+                        InstanceType: string;
+                    } => typeof instance.InstanceType === 'string'
+                )
                 .map((instance) => [
                     instance.InstanceType,
                     {
-                        vcpus: instance.VCpuInfo?.DefaultVCpus,
-                        memoryMiB: instance.MemoryInfo?.SizeInMiB
+                        vcpus: instance.VCpuInfo?.DefaultVCpus ?? 0,
+                        memoryMiB: instance.MemoryInfo?.SizeInMiB ?? 0
                     }
                 ])
         );
