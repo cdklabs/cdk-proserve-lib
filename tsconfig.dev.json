@@ -28,8 +28,8 @@
   "include": [
     "src/**/*.ts",
     "test/**/*.ts",
-    "esbuild.ts",
     "utilities/**/*.ts",
+    "esbuild.ts",
     ".projenrc.ts",
     "projenrc/**/*.ts"
   ],
