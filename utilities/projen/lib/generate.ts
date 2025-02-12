@@ -1,14 +1,14 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { project } from '../../../.projenrc';
+import { CdklabsTypeScriptProject } from 'cdklabs-projen-project-types';
 
 /**
  * Configures the Generators of the project. Generators will automatically
  * update files in the repository dynamically from information gathered through
  * an API or other means.
  */
-export const configureGenerators = () => {
+export const configureGenerators = (project: CdklabsTypeScriptProject) => {
     // Generate Task
     project.addTask('generate', {
         description: 'Automatically update files with generator scripts.',

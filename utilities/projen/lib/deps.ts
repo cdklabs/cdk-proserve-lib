@@ -1,12 +1,12 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { project } from '../../../.projenrc';
+import { CdklabsTypeScriptProject } from 'cdklabs-projen-project-types';
 
 /**
  * Configures dependencies for the project and any overrides/resolutions.
  */
-export const configureDependencies = () => {
+export const configureDependencies = (project: CdklabsTypeScriptProject) => {
     /**
      * Dependencies
      */

@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { CdklabsTypeScriptProject } from 'cdklabs-projen-project-types';
 import {
     ArrowParens,
     EndOfLine,
@@ -8,13 +9,12 @@ import {
     QuoteProps,
     TrailingComma
 } from 'projen/lib/javascript';
-import { project } from '../../../.projenrc';
 
 /**
  * Configures linting settings for the project for tools such as Prettier,
  * ESLint, and Husky.
  */
-export const configureLinting = () => {
+export const configureLinting = (project: CdklabsTypeScriptProject) => {
     /** Prettier */
     project.addFields({
         'lint-staged': {

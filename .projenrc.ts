@@ -8,7 +8,7 @@ import * as p from './utilities/projen';
 /**
  * Project Definition
  */
-export const project = new CdklabsConstructLibrary({
+const project = new CdklabsConstructLibrary({
     author: 'Derrike Nunn && Luciano Taranto',
     authorAddress: 'aws-cdk-dev@amazon.com',
     stability: 'experimental',
@@ -33,10 +33,11 @@ export const project = new CdklabsConstructLibrary({
     }
 });
 
-p.configureDependencies();
-p.configureIgnores();
-p.configureLinting();
-p.configurePackaging();
-p.configureGenerators();
+p.configureBuild(project);
+p.configureDependencies(project);
+p.configureIgnores(project);
+p.configureLinting(project);
+p.configurePackaging(project);
+p.configureGenerators(project);
 
 project.synth();

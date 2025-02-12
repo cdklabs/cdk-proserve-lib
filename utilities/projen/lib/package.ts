@@ -1,12 +1,12 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { project } from '../../../.projenrc';
+import { CdklabsTypeScriptProject } from 'cdklabs-projen-project-types';
 
 /**
  * Configures the packaging settings for the project.
  */
-export const configurePackaging = () => {
+export const configurePackaging = (project: CdklabsTypeScriptProject) => {
     /**
      * Package.json Modifications
      */
@@ -38,8 +38,6 @@ export const configurePackaging = () => {
             'yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447'
     });
 
-    project.tsconfigDev?.addInclude('utilities/**/*.ts');
-
     // Language Packaging Tasks
     const packageLanguageTasks = ['js', 'java', 'python', 'dotnet', 'go'];
     packageLanguageTasks.forEach((l) => {
@@ -57,18 +55,6 @@ export const configurePackaging = () => {
             }
         );
     });
-
-    // Lambda Build Task
-    const compileLambdas = project.addTask('compile:lambda', {
-        description: 'Builds the Lambda function code and bundles dependencies',
-        steps: [
-            {
-                exec: 'yarn ts-node esbuild.ts',
-                name: 'Run esbuild.'
-            }
-        ]
-    });
-    project.tsconfigDev?.addInclude('esbuild.ts');
 
     /**
      * Asset Bundling
@@ -88,34 +74,6 @@ export const configurePackaging = () => {
         )
     );
     project.postCompileTask.spawn(bundleTask);
-    project.postCompileTask.spawn(compileLambdas);
-
-    // Clean Up Task
-    project.addTask('clean', {
-        description: 'Removes all ephemeral build and test files.',
-        steps: [
-            {
-                exec: 'rm -rf coverage/',
-                name: 'Remove coverage information.'
-            },
-            {
-                exec: 'rm -rf dist/',
-                name: 'Remove built packages.'
-            },
-            {
-                exec: 'rm -rf lib/',
-                name: 'Remove build files.'
-            },
-            {
-                exec: 'rm -rf test-reports/',
-                name: 'Remove testing information.'
-            },
-            {
-                exec: 'rm -rf .jsii tsconfig.json',
-                name: 'Remove intermediate files.'
-            }
-        ]
-    });
 
     // Rosetta
     project.tasks.tryFind('rosetta:extract')?.updateStep(0, {
