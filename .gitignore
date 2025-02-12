@@ -31,12 +31,6 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
-.DS_Store
-.python-version
-.nvmrc
-test.json
-.vscode/
-.yarn/
 /test-reports/
 junit.xml
 /coverage/
@@ -62,4 +56,10 @@ tsconfig.json
 !/.github/workflows/upgrade-cdklabs-projen-project-types-main.yml
 !/.github/workflows/upgrade-main.yml
 !/.github/workflows/upgrade-dev-deps-main.yml
+.DS_Store
+.python-version
+.nvmrc
+test.json
+.vscode/
+.yarn/
 !/.projenrc.ts
