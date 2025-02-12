@@ -350,10 +350,10 @@
           "spawn": "rosetta:extract"
         },
         {
-          "spawn": "bundle"
+          "spawn": "compile:lambda"
         },
         {
-          "spawn": "compile:lambda"
+          "spawn": "bundle"
         },
         {
           "spawn": "update:readme"
