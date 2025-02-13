@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { dirname } from 'node:path';
+import { mkdirSync, rmSync } from 'node:fs';
 import { build, BuildOptions } from 'esbuild';
 
 /**
@@ -39,6 +40,27 @@ function determineOutdir(entryPoints: string[], base: string): string {
 }
 
 /**
+ * Removes the handler directories and all files contained within for the given entry points before recreating them.
+ * This removes handler code that was built by JSII with TSC since esbuild is being used to bundle and minify these
+ * files separately
+ * @param entryPoints All entry points for esbuild
+ */
+function emptyHandlerDirectories(entryPoints: string[]) {
+    entryPoints
+        .map((p) =>
+            p.replace(/^src/, 'lib').replace(/\/handler\/.*?$/g, '/handler')
+        )
+        .forEach((p) => {
+            rmSync(p, {
+                force: true,
+                recursive: true
+            });
+
+            mkdirSync(p, { recursive: true });
+        });
+}
+
+/**
  * Bundling for constructs
  */
 const constructEntryPoints = [
@@ -47,6 +69,7 @@ const constructEntryPoints = [
     'src/constructs/friendly-embrace/handler/on-event/index.ts',
     'src/constructs/iam-server-certificate/handler/on-event/index.ts'
 ];
+emptyHandlerDirectories(constructEntryPoints);
 build({
     ...buildDefaults,
     entryPoints: constructEntryPoints,
@@ -59,6 +82,7 @@ build({
 const patternEntryPoints = [
     'src/patterns/apigateway-static-hosting/handler/index.ts'
 ];
+emptyHandlerDirectories(patternEntryPoints);
 build({
     ...buildDefaults,
     entryPoints: patternEntryPoints,
