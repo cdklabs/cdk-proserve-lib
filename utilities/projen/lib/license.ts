@@ -3,7 +3,6 @@
 
 import { CdklabsTypeScriptProject } from 'cdklabs-projen-project-types';
 import { YamlFile } from 'projen';
-import { GithubWorkflow } from 'projen/lib/github';
 import { JobPermission } from 'projen/lib/github/workflows-model';
 
 export const configureLicense = (project: CdklabsTypeScriptProject) => {
@@ -34,11 +33,12 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
     });
 
     // Create GitHub workflow for license checks
-    const workflow = new GithubWorkflow(project.github!, 'license');
+    const workflow = project.github?.tryFindWorkflow('pull-request-lint')!;
+    // const workflow = new GithubWorkflow(project.github!, 'license');
 
-    workflow.on({
-        pullRequest: {}
-    });
+    // workflow.on({
+    //     pullRequest: {}
+    // });
 
     workflow.addJob('license', {
         runsOn: ['ubuntu-latest'],
@@ -64,8 +64,8 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
                     GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
                 },
                 with: {
-                    author_name: 'License Bot',
-                    author_email: 'license_bot@github.com',
+                    author_name: 'github-actions',
+                    author_email: 'github-actions@github.com',
                     message: 'Automatic application of license header'
                 }
             }
