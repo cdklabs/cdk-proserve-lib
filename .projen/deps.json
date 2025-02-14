@@ -53,6 +53,11 @@
       "type": "build"
     },
     {
+      "name": "@smithy/types",
+      "version": "4.1.0",
+      "type": "build"
+    },
+    {
       "name": "@smithy/util-stream-node",
       "version": "4.0.2",
       "type": "build"

@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { join } from 'node:path';
+import { Readable } from 'node:stream';
 import { NoSuchKey, S3 } from '@aws-sdk/client-s3';
+import { type SdkStream } from '@smithy/types';
 import { sdkStreamMixin } from '@smithy/util-stream-node';
 import { Handler, Request, Response, NextFunction } from 'express';
 import expressAsyncHandler = require('express-async-handler');
@@ -26,6 +28,21 @@ export interface S3HostingConfiguration extends CommonHostingConfiguration {
 }
 
 /**
+ * Metadata for an object loaded from Amazon S3
+ */
+interface LoadObjectResult {
+    /**
+     * Stream for the contents of the object
+     */
+    readonly data: SdkStream<Readable> | null;
+
+    /**
+     * Content type of the object
+     */
+    readonly contentType?: string;
+}
+
+/**
  * Static asset host backed by Amazon S3
  */
 export class S3Host extends CommonHost<S3HostingConfiguration> {
@@ -33,12 +50,6 @@ export class S3Host extends CommonHost<S3HostingConfiguration> {
      * Client for interacting with Amazon S3
      */
     private readonly s3: S3;
-
-    /**
-     * Default filename to use to index Amazon S3 when a GetObject fails
-     * This is used to support Single Page Applications (SPA)
-     */
-    private readonly defaultKey?: string;
 
     /**
      * Create an Amazon S3 backed static asset host
@@ -50,17 +61,69 @@ export class S3Host extends CommonHost<S3HostingConfiguration> {
         this.s3 = new S3({
             region: this.props.bucketRegion
         });
+    }
 
-        this.defaultKey = this.props.spaIndexPage
-            ? join(this.staticFilePath, this.props.spaIndexPage)
-            : undefined;
+    /**
+     * Loads an object from an Amazon S3 bucket based on the given web path
+     * @param path Web path of the object from the request which maps to the prefix of the object in Amazon S3
+     * @returns Metadata about the object from Amazon S3
+     */
+    private async loadObject(path: string): Promise<LoadObjectResult> {
+        // Add additional prefix if necessary
+        const objectKey = join(this.staticFilePath, path);
+
+        const objectRequest = await this.s3.getObject({
+            Bucket: this.props.bucketName,
+            Key: objectKey
+        });
+        const data = objectRequest.Body
+            ? sdkStreamMixin(objectRequest.Body)
+            : null;
+
+        return {
+            data: data,
+            contentType: objectRequest.ContentType
+        };
     }
 
     /**
      * Express handler for the fallthrough SPA route
      */
-    protected get spaHandler(): Handler | undefined {
-        return undefined;
+    protected get spaHandler(): Handler {
+        return expressAsyncHandler(
+            async (_req: Request, res: Response, next: NextFunction) => {
+                try {
+                    if (this.props.spaIndexPage) {
+                        const defaultContentType =
+                            getType(this.props.spaIndexPage) ?? 'text/plain';
+
+                        const file = await this.loadObject(
+                            this.props.spaIndexPage
+                        );
+
+                        if (file.data !== null) {
+                            res.setHeader(
+                                'Content-Type',
+                                file.contentType ?? defaultContentType
+                            );
+
+                            file.data.pipe(res);
+                        } else {
+                            res.sendStatus(500);
+                        }
+                    } else {
+                        res.sendStatus(404);
+                    }
+                } catch (f) {
+                    // Failed to load the default object
+                    if (f instanceof NoSuchKey) {
+                        res.sendStatus(404);
+                    } else {
+                        next(f);
+                    }
+                }
+            }
+        );
     }
 
     /**
@@ -72,67 +135,23 @@ export class S3Host extends CommonHost<S3HostingConfiguration> {
                 try {
                     const contentType = getType(req.path) ?? 'text/plain';
 
-                    // Add additional prefix if necessary
-                    const objectKey = join(this.staticFilePath, req.path);
+                    const file = await this.loadObject(req.path);
 
-                    // Attempt to retrieve the object
-                    const objectRequest = await this.s3.getObject({
-                        Bucket: this.props.bucketName,
-                        Key: objectKey
-                    });
-                    const data = objectRequest.Body
-                        ? sdkStreamMixin(objectRequest.Body)
-                        : null;
-
-                    if (data !== null) {
+                    if (file.data !== null) {
                         res.setHeader(
                             'Content-Type',
-                            objectRequest.ContentType ?? contentType
+                            file.contentType ?? contentType
                         );
-                        data.pipe(res);
+
+                        file.data.pipe(res);
                     } else {
                         res.sendStatus(500);
                     }
                 } catch (e) {
                     // Failed to load the object
                     if (e instanceof NoSuchKey) {
-                        // Special handling if we have a default key, e.g. for SPA
-                        if (this.defaultKey !== undefined) {
-                            try {
-                                const defaultContentType =
-                                    getType(this.defaultKey) ?? 'text/plain';
-
-                                // Try to load and stream the default object
-                                const defaultObjectRequest =
-                                    await this.s3.getObject({
-                                        Bucket: this.props.bucketName,
-                                        Key: this.defaultKey
-                                    });
-                                const data = defaultObjectRequest.Body
-                                    ? sdkStreamMixin(defaultObjectRequest.Body)
-                                    : null;
-
-                                if (data !== null) {
-                                    res.setHeader(
-                                        'Content-Type',
-                                        defaultObjectRequest.ContentType ??
-                                            defaultContentType
-                                    );
-                                    data.pipe(res);
-                                } else {
-                                    res.sendStatus(500);
-                                }
-                            } catch (f) {
-                                // Failed to load the default object
-                                if (f instanceof NoSuchKey) {
-                                    res.sendStatus(404);
-                                } else {
-                                    next(f);
-                                }
-                            }
-                        } else {
-                            res.sendStatus(404);
-                        }
+                        // Pass to the SPA handler (if available)
+                        next();
                     } else {
                         next(e);
                     }
