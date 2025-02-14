@@ -12,8 +12,14 @@ import {
     MethodLoggingLevel,
     RestApi
 } from 'aws-cdk-lib/aws-apigateway';
+import { PolicyDocument } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
-import { Code, Runtime, SingletonFunction } from 'aws-cdk-lib/aws-lambda';
+import {
+    Code,
+    Function,
+    Runtime,
+    SingletonFunction
+} from 'aws-cdk-lib/aws-lambda';
 import {
     BlockPublicAccess,
     Bucket,
@@ -27,16 +33,16 @@ import { Construct } from 'constructs';
 import { SecureFunction } from '../../constructs/secure-function';
 import { LambdaConfiguration } from '../../types';
 import { S3HostingConfiguration } from './handler/hosts/s3';
+import { DefaultConfig } from '../../common/default-config';
 
 /**
  * Properties for configuring the static hosting pattern
  */
 export interface ApiGatewayStaticHostingProps {
     /**
-     * Custom Domain to use for the REST API
-     * @default undefined Will use the default API invocation endpoint
+     * Configuration information for the distribution endpoint that will be used to serve static content
      */
-    readonly customDomain?: DomainNameOptions;
+    readonly domain: ApiGatewayStaticHosting.DomainConfiguration;
 
     /**
      * Endpoint deployment information for the REST API
@@ -89,6 +95,11 @@ export interface ApiGatewayStaticHostingProps {
      * @default undefined No version information will be deployed to the Amazon S3 bucket
      */
     readonly versionTag?: string;
+
+    /**
+     * Resource access policy to define on the API itself to control who can invoke the endpoint
+     */
+    readonly accessPolicy?: PolicyDocument;
 }
 
 /**
@@ -108,10 +119,12 @@ export interface ApiGatewayStaticHostingProps {
  *
  * new ApiGatewayStaticHosting(this, 'MyWebsite', {
  *     asset: {
- *         id: 'Website',
+ *         id: 'Entry',
  *         path: join(__dirname, 'assets', 'website', 'dist'),
- *         destinationPrefix: 'public',
  *         spaIndexPageName: 'index.html'
+ *     },
+ *     domain: {
+ *         basePath: 'public'
  *     },
  *     endpoint: {
  *         types: [EndpointType.REGIONAL]
@@ -135,9 +148,48 @@ export class ApiGatewayStaticHosting extends Construct {
     private assetEncryptionConfigured: boolean = false;
 
     /**
-     * API Gateway REST API URL
+     * Standard format for the base path which removes any whitespace and the leading '/' if present
      */
-    public readonly endpoint: string;
+    private readonly normalizedBasePath?: string;
+
+    /**
+     * Provides access to the underlying Amazon API Gateway REST API that serves as the distribution endpoint for the
+     * static content.
+     *
+     * WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
+     * behave as expected or designed. You do so at your own risk.
+     */
+    public readonly distribution: RestApi;
+
+    /**
+     * Provides access to the underlying AWS Lambda function that proxies the static content from Amazon S3.
+     *
+     * WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
+     * behave as expected or designed. You do so at your own risk.
+     */
+    public readonly proxy: Function;
+
+    /**
+     * Provides access to the underlying Amazon S3 bucket that stores the static content.
+     *
+     * WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
+     * behave as expected or designed. You do so at your own risk.
+     */
+    public readonly store: Bucket;
+
+    /**
+     * URL for the API that distributes the static content
+     */
+    public readonly url: string;
+
+    /**
+     * Alias domain name for the API that distributes the static content.
+     *
+     * This is only available if the custom domain name configuration was provided to the pattern. In that event, you
+     * would then create either a CNAME or ALIAS record in your DNS system that maps your custom domain name to this
+     * value.
+     */
+    public readonly customDomainNameAlias?: string;
 
     /**
      * Creates a new static hosting pattern
@@ -154,19 +206,76 @@ export class ApiGatewayStaticHosting extends Construct {
 
         this.props = props;
 
-        const store = this.buildStore();
-        const metadata = this.provisionMetadata(store);
+        const usingCustomDomain = this.domainIsCustom(this.props.domain);
 
-        const assetDeployment = this.provisionAsset(this.props.asset, store);
+        if (usingCustomDomain && this.props.domain.options.basePath) {
+            this.normalizedBasePath = this.normalizePath(
+                this.props.domain.options.basePath
+            );
+        } else if (!usingCustomDomain) {
+            this.normalizedBasePath = this.normalizePath(
+                this.props.domain.basePath
+            );
+        }
+
+        this.store = this.buildStore();
+        const metadata = this.provisionMetadata(this.store);
+
+        const assetDeployment = this.provisionAsset(
+            this.props.asset,
+            this.store
+        );
 
         if (metadata) {
             assetDeployment.node.addDependency(metadata);
         }
 
-        const handler = this.buildHandler(store);
-        const api = this.buildApi(handler);
+        this.proxy = this.buildHandler(this.store).function;
+        this.distribution = this.buildApi(this.proxy);
 
-        this.endpoint = api.url;
+        this.url = this.distribution.url;
+        this.customDomainNameAlias =
+            this.distribution.domainName?.domainNameAliasDomainName;
+    }
+
+    /**
+     * Normalizes a given URI path by removing whitespace and the preceding slash
+     * @param path Path to normalize
+     * @returns Normalized path
+     */
+    private normalizePath(path: string): string {
+        return path.trim().replace(/^\//, '');
+    }
+
+    /**
+     * Generates and validates an Amazon API Gateway stage name based off the given URI path
+     * @param path URI path
+     * @returns Stage name for Amazon API Gateway
+     */
+    private generateStageName(path: string): string {
+        const validStageName = /^[a-z0-9\-_]{1,128}$/i;
+        const normalized = this.normalizePath(path).replace(/\/.*?$/, '');
+
+        if (!validStageName.test(normalized)) {
+            throw new Error(
+                'Base path beginning contains invalid characters. Can only contain alphanumeric characters, hyphens, and underscores up to a maximum of 128 characters.'
+            );
+        }
+
+        return normalized;
+    }
+
+    /**
+     * Determines if the domain configuration is for a custom domain name setup
+     * @param c Domain configuration
+     * @returns Whether or not the configuration is for a custom domain name setup
+     */
+    private domainIsCustom(
+        c: ApiGatewayStaticHosting.DomainConfiguration
+    ): c is ApiGatewayStaticHosting.CustomDomainConfiguration {
+        const optionsProp: keyof ApiGatewayStaticHosting.CustomDomainConfiguration =
+            'options';
+        return optionsProp in c;
     }
 
     /**
@@ -174,7 +283,7 @@ export class ApiGatewayStaticHosting extends Construct {
      * @returns Amazon S3 bucket
      */
     private buildStore(): Bucket {
-        return new Bucket(this, 'AssetsStore', {
+        return new Bucket(this, 'Store', {
             accessControl: BucketAccessControl.PRIVATE,
             autoDeleteObjects: !this.props.retainStoreOnDeletion,
             blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
@@ -186,7 +295,7 @@ export class ApiGatewayStaticHosting extends Construct {
             publicReadAccess: false,
             removalPolicy: this.props.retainStoreOnDeletion
                 ? RemovalPolicy.RETAIN
-                : RemovalPolicy.DESTROY,
+                : DefaultConfig.removalPolicy,
             serverAccessLogsBucket: this.props.accessLoggingBucket,
             serverAccessLogsPrefix: this.props.accessLoggingBucket
                 ? 'apigateway-static-hosting-store'
@@ -241,12 +350,12 @@ export class ApiGatewayStaticHosting extends Construct {
         asset: ApiGatewayStaticHosting.Asset,
         bucket: Bucket
     ): BucketDeployment {
-        const deployAsset = new BucketDeployment(this, asset.id, {
+        const deployAsset = new BucketDeployment(this, `Asset-${asset.id}`, {
             destinationBucket: bucket,
             sources: Array.isArray(asset.path)
                 ? asset.path.map((s) => Source.asset(s))
                 : [Source.asset(asset.path)],
-            destinationKeyPrefix: asset.destinationPrefix,
+            destinationKeyPrefix: this.normalizedBasePath,
             prune: false
         });
 
@@ -275,10 +384,10 @@ export class ApiGatewayStaticHosting extends Construct {
         const config: S3HostingConfiguration = {
             bucketName: store.bucketName,
             spaIndexPage: this.props.asset.spaIndexPageName,
-            staticFilePath: this.props.asset.destinationPrefix
+            staticFilePath: this.normalizedBasePath
         };
 
-        const handler = new SecureFunction(this, 'Handler', {
+        const handler = new SecureFunction(this, 'ServeProxy', {
             code: Code.fromAsset(join(__dirname, 'handler')),
             handler: 'index.handler',
             memorySize: 512,
@@ -301,25 +410,35 @@ export class ApiGatewayStaticHosting extends Construct {
      * @param handler Backend handler to support serving assets
      * @returns API
      */
-    private buildApi(handler: SecureFunction): RestApi {
-        const api = new RestApi(this, 'Api', {
+    private buildApi(handler: Function): RestApi {
+        const usingCustomDomain = this.domainIsCustom(this.props.domain);
+
+        const stageName = usingCustomDomain
+            ? 'prod'
+            : this.generateStageName(this.props.domain.basePath);
+
+        const api = new RestApi(this, 'DistributionEndpoint', {
             binaryMediaTypes: ['*/*'],
             defaultCorsPreflightOptions: {
                 allowOrigins: Cors.ALL_ORIGINS
             },
-            defaultIntegration: new LambdaIntegration(handler.function, {
+            defaultIntegration: new LambdaIntegration(handler, {
                 proxy: true,
                 timeout: Duration.seconds(29)
             }),
             deployOptions: {
                 accessLogDestination: this.props.apiLogDestination,
-                loggingLevel: MethodLoggingLevel.ERROR
+                loggingLevel: MethodLoggingLevel.ERROR,
+                stageName: stageName
             },
             endpointConfiguration: this.props.endpoint,
             deploy: true,
             description: 'Frontend for static hosting',
-            disableExecuteApiEndpoint: this.props.customDomain !== undefined,
-            domainName: this.props.customDomain
+            disableExecuteApiEndpoint: usingCustomDomain,
+            domainName: usingCustomDomain
+                ? this.props.domain.options
+                : undefined,
+            policy: this.props.accessPolicy
         });
 
         api.root.addProxy();
@@ -348,15 +467,9 @@ export namespace ApiGatewayStaticHosting {
         /**
          * Path(s) on the local file system to the static asset(s)
          *
-         * Each path must be eihter a directory or zip containing the assets
+         * Each path must be either a directory or zip containing the assets
          */
         readonly path: string | string[];
-
-        /**
-         * Location with the store to provision the static asset
-         * @default undefined Root of the store
-         */
-        readonly destinationPrefix?: string;
 
         /**
          * Name of the index page for a Single Page Application (SPA)
@@ -367,4 +480,36 @@ export namespace ApiGatewayStaticHosting {
          */
         readonly spaIndexPageName?: string;
     }
+
+    /**
+     * Domain configuration when using the Amazon API Gateway Default Execution Endpoint
+     */
+    export interface DefaultEndpointConfiguration {
+        /**
+         * Base path where all assets will be located
+         *
+         * This is because the default execution endpoint does not serve content at the root but off of a stage. As
+         * such this base path will be used to create the deployment stage to serve assets from.
+         * @example /public
+         * @example /dev/site1
+         */
+        readonly basePath: string;
+    }
+
+    /**
+     * Domain configuration when using a Custom Domain Name for Amazon API Gateway
+     */
+    export interface CustomDomainConfiguration {
+        /**
+         * Options for specifying the custom domain name setup
+         */
+        readonly options: DomainNameOptions;
+    }
+
+    /**
+     * Domain configuration for the distribution endpoint
+     */
+    export type DomainConfiguration =
+        | CustomDomainConfiguration
+        | DefaultEndpointConfiguration;
 }

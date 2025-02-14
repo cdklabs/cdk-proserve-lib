@@ -24,6 +24,7 @@ import {
 } from 'cloudform-types/types/apiGateway/method';
 import { ResourceProperties } from 'cloudform-types/types/apiGateway/resource';
 import { RestApiProperties } from 'cloudform-types/types/apiGateway/restApi';
+import { StageProperties } from 'cloudform-types/types/apiGateway/stage';
 import { PolicyProperties } from 'cloudform-types/types/iam/policy';
 import { FunctionProperties } from 'cloudform-types/types/lambda/function';
 import { DeletionPolicy } from 'cloudform-types/types/resource';
@@ -60,6 +61,29 @@ function createPatternUnderTest(
     };
 
     return deferred ? creator : creator();
+}
+
+function createPartialNameMatcher(
+    resource: 'store' | 'handler' | 'api',
+    id: string,
+    subResource?: string
+) {
+    const resourceName = (() => {
+        switch (resource) {
+            case 'store':
+                return 'Store';
+            case 'handler':
+                return 'ServeProxy';
+            case 'api':
+                return 'DistributionEndpoint';
+        }
+    })();
+
+    const mainResource = `${id}${resourceName}`;
+
+    return subResource
+        ? Match.stringLikeRegexp(`${mainResource}${subResource}`)
+        : Match.stringLikeRegexp(mainResource);
 }
 
 describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
@@ -137,7 +161,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
     /**
      * Store
      */
-    const storePartialName = Match.stringLikeRegexp(`${id}AssetsStore`);
+    const storePartialName = createPartialNameMatcher('store', id);
     const storeResources = [
         {
             'Fn::GetAtt': [storePartialName, 'Arn']
@@ -158,12 +182,12 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
     /**
      * Handler
      */
-    const handlerPartialName = Match.stringLikeRegexp(`${id}Handler`);
+    const handlerPartialName = createPartialNameMatcher('handler', id);
 
     /**
      * API
      */
-    const apiPartialName = Match.stringLikeRegexp(`${id}Api`);
+    const apiPartialName = createPartialNameMatcher('api', id);
 
     describe('Storage', () => {
         it('Creates an Amazon S3 bucket to store static assets', () => {
@@ -172,7 +196,10 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
 
             // Act
             createPatternUnderTest(stack, id, commonNagProps, {
-                asset: mockFolderAsset
+                asset: mockFolderAsset,
+                domain: {
+                    basePath: 'public'
+                }
             });
 
             // Assert
@@ -235,6 +262,9 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
             // Act
             createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset,
+                domain: {
+                    basePath: 'public'
+                },
                 retainStoreOnDeletion: true
             });
 
@@ -253,7 +283,10 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
 
             // Act
             createPatternUnderTest(stack, id, commonNagProps, {
-                asset: mockFolderAsset
+                asset: mockFolderAsset,
+                domain: {
+                    basePath: 'public'
+                }
             });
 
             // Assert
@@ -286,7 +319,10 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
                 id,
                 commonNagProps,
                 {
-                    asset: mockFolderAsset
+                    asset: mockFolderAsset,
+                    domain: {
+                        basePath: 'public'
+                    }
                 },
                 true
             );
@@ -308,6 +344,9 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
                     asset: {
                         id: 'zip',
                         path: mockZipAssetPath
+                    },
+                    domain: {
+                        basePath: 'public'
                     }
                 },
                 true
@@ -330,6 +369,9 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
                     asset: {
                         id: 'missing',
                         path: mockMissingAssetPath
+                    },
+                    domain: {
+                        basePath: 'public'
                     }
                 },
                 true
@@ -352,6 +394,9 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
                     asset: {
                         id: 'bad',
                         path: mockBadAssetPath
+                    },
+                    domain: {
+                        basePath: 'public'
                     }
                 },
                 true
@@ -370,6 +415,9 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
                 asset: {
                     id: 'multi',
                     path: [mockFolderAssetPath, mockZipAssetPath]
+                },
+                domain: {
+                    basePath: 'public'
                 }
             });
 
@@ -400,6 +448,9 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
             // Act
             createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset,
+                domain: {
+                    basePath: 'public'
+                },
                 versionTag: '1.0.0'
             });
 
@@ -438,8 +489,11 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
             // Act
             createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset,
-                versionTag: '1.0.0',
-                encryption: key
+                domain: {
+                    basePath: 'public'
+                },
+                encryption: key,
+                versionTag: '1.0.0'
             });
 
             // Assert
@@ -477,6 +531,9 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
             // Act
             createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset,
+                domain: {
+                    basePath: 'public'
+                },
                 encryption: key
             });
 
@@ -510,13 +567,16 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
     });
 
     describe('Backend', () => {
-        it('Creates the backend handler with the correct properties', () => {
+        it('Creates the backend handler with the correct properties (default endpoint)', () => {
             // Arrange
             // No action
 
             // Act
             createPatternUnderTest(stack, id, commonNagProps, {
-                asset: mockFolderAsset
+                asset: mockFolderAsset,
+                domain: {
+                    basePath: 'public'
+                }
             });
 
             // Assert
@@ -540,7 +600,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
                                     {
                                         Ref: storePartialName
                                     },
-                                    '"}'
+                                    '","staticFilePath":"public"}'
                                 ]
                             ]
                         }
@@ -576,16 +636,82 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
                 Match.objectLike(handlerPolicy)
             );
         });
+
+        it('Creates the backend handler with the correct properties (custom domain)', () => {
+            // Arrange
+            const basePath = '/dev/site1';
+            const domain = 'https://example.com';
+            const certArn = buildMockArn(
+                'aws',
+                'acm',
+                'certificate/test-cert',
+                mockRegion,
+                mockAccount
+            );
+
+            // Act
+            createPatternUnderTest(stack, id, commonNagProps, {
+                asset: mockFolderAsset,
+                domain: {
+                    options: {
+                        certificate: Certificate.fromCertificateArn(
+                            stack,
+                            'Certificate',
+                            certArn
+                        ),
+                        domainName: domain,
+                        basePath: basePath
+                    }
+                }
+            });
+
+            // Assert
+            const template = getTemplate();
+
+            const handlerProperties: Partial<
+                | FunctionProperties
+                | {
+                      Environment: {
+                          Variables: Record<string, string | object>;
+                      };
+                  }
+            > = {
+                Environment: {
+                    Variables: {
+                        CONFIGURATION: {
+                            'Fn::Join': [
+                                '',
+                                [
+                                    '{"bucketName":"',
+                                    {
+                                        Ref: storePartialName
+                                    },
+                                    '","staticFilePath":"dev/site1"}'
+                                ]
+                            ]
+                        }
+                    }
+                }
+            };
+
+            template.hasResourceProperties(
+                'AWS::Lambda::Function',
+                Match.objectLike(handlerProperties)
+            );
+        });
     });
 
     describe('Serving', () => {
         it('Creates an API with a proxy endpoint for ALL routes/methods', () => {
             // Arrange
-            // No action
+            const basePath = 'public';
 
             // Act
             createPatternUnderTest(stack, id, commonNagProps, {
-                asset: mockFolderAsset
+                asset: mockFolderAsset,
+                domain: {
+                    basePath: basePath
+                }
             });
 
             // Assert
@@ -594,6 +720,16 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
             const apiProperties: Partial<RestApiProperties> = {
                 BinaryMediaTypes: ['*/*'],
                 DisableExecuteApiEndpoint: false
+            };
+            const deploymentProperties: Partial<
+                | StageProperties
+                | { DeploymentId: string | object; RestApiId: string | object }
+            > = {
+                DeploymentId: {
+                    Ref: createPartialNameMatcher('api', id, 'Deployment')
+                },
+                RestApiId: { Ref: apiPartialName },
+                StageName: basePath
             };
             const corsMethodProperties: Partial<
                 | MethodProperties
@@ -661,16 +797,11 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
                 RestApiId: { Ref: apiPartialName }
             };
 
-            template.resourcePropertiesCountIs(
-                'AWS::ApiGateway::Method',
-                corsMethodProperties,
-                2
-            );
-
             template.hasResourceProperties(
                 'AWS::ApiGateway::RestApi',
                 Match.objectLike(apiProperties)
             );
+
             template.hasResourceProperties(
                 'AWS::ApiGateway::Resource',
                 proxyResourceProperties
@@ -682,8 +813,67 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
                 2
             );
 
+            template.resourcePropertiesCountIs(
+                'AWS::ApiGateway::Method',
+                corsMethodProperties,
+                2
+            );
+
+            template.resourcePropertiesCountIs(
+                'AWS::ApiGateway::Stage',
+                deploymentProperties,
+                1
+            );
+
             template.resourceCountIs('AWS::ApiGateway::Deployment', 1);
-            template.resourceCountIs('AWS::ApiGateway::Stage', 1);
+        });
+
+        it('Creates an API with a stage name that matches the base path when using the default endpoint', () => {
+            // Arrange
+            const basePath = 'dev';
+
+            // Act
+            createPatternUnderTest(stack, id, commonNagProps, {
+                asset: mockFolderAsset,
+                domain: {
+                    basePath: basePath
+                }
+            });
+
+            // Assert
+            const template = getTemplate();
+
+            const deploymentProperties: Partial<StageProperties> = {
+                StageName: basePath
+            };
+
+            template.resourcePropertiesCountIs(
+                'AWS::ApiGateway::Stage',
+                deploymentProperties,
+                1
+            );
+        });
+
+        it('Validates when the base path would lead to an invalid stage name when using the default endpoint', () => {
+            // Arrange
+            const basePath = 'dev@';
+
+            // Act
+            const construct = createPatternUnderTest(
+                stack,
+                id,
+                commonNagProps,
+                {
+                    asset: mockFolderAsset,
+                    domain: {
+                        basePath: basePath
+                    }
+                },
+                true
+            );
+
+            // Assert
+            expect(construct).toThrow();
         });
 
         it('Allows for custom endpoint configuration', () => {
@@ -706,6 +896,9 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
             // Act
             createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset,
+                domain: {
+                    basePath: 'public'
+                },
                 endpoint: endpointConfig
             });
 
@@ -740,13 +933,15 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
             // Act
             createPatternUnderTest(stack, id, commonNagProps, {
                 asset: mockFolderAsset,
-                customDomain: {
-                    certificate: Certificate.fromCertificateArn(
-                        stack,
-                        'Certificate',
-                        certArn
-                    ),
-                    domainName: domain
+                domain: {
+                    options: {
+                        certificate: Certificate.fromCertificateArn(
+                            stack,
+                            'Certificate',
+                            certArn
+                        ),
+                        domainName: domain
+                    }
                 }
             });
 
@@ -767,7 +962,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
                 | { DomainName: string | object; RestApiId: string | object }
             > = {
                 DomainName: {
-                    Ref: Match.stringLikeRegexp(`${id}ApiCustomDomain`)
+                    Ref: createPartialNameMatcher('api', id, 'CustomDomain')
                 },
                 RestApiId: { Ref: apiPartialName }
             };
