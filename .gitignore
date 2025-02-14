@@ -63,4 +63,5 @@ test.json
 .vscode/
 .yarn/
 !/.licenserc.yaml
+!/.github/workflows/lint.yml
 !/.projenrc.ts

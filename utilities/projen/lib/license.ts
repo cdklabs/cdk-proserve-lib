@@ -3,6 +3,7 @@
 
 import { CdklabsTypeScriptProject } from 'cdklabs-projen-project-types';
 import { YamlFile } from 'projen';
+import { GithubWorkflow } from 'projen/lib/github';
 import { JobPermission } from 'projen/lib/github/workflows-model';
 
 export const configureLicense = (project: CdklabsTypeScriptProject) => {
@@ -33,12 +34,11 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
     });
 
     // Create GitHub workflow for license checks
-    const workflow = project.github?.tryFindWorkflow('pull-request-lint')!;
-    // const workflow = new GithubWorkflow(project.github!, 'license');
+    const workflow = new GithubWorkflow(project.github!, 'lint');
 
-    // workflow.on({
-    //     pullRequest: {}
-    // });
+    workflow.on({
+        pullRequest: {}
+    });
 
     workflow.addJob('license', {
         runsOn: ['ubuntu-latest'],
@@ -46,7 +46,6 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
             contents: JobPermission.WRITE,
             pullRequests: JobPermission.WRITE
         },
-        if: "(github.event_name == 'pull_request' || github.event_name == 'pull_request_target')",
         steps: [
             {
                 uses: 'actions/checkout@v3'
