@@ -59,7 +59,7 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
             },
             {
                 name: 'Apply Changes',
-                uses: 'EndBug/add-and-commit@v4',
+                uses: 'EndBug/add-and-commit@v9',
                 env: {
                     GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
                 },
