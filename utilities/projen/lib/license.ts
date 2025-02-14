@@ -44,8 +44,7 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
     workflow.addJob('license', {
         runsOn: ['ubuntu-latest'],
         permissions: {
-            contents: JobPermission.WRITE,
-            pullRequests: JobPermission.WRITE
+            contents: JobPermission.READ
         },
         steps: [
             {
