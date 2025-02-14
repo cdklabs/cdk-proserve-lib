@@ -11,6 +11,7 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
         'Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.',
         'SPDX-License-Identifier: Apache-2.0'
     ].join('\n');
+
     new YamlFile(project, '.licenserc.yaml', {
         obj: {
             header: {
@@ -52,7 +53,7 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
             },
             {
                 name: 'Check License Header',
-                uses: 'apache/skywalking-eyes/header@main',
+                uses: 'apache/skywalking-eyes/header@5c5b974209f0de5d905f37deb69369068ebfc15c',
                 with: {
                     mode: 'check'
                 }
