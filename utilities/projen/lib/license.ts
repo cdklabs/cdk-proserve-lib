@@ -37,10 +37,7 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
     const workflow = new GithubWorkflow(project.github!, 'license');
 
     workflow.on({
-        pullRequest: {},
-        push: {
-            branches: ['main']
-        }
+        pullRequest: {}
     });
 
     workflow.addJob('license', {
