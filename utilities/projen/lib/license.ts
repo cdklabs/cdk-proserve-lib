@@ -46,6 +46,7 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
             contents: JobPermission.WRITE,
             pullRequests: JobPermission.WRITE
         },
+        if: "(github.event_name == 'pull_request' || github.event_name == 'pull_request_target')",
         steps: [
             {
                 uses: 'actions/checkout@v3'
