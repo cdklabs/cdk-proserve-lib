@@ -3,7 +3,7 @@
 header:
   license:
     spdx-id: Apache-2.0
-    copyright-owner: Apache Software Foundation
+    copyright-owner: Amazon.com, Inc. or its affiliates.
     content: |-
       Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
       SPDX-License-Identifier: Apache-2.0

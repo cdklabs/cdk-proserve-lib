@@ -17,7 +17,7 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
             header: {
                 license: {
                     'spdx-id': 'Apache-2.0',
-                    'copyright-owner': 'Apache Software Foundation',
+                    'copyright-owner': 'Amazon.com, Inc. or its affiliates.',
                     content: license,
                     pattern: license
                 },
