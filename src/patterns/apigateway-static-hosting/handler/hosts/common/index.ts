@@ -78,7 +78,7 @@ export abstract class CommonHost<
     /**
      * Express handler for the fallthrough SPA route
      */
-    protected abstract get spaHandler(): Handler | undefined;
+    protected abstract get spaHandler(): Handler;
 
     /**
      * Create an Express app to host static assets
@@ -93,7 +93,7 @@ export abstract class CommonHost<
         // First, try to load the URI as a static asset
         app.use(this.fileHandler);
 
-        if (this.props.spaIndexPage && this.spaHandler) {
+        if (this.props.spaIndexPage) {
             // Second (only for SPA) load the base page which allows client to perform routing
             app.get('*spa', this.spaHandler);
         }

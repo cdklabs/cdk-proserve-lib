@@ -20,6 +20,7 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         `@aws-sdk/client-cloudformation@${sdkVersion}`,
         `@aws-sdk/client-s3@${sdkVersion}`,
         '@codegenie/serverless-express@4.16.0',
+        '@smithy/types@4.1.0',
         '@smithy/util-stream-node@4.0.2',
         '@types/aws-lambda@8.10.141',
         '@types/express@5.0.0',
