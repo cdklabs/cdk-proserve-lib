@@ -35,9 +35,10 @@ const project = new CdklabsConstructLibrary({
 
 p.configureBuild(project);
 p.configureDependencies(project);
+p.configureGenerators(project);
 p.configureIgnores(project);
+p.configureLicense(project);
 p.configureLinting(project);
 p.configurePackaging(project);
-p.configureGenerators(project);
 
 project.synth();

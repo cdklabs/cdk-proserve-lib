@@ -5,5 +5,6 @@ export * from './lib/build';
 export * from './lib/deps';
 export * from './lib/generate';
 export * from './lib/ignore';
+export * from './lib/license';
 export * from './lib/lint';
 export * from './lib/package';
