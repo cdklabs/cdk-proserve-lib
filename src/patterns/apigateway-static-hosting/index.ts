@@ -28,7 +28,6 @@ import {
     IBucket
 } from 'aws-cdk-lib/aws-s3';
 import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
-import { CfnWebACL, CfnWebACLAssociation } from 'aws-cdk-lib/aws-wafv2';
 import { Construct } from 'constructs';
 import { SecureFunction } from '../../constructs/secure-function';
 import { LambdaConfiguration } from '../../types';
@@ -79,11 +78,6 @@ export interface ApiGatewayStaticHostingProps {
     readonly accessLoggingBucket?: IBucket;
 
     /**
-     * AWS Web Application Firewall ACLs to add to the API
-     */
-    readonly acls?: CfnWebACL[];
-
-    /**
      * Destination where Amazon API Gateway logs can be sent
      */
     readonly apiLogDestination?: IAccessLogDestination;
@@ -111,6 +105,18 @@ export interface ApiGatewayStaticHostingProps {
  *
  * The construct also handles encryption for the framework resources using either a provided KMS key or an
  * AWS managed key.
+ *
+ * There are two methods for exposing the URL to consumers - the default API execution endpoint or via a custom domain
+ * name setup.
+ *
+ * If using the default API execution endpoint, you must provide a base path as this will translate to the
+ * stage name of the REST API. You must also ensure that all relative links in the static content either reference
+ * the base path in URLs relative to the root (e.g. preceded by '/') or uses URLs that are relative to the current
+ * directory (e.g. no '/').
+ *
+ * If using the custom domain name, then you do not need to provide a base path and relative links in your static
+ * content will not require modification. You can choose to specify a base path with this option if so desired - in
+ * that case, similar rules regarding relative URLs in the static content above must be followed.
  *
  * @example
  *
@@ -153,29 +159,12 @@ export class ApiGatewayStaticHosting extends Construct {
     private readonly normalizedBasePath?: string;
 
     /**
-     * Provides access to the underlying Amazon API Gateway REST API that serves as the distribution endpoint for the
-     * static content.
+     * Provides access to the underlying components of the pattern as an escape hatch.
      *
      * WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
      * behave as expected or designed. You do so at your own risk.
      */
-    public readonly distribution: RestApi;
-
-    /**
-     * Provides access to the underlying AWS Lambda function that proxies the static content from Amazon S3.
-     *
-     * WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
-     * behave as expected or designed. You do so at your own risk.
-     */
-    public readonly proxy: Function;
-
-    /**
-     * Provides access to the underlying Amazon S3 bucket that stores the static content.
-     *
-     * WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
-     * behave as expected or designed. You do so at your own risk.
-     */
-    public readonly store: Bucket;
+    public readonly components: ApiGatewayStaticHosting.PatternComponents;
 
     /**
      * URL for the API that distributes the static content
@@ -218,24 +207,27 @@ export class ApiGatewayStaticHosting extends Construct {
             );
         }
 
-        this.store = this.buildStore();
-        const metadata = this.provisionMetadata(this.store);
+        const store = this.buildStore();
+        const metadata = this.provisionMetadata(store);
 
-        const assetDeployment = this.provisionAsset(
-            this.props.asset,
-            this.store
-        );
+        const assetDeployment = this.provisionAsset(this.props.asset, store);
 
         if (metadata) {
             assetDeployment.node.addDependency(metadata);
         }
 
-        this.proxy = this.buildHandler(this.store).function;
-        this.distribution = this.buildApi(this.proxy);
+        const proxy = this.buildHandler(store).function;
+        const distribution = this.buildApi(proxy);
 
-        this.url = this.distribution.url;
+        this.components = {
+            distribution: distribution,
+            proxy: proxy,
+            store: store
+        };
+
+        this.url = distribution.url;
         this.customDomainNameAlias =
-            this.distribution.domainName?.domainNameAliasDomainName;
+            distribution.domainName?.domainNameAliasDomainName;
     }
 
     /**
@@ -443,13 +435,6 @@ export class ApiGatewayStaticHosting extends Construct {
 
         api.root.addProxy();
 
-        this.props.acls?.forEach((a, i) => {
-            new CfnWebACLAssociation(this, `ApiAcl${i}`, {
-                resourceArn: api.deploymentStage.stageArn,
-                webAclArn: a.attrArn
-            });
-        });
-
         return api;
     }
 }
@@ -512,4 +497,34 @@ export namespace ApiGatewayStaticHosting {
     export type DomainConfiguration =
         | CustomDomainConfiguration
         | DefaultEndpointConfiguration;
+
+    /**
+     * Underlying components for the pattern
+     */
+    export interface PatternComponents {
+        /**
+         * Provides access to the underlying Amazon API Gateway REST API that serves as the distribution endpoint for the
+         * static content.
+         *
+         * WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
+         * behave as expected or designed. You do so at your own risk.
+         */
+        readonly distribution: RestApi;
+
+        /**
+         * Provides access to the underlying AWS Lambda function that proxies the static content from Amazon S3.
+         *
+         * WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
+         * behave as expected or designed. You do so at your own risk.
+         */
+        readonly proxy: Function;
+
+        /**
+         * Provides access to the underlying Amazon S3 bucket that stores the static content.
+         *
+         * WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
+         * behave as expected or designed. You do so at your own risk.
+         */
+        readonly store: Bucket;
+    }
 }
