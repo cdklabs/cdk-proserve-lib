@@ -74,7 +74,7 @@ export class S3Host extends CommonHost<S3HostingConfiguration> {
 
         const objectRequest = await this.s3.getObject({
             Bucket: this.props.bucketName,
-            Key: objectKey
+            Key: objectKey !== '/' ? objectKey.replace(/^\//, '') : objectKey
         });
         const data = objectRequest.Body
             ? sdkStreamMixin(objectRequest.Body)
@@ -114,12 +114,12 @@ export class S3Host extends CommonHost<S3HostingConfiguration> {
                     } else {
                         res.sendStatus(404);
                     }
-                } catch (f) {
+                } catch (e) {
                     // Failed to load the default object
-                    if (f instanceof NoSuchKey) {
+                    if (e instanceof NoSuchKey) {
                         res.sendStatus(404);
                     } else {
-                        next(f);
+                        next(e);
                     }
                 }
             }

@@ -14,7 +14,6 @@ import { InterfaceVpcEndpoint } from 'aws-cdk-lib/aws-ec2';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { LogGroup } from 'aws-cdk-lib/aws-logs';
 import { Bucket } from 'aws-cdk-lib/aws-s3';
-import { CfnWebACL } from 'aws-cdk-lib/aws-wafv2';
 import { NagSuppressions } from 'cdk-nag';
 import { BasePathMappingProperties } from 'cloudform-types/types/apiGateway/basePathMapping';
 import { DomainNameProperties } from 'cloudform-types/types/apiGateway/domainName';
@@ -97,33 +96,28 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
         const nagApiLogging = new LogGroupLogDestination(
             new LogGroup(stack, 'NagApiLogging')
         );
-        const nagWafAcl = new CfnWebACL(stack, 'NagWafAcl', {
-            defaultAction: {
-                allow: {}
-            },
-            scope: 'REGIONAL',
-            visibilityConfig: {
-                cloudWatchMetricsEnabled: false,
-                metricName: 'test',
-                sampledRequestsEnabled: false
-            }
-        });
 
         commonNagProps = {
             accessLoggingBucket: nagLoggingBucket,
-            acls: [nagWafAcl],
             apiLogDestination: nagApiLogging
         };
 
         NagSuppressions.addStackSuppressions(stack, [
-            {
-                id: 'AwsSolutions-APIG4',
-                reason: 'The consumer of this pattern is required to enforce access restrictions prior to the API if desired.'
-            },
-            {
-                id: 'AwsSolutions-COG4',
-                reason: 'The consumer of this pattern is required to enforce access restrictions prior to the API if desired.'
-            },
+            ...['AwsSolutions-APIG4', 'AwsSolutions-COG4'].map((nagId) => {
+                return {
+                    id: nagId,
+                    reason: 'The consumer of this pattern is required to enforce access restrictions prior to the API if desired.'
+                };
+            }),
+            ...[
+                'AwsSolutions-APIG3',
+                'NIST.800.53.R5-APIGWAssociatedWithWAF'
+            ].map((nagId) => {
+                return {
+                    id: nagId,
+                    reason: 'The consumer has the ability to apply WAF ACL rules to the API if so desired.'
+                };
+            }),
             {
                 id: 'NIST.800.53.R5-APIGWSSLEnabled',
                 reason: 'The default execution endpoint and custom domain endpoints have server-side SSL certificates. Client-side SSL certificates are out of scope for this pattern.'

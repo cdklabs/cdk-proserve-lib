@@ -41,7 +41,7 @@ describe('API Gateway Static Hosting Handler (S3 Host)', () => {
                 .rejects()
                 .on(GetObjectCommand, {
                     Bucket: testBucketName,
-                    Key: testFile
+                    Key: testFile.substring(1)
                 })
                 .rejects(new NoSuchKey({ $metadata: {}, message: '' }));
 
@@ -152,6 +152,7 @@ describe('API Gateway Static Hosting Handler (S3 Host)', () => {
             expect(response.statusCode).toEqual(500);
             expect(s3Mock.calls().length).toEqual(1);
         });
+
         it('Should return 404 if the SPA index page is missing', async () => {
             // Arrange
             const app = new S3Host(inlineSpaEnvironment).create();
