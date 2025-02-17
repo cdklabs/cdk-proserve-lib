@@ -2,17 +2,37 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { CdklabsTypeScriptProject } from 'cdklabs-projen-project-types';
+import { tsNodeCommand } from './common';
 
 /**
  * Configures build settings for the project.
  */
 export const configureBuild = (project: CdklabsTypeScriptProject) => {
+    // Build (Compile Only) Task
+    project.addTask('build:compile', {
+        description: 'Performs a full build without packaging',
+        steps: [
+            {
+                spawn: 'default'
+            },
+            {
+                spawn: 'pre-compile'
+            },
+            {
+                spawn: 'compile'
+            },
+            {
+                spawn: 'post-compile'
+            }
+        ]
+    });
+
     // Lambda Build Task
     const compileLambdas = project.addTask('compile:lambda', {
         description: 'Builds the Lambda function code and bundles dependencies',
         steps: [
             {
-                exec: 'yarn ts-node esbuild.ts',
+                exec: `${tsNodeCommand} esbuild.ts`,
                 name: 'Run esbuild.'
             }
         ]
