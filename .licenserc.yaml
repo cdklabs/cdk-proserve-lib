@@ -13,6 +13,8 @@ header:
   comment: on-failure
   paths-ignore:
     - "**/*.json"
+    - test/patterns/apigateway-static-hosting/**/fixtures/**/*.html
+    - test/patterns/apigateway-static-hosting/**/fixtures/**/*.txt
   paths:
     - src
     - test
