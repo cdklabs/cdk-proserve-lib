@@ -6,6 +6,11 @@
       "type": "build"
     },
     {
+      "name": "@aws-sdk/client-dynamodb",
+      "version": "3.600.0",
+      "type": "build"
+    },
+    {
       "name": "@aws-sdk/client-ec2",
       "type": "build"
     },
@@ -45,6 +50,11 @@
     },
     {
       "name": "@aws-sdk/client-wafv2",
+      "type": "build"
+    },
+    {
+      "name": "@aws-sdk/lib-dynamodb",
+      "version": "3.600.0",
       "type": "build"
     },
     {
