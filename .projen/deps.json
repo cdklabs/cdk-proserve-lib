@@ -54,7 +54,7 @@
     },
     {
       "name": "@smithy/types",
-      "version": "4.1.0",
+      "version": "^3.7.2",
       "type": "build"
     },
     {
