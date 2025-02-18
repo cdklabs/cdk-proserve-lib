@@ -28,6 +28,7 @@ const project = new CdklabsConstructLibrary({
     packageManager: NodePackageManager.YARN_CLASSIC,
     prettier: true,
     prettierOptions: p.prettierOptions,
+    enablePRAutoMerge: true,
     versionrcOptions: {
         preset: 'conventionalcommits'
     }
