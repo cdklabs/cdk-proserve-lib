@@ -22,7 +22,13 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
                     pattern: license
                 },
                 comment: 'on-failure',
-                'paths-ignore': ['**/*.json'],
+                'paths-ignore': [
+                    '**/*.json',
+                    ...['html', 'txt'].map(
+                        (type) =>
+                            `test/patterns/apigateway-static-hosting/**/fixtures/**/*.${type}`
+                    )
+                ],
                 paths: ['src', 'test', 'utilities'],
                 language: {
                     TypeScript: {
