@@ -14,7 +14,6 @@
     ".github/workflows/upgrade-main.yml",
     ".gitignore",
     ".licenserc.yaml",
-    ".mergify.yml",
     ".prettierignore",
     ".prettierrc.json",
     ".projen/deps.json",

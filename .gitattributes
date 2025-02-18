@@ -16,7 +16,6 @@
 /.github/workflows/upgrade-main.yml linguist-generated
 /.gitignore linguist-generated
 /.licenserc.yaml linguist-generated
-/.mergify.yml linguist-generated
 /.npmignore linguist-generated
 /.prettierignore linguist-generated
 /.prettierrc.json linguist-generated
