@@ -1,9 +1,10 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { dirname } from 'node:path';
+import { dirname, join } from 'node:path';
 import { mkdirSync, rmSync } from 'node:fs';
 import { build, BuildOptions } from 'esbuild';
+import glob from 'glob';
 
 /**
  * Defaults
@@ -18,6 +19,41 @@ const buildDefaults: Partial<BuildOptions> = {
 /**
  * Helpers
  */
+/**
+ * Finds all the handler functions that need to be built automatically via glob path search
+ * @returns Paths to all the handler functions that need to be built
+ */
+function findHandlers(): Promise<string[]> {
+    const handlers = [
+        '**/handler/index.ts',
+        '**/handler/on-event/index.ts',
+        '**/handler/is-complete/index.ts'
+    ].map(
+        (path) =>
+            new Promise<string[]>((resolve, reject) => {
+                glob(path, { cwd: 'src' }, (err, files) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(files);
+                    }
+                });
+            })
+    );
+
+    return new Promise((resolve, reject) =>
+        Promise.all(handlers)
+            .then((paths) => {
+                resolve(
+                    paths
+                        .flatMap((path) => path)
+                        .map((path) => join('src', path))
+                );
+            })
+            .catch((r) => reject(r))
+    );
+}
+
 /**
  * Helps determine the `outdir` option for esbuild.
  *
@@ -61,30 +97,14 @@ function emptyHandlerDirectories(entryPoints: string[]) {
 }
 
 /**
- * Bundling for constructs
+ * Bundling
  */
-const constructEntryPoints = [
-    'src/constructs/ec2-image-builder-start/handler/index.ts',
-    'src/constructs/opensearch-admin-user/handler/on-event/index.ts',
-    'src/constructs/friendly-embrace/handler/on-event/index.ts',
-    'src/constructs/iam-server-certificate/handler/on-event/index.ts'
-];
-emptyHandlerDirectories(constructEntryPoints);
-build({
-    ...buildDefaults,
-    entryPoints: constructEntryPoints,
-    outdir: determineOutdir(constructEntryPoints, 'lib/constructs')
-});
-
-/**
- * Bundling for patterns
- */
-const patternEntryPoints = [
-    'src/patterns/apigateway-static-hosting/handler/index.ts'
-];
-emptyHandlerDirectories(patternEntryPoints);
-build({
-    ...buildDefaults,
-    entryPoints: patternEntryPoints,
-    outdir: determineOutdir(patternEntryPoints, 'lib/patterns')
-});
+void (async () => {
+    const entryPoints = await findHandlers();
+    emptyHandlerDirectories(entryPoints);
+    build({
+        ...buildDefaults,
+        entryPoints: entryPoints,
+        outdir: determineOutdir(entryPoints, 'lib')
+    });
+})();

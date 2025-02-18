@@ -73,6 +73,10 @@
       "type": "build"
     },
     {
+      "name": "@types/glob",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -173,6 +177,10 @@
     {
       "name": "express",
       "version": "5.0.1",
+      "type": "build"
+    },
+    {
+      "name": "glob",
       "type": "build"
     },
     {

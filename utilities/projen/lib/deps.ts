@@ -38,6 +38,7 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         '@aws-sdk/client-ec2',
         '@aws-sdk/client-pricing',
         '@aws-sdk/client-wafv2',
+        '@types/glob',
         '@types/supertest',
         '@types/uuid',
         'aws-sdk-client-mock',
@@ -46,6 +47,7 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         'cdklabs-projen-project-types',
         'cloudform-types',
         'esbuild',
+        'glob',
         'husky',
         'lint-staged',
         'supertest'
