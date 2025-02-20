@@ -523,9 +523,6 @@ export namespace Ec2ImagePipeline {
         /** Reboots the system. */
         REBOOT_WINDOWS = 'reboot-windows',
 
-        /** Installs SANS SIFT v1.14.0 on Ubuntu, allowing you to leverage a suite of forensics tools. For more information, see https://www.sans.org/tools/sift-workstation/ */
-        SAN_SIFT_LINUX = 'san-sift-linux',
-
         /** Installs and runs SCAP Compliance Checker (SCC) 5.10 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04/22.04 with all current STIG Q1 2025 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported or contain issues within the EC2 environment. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. */
         SCAP_COMPLIANCE_CHECKER_LINUX = 'scap-compliance-checker-linux',
 
