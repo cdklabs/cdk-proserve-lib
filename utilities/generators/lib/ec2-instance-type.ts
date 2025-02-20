@@ -2,7 +2,63 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { readFileSync, writeFileSync } from 'node:fs';
-import { EC2, InstanceTypeInfo } from '@aws-sdk/client-ec2';
+import { Pricing } from '@aws-sdk/client-pricing';
+
+/**
+ * The EC2 attributes that come directly from the pricing API.
+ */
+interface EC2InstanceAttributes {
+    enhancedNetworkingSupported: string;
+    intelTurboAvailable: string;
+    memory: string;
+    dedicatedEbsThroughput: string;
+    vcpu: string;
+    classicnetworkingsupport: string;
+    capacitystatus: string;
+    locationType: string;
+    storage: string;
+    instanceFamily: string;
+    operatingSystem: string;
+    intelAvx2Available: string;
+    regionCode: string;
+    physicalProcessor: string;
+    clockSpeed: string;
+    ecu: string;
+    networkPerformance: string;
+    servicename: string;
+    instancesku: string;
+    gpuMemory: string;
+    vpcnetworkingsupport: string;
+    instanceType: string;
+    tenancy: string;
+    usagetype: string;
+    normalizationSizeFactor: string;
+    intelAvxAvailable: string;
+    processorFeatures: string;
+    servicecode: string;
+    licenseModel: string;
+    currentGeneration: string;
+    preInstalledSw: string;
+    location: string;
+    processorArchitecture: string;
+    marketoption: string;
+    operation: string;
+    availabilityzone: string;
+}
+
+/**
+ * The EC2 instance details that are used to generate the class.
+ */
+interface EC2InstanceDetails {
+    instanceType: string;
+    vcpus: string;
+    memory: string;
+    networkPerformance?: string;
+    physicalProcessor?: string;
+    storage?: string;
+    clockSpeed?: string;
+    gpuMemory?: string;
+}
 
 /**
  * Formats an EC2 instance type name to a standardized format.
@@ -13,7 +69,6 @@ import { EC2, InstanceTypeInfo } from '@aws-sdk/client-ec2';
  * @returns The formatted instance type name
  */
 function formatInstanceTypeName(name: string): string {
-    // Convert instance type (e.g., "t2.micro") to uppercase with underscores
     return name.toUpperCase().replace(/[\.-]/g, '_');
 }
 
@@ -21,71 +76,89 @@ function formatInstanceTypeName(name: string): string {
  * Generates and injects EC2 instance type definitions into a TypeScript file.
  *
  * This function:
- * 1. Fetches all EC2 instance types from AWS using the EC2 API
- * 2. Creates a map of instance types with their vCPU and memory specifications
+ * 1. Fetches all EC2 instance types from AWS Pricing API
+ * 2. Creates a map of instance types with their detailed specifications
  * 3. Generates a TypeScript class with static members for each instance type
  * 4. Injects the generated class into a target file between specified markers
  */
 export async function generateAndInjectEc2InstanceTypes() {
     try {
-        let allInstanceTypes: InstanceTypeInfo[] = [];
-        let nextToken: string | undefined;
+        // Create Pricing client
+        const pricingClient = new Pricing({ region: 'us-east-1' });
 
-        // Create EC2 client
-        const client = new EC2({ region: 'us-east-1' });
+        // Create instance type map
+        const instanceTypeMap = new Map<string, EC2InstanceDetails>();
+
+        // Get info from Pricing API
+        let pricingNextToken: string | undefined;
 
         do {
-            const response = await client.describeInstanceTypes({
-                NextToken: nextToken
+            const response = await pricingClient.getProducts({
+                ServiceCode: 'AmazonEC2',
+                Filters: [
+                    {
+                        Type: 'TERM_MATCH',
+                        Field: 'regionCode',
+                        Value: 'us-east-1'
+                    },
+                    {
+                        Type: 'TERM_MATCH',
+                        Field: 'operatingSystem',
+                        Value: 'Linux'
+                    }
+                ],
+                NextToken: pricingNextToken
             });
 
-            if (response.InstanceTypes) {
-                allInstanceTypes = allInstanceTypes.concat(
-                    response.InstanceTypes
-                );
-            }
-            nextToken = response.NextToken;
-        } while (nextToken);
+            if (response.PriceList) {
+                for (const priceItem of response.PriceList) {
+                    const product = JSON.parse(priceItem);
+                    const attrs: EC2InstanceAttributes =
+                        product.product.attributes;
 
-        if (allInstanceTypes.length === 0) {
-            throw new Error('No instance types found');
-        }
-
-        // Create map of instance types with their descriptions
-        const instanceTypeMap = new Map(
-            allInstanceTypes
-                .filter(
-                    (
-                        instance
-                    ): instance is InstanceTypeInfo & {
-                        InstanceType: string;
-                    } => typeof instance.InstanceType === 'string'
-                )
-                .map((instance) => [
-                    instance.InstanceType,
-                    {
-                        vcpus: instance.VCpuInfo?.DefaultVCpus ?? 0,
-                        memoryMiB: instance.MemoryInfo?.SizeInMiB ?? 0
+                    if (attrs.instanceType) {
+                        instanceTypeMap.set(attrs.instanceType, {
+                            instanceType: attrs.instanceType,
+                            vcpus: attrs.vcpu,
+                            memory: attrs.memory,
+                            physicalProcessor: attrs.physicalProcessor,
+                            clockSpeed: attrs.clockSpeed,
+                            storage: attrs.storage,
+                            gpuMemory: attrs.gpuMemory,
+                            networkPerformance: attrs.networkPerformance
+                        });
                     }
-                ])
-        );
+                }
+            }
+
+            pricingNextToken = response.NextToken;
+        } while (pricingNextToken);
 
         // Generate static members
         const classMembers = Array.from(instanceTypeMap.entries())
-            .sort(([a], [b]) => a.localeCompare(b)) // Sort by instance type name
+            .sort(([a], [b]) => a.localeCompare(b))
             .map(([instanceType, info]) => {
                 const name = formatInstanceTypeName(instanceType);
                 return `    /**
      * ${instanceType}
-     * vCPUs: ${info.vcpus}
-     * Memory: ${info.memoryMiB} MiB
+     * - vCPUs: ${info.vcpus}
+     * - Memory: ${info.memory}${
+         info.networkPerformance
+             ? `\n     * - Network: ${info.networkPerformance}`
+             : ''
+     }${
+         info.physicalProcessor
+             ? `\n     * - Processor: ${info.physicalProcessor}`
+             : ''
+     }${info.clockSpeed ? `\n     * - Clock Speed: ${info.clockSpeed}` : ''}${
+         info.storage ? `\n     * - Storage: ${info.storage}` : ''
+     }${info.gpuMemory ? `\n     * - GPU Memory: ${info.gpuMemory}` : ''}
      */
     public static readonly ${name} = '${instanceType}';`;
             });
 
         // Create the class string
         const classString = `export class Ec2InstanceType {
-
 ${classMembers.join('\n\n')}
 
     private constructor() {} // Prevents instantiation
@@ -133,5 +206,16 @@ ${classMembers.join('\n\n')}
         );
     } catch (error) {
         console.error('Error generating and injecting class:', error);
+        throw error;
     }
+}
+
+// Execute the generator if running directly
+if (require.main === module) {
+    generateAndInjectEc2InstanceTypes()
+        .then(() => console.log('Completed successfully'))
+        .catch((error) => {
+            console.error('Failed to generate EC2 instance types:', error);
+            process.exit(1);
+        });
 }
