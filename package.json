@@ -92,7 +92,7 @@
     "jsii-pacmak": "^1.107.0",
     "jsii-rosetta": "^5.7.5",
     "lint-staged": "^15.4.3",
-    "prettier": "^3.5.1",
+    "prettier": "^3.5.2",
     "projen": "^0.91.11",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
