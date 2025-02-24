@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { CdklabsTypeScriptProject } from 'cdklabs-projen-project-types';
+import { tsNodeCommand } from './common';
 
 /**
  * Configures the Generators of the project. Generators will automatically
@@ -14,7 +15,7 @@ export const configureGenerators = (project: CdklabsTypeScriptProject) => {
         description: 'Automatically update files with generator scripts.',
         steps: [
             {
-                exec: 'yarn ts-node ./utilities/generators'
+                exec: `${tsNodeCommand} ./utilities/generators`
             },
             {
                 spawn: 'eslint'
@@ -27,7 +28,7 @@ export const configureGenerators = (project: CdklabsTypeScriptProject) => {
         description: 'Updates the README with library package information.',
         steps: [
             {
-                exec: 'yarn ts-node utilities/generators/lib/update-readme-library.ts',
+                exec: `${tsNodeCommand} utilities/generators/lib/update-readme-library.ts`,
                 name: 'Runs script to automatically update the README.'
             }
         ]

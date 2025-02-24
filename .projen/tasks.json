@@ -24,6 +24,24 @@
         }
       ]
     },
+    "build:compile": {
+      "name": "build:compile",
+      "description": "Performs a full build without packaging",
+      "steps": [
+        {
+          "spawn": "default"
+        },
+        {
+          "spawn": "pre-compile"
+        },
+        {
+          "spawn": "compile"
+        },
+        {
+          "spawn": "post-compile"
+        }
+      ]
+    },
     "bump": {
       "name": "bump",
       "description": "Bumps version based on latest git tag and generates a changelog entry",
@@ -139,7 +157,7 @@
       "description": "Builds the Lambda function code and bundles dependencies",
       "steps": [
         {
-          "exec": "yarn ts-node esbuild.ts",
+          "exec": "yarn ts-node --project tsconfig.dev.json esbuild.ts",
           "name": "Run esbuild."
         }
       ]
@@ -192,7 +210,7 @@
       "description": "Automatically update files with generator scripts.",
       "steps": [
         {
-          "exec": "yarn ts-node ./utilities/generators"
+          "exec": "yarn ts-node --project tsconfig.dev.json ./utilities/generators"
         },
         {
           "spawn": "eslint"
@@ -453,7 +471,7 @@
       "description": "Updates the README with library package information.",
       "steps": [
         {
-          "exec": "yarn ts-node utilities/generators/lib/update-readme-library.ts",
+          "exec": "yarn ts-node --project tsconfig.dev.json utilities/generators/lib/update-readme-library.ts",
           "name": "Runs script to automatically update the README."
         }
       ]
@@ -502,13 +520,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@aws-sdk/client-ec2,@aws-sdk/client-pricing,@aws-sdk/client-wafv2,@types/jest,@types/uuid,aws-sdk-client-mock,aws-sdk-client-mock-jest,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,husky,jest,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,prettier,ts-jest,ts-node,typescript"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@aws-sdk/client-ec2,@aws-sdk/client-pricing,@aws-sdk/client-wafv2,@types/glob,@types/jest,@types/supertest,@types/uuid,aws-sdk-client-mock,aws-sdk-client-mock-jest,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,glob,husky,jest,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,prettier,supertest,ts-jest,ts-node,typescript"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-sdk/client-cloudformation @aws-sdk/client-ec2 @aws-sdk/client-iam @aws-sdk/client-imagebuilder @aws-sdk/client-opensearch @aws-sdk/client-pricing @aws-sdk/client-s3 @aws-sdk/client-secrets-manager @aws-sdk/client-ssm @aws-sdk/client-wafv2 @types/aws-lambda @types/jest @types/node @types/uuid @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock aws-sdk-client-mock-jest axios cdk-nag cloudform-types commit-and-tag-version esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint husky jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii lint-staged prettier ts-jest ts-node typescript uuid @aws-cdk/integ-runner @aws-cdk/integ-tests-alpha"
+          "exec": "yarn upgrade @aws-sdk/client-cloudformation @aws-sdk/client-ec2 @aws-sdk/client-iam @aws-sdk/client-imagebuilder @aws-sdk/client-opensearch @aws-sdk/client-pricing @aws-sdk/client-s3 @aws-sdk/client-secrets-manager @aws-sdk/client-ssm @aws-sdk/client-wafv2 @codegenie/serverless-express @smithy/types @smithy/util-stream-node @types/aws-lambda @types/express @types/glob @types/jest @types/mime @types/morgan @types/node @types/supertest @types/uuid @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock aws-sdk-client-mock-jest axios cdk-nag cloudform-types commit-and-tag-version esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint express-async-handler express glob husky jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii lint-staged mime morgan prettier supertest ts-jest ts-node typescript uuid @aws-cdk/integ-runner @aws-cdk/integ-tests-alpha"
         },
         {
           "exec": "npx projen"
