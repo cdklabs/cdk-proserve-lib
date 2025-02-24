@@ -4,7 +4,7 @@
 
 ### ApiGatewayStaticHosting <a name="ApiGatewayStaticHosting" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting"></a>
 
-A construct that deploys resources to support the hosting of static assets within an AWS account.
+A pattern that deploys resources to support the hosting of static assets within an AWS account.
 
 Unlike the normal pattern for static content hosting (Amazon S3 fronted by Amazon CloudFront), this pattern instead
 uses a combination of Amazon S3, AWS Lambda, and Amazon API Gateway. This can be useful for rapidly deploying a
