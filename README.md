@@ -76,7 +76,7 @@ go get github.com/cdklabs/cdk-proserve-lib-go/cdklabscdkproservelib
 
 The library consists of [constructs](#-constructs), [aspects](#-aspects), and [patterns](#-patterns) that you can utilize in AWS CDK applications.
 
-Total: 15
+Total: 16
 
 ### 🧱 Constructs
 
@@ -110,8 +110,9 @@ Count: 5
 
 Patterns are higher-level abstractions that combine multiple constructs and their configurations to form an opinionated solution. They help developers implement best practices and reduce the amount of code needed to build well-architected infrastructure. Patterns typically orchestrate multiple AWS services together in a way that follows AWS best practices. To learn more about patterns, check out the [AWS CDK documentation](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html#constructs_lib_levels).
 
-Count: 1
+Count: 2
 
+- [**ApiGatewayStaticHosting**](API.md#apigatewaystatichosting-): A pattern that deploys resources to support the hosting of static assets within an AWS account.
 - [**Ec2LinuxImagePipeline**](API.md#ec2linuximagepipeline-): A pattern to build an EC2 Image Pipeline specifically for Linux.
 
 ## 🤝 Contributors

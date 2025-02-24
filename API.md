@@ -2,6 +2,202 @@
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
 
+### ApiGatewayStaticHosting <a name="ApiGatewayStaticHosting" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting"></a>
+
+A pattern that deploys resources to support the hosting of static assets within an AWS account.
+
+Unlike the normal pattern for static content hosting (Amazon S3 fronted by Amazon CloudFront), this pattern instead
+uses a combination of Amazon S3, AWS Lambda, and Amazon API Gateway. This can be useful for rapidly deploying a
+static website that follows best practices when Amazon CloudFront is not available.
+
+The construct also handles encryption for the framework resources using either a provided KMS key or an
+AWS managed key.
+
+There are two methods for exposing the URL to consumers - the default API execution endpoint or via a custom domain
+name setup.
+
+If using the default API execution endpoint, you must provide a base path as this will translate to the
+stage name of the REST API. You must also ensure that all relative links in the static content either reference
+the base path in URLs relative to the root (e.g. preceded by '/') or uses URLs that are relative to the current
+directory (e.g. no '/').
+
+If using the custom domain name, then you do not need to provide a base path and relative links in your static
+content will not require modification. You can choose to specify a base path with this option if so desired - in
+that case, similar rules regarding relative URLs in the static content above must be followed.
+
+*Example*
+
+```typescript
+import { ApiGatewayStaticHosting } from '@cdklabs/cdk-proserve-lib/patterns';
+import { EndpointType } from 'aws-cdk-lib/aws-apigateway';
+
+new ApiGatewayStaticHosting(this, 'MyWebsite', {
+    asset: {
+        id: 'Entry',
+        path: join(__dirname, 'assets', 'website', 'dist'),
+        spaIndexPageName: 'index.html'
+    },
+    domain: {
+        basePath: 'public'
+    },
+    endpoint: {
+        types: [EndpointType.REGIONAL]
+    },
+    retainStoreOnDeletion: true,
+    versionTag: '1.0.2'
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+new patterns.ApiGatewayStaticHosting(scope: Construct, id: string, props: ApiGatewayStaticHostingProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the pattern belongs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for this instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps</code> | Metadata for configuring the pattern. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+Parent to which the pattern belongs.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+Unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps
+
+Metadata for configuring the pattern.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.isConstruct"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+patterns.ApiGatewayStaticHosting.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.property.components">components</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.PatternComponents</code> | Provides access to the underlying components of the pattern as an escape hatch. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.property.url">url</a></code> | <code>string</code> | URL for the API that distributes the static content. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.property.customDomainNameAlias">customDomainNameAlias</a></code> | <code>string</code> | Alias domain name for the API that distributes the static content. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `components`<sup>Required</sup> <a name="components" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.property.components"></a>
+
+```typescript
+public readonly components: PatternComponents;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.PatternComponents
+
+Provides access to the underlying components of the pattern as an escape hatch.
+
+WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
+behave as expected or designed. You do so at your own risk.
+
+---
+
+##### `url`<sup>Required</sup> <a name="url" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.property.url"></a>
+
+```typescript
+public readonly url: string;
+```
+
+- *Type:* string
+
+URL for the API that distributes the static content.
+
+---
+
+##### `customDomainNameAlias`<sup>Optional</sup> <a name="customDomainNameAlias" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.property.customDomainNameAlias"></a>
+
+```typescript
+public readonly customDomainNameAlias: string;
+```
+
+- *Type:* string
+
+Alias domain name for the API that distributes the static content.
+
+This is only available if the custom domain name configuration was provided to the pattern. In that event, you
+would then create either a CNAME or ALIAS record in your DNS system that maps your custom domain name to this
+value.
+
+---
+
+
 ### Ec2ImageBuilderGetImage <a name="Ec2ImageBuilderGetImage" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImage"></a>
 
 Retrieves an EC2 Image Builder image build version.
@@ -1551,6 +1747,167 @@ have configured `logging` on the construct.
 
 ## Structs <a name="Structs" id="Structs"></a>
 
+### ApiGatewayStaticHostingProps <a name="ApiGatewayStaticHostingProps" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps"></a>
+
+Properties for configuring the static hosting pattern.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const apiGatewayStaticHostingProps: patterns.ApiGatewayStaticHostingProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.asset">asset</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset</code> | Metadata about the static assets to host. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.domain">domain</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.CustomDomainConfiguration \| @cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.DefaultEndpointConfiguration</code> | Configuration information for the distribution endpoint that will be used to serve static content. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.accessLoggingBucket">accessLoggingBucket</a></code> | <code>aws-cdk-lib.aws_s3.IBucket</code> | Amazon S3 bucket where access logs should be stored. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.accessPolicy">accessPolicy</a></code> | <code>aws-cdk-lib.aws_iam.PolicyDocument</code> | Resource access policy to define on the API itself to control who can invoke the endpoint. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.apiLogDestination">apiLogDestination</a></code> | <code>aws-cdk-lib.aws_apigateway.IAccessLogDestination</code> | Destination where Amazon API Gateway logs can be sent. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the framework resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.endpoint">endpoint</a></code> | <code>aws-cdk-lib.aws_apigateway.EndpointConfiguration</code> | Endpoint deployment information for the REST API. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional configuration settings for the backend handler. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.retainStoreOnDeletion">retainStoreOnDeletion</a></code> | <code>boolean</code> | Whether or not to retain the Amazon S3 bucket where static assets are deployed on stack deletion. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.versionTag">versionTag</a></code> | <code>string</code> | A version identifier to deploy to the Amazon S3 bucket to help with rapid identification of current deployment This will appear as `metadata.json` at the root of the bucket. |
+
+---
+
+##### `asset`<sup>Required</sup> <a name="asset" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.asset"></a>
+
+```typescript
+public readonly asset: Asset;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset
+
+Metadata about the static assets to host.
+
+---
+
+##### `domain`<sup>Required</sup> <a name="domain" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.domain"></a>
+
+```typescript
+public readonly domain: CustomDomainConfiguration | DefaultEndpointConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.CustomDomainConfiguration | @cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.DefaultEndpointConfiguration
+
+Configuration information for the distribution endpoint that will be used to serve static content.
+
+---
+
+##### `accessLoggingBucket`<sup>Optional</sup> <a name="accessLoggingBucket" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.accessLoggingBucket"></a>
+
+```typescript
+public readonly accessLoggingBucket: IBucket;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.IBucket
+- *Default:* undefined A new bucket will be created for storing access logs
+
+Amazon S3 bucket where access logs should be stored.
+
+---
+
+##### `accessPolicy`<sup>Optional</sup> <a name="accessPolicy" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.accessPolicy"></a>
+
+```typescript
+public readonly accessPolicy: PolicyDocument;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.PolicyDocument
+
+Resource access policy to define on the API itself to control who can invoke the endpoint.
+
+---
+
+##### `apiLogDestination`<sup>Optional</sup> <a name="apiLogDestination" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.apiLogDestination"></a>
+
+```typescript
+public readonly apiLogDestination: IAccessLogDestination;
+```
+
+- *Type:* aws-cdk-lib.aws_apigateway.IAccessLogDestination
+
+Destination where Amazon API Gateway logs can be sent.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+- *Default:* undefined AWS service-managed encryption keys will be used where available
+
+Encryption key for protecting the framework resources.
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.endpoint"></a>
+
+```typescript
+public readonly endpoint: EndpointConfiguration;
+```
+
+- *Type:* aws-cdk-lib.aws_apigateway.EndpointConfiguration
+- *Default:* undefined Will deploy an edge-optimized API
+
+Endpoint deployment information for the REST API.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
+
+Optional configuration settings for the backend handler.
+
+---
+
+##### `retainStoreOnDeletion`<sup>Optional</sup> <a name="retainStoreOnDeletion" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.retainStoreOnDeletion"></a>
+
+```typescript
+public readonly retainStoreOnDeletion: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false The Amazon S3 bucket and all assets contained within will be deleted
+
+Whether or not to retain the Amazon S3 bucket where static assets are deployed on stack deletion.
+
+---
+
+##### `versionTag`<sup>Optional</sup> <a name="versionTag" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps.property.versionTag"></a>
+
+```typescript
+public readonly versionTag: string;
+```
+
+- *Type:* string
+- *Default:* undefined No version information will be deployed to the Amazon S3 bucket
+
+A version identifier to deploy to the Amazon S3 bucket to help with rapid identification of current deployment This will appear as `metadata.json` at the root of the bucket.
+
+---
+
+*Example*
+
+```typescript
+1.0.2
+```
+
+
 ### ApplyRemovalPolicyProps <a name="ApplyRemovalPolicyProps" id="@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicyProps"></a>
 
 Properties for configuring the removal policy settings.
@@ -1582,6 +1939,75 @@ public readonly removalPolicy: RemovalPolicy;
 The removal policy to apply to the resource.
 
 ---
+
+### Asset <a name="Asset" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset"></a>
+
+Static Asset Definition.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const asset: patterns.ApiGatewayStaticHosting.Asset = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.id">id</a></code> | <code>string</code> | Unique identifier to delineate an asset from other assets. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.path">path</a></code> | <code>string \| string[]</code> | Path(s) on the local file system to the static asset(s). |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.spaIndexPageName">spaIndexPageName</a></code> | <code>string</code> | Name of the index page for a Single Page Application (SPA). |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Unique identifier to delineate an asset from other assets.
+
+---
+
+##### `path`<sup>Required</sup> <a name="path" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.path"></a>
+
+```typescript
+public readonly path: string | string[];
+```
+
+- *Type:* string | string[]
+
+Path(s) on the local file system to the static asset(s).
+
+Each path must be either a directory or zip containing the assets
+
+---
+
+##### `spaIndexPageName`<sup>Optional</sup> <a name="spaIndexPageName" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.Asset.property.spaIndexPageName"></a>
+
+```typescript
+public readonly spaIndexPageName: string;
+```
+
+- *Type:* string
+
+Name of the index page for a Single Page Application (SPA).
+
+This is used as a default key to load when the path provided does not map to a concrete static asset.
+
+---
+
+*Example*
+
+```typescript
+index.html
+```
+
 
 ### AwsCustomResourceLambdaConfiguration <a name="AwsCustomResourceLambdaConfiguration" id="@cdklabs/cdk-proserve-lib.types.AwsCustomResourceLambdaConfiguration"></a>
 
@@ -1723,6 +2149,80 @@ public readonly waitForCompletion: boolean;
 - *Type:* boolean
 
 ---
+
+### CustomDomainConfiguration <a name="CustomDomainConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.CustomDomainConfiguration"></a>
+
+Domain configuration when using a Custom Domain Name for Amazon API Gateway.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.CustomDomainConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const customDomainConfiguration: patterns.ApiGatewayStaticHosting.CustomDomainConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.CustomDomainConfiguration.property.options">options</a></code> | <code>aws-cdk-lib.aws_apigateway.DomainNameOptions</code> | Options for specifying the custom domain name setup. |
+
+---
+
+##### `options`<sup>Required</sup> <a name="options" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.CustomDomainConfiguration.property.options"></a>
+
+```typescript
+public readonly options: DomainNameOptions;
+```
+
+- *Type:* aws-cdk-lib.aws_apigateway.DomainNameOptions
+
+Options for specifying the custom domain name setup.
+
+---
+
+### DefaultEndpointConfiguration <a name="DefaultEndpointConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.DefaultEndpointConfiguration"></a>
+
+Domain configuration when using the Amazon API Gateway Default Execution Endpoint.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.DefaultEndpointConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const defaultEndpointConfiguration: patterns.ApiGatewayStaticHosting.DefaultEndpointConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.DefaultEndpointConfiguration.property.basePath">basePath</a></code> | <code>string</code> | Base path where all assets will be located. |
+
+---
+
+##### `basePath`<sup>Required</sup> <a name="basePath" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.DefaultEndpointConfiguration.property.basePath"></a>
+
+```typescript
+public readonly basePath: string;
+```
+
+- *Type:* string
+
+Base path where all assets will be located.
+
+This is because the default execution endpoint does not serve content at the root but off of a stage. As
+such this base path will be used to create the deployment stage to serve assets from.
+
+---
+
+*Example*
+
+```typescript
+/dev/site1
+```
+
 
 ### Ec2ImageBuilderGetImageProps <a name="Ec2ImageBuilderGetImageProps" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImageProps"></a>
 
@@ -3171,6 +3671,73 @@ public readonly encryption: IKey;
 - *Type:* aws-cdk-lib.aws_kms.IKey
 
 Optional encryption key that protects the secret.
+
+---
+
+### PatternComponents <a name="PatternComponents" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.PatternComponents"></a>
+
+Underlying components for the pattern.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.PatternComponents.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const patternComponents: patterns.ApiGatewayStaticHosting.PatternComponents = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.PatternComponents.property.distribution">distribution</a></code> | <code>aws-cdk-lib.aws_apigateway.RestApi</code> | Provides access to the underlying Amazon API Gateway REST API that serves as the distribution endpoint for the static content. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.PatternComponents.property.proxy">proxy</a></code> | <code>aws-cdk-lib.aws_lambda.Function</code> | Provides access to the underlying AWS Lambda function that proxies the static content from Amazon S3. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.PatternComponents.property.store">store</a></code> | <code>aws-cdk-lib.aws_s3.Bucket</code> | Provides access to the underlying Amazon S3 bucket that stores the static content. |
+
+---
+
+##### `distribution`<sup>Required</sup> <a name="distribution" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.PatternComponents.property.distribution"></a>
+
+```typescript
+public readonly distribution: RestApi;
+```
+
+- *Type:* aws-cdk-lib.aws_apigateway.RestApi
+
+Provides access to the underlying Amazon API Gateway REST API that serves as the distribution endpoint for the static content.
+
+WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
+behave as expected or designed. You do so at your own risk.
+
+---
+
+##### `proxy`<sup>Required</sup> <a name="proxy" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.PatternComponents.property.proxy"></a>
+
+```typescript
+public readonly proxy: Function;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Function
+
+Provides access to the underlying AWS Lambda function that proxies the static content from Amazon S3.
+
+WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
+behave as expected or designed. You do so at your own risk.
+
+---
+
+##### `store`<sup>Required</sup> <a name="store" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.PatternComponents.property.store"></a>
+
+```typescript
+public readonly store: Bucket;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.Bucket
+
+Provides access to the underlying Amazon S3 bucket that stores the static content.
+
+WARNING: Making changes to the properties of the underlying components of this pattern may cause it to not
+behave as expected or designed. You do so at your own risk.
 
 ---
 
