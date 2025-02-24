@@ -778,9 +778,9 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.imagePipelineArn">imagePipelineArn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.imagePipelineTopic">imagePipelineTopic</a></code> | <code>aws-cdk-lib.aws_sns.ITopic</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.latestAmi">latestAmi</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.imagePipelineArn">imagePipelineArn</a></code> | <code>string</code> | The Amazon Resource Name (ARN) of the Image Pipeline. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.imagePipelineTopic">imagePipelineTopic</a></code> | <code>aws-cdk-lib.aws_sns.ITopic</code> | The SNS Topic associated with this Image Pipeline. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.latestAmi">latestAmi</a></code> | <code>string</code> | The latest AMI built by the pipeline. |
 
 ---
 
@@ -804,6 +804,10 @@ public readonly imagePipelineArn: string;
 
 - *Type:* string
 
+The Amazon Resource Name (ARN) of the Image Pipeline.
+
+Used to uniquely identify this image pipeline.
+
 ---
 
 ##### `imagePipelineTopic`<sup>Required</sup> <a name="imagePipelineTopic" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.imagePipelineTopic"></a>
@@ -814,6 +818,10 @@ public readonly imagePipelineTopic: ITopic;
 
 - *Type:* aws-cdk-lib.aws_sns.ITopic
 
+The SNS Topic associated with this Image Pipeline.
+
+Publishes notifications about pipeline execution events.
+
 ---
 
 ##### `latestAmi`<sup>Optional</sup> <a name="latestAmi" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.property.latestAmi"></a>
@@ -823,6 +831,12 @@ public readonly latestAmi: string;
 ```
 
 - *Type:* string
+
+The latest AMI built by the pipeline.
+
+NOTE: You must have enabled the
+Build Configuration option to wait for image build completion for this
+property to be available.
 
 ---
 
@@ -2663,7 +2677,7 @@ const ec2LinuxImagePipelineProps: patterns.Ec2LinuxImagePipelineProps = { ... }
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.vpcConfiguration">vpcConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.VpcConfigurationProps</code> | VPC configuration for the image pipeline. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.extraComponents">extraComponents</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component \| aws-cdk-lib.aws_imagebuilder.CfnComponent[]</code> | Additional components to install in the image. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.extraDeviceMappings">extraDeviceMappings</a></code> | <code>aws-cdk-lib.aws_imagebuilder.CfnImageRecipe.InstanceBlockDeviceMappingProperty[]</code> | Additional EBS volume mappings to add to the image. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.features">features</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature[]</code> | A list of features to install. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.features">features</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature[]</code> | A list of features to install on the image. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.operatingSystem">operatingSystem</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.OperatingSystem</code> | The operating system to use for the image pipeline. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.rootVolumeSize">rootVolumeSize</a></code> | <code>number</code> | Size for the root volume in GB. |
 
@@ -2768,7 +2782,8 @@ public readonly extraComponents: Component | CfnComponent[];
 
 Additional components to install in the image.
 
-These will be added after the default Linux components.
+These components will be added after the default Linux components.
+Use this to add custom components beyond the predefined features.
 
 ---
 
@@ -2782,7 +2797,8 @@ public readonly extraDeviceMappings: InstanceBlockDeviceMappingProperty[];
 
 Additional EBS volume mappings to add to the image.
 
-These will be added in addition to the root volume.
+These volumes will be added in addition to the root volume.
+Use this to specify additional storage volumes that should be included in the AMI.
 
 ---
 
@@ -2793,8 +2809,12 @@ public readonly features: Feature[];
 ```
 
 - *Type:* @cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature[]
+- *Default:* [Ec2LinuxImagePipeline.Feature.AWS_CLI, Ec2LinuxImagePipeline.Feature.RETAIN_SSM_AGENT]
 
-A list of features to install.
+A list of features to install on the image.
+
+Features are predefined sets of components and configurations.
+Default: [AWS_CLI, RETAIN_SSM_AGENT]
 
 ---
 
@@ -2805,8 +2825,12 @@ public readonly operatingSystem: OperatingSystem;
 ```
 
 - *Type:* @cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.OperatingSystem
+- *Default:* Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2023
 
 The operating system to use for the image pipeline.
+
+Specifies which operating system version to use as the base image.
+Default: AMAZON_LINUX_2023.
 
 ---
 

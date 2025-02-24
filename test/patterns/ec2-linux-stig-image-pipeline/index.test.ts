@@ -291,4 +291,29 @@ describeCdkTest(Ec2LinuxImagePipeline, (id, getStack, getTemplate) => {
             });
         }).toThrow(FeatureError);
     });
+
+    it('sets latestAmi and uses the getter from Ec2ImagePipeline', () => {
+        // Act
+        const pipeline = new Ec2LinuxImagePipeline(stack, id, {
+            version: '0.1.0',
+            buildConfiguration: {
+                start: true,
+                waitForCompletion: true
+            }
+        });
+
+        // Assert
+        expect(pipeline.latestAmi).toBeDefined();
+    });
+
+    it('throws a feature error on incompatible operating systems', () => {
+        expect(() => {
+            new Ec2LinuxImagePipeline(stack, id, {
+                version: '0.1.0',
+                operatingSystem:
+                    Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2023,
+                features: [Ec2LinuxImagePipeline.Feature.SCAP]
+            });
+        }).toThrow(FeatureError);
+    });
 });

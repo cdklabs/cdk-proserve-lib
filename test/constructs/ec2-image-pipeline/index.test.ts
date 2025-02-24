@@ -144,7 +144,9 @@ describeCdkTest(Ec2ImagePipeline, (id, getStack, getTemplate) => {
         });
 
         // Assert
-        expect(imagePipeline.latestAmi).toBeUndefined();
+        expect(() => imagePipeline.latestAmi).toThrow(
+            'Cannot access the `latestAmi` property of the Image Pipeline without configuring buildConfiguration.start and buildConfiguration.waitForCompletion as true.'
+        );
     });
 
     it('creates image pipeline with custom CfnComponent', () => {
