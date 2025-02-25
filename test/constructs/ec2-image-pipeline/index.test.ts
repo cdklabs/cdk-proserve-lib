@@ -293,4 +293,47 @@ describeCdkTest(Ec2ImagePipeline, (id, getStack, getTemplate) => {
             });
         }).toThrow(/Expected type: SEMVER/);
     });
+
+    it('grants encryption permissions to ImageBuilder service role when KMS key is provided', () => {
+        // Arrange
+        const kmsKey = new Key(stack, 'TestKey');
+
+        // Act
+        new Ec2ImagePipeline(stack, id, {
+            version: '0.1.0',
+            encryption: kmsKey
+        });
+
+        // Assert
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::KMS::Key', {
+            KeyPolicy: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Action: [
+                            'kms:Decrypt',
+                            'kms:Encrypt',
+                            'kms:ReEncrypt*',
+                            'kms:GenerateDataKey*'
+                        ],
+                        Effect: 'Allow',
+                        Principal: {
+                            AWS: {
+                                'Fn::Join': [
+                                    '',
+                                    [
+                                        'arn:',
+                                        { Ref: 'AWS::Partition' },
+                                        ':iam::',
+                                        { Ref: 'AWS::AccountId' },
+                                        ':role/aws-service-role/imagebuilder.amazonaws.com/AWSServiceRoleForImageBuilder'
+                                    ]
+                                ]
+                            }
+                        }
+                    })
+                ])
+            }
+        });
+    });
 });
