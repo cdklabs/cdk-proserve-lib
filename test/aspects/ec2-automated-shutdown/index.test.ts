@@ -1,8 +1,5 @@
-// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-// SPDX-License-Identifier: Apache-2.0
-
-import { Aspects, Stack } from 'aws-cdk-lib';
-import { Template } from 'aws-cdk-lib/assertions';
+import { Aspects, Stack, Duration } from 'aws-cdk-lib';
+import { Template, Match } from 'aws-cdk-lib/assertions';
 import {
     Instance,
     InstanceType,
@@ -76,7 +73,7 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         ]);
     });
 
-    it('should create alarm and lambda when visiting an EC2 instance', () => {
+    it('should create alarm with direct lambda integration when visiting an EC2 instance', () => {
         // Arrange
         const vpc = new Vpc(stack, 'TestVPC', {
             maxAzs: 2,
@@ -87,7 +84,6 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
                     subnetType: SubnetType.PRIVATE_ISOLATED
                 }
             ],
-            // Enable flow logs
             flowLogs: {
                 s3: {
                     destination: FlowLogDestination.toS3(),
@@ -95,6 +91,113 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
                 }
             }
         });
+        const encryptionKey = new Key(stack, 'EncryptionKey', {
+            enableKeyRotation: true,
+            description: 'Key for encrypting resources'
+        });
+
+        const instance = new Instance(stack, 'TestInstance', {
+            vpc,
+            vpcSubnets: {
+                subnetType: SubnetType.PRIVATE_ISOLATED
+            },
+            instanceType: InstanceType.of(InstanceClass.T2, InstanceSize.MICRO),
+            machineImage: new AmazonLinuxImage(),
+            securityGroup: new SecurityGroup(stack, 'CustomSG', {
+                vpc,
+                allowAllOutbound: false,
+                description: 'Security group for test instance'
+            }),
+            requireImdsv2: true,
+            blockDevices: [
+                {
+                    deviceName: '/dev/xvda',
+                    volume: BlockDeviceVolume.ebs(8, {
+                        encrypted: true,
+                        kmsKey: encryptionKey
+                    })
+                }
+            ]
+        });
+
+        // Act
+        Aspects.of(stack).add(
+            new Ec2AutomatedShutdown({
+                metricConfig: {
+                    namespace: 'AWS/EC2',
+                    metricName: 'CPUUtilization',
+                    period: Duration.minutes(1),
+                    statistic: 'Average',
+                    threshold: 10
+                }
+            })
+        );
+
+        template = getTemplate();
+
+        // Assert
+        template.hasResource('AWS::Lambda::Function', {
+            Properties: Match.objectLike({
+                Handler: 'index.handler',
+                Runtime: 'nodejs20.x'
+            })
+        });
+
+        template.hasResource('AWS::CloudWatch::Alarm', {
+            Properties: Match.objectLike({
+                MetricName: 'CPUUtilization',
+                Namespace: 'AWS/EC2',
+                Statistic: 'Average',
+                Threshold: 10,
+                Period: 60,
+                EvaluationPeriods: 2,
+                DatapointsToAlarm: 2,
+                Dimensions: [
+                    {
+                        Name: 'InstanceId',
+                        Value: {
+                            Ref: Match.stringLikeRegexp('TestInstance')
+                        }
+                    }
+                ]
+            })
+        });
+
+        // Verify direct Lambda action in alarm
+        template.hasResourceProperties('AWS::CloudWatch::Alarm', {
+            AlarmActions: Match.arrayWith([
+                {
+                    'Fn::GetAtt': Match.arrayWith([
+                        Match.stringLikeRegexp('Ec2ShutdownFunction'),
+                        'Arn'
+                    ])
+                }
+            ])
+        });
+
+        // Verify no SNS topic is created
+        template.resourceCountIs('AWS::SNS::Topic', 0);
+    });
+
+    it('should create alarm with default CPU metric when no metric config is provided', () => {
+        // Arrange
+        const vpc = new Vpc(stack, 'TestVPC', {
+            maxAzs: 2,
+            subnetConfiguration: [
+                {
+                    cidrMask: 24,
+                    name: 'Isolated',
+                    subnetType: SubnetType.PRIVATE_ISOLATED
+                }
+            ],
+            flowLogs: {
+                s3: {
+                    destination: FlowLogDestination.toS3(),
+                    trafficType: FlowLogTrafficType.ALL
+                }
+            }
+        });
+
         const encryptionKey = new Key(stack, 'EncryptionKey', {
             enableKeyRotation: true,
             description: 'Key for encrypting resources'
@@ -113,7 +216,6 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
                 description: 'Security group for test instance'
             }),
             requireImdsv2: true,
-            // Enable EBS encryption
             blockDevices: [
                 {
                     deviceName: '/dev/xvda',
@@ -126,28 +228,58 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         });
 
         // Act
-        Aspects.of(stack).add(
-            new Ec2AutomatedShutdown({
-                cpuThreshold: 10
-            })
-        );
+        Aspects.of(stack).add(new Ec2AutomatedShutdown({}));
 
         template = getTemplate();
 
         // Assert
-        template.hasResource('AWS::Lambda::Function', {});
-        template.hasResource('AWS::CloudWatch::Alarm', {});
+        template.hasResource('AWS::CloudWatch::Alarm', {
+            Properties: Match.objectLike({
+                MetricName: 'CPUUtilization',
+                Namespace: 'AWS/EC2',
+                Statistic: 'Average',
+                Threshold: 5, // default threshold
+                Period: 60,
+                EvaluationPeriods: 2,
+                DatapointsToAlarm: 2,
+                Dimensions: [
+                    {
+                        Name: 'InstanceId',
+                        Value: {
+                            Ref: Match.stringLikeRegexp('TestInstance')
+                        }
+                    }
+                ]
+            })
+        });
+
+        // Verify direct Lambda integration
+        template.hasResourceProperties('AWS::CloudWatch::Alarm', {
+            AlarmActions: Match.arrayWith([
+                {
+                    'Fn::GetAtt': Match.arrayWith([
+                        Match.stringLikeRegexp('Ec2ShutdownFunction'),
+                        'Arn'
+                    ])
+                }
+            ])
+        });
     });
 
     it('should not create resources when no EC2 instances exist', () => {
         // Arrange & Act
         Aspects.of(stack).add(
             new Ec2AutomatedShutdown({
-                cpuThreshold: 10
+                metricConfig: {
+                    namespace: 'AWS/EC2',
+                    metricName: 'CPUUtilization',
+                    period: Duration.minutes(1),
+                    statistic: 'Average',
+                    threshold: 10
+                }
             })
         );
 
-        // Get template once
         template = getTemplate();
 
         // Assert
