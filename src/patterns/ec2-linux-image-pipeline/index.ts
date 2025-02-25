@@ -173,12 +173,19 @@ export class Ec2LinuxImagePipeline extends Construct {
             rootVolumeSize,
             extraDeviceMappings,
             extraComponents,
+            buildConfiguration,
             ...superProps
         } = props;
 
         // init
         const pipeline = new Ec2ImagePipeline(this, `${id}Pipeline`, {
             ...superProps,
+            buildConfiguration: {
+                start: buildConfiguration?.start ?? true,
+                waitForCompletion:
+                    buildConfiguration?.waitForCompletion ?? true,
+                hash: buildConfiguration?.hash
+            },
             machineImage,
             blockDeviceMappings,
             components
