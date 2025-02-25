@@ -8,56 +8,56 @@ import { Pricing } from '@aws-sdk/client-pricing';
  * The EC2 attributes that come directly from the pricing API.
  */
 interface EC2InstanceAttributes {
-    enhancedNetworkingSupported: string;
-    intelTurboAvailable: string;
-    memory: string;
-    dedicatedEbsThroughput: string;
-    vcpu: string;
-    classicnetworkingsupport: string;
-    capacitystatus: string;
-    locationType: string;
-    storage: string;
-    instanceFamily: string;
-    operatingSystem: string;
-    intelAvx2Available: string;
-    regionCode: string;
-    physicalProcessor: string;
-    clockSpeed: string;
-    ecu: string;
-    networkPerformance: string;
-    servicename: string;
-    instancesku: string;
-    gpuMemory: string;
-    vpcnetworkingsupport: string;
-    instanceType: string;
-    tenancy: string;
-    usagetype: string;
-    normalizationSizeFactor: string;
-    intelAvxAvailable: string;
-    processorFeatures: string;
-    servicecode: string;
-    licenseModel: string;
-    currentGeneration: string;
-    preInstalledSw: string;
-    location: string;
-    processorArchitecture: string;
-    marketoption: string;
-    operation: string;
-    availabilityzone: string;
+    readonly enhancedNetworkingSupported: string;
+    readonly intelTurboAvailable: string;
+    readonly memory: string;
+    readonly dedicatedEbsThroughput: string;
+    readonly vcpu: string;
+    readonly classicnetworkingsupport: string;
+    readonly capacitystatus: string;
+    readonly locationType: string;
+    readonly storage: string;
+    readonly instanceFamily: string;
+    readonly operatingSystem: string;
+    readonly intelAvx2Available: string;
+    readonly regionCode: string;
+    readonly physicalProcessor: string;
+    readonly clockSpeed: string;
+    readonly ecu: string;
+    readonly networkPerformance: string;
+    readonly servicename: string;
+    readonly instancesku: string;
+    readonly gpuMemory: string;
+    readonly vpcnetworkingsupport: string;
+    readonly instanceType: string;
+    readonly tenancy: string;
+    readonly usagetype: string;
+    readonly normalizationSizeFactor: string;
+    readonly intelAvxAvailable: string;
+    readonly processorFeatures: string;
+    readonly servicecode: string;
+    readonly licenseModel: string;
+    readonly currentGeneration: string;
+    readonly preInstalledSw: string;
+    readonly location: string;
+    readonly processorArchitecture: string;
+    readonly marketoption: string;
+    readonly operation: string;
+    readonly availabilityzone: string;
 }
 
 /**
  * The EC2 instance details that are used to generate the class.
  */
 interface EC2InstanceDetails {
-    instanceType: string;
-    vcpus: string;
-    memory: string;
-    networkPerformance?: string;
-    physicalProcessor?: string;
-    storage?: string;
-    clockSpeed?: string;
-    gpuMemory?: string;
+    readonly instanceType: string;
+    readonly vcpus: string;
+    readonly memory: string;
+    readonly networkPerformance?: string;
+    readonly physicalProcessor?: string;
+    readonly storage?: string;
+    readonly clockSpeed?: string;
+    readonly gpuMemory?: string;
 }
 
 /**

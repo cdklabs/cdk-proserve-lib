@@ -8,44 +8,44 @@ import { Pricing } from '@aws-sdk/client-pricing';
  * The Notebook Instance attributes that come directly from the pricing API.
  */
 interface NotebookInstanceAttributes {
-    clockSpeed: string;
-    component: string;
-    computeType: string;
-    currentGeneration: string;
-    gpu: string;
-    gpuMemory: string;
-    instanceName: string;
-    instanceType: string;
-    location: string;
-    locationType: string;
-    memory: string;
-    networkPerformance: string;
-    operation: string;
-    physicalCpu: string;
-    physicalGpu: string;
-    platoinstancename: string;
-    platoinstancetype: string;
-    processorArchitecture: string;
-    regionCode: string;
-    servicecode: string;
-    servicename: string;
-    storage: string;
-    usagetype: string;
-    vCpu: string;
+    readonly clockSpeed: string;
+    readonly component: string;
+    readonly computeType: string;
+    readonly currentGeneration: string;
+    readonly gpu: string;
+    readonly gpuMemory: string;
+    readonly instanceName: string;
+    readonly instanceType: string;
+    readonly location: string;
+    readonly locationType: string;
+    readonly memory: string;
+    readonly networkPerformance: string;
+    readonly operation: string;
+    readonly physicalCpu: string;
+    readonly physicalGpu: string;
+    readonly platoinstancename: string;
+    readonly platoinstancetype: string;
+    readonly processorArchitecture: string;
+    readonly regionCode: string;
+    readonly servicecode: string;
+    readonly servicename: string;
+    readonly storage: string;
+    readonly usagetype: string;
+    readonly vCpu: string;
 }
 
 /**
  * The Notebook Instance details that are used to generate the class.
  */
 interface NotebookInstanceDetails {
-    computeType: string;
-    gpu: string;
-    gpuMemory: string;
-    instanceName: string;
-    memory: string;
-    networkPerformance: string;
-    physicalGpu: string;
-    vCpu: string;
+    readonly computeType: string;
+    readonly gpu: string;
+    readonly gpuMemory: string;
+    readonly instanceName: string;
+    readonly memory: string;
+    readonly networkPerformance: string;
+    readonly physicalGpu: string;
+    readonly vCpu: string;
 }
 
 /**
