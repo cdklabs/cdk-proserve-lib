@@ -8,6 +8,7 @@ import { CfnComponent } from 'aws-cdk-lib/aws-imagebuilder';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Ec2ImagePipeline } from '../../../src/constructs/ec2-image-pipeline';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { Ec2ImagePipelineBuildError } from '../../../src/constructs/ec2-image-pipeline/types/exception';
 
 describeCdkTest(Ec2ImagePipeline, (id, getStack, getTemplate) => {
     let stack: Stack;
@@ -145,7 +146,7 @@ describeCdkTest(Ec2ImagePipeline, (id, getStack, getTemplate) => {
 
         // Assert
         expect(() => imagePipeline.latestAmi).toThrow(
-            'Cannot access the `latestAmi` property of the Image Pipeline without configuring buildConfiguration.start and buildConfiguration.waitForCompletion as true.'
+            Ec2ImagePipelineBuildError
         );
     });
 

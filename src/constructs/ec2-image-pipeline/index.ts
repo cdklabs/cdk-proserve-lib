@@ -33,6 +33,7 @@ import { validate, ValidationTypes } from '../../common/validate';
 import { LambdaConfiguration } from '../../types';
 import { Ec2ImageBuilderGetImage } from '../ec2-image-builder-get-image';
 import { Ec2ImageBuilderStart } from '../ec2-image-builder-start';
+import { Ec2ImagePipelineBuildError } from './types/exception';
 
 /**
  * Base properties for EC2 Image Pipeline configuration.
@@ -145,9 +146,7 @@ export class Ec2ImagePipeline extends Construct {
      */
     public get latestAmi(): string | undefined {
         if (!this._buildConfigured) {
-            throw new Error(
-                'Cannot access the `latestAmi` property of the Image Pipeline without configuring buildConfiguration.start and buildConfiguration.waitForCompletion as true.'
-            );
+            throw new Ec2ImagePipelineBuildError();
         }
         return this._latestAmi;
     }
