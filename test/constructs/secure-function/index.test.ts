@@ -131,4 +131,39 @@ describeCdkTest(SecureFunction, (id, getStack, getTemplate) => {
             }
         });
     });
+
+    it('grants encryption permissions to logs service principal', () => {
+        // Arrange
+        const key = new Key(stack, 'TestKey');
+
+        // Act
+        new SecureFunction(stack, id, {
+            runtime: Runtime.NODEJS_22_X,
+            handler: 'index.handler',
+            code: Code.fromInline('exports.handler = function() { }'),
+            encryption: key
+        });
+
+        // Assert
+        const template = getTemplate();
+
+        template.hasResourceProperties('AWS::KMS::Key', {
+            KeyPolicy: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Action: [
+                            'kms:Decrypt',
+                            'kms:Encrypt',
+                            'kms:ReEncrypt*',
+                            'kms:GenerateDataKey*'
+                        ],
+                        Effect: 'Allow',
+                        Principal: {
+                            Service: 'logs.amazonaws.com'
+                        }
+                    })
+                ])
+            }
+        });
+    });
 });

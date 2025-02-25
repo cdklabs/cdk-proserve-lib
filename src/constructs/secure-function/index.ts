@@ -80,6 +80,9 @@ export class SecureFunction extends Construct {
         // Grant permissions to use the key for lambda environment and logs
         if (props.encryption) {
             props.encryption.grantEncryptDecrypt(this.function);
+            props.encryption.grantEncryptDecrypt(
+                new ServicePrincipal('logs.amazonaws.com')
+            );
         }
 
         // Grant the function permission to write to the log group
