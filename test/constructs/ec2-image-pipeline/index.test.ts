@@ -8,7 +8,7 @@ import { CfnComponent } from 'aws-cdk-lib/aws-imagebuilder';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Ec2ImagePipeline } from '../../../src/constructs/ec2-image-pipeline';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
-import { Ec2ImagePipelineBuildError } from '../../../src/constructs/ec2-image-pipeline/types/exception';
+import { Ec2ImagePipelineBuildConfigError } from '../../../src/constructs/ec2-image-pipeline/types/exception';
 
 describeCdkTest(Ec2ImagePipeline, (id, getStack, getTemplate) => {
     let stack: Stack;
@@ -146,7 +146,7 @@ describeCdkTest(Ec2ImagePipeline, (id, getStack, getTemplate) => {
 
         // Assert
         expect(() => imagePipeline.latestAmi).toThrow(
-            Ec2ImagePipelineBuildError
+            Ec2ImagePipelineBuildConfigError
         );
     });
 
