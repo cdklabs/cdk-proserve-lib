@@ -17,6 +17,7 @@ import { Key } from 'aws-cdk-lib/aws-kms';
 import { NagSuppressions } from 'cdk-nag';
 import { Ec2AutomatedShutdown } from '../../../src/aspects/ec2-automated-shutdown';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { mockVpcId, mockCidrBlock } from '../../fixtures/network';
 
 describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
     let stack: Stack;
@@ -75,49 +76,28 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
 
     it('should create alarm with direct lambda integration when visiting an EC2 instance', () => {
         // Arrange
-        const vpc = new Vpc(stack, 'TestVPC', {
-            maxAzs: 2,
-            subnetConfiguration: [
-                {
-                    cidrMask: 24,
-                    name: 'Isolated',
-                    subnetType: SubnetType.PRIVATE_ISOLATED
-                }
-            ],
-            flowLogs: {
-                s3: {
-                    destination: FlowLogDestination.toS3(),
-                    trafficType: FlowLogTrafficType.ALL
-                }
-            }
-        });
-        const encryptionKey = new Key(stack, 'EncryptionKey', {
-            enableKeyRotation: true,
-            description: 'Key for encrypting resources'
-        });
-
         const instance = new Instance(stack, 'TestInstance', {
-            vpc,
+            vpc: Vpc.fromVpcAttributes(stack, 'ImportedVPC', {
+                vpcId: mockVpcId,
+                availabilityZones: ['us-east-1a'],
+                privateSubnetIds: ['subnet-12345'],
+                vpcCidrBlock: mockCidrBlock
+            }),
             vpcSubnets: {
                 subnetType: SubnetType.PRIVATE_ISOLATED
             },
             instanceType: InstanceType.of(InstanceClass.T2, InstanceSize.MICRO),
             machineImage: new AmazonLinuxImage(),
             securityGroup: new SecurityGroup(stack, 'CustomSG', {
-                vpc,
+                vpc: Vpc.fromVpcAttributes(stack, 'ImportedVPCForSG', {
+                    vpcId: mockVpcId,
+                    availabilityZones: ['us-east-1a'],
+                    privateSubnetIds: ['subnet-12345'],
+                    vpcCidrBlock: mockCidrBlock
+                }),
                 allowAllOutbound: false,
                 description: 'Security group for test instance'
-            }),
-            requireImdsv2: true,
-            blockDevices: [
-                {
-                    deviceName: '/dev/xvda',
-                    volume: BlockDeviceVolume.ebs(8, {
-                        encrypted: true,
-                        kmsKey: encryptionKey
-                    })
-                }
-            ]
+            })
         });
 
         // Act

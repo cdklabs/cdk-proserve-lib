@@ -36,11 +36,7 @@ const getInstanceId = (event: CloudWatchEvent): string => {
 
     const dimensions = configuration.metrics[0].metricStat.metric.dimensions;
 
-    const instanceId = dimensions.find(
-        (dim) => dim.name === 'InstanceId'
-    )?.value;
-
-    if (!instanceId) {
+    if (!!dimensions.InstanceId) {
         throw new Error('Instance ID not found in alarm metrics');
     }
 
@@ -90,9 +86,13 @@ export const handler = async (
                 `Successfully initiated shutdown for instance: ${instanceId}. Current state: ${instanceState}`
             );
         } catch (stopError) {
-            console.error(`Failed to stop instance ${instanceId}:`, stopError);
+            if (stopError instanceof Error) {
+                throw new Error(
+                    'Failed to stop EC2 instance ${instanceId}: ${stoperror.message'
+                );
+            }
             throw new Error(
-                `Failed to stop EC2 instance ${instanceId}: ${stopError.message}`
+                `Failed to stop EC2 instance ${instanceId}: Unknown error`
             );
         }
     } catch (error) {

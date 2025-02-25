@@ -4,7 +4,7 @@
 import { join } from 'path';
 import { Stack, Duration, IAspect } from 'aws-cdk-lib';
 import { Metric, Alarm, ComparisonOperator } from 'aws-cdk-lib/aws-cloudwatch';
-import { LambdaAction, SnsAction } from 'aws-cdk-lib/aws-cloudwatch-actions';
+import { LambdaAction } from 'aws-cdk-lib/aws-cloudwatch-actions';
 import { Instance, CfnInstance } from 'aws-cdk-lib/aws-ec2';
 import { PolicyStatement, Effect, AnyPrincipal } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
