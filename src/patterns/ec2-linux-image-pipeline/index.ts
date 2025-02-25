@@ -20,6 +20,9 @@ import {
 export interface Ec2LinuxImagePipelineProps extends Ec2ImagePipelineBaseProps {
     /**
      * The operating system to use for the image pipeline.
+     * Specifies which operating system version to use as the base image.
+     * Default: AMAZON_LINUX_2023.
+     * @default Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2023
      */
     readonly operatingSystem?: Ec2LinuxImagePipeline.OperatingSystem;
 
@@ -30,19 +33,24 @@ export interface Ec2LinuxImagePipelineProps extends Ec2ImagePipelineBaseProps {
     readonly rootVolumeSize?: number;
 
     /**
-     * A list of features to install.
+     * A list of features to install on the image.
+     * Features are predefined sets of components and configurations.
+     * Default: [AWS_CLI, RETAIN_SSM_AGENT]
+     * @default [Ec2LinuxImagePipeline.Feature.AWS_CLI, Ec2LinuxImagePipeline.Feature.RETAIN_SSM_AGENT]
      */
     readonly features?: Ec2LinuxImagePipeline.Feature[];
 
     /**
      * Additional EBS volume mappings to add to the image.
-     * These will be added in addition to the root volume.
+     * These volumes will be added in addition to the root volume.
+     * Use this to specify additional storage volumes that should be included in the AMI.
      */
     readonly extraDeviceMappings?: CfnImageRecipe.InstanceBlockDeviceMappingProperty[];
 
     /**
      * Additional components to install in the image.
-     * These will be added after the default Linux components.
+     * These components will be added after the default Linux components.
+     * Use this to add custom components beyond the predefined features.
      */
     readonly extraComponents?: (Ec2ImagePipeline.Component | CfnComponent)[];
 }
@@ -78,8 +86,23 @@ export interface Ec2LinuxImagePipelineProps extends Ec2ImagePipelineBaseProps {
  * );
  */
 export class Ec2LinuxImagePipeline extends Construct {
+    /**
+     * The latest AMI built by the pipeline. NOTE: You must have enabled the
+     * Build Configuration option to wait for image build completion for this
+     * property to be available.
+     */
     public latestAmi: string | undefined;
+
+    /**
+     * The Amazon Resource Name (ARN) of the Image Pipeline.
+     * Used to uniquely identify this image pipeline.
+     */
     public imagePipelineArn: string;
+
+    /**
+     * The SNS Topic associated with this Image Pipeline.
+     * Publishes notifications about pipeline execution events.
+     */
     public imagePipelineTopic: ITopic;
 
     /**
@@ -161,7 +184,11 @@ export class Ec2LinuxImagePipeline extends Construct {
             components
         });
 
-        this.latestAmi = pipeline.latestAmi;
+        // Forward the latestAmi getter to the pipeline instance
+        Object.defineProperty(this, 'latestAmi', {
+            get: () => pipeline.latestAmi
+        });
+
         this.imagePipelineArn = pipeline.imagePipelineArn;
         this.imagePipelineTopic = pipeline.imagePipelineTopic;
     }

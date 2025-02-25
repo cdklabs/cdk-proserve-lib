@@ -4,8 +4,13 @@
 import { Duration, Stack } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Vpc } from 'aws-cdk-lib/aws-ec2';
+import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { Topic } from 'aws-cdk-lib/aws-sns';
 import { Ec2ImageBuilderStart } from '../../../src/constructs/ec2-image-builder-start';
+import {
+    Ec2ImageBuilderStartHashError,
+    Ec2ImageBuilderStartTimeoutError
+} from '../../../src/constructs/ec2-image-builder-start/types/exception';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
 const pipelineArn =
@@ -188,5 +193,40 @@ describeCdkTest(Ec2ImageBuilderStart, (id, getStack, getTemplate) => {
                 pipelineArn: 'invalid-arn'
             });
         }).toThrow(/Expected type: AWS_ARN/);
+    });
+
+    it('throws error if timeout is over 12 hours', () => {
+        expect(() => {
+            new Ec2ImageBuilderStart(stack, id, {
+                pipelineArn,
+                waitForCompletion: {
+                    topic: new Topic(stack, 'TestTopic'),
+                    timeout: Duration.hours(13)
+                }
+            });
+        }).toThrow(Ec2ImageBuilderStartTimeoutError);
+    });
+
+    it('throws error if hash is more than 7 characters', () => {
+        expect(() => {
+            new Ec2ImageBuilderStart(stack, id, {
+                pipelineArn,
+                hash: '12345678'
+            });
+        }).toThrow(Ec2ImageBuilderStartHashError);
+    });
+
+    it('uses user provided log configuration for lambda', () => {
+        new Ec2ImageBuilderStart(stack, id, {
+            pipelineArn,
+            lambdaConfiguration: {
+                logGroupRetention: RetentionDays.FIVE_DAYS
+            }
+        });
+
+        const template = getTemplate();
+        template.hasResourceProperties('Custom::LogRetention', {
+            RetentionInDays: 5
+        });
     });
 });
