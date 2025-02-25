@@ -7,6 +7,7 @@ import { SecurityGroup, Vpc } from 'aws-cdk-lib/aws-ec2';
 import { CfnComponent } from 'aws-cdk-lib/aws-imagebuilder';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Ec2ImagePipeline } from '../../../src/constructs/ec2-image-pipeline';
+import { Ec2ImagePipelineBuildConfigError } from '../../../src/constructs/ec2-image-pipeline/types/exception';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 
 describeCdkTest(Ec2ImagePipeline, (id, getStack, getTemplate) => {
@@ -144,7 +145,9 @@ describeCdkTest(Ec2ImagePipeline, (id, getStack, getTemplate) => {
         });
 
         // Assert
-        expect(imagePipeline.latestAmi).toBeUndefined();
+        expect(() => imagePipeline.latestAmi).toThrow(
+            Ec2ImagePipelineBuildConfigError
+        );
     });
 
     it('creates image pipeline with custom CfnComponent', () => {

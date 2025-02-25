@@ -33,6 +33,7 @@ import { validate, ValidationTypes } from '../../common/validate';
 import { LambdaConfiguration } from '../../types';
 import { Ec2ImageBuilderGetImage } from '../ec2-image-builder-get-image';
 import { Ec2ImageBuilderStart } from '../ec2-image-builder-start';
+import { Ec2ImagePipelineBuildConfigError } from './types/exception';
 
 /**
  * Base properties for EC2 Image Pipeline configuration.
@@ -125,12 +126,8 @@ export interface Ec2ImagePipelineProps extends Ec2ImagePipelineBaseProps {
  * new CfnOutput(this, 'ImagePipelineAmi', { value: pipeline.latestAmi! });
  */
 export class Ec2ImagePipeline extends Construct {
-    /**
-     * The latest AMI built by the pipeline. NOTE: You must have enabled the
-     * Build Configuration option to wait for image build completion for this
-     * property to be available.
-     */
-    public readonly latestAmi: string | undefined;
+    private readonly _latestAmi: string | undefined;
+    private readonly _buildConfigured: boolean;
 
     /**
      * The Image Pipeline ARN that gets created.
@@ -141,6 +138,18 @@ export class Ec2ImagePipeline extends Construct {
      * The Image Pipeline Topic that gets created.
      */
     public readonly imagePipelineTopic: ITopic;
+
+    /**
+     * The latest AMI built by the pipeline. NOTE: You must have enabled the
+     * Build Configuration option to wait for image build completion for this
+     * property to be available.
+     */
+    public get latestAmi(): string | undefined {
+        if (!this._buildConfigured) {
+            throw new Ec2ImagePipelineBuildConfigError();
+        }
+        return this._latestAmi;
+    }
 
     /**
      * An EC2 Image Pipeline that can be used to build a Amazon Machine Image
@@ -277,6 +286,7 @@ export class Ec2ImagePipeline extends Construct {
             description: props?.description
         });
 
+        this._buildConfigured = false;
         if (props?.buildConfiguration?.start) {
             const imageBuild = new Ec2ImageBuilderStart(this, 'StartPipeline', {
                 pipelineArn: imagePipeline.attrArn,
@@ -302,7 +312,8 @@ export class Ec2ImagePipeline extends Construct {
                 });
                 image.node.addDependency(imageBuild);
 
-                this.latestAmi = image.ami;
+                this._latestAmi = image.ami;
+                this._buildConfigured = true;
             }
         }
 

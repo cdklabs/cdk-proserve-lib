@@ -22,6 +22,10 @@ import { DefaultConfig } from '../../common/default-config';
 import { validate, ValidationTypes } from '../../common/validate';
 import { LambdaConfiguration } from '../../types/lambda-configuration';
 import { SecureFunction } from '../secure-function';
+import {
+    Ec2ImageBuilderStartHashError,
+    Ec2ImageBuilderStartTimeoutError
+} from './types/exception';
 
 /**
  * Properties for the EC2 Image Builder Start custom resource
@@ -117,10 +121,10 @@ export class Ec2ImageBuilderStart extends Construct {
         super(scope, id);
 
         if ((props.waitForCompletion?.timeout?.toSeconds() ?? 0) > 43200) {
-            throw new Error('Timeout cannot exceed 12 hours');
+            throw new Ec2ImageBuilderStartTimeoutError();
         }
         if ((props.hash?.length ?? 0) > 7) {
-            throw new Error('Hash must be 7 characters or less');
+            throw new Ec2ImageBuilderStartHashError();
         }
         validate(props.pipelineArn, ValidationTypes.AWS_ARN);
 
