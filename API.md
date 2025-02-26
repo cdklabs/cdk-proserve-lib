@@ -663,7 +663,10 @@ A pattern to build an EC2 Image Pipeline specifically for Linux.
 
 This pattern contains opinionated code and features to help create a linux
 pipeline. This pattern further simplifies setting up an image pipeline by
-letting you choose specific operating systems and features.
+letting you choose specific operating systems and features. In addition, this
+pattern will automatically start the pipeline and wait for it to complete.
+This allows you to reference the AMI from this construct and utilize it in
+your application (see example).
 
 The example below shows how you can configure an image that contains the AWS
 CLI and retains the SSM agent on the image. The image will have a 100GB root
@@ -672,22 +675,23 @@ volume.
 *Example*
 
 ```typescript
+import { CfnOutput } from 'aws-cdk-lib';
 import { Ec2LinuxImagePipeline } from '@cdklabs/cdk-proserve-lib/patterns';
 
-new Ec2LinuxImagePipeline(this, 'ImagePipeline', {
+const pipeline = new Ec2LinuxImagePipeline(this, 'ImagePipeline', {
   version: '0.1.0',
   operatingSystem:
-    Ec2LinuxImagePipeline.OperatingSystem.RED_HAT_ENTERPRISE_LINUX_8_9,
+    Ec2LinuxImagePipeline.OperatingSystem.AMAZON_LINUX_2023,
   rootVolumeSize: 100,
-    buildConfiguration: {
-      start: true,
-      waitForCompletion: true
-    },
   features: [
     Ec2LinuxImagePipeline.Feature.AWS_CLI,
     Ec2LinuxImagePipeline.Feature.RETAIN_SSM_AGENT
   ]
 );
+
+new CfnOutput(this, 'AmiId', {
+  value: pipeline.latestAmi,
+})
 ```
 
 
