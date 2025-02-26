@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { join } from 'path';
-import { Stack, Duration, IAspect } from 'aws-cdk-lib';
+import { Stack, Duration, IAspect, Aws } from 'aws-cdk-lib';
 import { Metric, Alarm, ComparisonOperator } from 'aws-cdk-lib/aws-cloudwatch';
 import { LambdaAction } from 'aws-cdk-lib/aws-cloudwatch-actions';
 import { Instance, CfnInstance } from 'aws-cdk-lib/aws-ec2';
@@ -23,11 +23,10 @@ import { LambdaConfiguration } from '../../interfaces/lambda-configuration';
  */
 
 export interface CustomMetricConfig {
-    namespace: string;
-    metricName: string;
-    period: Duration;
-    statistic: string;
-    threshold: number;
+    readonly metricName: string;
+    readonly period: Duration;
+    readonly statistic: string;
+    readonly threshold: number;
 }
 
 export interface Ec2ShutdownProps {
@@ -58,7 +57,6 @@ export class Ec2AutomatedShutdown implements IAspect {
     private static policyByStack: Map<string, PolicyStatement> = new Map();
     private static lambdaByStack: Map<string, SecureFunction> = new Map();
     private readonly defaultMetricConfig: CustomMetricConfig = {
-        namespace: 'AWS/EC2',
         metricName: 'CPUUtilization',
         period: Duration.minutes(1),
         statistic: 'Average',
@@ -111,7 +109,7 @@ export class Ec2AutomatedShutdown implements IAspect {
             throw new Error('Policy not initialized');
         }
 
-        const instanceArn = `arn:${Stack.of(instance).partition}:ec2:${stack.region}:${stack.account}:instance/${
+        const instanceArn = `arn:${Aws.ACCOUNT}:ec2:${stack.region}:${stack.account}:instance/${
             instance instanceof Instance ? instance.instanceId : instance.ref
         }`;
 
@@ -158,20 +156,24 @@ export class Ec2AutomatedShutdown implements IAspect {
             this.props.metricConfig || this.defaultMetricConfig;
 
         const metric = new Metric({
-            namespace: metricConfig.namespace,
+            namespace: 'AWS/EC2',
             metricName: metricConfig.metricName,
             dimensionsMap: { InstanceId: instanceId },
             period: metricConfig.period,
             statistic: metricConfig.statistic
         });
 
-        const alarm = new Alarm(instance, `LowCPUAlarm-${instance.node.id}'`, {
-            metric: metric,
-            threshold: metricConfig.threshold,
-            evaluationPeriods: 2,
-            comparisonOperator: ComparisonOperator.LESS_THAN_THRESHOLD,
-            datapointsToAlarm: 2
-        });
+        const alarm = new Alarm(
+            instance,
+            `${metric.metricName}-${instance.node.id}'`,
+            {
+                metric: metric,
+                threshold: metricConfig.threshold,
+                evaluationPeriods: 2,
+                comparisonOperator: ComparisonOperator.LESS_THAN_THRESHOLD,
+                datapointsToAlarm: 2
+            }
+        );
 
         alarm.addAlarmAction(new LambdaAction(lambdaFunction.function));
     }
