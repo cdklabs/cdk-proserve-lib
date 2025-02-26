@@ -10,6 +10,7 @@ SPDX-License-Identifier: Apache-2.0
 [![Maven version](https://img.shields.io/maven-central/v/io.github.cdklabs/cdk-proserve-lib?color=red)](https://central.sonatype.com/artifact/io.github.cdklabs/cdk-proserve-lib)
 [![NuGet version](https://img.shields.io/nuget/v/Cdklabs.CdkProserveLib?color=purple)](https://www.nuget.org/packages/Cdklabs.CdkProserveLib)
 [![Go version](https://img.shields.io/github/v/release/cdklabs/cdk-proserve-lib?color=blue&label=go)](https://github.com/cdklabs/cdk-proserve-lib-go/tree/main/cdklabscdkproservelib)
+[![codecov](https://codecov.io/gh/cdklabs/cdk-proserve-lib/graph/badge.svg?token=FAXq3coTvd)](https://codecov.io/gh/cdklabs/cdk-proserve-lib)
 
 [![View on Construct Hub](https://constructs.dev/badge?package=@cdklabs/cdk-proserve-lib)](https://constructs.dev/packages/@cdklabs/cdk-proserve-lib)
 

@@ -29,6 +29,7 @@ const project = new CdklabsConstructLibrary({
     prettier: true,
     prettierOptions: p.prettierOptions,
     enablePRAutoMerge: true,
+    codeCov: true,
     versionrcOptions: {
         preset: 'conventionalcommits'
     }
