@@ -316,4 +316,18 @@ describeCdkTest(Ec2LinuxImagePipeline, (id, getStack, getTemplate) => {
             });
         }).toThrow(FeatureError);
     });
+
+    it('applies default buildConfiguration settings when not provided', () => {
+        // Act
+        const pipeline = new Ec2LinuxImagePipeline(stack, id, {
+            version: '0.1.0'
+        });
+
+        // Assert
+        const template = getTemplate();
+        template.hasResource('Custom::Ec2ImageBuilderStart', {});
+        template.hasResource('AWS::CloudFormation::WaitConditionHandle', {});
+
+        expect(pipeline.latestAmi).toBeDefined();
+    });
 });
