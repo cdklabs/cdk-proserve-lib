@@ -14,14 +14,14 @@ import {
     mockItemSortKey,
     resourceType
 } from './fixtures';
-import { DynamoDBProvisionTable } from '../../../src/constructs';
+import { DynamoDbProvisionTable } from '../../../src/constructs';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 import { buildMockArn, mockAccount, mockRegion } from '../../fixtures';
 
 const tableElementName = 'Table';
 const keyElementName = 'Encryption';
 
-describeCdkTest(DynamoDBProvisionTable, (id, getStack, getTemplate) => {
+describeCdkTest(DynamoDbProvisionTable, (id, getStack, getTemplate) => {
     let stack: Stack;
 
     beforeEach(() => {
@@ -41,7 +41,7 @@ describeCdkTest(DynamoDBProvisionTable, (id, getStack, getTemplate) => {
         );
 
         // Act
-        new DynamoDBProvisionTable(stack, id, {
+        new DynamoDbProvisionTable(stack, id, {
             items: [mockItemOne],
             table: {
                 partitionKeyName: mockItemPrimaryKey,
@@ -83,7 +83,7 @@ describeCdkTest(DynamoDBProvisionTable, (id, getStack, getTemplate) => {
         const table = Table.fromTableName(stack, tableElementName, 'test');
 
         // Act
-        new DynamoDBProvisionTable(stack, id, {
+        new DynamoDbProvisionTable(stack, id, {
             items: [mockItemOne],
             table: {
                 partitionKeyName: mockItemPrimaryKey,
@@ -150,7 +150,7 @@ describeCdkTest(DynamoDBProvisionTable, (id, getStack, getTemplate) => {
         const encryption = Key.fromKeyArn(stack, keyElementName, keyArn);
 
         // Act
-        new DynamoDBProvisionTable(stack, id, {
+        new DynamoDbProvisionTable(stack, id, {
             items: [mockItemOne],
             table: {
                 partitionKeyName: mockItemPrimaryKey,
@@ -189,7 +189,7 @@ describeCdkTest(DynamoDBProvisionTable, (id, getStack, getTemplate) => {
         const encryption = new Key(stack, keyElementName);
 
         // Act
-        new DynamoDBProvisionTable(stack, id, {
+        new DynamoDbProvisionTable(stack, id, {
             items: [mockItemOne],
             table: {
                 partitionKeyName: mockItemPrimaryKey,
