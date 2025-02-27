@@ -64,4 +64,5 @@ test.json
 .yarn/
 !/.licenserc.yaml
 !/.github/workflows/lint.yml
+!/.codecov.yml
 !/.projenrc.ts
