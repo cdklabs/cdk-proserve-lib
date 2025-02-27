@@ -14,7 +14,7 @@ export const mockTableNameTwo = 'table-two';
 /**
  * Custom resource type used in AWS CloudFormation
  */
-export const resourceType = 'Custom::DynamoDBProvisionTable';
+export const resourceType = 'Custom::DynamoDbProvisionTable';
 
 /**
  * Mock Physical Resource ID

@@ -85,7 +85,7 @@ Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) 
 
 Count: 10
 
-- [**DynamoDBProvisionTable**](API.md#dynamodbprovisiontable-): Manages provisioning a DynamoDB table.
+- [**DynamoDbProvisionTable**](API.md#dynamodbprovisiontable-): Manages provisioning a DynamoDB table.
 - [**Ec2ImageBuilderGetImage**](API.md#ec2imagebuildergetimage-): Retrieves an EC2 Image Builder image build version.
 - [**Ec2ImageBuilderStart**](API.md#ec2imagebuilderstart-): Starts an EC2 Image Builder Pipeline and optionally waits for the build to complete.
 - [**Ec2ImagePipeline**](API.md#ec2imagepipeline-): An EC2 Image Pipeline that can be used to build a Amazon Machine Image (AMI) automatically.

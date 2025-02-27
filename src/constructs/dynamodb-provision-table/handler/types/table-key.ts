@@ -136,7 +136,7 @@ export class TableKeyCollection extends Array<TableKey> {
      * Add a key to the collection if it is not already present
      * @param key Key to add
      */
-    add(key: TableKey) {
+    add(key: TableKey): void {
         if (!this.has(key)) {
             this.push(key);
         }
@@ -146,7 +146,7 @@ export class TableKeyCollection extends Array<TableKey> {
      * Safely removes a key from the collection
      * @param key The key to remove
      */
-    delete(key: TableKey) {
+    delete(key: TableKey): void {
         const index = this.findIndex((v) => v.equals(key));
 
         if (index !== -1) {

@@ -26,7 +26,10 @@ const ddb = DynamoDBDocument.from(new DynamoDB());
  * @param tableName Table to provision
  * @param items Entries to add to the table
  */
-async function addToTable(tableName: string, items: TableItem[]) {
+async function addToTable(
+    tableName: string,
+    items: TableItem[]
+): Promise<void> {
     console.log(`Adding ${items.length} items to ${tableName}...`);
 
     for (let i = 0; i < items.length; i += DDB_BATCH_WINDOW) {
@@ -49,7 +52,10 @@ async function addToTable(tableName: string, items: TableItem[]) {
  * @param tableName Table to update
  * @param keys Composite keys of the entries to remove
  */
-async function removeFromTable(tableName: string, keys: TableKeyCollection) {
+async function removeFromTable(
+    tableName: string,
+    keys: TableKeyCollection
+): Promise<void> {
     console.log(`Removing ${keys.length} items from ${tableName}...`);
 
     for (let i = 0; i < keys.length; i += DDB_BATCH_WINDOW) {

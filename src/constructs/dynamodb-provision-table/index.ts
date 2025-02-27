@@ -12,20 +12,21 @@ import { Construct } from 'constructs';
 import { LambdaConfiguration } from '../../types';
 import { SecureFunction } from '../secure-function';
 import { ResourceProperties } from './handler/types/resource-properties';
+import { TableItem } from './handler/types/table-item';
 
 /**
- * Properties for the DynamoDBProvisionTable construct.
+ * Properties for the DynamoDbProvisionTable construct.
  */
-export interface DynamoDBProvisionTableProps {
+export interface DynamoDbProvisionTableProps {
     /**
      * Table to provision
      */
-    readonly table: DynamoDBProvisionTable.TableProps;
+    readonly table: DynamoDbProvisionTable.TableProps;
 
     /**
      * Items to provision within the DynamoDB table
      */
-    readonly items: Record<string, unknown>[];
+    readonly items: TableItem[];
 
     /**
      * Encryption key for protecting the framework resources
@@ -41,7 +42,7 @@ export interface DynamoDBProvisionTableProps {
 /**
  * Manages provisioning a DynamoDB table
  */
-export class DynamoDBProvisionTable extends Construct {
+export class DynamoDbProvisionTable extends Construct {
     /**
      * Mapping of providers for each CDK stack
      * Used to ensure only one provider is created per stack
@@ -58,15 +59,15 @@ export class DynamoDBProvisionTable extends Construct {
      */
     private static getOrBuildProvider(
         scope: Construct,
-        props: DynamoDBProvisionTableProps
+        props: DynamoDbProvisionTableProps
     ): Provider {
         const stackId = Stack.of(scope).node.id;
 
-        if (!DynamoDBProvisionTable.serviceTokens.has(stackId)) {
+        if (!DynamoDbProvisionTable.serviceTokens.has(stackId)) {
             // Create a stack level construct to manage the framework
             const provider = new Construct(
                 scope,
-                `Cr${DynamoDBProvisionTable.name}`
+                `Cr${DynamoDbProvisionTable.name}`
             );
 
             const onEventHandler = new SecureFunction(provider, 'OnEvent', {
@@ -79,7 +80,7 @@ export class DynamoDBProvisionTable extends Construct {
                 ...props.lambdaConfiguration
             });
 
-            DynamoDBProvisionTable.serviceTokens.set(
+            DynamoDbProvisionTable.serviceTokens.set(
                 stackId,
                 new Provider(provider, 'Provider', {
                     onEventHandler: onEventHandler.function
@@ -87,7 +88,7 @@ export class DynamoDBProvisionTable extends Construct {
             );
         }
 
-        return DynamoDBProvisionTable.serviceTokens.get(stackId)!;
+        return DynamoDbProvisionTable.serviceTokens.get(stackId)!;
     }
 
     /**
@@ -97,7 +98,7 @@ export class DynamoDBProvisionTable extends Construct {
      * @returns Input for the actual Custom Resource worker
      */
     private static createCustomResourceProperties(
-        props: DynamoDBProvisionTableProps
+        props: DynamoDbProvisionTableProps
     ): ResourceProperties {
         return {
             Items: props.items,
@@ -116,11 +117,11 @@ export class DynamoDBProvisionTable extends Construct {
     constructor(
         scope: Construct,
         id: string,
-        props: DynamoDBProvisionTableProps
+        props: DynamoDbProvisionTableProps
     ) {
         super(scope, id);
 
-        const provider = DynamoDBProvisionTable.getOrBuildProvider(
+        const provider = DynamoDbProvisionTable.getOrBuildProvider(
             scope,
             props
         );
@@ -136,16 +137,16 @@ export class DynamoDBProvisionTable extends Construct {
 
         provider.onEventHandler.role!.attachInlinePolicy(providerPermissions);
 
-        new CustomResource(this, 'DynamoDBProvisionTable', {
+        new CustomResource(this, 'DynamoDbProvisionTable', {
             serviceToken: provider.serviceToken,
             properties:
-                DynamoDBProvisionTable.createCustomResourceProperties(props),
-            resourceType: 'Custom::DynamoDBProvisionTable'
+                DynamoDbProvisionTable.createCustomResourceProperties(props),
+            resourceType: 'Custom::DynamoDbProvisionTable'
         });
     }
 }
 
-export namespace DynamoDBProvisionTable {
+export namespace DynamoDbProvisionTable {
     /**
      * Information about the table to provision
      */
