@@ -8,3 +8,4 @@ export * from './lib/ignore';
 export * from './lib/license';
 export * from './lib/lint';
 export * from './lib/package';
+export * from './lib/test';

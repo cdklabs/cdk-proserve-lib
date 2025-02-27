@@ -43,5 +43,6 @@ p.configureIgnores(project);
 p.configureLicense(project);
 p.configureLinting(project);
 p.configurePackaging(project);
+p.configureTesting(project);
 
 project.synth();

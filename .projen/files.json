@@ -1,5 +1,6 @@
 {
   "files": [
+    ".codecov.yml",
     ".eslintrc.json",
     ".gitattributes",
     ".github/pull_request_template.md",
