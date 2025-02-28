@@ -100,6 +100,7 @@ describeCdkTest(DynamoDbProvisionTable, (id, getStack, getTemplate) => {
                 Statement: Match.arrayWith([
                     Match.objectLike({
                         Action: [
+                            'dynamodb:DescribeTable',
                             'dynamodb:BatchGetItem',
                             'dynamodb:GetRecords',
                             'dynamodb:GetShardIterator',
@@ -110,25 +111,19 @@ describeCdkTest(DynamoDbProvisionTable, (id, getStack, getTemplate) => {
                             'dynamodb:BatchWriteItem',
                             'dynamodb:PutItem',
                             'dynamodb:UpdateItem',
-                            'dynamodb:DeleteItem',
-                            'dynamodb:DescribeTable'
+                            'dynamodb:DeleteItem'
                         ],
                         Effect: 'Allow',
-                        Resource: [
-                            {
-                                'Fn::Join': [
-                                    '',
-                                    [
-                                        'arn:',
-                                        { Ref: 'AWS::Partition' },
-                                        Match.stringLikeRegexp('table/test$')
-                                    ]
+                        Resource: {
+                            'Fn::Join': [
+                                '',
+                                [
+                                    'arn:',
+                                    { Ref: 'AWS::Partition' },
+                                    Match.stringLikeRegexp('table/test$')
                                 ]
-                            },
-                            {
-                                Ref: 'AWS::NoValue'
-                            }
-                        ]
+                            ]
+                        }
                     })
                 ])
             }
@@ -169,6 +164,7 @@ describeCdkTest(DynamoDbProvisionTable, (id, getStack, getTemplate) => {
                     Match.objectLike({
                         Action: [
                             'kms:Decrypt',
+                            'kms:DescribeKey',
                             'kms:Encrypt',
                             'kms:ReEncrypt*',
                             'kms:GenerateDataKey*'
