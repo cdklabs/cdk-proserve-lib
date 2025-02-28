@@ -12,6 +12,8 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
      */
     const sdkVersion = '3.600.0';
     const lambdaHandlerDeps = [
+        `@aws-sdk/client-dynamodb@${sdkVersion}`,
+        `@aws-sdk/lib-dynamodb@${sdkVersion}`,
         `@aws-sdk/client-iam@${sdkVersion}`,
         `@aws-sdk/client-secrets-manager@${sdkVersion}`,
         `@aws-sdk/client-ssm@${sdkVersion}`,
