@@ -4,7 +4,7 @@
 import { join } from 'node:path';
 import { CustomResource, Duration, Stack } from 'aws-cdk-lib';
 import { ITable } from 'aws-cdk-lib/aws-dynamodb';
-import { Policy } from 'aws-cdk-lib/aws-iam';
+import { Effect, Policy, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { Provider } from 'aws-cdk-lib/custom-resources';
@@ -127,12 +127,43 @@ export class DynamoDbProvisionTable extends Construct {
         );
 
         // Create permissions as a separate policy to ensure in DELETEs they are not removed until after the CR has run
-        const providerPermissions = new Policy(this, 'Permissions');
-
-        props.table.resource.grantReadWriteData(providerPermissions);
+        const providerPermissions = new Policy(this, 'Permissions', {
+            statements: [
+                new PolicyStatement({
+                    actions: [
+                        'dynamodb:DescribeTable',
+                        'dynamodb:BatchGetItem',
+                        'dynamodb:GetRecords',
+                        'dynamodb:GetShardIterator',
+                        'dynamodb:Query',
+                        'dynamodb:GetItem',
+                        'dynamodb:Scan',
+                        'dynamodb:ConditionCheckItem',
+                        'dynamodb:BatchWriteItem',
+                        'dynamodb:PutItem',
+                        'dynamodb:UpdateItem',
+                        'dynamodb:DeleteItem'
+                    ],
+                    effect: Effect.ALLOW,
+                    resources: [props.table.resource.tableArn]
+                })
+            ]
+        });
 
         if (props.table.encryption) {
-            props.table.encryption.grantEncryptDecrypt(providerPermissions);
+            providerPermissions.addStatements(
+                new PolicyStatement({
+                    actions: [
+                        'kms:Decrypt',
+                        'kms:DescribeKey',
+                        'kms:Encrypt',
+                        'kms:ReEncrypt*',
+                        'kms:GenerateDataKey*'
+                    ],
+                    effect: Effect.ALLOW,
+                    resources: [props.table.encryption.keyArn]
+                })
+            );
         }
 
         provider.onEventHandler.role!.attachInlinePolicy(providerPermissions);
