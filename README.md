@@ -85,15 +85,15 @@ Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) 
 
 Count: 10
 
-- [**DynamoDbProvisionTable**](API.md#dynamodbprovisiontable-): Manages provisioning a DynamoDB table.
+- [**DynamoDbProvisionTable**](API.md#dynamodbprovisiontable-): Controls the contents of an Amazon DynamoDB table from Infrastructure as Code.
 - [**Ec2ImageBuilderGetImage**](API.md#ec2imagebuildergetimage-): Retrieves an EC2 Image Builder image build version.
 - [**Ec2ImageBuilderStart**](API.md#ec2imagebuilderstart-): Starts an EC2 Image Builder Pipeline and optionally waits for the build to complete.
 - [**Ec2ImagePipeline**](API.md#ec2imagepipeline-): An EC2 Image Pipeline that can be used to build a Amazon Machine Image (AMI) automatically.
 - [**FriendlyEmbrace**](API.md#friendlyembrace-): The Friendly Embrace construct can be used to remove CloudFormation stack dependencies that are based on stack exports and imports.
-- [**IamServerCertificate**](API.md#iamservercertificate-): A construct that creates a Custom Resource to manage an AWS Identity and Access Management Server Certificate for use in regions/partitions where AWS Certificate Manager is not available.
+- [**IamServerCertificate**](API.md#iamservercertificate-): Manages an AWS Identity and Access Management Server Certificate for use in regions/partitions where AWS Certificate Manager is not available.
 - [**NetworkFirewall**](API.md#networkfirewall-): Creates an AWS Network Firewall using a user-supplied Suricata rules file in a VPC.
 - [**NetworkFirewallEndpoints**](API.md#networkfirewallendpoints-): Retrieves Network Firewall endpoints so that you can reference them in your other resources.
-- [**OpenSearchAdminUser**](API.md#opensearchadminuser-): OpenSearchAdminUser construct creates a custom resource to manage an admin user for an Amazon OpenSearch domain.
+- [**OpenSearchAdminUser**](API.md#opensearchadminuser-): Manages an admin user for an Amazon OpenSearch domain.
 - [**WebApplicationFirewall**](API.md#webapplicationfirewall-): Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
 
 ### 🎭 Aspects
