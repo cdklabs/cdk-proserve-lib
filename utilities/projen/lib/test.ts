@@ -13,6 +13,9 @@ export const configureTesting = (project: CdklabsTypeScriptProject) => {
                         default: {
                             informational: true
                         }
+                    },
+                    patch: {
+                        informational: true
                     }
                 }
             }
