@@ -2343,6 +2343,12 @@ export class AwsManagedPolicy {
     public static readonly AMAZON_SAGE_MAKER_PARTNER_APPS_FULL_ACCESS =
         'AmazonSageMakerPartnerAppsFullAccess';
 
+    public static readonly AWS_ELEMENTAL_MEDIA_CONNECT_READ_ONLY_ACCESS =
+        'AWSElementalMediaConnectReadOnlyAccess';
+
+    public static readonly AWS_ELEMENTAL_MEDIA_CONNECT_FULL_ACCESS =
+        'AWSElementalMediaConnectFullAccess';
+
     private constructor() {} // Prevents instantiation
 }
 /** End AWS Managed Policy */

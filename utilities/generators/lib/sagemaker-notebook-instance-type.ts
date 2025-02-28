@@ -5,6 +5,50 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { Pricing } from '@aws-sdk/client-pricing';
 
 /**
+ * The Notebook Instance attributes that come directly from the pricing API.
+ */
+interface NotebookInstanceAttributes {
+    readonly clockSpeed: string;
+    readonly component: string;
+    readonly computeType: string;
+    readonly currentGeneration: string;
+    readonly gpu: string;
+    readonly gpuMemory: string;
+    readonly instanceName: string;
+    readonly instanceType: string;
+    readonly location: string;
+    readonly locationType: string;
+    readonly memory: string;
+    readonly networkPerformance: string;
+    readonly operation: string;
+    readonly physicalCpu: string;
+    readonly physicalGpu: string;
+    readonly platoinstancename: string;
+    readonly platoinstancetype: string;
+    readonly processorArchitecture: string;
+    readonly regionCode: string;
+    readonly servicecode: string;
+    readonly servicename: string;
+    readonly storage: string;
+    readonly usagetype: string;
+    readonly vCpu: string;
+}
+
+/**
+ * The Notebook Instance details that are used to generate the class.
+ */
+interface NotebookInstanceDetails {
+    readonly computeType: string;
+    readonly gpu: string;
+    readonly gpuMemory: string;
+    readonly instanceName: string;
+    readonly memory: string;
+    readonly networkPerformance: string;
+    readonly physicalGpu: string;
+    readonly vCpu: string;
+}
+
+/**
  * Formats an instance type name by converting to uppercase and replacing dots
  * with underscores.
  *
@@ -33,8 +77,8 @@ export async function generateAndInjectSageMakerInstanceTypes() {
         // Create Pricing client
         const client = new Pricing({ region: 'us-east-1' });
 
-        const instanceTypes = new Set<string>();
         let nextToken: string | undefined;
+        const instanceAttributes = new Map<string, NotebookInstanceDetails>();
 
         do {
             const response = await client.getProducts({
@@ -54,10 +98,19 @@ export async function generateAndInjectSageMakerInstanceTypes() {
                     const product = JSON.parse(priceItem);
 
                     if (product.product.productFamily === 'ML Instance') {
-                        const instanceName =
-                            product.product.attributes.instanceName;
-                        if (instanceName) {
-                            instanceTypes.add(instanceName);
+                        const attrs: NotebookInstanceAttributes =
+                            product.product.attributes;
+                        if (attrs.instanceName) {
+                            instanceAttributes.set(attrs.instanceName, {
+                                instanceName: attrs.instanceName,
+                                computeType: attrs.computeType,
+                                vCpu: attrs.vCpu,
+                                memory: attrs.memory,
+                                gpu: attrs.gpu,
+                                gpuMemory: attrs.gpuMemory,
+                                physicalGpu: attrs.physicalGpu,
+                                networkPerformance: attrs.networkPerformance
+                            });
                         }
                     }
                 }
@@ -66,17 +119,35 @@ export async function generateAndInjectSageMakerInstanceTypes() {
             nextToken = response.NextToken;
         } while (nextToken);
 
-        // Sort instance types
-        const sortedInstanceTypes = Array.from(instanceTypes).sort();
-
         // Generate static members
-        const classMembers = sortedInstanceTypes.map((instanceType) => {
-            const name = formatInstanceTypeName(instanceType);
-            return `    /**
-     * ${instanceType} Notebook Instance Type
-     */
-    public static readonly ${name} = '${instanceType}';`;
-        });
+        const classMembers = Array.from(instanceAttributes.entries())
+            .sort(([a], [b]) => a.localeCompare(b))
+            .map(([instanceType, attrs]) => {
+                const name = formatInstanceTypeName(instanceType);
+                return `    /**
+         * ${instanceType} Notebook Instance Type
+         * - Compute Type: ${attrs.computeType}
+         * - vCPU: ${attrs.vCpu}
+         * - Memory: ${attrs.memory}${
+             attrs.gpu
+                 ? `
+         * - GPU: ${attrs.gpu}`
+                 : ''
+         }${
+             attrs.gpuMemory
+                 ? `
+         * - GPU Memory: ${attrs.gpuMemory}`
+                 : ''
+         }${
+             attrs.physicalGpu
+                 ? `
+         * - Physical GPU: ${attrs.physicalGpu}`
+                 : ''
+         }
+         * - Network Performance: ${attrs.networkPerformance}
+         */
+        public static readonly ${name} = '${instanceType}';`;
+            });
 
         // Create the class string
         const classString = `export class SageMakerNotebookInstanceType {
@@ -124,10 +195,20 @@ ${classMembers.join('\n\n')}
         writeFileSync(filePath, newContent);
 
         console.log(
-            `SageMaker Instance Types generated -- count: ${instanceTypes.size}`
+            `SageMaker Instance Types generated -- count: ${instanceAttributes.size}`
         );
     } catch (error) {
         console.error('Error generating and injecting class:', error);
         throw error;
     }
+}
+
+// Execute the generator if running directly
+if (require.main === module) {
+    generateAndInjectSageMakerInstanceTypes()
+        .then(() => console.log('Completed successfully'))
+        .catch((error) => {
+            console.error('Failed to generate service principals:', error);
+            process.exit(1);
+        });
 }
