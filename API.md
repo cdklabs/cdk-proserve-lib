@@ -198,6 +198,113 @@ value.
 ---
 
 
+### DynamoDbProvisionTable <a name="DynamoDbProvisionTable" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable"></a>
+
+Manages provisioning a DynamoDB table.
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+new constructs.DynamoDbProvisionTable(scope: Construct, id: string, props: DynamoDbProvisionTableProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the Custom Resource belongs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for this instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps</code> | Metadata for configuring the Custom Resource. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+Parent to which the Custom Resource belongs.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+Unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps
+
+Metadata for configuring the Custom Resource.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.isConstruct"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+constructs.DynamoDbProvisionTable.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+
 ### Ec2ImageBuilderGetImage <a name="Ec2ImageBuilderGetImage" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImage"></a>
 
 Retrieves an EC2 Image Builder image build version.
@@ -2242,6 +2349,77 @@ such this base path will be used to create the deployment stage to serve assets 
 ```
 
 
+### DynamoDbProvisionTableProps <a name="DynamoDbProvisionTableProps" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps"></a>
+
+Properties for the DynamoDbProvisionTable construct.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const dynamoDbProvisionTableProps: constructs.DynamoDbProvisionTableProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps.property.items">items</a></code> | <code>{[ key: string ]: any}[]</code> | Items to provision within the DynamoDB table. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps.property.table">table</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.TableProps</code> | Table to provision. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the framework resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+
+---
+
+##### `items`<sup>Required</sup> <a name="items" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps.property.items"></a>
+
+```typescript
+public readonly items: {[ key: string ]: any}[];
+```
+
+- *Type:* {[ key: string ]: any}[]
+
+Items to provision within the DynamoDB table.
+
+---
+
+##### `table`<sup>Required</sup> <a name="table" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps.property.table"></a>
+
+```typescript
+public readonly table: TableProps;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.TableProps
+
+Table to provision.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Encryption key for protecting the framework resources.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
+
 ### Ec2ImageBuilderGetImageProps <a name="Ec2ImageBuilderGetImageProps" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImageProps"></a>
 
 Properties for the Ec2ImageBuilderGetImage construct.
@@ -3926,6 +4104,77 @@ public readonly period: RetentionDays;
 - *Type:* aws-cdk-lib.aws_logs.RetentionDays
 
 The retention period for the logs.
+
+---
+
+### TableProps <a name="TableProps" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.TableProps"></a>
+
+Information about the table to provision.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.TableProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const tableProps: constructs.DynamoDbProvisionTable.TableProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.TableProps.property.partitionKeyName">partitionKeyName</a></code> | <code>string</code> | Name of the partition key for the table. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.TableProps.property.resource">resource</a></code> | <code>aws-cdk-lib.aws_dynamodb.ITable</code> | CDK representation of the table itself. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.TableProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional existing encryption key associated with the table. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.TableProps.property.sortKeyName">sortKeyName</a></code> | <code>string</code> | Name of the sort key for the table if applicable. |
+
+---
+
+##### `partitionKeyName`<sup>Required</sup> <a name="partitionKeyName" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.TableProps.property.partitionKeyName"></a>
+
+```typescript
+public readonly partitionKeyName: string;
+```
+
+- *Type:* string
+
+Name of the partition key for the table.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.TableProps.property.resource"></a>
+
+```typescript
+public readonly resource: ITable;
+```
+
+- *Type:* aws-cdk-lib.aws_dynamodb.ITable
+
+CDK representation of the table itself.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.TableProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional existing encryption key associated with the table.
+
+---
+
+##### `sortKeyName`<sup>Optional</sup> <a name="sortKeyName" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.TableProps.property.sortKeyName"></a>
+
+```typescript
+public readonly sortKeyName: string;
+```
+
+- *Type:* string
+
+Name of the sort key for the table if applicable.
 
 ---
 
