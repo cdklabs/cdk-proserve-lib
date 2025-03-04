@@ -58,7 +58,7 @@ describe('Lambda Handler', () => {
     it('should throw error when instance ID is not found in metrics', async () => {
         // Arrange
         (
-            event.detail.configuration as any
+            event.alarmData.configuration as any
         ).metrics[0].metricStat.metric.dimensions = [];
 
         // Act & Assert

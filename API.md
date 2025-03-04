@@ -2307,6 +2307,67 @@ Options for specifying the custom domain name setup.
 
 ---
 
+### CustomMetricConfig <a name="CustomMetricConfig" id="@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig"></a>
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+const customMetricConfig: aspects.CustomMetricConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.metricName">metricName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.period">period</a></code> | <code>aws-cdk-lib.Duration</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.statistic">statistic</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.threshold">threshold</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `metricName`<sup>Required</sup> <a name="metricName" id="@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.metricName"></a>
+
+```typescript
+public readonly metricName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `period`<sup>Required</sup> <a name="period" id="@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.period"></a>
+
+```typescript
+public readonly period: Duration;
+```
+
+- *Type:* aws-cdk-lib.Duration
+
+---
+
+##### `statistic`<sup>Required</sup> <a name="statistic" id="@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.statistic"></a>
+
+```typescript
+public readonly statistic: string;
+```
+
+- *Type:* string
+
+---
+
+##### `threshold`<sup>Required</sup> <a name="threshold" id="@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.threshold"></a>
+
+```typescript
+public readonly threshold: number;
+```
+
+- *Type:* number
+
+---
+
 ### DefaultEndpointConfiguration <a name="DefaultEndpointConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.DefaultEndpointConfiguration"></a>
 
 Domain configuration when using the Amazon API Gateway Default Execution Endpoint.
@@ -3028,6 +3089,64 @@ public readonly rootVolumeSize: number;
 Size for the root volume in GB.
 
 Default: 10 GB.
+
+---
+
+### Ec2ShutdownProps <a name="Ec2ShutdownProps" id="@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps"></a>
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+const ec2ShutdownProps: aspects.Ec2ShutdownProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS Encryption Key to use for encrypting resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.property.metricConfig">metricConfig</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig</code> | Optional custom metric configuration. |
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional KMS Encryption Key to use for encrypting resources.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
+
+##### `metricConfig`<sup>Optional</sup> <a name="metricConfig" id="@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.property.metricConfig"></a>
+
+```typescript
+public readonly metricConfig: CustomMetricConfig;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig
+
+Optional custom metric configuration.
+
+If not provided, defaults to CPU utilization with a 5% threshold.
 
 ---
 
@@ -13551,6 +13670,59 @@ Visits a construct and creates a log group if the construct is a Lambda function
 - *Type:* constructs.IConstruct
 
 The construct being visited.
+
+---
+
+
+
+
+### Ec2AutomatedShutdown <a name="Ec2AutomatedShutdown" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown"></a>
+
+- *Implements:* aws-cdk-lib.IAspect
+
+Aspect that applies a mechanism to automatically shut down an EC2 instance when its CPU utilization falls below a specified threshold.
+
+Allows for cost optimization and the reduction of resources not being actively used.
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+new aspects.Ec2AutomatedShutdown(props: Ec2ShutdownProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps</code> | *No description.* |
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.visit">visit</a></code> | All aspects can visit an IConstruct. |
+
+---
+
+##### `visit` <a name="visit" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.visit"></a>
+
+```typescript
+public visit(node: IConstruct): void
+```
+
+All aspects can visit an IConstruct.
+
+###### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.visit.parameter.node"></a>
+
+- *Type:* constructs.IConstruct
 
 ---
 

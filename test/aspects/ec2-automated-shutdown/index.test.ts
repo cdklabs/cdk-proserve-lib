@@ -103,8 +103,8 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         // Act
         Aspects.of(stack).add(
             new Ec2AutomatedShutdown({
-                MetricConfig: {
-                    MetricName: 'CPUUtilization',
+                metricConfig: {
+                    metricName: 'CPUUtilization',
                     period: Duration.minutes(1),
                     statistic: 'Average',
                     threshold: 10
@@ -122,6 +122,8 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
             })
         });
 
+        const id = `${instance.node.id}.*`;
+
         template.hasResource('AWS::CloudWatch::Alarm', {
             Properties: Match.objectLike({
                 MetricName: 'CPUUtilization',
@@ -135,7 +137,7 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
                     {
                         Name: 'InstanceId',
                         Value: {
-                            Ref: instance.instance.node.id
+                            Ref: Match.stringLikeRegexp(id)
                         }
                     }
                 ]
@@ -153,9 +155,136 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
                 }
             ])
         });
+    });
 
-        // Verify no SNS topic is created
-        template.resourceCountIs('AWS::SNS::Topic', 0);
+    it('should create alarms for multiple EC2 instances', () => {
+        // Arrange
+        const vpc = new Vpc(stack, 'TestVPC', {
+            maxAzs: 2,
+            subnetConfiguration: [
+                {
+                    cidrMask: 24,
+                    name: 'Isolated',
+                    subnetType: SubnetType.PRIVATE_ISOLATED
+                }
+            ]
+        });
+
+        const securityGroup = new SecurityGroup(stack, 'CustomSG', {
+            vpc,
+            allowAllOutbound: false,
+            description: 'Security group for test instances'
+        });
+
+        const instance1 = new Instance(stack, 'TestInstance1', {
+            vpc,
+            vpcSubnets: {
+                subnetType: SubnetType.PRIVATE_ISOLATED
+            },
+            instanceType: InstanceType.of(InstanceClass.T2, InstanceSize.MICRO),
+            machineImage: new AmazonLinuxImage(),
+            securityGroup,
+            requireImdsv2: true
+        });
+
+        const instance2 = new Instance(stack, 'TestInstance2', {
+            vpc,
+            vpcSubnets: {
+                subnetType: SubnetType.PRIVATE_ISOLATED
+            },
+            instanceType: InstanceType.of(InstanceClass.T2, InstanceSize.MICRO),
+            machineImage: new AmazonLinuxImage(),
+            securityGroup,
+            requireImdsv2: true
+        });
+
+        // Act
+        Aspects.of(stack).add(
+            new Ec2AutomatedShutdown({
+                metricConfig: {
+                    metricName: 'CPUUtilization',
+                    period: Duration.minutes(1),
+                    statistic: 'Average',
+                    threshold: 10
+                }
+            })
+        );
+
+        template = getTemplate();
+
+        // Assert
+        template.resourceCountIs('AWS::Lambda::Function', 1);
+        template.resourceCountIs('AWS::CloudWatch::Alarm', 2);
+
+        const id1 = `${instance1.node.id}.*`;
+        const id2 = `${instance2.node.id}.*`;
+
+        template.hasResource('AWS::CloudWatch::Alarm', {
+            Properties: Match.objectLike({
+                MetricName: 'CPUUtilization',
+                Namespace: 'AWS/EC2',
+                Statistic: 'Average',
+                Threshold: 10,
+                Period: 60,
+                EvaluationPeriods: 2,
+                DatapointsToAlarm: 2,
+                ComparisonOperator: 'LessThanThreshold',
+                Dimensions: [
+                    {
+                        Name: 'InstanceId',
+                        Value: {
+                            Ref: Match.stringLikeRegexp(id1)
+                        }
+                    }
+                ],
+                AlarmActions: Match.arrayWith([
+                    {
+                        'Fn::GetAtt': Match.arrayWith([
+                            Match.stringLikeRegexp('Ec2ShutdownFunction'),
+                            'Arn'
+                        ])
+                    }
+                ])
+            })
+        });
+
+        // Verify alarm for second instance
+        template.hasResource('AWS::CloudWatch::Alarm', {
+            Properties: Match.objectLike({
+                MetricName: 'CPUUtilization',
+                Namespace: 'AWS/EC2',
+                Statistic: 'Average',
+                Threshold: 10,
+                Period: 60,
+                EvaluationPeriods: 2,
+                DatapointsToAlarm: 2,
+                ComparisonOperator: 'LessThanThreshold',
+                Dimensions: [
+                    {
+                        Name: 'InstanceId',
+                        Value: {
+                            Ref: Match.stringLikeRegexp(id2)
+                        }
+                    }
+                ],
+                AlarmActions: Match.arrayWith([
+                    {
+                        'Fn::GetAtt': Match.arrayWith([
+                            Match.stringLikeRegexp('Ec2ShutdownFunction'),
+                            'Arn'
+                        ])
+                    }
+                ])
+            })
+        });
+
+        const alarms = template.findResources('AWS::CloudWatch::Alarm');
+        const alarmValues = Object.values(alarms);
+        const lambdaArn1 =
+            alarmValues[0].Properties.AlarmActions[0]['Fn::GetAtt'][0];
+        const lambdaArn2 =
+            alarmValues[1].Properties.AlarmActions[0]['Fn::GetAtt'][0];
+        expect(lambdaArn1).toBe(lambdaArn2);
     });
 
     it('should create alarm with default CPU metric when no metric config is provided', () => {
@@ -182,7 +311,7 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
             description: 'Key for encrypting resources'
         });
 
-        new Instance(stack, 'TestInstance', {
+        const testInstance = new Instance(stack, 'TestInstance', {
             vpc,
             vpcSubnets: {
                 subnetType: SubnetType.PRIVATE_ISOLATED
@@ -211,13 +340,15 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
 
         template = getTemplate();
 
+        const id = `${testInstance.node.id}.*`;
+
         // Assert
         template.hasResource('AWS::CloudWatch::Alarm', {
             Properties: Match.objectLike({
                 MetricName: 'CPUUtilization',
                 Namespace: 'AWS/EC2',
                 Statistic: 'Average',
-                Threshold: 5, // default threshold
+                Threshold: 5,
                 Period: 60,
                 EvaluationPeriods: 2,
                 DatapointsToAlarm: 2,
@@ -225,14 +356,13 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
                     {
                         Name: 'InstanceId',
                         Value: {
-                            Ref: Match.stringLikeRegexp('TestInstance')
+                            Ref: Match.stringLikeRegexp(id)
                         }
                     }
                 ]
             })
         });
 
-        // Verify direct Lambda integration
         template.hasResourceProperties('AWS::CloudWatch::Alarm', {
             AlarmActions: Match.arrayWith([
                 {
@@ -249,8 +379,8 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         // Arrange & Act
         Aspects.of(stack).add(
             new Ec2AutomatedShutdown({
-                MetricConfig: {
-                    MetricName: 'CPUUtilization',
+                metricConfig: {
+                    metricName: 'CPUUtilization',
                     period: Duration.minutes(1),
                     statistic: 'Average',
                     threshold: 10

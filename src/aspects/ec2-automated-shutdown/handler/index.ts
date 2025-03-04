@@ -1,17 +1,17 @@
-import { Context, CloudWatchAlarmData } from 'aws-lambda';
+import { Context, CloudWatchAlarmEvent } from 'aws-lambda';
 import { EC2, StopInstancesCommandOutput } from '@aws-sdk/client-ec2';
 
-interface CloudWatchEvent {
-    version: string;
-    id: string;
-    'detail-type': string;
-    source: string;
-    account: string;
-    time: string;
-    region: string;
-    resources: string[];
-    detail: CloudWatchAlarmData;
-}
+// interface CloudWatchEvent {
+//     version: string;
+//     id: string;
+//     'detail-type': string;
+//     source: string;
+//     account: string;
+//     time: string;
+//     region: string;
+//     resources: string[];
+//     detail: CloudWatchAlarmData;
+// }
 
 interface MetricStat {
     metric: {
@@ -28,8 +28,8 @@ interface AlarmConfiguration {
     }>;
 }
 
-const getInstanceId = (event: CloudWatchEvent): string => {
-    const configuration = event.detail.configuration as AlarmConfiguration;
+const getInstanceId = (event: CloudWatchAlarmEvent): string => {
+    const configuration = event.alarmData.configuration as AlarmConfiguration;
     if (!configuration.metrics?.[0]?.metricStat?.metric?.dimensions) {
         throw new Error('Instance ID not found in alarm metrics');
     }
@@ -45,7 +45,7 @@ const getInstanceId = (event: CloudWatchEvent): string => {
 };
 
 export const handler = async (
-    event: CloudWatchEvent,
+    event: CloudWatchAlarmEvent,
     _context: Context
 ): Promise<void> => {
     try {
@@ -55,7 +55,7 @@ export const handler = async (
         );
 
         // Check if the alarm is in ALARM state
-        if (event.detail.state.value !== 'ALARM') {
+        if (event.alarmData.state.value !== 'ALARM') {
             console.info('Not in ALARM state, skipping');
             return;
         }

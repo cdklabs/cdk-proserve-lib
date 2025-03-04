@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { CloudWatchAlarmData } from 'aws-lambda';
+import { CloudWatchAlarmEvent } from 'aws-lambda';
 import {
     mockAccount,
     mockRegion,
@@ -32,16 +32,13 @@ export const mockAlarmArn = buildMockArn(
 /**
  * Mock CloudWatch Alarm event for testing Lambda handler
  */
-export const mockCloudWatchEvent = {
-    version: '0',
-    id: 'test-id',
-    'detail-type': 'CloudWatch Alarm State Change',
+export const mockCloudWatchEvent: CloudWatchAlarmEvent = {
     source: 'aws.cloudwatch',
-    account: mockAccount,
+    accountId: mockAccount,
     time: '2024-02-11T00:00:00Z',
     region: mockRegion,
-    resources: [mockAlarmArn],
-    detail: {
+    alarmArn: mockAlarmArn,
+    alarmData: {
         alarmName: mockAlarmName,
         state: {
             value: 'ALARM',
@@ -74,7 +71,7 @@ export const mockCloudWatchEvent = {
                 }
             ]
         }
-    } as CloudWatchAlarmData
+    }
 };
 
 /**
@@ -106,8 +103,8 @@ export const buildCloudWatchEventWithState = (
     state: 'OK' | 'ALARM' | 'INSUFFICIENT_DATA'
 ) => ({
     ...mockCloudWatchEvent,
-    detail: {
-        ...mockCloudWatchEvent.detail,
+    alarmData: {
+        ...mockCloudWatchEvent.alarmData,
         state: {
             value: state,
             reason: 'Threshold Crossed',
