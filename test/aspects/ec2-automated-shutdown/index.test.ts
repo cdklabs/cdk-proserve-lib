@@ -15,7 +15,10 @@ import {
 } from 'aws-cdk-lib/aws-ec2';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { NagSuppressions } from 'cdk-nag';
-import { Ec2AutomatedShutdown } from '../../../src/aspects/ec2-automated-shutdown';
+import {
+    Ec2AutomatedShutdown,
+    Ec2MetricName
+} from '../../../src/aspects/ec2-automated-shutdown';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 import { mockVpcId, mockCidrBlock } from '../../fixtures/network';
 import { ComparisonOperator } from 'aws-cdk-lib/aws-cloudwatch';
@@ -105,7 +108,7 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         Aspects.of(stack).add(
             new Ec2AutomatedShutdown({
                 alarmConfig: {
-                    metricName: 'CPUUtilization',
+                    metricName: Ec2MetricName.CPUUTILIZATION,
                     period: Duration.minutes(1),
                     statistic: 'Average',
                     threshold: 10,
@@ -206,7 +209,7 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         Aspects.of(stack).add(
             new Ec2AutomatedShutdown({
                 alarmConfig: {
-                    metricName: 'CPUUtilization',
+                    metricName: Ec2MetricName.CPUUTILIZATION,
                     period: Duration.minutes(1),
                     statistic: 'Average',
                     threshold: 10,
@@ -387,7 +390,7 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         Aspects.of(stack).add(
             new Ec2AutomatedShutdown({
                 alarmConfig: {
-                    metricName: 'CPUUtilization',
+                    metricName: Ec2MetricName.CPUUTILIZATION,
                     period: Duration.minutes(1),
                     statistic: 'Average',
                     threshold: 10,

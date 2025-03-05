@@ -12,7 +12,6 @@ import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { IConstruct } from 'constructs';
 import { SecureFunction } from '../../constructs/secure-function';
 import { LambdaConfiguration } from '../../types/lambda-configuration';
-import { Ec2MetricName } from './types';
 
 /**
  * Optional custom metric configuration for CloudWatch Alarms.
@@ -21,30 +20,37 @@ import { Ec2MetricName } from './types';
 export interface AlarmConfig {
     /**
      * The name of the CloudWatch metric to monitor
+     * @default = CPUUtilization
      */
     readonly metricName: Ec2MetricName;
     /**
      * The period over which the metric is measured
+     * @default = 1 minute
      */
     readonly period: Duration;
     /**
      * The CloudWatch metric statistic to use
+     * @default = 'Average'
      */
     readonly statistic: string;
     /**
      * The threshold value for the alarm
+     * @default = 5%
      */
     readonly threshold: number;
     /**
      * The number of periods over which data is compared to the specified threshold
+     * @default = 3
      */
     readonly evaluationPeriods: number;
     /**
      * The number of datapoints that must go past/below the threshold to trigger the alarm
+     * @default = 2
      */
     readonly datapointsToAlarm: number;
     /**
      * The comparison operator to use for the alarm
+     * @default = ComparisonOperator.LESS_THAN_THRESHOLD
      */
     readonly comparisonOperator: ComparisonOperator;
 }
@@ -77,7 +83,7 @@ export class Ec2AutomatedShutdown implements IAspect {
     private static policyByStack: Map<string, PolicyStatement> = new Map();
     private static lambdaByStack: Map<string, SecureFunction> = new Map();
     private readonly defaultAlarmConfig: AlarmConfig = {
-        metricName: 'CPUUtilization',
+        metricName: Ec2MetricName.CPUUTILIZATION,
         period: Duration.minutes(1),
         statistic: 'Average',
         threshold: 5,
@@ -181,3 +187,25 @@ export class Ec2AutomatedShutdown implements IAspect {
         alarm.addAlarmAction(new LambdaAction(lambdaFunction.function));
     }
 }
+
+/** CloudWatch Alarm Metric Names */
+export enum Ec2MetricName {
+    CPUUTILIZATION = 'CPUUtilization',
+    DISKREADOPS = 'DiskReadOps',
+    DISKWRITEOPS = 'DiskWriteOps',
+    DISKREADBYTES = 'DiskReadBytes',
+    DISKWRITEBYTES = 'DiskWriteBytes',
+    NETWORKIN = 'NetworkIn',
+    NETWORKOUT = 'NetworkOut',
+    NETWORKPACKETSIN = 'NetworkPacketsIn',
+    NETWORKPACKETSOUT = 'NetworkPacketsOut',
+    STATUSCHECKFAILED = 'StatusCheckFailed',
+    STATUSCHECKFAILED_INSTANCE = 'StatusCheckFailed_Instance',
+    STATUSCHECKFAILED_SYSTEM = 'StatusCheckFailed_System',
+    METADATANOTOKEN = 'MetadataNoToken',
+    CPUCREDITUSAGE = 'CPUCreditUsage',
+    CPUCREDITBALANCE = 'CPUCreditBalance',
+    CPUSURPLUSCREDITBALANCE = 'CPUSurplusCreditBalance',
+    CPUSURPLUSCREDITSCHARGED = 'CPUSurplusCreditsCharged'
+}
+/** End CloudWatch Alarm Metric Names */
