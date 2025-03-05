@@ -1,3 +1,5 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
 import { Aspects, Stack, Duration } from 'aws-cdk-lib';
 import { Template, Match } from 'aws-cdk-lib/assertions';
 import {
@@ -13,10 +15,7 @@ import {
 } from 'aws-cdk-lib/aws-ec2';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { NagSuppressions } from 'cdk-nag';
-import {
-    Ec2AutomatedShutdown,
-    Ec2MetricName
-} from '../../../src/aspects/ec2-automated-shutdown';
+import { Ec2AutomatedShutdown } from '../../../src/aspects/ec2-automated-shutdown';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 import { mockVpcId, mockCidrBlock } from '../../fixtures/network';
 import { ComparisonOperator } from 'aws-cdk-lib/aws-cloudwatch';
@@ -48,10 +47,6 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
             {
                 id: 'AwsSolutions-EC29',
                 reason: 'Mock instance for testing; no autoscaling'
-            },
-            {
-                id: 'AwsSolutions-L1',
-                reason: 'Lambda function is configured to use latest runtime version'
             }
         ]);
     });
@@ -101,7 +96,8 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         Aspects.of(stack).add(
             new Ec2AutomatedShutdown({
                 alarmConfig: {
-                    metricName: Ec2MetricName.CPUUTILIZATION,
+                    metricName:
+                        Ec2AutomatedShutdown.Ec2MetricName.CPUUTILIZATION,
                     period: Duration.minutes(1),
                     statistic: 'Average',
                     threshold: 10,
@@ -118,7 +114,7 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         template.hasResource('AWS::Lambda::Function', {
             Properties: Match.objectLike({
                 Handler: 'index.handler',
-                Runtime: 'nodejs20.x'
+                Runtime: 'nodejs22.x'
             })
         });
 
@@ -236,7 +232,8 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         Aspects.of(stack).add(
             new Ec2AutomatedShutdown({
                 alarmConfig: {
-                    metricName: Ec2MetricName.CPUUTILIZATION,
+                    metricName:
+                        Ec2AutomatedShutdown.Ec2MetricName.CPUUTILIZATION,
                     period: Duration.minutes(1),
                     statistic: 'Average',
                     threshold: 10,
@@ -410,7 +407,8 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         Aspects.of(stack).add(
             new Ec2AutomatedShutdown({
                 alarmConfig: {
-                    metricName: Ec2MetricName.CPUUTILIZATION,
+                    metricName:
+                        Ec2AutomatedShutdown.Ec2MetricName.CPUUTILIZATION,
                     period: Duration.minutes(1),
                     statistic: 'Average',
                     threshold: 10,

@@ -1,3 +1,5 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
 import { EC2 } from '@aws-sdk/client-ec2';
 import { handler } from '../../../../src/aspects/ec2-automated-shutdown/handler';
 import {

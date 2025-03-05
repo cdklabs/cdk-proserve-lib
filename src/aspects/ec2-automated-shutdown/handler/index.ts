@@ -1,23 +1,14 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+
 import { Context, CloudWatchAlarmEvent } from 'aws-lambda';
 import { EC2, StopInstancesCommandOutput } from '@aws-sdk/client-ec2';
 
-// interface CloudWatchEvent {
-//     version: string;
-//     id: string;
-//     'detail-type': string;
-//     source: string;
-//     account: string;
-//     time: string;
-//     region: string;
-//     resources: string[];
-//     detail: CloudWatchAlarmData;
-// }
-
 interface MetricStat {
-    metric: {
-        dimensions?: {
-            InstanceId?: string;
-            [key: string]: string | undefined;
+    readonly metric: {
+        readonly dimensions?: {
+            readonly InstanceId?: string;
+            readonly [key: string]: string | undefined;
         };
     };
 }

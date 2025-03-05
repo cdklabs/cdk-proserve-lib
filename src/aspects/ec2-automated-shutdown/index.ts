@@ -22,7 +22,7 @@ export interface AlarmConfig {
      * The name of the CloudWatch metric to monitor
      * @default = CPUUtilization
      */
-    readonly metricName: Ec2MetricName;
+    readonly metricName: Ec2AutomatedShutdown.Ec2MetricName;
     /**
      * The period over which the metric is measured
      * @default = 1 minute
@@ -80,13 +80,12 @@ export interface Ec2AutomatedShutdownProps {
  * Allows for cost optimization and the reduction of resources not being actively used.
  */
 export class Ec2AutomatedShutdown implements IAspect {
-    // private static policyByStack: Map<string, PolicyStatement> = new Map();
     private static lambdaByStack: Map<string, SecureFunction> = new Map();
     private static instanceArnsByStack: Map<string, Set<string>> = new Map();
     private processedInstances: Set<string> = new Set();
 
     private readonly defaultAlarmConfig: AlarmConfig = {
-        metricName: Ec2MetricName.CPUUTILIZATION,
+        metricName: Ec2AutomatedShutdown.Ec2MetricName.CPUUTILIZATION,
         period: Duration.minutes(1),
         statistic: 'Average',
         threshold: 5,
@@ -111,7 +110,6 @@ export class Ec2AutomatedShutdown implements IAspect {
             return;
         }
 
-        // Add instance to processed set
         this.processedInstances.add(cfnInstance.ref);
         this.createShutdownMechanism(cfnInstance, stack);
     }
@@ -124,7 +122,7 @@ export class Ec2AutomatedShutdown implements IAspect {
         if (!Ec2AutomatedShutdown.lambdaByStack.has(stackId)) {
             const lambda = new SecureFunction(stack, 'Ec2ShutdownFunction', {
                 code: Code.fromAsset(join(__dirname, 'handler')),
-                runtime: Runtime.NODEJS_20_X,
+                runtime: Runtime.NODEJS_22_X,
                 handler: 'index.handler',
                 timeout: Duration.seconds(15),
                 encryption: this.props.encryption,
@@ -152,19 +150,14 @@ export class Ec2AutomatedShutdown implements IAspect {
         return Ec2AutomatedShutdown.lambdaByStack.get(stackId)!;
     }
 
-    private createShutdownMechanism(instance: IConstruct, stack: Stack): void {
+    private createShutdownMechanism(instance: CfnInstance, stack: Stack): void {
         const stackId = stack.stackId;
 
         if (!Ec2AutomatedShutdown.instanceArnsByStack.has(stackId)) {
             Ec2AutomatedShutdown.instanceArnsByStack.set(stackId, new Set());
         }
 
-        let instanceId: string;
-        if (instance instanceof CfnInstance) {
-            instanceId = instance.ref;
-        } else {
-            throw new Error('Unsupported instance type');
-        }
+        const instanceId = instance.ref;
 
         const instanceArn = `arn:${Aws.PARTITION}:ec2:${Aws.REGION}:${Aws.ACCOUNT_ID}:instance/${instanceId}`;
         Ec2AutomatedShutdown.instanceArnsByStack.get(stackId)?.add(instanceArn);
@@ -197,24 +190,26 @@ export class Ec2AutomatedShutdown implements IAspect {
     }
 }
 
-/** CloudWatch Alarm Metric Names */
-export enum Ec2MetricName {
-    CPUUTILIZATION = 'CPUUtilization',
-    DISKREADOPS = 'DiskReadOps',
-    DISKWRITEOPS = 'DiskWriteOps',
-    DISKREADBYTES = 'DiskReadBytes',
-    DISKWRITEBYTES = 'DiskWriteBytes',
-    NETWORKIN = 'NetworkIn',
-    NETWORKOUT = 'NetworkOut',
-    NETWORKPACKETSIN = 'NetworkPacketsIn',
-    NETWORKPACKETSOUT = 'NetworkPacketsOut',
-    STATUSCHECKFAILED = 'StatusCheckFailed',
-    STATUSCHECKFAILED_INSTANCE = 'StatusCheckFailed_Instance',
-    STATUSCHECKFAILED_SYSTEM = 'StatusCheckFailed_System',
-    METADATANOTOKEN = 'MetadataNoToken',
-    CPUCREDITUSAGE = 'CPUCreditUsage',
-    CPUCREDITBALANCE = 'CPUCreditBalance',
-    CPUSURPLUSCREDITBALANCE = 'CPUSurplusCreditBalance',
-    CPUSURPLUSCREDITSCHARGED = 'CPUSurplusCreditsCharged'
+export namespace Ec2AutomatedShutdown {
+    /** CloudWatch Alarm Metric Names */
+    export enum Ec2MetricName {
+        CPUUTILIZATION = 'CPUUtilization',
+        DISKREADOPS = 'DiskReadOps',
+        DISKWRITEOPS = 'DiskWriteOps',
+        DISKREADBYTES = 'DiskReadBytes',
+        DISKWRITEBYTES = 'DiskWriteBytes',
+        NETWORKIN = 'NetworkIn',
+        NETWORKOUT = 'NetworkOut',
+        NETWORKPACKETSIN = 'NetworkPacketsIn',
+        NETWORKPACKETSOUT = 'NetworkPacketsOut',
+        STATUSCHECKFAILED = 'StatusCheckFailed',
+        STATUSCHECKFAILED_INSTANCE = 'StatusCheckFailed_Instance',
+        STATUSCHECKFAILED_SYSTEM = 'StatusCheckFailed_System',
+        METADATANOTOKEN = 'MetadataNoToken',
+        CPUCREDITUSAGE = 'CPUCreditUsage',
+        CPUCREDITBALANCE = 'CPUCreditBalance',
+        CPUSURPLUSCREDITBALANCE = 'CPUSurplusCreditBalance',
+        CPUSURPLUSCREDITSCHARGED = 'CPUSurplusCreditsCharged'
+    }
+    /** End CloudWatch Alarm Metric Names */
 }
-/** End CloudWatch Alarm Metric Names */
