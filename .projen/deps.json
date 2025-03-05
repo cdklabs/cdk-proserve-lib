@@ -58,6 +58,11 @@
       "type": "build"
     },
     {
+      "name": "@aws-sdk/s3-request-presigner",
+      "version": "3.600.0",
+      "type": "build"
+    },
+    {
       "name": "@codegenie/serverless-express",
       "version": "4.16.0",
       "type": "build"
@@ -204,6 +209,11 @@
     {
       "name": "jest-junit",
       "version": "^16",
+      "type": "build"
+    },
+    {
+      "name": "js-yaml",
+      "version": "4.1.0",
       "type": "build"
     },
     {

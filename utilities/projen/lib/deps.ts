@@ -21,6 +21,7 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         `@aws-sdk/client-imagebuilder@${sdkVersion}`,
         `@aws-sdk/client-cloudformation@${sdkVersion}`,
         `@aws-sdk/client-s3@${sdkVersion}`,
+        `@aws-sdk/s3-request-presigner@${sdkVersion}`,
         '@codegenie/serverless-express@4.16.0',
         '@smithy/types@^3.7.2',
         '@smithy/util-stream-node@4.0.2',
@@ -31,6 +32,7 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         'axios@1.7.7',
         'express@5.0.1',
         'express-async-handler@1.2.0',
+        'js-yaml@4.1.0',
         'mime@3.0.0',
         'morgan@1.10.0',
         'uuid@11.0.3'

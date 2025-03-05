@@ -12,13 +12,14 @@ import {
     CdkCustomResourceIsCompleteResponse,
     Context
 } from 'aws-lambda';
-import axios, { AxiosInstance } from 'axios';
 import { IResourceProperties } from '../models/resource-properties';
 import { IResponseData } from '../models/resource-response';
 import { WorkflowStatusResponse } from '../models/workflow-response';
-import { createSigV4OpensearchClient } from '../utils/aos-client';
-import { formatAxiosError } from '../utils/error';
 import { flattenResponse } from '../utils/flatten';
+import {
+    AwsHttpClient,
+    AwsHttpClientResponseError
+} from '../../../../../common/aws-http-client';
 
 /**
  * Checks OpenSearch to determine if the workflow has been completed or not.
@@ -28,40 +29,36 @@ import { flattenResponse } from '../utils/flatten';
  * @returns CloudFormation response if the workflow has completed or not
  */
 async function isProvisioned(
-    client: AxiosInstance,
+    client: AwsHttpClient,
     workflowId: string
 ): Promise<CdkCustomResourceIsCompleteResponse<IResponseData>> {
-    try {
-        const response = await client.get<WorkflowStatusResponse>(
-            `/_plugins/_flow_framework/workflow/${workflowId}/_status`
+    const response = await client.get<WorkflowStatusResponse>(
+        `/_plugins/_flow_framework/workflow/${workflowId}/_status`
+    );
+    const workflowResponse = response.data;
+
+    console.info(JSON.stringify(workflowResponse));
+
+    if (
+        workflowResponse.state === 'PROVISIONING' ||
+        workflowResponse.state === 'NOT_STARTED'
+    ) {
+        return {
+            IsComplete: false
+        };
+    } else if (workflowResponse.state === 'COMPLETED') {
+        const flatData = flattenResponse(workflowResponse);
+        console.info(`Workflow (${workflowId}) completed!`);
+        console.info(JSON.stringify(flatData));
+
+        return {
+            IsComplete: true,
+            Data: flatData
+        };
+    } else {
+        throw new Error(
+            `Unexpected state (${workflowResponse.state}) while provisioning workflow (${workflowId}), error: ${workflowResponse.error}`
         );
-        const workflowResponse = response.data;
-
-        console.info(JSON.stringify(workflowResponse));
-
-        if (
-            workflowResponse.state === 'PROVISIONING' ||
-            workflowResponse.state === 'NOT_STARTED'
-        ) {
-            return {
-                IsComplete: false
-            };
-        } else if (workflowResponse.state === 'COMPLETED') {
-            const flatData = flattenResponse(workflowResponse);
-            console.info(`Workflow (${workflowId}) completed!`);
-            console.info(JSON.stringify(flatData));
-
-            return {
-                IsComplete: true,
-                Data: flatData
-            };
-        } else {
-            throw new Error(
-                `Unexpected state (${workflowResponse.state}) while provisioning workflow (${workflowId}), error: ${workflowResponse.error}`
-            );
-        }
-    } catch (error) {
-        throw formatAxiosError(error);
     }
 }
 
@@ -73,7 +70,7 @@ async function isProvisioned(
  * @returns Successful completion status
  */
 async function isDeleted(
-    client: AxiosInstance,
+    client: AwsHttpClient,
     workflowId: string
 ): Promise<CdkCustomResourceIsCompleteResponse<IResponseData>> {
     try {
@@ -89,15 +86,17 @@ async function isDeleted(
             IsComplete: false
         };
     } catch (error) {
-        if (axios.isAxiosError(error)) {
-            if (error.response?.status === 404) {
-                // Workflow does not exist, so we can return a success response
+        if (error instanceof AwsHttpClientResponseError) {
+            if (error.response.statusCode === 404) {
+                console.info(`Workflow (${workflowId}) deleted!`);
                 return {
                     IsComplete: true
                 };
             }
+            throw error;
+        } else {
+            throw error;
         }
-        throw formatAxiosError(error);
     }
 }
 
@@ -108,7 +107,12 @@ export async function handler(
     console.info(JSON.stringify(event));
 
     const props = event.ResourceProperties;
-    const client = createSigV4OpensearchClient(props);
+    const client = new AwsHttpClient({
+        service: 'es',
+        roleArn: props.RoleArn,
+        baseUrl: `https://${props.DomainEndpoint}`,
+        timeout: 45000
+    });
 
     let workflowId: string;
     if (event.PhysicalResourceId) {

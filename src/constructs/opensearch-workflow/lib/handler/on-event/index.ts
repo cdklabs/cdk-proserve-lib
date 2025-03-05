@@ -12,7 +12,6 @@ import {
     CdkCustomResourceResponse,
     Context
 } from 'aws-lambda';
-import { AxiosInstance } from 'axios';
 import { readFileSync } from 'fs';
 import { Json } from '../models/json';
 import { IResourceProperties } from '../models/resource-properties';
@@ -21,14 +20,13 @@ import {
     WorkflowState,
     WorkflowStatusResponse
 } from '../models/workflow-response';
-import { createSigV4OpensearchClient } from '../utils/aos-client';
-import { downloadFileAsset } from '../utils/asset';
-import { formatAxiosError } from '../utils/error';
 import {
     generatePresignedUrlMapping,
     parseTemplate,
     substituteTemplateValues
 } from '../utils/parse';
+import { AwsHttpClient } from '../../../../../common/aws-http-client';
+import { downloadS3Asset } from '../../../../../common/download-s3-asset';
 
 /**
  * Handles AWS CloudFormation CREATE calls
@@ -39,29 +37,25 @@ import {
  * @returns Metadata about the outcome or an error message
  */
 async function onCreate(
-    client: AxiosInstance,
+    client: AwsHttpClient,
     template: Json,
     provisionVariables?: Record<string, string>
 ): Promise<CdkCustomResourceResponse<never>> {
-    try {
-        const createWorkflowResponse = await client.post<WorkflowResponse>(
-            `/_plugins/_flow_framework/workflow`,
-            template
-        );
+    const createWorkflowResponse = await client.post<WorkflowResponse>(
+        `/_plugins/_flow_framework/workflow`,
+        template
+    );
 
-        const workflowId = createWorkflowResponse.data.workflow_id;
+    const workflowId = createWorkflowResponse.data.workflow_id;
 
-        await client.post<WorkflowResponse>(
-            `/_plugins/_flow_framework/workflow/${workflowId}/_provision`,
-            provisionVariables
-        );
+    await client.post<WorkflowResponse>(
+        `/_plugins/_flow_framework/workflow/${workflowId}/_provision`,
+        provisionVariables
+    );
 
-        return {
-            PhysicalResourceId: workflowId
-        };
-    } catch (error) {
-        throw formatAxiosError(error);
-    }
+    return {
+        PhysicalResourceId: workflowId
+    };
 }
 
 /**
@@ -76,44 +70,40 @@ async function onCreate(
  * @returns Metadata about the outcome or an error message
  */
 async function onUpdate(
-    client: AxiosInstance,
+    client: AwsHttpClient,
     workflowId: string,
     template: Json,
     provisionVariables?: Record<string, string>
 ): Promise<CdkCustomResourceResponse<never>> {
-    try {
-        // Step 1: Deprovision the existing workflow
-        console.info(`Deprovisioning workflow ${workflowId}`);
-        await client.post<WorkflowResponse>(
-            `/_plugins/_flow_framework/workflow/${workflowId}/_deprovision`
-        );
+    // Step 1: Deprovision the existing workflow
+    console.info(`Deprovisioning workflow ${workflowId}`);
+    await client.post<WorkflowResponse>(
+        `/_plugins/_flow_framework/workflow/${workflowId}/_deprovision`
+    );
 
-        await waitForWorkflowStatus(client, workflowId, 'NOT_STARTED');
+    await waitForWorkflowStatus(client, workflowId, 'NOT_STARTED');
 
-        // Step 2: Update the workflow with the new template
-        console.info(`Updating workflow ${workflowId}`);
-        await client.put<WorkflowResponse>(
-            `/_plugins/_flow_framework/workflow/${workflowId}`,
-            template
-        );
+    // Step 2: Update the workflow with the new template
+    console.info(`Updating workflow ${workflowId}`);
+    await client.put<WorkflowResponse>(
+        `/_plugins/_flow_framework/workflow/${workflowId}`,
+        template
+    );
 
-        // Step 3: Provision the updated workflow
-        console.info(`Provisioning the updated workflow ${workflowId}`);
-        await client.post<WorkflowResponse>(
-            `/_plugins/_flow_framework/workflow/${workflowId}/_provision`,
-            provisionVariables
-        );
+    // Step 3: Provision the updated workflow
+    console.info(`Provisioning the updated workflow ${workflowId}`);
+    await client.post<WorkflowResponse>(
+        `/_plugins/_flow_framework/workflow/${workflowId}/_provision`,
+        provisionVariables
+    );
 
-        console.info(
-            `Workflow ${workflowId} has begun the update (provisioning) process.`
-        );
+    console.info(
+        `Workflow ${workflowId} has begun the update (provisioning) process.`
+    );
 
-        return {
-            PhysicalResourceId: workflowId
-        };
-    } catch (error) {
-        throw formatAxiosError(error);
-    }
+    return {
+        PhysicalResourceId: workflowId
+    };
 }
 
 /**
@@ -126,18 +116,14 @@ async function onUpdate(
  * @returns Metadata about the outcome or an error message
  */
 async function onDelete(
-    client: AxiosInstance,
+    client: AwsHttpClient,
     workflowId: string
 ): Promise<CdkCustomResourceResponse<never>> {
-    try {
-        await client.post<WorkflowResponse>(
-            `/_plugins/_flow_framework/workflow/${workflowId}/_deprovision`
-        );
-        await waitForWorkflowStatus(client, workflowId, 'NOT_STARTED');
-        await client.delete(`/_plugins/_flow_framework/workflow/${workflowId}`);
-    } catch (error) {
-        throw formatAxiosError(error);
-    }
+    await client.post<WorkflowResponse>(
+        `/_plugins/_flow_framework/workflow/${workflowId}/_deprovision`
+    );
+    await waitForWorkflowStatus(client, workflowId, 'NOT_STARTED');
+    await client.delete(`/_plugins/_flow_framework/workflow/${workflowId}`);
 
     return {
         PhysicalResourceId: workflowId
@@ -145,7 +131,7 @@ async function onDelete(
 }
 
 async function waitForWorkflowStatus(
-    client: AxiosInstance,
+    client: AwsHttpClient,
     workflowId: string,
     targetStatus: WorkflowState,
     maxAttempts = 10,
@@ -177,7 +163,7 @@ async function getAndParseTemplateFromS3(
     templateCreationVariables?: Record<string, string>,
     templateS3ObjectVariables?: Record<string, string>
 ) {
-    const templateFile = await downloadFileAsset(s3ObjectUrl);
+    const templateFile = await downloadS3Asset(s3ObjectUrl);
     // eslint-disable-next-line security/detect-non-literal-fs-filename
     const templateContents = readFileSync(templateFile.filePath, 'utf-8');
 
@@ -205,7 +191,12 @@ export async function handler(
     console.info(JSON.stringify(event));
 
     const props = event.ResourceProperties;
-    const client = createSigV4OpensearchClient(props);
+    const client = new AwsHttpClient({
+        service: 'es',
+        roleArn: props.RoleArn,
+        baseUrl: `https://${props.DomainEndpoint}`,
+        timeout: 45000
+    });
     let template: Json;
 
     switch (event.RequestType) {
