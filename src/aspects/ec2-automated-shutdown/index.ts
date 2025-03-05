@@ -8,7 +8,7 @@ import { LambdaAction } from 'aws-cdk-lib/aws-cloudwatch-actions';
 import { CfnInstance } from 'aws-cdk-lib/aws-ec2';
 import { PolicyStatement, Effect } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
-import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { Code, Runtime, RuntimeManagementMode } from 'aws-cdk-lib/aws-lambda';
 import { IConstruct } from 'constructs';
 import { SecureFunction } from '../../constructs/secure-function';
 import { LambdaConfiguration } from '../../types/lambda-configuration';
@@ -129,6 +129,7 @@ export class Ec2AutomatedShutdown implements IAspect {
                 timeout: Duration.seconds(15),
                 encryption: this.props.encryption,
                 ...this.props.lambdaConfiguration,
+                runtimeManagementMode: RuntimeManagementMode.AUTO,
                 initialPolicy: [
                     new PolicyStatement({
                         actions: ['ec2:StopInstances'],

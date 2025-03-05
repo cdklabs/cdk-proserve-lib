@@ -9,8 +9,6 @@ import {
     Vpc,
     SubnetType,
     SecurityGroup,
-    FlowLogDestination,
-    FlowLogTrafficType,
     BlockDeviceVolume
 } from 'aws-cdk-lib/aws-ec2';
 import { Key } from 'aws-cdk-lib/aws-kms';
@@ -40,50 +38,31 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
                 reason: 'Not testing IAM in this test scenario.'
             },
             {
-                id: 'AwsSolutions-IAM5',
-                reason: 'Permissions are tightly scoped for EC2 shutdown functionality.'
+                id: 'NIST.800.53.R5-CloudWatchLogGroupEncrypted',
+                reason: 'Mock function for testing'
             },
             {
-                id: 'AwsSolutions-S1',
-                reason: 'This S3 bucket is just used for flow logs for the VPC testing the Aspect.'
+                id: 'AwsSolutions-EC28',
+                reason: 'Mock instance for testing; no autoscaling'
             },
             {
-                id: 'AwsSolutions-S10',
-                reason: 'This S3 bucket is just used for flow logs for the VPC testing the Aspect.'
+                id: 'AwsSolutions-EC29',
+                reason: 'Mock instance for testing; no autoscaling'
             },
             {
-                id: 'NIST.800.53.R5-S3BucketLoggingEnabled',
-                reason: 'This S3 bucket is just used for flow logs for the VPC testing the Aspect.'
-            },
-            {
-                id: 'NIST.800.53.R5-S3BucketPublicReadProhibited',
-                reason: 'This S3 bucket is just used for flow logs for the VPC testing the Aspect.'
-            },
-            {
-                id: 'NIST.800.53.R5-S3BucketPublicWriteProhibited',
-                reason: 'This S3 bucket is just used for flow logs for the VPC testing the Aspect.'
-            },
-            {
-                id: 'NIST.800.53.R5-S3BucketReplicationEnabled',
-                reason: 'This S3 bucket is just used for flow logs for the VPC testing the Aspect.'
-            },
-            {
-                id: 'NIST.800.53.R5-S3BucketSSLRequestsOnly',
-                reason: 'This S3 bucket is just used for flow logs for the VPC testing the Aspect.'
-            },
-            {
-                id: 'NIST.800.53.R5-S3BucketVersioningEnabled',
-                reason: 'This S3 bucket is just used for flow logs for the VPC testing the Aspect.'
-            },
-            {
-                id: 'NIST.800.53.R5-S3DefaultEncryptionKMS',
-                reason: 'This S3 bucket is just used for flow logs for the VPC testing the Aspect.'
+                id: 'AwsSolutions-L1',
+                reason: 'Lambda function is configured to use latest runtime version'
             }
         ]);
     });
 
     it('should create alarm with direct lambda integration when visiting an EC2 instance', () => {
         // Arrange
+        const encryptionKey = new Key(stack, 'EncryptionKey', {
+            enableKeyRotation: true,
+            description: 'Key for encrypting resources'
+        });
+
         const instance = new Instance(stack, 'TestInstance', {
             vpc: Vpc.fromVpcAttributes(stack, 'ImportedVPC', {
                 vpcId: mockVpcId,
@@ -105,7 +84,17 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
                 }),
                 allowAllOutbound: false,
                 description: 'Security group for test instance'
-            })
+            }),
+            blockDevices: [
+                {
+                    deviceName: '/dev/xvda',
+                    volume: BlockDeviceVolume.ebs(8, {
+                        encrypted: true,
+                        kmsKey: encryptionKey
+                    })
+                }
+            ],
+            requireImdsv2: true
         });
 
         // Act
@@ -170,43 +159,77 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
 
     it('should create alarms for multiple EC2 instances', () => {
         // Arrange
-        const vpc = new Vpc(stack, 'TestVPC', {
-            maxAzs: 2,
-            subnetConfiguration: [
+        const encryptionKey = new Key(stack, 'EncryptionKey', {
+            enableKeyRotation: true,
+            description: 'Key for encrypting resources'
+        });
+
+        const instance1 = new Instance(stack, 'TestInstance1', {
+            vpc: Vpc.fromVpcAttributes(stack, 'ImportedVPC', {
+                vpcId: mockVpcId,
+                availabilityZones: ['us-east-1a'],
+                privateSubnetIds: ['subnet-12345'],
+                vpcCidrBlock: mockCidrBlock
+            }),
+            vpcSubnets: {
+                subnetType: SubnetType.PRIVATE_WITH_EGRESS
+            },
+            instanceType: InstanceType.of(InstanceClass.T2, InstanceSize.MICRO),
+            machineImage: new AmazonLinuxImage(),
+            securityGroup: new SecurityGroup(stack, 'CustomSG', {
+                vpc: Vpc.fromVpcAttributes(stack, 'ImportedVPCForSG', {
+                    vpcId: mockVpcId,
+                    availabilityZones: ['us-east-1a'],
+                    privateSubnetIds: ['subnet-12345'],
+                    vpcCidrBlock: mockCidrBlock
+                }),
+                allowAllOutbound: false,
+                description: 'Security group for test instance'
+            }),
+            requireImdsv2: true,
+            blockDevices: [
                 {
-                    cidrMask: 24,
-                    name: 'Isolated',
-                    subnetType: SubnetType.PRIVATE_ISOLATED
+                    deviceName: '/dev/xvda',
+                    volume: BlockDeviceVolume.ebs(8, {
+                        encrypted: true,
+                        kmsKey: encryptionKey
+                    })
                 }
             ]
         });
 
-        const securityGroup = new SecurityGroup(stack, 'CustomSG', {
-            vpc,
-            allowAllOutbound: false,
-            description: 'Security group for test instances'
-        });
-
-        const instance1 = new Instance(stack, 'TestInstance1', {
-            vpc,
-            vpcSubnets: {
-                subnetType: SubnetType.PRIVATE_ISOLATED
-            },
-            instanceType: InstanceType.of(InstanceClass.T2, InstanceSize.MICRO),
-            machineImage: new AmazonLinuxImage(),
-            securityGroup,
-            requireImdsv2: true
-        });
-
         const instance2 = new Instance(stack, 'TestInstance2', {
-            vpc,
+            vpc: Vpc.fromVpcAttributes(stack, 'ImportedVPC2', {
+                vpcId: mockVpcId,
+                availabilityZones: ['us-east-1a'],
+                privateSubnetIds: ['subnet-12345'],
+                vpcCidrBlock: mockCidrBlock
+            }),
             vpcSubnets: {
-                subnetType: SubnetType.PRIVATE_ISOLATED
+                subnetType: SubnetType.PRIVATE_WITH_EGRESS
             },
             instanceType: InstanceType.of(InstanceClass.T2, InstanceSize.MICRO),
             machineImage: new AmazonLinuxImage(),
-            securityGroup,
-            requireImdsv2: true
+            securityGroup: new SecurityGroup(stack, 'CustomSG2', {
+                vpc: Vpc.fromVpcAttributes(stack, 'ImportedVPCForSG2', {
+                    vpcId: mockVpcId,
+                    availabilityZones: ['us-east-1a'],
+                    privateSubnetIds: ['subnet-12345'],
+                    vpcCidrBlock: mockCidrBlock
+                }),
+                allowAllOutbound: false,
+                description: 'Security group for test instance'
+            }),
+            requireImdsv2: true,
+            blockDevices: [
+                {
+                    deviceName: '/dev/xvda',
+                    volume: BlockDeviceVolume.ebs(8, {
+                        encrypted: true,
+                        kmsKey: encryptionKey
+                    })
+                }
+            ]
         });
 
         // Act
@@ -303,37 +326,30 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
 
     it('should create alarm with default CPU metric when no metric config is provided', () => {
         // Arrange
-        const vpc = new Vpc(stack, 'TestVPC', {
-            maxAzs: 2,
-            subnetConfiguration: [
-                {
-                    cidrMask: 24,
-                    name: 'Isolated',
-                    subnetType: SubnetType.PRIVATE_ISOLATED
-                }
-            ],
-            flowLogs: {
-                s3: {
-                    destination: FlowLogDestination.toS3(),
-                    trafficType: FlowLogTrafficType.ALL
-                }
-            }
-        });
-
         const encryptionKey = new Key(stack, 'EncryptionKey', {
             enableKeyRotation: true,
             description: 'Key for encrypting resources'
         });
 
         const testInstance = new Instance(stack, 'TestInstance', {
-            vpc,
+            vpc: Vpc.fromVpcAttributes(stack, 'ImportedVPC', {
+                vpcId: mockVpcId,
+                availabilityZones: ['us-east-1a'],
+                privateSubnetIds: ['subnet-12345'],
+                vpcCidrBlock: mockCidrBlock
+            }),
             vpcSubnets: {
-                subnetType: SubnetType.PRIVATE_ISOLATED
+                subnetType: SubnetType.PRIVATE_WITH_EGRESS
             },
             instanceType: InstanceType.of(InstanceClass.T2, InstanceSize.MICRO),
             machineImage: new AmazonLinuxImage(),
             securityGroup: new SecurityGroup(stack, 'CustomSG', {
-                vpc,
+                vpc: Vpc.fromVpcAttributes(stack, 'ImportedVPCForSG', {
+                    vpcId: mockVpcId,
+                    availabilityZones: ['us-east-1a'],
+                    privateSubnetIds: ['subnet-12345'],
+                    vpcCidrBlock: mockCidrBlock
+                }),
                 allowAllOutbound: false,
                 description: 'Security group for test instance'
             }),
