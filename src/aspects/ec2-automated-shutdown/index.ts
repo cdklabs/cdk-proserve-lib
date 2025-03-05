@@ -80,8 +80,11 @@ export interface Ec2AutomatedShutdownProps {
  * Allows for cost optimization and the reduction of resources not being actively used.
  */
 export class Ec2AutomatedShutdown implements IAspect {
-    private static policyByStack: Map<string, PolicyStatement> = new Map();
+    // private static policyByStack: Map<string, PolicyStatement> = new Map();
     private static lambdaByStack: Map<string, SecureFunction> = new Map();
+    private static instanceArnsByStack: Map<string, Set<string>> = new Map();
+    private processedInstances: Set<string> = new Set();
+
     private readonly defaultAlarmConfig: AlarmConfig = {
         metricName: Ec2MetricName.CPUUTILIZATION,
         period: Duration.minutes(1),
@@ -104,10 +107,19 @@ export class Ec2AutomatedShutdown implements IAspect {
         const stack = Stack.of(node);
         const cfnInstance = node as CfnInstance;
 
+        if (this.processedInstances.has(cfnInstance.ref)) {
+            return;
+        }
+
+        // Add instance to processed set
+        this.processedInstances.add(cfnInstance.ref);
         this.createShutdownMechanism(cfnInstance, stack);
     }
 
-    private getLambdaFunction(stack: Stack): SecureFunction {
+    private getLambdaFunction(
+        stack: Stack,
+        instanceArn: string
+    ): SecureFunction {
         const stackId = stack.stackId;
         if (!Ec2AutomatedShutdown.lambdaByStack.has(stackId)) {
             const lambda = new SecureFunction(stack, 'Ec2ShutdownFunction', {
@@ -116,42 +128,35 @@ export class Ec2AutomatedShutdown implements IAspect {
                 handler: 'index.handler',
                 timeout: Duration.seconds(15),
                 encryption: this.props.encryption,
-                ...this.props.lambdaConfiguration
+                ...this.props.lambdaConfiguration,
+                initialPolicy: [
+                    new PolicyStatement({
+                        actions: ['ec2:StopInstances'],
+                        effect: Effect.ALLOW,
+                        resources: [instanceArn]
+                    })
+                ]
             });
-
-            if (!Ec2AutomatedShutdown.policyByStack.has(stackId)) {
-                const policy = new PolicyStatement({
-                    actions: ['ec2:StopInstances'],
-                    effect: Effect.ALLOW
-                });
-                Ec2AutomatedShutdown.policyByStack.set(stackId, policy);
-                lambda.role.addToPolicy(policy);
-            }
             Ec2AutomatedShutdown.lambdaByStack.set(stackId, lambda);
+        } else {
+            const lambda = Ec2AutomatedShutdown.lambdaByStack.get(stackId)!;
+            lambda.function.addToRolePolicy(
+                new PolicyStatement({
+                    actions: ['ec2:StopInstances'],
+                    effect: Effect.ALLOW,
+                    resources: [instanceArn]
+                })
+            );
         }
         return Ec2AutomatedShutdown.lambdaByStack.get(stackId)!;
     }
 
-    private addInstanceToPolicy(instance: CfnInstance, stack: Stack): void {
-        const stackId = stack.stackId;
-        const policy = Ec2AutomatedShutdown.policyByStack.get(stackId);
-
-        if (!policy) {
-            throw new Error('Policy not initialized');
-        }
-
-        const instanceArn = `arn:${Aws.PARTITION}:ec2:${Aws.REGION}:${Aws.ACCOUNT_ID}:instance/${instance.ref}`;
-
-        policy.addResources(instanceArn);
-    }
-
     private createShutdownMechanism(instance: IConstruct, stack: Stack): void {
-        console.log(
-            'Creating shutdown mechanism for instance:',
-            instance.node.id
-        );
+        const stackId = stack.stackId;
 
-        const lambdaFunction = this.getLambdaFunction(stack);
+        if (!Ec2AutomatedShutdown.instanceArnsByStack.has(stackId)) {
+            Ec2AutomatedShutdown.instanceArnsByStack.set(stackId, new Set());
+        }
 
         let instanceId: string;
         if (instance instanceof CfnInstance) {
@@ -160,7 +165,10 @@ export class Ec2AutomatedShutdown implements IAspect {
             throw new Error('Unsupported instance type');
         }
 
-        this.addInstanceToPolicy(instance, stack);
+        const instanceArn = `arn:${Aws.PARTITION}:ec2:${Aws.REGION}:${Aws.ACCOUNT_ID}:instance/${instanceId}`;
+        Ec2AutomatedShutdown.instanceArnsByStack.get(stackId)?.add(instanceArn);
+
+        const lambdaFunction = this.getLambdaFunction(stack, instanceArn);
 
         const alarmConfig = this.props.alarmConfig || this.defaultAlarmConfig;
 

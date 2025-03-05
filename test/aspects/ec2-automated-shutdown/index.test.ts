@@ -29,6 +29,10 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
 
     beforeEach(() => {
         stack = getStack();
+        stack.node.setContext(
+            '@aws-cdk/aws-cloudwatch-actions:changeLambdaPermissionLogicalIdForLambdaAction',
+            true
+        );
 
         NagSuppressions.addStackSuppressions(stack, [
             {
