@@ -18,6 +18,7 @@ import { NagSuppressions } from 'cdk-nag';
 import { Ec2AutomatedShutdown } from '../../../src/aspects/ec2-automated-shutdown';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 import { mockVpcId, mockCidrBlock } from '../../fixtures/network';
+import { ComparisonOperator } from 'aws-cdk-lib/aws-cloudwatch';
 
 describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
     let stack: Stack;
@@ -103,11 +104,14 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         // Act
         Aspects.of(stack).add(
             new Ec2AutomatedShutdown({
-                metricConfig: {
+                alarmConfig: {
                     metricName: 'CPUUtilization',
                     period: Duration.minutes(1),
                     statistic: 'Average',
-                    threshold: 10
+                    threshold: 10,
+                    evaluationPeriods: 2,
+                    datapointsToAlarm: 2,
+                    comparisonOperator: ComparisonOperator.LESS_THAN_THRESHOLD
                 }
             })
         );
@@ -201,11 +205,14 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         // Act
         Aspects.of(stack).add(
             new Ec2AutomatedShutdown({
-                metricConfig: {
+                alarmConfig: {
                     metricName: 'CPUUtilization',
                     period: Duration.minutes(1),
                     statistic: 'Average',
-                    threshold: 10
+                    threshold: 10,
+                    evaluationPeriods: 2,
+                    datapointsToAlarm: 2,
+                    comparisonOperator: ComparisonOperator.LESS_THAN_THRESHOLD
                 }
             })
         );
@@ -350,7 +357,7 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
                 Statistic: 'Average',
                 Threshold: 5,
                 Period: 60,
-                EvaluationPeriods: 2,
+                EvaluationPeriods: 3,
                 DatapointsToAlarm: 2,
                 Dimensions: [
                     {
@@ -379,11 +386,14 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         // Arrange & Act
         Aspects.of(stack).add(
             new Ec2AutomatedShutdown({
-                metricConfig: {
+                alarmConfig: {
                     metricName: 'CPUUtilization',
                     period: Duration.minutes(1),
                     statistic: 'Average',
-                    threshold: 10
+                    threshold: 10,
+                    evaluationPeriods: 2,
+                    datapointsToAlarm: 2,
+                    comparisonOperator: ComparisonOperator.LESS_THAN_THRESHOLD
                 }
             })
         );

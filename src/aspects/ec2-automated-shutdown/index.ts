@@ -14,20 +14,48 @@ import { SecureFunction } from '../../constructs/secure-function';
 import { LambdaConfiguration } from '../../types/lambda-configuration';
 import { Ec2MetricName } from './types';
 
-export interface CustomMetricConfig {
+/**
+ * Optional custom metric configuration for CloudWatch Alarms.
+ * If not provided, defaults to CPU utilization with a 5% threshold.
+ */
+export interface AlarmConfig {
+    /**
+     * The name of the CloudWatch metric to monitor
+     */
     readonly metricName: Ec2MetricName;
+    /**
+     * The period over which the metric is measured
+     */
     readonly period: Duration;
+    /**
+     * The CloudWatch metric statistic to use
+     */
     readonly statistic: string;
+    /**
+     * The threshold value for the alarm
+     */
     readonly threshold: number;
+    /**
+     * The number of periods over which data is compared to the specified threshold
+     */
+    readonly evaluationPeriods: number;
+    /**
+     * The number of datapoints that must go past/below the threshold to trigger the alarm
+     */
+    readonly datapointsToAlarm: number;
+    /**
+     * The comparison operator to use for the alarm
+     */
+    readonly comparisonOperator: ComparisonOperator;
 }
 
-export interface Ec2ShutdownProps {
+export interface Ec2AutomatedShutdownProps {
     /**
      * Optional custom metric configuration.
      * If not provided, defaults to CPU utilization with a 5% threshold.
      */
 
-    readonly metricConfig?: CustomMetricConfig;
+    readonly alarmConfig?: AlarmConfig;
 
     /**
      * Optional Lambda configuration settings.
@@ -42,21 +70,23 @@ export interface Ec2ShutdownProps {
 
 /**
  * Aspect that applies a mechanism to automatically shut down
- * an EC2 instance when its CPU utilization falls below a specified threshold.
+ * an EC2 instance when an alarm is triggered based off of a provided metric .
  * Allows for cost optimization and the reduction of resources not being actively used.
  */
 export class Ec2AutomatedShutdown implements IAspect {
-    // private static processedInstances: Set<string> = new Set();
     private static policyByStack: Map<string, PolicyStatement> = new Map();
     private static lambdaByStack: Map<string, SecureFunction> = new Map();
-    private readonly defaultMetricConfig: CustomMetricConfig = {
+    private readonly defaultAlarmConfig: AlarmConfig = {
         metricName: 'CPUUtilization',
         period: Duration.minutes(1),
         statistic: 'Average',
-        threshold: 5
+        threshold: 5,
+        evaluationPeriods: 3,
+        datapointsToAlarm: 2,
+        comparisonOperator: ComparisonOperator.LESS_THAN_THRESHOLD
     };
 
-    constructor(private readonly props: Ec2ShutdownProps) {}
+    constructor(private readonly props: Ec2AutomatedShutdownProps = {}) {}
 
     visit(node: IConstruct): void {
         const cfnResource = node as CfnResource;
@@ -126,15 +156,14 @@ export class Ec2AutomatedShutdown implements IAspect {
 
         this.addInstanceToPolicy(instance, stack);
 
-        const metricConfig =
-            this.props.metricConfig || this.defaultMetricConfig;
+        const alarmConfig = this.props.alarmConfig || this.defaultAlarmConfig;
 
         const metric = new Metric({
             namespace: 'AWS/EC2',
-            metricName: metricConfig.metricName as string,
+            metricName: alarmConfig.metricName as string,
             dimensionsMap: { InstanceId: instanceId },
-            period: metricConfig.period,
-            statistic: metricConfig.statistic
+            period: alarmConfig.period,
+            statistic: alarmConfig.statistic
         });
 
         const alarm = new Alarm(
@@ -142,10 +171,10 @@ export class Ec2AutomatedShutdown implements IAspect {
             `${metric.metricName}-${instance.node.addr}`,
             {
                 metric: metric,
-                threshold: metricConfig.threshold,
-                evaluationPeriods: 2,
-                comparisonOperator: ComparisonOperator.LESS_THAN_THRESHOLD,
-                datapointsToAlarm: 2
+                threshold: alarmConfig.threshold,
+                evaluationPeriods: alarmConfig.evaluationPeriods,
+                comparisonOperator: alarmConfig.comparisonOperator,
+                datapointsToAlarm: alarmConfig.datapointsToAlarm
             }
         );
 
