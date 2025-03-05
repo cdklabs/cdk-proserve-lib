@@ -200,7 +200,65 @@ value.
 
 ### DynamoDbProvisionTable <a name="DynamoDbProvisionTable" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable"></a>
 
-Manages provisioning a DynamoDB table.
+Controls the contents of an Amazon DynamoDB table from Infrastructure as Code.
+
+This construct uses information about the key attributes of a table and a list of rows to populate the table upon
+creation, update the table upon update, and remove entries from the table upon delete.
+
+WARNING: This construct should only be used with tables that are created and fully managed via IaC. While the
+the construct will only manage rows within the table that it is aware of, there is no way to detect drift and thus
+it is possible to cause data loss within the table if it is managed outside of IaC as well.
+
+The construct also handles encryption for the framework resources using either a provided KMS key or an
+AWS managed key.
+
+*Example*
+
+```typescript
+import { DynamoDbProvisionTable } from '@cdklabs/cdk-proserve-lib/constructs';
+import { Table } from 'aws-cdk-lib/aws-dynamodb';
+import { Key } from 'aws-cdk-lib/aws-kms';
+
+interface TableRow {
+    readonly uid: number;
+    readonly isActive: boolean;
+}
+
+const partitionKey: keyof TableRow = 'uid';
+
+const rows: TableRow[] = [
+    {
+        isActive: true,
+        uid: 1
+    },
+    {
+        isActive: true,
+        uid: 2
+    },
+    {
+        isActive: false,
+        uid: 3
+    }
+];
+
+const tableArn = 'arn:aws:dynamodb:us-west-1:111111111111:table/sample';
+const table = Table.fromTableArn(this, 'Table', tableArn);
+
+const keyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-key-id';
+const key = Key.fromKeyArn(this, 'Encryption', keyArn);
+
+new DynamoDbProvisionTable(this, 'ProvisionTable', {
+    items: rows,
+    table: {
+        partitionKeyName: partitionKey,
+        resource: table,
+        encryption: key
+    }
+});
+
+}
+```
+
 
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.Initializer"></a>
 
@@ -1105,7 +1163,7 @@ Handler for the custom resource.
 
 ### IamServerCertificate <a name="IamServerCertificate" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate"></a>
 
-A construct that creates a Custom Resource to manage an AWS Identity and Access Management Server Certificate for use in regions/partitions where AWS Certificate Manager is not available.
+Manages an AWS Identity and Access Management Server Certificate for use in regions/partitions where AWS Certificate Manager is not available.
 
 This construct allows you to create an IAM Server Certificate using a certificate and private key stored in either
 AWS Systems Manager Parameter Store or AWS Secrets Manager. It uses a Custom Resource to manage the lifecycle of the
@@ -1550,7 +1608,7 @@ The tree node.
 
 ### OpenSearchAdminUser <a name="OpenSearchAdminUser" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser"></a>
 
-OpenSearchAdminUser construct creates a custom resource to manage an admin user for an Amazon OpenSearch domain.
+Manages an admin user for an Amazon OpenSearch domain.
 
 This construct creates a Lambda-backed custom resource that adds an admin user to the specified OpenSearch domain.
 It uses the provided SSM parameter for the username, a provided SSM parameter or Secrets Manager secret for the

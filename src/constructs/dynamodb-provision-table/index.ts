@@ -40,7 +40,62 @@ export interface DynamoDbProvisionTableProps {
 }
 
 /**
- * Manages provisioning a DynamoDB table
+ * Controls the contents of an Amazon DynamoDB table from Infrastructure as Code.
+ *
+ * This construct uses information about the key attributes of a table and a list of rows to populate the table upon
+ * creation, update the table upon update, and remove entries from the table upon delete.
+ *
+ * WARNING: This construct should only be used with tables that are created and fully managed via IaC. While the
+ * the construct will only manage rows within the table that it is aware of, there is no way to detect drift and thus
+ * it is possible to cause data loss within the table if it is managed outside of IaC as well.
+ *
+ * The construct also handles encryption for the framework resources using either a provided KMS key or an
+ * AWS managed key.
+ *
+ * @example
+ *
+ * import { DynamoDbProvisionTable } from '@cdklabs/cdk-proserve-lib/constructs';
+ * import { Table } from 'aws-cdk-lib/aws-dynamodb';
+ * import { Key } from 'aws-cdk-lib/aws-kms';
+ *
+ * interface TableRow {
+ *     readonly uid: number;
+ *     readonly isActive: boolean;
+ * }
+ *
+ * const partitionKey: keyof TableRow = 'uid';
+ *
+ * const rows: TableRow[] = [
+ *     {
+ *         isActive: true,
+ *         uid: 1
+ *     },
+ *     {
+ *         isActive: true,
+ *         uid: 2
+ *     },
+ *     {
+ *         isActive: false,
+ *         uid: 3
+ *     }
+ * ];
+ *
+ * const tableArn = 'arn:aws:dynamodb:us-west-1:111111111111:table/sample';
+ * const table = Table.fromTableArn(this, 'Table', tableArn);
+ *
+ * const keyArn = 'arn:aws:kms:us-east-1:111111111111:key/sample-key-id';
+ * const key = Key.fromKeyArn(this, 'Encryption', keyArn);
+ *
+ * new DynamoDbProvisionTable(this, 'ProvisionTable', {
+ *     items: rows,
+ *     table: {
+ *         partitionKeyName: partitionKey,
+ *         resource: table,
+ *         encryption: key
+ *     }
+ * });
+
+ * }
  */
 export class DynamoDbProvisionTable extends Construct {
     /**
