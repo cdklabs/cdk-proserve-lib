@@ -4,6 +4,9 @@
 import { EC2, StopInstancesCommandOutput } from '@aws-sdk/client-ec2';
 import { Context, CloudWatchAlarmEvent } from 'aws-lambda';
 
+/**
+ * Interface representing the metric stat structure in CloudWatch alarm configuration
+ */
 interface MetricStat {
     readonly metric: {
         readonly dimensions?: {
@@ -13,12 +16,22 @@ interface MetricStat {
     };
 }
 
+/**
+ * Interface representing the CloudWatch alarm configuration structure
+ */
 interface AlarmConfiguration {
     readonly metrics?: Array<{
         readonly metricStat?: MetricStat;
     }>;
 }
 
+/**
+ * Extracts the EC2 instance ID from a CloudWatch alarm event
+ *
+ * @param event - The CloudWatch alarm event containing instance information
+ * @returns The EC2 instance ID
+ * @throws Error if instance ID cannot be found in the alarm metrics
+ */
 const getInstanceId = (event: CloudWatchAlarmEvent): string => {
     const configuration = event.alarmData.configuration as AlarmConfiguration;
     if (!configuration.metrics?.[0]?.metricStat?.metric?.dimensions) {
@@ -35,6 +48,18 @@ const getInstanceId = (event: CloudWatchAlarmEvent): string => {
     return instanceId;
 };
 
+/**
+ * Lambda handler for the EC2 automated shutdown functionality
+ *
+ * Receives CloudWatch alarm events and automatically shuts down EC2 instances
+ * when the associated alarm transitions to ALARM state. This helps control costs
+ * by stopping instances that are detected as idle or underutilized.
+ *
+ * @param event - The CloudWatch alarm event that triggered the Lambda
+ * @param _context - Lambda execution context
+ * @returns Promise that resolves when the function completes
+ * @throws Error if there's a problem shutting down the instance
+ */
 export const handler = async (
     event: CloudWatchAlarmEvent,
     _context: Context
