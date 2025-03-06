@@ -29662,107 +29662,107 @@ CloudWatch Alarm Metric Names.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUUTILIZATION">CPUUTILIZATION</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKREADOPS">DISKREADOPS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKWRITEOPS">DISKWRITEOPS</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKREADBYTES">DISKREADBYTES</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKWRITEBYTES">DISKWRITEBYTES</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKIN">NETWORKIN</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKOUT">NETWORKOUT</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKPACKETSIN">NETWORKPACKETSIN</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKPACKETSOUT">NETWORKPACKETSOUT</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUSCHECKFAILED">STATUSCHECKFAILED</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUSCHECKFAILED_INSTANCE">STATUSCHECKFAILED_INSTANCE</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUSCHECKFAILED_SYSTEM">STATUSCHECKFAILED_SYSTEM</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.METADATANOTOKEN">METADATANOTOKEN</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUCREDITUSAGE">CPUCREDITUSAGE</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUCREDITBALANCE">CPUCREDITBALANCE</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUSURPLUSCREDITBALANCE">CPUSURPLUSCREDITBALANCE</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUSURPLUSCREDITSCHARGED">CPUSURPLUSCREDITSCHARGED</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPU_UTILIZATION">CPU_UTILIZATION</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISK_READ_OPS">DISK_READ_OPS</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISK_WRITE_OPS">DISK_WRITE_OPS</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISK_READ_BYTES">DISK_READ_BYTES</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISK_WRITE_BYTES">DISK_WRITE_BYTES</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORK_IN">NETWORK_IN</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORK_OUT">NETWORK_OUT</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORK_PACKETS_IN">NETWORK_PACKETS_IN</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORK_PACKETS_OUT">NETWORK_PACKETS_OUT</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUS_CHECK_FAILED">STATUS_CHECK_FAILED</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUS_CHECK_FAILED_INSTANCE">STATUS_CHECK_FAILED_INSTANCE</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUS_CHECK_FAILED_SYSTEM">STATUS_CHECK_FAILED_SYSTEM</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.METADATA_NO_TOKEN">METADATA_NO_TOKEN</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPU_CREDIT_USAGE">CPU_CREDIT_USAGE</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPU_CREDIT_BALANCE">CPU_CREDIT_BALANCE</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPU_SURPLUS_CREDIT_BALANCE">CPU_SURPLUS_CREDIT_BALANCE</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPU_SURPLUS_CREDITS_CHARGED">CPU_SURPLUS_CREDITS_CHARGED</a></code> | *No description.* |
 
 ---
 
-##### `CPUUTILIZATION` <a name="CPUUTILIZATION" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUUTILIZATION"></a>
-
----
-
-
-##### `DISKREADOPS` <a name="DISKREADOPS" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKREADOPS"></a>
+##### `CPU_UTILIZATION` <a name="CPU_UTILIZATION" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPU_UTILIZATION"></a>
 
 ---
 
 
-##### `DISKWRITEOPS` <a name="DISKWRITEOPS" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKWRITEOPS"></a>
+##### `DISK_READ_OPS` <a name="DISK_READ_OPS" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISK_READ_OPS"></a>
 
 ---
 
 
-##### `DISKREADBYTES` <a name="DISKREADBYTES" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKREADBYTES"></a>
+##### `DISK_WRITE_OPS` <a name="DISK_WRITE_OPS" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISK_WRITE_OPS"></a>
 
 ---
 
 
-##### `DISKWRITEBYTES` <a name="DISKWRITEBYTES" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKWRITEBYTES"></a>
+##### `DISK_READ_BYTES` <a name="DISK_READ_BYTES" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISK_READ_BYTES"></a>
 
 ---
 
 
-##### `NETWORKIN` <a name="NETWORKIN" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKIN"></a>
+##### `DISK_WRITE_BYTES` <a name="DISK_WRITE_BYTES" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISK_WRITE_BYTES"></a>
 
 ---
 
 
-##### `NETWORKOUT` <a name="NETWORKOUT" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKOUT"></a>
+##### `NETWORK_IN` <a name="NETWORK_IN" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORK_IN"></a>
 
 ---
 
 
-##### `NETWORKPACKETSIN` <a name="NETWORKPACKETSIN" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKPACKETSIN"></a>
+##### `NETWORK_OUT` <a name="NETWORK_OUT" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORK_OUT"></a>
 
 ---
 
 
-##### `NETWORKPACKETSOUT` <a name="NETWORKPACKETSOUT" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKPACKETSOUT"></a>
+##### `NETWORK_PACKETS_IN` <a name="NETWORK_PACKETS_IN" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORK_PACKETS_IN"></a>
 
 ---
 
 
-##### `STATUSCHECKFAILED` <a name="STATUSCHECKFAILED" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUSCHECKFAILED"></a>
+##### `NETWORK_PACKETS_OUT` <a name="NETWORK_PACKETS_OUT" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORK_PACKETS_OUT"></a>
 
 ---
 
 
-##### `STATUSCHECKFAILED_INSTANCE` <a name="STATUSCHECKFAILED_INSTANCE" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUSCHECKFAILED_INSTANCE"></a>
+##### `STATUS_CHECK_FAILED` <a name="STATUS_CHECK_FAILED" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUS_CHECK_FAILED"></a>
 
 ---
 
 
-##### `STATUSCHECKFAILED_SYSTEM` <a name="STATUSCHECKFAILED_SYSTEM" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUSCHECKFAILED_SYSTEM"></a>
+##### `STATUS_CHECK_FAILED_INSTANCE` <a name="STATUS_CHECK_FAILED_INSTANCE" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUS_CHECK_FAILED_INSTANCE"></a>
 
 ---
 
 
-##### `METADATANOTOKEN` <a name="METADATANOTOKEN" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.METADATANOTOKEN"></a>
+##### `STATUS_CHECK_FAILED_SYSTEM` <a name="STATUS_CHECK_FAILED_SYSTEM" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUS_CHECK_FAILED_SYSTEM"></a>
 
 ---
 
 
-##### `CPUCREDITUSAGE` <a name="CPUCREDITUSAGE" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUCREDITUSAGE"></a>
+##### `METADATA_NO_TOKEN` <a name="METADATA_NO_TOKEN" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.METADATA_NO_TOKEN"></a>
 
 ---
 
 
-##### `CPUCREDITBALANCE` <a name="CPUCREDITBALANCE" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUCREDITBALANCE"></a>
+##### `CPU_CREDIT_USAGE` <a name="CPU_CREDIT_USAGE" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPU_CREDIT_USAGE"></a>
 
 ---
 
 
-##### `CPUSURPLUSCREDITBALANCE` <a name="CPUSURPLUSCREDITBALANCE" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUSURPLUSCREDITBALANCE"></a>
+##### `CPU_CREDIT_BALANCE` <a name="CPU_CREDIT_BALANCE" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPU_CREDIT_BALANCE"></a>
 
 ---
 
 
-##### `CPUSURPLUSCREDITSCHARGED` <a name="CPUSURPLUSCREDITSCHARGED" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUSURPLUSCREDITSCHARGED"></a>
+##### `CPU_SURPLUS_CREDIT_BALANCE` <a name="CPU_SURPLUS_CREDIT_BALANCE" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPU_SURPLUS_CREDIT_BALANCE"></a>
+
+---
+
+
+##### `CPU_SURPLUS_CREDITS_CHARGED` <a name="CPU_SURPLUS_CREDITS_CHARGED" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPU_SURPLUS_CREDITS_CHARGED"></a>
 
 ---
 
