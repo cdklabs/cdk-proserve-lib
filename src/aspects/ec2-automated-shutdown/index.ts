@@ -3,7 +3,12 @@
 
 import { join } from 'path';
 import { Stack, Duration, IAspect, Aws, CfnResource } from 'aws-cdk-lib';
-import { Metric, Alarm, ComparisonOperator } from 'aws-cdk-lib/aws-cloudwatch';
+import {
+    Metric,
+    Alarm,
+    ComparisonOperator,
+    Stats
+} from 'aws-cdk-lib/aws-cloudwatch';
 import { LambdaAction } from 'aws-cdk-lib/aws-cloudwatch-actions';
 import { CfnInstance } from 'aws-cdk-lib/aws-ec2';
 import { PolicyStatement, Effect } from 'aws-cdk-lib/aws-iam';
@@ -30,6 +35,10 @@ export interface AlarmConfig {
     readonly period: Duration;
     /**
      * The CloudWatch metric statistic to use
+     *
+     * Use the `aws_cloudwatch.Stats` helper class to construct valid input
+     * strings.
+     *
      * @default = 'Average'
      */
     readonly statistic: string;
@@ -75,9 +84,57 @@ export interface Ec2AutomatedShutdownProps {
 }
 
 /**
- * Aspect that applies a mechanism to automatically shut down
- * an EC2 instance when an alarm is triggered based off of a provided metric .
- * Allows for cost optimization and the reduction of resources not being actively used.
+ * Automatically shut down EC2 instances when an alarm is triggered based off
+ * of a provided metric.
+ *
+ * 🚩 If you are applying this Aspect to multiple EC2 instances, you
+ * will need to configure the CDK context variable flag
+ * `@aws-cdk/aws-cloudwatch-actions:changeLambdaPermissionLogicalIdForLambdaAction`
+ * set to `true`. If this is not configured, applying this Aspect to multiple
+ * EC2 instances will result in a CDK synth error.
+ *
+ * Allows for cost optimization and the reduction of resources not being
+ * actively used. When the EC2 alarm is triggered for a given EC2 instance, it
+ * will automatically trigger a Lambda function to shutdown the instance.
+ *
+ * @example
+ * ```typescript
+ * import { App, Aspects, Duration, Stack } from 'aws-cdk-lib';
+ * import { ComparisonOperator, Stats } from 'aws-cdk-lib/aws-cloudwatch';
+ * import { Instance } from 'aws-cdk-lib/aws-ec2';
+ * import { Ec2AutomatedShutdown } from './src/aspects/ec2-automated-shutdown';
+ *
+ * const app = new App({
+ *     context: {
+ *         '@aws-cdk/aws-cloudwatch-actions:changeLambdaPermissionLogicalIdForLambdaAction':
+ *             true
+ *     }
+ * });
+ * const stack = new Stack(app, 'MyStack');
+ *
+ * // Create your EC2 instance(s)
+ * const instance = new Instance(stack, 'MyInstance', {
+ *     // instance properties
+ * });
+ *
+ * // Apply the aspect to automatically shut down the EC2 instance when underutilized
+ * Aspects.of(stack).add(new Ec2AutomatedShutdown());
+ *
+ * // Or with custom configuration
+ * Aspects.of(stack).add(
+ *     new Ec2AutomatedShutdown({
+ *         alarmConfig: {
+ *             metricName: Ec2AutomatedShutdown.Ec2MetricName.NETWORK_IN,
+ *             period: Duration.minutes(5),
+ *             statistic: Stats.AVERAGE,
+ *             threshold: 100, // 100 bytes
+ *             evaluationPeriods: 6,
+ *             datapointsToAlarm: 5,
+ *             comparisonOperator: ComparisonOperator.LESS_THAN_THRESHOLD
+ *         }
+ *     })
+ * );
+ * ```
  */
 export class Ec2AutomatedShutdown implements IAspect {
     private static lambdaByStack: Map<string, SecureFunction> = new Map();
@@ -87,7 +144,7 @@ export class Ec2AutomatedShutdown implements IAspect {
     private readonly defaultAlarmConfig: AlarmConfig = {
         metricName: Ec2AutomatedShutdown.Ec2MetricName.CPU_UTILIZATION,
         period: Duration.minutes(1),
-        statistic: 'Average',
+        statistic: Stats.AVERAGE,
         threshold: 5,
         evaluationPeriods: 3,
         datapointsToAlarm: 2,
@@ -164,7 +221,10 @@ export class Ec2AutomatedShutdown implements IAspect {
 
         const lambdaFunction = this.getLambdaFunction(stack, instanceArn);
 
-        const alarmConfig = this.props.alarmConfig || this.defaultAlarmConfig;
+        const alarmConfig = {
+            ...this.defaultAlarmConfig,
+            ...(this.props.alarmConfig ?? {})
+        };
 
         const metric = new Metric({
             namespace: 'AWS/EC2',

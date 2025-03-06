@@ -128,4 +128,68 @@ describe('Lambda Handler', () => {
             `Failed to stop EC2 instance ${mockInstanceId}: Cannot read properties of undefined`
         );
     });
+
+    it('should throw error when metrics dimensions are missing', async () => {
+        // Arrange
+        // Completely remove the dimensions object from the metrics
+        (
+            event.alarmData.configuration as any
+        ).metrics[0].metricStat.metric.dimensions = undefined;
+
+        // Act & Assert
+        await expect(handler(event, mockContext)).rejects.toThrow(
+            'Instance ID not found in alarm metrics'
+        );
+    });
+
+    it('should throw error when metrics configuration is deeply missing', async () => {
+        // Arrange
+        // Set up a case where the metrics array exists but without the expected structure
+        (event.alarmData.configuration as any).metrics = [
+            {
+                // Missing metricStat
+                someOtherProperty: 'value'
+            }
+        ];
+
+        // Act & Assert
+        await expect(handler(event, mockContext)).rejects.toThrow(
+            'Instance ID not found in alarm metrics'
+        );
+    });
+
+    it('should throw error with generic message for unknown error types', async () => {
+        // Arrange
+        const nonErrorObject = { someProperty: 'not an error' };
+        mockEC2Client.stopInstances.mockRejectedValueOnce(nonErrorObject);
+
+        // Act & Assert
+        await expect(handler(event, mockContext)).rejects.toThrow(
+            `Failed to stop EC2 instance ${mockInstanceId}: Unknown error`
+        );
+    });
+
+    it('should handle missing CurrentState in EC2 response', async () => {
+        // Arrange
+        const consoleSpy = jest.spyOn(console, 'info');
+        mockEC2Client.stopInstances.mockResolvedValue({
+            StoppingInstances: [
+                {
+                    InstanceId: mockInstanceId,
+                    PreviousState: { Name: 'running' }
+                    // CurrentState is intentionally missing
+                }
+            ]
+        });
+
+        // Act
+        await handler(event, mockContext);
+
+        // Assert
+        expect(consoleSpy).toHaveBeenCalledWith(
+            expect.stringContaining(
+                `Successfully initiated shutdown for instance: ${mockInstanceId}. Current state: undefined`
+            )
+        );
+    });
 });
