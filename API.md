@@ -1930,6 +1930,125 @@ have configured `logging` on the construct.
 
 ## Structs <a name="Structs" id="Structs"></a>
 
+### AlarmConfig <a name="AlarmConfig" id="@cdklabs/cdk-proserve-lib.aspects.AlarmConfig"></a>
+
+Optional custom metric configuration for CloudWatch Alarms.
+
+If not provided, defaults to CPU utilization with a 5% threshold.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+const alarmConfig: aspects.AlarmConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.comparisonOperator">comparisonOperator</a></code> | <code>aws-cdk-lib.aws_cloudwatch.ComparisonOperator</code> | The comparison operator to use for the alarm. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.datapointsToAlarm">datapointsToAlarm</a></code> | <code>number</code> | The number of datapoints that must go past/below the threshold to trigger the alarm. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.evaluationPeriods">evaluationPeriods</a></code> | <code>number</code> | The number of periods over which data is compared to the specified threshold. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.metricName">metricName</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName</code> | The name of the CloudWatch metric to monitor. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.period">period</a></code> | <code>aws-cdk-lib.Duration</code> | The period over which the metric is measured. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.statistic">statistic</a></code> | <code>string</code> | The CloudWatch metric statistic to use. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.threshold">threshold</a></code> | <code>number</code> | The threshold value for the alarm. |
+
+---
+
+##### `comparisonOperator`<sup>Required</sup> <a name="comparisonOperator" id="@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.comparisonOperator"></a>
+
+```typescript
+public readonly comparisonOperator: ComparisonOperator;
+```
+
+- *Type:* aws-cdk-lib.aws_cloudwatch.ComparisonOperator
+- *Default:* = ComparisonOperator.LESS_THAN_THRESHOLD
+
+The comparison operator to use for the alarm.
+
+---
+
+##### `datapointsToAlarm`<sup>Required</sup> <a name="datapointsToAlarm" id="@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.datapointsToAlarm"></a>
+
+```typescript
+public readonly datapointsToAlarm: number;
+```
+
+- *Type:* number
+- *Default:* = 2
+
+The number of datapoints that must go past/below the threshold to trigger the alarm.
+
+---
+
+##### `evaluationPeriods`<sup>Required</sup> <a name="evaluationPeriods" id="@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.evaluationPeriods"></a>
+
+```typescript
+public readonly evaluationPeriods: number;
+```
+
+- *Type:* number
+- *Default:* = 3
+
+The number of periods over which data is compared to the specified threshold.
+
+---
+
+##### `metricName`<sup>Required</sup> <a name="metricName" id="@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.metricName"></a>
+
+```typescript
+public readonly metricName: Ec2MetricName;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName
+- *Default:* = CPUUtilization
+
+The name of the CloudWatch metric to monitor.
+
+---
+
+##### `period`<sup>Required</sup> <a name="period" id="@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.period"></a>
+
+```typescript
+public readonly period: Duration;
+```
+
+- *Type:* aws-cdk-lib.Duration
+- *Default:* = 1 minute
+
+The period over which the metric is measured.
+
+---
+
+##### `statistic`<sup>Required</sup> <a name="statistic" id="@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.statistic"></a>
+
+```typescript
+public readonly statistic: string;
+```
+
+- *Type:* string
+- *Default:* = 'Average'
+
+The CloudWatch metric statistic to use.
+
+---
+
+##### `threshold`<sup>Required</sup> <a name="threshold" id="@cdklabs/cdk-proserve-lib.aspects.AlarmConfig.property.threshold"></a>
+
+```typescript
+public readonly threshold: number;
+```
+
+- *Type:* number
+- *Default:* = 5%
+
+The threshold value for the alarm.
+
+---
+
 ### ApiGatewayStaticHostingProps <a name="ApiGatewayStaticHostingProps" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHostingProps"></a>
 
 Properties for configuring the static hosting pattern.
@@ -2365,67 +2484,6 @@ Options for specifying the custom domain name setup.
 
 ---
 
-### CustomMetricConfig <a name="CustomMetricConfig" id="@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig"></a>
-
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.Initializer"></a>
-
-```typescript
-import { aspects } from '@cdklabs/cdk-proserve-lib'
-
-const customMetricConfig: aspects.CustomMetricConfig = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.metricName">metricName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.period">period</a></code> | <code>aws-cdk-lib.Duration</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.statistic">statistic</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.threshold">threshold</a></code> | <code>number</code> | *No description.* |
-
----
-
-##### `metricName`<sup>Required</sup> <a name="metricName" id="@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.metricName"></a>
-
-```typescript
-public readonly metricName: string;
-```
-
-- *Type:* string
-
----
-
-##### `period`<sup>Required</sup> <a name="period" id="@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.period"></a>
-
-```typescript
-public readonly period: Duration;
-```
-
-- *Type:* aws-cdk-lib.Duration
-
----
-
-##### `statistic`<sup>Required</sup> <a name="statistic" id="@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.statistic"></a>
-
-```typescript
-public readonly statistic: string;
-```
-
-- *Type:* string
-
----
-
-##### `threshold`<sup>Required</sup> <a name="threshold" id="@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig.property.threshold"></a>
-
-```typescript
-public readonly threshold: number;
-```
-
-- *Type:* number
-
----
-
 ### DefaultEndpointConfiguration <a name="DefaultEndpointConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.DefaultEndpointConfiguration"></a>
 
 Domain configuration when using the Amazon API Gateway Default Execution Endpoint.
@@ -2528,6 +2586,64 @@ Encryption key for protecting the framework resources.
 ---
 
 ##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTableProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
+
+### Ec2AutomatedShutdownProps <a name="Ec2AutomatedShutdownProps" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdownProps"></a>
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdownProps.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+const ec2AutomatedShutdownProps: aspects.Ec2AutomatedShutdownProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdownProps.property.alarmConfig">alarmConfig</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.AlarmConfig</code> | Optional custom metric configuration. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdownProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS Encryption Key to use for encrypting resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdownProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+
+---
+
+##### `alarmConfig`<sup>Optional</sup> <a name="alarmConfig" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdownProps.property.alarmConfig"></a>
+
+```typescript
+public readonly alarmConfig: AlarmConfig;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.AlarmConfig
+
+Optional custom metric configuration.
+
+If not provided, defaults to CPU utilization with a 5% threshold.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdownProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional KMS Encryption Key to use for encrypting resources.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdownProps.property.lambdaConfiguration"></a>
 
 ```typescript
 public readonly lambdaConfiguration: LambdaConfiguration;
@@ -3147,64 +3263,6 @@ public readonly rootVolumeSize: number;
 Size for the root volume in GB.
 
 Default: 10 GB.
-
----
-
-### Ec2ShutdownProps <a name="Ec2ShutdownProps" id="@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps"></a>
-
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.Initializer"></a>
-
-```typescript
-import { aspects } from '@cdklabs/cdk-proserve-lib'
-
-const ec2ShutdownProps: aspects.Ec2ShutdownProps = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS Encryption Key to use for encrypting resources. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.property.metricConfig">metricConfig</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig</code> | Optional custom metric configuration. |
-
----
-
-##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.property.encryption"></a>
-
-```typescript
-public readonly encryption: IKey;
-```
-
-- *Type:* aws-cdk-lib.aws_kms.IKey
-
-Optional KMS Encryption Key to use for encrypting resources.
-
----
-
-##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.property.lambdaConfiguration"></a>
-
-```typescript
-public readonly lambdaConfiguration: LambdaConfiguration;
-```
-
-- *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
-
-Optional Lambda configuration settings.
-
----
-
-##### `metricConfig`<sup>Optional</sup> <a name="metricConfig" id="@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps.property.metricConfig"></a>
-
-```typescript
-public readonly metricConfig: CustomMetricConfig;
-```
-
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.CustomMetricConfig
-
-Optional custom metric configuration.
-
-If not provided, defaults to CPU utilization with a 5% threshold.
 
 ---
 
@@ -13738,7 +13796,7 @@ The construct being visited.
 
 - *Implements:* aws-cdk-lib.IAspect
 
-Aspect that applies a mechanism to automatically shut down an EC2 instance when its CPU utilization falls below a specified threshold.
+Aspect that applies a mechanism to automatically shut down an EC2 instance when an alarm is triggered based off of a provided metric .
 
 Allows for cost optimization and the reduction of resources not being actively used.
 
@@ -13747,18 +13805,18 @@ Allows for cost optimization and the reduction of resources not being actively u
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-new aspects.Ec2AutomatedShutdown(props: Ec2ShutdownProps)
+new aspects.Ec2AutomatedShutdown(props?: Ec2AutomatedShutdownProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdownProps</code> | *No description.* |
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Initializer.parameter.props"></a>
+##### `props`<sup>Optional</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Initializer.parameter.props"></a>
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.Ec2ShutdownProps
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdownProps
 
 ---
 
@@ -29592,6 +29650,119 @@ The installation is performed by enabling the Windows features built into the Wi
 ##### `YUM_REPOSITORY_TEST_LINUX` <a name="YUM_REPOSITORY_TEST_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.YUM_REPOSITORY_TEST_LINUX"></a>
 
 Tests whether yum repository works successfully.
+
+---
+
+
+### Ec2MetricName <a name="Ec2MetricName" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName"></a>
+
+CloudWatch Alarm Metric Names.
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUUTILIZATION">CPUUTILIZATION</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKREADOPS">DISKREADOPS</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKWRITEOPS">DISKWRITEOPS</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKREADBYTES">DISKREADBYTES</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKWRITEBYTES">DISKWRITEBYTES</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKIN">NETWORKIN</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKOUT">NETWORKOUT</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKPACKETSIN">NETWORKPACKETSIN</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKPACKETSOUT">NETWORKPACKETSOUT</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUSCHECKFAILED">STATUSCHECKFAILED</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUSCHECKFAILED_INSTANCE">STATUSCHECKFAILED_INSTANCE</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUSCHECKFAILED_SYSTEM">STATUSCHECKFAILED_SYSTEM</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.METADATANOTOKEN">METADATANOTOKEN</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUCREDITUSAGE">CPUCREDITUSAGE</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUCREDITBALANCE">CPUCREDITBALANCE</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUSURPLUSCREDITBALANCE">CPUSURPLUSCREDITBALANCE</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUSURPLUSCREDITSCHARGED">CPUSURPLUSCREDITSCHARGED</a></code> | *No description.* |
+
+---
+
+##### `CPUUTILIZATION` <a name="CPUUTILIZATION" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUUTILIZATION"></a>
+
+---
+
+
+##### `DISKREADOPS` <a name="DISKREADOPS" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKREADOPS"></a>
+
+---
+
+
+##### `DISKWRITEOPS` <a name="DISKWRITEOPS" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKWRITEOPS"></a>
+
+---
+
+
+##### `DISKREADBYTES` <a name="DISKREADBYTES" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKREADBYTES"></a>
+
+---
+
+
+##### `DISKWRITEBYTES` <a name="DISKWRITEBYTES" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISKWRITEBYTES"></a>
+
+---
+
+
+##### `NETWORKIN` <a name="NETWORKIN" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKIN"></a>
+
+---
+
+
+##### `NETWORKOUT` <a name="NETWORKOUT" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKOUT"></a>
+
+---
+
+
+##### `NETWORKPACKETSIN` <a name="NETWORKPACKETSIN" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKPACKETSIN"></a>
+
+---
+
+
+##### `NETWORKPACKETSOUT` <a name="NETWORKPACKETSOUT" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.NETWORKPACKETSOUT"></a>
+
+---
+
+
+##### `STATUSCHECKFAILED` <a name="STATUSCHECKFAILED" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUSCHECKFAILED"></a>
+
+---
+
+
+##### `STATUSCHECKFAILED_INSTANCE` <a name="STATUSCHECKFAILED_INSTANCE" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUSCHECKFAILED_INSTANCE"></a>
+
+---
+
+
+##### `STATUSCHECKFAILED_SYSTEM` <a name="STATUSCHECKFAILED_SYSTEM" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.STATUSCHECKFAILED_SYSTEM"></a>
+
+---
+
+
+##### `METADATANOTOKEN` <a name="METADATANOTOKEN" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.METADATANOTOKEN"></a>
+
+---
+
+
+##### `CPUCREDITUSAGE` <a name="CPUCREDITUSAGE" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUCREDITUSAGE"></a>
+
+---
+
+
+##### `CPUCREDITBALANCE` <a name="CPUCREDITBALANCE" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUCREDITBALANCE"></a>
+
+---
+
+
+##### `CPUSURPLUSCREDITBALANCE` <a name="CPUSURPLUSCREDITBALANCE" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUSURPLUSCREDITBALANCE"></a>
+
+---
+
+
+##### `CPUSURPLUSCREDITSCHARGED` <a name="CPUSURPLUSCREDITSCHARGED" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPUSURPLUSCREDITSCHARGED"></a>
 
 ---
 
