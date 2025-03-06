@@ -98,7 +98,6 @@ export interface Ec2AutomatedShutdownProps {
  * will automatically trigger a Lambda function to shutdown the instance.
  *
  * @example
- * ```typescript
  * import { App, Aspects, Duration, Stack } from 'aws-cdk-lib';
  * import { ComparisonOperator, Stats } from 'aws-cdk-lib/aws-cloudwatch';
  * import { Instance } from 'aws-cdk-lib/aws-ec2';
@@ -134,7 +133,6 @@ export interface Ec2AutomatedShutdownProps {
  *         }
  *     })
  * );
- * ```
  */
 export class Ec2AutomatedShutdown implements IAspect {
     private static lambdaByStack: Map<string, SecureFunction> = new Map();
