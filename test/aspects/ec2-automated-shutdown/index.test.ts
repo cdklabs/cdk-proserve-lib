@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import { Aspects, Stack, Duration } from 'aws-cdk-lib';
 import { Template, Match } from 'aws-cdk-lib/assertions';
+import { ComparisonOperator } from 'aws-cdk-lib/aws-cloudwatch';
 import {
     Instance,
     InstanceType,
@@ -18,7 +19,6 @@ import { NagSuppressions } from 'cdk-nag';
 import { Ec2AutomatedShutdown } from '../../../src/aspects/ec2-automated-shutdown';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
 import { mockVpcId, mockCidrBlock } from '../../fixtures/network';
-import { ComparisonOperator } from 'aws-cdk-lib/aws-cloudwatch';
 
 describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
     let stack: Stack;
@@ -97,7 +97,7 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
             new Ec2AutomatedShutdown({
                 alarmConfig: {
                     metricName:
-                        Ec2AutomatedShutdown.Ec2MetricName.CPUUTILIZATION,
+                        Ec2AutomatedShutdown.Ec2MetricName.CPU_UTILIZATION,
                     period: Duration.minutes(1),
                     statistic: 'Average',
                     threshold: 10,
@@ -233,7 +233,7 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
             new Ec2AutomatedShutdown({
                 alarmConfig: {
                     metricName:
-                        Ec2AutomatedShutdown.Ec2MetricName.CPUUTILIZATION,
+                        Ec2AutomatedShutdown.Ec2MetricName.CPU_UTILIZATION,
                     period: Duration.minutes(1),
                     statistic: 'Average',
                     threshold: 10,
@@ -408,7 +408,7 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
             new Ec2AutomatedShutdown({
                 alarmConfig: {
                     metricName:
-                        Ec2AutomatedShutdown.Ec2MetricName.CPUUTILIZATION,
+                        Ec2AutomatedShutdown.Ec2MetricName.CPU_UTILIZATION,
                     period: Duration.minutes(1),
                     statistic: 'Average',
                     threshold: 10,

@@ -85,7 +85,7 @@ export class Ec2AutomatedShutdown implements IAspect {
     private processedInstances: Set<string> = new Set();
 
     private readonly defaultAlarmConfig: AlarmConfig = {
-        metricName: Ec2AutomatedShutdown.Ec2MetricName.CPUUTILIZATION,
+        metricName: Ec2AutomatedShutdown.Ec2MetricName.CPU_UTILIZATION,
         period: Duration.minutes(1),
         statistic: 'Average',
         threshold: 5,
@@ -193,23 +193,23 @@ export class Ec2AutomatedShutdown implements IAspect {
 export namespace Ec2AutomatedShutdown {
     /** CloudWatch Alarm Metric Names */
     export enum Ec2MetricName {
-        CPUUTILIZATION = 'CPUUtilization',
-        DISKREADOPS = 'DiskReadOps',
-        DISKWRITEOPS = 'DiskWriteOps',
-        DISKREADBYTES = 'DiskReadBytes',
-        DISKWRITEBYTES = 'DiskWriteBytes',
-        NETWORKIN = 'NetworkIn',
-        NETWORKOUT = 'NetworkOut',
-        NETWORKPACKETSIN = 'NetworkPacketsIn',
-        NETWORKPACKETSOUT = 'NetworkPacketsOut',
-        STATUSCHECKFAILED = 'StatusCheckFailed',
-        STATUSCHECKFAILED_INSTANCE = 'StatusCheckFailed_Instance',
-        STATUSCHECKFAILED_SYSTEM = 'StatusCheckFailed_System',
-        METADATANOTOKEN = 'MetadataNoToken',
-        CPUCREDITUSAGE = 'CPUCreditUsage',
-        CPUCREDITBALANCE = 'CPUCreditBalance',
-        CPUSURPLUSCREDITBALANCE = 'CPUSurplusCreditBalance',
-        CPUSURPLUSCREDITSCHARGED = 'CPUSurplusCreditsCharged'
+        CPU_UTILIZATION = 'CPUUtilization',
+        DISK_READ_OPS = 'DiskReadOps',
+        DISK_WRITE_OPS = 'DiskWriteOps',
+        DISK_READ_BYTES = 'DiskReadBytes',
+        DISK_WRITE_BYTES = 'DiskWriteBytes',
+        NETWORK_IN = 'NetworkIn',
+        NETWORK_OUT = 'NetworkOut',
+        NETWORK_PACKETS_IN = 'NetworkPacketsIn',
+        NETWORK_PACKETS_OUT = 'NetworkPacketsOut',
+        STATUS_CHECK_FAILED = 'StatusCheckFailed',
+        STATUS_CHECK_FAILED_INSTANCE = 'StatusCheckFailed_Instance',
+        STATUS_CHECK_FAILED_SYSTEM = 'StatusCheckFailed_System',
+        METADATA_NO_TOKEN = 'MetadataNoToken',
+        CPU_CREDIT_USAGE = 'CPUCreditUsage',
+        CPU_CREDIT_BALANCE = 'CPUCreditBalance',
+        CPU_SURPLUS_CREDIT_BALANCE = 'CPUSurplusCreditBalance',
+        CPU_SURPLUS_CREDITS_CHARGED = 'CPUSurplusCreditsCharged'
     }
     /** End CloudWatch Alarm Metric Names */
 }
