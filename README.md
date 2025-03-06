@@ -104,7 +104,7 @@ Count: 6
 
 - [**ApplyRemovalPolicy**](API.md#applyremovalpolicy-): Sets a user specified Removal Policy to all resources that the aspect applies to.
 - [**CreateLambdaLogGroup**](API.md#createlambdaloggroup-): Ensures that Lambda log groups are created for all Lambda functions that the aspect applies to.
-- [**Ec2AutomatedShutdown**](API.md#ec2automatedshutdown-): Aspect that applies a mechanism to automatically shut down an EC2 instance when an alarm is triggered based off of a provided metric .
+- [**Ec2AutomatedShutdown**](API.md#ec2automatedshutdown-): Automatically shut down EC2 instances when an alarm is triggered based off of a provided metric.
 - [**SecureSageMakerNotebook**](API.md#securesagemakernotebook-): Aspect that enforces security controls on SageMaker Notebook Instances by requiring VPC placement, disabling direct internet access, and preventing root access to the notebook environment.
 - [**SetLogRetention**](API.md#setlogretention-): Aspect that sets the log retention period for CloudWatch log groups to a user-supplied retention period.
 - [**SqsRequireSsl**](API.md#sqsrequiressl-): Enforces SSL/TLS requirements on Simple Queue Service (SQS) for all resources that the aspect applies to.
