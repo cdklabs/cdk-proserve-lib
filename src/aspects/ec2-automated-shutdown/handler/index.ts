@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { EC2, StopInstancesCommandOutput } from '@aws-sdk/client-ec2';
-import { Context, CloudWatchAlarmEvent } from 'aws-lambda';
+import type { Context, CloudWatchAlarmEvent } from 'aws-lambda';
 
 /**
  * Interface representing the metric stat structure in CloudWatch alarm configuration
