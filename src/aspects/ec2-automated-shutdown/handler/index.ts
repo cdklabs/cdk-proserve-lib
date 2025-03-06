@@ -1,8 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Context, CloudWatchAlarmEvent } from 'aws-lambda';
 import { EC2, StopInstancesCommandOutput } from '@aws-sdk/client-ec2';
+import { Context, CloudWatchAlarmEvent } from 'aws-lambda';
 
 interface MetricStat {
     readonly metric: {
@@ -14,8 +14,8 @@ interface MetricStat {
 }
 
 interface AlarmConfiguration {
-    metrics?: Array<{
-        metricStat?: MetricStat;
+    readonly metrics?: Array<{
+        readonly metricStat?: MetricStat;
     }>;
 }
 
