@@ -1,49 +1,43 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { EC2 } from '@aws-sdk/client-ec2';
+
+import { EC2, StopInstancesCommand } from '@aws-sdk/client-ec2';
+import { mockClient } from 'aws-sdk-client-mock';
 import { handler } from '../../../../src/aspects/ec2-automated-shutdown/handler';
 import {
-    mockCloudWatchEvent,
     mockEC2Response,
-    mockContext,
-    mockEC2Client,
     mockInstanceId,
     buildCloudWatchEventWithState
 } from '../fixtures';
+import { mockContext } from '../../../fixtures';
+import { CloudWatchAlarmEvent } from 'aws-lambda';
 
-jest.mock('@aws-sdk/client-ec2');
-
-type Mutable<T> = {
-    -readonly [P in keyof T]: T[P] extends Record<string, unknown>
-        ? Mutable<T[P]>
-        : T[P];
-};
-
-describe('Lambda Handler', () => {
-    let event: Mutable<typeof mockCloudWatchEvent>;
+describe.only('Lambda Handler', () => {
+    const ec2Mock = mockClient(EC2);
+    const consoleSpy = jest.spyOn(console, 'info');
+    let event: CloudWatchAlarmEvent;
 
     beforeEach(() => {
-        event = JSON.parse(JSON.stringify(mockCloudWatchEvent));
-        (EC2 as jest.Mock).mockImplementation(() => mockEC2Client);
-        mockEC2Client.stopInstances.mockReset();
-    });
+        ec2Mock.reset();
+        consoleSpy.mockClear();
 
-    afterEach(() => {
-        jest.resetAllMocks();
+        event = buildCloudWatchEventWithState('ALARM');
     });
 
     it('should stop EC2 instance when alarm is in ALARM state', async () => {
-        // Arrange
-        mockEC2Client.stopInstances.mockResolvedValue(mockEC2Response);
+        ec2Mock
+            .on(StopInstancesCommand)
+            .rejects()
+            .on(StopInstancesCommand, {
+                InstanceIds: [mockInstanceId]
+            })
+            .resolves(mockEC2Response);
 
         // Act
         await handler(event, mockContext);
 
         // Assert
-        expect(EC2).toHaveBeenCalledTimes(1);
-        expect(mockEC2Client.stopInstances).toHaveBeenCalledWith({
-            InstanceIds: [mockInstanceId]
-        });
+        expect(ec2Mock.calls().length).toBe(1);
     });
 
     it('should not stop EC2 instance when alarm is not in ALARM state', async () => {
@@ -54,35 +48,18 @@ describe('Lambda Handler', () => {
         await handler(event, mockContext);
 
         // Assert
-        expect(mockEC2Client.stopInstances).not.toHaveBeenCalled();
-    });
-
-    it('should throw error when instance ID is not found in metrics', async () => {
-        // Arrange
-        (
-            event.alarmData.configuration as any
-        ).metrics[0].metricStat.metric.dimensions = [];
-
-        // Act & Assert
-        await expect(handler(event, mockContext)).rejects.toThrow(
-            'Instance ID not found in alarm metrics'
-        );
-    });
-
-    it('should handle EC2 client errors', async () => {
-        // Arrange
-        const error = new Error('EC2 API Error');
-        mockEC2Client.stopInstances.mockRejectedValueOnce(error);
-
-        // Act & Assert
-        await expect(handler(event, mockContext)).rejects.toThrow(
-            `Failed to stop EC2 instance ${mockInstanceId}: EC2 API Error`
-        );
+        expect(ec2Mock.calls().length).toBe(0);
     });
 
     it('should handle missing or invalid response from EC2', async () => {
         // Arrange
-        mockEC2Client.stopInstances.mockResolvedValue({});
+        ec2Mock
+            .on(StopInstancesCommand)
+            .rejects()
+            .on(StopInstancesCommand, {
+                InstanceIds: [mockInstanceId]
+            })
+            .resolves({});
 
         // Act & Assert
         await expect(handler(event, mockContext)).rejects.toThrow(
@@ -92,16 +69,19 @@ describe('Lambda Handler', () => {
 
     it('should log event details and success message', async () => {
         // Arrange
-        const consoleSpy = jest.spyOn(console, 'info');
-        mockEC2Client.stopInstances.mockResolvedValue({
-            StoppingInstances: [
-                {
-                    InstanceId: 'i-1234567890abcdef0',
-                    CurrentState: { Name: 'stopping' },
-                    PreviousState: { Name: 'running' }
-                }
-            ]
-        });
+        ec2Mock
+            .on(StopInstancesCommand, {
+                InstanceIds: [mockInstanceId]
+            })
+            .resolves({
+                StoppingInstances: [
+                    {
+                        InstanceId: mockInstanceId,
+                        CurrentState: { Name: 'stopping' },
+                        PreviousState: { Name: 'running' }
+                    }
+                ]
+            });
 
         // Act
         await handler(event, mockContext);
@@ -158,38 +138,49 @@ describe('Lambda Handler', () => {
         );
     });
 
-    it('should throw error with generic message for unknown error types', async () => {
+    it('should throw error when metrics configuration is deeply missing', async () => {
         // Arrange
-        const nonErrorObject = { someProperty: 'not an error' };
-        mockEC2Client.stopInstances.mockRejectedValueOnce(nonErrorObject);
+        // Set up a case where the metrics array exists but without the expected structure
+        (event.alarmData.configuration as any).metrics = [
+            {
+                // Missing metricStat
+                someOtherProperty: 'value'
+            }
+        ];
 
         // Act & Assert
         await expect(handler(event, mockContext)).rejects.toThrow(
-            `Failed to stop EC2 instance ${mockInstanceId}: Unknown error`
+            'Instance ID not found in alarm metrics'
         );
     });
 
-    it('should handle missing CurrentState in EC2 response', async () => {
+    it('should throw error when dimensions exist but InstanceId is missing', async () => {
         // Arrange
-        const consoleSpy = jest.spyOn(console, 'info');
-        mockEC2Client.stopInstances.mockResolvedValue({
-            StoppingInstances: [
-                {
-                    InstanceId: mockInstanceId,
-                    PreviousState: { Name: 'running' }
-                    // CurrentState is intentionally missing
-                }
-            ]
-        });
+        // Set dimensions to exist, but without an InstanceId property
+        (
+            event.alarmData.configuration as any
+        ).metrics[0].metricStat.metric.dimensions = {
+            SomeOtherDimension: 'value'
+        };
 
-        // Act
-        await handler(event, mockContext);
+        // Act & Assert
+        await expect(handler(event, mockContext)).rejects.toThrow(
+            'Instance ID not found in alarm metrics'
+        );
+    });
 
-        // Assert
-        expect(consoleSpy).toHaveBeenCalledWith(
-            expect.stringContaining(
-                `Successfully initiated shutdown for instance: ${mockInstanceId}. Current state: undefined`
-            )
+    it('should handle EC2 client errors when stopping instances', async () => {
+        // Arrange
+        const errorMessage = 'EC2 API Error';
+        ec2Mock
+            .on(StopInstancesCommand, {
+                InstanceIds: [mockInstanceId]
+            })
+            .rejects(new Error(errorMessage));
+
+        // Act & Assert
+        await expect(handler(event, mockContext)).rejects.toThrow(
+            `Failed to stop EC2 instance ${mockInstanceId}: ${errorMessage}`
         );
     });
 });

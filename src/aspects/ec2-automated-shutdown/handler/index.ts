@@ -2,27 +2,38 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { EC2, StopInstancesCommandOutput } from '@aws-sdk/client-ec2';
-import type { Context, CloudWatchAlarmEvent } from 'aws-lambda';
+import type {
+    Context,
+    CloudWatchAlarmEvent,
+    CloudWatchAlarmConfiguration,
+    CloudWatchAlarmMetric
+} from 'aws-lambda';
 
 /**
- * Interface representing the metric stat structure in CloudWatch alarm configuration
+ * Interface representing a CloudWatch metric dimension containing an EC2 instance ID
  */
-interface MetricStat {
-    readonly metric: {
-        readonly dimensions?: {
-            readonly InstanceId?: string;
-            readonly [key: string]: string | undefined;
-        };
-    };
+interface InstanceCloudWatchMetricDimension {
+    readonly InstanceId: string;
 }
 
 /**
- * Interface representing the CloudWatch alarm configuration structure
+ * Type representing a CloudWatch metric dimension that includes EC2 instance information
+ * Extends a generic string record with the required InstanceId property
  */
-interface AlarmConfiguration {
-    readonly metrics?: Array<{
-        readonly metricStat?: MetricStat;
-    }>;
+type CloudWatchMetricDimensionForInstance = Record<string, string> &
+    InstanceCloudWatchMetricDimension;
+
+/**
+ * Type guard function that checks if an object is a CloudWatch metric dimension containing an EC2 instance ID
+ *
+ * @param o - The object to check
+ * @returns True if the object is a valid CloudWatch metric dimension for an EC2 instance
+ */
+function isCloudWatchMetricDimensionForInstance(
+    o?: Record<string, string>
+): o is CloudWatchMetricDimensionForInstance {
+    const key: keyof InstanceCloudWatchMetricDimension = 'InstanceId';
+    return o !== undefined && key in o;
 }
 
 /**
@@ -32,21 +43,26 @@ interface AlarmConfiguration {
  * @returns The EC2 instance ID
  * @throws Error if instance ID cannot be found in the alarm metrics
  */
-const getInstanceId = (event: CloudWatchAlarmEvent): string => {
-    const configuration = event.alarmData.configuration as AlarmConfiguration;
-    if (!configuration.metrics?.[0]?.metricStat?.metric?.dimensions) {
+function getInstanceId(event: CloudWatchAlarmEvent): string {
+    const metricsKey: keyof CloudWatchAlarmConfiguration = 'metrics';
+    const metricStatKey: keyof CloudWatchAlarmMetric = 'metricStat';
+
+    if (
+        metricsKey in event.alarmData.configuration &&
+        event.alarmData.configuration.metrics.length &&
+        metricStatKey in event.alarmData.configuration.metrics[0] &&
+        event.alarmData.configuration.metrics[0].metricStat.metric.dimensions &&
+        isCloudWatchMetricDimensionForInstance(
+            event.alarmData.configuration.metrics[0].metricStat.metric
+                .dimensions
+        )
+    ) {
+        return event.alarmData.configuration.metrics[0].metricStat.metric
+            .dimensions.InstanceId;
+    } else {
         throw new Error('Instance ID not found in alarm metrics');
     }
-
-    const dimensions = configuration.metrics[0].metricStat.metric.dimensions;
-    const instanceId = dimensions.InstanceId;
-
-    if (!instanceId) {
-        throw new Error('Instance ID not found in alarm metrics');
-    }
-
-    return instanceId;
-};
+}
 
 /**
  * Lambda handler for the EC2 automated shutdown functionality
@@ -102,14 +118,9 @@ export const handler = async (
             console.info(
                 `Successfully initiated shutdown for instance: ${instanceId}. Current state: ${instanceState}`
             );
-        } catch (stopError) {
-            if (stopError instanceof Error) {
-                throw new Error(
-                    `Failed to stop EC2 instance ${instanceId}: ${stopError.message}`
-                );
-            }
+        } catch (error) {
             throw new Error(
-                `Failed to stop EC2 instance ${instanceId}: Unknown error`
+                `Failed to stop EC2 instance ${instanceId}: ${(error as Error).message}`
             );
         }
     } catch (error) {

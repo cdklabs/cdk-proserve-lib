@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { join } from 'path';
+import { join } from 'node:path';
 import { Stack, Duration, IAspect, Aws, CfnResource } from 'aws-cdk-lib';
 import {
     Metric,

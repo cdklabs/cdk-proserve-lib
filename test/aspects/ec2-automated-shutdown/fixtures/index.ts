@@ -1,12 +1,13 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+
 import { CloudWatchAlarmEvent } from 'aws-lambda';
 import {
     mockAccount,
     mockRegion,
     buildMockArn
 } from '../../../fixtures/account';
-import { mockContext } from '../../../fixtures/custom-resource';
+import { StopInstancesCommandOutput } from '@aws-sdk/client-ec2';
 
 /**
  * Mock instance ID for EC2
@@ -77,21 +78,15 @@ export const mockCloudWatchEvent: CloudWatchAlarmEvent = {
 /**
  * Mock EC2 StopInstances response
  */
-export const mockEC2Response = {
+export const mockEC2Response: StopInstancesCommandOutput = {
     StoppingInstances: [
         {
             InstanceId: mockInstanceId,
             CurrentState: { Name: 'stopping' },
             PreviousState: { Name: 'running' }
         }
-    ]
-};
-
-/**
- * Mock EC2 client for testing
- */
-export const mockEC2Client = {
-    stopInstances: jest.fn()
+    ],
+    $metadata: {}
 };
 
 /**
@@ -99,19 +94,48 @@ export const mockEC2Client = {
  * @param state The alarm state to set
  * @returns A CloudWatch event with the specified alarm state
  */
-export const buildCloudWatchEventWithState = (
+export function buildCloudWatchEventWithState(
     state: 'OK' | 'ALARM' | 'INSUFFICIENT_DATA'
-) => ({
-    ...mockCloudWatchEvent,
-    alarmData: {
-        ...mockCloudWatchEvent.alarmData,
-        state: {
-            value: state,
-            reason: 'Threshold Crossed',
-            reasonData: '{"triggeringDatapoints":[]}',
-            timestamp: '2024-02-11T00:00:00Z'
+): CloudWatchAlarmEvent {
+    return {
+        source: 'aws.cloudwatch',
+        accountId: mockAccount,
+        time: '2024-02-11T00:00:00Z',
+        region: mockRegion,
+        alarmArn: mockAlarmArn,
+        alarmData: {
+            alarmName: mockAlarmName,
+            state: {
+                value: state,
+                reason: 'Threshold Crossed',
+                reasonData: '{"triggeringDatapoints":[]}',
+                timestamp: '2024-02-11T00:00:00Z'
+            },
+            previousState: {
+                value: 'OK',
+                reason: 'Threshold Crossed',
+                reasonData: '{"triggeringDatapoints":[]}',
+                timestamp: '2024-02-11T00:00:00Z'
+            },
+            configuration: {
+                metrics: [
+                    {
+                        id: 'metric1',
+                        metricStat: {
+                            metric: {
+                                namespace: 'AWS/EC2',
+                                name: 'CPUUtilization',
+                                dimensions: {
+                                    InstanceId: mockInstanceId
+                                }
+                            },
+                            period: 300,
+                            stat: 'Average'
+                        },
+                        returnData: true
+                    }
+                ]
+            }
         }
-    }
-});
-
-export { mockContext };
+    };
+}
