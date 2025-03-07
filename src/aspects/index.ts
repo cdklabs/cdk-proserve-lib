@@ -6,3 +6,4 @@ export * from './create-lambda-log-group';
 export * from './set-log-retention';
 export * from './sqs-require-ssl';
 export * from './secure-sagemaker-notebook';
+export * from './ec2-automated-shutdown';

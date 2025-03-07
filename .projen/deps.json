@@ -12,6 +12,7 @@
     },
     {
       "name": "@aws-sdk/client-ec2",
+      "version": "3.600.0",
       "type": "build"
     },
     {

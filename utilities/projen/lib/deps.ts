@@ -21,6 +21,7 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         `@aws-sdk/client-imagebuilder@${sdkVersion}`,
         `@aws-sdk/client-cloudformation@${sdkVersion}`,
         `@aws-sdk/client-s3@${sdkVersion}`,
+        `@aws-sdk/client-ec2@${sdkVersion}`,
         '@codegenie/serverless-express@4.16.0',
         '@smithy/types@^3.7.2',
         '@smithy/util-stream-node@4.0.2',
@@ -37,7 +38,6 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
     ];
 
     const ideAndTestDeps = [
-        '@aws-sdk/client-ec2',
         '@aws-sdk/client-pricing',
         '@aws-sdk/client-wafv2',
         '@types/glob',
