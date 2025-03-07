@@ -63,7 +63,7 @@
     "@aws-sdk/client-s3": "3.600.0",
     "@aws-sdk/client-secrets-manager": "3.600.0",
     "@aws-sdk/client-ssm": "3.600.0",
-    "@aws-sdk/client-wafv2": "^3.758.0",
+    "@aws-sdk/client-wafv2": "^3.763.0",
     "@aws-sdk/lib-dynamodb": "3.600.0",
     "@codegenie/serverless-express": "4.16.0",
     "@smithy/types": "^3.7.2",
