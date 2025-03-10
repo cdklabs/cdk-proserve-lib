@@ -55,7 +55,7 @@
     "@aws-cdk/integ-tests-alpha": "latest",
     "@aws-sdk/client-cloudformation": "3.600.0",
     "@aws-sdk/client-dynamodb": "3.600.0",
-    "@aws-sdk/client-ec2": "^3.764.0",
+    "@aws-sdk/client-ec2": "3.600.0",
     "@aws-sdk/client-iam": "3.600.0",
     "@aws-sdk/client-imagebuilder": "3.600.0",
     "@aws-sdk/client-opensearch": "3.600.0",
