@@ -2,15 +2,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { EC2, StopInstancesCommand } from '@aws-sdk/client-ec2';
+import { CloudWatchAlarmEvent } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
 import { handler } from '../../../../src/aspects/ec2-automated-shutdown/handler';
+import { mockContext } from '../../../fixtures';
 import {
     mockEC2Response,
     mockInstanceId,
     buildCloudWatchEventWithState
 } from '../fixtures';
-import { mockContext } from '../../../fixtures';
-import { CloudWatchAlarmEvent } from 'aws-lambda';
 
 describe.only('Lambda Handler', () => {
     const ec2Mock = mockClient(EC2);

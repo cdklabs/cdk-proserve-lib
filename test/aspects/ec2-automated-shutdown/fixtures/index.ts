@@ -1,13 +1,13 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { StopInstancesCommandOutput } from '@aws-sdk/client-ec2';
 import { CloudWatchAlarmEvent } from 'aws-lambda';
 import {
     mockAccount,
     mockRegion,
     buildMockArn
 } from '../../../fixtures/account';
-import { StopInstancesCommandOutput } from '@aws-sdk/client-ec2';
 
 /**
  * Mock instance ID for EC2
