@@ -7,8 +7,8 @@
  * Amazon Web Services EMEA SARL or both.
  */
 
-import { IResponseData } from '../models/resource-response';
-import { WorkflowStatusResponse } from '../models/workflow-response';
+import { IResponseData } from '../types/resource-response';
+import { WorkflowStatusResponse } from '../types/workflow-response';
 
 export function flattenResponse(
     response: WorkflowStatusResponse

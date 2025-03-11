@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
+import { PolicyStatement, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Function, FunctionProps } from 'aws-cdk-lib/aws-lambda';
 import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
@@ -59,6 +59,22 @@ export class SecureFunction extends Construct {
         this.role = new Role(this, 'Role', {
             assumedBy: new ServicePrincipal('lambda.amazonaws.com')
         });
+
+        if (props.vpc) {
+            // Add necessary permissions to create Lambda in VPC
+            this.role.addToPolicy(
+                new PolicyStatement({
+                    actions: [
+                        'ec2:CreateNetworkInterface',
+                        'ec2:DescribeNetworkInterfaces',
+                        'ec2:DeleteNetworkInterface',
+                        'ec2:AssignPrivateIpAddresses',
+                        'ec2:UnassignPrivateIpAddresses'
+                    ],
+                    resources: ['*']
+                })
+            );
+        }
 
         // Create the log group beforehand
         this.logGroup = new LogGroup(this, 'LogGroup', {

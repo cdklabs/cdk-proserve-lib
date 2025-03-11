@@ -7,7 +7,7 @@
  * Amazon Web Services EMEA SARL or both.
  */
 
-export type DestructiveOperation = 'Update' | 'Delete' | 'All';
+import { DestructiveOperation } from '../../../../types/destructive-operation';
 
 export interface IResourceProperties {
     readonly DomainEndpoint: string;

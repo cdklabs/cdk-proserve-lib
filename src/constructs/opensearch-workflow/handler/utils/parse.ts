@@ -7,10 +7,10 @@
  * Amazon Web Services EMEA SARL or both.
  */
 
-import yaml from 'js-yaml';
-import { Json } from '../models/json';
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+import { load } from 'js-yaml';
+import { Json } from '../types/json';
 
 /**
  * Parses a given template string that can be JSON or YAML.
@@ -26,7 +26,7 @@ export function parseTemplate(template: string): Json {
             // all load functions are now safe by default.
             // https://github.com/nodeca/js-yaml/blob/master/CHANGELOG.md#400---2021-01-03
             // nosemgrep: nodejs_scan.javascript-eval-rule-yaml_deserialize
-            return yaml.load(template) as Json;
+            return load(template) as Json;
         } catch {
             throw new Error(
                 'Invalid template format. Must be valid JSON or YAML.'
@@ -49,10 +49,8 @@ export function substituteTemplateValues(
     if (!substitutions) return templateContents;
 
     return Object.entries(substitutions).reduce((acc, [key, value]) => {
-        /* eslint-disable security/detect-non-literal-regexp */
         // nosemgrep: eslint.detect-non-literal-regexp
         const regex = new RegExp(`\\$\\{\\{\\{[ ]*${key}[ ]*\\}\\}\\}`, 'g');
-        /* eslint-enable security/detect-non-literal-regexp */
         return acc.replace(regex, value);
     }, templateContents);
 }
@@ -76,7 +74,6 @@ export async function generatePresignedUrlMapping(
         });
         const url = await getSignedUrl(client, command, { expiresIn: 3600 }); // 1 hour expiration
 
-        // eslint-disable-next-line security/detect-object-injection
         substitutions[replacementKey] = url;
     }
 

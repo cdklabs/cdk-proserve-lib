@@ -2,14 +2,14 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { createWriteStream } from 'node:fs';
-import { join } from 'node:path';
 import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { Readable } from 'node:stream';
 import {
     S3Client,
     GetObjectCommand,
     HeadObjectCommand
 } from '@aws-sdk/client-s3';
-import { Readable } from 'node:stream';
 
 export async function downloadS3Asset(
     s3ObjectUri: string
@@ -41,7 +41,6 @@ export async function downloadS3Asset(
 
     // Write the object data to a file
     if (response.Body instanceof Readable) {
-        // eslint-disable-next-line security/detect-non-literal-fs-filename
         const output = createWriteStream(filePath);
         const downloadPipeline = response.Body.pipe(output);
 

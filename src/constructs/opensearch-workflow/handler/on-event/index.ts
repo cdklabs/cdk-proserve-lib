@@ -7,26 +7,27 @@
  * Amazon Web Services EMEA SARL or both.
  */
 
+import { readFileSync } from 'fs';
 import {
     CdkCustomResourceEvent,
     CdkCustomResourceResponse,
     Context
 } from 'aws-lambda';
-import { readFileSync } from 'fs';
-import { Json } from '../models/json';
-import { IResourceProperties } from '../models/resource-properties';
+import { AwsHttpClient } from '../../../../common/lambda/aws-http-client';
+import { downloadS3Asset } from '../../../../common/lambda/download-s3-asset';
+import { DestructiveOperation } from '../../../../types/destructive-operation';
+import { Json } from '../types/json';
+import { IResourceProperties } from '../types/resource-properties';
 import {
     WorkflowResponse,
     WorkflowState,
     WorkflowStatusResponse
-} from '../models/workflow-response';
+} from '../types/workflow-response';
 import {
     generatePresignedUrlMapping,
     parseTemplate,
     substituteTemplateValues
 } from '../utils/parse';
-import { AwsHttpClient } from '../../../../../common/aws-http-client';
-import { downloadS3Asset } from '../../../../../common/download-s3-asset';
 
 /**
  * Handles AWS CloudFormation CREATE calls
@@ -164,7 +165,6 @@ async function getAndParseTemplateFromS3(
     templateS3ObjectVariables?: Record<string, string>
 ) {
     const templateFile = await downloadS3Asset(s3ObjectUrl);
-    // eslint-disable-next-line security/detect-non-literal-fs-filename
     const templateContents = readFileSync(templateFile.filePath, 'utf-8');
 
     const presignedUrlSubstitutions = await generatePresignedUrlMapping(
@@ -207,15 +207,12 @@ export async function handler(
                 props.TemplateCreationVariables,
                 props.TemplateS3ObjectUrlVariables
             );
-            return await onCreate(
-                client,
-                template,
-                props.TemplateProvisionVariables
-            );
+            return onCreate(client, template, props.TemplateProvisionVariables);
         case 'Update':
             if (
-                props.AllowDestructiveOperations === 'Update' ||
-                props.AllowDestructiveOperations === 'All'
+                props.AllowDestructiveOperations ===
+                    DestructiveOperation.UPDATE ||
+                props.AllowDestructiveOperations === DestructiveOperation.ALL
             ) {
                 console.info('Running UPDATE...');
                 template = await getAndParseTemplateFromS3(
@@ -223,7 +220,7 @@ export async function handler(
                     props.TemplateCreationVariables,
                     props.TemplateS3ObjectUrlVariables
                 );
-                return await onUpdate(
+                return onUpdate(
                     client,
                     event.PhysicalResourceId,
                     template,
@@ -239,11 +236,12 @@ export async function handler(
             }
         case 'Delete':
             if (
-                props.AllowDestructiveOperations === 'Delete' ||
-                props.AllowDestructiveOperations === 'All'
+                props.AllowDestructiveOperations ===
+                    DestructiveOperation.UPDATE ||
+                props.AllowDestructiveOperations === DestructiveOperation.ALL
             ) {
                 console.info('Running DELETE...');
-                return await onDelete(client, event.PhysicalResourceId);
+                return onDelete(client, event.PhysicalResourceId);
             } else {
                 console.info(
                     'DELETE skipped: AllowDestructiveOperations is false'

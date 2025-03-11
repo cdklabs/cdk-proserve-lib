@@ -12,14 +12,14 @@ import {
     CdkCustomResourceIsCompleteResponse,
     Context
 } from 'aws-lambda';
-import { IResourceProperties } from '../models/resource-properties';
-import { IResponseData } from '../models/resource-response';
-import { WorkflowStatusResponse } from '../models/workflow-response';
-import { flattenResponse } from '../utils/flatten';
 import {
     AwsHttpClient,
     AwsHttpClientResponseError
-} from '../../../../../common/aws-http-client';
+} from '../../../../common/lambda/aws-http-client';
+import { IResourceProperties } from '../types/resource-properties';
+import { IResponseData } from '../types/resource-response';
+import { WorkflowStatusResponse } from '../types/workflow-response';
+import { flattenResponse } from '../utils/flatten';
 
 /**
  * Checks OpenSearch to determine if the workflow has been completed or not.
@@ -126,14 +126,14 @@ export async function handler(
     switch (event.RequestType) {
         case 'Create':
             console.info('Checking if CREATE is complete...');
-            return await isProvisioned(client, workflowId);
+            return isProvisioned(client, workflowId);
         case 'Update':
             console.info('Checking if UPDATE is complete...');
-            return await isProvisioned(client, workflowId);
+            return isProvisioned(client, workflowId);
         case 'Delete':
             console.info('Checking if DELETE is complete...');
             if (props.AllowDestructiveOperations) {
-                return await isDeleted(client, workflowId);
+                return isDeleted(client, workflowId);
             } else {
                 return {
                     IsComplete: true

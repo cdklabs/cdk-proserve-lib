@@ -77,13 +77,13 @@ go get github.com/cdklabs/cdk-proserve-lib-go/cdklabscdkproservelib
 
 The library consists of [constructs](#-constructs), [aspects](#-aspects), and [patterns](#-patterns) that you can utilize in AWS CDK applications.
 
-Total: 17
+Total: 18
 
 ### 🧱 Constructs
 
 Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) applications. A construct is a component within your application that represents one or more AWS CloudFormation resources and their configuration. You build your application, piece by piece, by importing and configuring constructs. To learn more about constructs, check out the [AWS CDK documentation](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html).
 
-Count: 10
+Count: 11
 
 - [**DynamoDbProvisionTable**](API.md#dynamodbprovisiontable-): Controls the contents of an Amazon DynamoDB table from Infrastructure as Code.
 - [**Ec2ImageBuilderGetImage**](API.md#ec2imagebuildergetimage-): Retrieves an EC2 Image Builder image build version.
@@ -94,6 +94,7 @@ Count: 10
 - [**NetworkFirewall**](API.md#networkfirewall-): Creates an AWS Network Firewall using a user-supplied Suricata rules file in a VPC.
 - [**NetworkFirewallEndpoints**](API.md#networkfirewallendpoints-): Retrieves Network Firewall endpoints so that you can reference them in your other resources.
 - [**OpenSearchAdminUser**](API.md#opensearchadminuser-): Manages an admin user for an Amazon OpenSearch domain.
+- [**OpensearchWorkflow**](API.md#opensearchworkflow-): A CDK construct that creates and manages an OpenSearch workflow.
 - [**WebApplicationFirewall**](API.md#webapplicationfirewall-): Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
 
 ### 🎭 Aspects

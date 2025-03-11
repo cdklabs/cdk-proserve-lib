@@ -1,6 +1,9 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { request as httpRequest } from 'http';
+import { request as httpsRequest } from 'https';
+import { parse } from 'url';
 import { Sha256 } from '@aws-crypto/sha256-js';
 import { STSClient, AssumeRoleCommand } from '@aws-sdk/client-sts';
 import { defaultProvider } from '@aws-sdk/credential-provider-node';
@@ -10,9 +13,6 @@ import type {
     HttpRequest,
     Provider
 } from '@smithy/types';
-import { request as httpRequest } from 'http';
-import { request as httpsRequest } from 'https';
-import { parse } from 'url';
 
 export interface AwsHttpClientOptions {
     readonly service: string;
@@ -314,7 +314,7 @@ export class AwsHttpClient {
             sha256: Sha256
         });
 
-        return await signer.sign(request);
+        return signer.sign(request);
     }
 
     /**
