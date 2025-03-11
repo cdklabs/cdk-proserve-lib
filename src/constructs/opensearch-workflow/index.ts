@@ -116,7 +116,10 @@ export class OpensearchWorkflow extends Construct {
         const stackId = scope.node.id;
 
         if (!OpensearchWorkflow.serviceTokens.has(stackId)) {
-            const provider = new Construct(scope, 'CrOpensearchWorkflow');
+            const provider = new Construct(
+                scope,
+                `Cr${OpensearchWorkflow.name}`
+            );
 
             const onEventHandler = new SecureFunction(provider, 'OnEvent', {
                 code: Code.fromAsset(join(__dirname, 'handler', 'on-event')),

@@ -31,10 +31,11 @@ export function validateNoCdkNagFindings(stack: Stack, constructName?: string) {
             Match.stringLikeRegexp(pattern)
         );
 
-        // Filter annotations to remove "framework-OnEvent" constructs
-        // If constructName is provided, also filter to only include annotations with that constructName
+        // Filter annotations to remove "Provider" constructs
+        // If constructName is provided, also filter to only include annotations
+        // with that constructName
         const annotations = allAnnotations.filter((a) => {
-            const excludeFrameworkOnEvent = !a.id.includes('framework-onEvent');
+            const excludeFrameworkOnEvent = !a.id.includes('/Provider/');
             if (constructName) {
                 return excludeFrameworkOnEvent && a.id.includes(constructName);
             }
