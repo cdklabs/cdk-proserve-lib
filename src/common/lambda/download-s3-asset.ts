@@ -5,39 +5,31 @@ import { createWriteStream } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { Readable } from 'node:stream';
-import {
-    S3Client,
-    GetObjectCommand,
-    HeadObjectCommand
-} from '@aws-sdk/client-s3';
+import { S3 } from '@aws-sdk/client-s3';
 
 export async function downloadS3Asset(
     s3ObjectUri: string
 ): Promise<{ filePath: string; etag: string }> {
-    const s3Client = new S3Client();
+    const s3Client = new S3();
     const targetParts = s3ObjectUri.replace('s3://', '').split('/');
     const bucket = targetParts[0];
     const key = targetParts.slice(1).join('/');
     const fileName = targetParts.slice(-1).pop() ?? 'fileAsset';
 
     // Get object metadata
-    const headCommand = new HeadObjectCommand({
+    const metadata = await s3Client.headObject({
         Bucket: bucket,
         Key: key
     });
-
-    const metadata = await s3Client.send(headCommand);
 
     // Create path to download template
     const filePath = join(tmpdir(), fileName);
 
     // Get the object
-    const getCommand = new GetObjectCommand({
+    const response = await s3Client.getObject({
         Bucket: bucket,
         Key: key
     });
-
-    const response = await s3Client.send(getCommand);
 
     // Write the object data to a file
     if (response.Body instanceof Readable) {

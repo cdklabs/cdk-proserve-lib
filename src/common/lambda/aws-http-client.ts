@@ -5,7 +5,7 @@ import { request as httpRequest } from 'http';
 import { request as httpsRequest } from 'https';
 import { parse } from 'url';
 import { Sha256 } from '@aws-crypto/sha256-js';
-import { STSClient, AssumeRoleCommand } from '@aws-sdk/client-sts';
+import { STS } from '@aws-sdk/client-sts';
 import { defaultProvider } from '@aws-sdk/credential-provider-node';
 import { SignatureV4 } from '@smithy/signature-v4';
 import type {
@@ -280,14 +280,12 @@ export class AwsHttpClient {
                     5 * 60 * 1000;
 
             if (needNewCredentials) {
-                const stsClient = new STSClient();
-                const response = await stsClient.send(
-                    new AssumeRoleCommand({
-                        RoleArn: this.options.roleArn,
-                        RoleSessionName: 'AwsSigV4Request',
-                        DurationSeconds: 900 // 15m (minimum)
-                    })
-                );
+                const stsClient = new STS();
+                const response = await stsClient.assumeRole({
+                    RoleArn: this.options.roleArn,
+                    RoleSessionName: 'AwsSigV4Request',
+                    DurationSeconds: 900 // 15m (minimum)
+                });
 
                 if (!response.Credentials) {
                     throw new Error('Failed to get temporary credentials');
