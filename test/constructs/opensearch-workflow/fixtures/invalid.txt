@@ -1,1 +1,3 @@
-invalid file
+{
+    "name": "test",
+    "value": 123

@@ -1,11 +1,16 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+
 import { CdkCustomResourceEvent, Context } from 'aws-lambda';
-import { DestructiveOperation } from '../../../../src/types';
 import { IResourceProperties } from '../../../../src/constructs/opensearch-workflow/handler/types/resource-properties';
 import { AwsHttpResponse } from '../../../../src/common/lambda/aws-http-client';
+import { DestructiveOperation } from '../../../../src/types/destructive-operation';
 
 export const mockWorkflowId = 'test-workflow-id';
+export const mockTemplateCreationVariables = { var1: 'value1' };
+export const mockTemplateProvisionVariables = { var2: 'value2' };
 
-export const mockCreateEvent: CdkCustomResourceEvent<IResourceProperties> = {
+const mockBaseEvent: CdkCustomResourceEvent<IResourceProperties> = {
     RequestType: 'Create',
     ServiceToken: 'token',
     ResponseURL: 'https://response-url.example.com',
@@ -18,59 +23,60 @@ export const mockCreateEvent: CdkCustomResourceEvent<IResourceProperties> = {
         RoleArn: 'arn:aws:iam::123456789012:role/TestRole',
         DomainEndpoint: 'test-domain.us-west-2.es.amazonaws.com',
         AssetS3ObjectUrl: 's3://my-bucket/template.json',
-        TemplateCreationVariables: { var1: 'value1' },
-        TemplateProvisionVariables: { var2: 'value2' },
+        TemplateCreationVariables: mockTemplateCreationVariables,
+        TemplateProvisionVariables: mockTemplateProvisionVariables,
         TemplateS3ObjectUrlVariables: {
             bucketUrl: 's3://asset-bucket/file.txt'
-        },
+        }
+    }
+};
+
+export const mockCreateEvent: CdkCustomResourceEvent<IResourceProperties> = {
+    ...mockBaseEvent,
+    RequestType: 'Create',
+    ResourceProperties: {
+        ...mockBaseEvent.ResourceProperties,
         AllowDestructiveOperations: DestructiveOperation.ALL
     }
 };
 
 export const mockUpdateEvent: CdkCustomResourceEvent<IResourceProperties> = {
-    ...mockCreateEvent,
+    ...mockBaseEvent,
     RequestType: 'Update',
     PhysicalResourceId: mockWorkflowId,
-    OldResourceProperties: mockCreateEvent.ResourceProperties
+    OldResourceProperties: mockCreateEvent.ResourceProperties,
+    ResourceProperties: {
+        ...mockCreateEvent.ResourceProperties,
+        AllowDestructiveOperations: DestructiveOperation.ALL
+    }
+};
+
+export const mockDeleteEvent: CdkCustomResourceEvent<IResourceProperties> = {
+    ...mockBaseEvent,
+    RequestType: 'Delete',
+    PhysicalResourceId: mockWorkflowId,
+    ResourceProperties: {
+        ...mockCreateEvent.ResourceProperties,
+        AllowDestructiveOperations: DestructiveOperation.ALL
+    }
 };
 
 export const mockUpdateNoDestructiveEvent: CdkCustomResourceEvent<IResourceProperties> =
     {
-        ...mockUpdateEvent,
-        ResourceProperties: {
-            ...mockUpdateEvent.ResourceProperties
-        }
+        ...mockBaseEvent,
+        RequestType: 'Update',
+        PhysicalResourceId: mockWorkflowId,
+        OldResourceProperties: mockCreateEvent.ResourceProperties
     };
-
-export const mockDeleteEvent: CdkCustomResourceEvent<IResourceProperties> = {
-    ...mockCreateEvent,
-    RequestType: 'Delete',
-    PhysicalResourceId: mockWorkflowId
-};
 
 export const mockDeleteNoDestructiveEvent: CdkCustomResourceEvent<IResourceProperties> =
     {
-        ...mockDeleteEvent,
-        ResourceProperties: {
-            ...mockDeleteEvent.ResourceProperties
-        }
+        ...mockBaseEvent,
+        RequestType: 'Delete',
+        PhysicalResourceId: mockWorkflowId
     };
 
-export const mockContext: Context = {
-    callbackWaitsForEmptyEventLoop: true,
-    functionName: 'test-function',
-    functionVersion: '1',
-    invokedFunctionArn:
-        'arn:aws:lambda:us-west-2:123456789012:function:test-function',
-    memoryLimitInMB: '128',
-    awsRequestId: 'request-id',
-    logGroupName: 'log-group',
-    logStreamName: 'log-stream',
-    getRemainingTimeInMillis: () => 1000,
-    done: () => {},
-    fail: () => {},
-    succeed: () => {}
-};
+export const mockContext = {} as Context;
 
 export function createMockResponse<T>(data: T): AwsHttpResponse<T> {
     return {
