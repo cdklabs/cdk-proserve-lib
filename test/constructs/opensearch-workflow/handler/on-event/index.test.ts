@@ -2,9 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import path from 'node:path';
-import { handler } from '../../../../../src/constructs/opensearch-workflow/handler/on-event';
-import { AwsHttpClient } from '../../../../../src/common/lambda/aws-http-client';
+import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { mockClient } from 'aws-sdk-client-mock';
+import { AwsHttpClient } from '../../../../../src/common/lambda/aws-http-client';
+import { handler } from '../../../../../src/constructs/opensearch-workflow/handler/on-event';
 import {
     createMockResponse,
     mockContext,
@@ -15,7 +16,6 @@ import {
     mockUpdateNoDestructiveEvent,
     mockWorkflowId
 } from '../../fixtures';
-import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 
 // Mock the dependencies
 jest.mock('@aws-sdk/s3-request-presigner', () => ({
@@ -63,8 +63,8 @@ describe('OpenSearch Workflow Handler', () => {
             );
         });
         // POST
-        mockHttpClient.post.mockImplementation((path: string) => {
-            if (path.includes('_provision') || path.includes('_deprovision')) {
+        mockHttpClient.post.mockImplementation((url: string) => {
+            if (url.includes('_provision') || url.includes('_deprovision')) {
                 return Promise.resolve(createMockResponse({ status: 'OK' }));
             }
             return Promise.resolve(

@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { CdkCustomResourceEvent, Context } from 'aws-lambda';
-import { IResourceProperties } from '../../../../src/constructs/opensearch-workflow/handler/types/resource-properties';
 import { AwsHttpResponse } from '../../../../src/common/lambda/aws-http-client';
+import { IResourceProperties } from '../../../../src/constructs/opensearch-workflow/handler/types/resource-properties';
 import { DestructiveOperation } from '../../../../src/types/destructive-operation';
 
 export const mockWorkflowId = 'test-workflow-id';

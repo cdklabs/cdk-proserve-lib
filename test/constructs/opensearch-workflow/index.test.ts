@@ -6,11 +6,11 @@ import { Stack } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import { Domain, EngineVersion } from 'aws-cdk-lib/aws-opensearchservice';
+import { Asset } from 'aws-cdk-lib/aws-s3-assets';
+import { NagSuppressions } from 'cdk-nag';
 import { FunctionProperties } from 'cloudform-types/types/lambda/function';
 import { OpensearchWorkflow } from '../../../src/constructs/opensearch-workflow/index';
 import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
-import { NagSuppressions } from 'cdk-nag';
-import { Asset } from 'aws-cdk-lib/aws-s3-assets';
 
 describeCdkTest(OpensearchWorkflow, (id, getStack, getTemplate) => {
     let stack: Stack;
