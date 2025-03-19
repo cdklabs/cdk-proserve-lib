@@ -4,15 +4,17 @@
 import * as fs from 'node:fs';
 
 interface DocItem {
-    name: string;
+    readonly name: string;
     description: string;
 }
 
-function parseApiDoc(filePath: string): {
-    constructs: DocItem[];
-    aspects: DocItem[];
-    patterns: DocItem[];
-} {
+interface DocItems {
+    readonly constructs: DocItem[];
+    readonly aspects: DocItem[];
+    readonly patterns: DocItem[];
+}
+
+function parseApiDoc(filePath: string): DocItems {
     const content = fs.readFileSync(filePath, 'utf-8');
     const lines = content.split('\n');
 
@@ -20,104 +22,124 @@ function parseApiDoc(filePath: string): {
     const aspects: DocItem[] = [];
     const patterns: DocItem[] = [];
 
-    let currentSection = '';
+    let inIgnoredSection = false;
     let currentItem: DocItem | null = null;
 
-    let ignoreSection = false;
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i].trim();
 
-        // Detect sections
-        // Inside the section detection part:
-        if (line.startsWith('## Constructs')) {
-            currentSection = 'constructs';
-            ignoreSection = false;
-        } else if (line.startsWith('## Classes')) {
-            if (currentItem) {
-                // Add the current item to its proper list
-                if (currentSection === 'constructs') {
-                    constructs.push(currentItem);
-                }
-                currentItem = null; // Reset currentItem for the new section
+        // Handle section headers to determine if we should ignore this section
+        if (line.startsWith('## ')) {
+            // Check if this is a section we want to ignore
+            if (line.startsWith('## Structs') || line.startsWith('## Enum')) {
+                inIgnoredSection = true;
+                continue;
+            } else {
+                inIgnoredSection = false;
             }
-            currentSection = 'aspects';
-            ignoreSection = false;
-        } else if (line.startsWith('## Structs')) {
-            ignoreSection = true;
-        } else if (line.startsWith('## Enum')) {
-            ignoreSection = true;
         }
 
-        if (ignoreSection) {
+        // Skip processing if we're in an ignored section
+        if (inIgnoredSection) {
             continue;
         }
 
-        // Detect items
-        if (line.startsWith('### ')) {
-            // Check if the line contains an id with "types" in it
-            if (
-                line.includes('id="') &&
-                line.toLowerCase().includes('.types.')
-            ) {
-                continue; // Skip this item
-            }
-
+        // Only look for class/construct headers with id attributes
+        if (line.startsWith('### ') && line.includes('id="')) {
+            // Process previous item if it exists
             if (currentItem) {
-                if (currentItem.description.toLowerCase().includes('pattern')) {
-                    patterns.push(currentItem);
-                } else if (currentSection === 'constructs') {
-                    constructs.push(currentItem);
-                } else if (currentSection === 'aspects') {
-                    aspects.push(currentItem);
+                // Use ID to categorize the previous item if we haven't done so already
+                const idMatch = line.match(/id="([^"]+)"/);
+                if (idMatch && idMatch[1]) {
+                    const id = idMatch[1].toLowerCase();
+                    if (id.includes('.patterns.')) {
+                        patterns.push(currentItem);
+                    } else if (id.includes('.aspects.')) {
+                        aspects.push(currentItem);
+                    } else if (
+                        id.includes('.constructs.') ||
+                        !id.includes('.types.')
+                    ) {
+                        constructs.push(currentItem);
+                    }
                 }
             }
 
-            const name = line.replace('### ', '').split(' ')[0];
-            currentItem = {
-                name,
-                description: ''
-            };
+            // Extract ID to determine if we should process this item
+            const idMatch = line.match(/id="([^"]+)"/);
 
-            // Get description from following lines
-            let j = i + 1;
-            let description: string[] = []; // Explicitly type as string array
-            let foundDescription = false;
-            while (j < lines.length) {
-                const nextLine = lines[j];
-                if (nextLine.startsWith('#') || nextLine.startsWith('---')) {
-                    break;
-                }
-                if (foundDescription && nextLine.trim() === '') {
-                    break;
-                }
-                // Skip the "Implements" line for Aspects
-                if (
-                    currentSection === 'aspects' &&
-                    nextLine.trim().startsWith('- *Implements:*')
-                ) {
-                    j++;
+            if (idMatch && idMatch[1]) {
+                const id = idMatch[1].toLowerCase();
+
+                // Skip types entries
+                if (id.includes('.types.')) {
+                    currentItem = null;
                     continue;
                 }
-                if (nextLine) {
-                    // Only add non-empty lines
-                    description.push(nextLine);
-                    foundDescription = true;
+
+                // Extract name and create new item
+                const name = line.replace(/### /, '').split(' ')[0];
+                currentItem = {
+                    name,
+                    description: ''
+                };
+
+                // Get description from following lines
+                let j = i + 1;
+                let description: string[] = [];
+                let foundDescription = false;
+
+                while (j < lines.length) {
+                    const nextLine = lines[j].trim();
+
+                    if (
+                        nextLine.startsWith('#') ||
+                        nextLine.startsWith('---')
+                    ) {
+                        break;
+                    }
+
+                    if (foundDescription && nextLine === '') {
+                        break;
+                    }
+
+                    // Skip "Implements" lines
+                    if (nextLine.startsWith('- *Implements:*')) {
+                        j++;
+                        continue;
+                    }
+
+                    if (nextLine) {
+                        description.push(nextLine);
+                        foundDescription = true;
+                    }
+
+                    j++;
                 }
-                j++;
-            }
-            if (description.length > 0) {
-                currentItem.description = description.join(' ');
+
+                if (description.length > 0) {
+                    currentItem.description = description.join(' ');
+                }
+
+                // Add to appropriate category based on ID
+                if (id.includes('.patterns.')) {
+                    patterns.push(currentItem);
+                    currentItem = null;
+                } else if (id.includes('.aspects.')) {
+                    aspects.push(currentItem);
+                    currentItem = null;
+                } else if (id.includes('.constructs.')) {
+                    constructs.push(currentItem);
+                    currentItem = null;
+                }
+                // If it doesn't match any specific category, leave currentItem for potential later processing
             }
         }
     }
 
-    // Don't forget to add the last item
+    // Add the last item if it exists and wasn't categorized
     if (currentItem) {
-        if (currentSection === 'constructs') {
-            constructs.push(currentItem);
-        } else if (currentSection === 'aspects') {
-            aspects.push(currentItem);
-        }
+        constructs.push(currentItem); // Default to constructs if can't determine
     }
 
     return { constructs, aspects, patterns };

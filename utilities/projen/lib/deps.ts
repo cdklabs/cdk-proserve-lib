@@ -25,6 +25,7 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         `@aws-sdk/client-sts@${sdkVersion}`,
         `@aws-sdk/credential-provider-node@${sdkVersion}`,
         `@aws-crypto/sha256-js@5.2.0`,
+        `@aws-sdk/client-ec2@${sdkVersion}`,
         '@codegenie/serverless-express@4.16.0',
         '@smithy/signature-v4@5.0.1',
         '@smithy/types@^3.7.2',
@@ -45,7 +46,6 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
     ];
 
     const ideAndTestDeps = [
-        '@aws-sdk/client-ec2',
         '@aws-sdk/client-pricing',
         '@aws-sdk/client-wafv2',
         '@aws-sdk/util-stream', // download-s3-asset test sdkStreamMixin

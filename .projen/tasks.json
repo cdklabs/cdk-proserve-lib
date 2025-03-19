@@ -520,7 +520,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@aws-sdk/client-ec2,@aws-sdk/client-pricing,@aws-sdk/client-wafv2,@aws-sdk/util-stream,@types/glob,@types/jest,@types/js-yaml,@types/supertest,@types/uuid,aws-sdk-client-mock,aws-sdk-client-mock-jest,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,glob,husky,jest,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,prettier,supertest,ts-jest,ts-node,typescript"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@aws-sdk/client-pricing,@aws-sdk/client-wafv2,@types/glob,@types/jest,@types/supertest,@types/uuid,aws-sdk-client-mock,aws-sdk-client-mock-jest,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,glob,husky,jest,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,prettier,supertest,ts-jest,ts-node,typescript"
         },
         {
           "exec": "yarn install --check-files"
