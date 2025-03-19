@@ -1,21 +1,13 @@
-/**
- * (c) 2025 Amazon Web Services, Inc. or its affiliates. All Rights Reserved.
- *
- * This AWS Content is provided subject to the terms of the AWS Customer
- * Agreement available at https://aws.amazon.com/agreement or other written
- * agreement between Customer and either Amazon Web Services, Inc. or
- * Amazon Web Services EMEA SARL or both.
- */
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
 
 import {
     CdkCustomResourceIsCompleteEvent,
     CdkCustomResourceIsCompleteResponse,
     Context
 } from 'aws-lambda';
-import {
-    AwsHttpClient,
-    AwsHttpClientResponseError
-} from '../../../../common/lambda/aws-http-client';
+import { AwsHttpClient } from '../../../../common/lambda/aws-http-client';
+import { AwsHttpClientResponseError } from '../../../../common/lambda/aws-http-client/types/exception';
 import { IResourceProperties } from '../types/resource-properties';
 import { IResponseData } from '../types/resource-response';
 import { WorkflowStatusResponse } from '../types/workflow-response';

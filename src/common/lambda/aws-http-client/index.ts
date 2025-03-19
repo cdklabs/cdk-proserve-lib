@@ -13,36 +13,13 @@ import type {
     HttpRequest,
     Provider
 } from '@smithy/types';
-
-export interface AwsHttpClientOptions {
-    readonly service: string;
-    readonly region?: string;
-    readonly roleArn?: string;
-    readonly baseUrl?: string;
-    readonly defaultHeaders?: Record<string, string>;
-    readonly timeout?: number;
-}
-
-export interface AwsHttpResponse<T = any> {
-    readonly data: T;
-    readonly statusCode?: number;
-    readonly headers: Record<string, string | string[] | undefined>;
-    readonly rawBody: string;
-}
-
-interface RequestResponse {
-    readonly statusCode?: number;
-    readonly headers: Record<string, string | string[] | undefined>;
-    readonly body: string;
-}
-
-type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'POST' | 'PATCH' | 'HEAD';
-
-export class AwsHttpClientResponseError extends Error {
-    constructor(public readonly response: RequestResponse) {
-        super(`${response.statusCode} | ${JSON.stringify(response.body)}`);
-    }
-}
+import {
+    AwsHttpClientOptions,
+    AwsHttpResponse,
+    HttpMethod,
+    RequestResponse
+} from './types';
+import { AwsHttpClientResponseError } from './types/exception';
 
 export class AwsHttpClient {
     private readonly options: AwsHttpClientOptions;
@@ -287,6 +264,7 @@ export class AwsHttpClient {
                     DurationSeconds: 900 // 15m (minimum)
                 });
 
+                console.log(response);
                 if (!response.Credentials) {
                     throw new Error('Failed to get temporary credentials');
                 }

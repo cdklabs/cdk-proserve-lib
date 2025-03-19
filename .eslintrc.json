@@ -60,7 +60,7 @@
           "**/build-tools/**",
           "**/handler/**/*.ts",
           "**/utilities/**/*.ts",
-          "src/common/lambda/*.ts",
+          "src/common/lambda/**/*.ts",
           ".projenrc.ts",
           "projenrc/**/*.ts"
         ],

@@ -1,8 +1,12 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { CdkCustomResourceEvent, Context } from 'aws-lambda';
-import { AwsHttpResponse } from '../../../../src/common/lambda/aws-http-client';
+import {
+    CdkCustomResourceEvent,
+    CdkCustomResourceIsCompleteEvent,
+    Context
+} from 'aws-lambda';
+import { AwsHttpResponse } from '../../../../src/common/lambda/aws-http-client/types';
 import { IResourceProperties } from '../../../../src/constructs/opensearch-workflow/handler/types/resource-properties';
 import { DestructiveOperation } from '../../../../src/types/destructive-operation';
 
@@ -73,6 +77,28 @@ export const mockDeleteNoDestructiveEvent: CdkCustomResourceEvent<IResourcePrope
     {
         ...mockBaseEvent,
         RequestType: 'Delete',
+        PhysicalResourceId: mockWorkflowId
+    };
+
+export const mockCreateCompleteEvent: CdkCustomResourceIsCompleteEvent<IResourceProperties> =
+    {
+        RequestType: 'Create',
+        ServiceToken: 'token',
+        ResponseURL: 'https://response-url.example.com',
+        StackId: 'stack-id',
+        RequestId: 'request-id',
+        LogicalResourceId: 'logical-id',
+        ResourceType: 'Custom::OpenSearchWorkflow',
+        PhysicalResourceId: mockWorkflowId,
+        ResourceProperties: {
+            ...mockBaseEvent.ResourceProperties,
+            AllowDestructiveOperations: DestructiveOperation.ALL
+        }
+    };
+
+export const mockCreateProvisioningEvent: CdkCustomResourceIsCompleteEvent<IResourceProperties> =
+    {
+        ...mockCreateCompleteEvent,
         PhysicalResourceId: mockWorkflowId
     };
 

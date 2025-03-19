@@ -28,7 +28,7 @@ export const configureLinting = (project: CdklabsTypeScriptProject) => {
 
     project.eslint?.allowDevDeps('**/handler/**/*.ts');
     project.eslint?.allowDevDeps('**/utilities/**/*.ts');
-    project.eslint?.allowDevDeps('src/common/lambda/*.ts');
+    project.eslint?.allowDevDeps('src/common/lambda/**/*.ts');
 
     project.eslint?.addRules({
         '@typescript-eslint/no-require-imports': 'off'
