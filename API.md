@@ -30030,6 +30030,33 @@ Tests whether yum repository works successfully.
 ---
 
 
+### DestructiveOperation <a name="DestructiveOperation" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation"></a>
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.DestructiveOperation.UPDATE">UPDATE</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.DestructiveOperation.DELETE">DELETE</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.DestructiveOperation.ALL">ALL</a></code> | *No description.* |
+
+---
+
+##### `UPDATE` <a name="UPDATE" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation.UPDATE"></a>
+
+---
+
+
+##### `DELETE` <a name="DELETE" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation.DELETE"></a>
+
+---
+
+
+##### `ALL` <a name="ALL" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation.ALL"></a>
+
+---
+
+
 ### Ec2MetricName <a name="Ec2MetricName" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName"></a>
 
 CloudWatch Alarm Metric Names.
@@ -30068,10 +30095,10 @@ CloudWatch Alarm Metric Names.
 ---
 
 
-<<<<<<< HEAD
-##### `ALL` <a name="ALL" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation.ALL"></a>
-=======
 ##### `DISK_WRITE_OPS` <a name="DISK_WRITE_OPS" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISK_WRITE_OPS"></a>
+
+---
+
 
 ##### `DISK_READ_BYTES` <a name="DISK_READ_BYTES" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.DISK_READ_BYTES"></a>
 
@@ -30139,9 +30166,9 @@ CloudWatch Alarm Metric Names.
 
 
 ##### `CPU_SURPLUS_CREDITS_CHARGED` <a name="CPU_SURPLUS_CREDITS_CHARGED" id="@cdklabs/cdk-proserve-lib.aspects.Ec2AutomatedShutdown.Ec2MetricName.CPU_SURPLUS_CREDITS_CHARGED"></a>
->>>>>>> origin/main
 
 ---
+
 
 ### Feature <a name="Feature" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.Feature"></a>
 
