@@ -78,6 +78,10 @@
       "type": "build"
     },
     {
+      "name": "@aws-sdk/util-stream",
+      "type": "build"
+    },
+    {
       "name": "@codegenie/serverless-express",
       "version": "4.16.0",
       "type": "build"

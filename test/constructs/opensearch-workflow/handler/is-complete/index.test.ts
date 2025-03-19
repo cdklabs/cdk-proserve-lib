@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { AwsHttpClient } from '../../../../../src/common/lambda/aws-http-client';
-import { AwsHttpClientResponseError } from '../../../../../src/common/lambda/aws-http-client/types/exception';
+import { HttpClientResponseError } from '../../../../../src/common/lambda/http-client/types/exception';
 import { handler } from '../../../../../src/constructs/opensearch-workflow/handler/is-complete';
 import { WorkflowStatusResponse } from '../../../../../src/constructs/opensearch-workflow/handler/types/workflow-response';
 import { flattenResponse } from '../../../../../src/constructs/opensearch-workflow/handler/utils/flatten';
@@ -127,7 +127,7 @@ describe('OpenSearch Workflow IsComplete Handler', () => {
 
     it('should return IsComplete: true when workflow does not exist for DELETE', async () => {
         // Arrange
-        const error = new AwsHttpClientResponseError({
+        const error = new HttpClientResponseError({
             statusCode: 404,
             headers: {},
             body: 'Not Found'
@@ -176,7 +176,7 @@ describe('OpenSearch Workflow IsComplete Handler', () => {
 
     it('should throw error when API returns non-404 error during DELETE check', async () => {
         // Arrange
-        const error = new AwsHttpClientResponseError({
+        const error = new HttpClientResponseError({
             statusCode: 500,
             headers: {},
             body: 'Server Error'

@@ -7,7 +7,7 @@ import {
     Context
 } from 'aws-lambda';
 import { AwsHttpClient } from '../../../../common/lambda/aws-http-client';
-import { AwsHttpClientResponseError } from '../../../../common/lambda/aws-http-client/types/exception';
+import { HttpClientResponseError } from '../../../../common/lambda/http-client/types/exception';
 import { IResourceProperties } from '../types/resource-properties';
 import { IResponseData } from '../types/resource-response';
 import { WorkflowStatusResponse } from '../types/workflow-response';
@@ -78,7 +78,7 @@ async function isDeleted(
             IsComplete: false
         };
     } catch (error) {
-        if (error instanceof AwsHttpClientResponseError) {
+        if (error instanceof HttpClientResponseError) {
             if (error.response.statusCode === 404) {
                 console.info(`Workflow (${workflowId}) deleted!`);
                 return {

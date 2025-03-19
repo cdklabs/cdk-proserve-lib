@@ -1,0 +1,398 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+
+import * as http from 'http';
+import * as https from 'https';
+import { HttpClient } from '../../../../src/common/lambda/http-client';
+import { HttpClientResponseError } from '../../../../src/common/lambda/http-client/types/exception';
+
+jest.mock('http');
+jest.mock('https');
+
+describe('HttpClient', () => {
+    // Create reusable mocks and client instance
+    let client: HttpClient;
+    let mockResponse: any;
+    let mockRequest: any;
+
+    beforeEach(() => {
+        // Set up HTTP/HTTPS response mocks
+        mockResponse = {
+            statusCode: 200,
+            headers: { 'content-type': 'application/json' },
+            on: jest.fn().mockImplementation((event, callback) => {
+                if (event === 'data') {
+                    callback(JSON.stringify({ success: true }));
+                } else if (event === 'end') {
+                    callback();
+                }
+                return mockResponse;
+            })
+        };
+
+        // Set up request object mock
+        mockRequest = {
+            on: jest.fn(),
+            write: jest.fn(),
+            end: jest.fn()
+        };
+
+        // Mock http.request and https.request properly
+        (http.request as jest.Mock).mockImplementation((_, callback: any) => {
+            if (callback) {
+                callback(mockResponse);
+            }
+            return mockRequest;
+        });
+
+        (https.request as jest.Mock).mockImplementation((_, callback: any) => {
+            if (callback) {
+                callback(mockResponse);
+            }
+            return mockRequest;
+        });
+
+        // Create client instance
+        client = new HttpClient({
+            baseUrl: 'https://api.example.com'
+        });
+    });
+
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    describe('Constructor', () => {
+        it('should set default options correctly', () => {
+            const newClient = new HttpClient();
+            // @ts-ignore - Accessing protected properties for testing
+            expect(newClient.options).toEqual({
+                timeout: 30000,
+                defaultHeaders: {}
+            });
+        });
+
+        it('should merge provided options with defaults', () => {
+            const newClient = new HttpClient({
+                timeout: 5000,
+                defaultHeaders: { 'x-custom-header': 'test' }
+            });
+            // @ts-ignore - Accessing protected properties for testing
+            expect(newClient.options).toEqual({
+                timeout: 5000,
+                defaultHeaders: { 'x-custom-header': 'test' }
+            });
+        });
+    });
+
+    describe('HTTP methods', () => {
+        it('should make GET requests correctly', async () => {
+            const response = await client.get('/test', {
+                'x-custom-header': 'value'
+            });
+
+            expect(https.request).toHaveBeenCalled();
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.method).toBe('GET');
+            expect(requestOptions.headers['x-custom-header']).toBe('value');
+
+            expect(response).toEqual({
+                data: { success: true },
+                statusCode: 200,
+                headers: { 'content-type': 'application/json' },
+                rawBody: JSON.stringify({ success: true })
+            });
+        });
+
+        it('should make POST requests correctly with data', async () => {
+            const data = { name: 'test' };
+            await client.post('/test', data);
+
+            expect(mockRequest.write).toHaveBeenCalledWith(
+                JSON.stringify(data)
+            );
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.method).toBe('POST');
+            expect(requestOptions.headers['content-type']).toBe(
+                'application/json'
+            );
+        });
+
+        it('should make PUT requests correctly', async () => {
+            const data = { name: 'test' };
+            await client.put('/test', data);
+
+            expect(mockRequest.write).toHaveBeenCalledWith(
+                JSON.stringify(data)
+            );
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.method).toBe('PUT');
+        });
+
+        it('should make DELETE requests correctly', async () => {
+            await client.delete('/test');
+
+            expect(mockRequest.write).not.toHaveBeenCalled();
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.method).toBe('DELETE');
+        });
+
+        it('should make PATCH requests correctly', async () => {
+            const data = { name: 'test' };
+            await client.patch('/test', data);
+
+            expect(mockRequest.write).toHaveBeenCalledWith(
+                JSON.stringify(data)
+            );
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.method).toBe('PATCH');
+        });
+
+        it('should make HEAD requests correctly', async () => {
+            await client.head('/test');
+
+            expect(mockRequest.write).not.toHaveBeenCalled();
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.method).toBe('HEAD');
+        });
+    });
+
+    describe('URL building', () => {
+        it('should use the provided URL when no baseUrl exists', async () => {
+            // Create a new client without baseUrl for this test
+            const clientWithoutBaseUrl = new HttpClient();
+            await clientWithoutBaseUrl.get('https://api.example.com/test');
+
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.hostname).toBe('api.example.com');
+            expect(requestOptions.path).toBe('/test');
+        });
+
+        it('should combine baseUrl with path', async () => {
+            const clientWithBaseUrl = new HttpClient({
+                baseUrl: 'https://api.example.com'
+            });
+
+            await clientWithBaseUrl.get('/test');
+
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.hostname).toBe('api.example.com');
+            expect(requestOptions.path).toBe('/test');
+        });
+
+        it('should handle trailing slashes in baseUrl', async () => {
+            const clientWithBaseUrl = new HttpClient({
+                baseUrl: 'https://api.example.com/'
+            });
+
+            await clientWithBaseUrl.get('test');
+
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.hostname).toBe('api.example.com');
+            expect(requestOptions.path).toBe('/test');
+        });
+
+        it('should handle leading slashes in path', async () => {
+            const clientWithBaseUrl = new HttpClient({
+                baseUrl: 'https://api.example.com'
+            });
+
+            await clientWithBaseUrl.get('/test');
+
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.hostname).toBe('api.example.com');
+            expect(requestOptions.path).toBe('/test');
+        });
+    });
+
+    describe('Error handling', () => {
+        it('should throw HttpClientResponseError for non-2xx responses', async () => {
+            // Mock an error response
+            const errorResponse = {
+                statusCode: 400,
+                headers: { 'content-type': 'application/json' },
+                on: jest.fn().mockImplementation((event, callback) => {
+                    if (event === 'data') {
+                        callback(JSON.stringify({ error: 'Bad request' }));
+                    } else if (event === 'end') {
+                        callback();
+                    }
+                    return errorResponse;
+                })
+            };
+
+            // Mock https.request to return error response for just this test
+            (https.request as jest.Mock).mockImplementationOnce(
+                (_, callback: any) => {
+                    if (callback) {
+                        callback(errorResponse);
+                    }
+                    return mockRequest;
+                }
+            );
+
+            let error: any;
+            try {
+                await client.get('/test');
+            } catch (e) {
+                error = e;
+            }
+
+            expect(error).toBeInstanceOf(HttpClientResponseError);
+            expect(error.message).toContain('400');
+        });
+
+        it('should handle network errors', async () => {
+            const networkError = new Error('Network error');
+
+            // Override the mock for just this test
+            (https.request as jest.Mock).mockImplementationOnce(() => {
+                const req = {
+                    on: jest.fn().mockImplementation((event, callback) => {
+                        if (event === 'error' && callback) {
+                            // Store the error callback to trigger later
+                            setTimeout(() => callback(networkError), 0);
+                        }
+                        return req;
+                    }),
+                    write: jest.fn(),
+                    end: jest.fn()
+                };
+                return req;
+            });
+
+            await expect(client.get('/test')).rejects.toThrow('Network error');
+        });
+    });
+
+    describe('Response parsing', () => {
+        it('should handle non-JSON responses correctly', async () => {
+            // Mock a non-JSON response
+            const nonJsonResponse = {
+                statusCode: 200,
+                headers: { 'content-type': 'text/plain' },
+                on: jest.fn().mockImplementation((event, callback) => {
+                    if (event === 'data') {
+                        callback('This is plain text, not JSON');
+                    } else if (event === 'end') {
+                        callback();
+                    }
+                    return nonJsonResponse;
+                })
+            };
+
+            // Mock https.request to return non-JSON response for just this test
+            (https.request as jest.Mock).mockImplementationOnce(
+                (_, callback: any) => {
+                    if (callback) {
+                        callback(nonJsonResponse);
+                    }
+                    return mockRequest;
+                }
+            );
+
+            const response = await client.get('/test');
+
+            // Expect the raw string to be passed as data since JSON parsing failed
+            expect(response.data).toBe('This is plain text, not JSON');
+            expect(response.rawBody).toBe('This is plain text, not JSON');
+        });
+    });
+
+    describe('URL validation', () => {
+        it('should throw error for an invalid URL', async () => {
+            // Create a client without baseUrl
+            const clientWithoutBaseUrl = new HttpClient();
+
+            // Try with a relative path which is invalid without baseUrl
+            await expect(
+                clientWithoutBaseUrl.get('/relative-path')
+            ).rejects.toThrow('Invalid URL: /relative-path');
+        });
+
+        it('should throw error for an empty URL', async () => {
+            // Create a client without baseUrl
+            const clientWithoutBaseUrl = new HttpClient();
+
+            // Try with empty string
+            await expect(clientWithoutBaseUrl.get('')).rejects.toThrow(
+                'Invalid URL:'
+            );
+        });
+    });
+
+    describe('Request headers', () => {
+        it('should include default headers in all requests', async () => {
+            const clientWithDefaultHeaders = new HttpClient({
+                baseUrl: 'https://api.example.com',
+                defaultHeaders: {
+                    'x-api-key': '12345',
+                    'user-agent': 'test-client'
+                }
+            });
+
+            await clientWithDefaultHeaders.get('/test');
+
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.headers['x-api-key']).toBe('12345');
+            expect(requestOptions.headers['user-agent']).toBe('test-client');
+        });
+
+        it('should override default headers with request-specific headers', async () => {
+            const clientWithDefaultHeaders = new HttpClient({
+                baseUrl: 'https://api.example.com',
+                defaultHeaders: {
+                    'x-api-key': '12345',
+                    'content-type': 'application/json'
+                }
+            });
+
+            await clientWithDefaultHeaders.get('/test', {
+                'x-api-key': '67890',
+                accept: 'application/xml'
+            });
+
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.headers['x-api-key']).toBe('67890'); // Overridden
+            expect(requestOptions.headers['content-type']).toBe(
+                'application/json'
+            ); // From defaults
+            expect(requestOptions.headers.accept).toBe('application/xml'); // New header
+        });
+    });
+
+    describe('Timeout', () => {
+        it('should set the default timeout on requests', async () => {
+            await client.get('/test');
+
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.timeout).toBe(30000);
+        });
+
+        it('should use custom timeout when provided', async () => {
+            const customTimeoutClient = new HttpClient({
+                baseUrl: 'https://api.example.com',
+                timeout: 5000
+            });
+
+            await customTimeoutClient.get('/test');
+
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.timeout).toBe(5000);
+        });
+    });
+});

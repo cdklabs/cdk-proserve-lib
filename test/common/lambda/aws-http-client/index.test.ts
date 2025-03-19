@@ -5,23 +5,26 @@ import * as http from 'http';
 import * as https from 'https';
 import { Sha256 } from '@aws-crypto/sha256-js';
 import { STS } from '@aws-sdk/client-sts';
+import { defaultProvider } from '@aws-sdk/credential-provider-node';
 import { SignatureV4 } from '@smithy/signature-v4';
 import { AwsHttpClient } from '../../../../src/common/lambda/aws-http-client';
-import { AwsHttpClientResponseError } from '../../../../src/common/lambda/aws-http-client/types/exception';
+import { HttpClientResponseError } from '../../../../src/common/lambda/http-client/types/exception';
 
 // Mock the AWS SDK modules
 jest.mock('@aws-sdk/client-sts');
+jest.mock('@aws-sdk/credential-provider-node');
 jest.mock('@smithy/signature-v4');
 jest.mock('http');
 jest.mock('https');
 
-describe('AwsHttpClient', () => {
+describe('HttpClientAws', () => {
     // Store original environment variables
     const originalEnv = process.env;
 
     // Create reusable mocks and client instance
     let mockSignFunction: jest.Mock;
     let mockStsAssumeRole: jest.Mock;
+    let mockDefaultProvider: jest.Mock;
     let client: AwsHttpClient;
 
     // Mock response setup
@@ -41,7 +44,8 @@ describe('AwsHttpClient', () => {
             method: 'GET',
             headers: {
                 host: 'api.example.com',
-                'x-amz-date': '20220101T000000Z'
+                'x-amz-date': '20220101T000000Z',
+                authorization: 'AWS4-HMAC-SHA256 Credential=...'
             },
             body: undefined
         });
@@ -71,6 +75,14 @@ describe('AwsHttpClient', () => {
                     assumeRole: mockStsAssumeRole
                 }) as any
         );
+
+        // Set up defaultProvider mock
+        mockDefaultProvider = jest.fn().mockReturnValue({
+            accessKeyId: 'default-access-key',
+            secretAccessKey: 'default-secret-key'
+        });
+
+        (defaultProvider as jest.Mock).mockImplementation(mockDefaultProvider);
 
         // Set up HTTP/HTTPS response mocks
         mockResponse = {
@@ -127,8 +139,7 @@ describe('AwsHttpClient', () => {
             const newClient = new AwsHttpClient({
                 service: 'es'
             });
-
-            // @ts-ignore - Accessing private properties for testing
+            // @ts-ignore - Accessing protected properties for testing
             expect(newClient.options).toEqual({
                 service: 'es',
                 timeout: 30000,
@@ -143,8 +154,7 @@ describe('AwsHttpClient', () => {
                 timeout: 5000,
                 defaultHeaders: { 'x-custom-header': 'test' }
             });
-
-            // @ts-ignore - Accessing private properties for testing
+            // @ts-ignore - Accessing protected properties for testing
             expect(newClient.options).toEqual({
                 service: 'es',
                 region: 'us-east-1',
@@ -152,10 +162,17 @@ describe('AwsHttpClient', () => {
                 defaultHeaders: { 'x-custom-header': 'test' }
             });
         });
+
+        it('should throw error when service is not provided', () => {
+            expect(() => {
+                // @ts-ignore - Testing invalid constructor
+                new AwsHttpClient({});
+            }).toThrow('Service must be specified for AWS SigV4 signing');
+        });
     });
 
-    describe('HTTP methods', () => {
-        it('should make GET requests correctly', async () => {
+    describe('HTTP methods with AWS signing', () => {
+        it('should make GET requests with AWS signature', async () => {
             const response = await client.get('/test', {
                 'x-custom-header': 'value'
             });
@@ -168,9 +185,17 @@ describe('AwsHttpClient', () => {
                 headers: { 'content-type': 'application/json' },
                 rawBody: JSON.stringify({ success: true })
             });
+
+            // Verify SignatureV4 was initialized correctly
+            expect(SignatureV4).toHaveBeenCalledWith({
+                credentials: expect.any(Object),
+                region: 'us-east-1',
+                service: 'test-service',
+                sha256: Sha256
+            });
         });
 
-        it('should make POST requests correctly with data', async () => {
+        it('should make POST requests correctly with AWS signature', async () => {
             const data = { name: 'test' };
             await client.post('/test', data);
 
@@ -180,93 +205,34 @@ describe('AwsHttpClient', () => {
             expect(requestArg.headers['content-type']).toBe('application/json');
         });
 
-        it('should make PUT requests correctly', async () => {
-            const data = { name: 'test' };
-            await client.put('/test', data);
-
-            const requestArg = mockSignFunction.mock.calls[0][0];
-            expect(requestArg.method).toBe('PUT');
-            expect(requestArg.body).toBe(JSON.stringify(data));
-        });
-
-        it('should make DELETE requests correctly', async () => {
-            await client.delete('/test');
-
-            const requestArg = mockSignFunction.mock.calls[0][0];
-            expect(requestArg.method).toBe('DELETE');
-            expect(requestArg.body).toBeUndefined();
-        });
-
-        it('should make PATCH requests correctly', async () => {
-            const data = { name: 'test' };
-            await client.patch('/test', data);
-
-            const requestArg = mockSignFunction.mock.calls[0][0];
-            expect(requestArg.method).toBe('PATCH');
-            expect(requestArg.body).toBe(JSON.stringify(data));
-        });
-
-        it('should make HEAD requests correctly', async () => {
-            await client.head('/test');
-
-            const requestArg = mockSignFunction.mock.calls[0][0];
-            expect(requestArg.method).toBe('HEAD');
-            expect(requestArg.body).toBeUndefined();
-        });
-    });
-
-    describe('URL building', () => {
-        it('should use the provided URL when no baseUrl exists', async () => {
-            // Create a new client without baseUrl for this test
-            const clientWithoutBaseUrl = new AwsHttpClient({
-                service: 'test-service',
-                region: 'us-east-1'
+        it('should use the signed request for making the actual HTTP request', async () => {
+            // Set up a specific signature result
+            mockSignFunction.mockResolvedValueOnce({
+                hostname: 'api.example.com',
+                protocol: 'https:',
+                port: 443,
+                path: '/test',
+                method: 'GET',
+                headers: {
+                    host: 'api.example.com',
+                    'x-amz-date': '20220101T000000Z',
+                    authorization: 'AWS4-HMAC-SHA256 Credential=...',
+                    'x-amz-security-token': 'mock-session-token'
+                },
+                body: undefined
             });
 
-            await clientWithoutBaseUrl.get('https://api.example.com/test');
+            await client.get('/test');
 
-            const requestArg = mockSignFunction.mock.calls[0][0];
-            expect(requestArg.hostname).toBe('api.example.com');
-            expect(requestArg.path).toBe('/test');
-        });
-
-        it('should combine baseUrl with path', async () => {
-            const clientWithBaseUrl = new AwsHttpClient({
-                service: 'test-service',
-                baseUrl: 'https://api.example.com'
-            });
-
-            await clientWithBaseUrl.get('/test');
-
-            const requestArg = mockSignFunction.mock.calls[0][0];
-            expect(requestArg.hostname).toBe('api.example.com');
-            expect(requestArg.path).toBe('/test');
-        });
-
-        it('should handle trailing slashes in baseUrl', async () => {
-            const clientWithBaseUrl = new AwsHttpClient({
-                service: 'test-service',
-                baseUrl: 'https://api.example.com/'
-            });
-
-            await clientWithBaseUrl.get('test');
-
-            const requestArg = mockSignFunction.mock.calls[0][0];
-            expect(requestArg.hostname).toBe('api.example.com');
-            expect(requestArg.path).toBe('/test');
-        });
-
-        it('should handle leading slashes in path', async () => {
-            const clientWithBaseUrl = new AwsHttpClient({
-                service: 'test-service',
-                baseUrl: 'https://api.example.com'
-            });
-
-            await clientWithBaseUrl.get('/test');
-
-            const requestArg = mockSignFunction.mock.calls[0][0];
-            expect(requestArg.hostname).toBe('api.example.com');
-            expect(requestArg.path).toBe('/test');
+            // Check if https.request was called with proper signed parameters
+            const requestOptions = (https.request as jest.Mock).mock
+                .calls[0][0];
+            expect(requestOptions.headers.authorization).toBe(
+                'AWS4-HMAC-SHA256 Credential=...'
+            );
+            expect(requestOptions.headers['x-amz-date']).toBe(
+                '20220101T000000Z'
+            );
         });
     });
 
@@ -275,8 +241,9 @@ describe('AwsHttpClient', () => {
             await client.get('/test');
 
             expect(mockStsAssumeRole).not.toHaveBeenCalled();
+            expect(mockDefaultProvider).toHaveBeenCalled();
             expect(SignatureV4).toHaveBeenCalledWith({
-                credentials: expect.any(Function),
+                credentials: expect.any(Object),
                 region: 'us-east-1',
                 service: 'test-service',
                 sha256: Sha256
@@ -297,6 +264,8 @@ describe('AwsHttpClient', () => {
                 RoleSessionName: 'AwsSigV4Request',
                 DurationSeconds: 900
             });
+
+            expect(mockDefaultProvider).not.toHaveBeenCalled();
         });
 
         it('should cache credentials from assumed role', async () => {
@@ -370,7 +339,6 @@ describe('AwsHttpClient', () => {
             const errorResponse = {
                 statusCode: 400,
                 headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({ error: 'Bad request' }),
                 on: jest.fn().mockImplementation((event, callback) => {
                     if (event === 'data') {
                         callback(JSON.stringify({ error: 'Bad request' }));
@@ -391,37 +359,9 @@ describe('AwsHttpClient', () => {
                 }
             );
 
-            let error: any;
-            try {
-                await client.get('/test');
-            } catch (e) {
-                error = e;
-            }
-
-            expect(error).toBeInstanceOf(AwsHttpClientResponseError);
-            expect(error.message).toContain('400');
-        });
-
-        it('should handle network errors', async () => {
-            const networkError = new Error('Network error');
-
-            // Override the mock for just this test
-            (https.request as jest.Mock).mockImplementationOnce(() => {
-                const req = {
-                    on: jest.fn().mockImplementation((event, callback) => {
-                        if (event === 'error' && callback) {
-                            // Store the error callback to trigger later
-                            setTimeout(() => callback(networkError), 0);
-                        }
-                        return req;
-                    }),
-                    write: jest.fn(),
-                    end: jest.fn()
-                };
-                return req;
-            });
-
-            await expect(client.get('/test')).rejects.toThrow('Network error');
+            await expect(client.get('/test')).rejects.toThrow(
+                HttpClientResponseError
+            );
         });
 
         it('should throw error when failing to get temporary credentials', async () => {
@@ -437,68 +377,6 @@ describe('AwsHttpClient', () => {
 
             await expect(clientWithRole.get('/test')).rejects.toThrow(
                 'Failed to get temporary credentials'
-            );
-        });
-    });
-
-    describe('Response parsing', () => {
-        it('should handle non-JSON responses correctly', async () => {
-            // Mock a non-JSON response
-            const nonJsonResponse = {
-                statusCode: 200,
-                headers: { 'content-type': 'text/plain' },
-                on: jest.fn().mockImplementation((event, callback) => {
-                    if (event === 'data') {
-                        callback('This is plain text, not JSON');
-                    } else if (event === 'end') {
-                        callback();
-                    }
-                    return nonJsonResponse;
-                })
-            };
-
-            // Mock https.request to return non-JSON response for just this test
-            (https.request as jest.Mock).mockImplementationOnce(
-                (_: any, callback: any) => {
-                    if (callback) {
-                        callback(nonJsonResponse);
-                    }
-                    return mockRequest;
-                }
-            );
-
-            const response = await client.get('/test');
-
-            // Expect the raw string to be passed as data since JSON parsing failed
-            expect(response.data).toBe('This is plain text, not JSON');
-            expect(response.rawBody).toBe('This is plain text, not JSON');
-        });
-    });
-
-    describe('URL validation', () => {
-        it('should throw error for an invalid URL', async () => {
-            // Create a client without baseUrl
-            const clientWithoutBaseUrl = new AwsHttpClient({
-                service: 'test-service',
-                region: 'us-east-1'
-            });
-
-            // Try with a relative path which is invalid without baseUrl
-            await expect(
-                clientWithoutBaseUrl.get('/relative-path')
-            ).rejects.toThrow('Invalid URL: /relative-path');
-        });
-
-        it('should throw error for an empty URL', async () => {
-            // Create a client without baseUrl
-            const clientWithoutBaseUrl = new AwsHttpClient({
-                service: 'test-service',
-                region: 'us-east-1'
-            });
-
-            // Try with empty string
-            await expect(clientWithoutBaseUrl.get('')).rejects.toThrow(
-                'Invalid URL:'
             );
         });
     });

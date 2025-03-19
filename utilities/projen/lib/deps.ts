@@ -48,6 +48,7 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         '@aws-sdk/client-ec2',
         '@aws-sdk/client-pricing',
         '@aws-sdk/client-wafv2',
+        '@aws-sdk/util-stream', // download-s3-asset test sdkStreamMixin
         '@types/glob',
         '@types/supertest',
         '@types/uuid',

@@ -6,7 +6,7 @@ import {
     CdkCustomResourceIsCompleteEvent,
     Context
 } from 'aws-lambda';
-import { AwsHttpResponse } from '../../../../src/common/lambda/aws-http-client/types';
+import { HttpClientResponse } from '../../../../src/common/lambda/http-client/types';
 import { IResourceProperties } from '../../../../src/constructs/opensearch-workflow/handler/types/resource-properties';
 import { DestructiveOperation } from '../../../../src/types/destructive-operation';
 
@@ -104,7 +104,7 @@ export const mockCreateProvisioningEvent: CdkCustomResourceIsCompleteEvent<IReso
 
 export const mockContext = {} as Context;
 
-export function createMockResponse<T>(data: T): AwsHttpResponse<T> {
+export function createMockResponse<T>(data: T): HttpClientResponse<T> {
     return {
         data,
         headers: {},

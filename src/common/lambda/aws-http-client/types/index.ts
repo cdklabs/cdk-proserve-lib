@@ -1,33 +1,21 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-export interface AwsHttpClientOptions {
-    readonly service: string;
-    readonly region?: string;
-    readonly roleArn?: string;
-    readonly baseUrl?: string;
-    readonly defaultHeaders?: Record<string, string>;
-    readonly timeout?: number;
-}
+import { HttpClientOptions } from '../../http-client/types';
 
-export interface AwsHttpResponse<T = any> {
-    readonly data: T;
-    readonly statusCode?: number;
-    readonly headers: Record<string, string | string[] | undefined>;
-    readonly rawBody: string;
+export interface AwsHttpClientOptions extends HttpClientOptions {
+    /**
+     * The AWS service that the request will be signed for using SigV4.
+     */
+    service: string;
+    /**
+     * The AWS region that the request will be signed for using SigV4.
+     */
+    region?: string;
+    /**
+     * The ARN of the role that the request will be signed with using SigV4.
+     * If not provided, the default AWS credentials will be used if they are
+     * available.
+     */
+    roleArn?: string;
 }
-
-export interface RequestResponse {
-    readonly statusCode?: number;
-    readonly headers: Record<string, string | string[] | undefined>;
-    readonly body: string;
-}
-
-export type HttpMethod =
-    | 'GET'
-    | 'POST'
-    | 'PUT'
-    | 'DELETE'
-    | 'POST'
-    | 'PATCH'
-    | 'HEAD';
