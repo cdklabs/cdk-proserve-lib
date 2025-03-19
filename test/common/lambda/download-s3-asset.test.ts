@@ -7,9 +7,9 @@ import path from 'node:path';
 import { Readable } from 'node:stream';
 import { PassThrough } from 'stream';
 import { GetObjectCommand, HeadObjectCommand, S3 } from '@aws-sdk/client-s3';
-import { downloadS3Asset } from '../../../src/common/lambda/download-s3-asset';
-import { mockClient } from 'aws-sdk-client-mock';
 import { sdkStreamMixin } from '@aws-sdk/util-stream';
+import { mockClient } from 'aws-sdk-client-mock';
+import { downloadS3Asset } from '../../../src/common/lambda/download-s3-asset';
 
 // Mock fs.createWriteStream
 jest.mock('node:fs', () => ({

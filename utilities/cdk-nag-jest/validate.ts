@@ -35,11 +35,13 @@ export function validateNoCdkNagFindings(stack: Stack, constructName?: string) {
         // If constructName is provided, also filter to only include annotations
         // with that constructName
         const annotations = allAnnotations.filter((a) => {
-            const excludeFrameworkOnEvent = !a.id.includes('/Provider/');
+            const excludeGenerated =
+                !a.id.includes('/Provider/') &&
+                !a.id.includes('/framework-onEvent/');
             if (constructName) {
-                return excludeFrameworkOnEvent && a.id.includes(constructName);
+                return excludeGenerated && a.id.includes(constructName);
             }
-            return excludeFrameworkOnEvent;
+            return excludeGenerated;
         });
 
         if (annotations.length > 0) {
