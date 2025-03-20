@@ -13,7 +13,7 @@ import {
     buildCloudWatchEventWithState
 } from '../fixtures';
 
-describe.only('Lambda Handler', () => {
+describe('Lambda Handler', () => {
     const ec2Mock = mockClient(EC2);
     const consoleSpy = vi.spyOn(console, 'info');
     let event: CloudWatchAlarmEvent;
