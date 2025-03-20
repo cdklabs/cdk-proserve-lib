@@ -4,6 +4,7 @@
 import { EC2, StopInstancesCommand } from '@aws-sdk/client-ec2';
 import { CloudWatchAlarmEvent } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
+import { vi } from 'vitest';
 import { handler } from '../../../../src/aspects/ec2-automated-shutdown/handler';
 import { mockContext } from '../../../fixtures';
 import {
@@ -14,7 +15,7 @@ import {
 
 describe.only('Lambda Handler', () => {
     const ec2Mock = mockClient(EC2);
-    const consoleSpy = jest.spyOn(console, 'info');
+    const consoleSpy = vi.spyOn(console, 'info');
     let event: CloudWatchAlarmEvent;
 
     beforeEach(() => {

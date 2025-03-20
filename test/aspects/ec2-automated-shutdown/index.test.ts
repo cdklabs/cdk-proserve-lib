@@ -17,7 +17,7 @@ import {
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { NagSuppressions } from 'cdk-nag';
 import { Ec2AutomatedShutdown } from '../../../src/aspects/ec2-automated-shutdown';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 import { mockVpcId, mockCidrBlock } from '../../fixtures/network';
 
 describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
