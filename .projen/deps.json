@@ -160,11 +160,6 @@
       "type": "build"
     },
     {
-      "name": "emoji-regex",
-      "version": "8.0.0",
-      "type": "build"
-    },
-    {
       "name": "esbuild",
       "type": "build"
     },
@@ -205,11 +200,6 @@
     },
     {
       "name": "husky",
-      "type": "build"
-    },
-    {
-      "name": "is-fullwidth-code-point",
-      "version": "3.0.0",
       "type": "build"
     },
     {
@@ -257,16 +247,6 @@
       "type": "build"
     },
     {
-      "name": "string-width",
-      "version": "4.2.3",
-      "type": "build"
-    },
-    {
-      "name": "strip-ansi",
-      "version": "6.0.1",
-      "type": "build"
-    },
-    {
       "name": "supertest",
       "type": "build"
     },
@@ -285,11 +265,6 @@
     },
     {
       "name": "vitest",
-      "type": "build"
-    },
-    {
-      "name": "wrap-ansi",
-      "version": "7.0.0",
       "type": "build"
     },
     {
