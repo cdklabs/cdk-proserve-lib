@@ -14,7 +14,7 @@ const project = new CdklabsConstructLibrary({
     stability: 'experimental',
     private: false,
     keywords: ['aws', 'awscdk', 'aws-cdk', 'cdk'],
-    jsiiVersion: '~5.7',
+    jsiiVersion: '~5.8',
     cdkVersion: '2.177.0',
     defaultReleaseBranch: 'main',
     rosettaOptions: {

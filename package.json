@@ -89,6 +89,7 @@
     "cloudform-types": "^7.5.0",
     "commit-and-tag-version": "^12",
     "constructs": "10.0.5",
+    "emoji-regex": "8.0.0",
     "esbuild": "^0.25.1",
     "eslint": "^9",
     "eslint-config-prettier": "^9.1.0",
@@ -99,7 +100,8 @@
     "express-async-handler": "1.2.0",
     "glob": "^7.2.3",
     "husky": "^9.1.7",
-    "jsii": "~5.7",
+    "is-fullwidth-code-point": "3.0.0",
+    "jsii": "~5.8",
     "jsii-diff": "^1.110.0",
     "jsii-docgen": "^10.5.0",
     "jsii-pacmak": "^1.110.0",
@@ -109,18 +111,27 @@
     "morgan": "1.10.0",
     "prettier": "^3.5.3",
     "projen": "^0.91.11",
+    "string-width": "4.2.3",
+    "strip-ansi": "6.0.1",
     "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2",
     "uuid": "11.0.3",
-    "vitest": "^3.0.9"
+    "vitest": "^3.0.9",
+    "wrap-ansi": "7.0.0"
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.177.0",
     "constructs": "^10.0.5"
   },
   "resolutions": {
-    "cross-spawn": "^7.0.5"
+    "ansi-regex": "^5.0.1",
+    "cross-spawn": "^7.0.5",
+    "emoji-regex": "^8.0.0",
+    "is-fullwidth-code-point": "^3.0.0",
+    "string-width": "^4.2.3",
+    "strip-ansi": "^6.0.1",
+    "wrap-ansi": "^7.0.0"
   },
   "keywords": [
     "aws",
