@@ -1,16 +1,17 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import fs from 'fs';
+// import fs from 'fs';
 import { Stack } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Subnet, Vpc } from 'aws-cdk-lib/aws-ec2';
 import { Key } from 'aws-cdk-lib/aws-kms';
+import { vi } from 'vitest';
 import { mockSuricataRulesCapacity, mockSuricataRulesPath } from './fixtures';
 import { NetworkFirewall } from '../../../src/constructs/network-firewall/index';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
-const originalReadFileSync = fs.readFileSync;
+// const originalReadFileSync = fs.readFileSync;
 
 describeCdkTest(NetworkFirewall, (id, getStack, getTemplate) => {
     let stack: Stack;
@@ -44,17 +45,21 @@ describeCdkTest(NetworkFirewall, (id, getStack, getTemplate) => {
             })
         ];
 
-        jest.spyOn(fs, 'readFileSync').mockImplementation((path, options) => {
-            if (path === mockSuricataRulesPath) {
-                return 'mock suricata rules';
-            }
-            // Call the original implementation for all other paths
-            return originalReadFileSync(path, options);
+        vi.mock('fs', () => {
+            return {
+                readFileSync: vi.fn((path) => {
+                    if (path === mockSuricataRulesPath) {
+                        return 'mock suricata rules';
+                    }
+                    throw new Error(`Mock file not found: ${path}`);
+                })
+                // Include other fs methods you might need
+            };
         });
     });
 
     afterEach(() => {
-        jest.restoreAllMocks();
+        vi.restoreAllMocks();
     });
 
     it('creates a Network Firewall with basic configuration', () => {

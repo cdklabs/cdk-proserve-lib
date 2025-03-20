@@ -17,7 +17,7 @@ import {
     mockPrivateKeyValue
 } from './fixtures';
 import { IamServerCertificate } from '../../../src/constructs';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 const certificateParameterElementName = 'CertificateParameter';
 const privateKeyParameterElementName = 'PrivateKeyParameter';

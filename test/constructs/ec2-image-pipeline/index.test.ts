@@ -8,7 +8,7 @@ import { CfnComponent } from 'aws-cdk-lib/aws-imagebuilder';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Ec2ImagePipeline } from '../../../src/constructs/ec2-image-pipeline';
 import { Ec2ImagePipelineBuildConfigError } from '../../../src/constructs/ec2-image-pipeline/types/exception';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(Ec2ImagePipeline, (id, getStack, getTemplate) => {
     let stack: Stack;

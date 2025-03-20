@@ -12,7 +12,7 @@ import {
     CloudFormationCustomResourceUpdateEvent
 } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
-import 'aws-sdk-client-mock-jest';
+import { expect } from 'vitest';
 import { handler } from '../../../../../src/constructs/dynamodb-provision-table/handler/on-event';
 import { ResourceProperties } from '../../../../../src/constructs/dynamodb-provision-table/handler/types/resource-properties';
 import {

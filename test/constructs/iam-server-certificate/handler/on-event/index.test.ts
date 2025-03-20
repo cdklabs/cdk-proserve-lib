@@ -1,6 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+/// <reference types="../../../../vitest.d.ts" />
+
 import {
     DeleteServerCertificateCommand,
     IAM,
@@ -18,7 +20,7 @@ import {
     CloudFormationCustomResourceUpdateEvent
 } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
-import 'aws-sdk-client-mock-jest';
+import { expect } from 'vitest';
 import { handler } from '../../../../../src/constructs/iam-server-certificate/handler/on-event';
 import {
     FailedToCreateIamServerCertificateException,

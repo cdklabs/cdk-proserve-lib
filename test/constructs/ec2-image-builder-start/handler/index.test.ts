@@ -3,9 +3,10 @@
 
 import { SNSEvent, Context } from 'aws-lambda';
 import axios from 'axios';
+import { vi } from 'vitest';
 import { handler } from '../../../../src/constructs/ec2-image-builder-start/handler';
 
-jest.mock('axios');
+vi.mock('axios');
 
 describe('Lambda Handler', () => {
     let mockContext: Context;
@@ -34,7 +35,7 @@ describe('Lambda Handler', () => {
     });
 
     afterEach(() => {
-        jest.resetAllMocks();
+        vi.resetAllMocks();
     });
 
     it('should signal SUCCESS when status is AVAILABLE', async () => {

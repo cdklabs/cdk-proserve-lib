@@ -15,7 +15,7 @@ import {
     resourceType
 } from './fixtures';
 import { DynamoDbProvisionTable } from '../../../src/constructs';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 import { buildMockArn, mockAccount, mockRegion } from '../../fixtures';
 
 const tableElementName = 'Table';

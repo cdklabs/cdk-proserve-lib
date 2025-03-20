@@ -7,7 +7,7 @@ import { Key } from 'aws-cdk-lib/aws-kms';
 import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { SecureFunction } from '../../../src/constructs/secure-function';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(SecureFunction, (id, getStack, getTemplate) => {
     let stack: Stack;

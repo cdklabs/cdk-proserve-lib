@@ -6,7 +6,7 @@ import { Match, Template } from 'aws-cdk-lib/assertions';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { NagSuppressions } from 'cdk-nag';
 import { FriendlyEmbrace } from '../../../src/constructs/friendly-embrace';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(FriendlyEmbrace, (id, getStack, getTemplate, getApp) => {
     let app: App;

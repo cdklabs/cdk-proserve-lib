@@ -8,7 +8,7 @@ import * as elbv2 from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import * as logs from 'aws-cdk-lib/aws-logs';
 import { WebApplicationFirewall } from '../../../src/constructs/web-application-firewall';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
     let stack: Stack;
