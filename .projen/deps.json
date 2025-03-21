@@ -278,28 +278,8 @@
       "type": "devenv"
     },
     {
-      "name": "ansi-regex",
-      "version": "^5.0.1",
-      "type": "override"
-    },
-    {
       "name": "cross-spawn",
       "version": "^7.0.5",
-      "type": "override"
-    },
-    {
-      "name": "string-width",
-      "version": "^4.2.3",
-      "type": "override"
-    },
-    {
-      "name": "strip-ansi",
-      "version": "^6.0.1",
-      "type": "override"
-    },
-    {
-      "name": "wrap-ansi",
-      "version": "^7.0.0",
       "type": "override"
     },
     {

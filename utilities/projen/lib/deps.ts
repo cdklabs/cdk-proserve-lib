@@ -69,13 +69,6 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
      * Resolutions
      */
     project.package.addPackageResolutions(
-        // 'cross-spawn@^7.0.5', // grype finding nov24
-        'cross-spawn@^7.0.5',
-        'string-width@^4.2.3',
-        'strip-ansi@^6.0.1',
-        'ansi-regex@^5.0.1',
-        'wrap-ansi@^7.0.0'
-        // 'is-fullwidth-code-point@^3.0.0'
-        // 'emoji-regex@^8.0.0'
+        'cross-spawn@^7.0.5' // grype finding nov24
     );
 };
