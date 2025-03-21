@@ -37,7 +37,11 @@ export const configureTesting = (project: CdklabsTypeScriptProject) => {
         receiveArgs: true
     });
     project.addTask('test:watch', {
-        description: 'Run vitest in watch mode',
+        description: 'Run vitest in watch mode.',
         exec: 'vitest --watch'
+    });
+    project.addTask('test:watch:nocov', {
+        description: 'Run vitest in watch mode with no coverage.',
+        exec: 'vitest --watch --coverage=false'
     });
 };

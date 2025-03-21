@@ -440,10 +440,19 @@
     },
     "test:watch": {
       "name": "test:watch",
-      "description": "Run vitest in watch mode",
+      "description": "Run vitest in watch mode.",
       "steps": [
         {
           "exec": "vitest --watch"
+        }
+      ]
+    },
+    "test:watch:nocov": {
+      "name": "test:watch:nocov",
+      "description": "Run vitest in watch mode with no coverage.",
+      "steps": [
+        {
+          "exec": "vitest --watch --coverage=false"
         }
       ]
     },

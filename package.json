@@ -36,6 +36,7 @@
     "rosetta:extract": "npx projen rosetta:extract",
     "test": "npx projen test",
     "test:watch": "npx projen test:watch",
+    "test:watch:nocov": "npx projen test:watch:nocov",
     "unbump": "npx projen unbump",
     "update:readme": "npx projen update:readme",
     "upgrade": "npx projen upgrade",
