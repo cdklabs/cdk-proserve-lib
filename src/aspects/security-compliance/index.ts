@@ -9,6 +9,7 @@ import { Bucket, CfnBucket, IBucket } from 'aws-cdk-lib/aws-s3';
 import { CfnTable } from 'aws-cdk-lib/aws-dynamodb';
 import { CfnStateMachine } from 'aws-cdk-lib/aws-stepfunctions';
 import { CfnPolicy } from 'aws-cdk-lib/aws-iam';
+import { CfnStage, MethodLoggingLevel } from 'aws-cdk-lib/aws-apigateway';
 
 interface CdkNagRulesToSuppress {
     rules_to_suppress: {
@@ -119,10 +120,33 @@ export interface StepFunctionsSettings {
      *
      * Defaults to true if not specified.
      */
-    readonly enableXRayTracing?: DisableableSetting;
+    readonly xRayTracing?: DisableableSetting;
+}
+
+export interface StageMethodLogging extends DisableableSetting {
+    /**
+     * The logging level to use for the stage method logging. This applies to
+     * all resources and methods in all stages.
+     *
+     * Defaults to MethodLoggingLevel.ERROR if not specified.
+     */
+    readonly loggingLevel?: MethodLoggingLevel;
+}
+
+export interface ApiGatewaySettings {
+    /**
+     * Enable or disable CloudWatch logging for API Gateway stages.
+     *
+     * Resolves:
+     *   - AwsSolutions-APIG6
+     *
+     * Defaults to log all errors if not specified or disabled.
+     */
+    readonly stageMethodLogging?: StageMethodLogging;
 }
 
 export interface Settings {
+    readonly apigateway?: ApiGatewaySettings;
     readonly dynamodb?: DynamoDbSettings;
     readonly lambda?: LambdaSettings;
     readonly ecs?: EcsSettings;
@@ -208,14 +232,21 @@ export class SecurityCompliance implements IAspect {
     constructor(props?: SecurityComplianceProps) {
         // set defaults
         this.settings = {
+            ...props?.settings,
+            apigateway: {
+                stageMethodLogging: {
+                    loggingLevel:
+                        props?.settings?.apigateway?.stageMethodLogging
+                            ?.loggingLevel ?? MethodLoggingLevel.ERROR
+                }
+            },
             lambda: {
                 reservedConcurrentExecutions: {
                     concurrentExecutionCount:
                         props?.settings?.lambda?.reservedConcurrentExecutions
                             ?.concurrentExecutionCount ?? 1
                 }
-            },
-            ...props?.settings
+            }
         };
         this.suppressions = props?.suppressions;
     }
@@ -244,6 +275,10 @@ export class SecurityCompliance implements IAspect {
             this.applyStepFunctionsSettings(node);
         }
 
+        if (node instanceof CfnStage) {
+            this.applyApiGatewayStageSettings(node);
+        }
+
         if (this.suppressions) {
             if (Stack.isStack(node)) {
                 this.applyStackSuppressions(node);
@@ -260,7 +295,10 @@ export class SecurityCompliance implements IAspect {
     private applyCdkGeneratedSuppressions(resource: CfnPolicy) {
         if (
             resource.node.path.includes('/framework-') ||
-            resource.node.path.includes('/waiter-state-machine/')
+            resource.node.path.includes('/waiter-state-machine/') ||
+            resource.node.path.includes(
+                '/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a'
+            )
         ) {
             if (this.suppressions?.cdkGeneratedLambdas) {
                 const existingMetadata = resource.getMetadata('cdk_nag') as
@@ -344,9 +382,27 @@ export class SecurityCompliance implements IAspect {
         });
     }
 
+    private applyApiGatewayStageSettings(r: CfnStage): void {
+        if (
+            !this.settings.apigateway?.stageMethodLogging?.disabled &&
+            !r.methodSettings
+        ) {
+            r.methodSettings = [
+                {
+                    loggingLevel:
+                        this.settings.apigateway?.stageMethodLogging
+                            ?.loggingLevel,
+                    httpMethod: '*',
+                    resourcePath: '/*',
+                    dataTraceEnabled: false
+                }
+            ];
+        }
+    }
+
     private applyStepFunctionsSettings(r: CfnStateMachine): void {
         if (
-            !this.settings.stepFunctions?.enableXRayTracing?.disabled &&
+            !this.settings.stepFunctions?.xRayTracing?.disabled &&
             !r.tracingConfiguration
         ) {
             r.tracingConfiguration = {
