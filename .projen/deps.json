@@ -288,6 +288,11 @@
       "type": "override"
     },
     {
+      "name": "strip-ansi",
+      "version": "^6.0.1",
+      "type": "override"
+    },
+    {
       "name": "aws-cdk-lib",
       "version": "^2.177.0",
       "type": "peer"

@@ -70,8 +70,8 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
      */
     project.package.addPackageResolutions(
         'cross-spawn@^7.0.5', // grype finding nov24
-        'string-width@^4.2.3' // vitest compatibility
-        // 'strip-ansi@^6.0.1'
+        'string-width@^4.2.3', // vitest compatibility
+        'strip-ansi@^6.0.1' // vitest compatibility
         // 'ansi-regex@^5.0.1'
         // 'wrap-ansi@^7.0.0'
         // 'is-fullwidth-code-point@^3.0.0'
