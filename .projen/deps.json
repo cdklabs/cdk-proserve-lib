@@ -278,6 +278,11 @@
       "type": "devenv"
     },
     {
+      "name": "ansi-regex",
+      "version": "^5.0.1",
+      "type": "override"
+    },
+    {
       "name": "cross-spawn",
       "version": "^7.0.5",
       "type": "override"
