@@ -298,6 +298,11 @@
       "type": "override"
     },
     {
+      "name": "wrap-ansi",
+      "version": "^7.0.0",
+      "type": "override"
+    },
+    {
       "name": "aws-cdk-lib",
       "version": "^2.177.0",
       "type": "peer"

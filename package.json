@@ -123,7 +123,8 @@
     "ansi-regex": "^5.0.1",
     "cross-spawn": "^7.0.5",
     "string-width": "^4.2.3",
-    "strip-ansi": "^6.0.1"
+    "strip-ansi": "^6.0.1",
+    "wrap-ansi": "^7.0.0"
   },
   "keywords": [
     "aws",

@@ -72,8 +72,8 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         'cross-spawn@^7.0.5', // grype finding nov24
         'string-width@^4.2.3', // vitest compatibility
         'strip-ansi@^6.0.1', // vitest compatibility
-        'ansi-regex@^5.0.1' // vitest compatiblity
-        // 'wrap-ansi@^7.0.0'
+        'ansi-regex@^5.0.1', // vitest compatiblity
+        'wrap-ansi@^7.0.0' // vitest compatiblity
         // 'is-fullwidth-code-point@^3.0.0'
         // 'emoji-regex@^8.0.0'
     );
