@@ -288,16 +288,6 @@
       "type": "override"
     },
     {
-      "name": "emoji-regex",
-      "version": "^8.0.0",
-      "type": "override"
-    },
-    {
-      "name": "is-fullwidth-code-point",
-      "version": "^3.0.0",
-      "type": "override"
-    },
-    {
       "name": "string-width",
       "version": "^4.2.3",
       "type": "override"
