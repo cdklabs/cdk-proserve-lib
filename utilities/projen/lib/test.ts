@@ -33,7 +33,7 @@ export const configureTesting = (project: CdklabsTypeScriptProject) => {
 
     // vitest
     const testTask = project.tasks.tryFind('test');
-    testTask!.prependExec('vitest run --passWithNoTests -u', {
+    testTask!.prependExec('vitest run --passWithNoTests -u --silent', {
         receiveArgs: true
     });
     project.addTask('test:watch', {

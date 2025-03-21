@@ -427,7 +427,7 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "vitest run --passWithNoTests -u",
+          "exec": "vitest run --passWithNoTests -u --silent",
           "receiveArgs": true
         },
         {
