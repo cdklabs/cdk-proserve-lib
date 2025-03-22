@@ -40,7 +40,7 @@ import {
     ApiGatewayStaticHosting,
     ApiGatewayStaticHostingProps
 } from '../../../src/patterns/apigateway-static-hosting';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 import { buildMockArn, mockAccount, mockRegion } from '../../fixtures/account';
 
 type TestPatternCreator = () => ApiGatewayStaticHosting;

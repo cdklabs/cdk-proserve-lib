@@ -6,7 +6,7 @@ import { Match } from 'aws-cdk-lib/assertions';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { NagSuppressions } from 'cdk-nag';
 import { SqsRequireSsl } from '../../../src/aspects/sqs-require-ssl';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(SqsRequireSsl, (id, getStack, getTemplate) => {
     let stack: Stack;

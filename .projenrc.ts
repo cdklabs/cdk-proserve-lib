@@ -14,7 +14,7 @@ const project = new CdklabsConstructLibrary({
     stability: 'experimental',
     private: false,
     keywords: ['aws', 'awscdk', 'aws-cdk', 'cdk'],
-    jsiiVersion: '~5.7',
+    jsiiVersion: '~5.8',
     cdkVersion: '2.177.0',
     defaultReleaseBranch: 'main',
     rosettaOptions: {
@@ -29,11 +29,10 @@ const project = new CdklabsConstructLibrary({
     prettier: true,
     prettierOptions: p.prettierOptions,
     enablePRAutoMerge: true,
-    codeCov: true,
-    codeCovTokenSecret: 'CODECOV_TOKEN',
     versionrcOptions: {
         preset: 'conventionalcommits'
-    }
+    },
+    jest: false
 });
 
 p.configureBuild(project);

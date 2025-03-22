@@ -6,7 +6,7 @@ import { Match } from 'aws-cdk-lib/assertions';
 import { Ec2ImagePipeline } from '../../../src/constructs/ec2-image-pipeline';
 import { Ec2LinuxImagePipeline } from '../../../src/patterns/ec2-linux-image-pipeline';
 import { FeatureError } from '../../../src/patterns/ec2-linux-image-pipeline/types/exception';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(Ec2LinuxImagePipeline, (id, getStack, getTemplate) => {
     let stack: Stack;

@@ -11,7 +11,7 @@ import {
     Ec2ImageBuilderStartHashError,
     Ec2ImageBuilderStartTimeoutError
 } from '../../../src/constructs/ec2-image-builder-start/types/exception';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 const pipelineArn =
     'arn:aws:imagebuilder:us-west-2:123456789012:image-pipeline/example-pipeline';
