@@ -2,12 +2,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { Aspects, IResolvable, Stack } from 'aws-cdk-lib';
+import { Match } from 'aws-cdk-lib/assertions';
+import { CfnCluster, ContainerInsights, Cluster } from 'aws-cdk-lib/aws-ecs';
 import { beforeEach, it, describe } from 'vitest';
 import { SecurityCompliance } from '../../../../src/aspects/security-compliance';
 import { describeCdkTest } from '../../../../utilities/cdk-nag-test';
-import { CfnCluster, ContainerInsights } from 'aws-cdk-lib/aws-ecs';
-import { Cluster } from 'aws-cdk-lib/aws-ecs';
-import { Match } from 'aws-cdk-lib/assertions';
 
 describeCdkTest(SecurityCompliance, (_, getStack, getTemplate) => {
     let stack: Stack;
