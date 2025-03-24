@@ -1,4 +1,6 @@
-// base-visitor.ts
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+
 import { IConstruct } from 'constructs';
 
 export abstract class BaseVisitor<T extends IConstruct, S> {

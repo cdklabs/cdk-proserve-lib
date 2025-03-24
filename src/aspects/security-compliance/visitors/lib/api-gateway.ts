@@ -1,7 +1,10 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+
 import { CfnStage } from 'aws-cdk-lib/aws-apigateway';
 import { IConstruct } from 'constructs';
-import { ApiGatewaySettings } from '../types';
-import { BaseVisitor } from './base';
+import { ApiGatewaySettings } from '../../types';
+import { BaseVisitor } from '../base';
 
 export class ApiGatewayVisitor extends BaseVisitor<
     CfnStage,

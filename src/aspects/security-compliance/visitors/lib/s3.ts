@@ -1,9 +1,11 @@
-// s3-visitor.ts
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+
 import { Stack } from 'aws-cdk-lib';
 import { CfnBucket, IBucket, Bucket } from 'aws-cdk-lib/aws-s3';
 import { IConstruct } from 'constructs';
-import { S3Settings } from '../types';
-import { BaseVisitor } from './base';
+import { S3Settings } from '../../types';
+import { BaseVisitor } from '../base';
 
 export class S3Visitor extends BaseVisitor<CfnBucket, S3Settings> {
     private readonly accessLogBucket = new Map<string, IBucket>();
