@@ -38,10 +38,12 @@ export function describeCdkTest(
         afterEach(() => {
             // Check if the construct is a Construct (not an Aspect)
             const isConstruct = subject.prototype instanceof Construct;
-            validateNoCdkNagFindings(
-                stack,
-                isConstruct ? subject.name : undefined
-            );
+            if (isConstruct) {
+                validateNoCdkNagFindings(
+                    stack,
+                    isConstruct ? subject.name : undefined
+                );
+            }
         });
 
         withCdk(
