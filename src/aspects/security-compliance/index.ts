@@ -1,3 +1,6 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+
 import { IAspect, Stack } from 'aws-cdk-lib';
 import { MethodLoggingLevel } from 'aws-cdk-lib/aws-apigateway';
 import { CfnPolicy } from 'aws-cdk-lib/aws-iam';
