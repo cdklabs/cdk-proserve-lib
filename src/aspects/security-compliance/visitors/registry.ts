@@ -1,5 +1,5 @@
-import { BaseVisitor } from './base';
 import { IConstruct } from 'constructs';
+import { BaseVisitor } from './base';
 
 export class VisitorRegistry {
     private visitors: BaseVisitor<IConstruct, unknown>[] = [];

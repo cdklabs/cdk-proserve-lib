@@ -1,7 +1,7 @@
 import { CfnStage } from 'aws-cdk-lib/aws-apigateway';
+import { IConstruct } from 'constructs';
 import { ApiGatewaySettings } from '../types';
 import { BaseVisitor } from './base';
-import { IConstruct } from 'constructs';
 
 export class ApiGatewayVisitor extends BaseVisitor<
     CfnStage,

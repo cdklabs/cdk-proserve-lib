@@ -1,7 +1,7 @@
 import { CfnCluster, ContainerInsights } from 'aws-cdk-lib/aws-ecs';
+import { IConstruct } from 'constructs';
 import { EcsSettings } from '../types';
 import { BaseVisitor } from './base';
-import { IConstruct } from 'constructs';
 
 export class EcsClusterVisitor extends BaseVisitor<CfnCluster, EcsSettings> {
     public override canVisit(node: IConstruct): node is CfnCluster {

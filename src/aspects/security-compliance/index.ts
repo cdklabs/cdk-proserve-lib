@@ -1,7 +1,7 @@
 import { IAspect, Stack } from 'aws-cdk-lib';
-import { IConstruct } from 'constructs';
-import { CfnPolicy } from 'aws-cdk-lib/aws-iam';
 import { MethodLoggingLevel } from 'aws-cdk-lib/aws-apigateway';
+import { CfnPolicy } from 'aws-cdk-lib/aws-iam';
+import { IConstruct } from 'constructs';
 import { Settings, Suppressions } from './types';
 import {
     CdkNagMetadata,

@@ -1,7 +1,7 @@
 import { CfnStateMachine } from 'aws-cdk-lib/aws-stepfunctions';
+import { IConstruct } from 'constructs';
 import { StepFunctionsSettings } from '../types';
 import { BaseVisitor } from './base';
-import { IConstruct } from 'constructs';
 
 export class StepFunctionsVisitor extends BaseVisitor<
     CfnStateMachine,

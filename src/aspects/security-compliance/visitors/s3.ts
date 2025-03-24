@@ -1,9 +1,9 @@
 // s3-visitor.ts
-import { CfnBucket, IBucket, Bucket } from 'aws-cdk-lib/aws-s3';
 import { Stack } from 'aws-cdk-lib';
+import { CfnBucket, IBucket, Bucket } from 'aws-cdk-lib/aws-s3';
+import { IConstruct } from 'constructs';
 import { S3Settings } from '../types';
 import { BaseVisitor } from './base';
-import { IConstruct } from 'constructs';
 
 export class S3Visitor extends BaseVisitor<CfnBucket, S3Settings> {
     private readonly accessLogBucket = new Map<string, IBucket>();
