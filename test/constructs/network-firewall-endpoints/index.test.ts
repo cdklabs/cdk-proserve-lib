@@ -5,9 +5,10 @@ import { Stack, Token } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Vpc } from 'aws-cdk-lib/aws-ec2';
 import { CfnFirewall } from 'aws-cdk-lib/aws-networkfirewall';
+import { beforeEach, it, expect } from 'vitest';
 import { mockFirewallName, mockFirewallPolicyArn } from './fixtures';
 import { NetworkFirewallEndpoints } from '../../../src/constructs/network-firewall-endpoints';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 import { mockRegion, mockSubnetId, mockVpcId } from '../../fixtures';
 
 describeCdkTest(NetworkFirewallEndpoints, (id, getStack, getTemplate) => {

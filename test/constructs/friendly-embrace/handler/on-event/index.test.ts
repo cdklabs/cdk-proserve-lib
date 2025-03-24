@@ -15,6 +15,7 @@ import {
     Context
 } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
+import { describe, beforeEach, it, expect } from 'vitest';
 import { handler } from '../../../../../src/constructs/friendly-embrace/handler/on-event';
 import { ResourceProperties } from '../../../../../src/constructs/friendly-embrace/handler/types/resource-properties';
 import {

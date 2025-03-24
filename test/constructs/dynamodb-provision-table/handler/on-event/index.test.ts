@@ -1,6 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+/// <reference types="../../../../vitest.d.ts" />
+
 import {
     DynamoDBServiceException,
     ResourceNotFoundException
@@ -12,7 +14,7 @@ import {
     CloudFormationCustomResourceUpdateEvent
 } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
-import 'aws-sdk-client-mock-jest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { handler } from '../../../../../src/constructs/dynamodb-provision-table/handler/on-event';
 import { ResourceProperties } from '../../../../../src/constructs/dynamodb-provision-table/handler/types/resource-properties';
 import {

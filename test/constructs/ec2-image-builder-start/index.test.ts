@@ -6,12 +6,13 @@ import { Match } from 'aws-cdk-lib/assertions';
 import { Vpc } from 'aws-cdk-lib/aws-ec2';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { Topic } from 'aws-cdk-lib/aws-sns';
+import { beforeEach, it, expect } from 'vitest';
 import { Ec2ImageBuilderStart } from '../../../src/constructs/ec2-image-builder-start';
 import {
     Ec2ImageBuilderStartHashError,
     Ec2ImageBuilderStartTimeoutError
 } from '../../../src/constructs/ec2-image-builder-start/types/exception';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 const pipelineArn =
     'arn:aws:imagebuilder:us-west-2:123456789012:image-pipeline/example-pipeline';
