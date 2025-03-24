@@ -88,7 +88,9 @@ export abstract class CommonHost<
         const app = express();
 
         // Configure default logging
-        app.use(morgan('combined'));
+        if (!this.props.disableHttpLogging) {
+            app.use(morgan('combined'));
+        }
 
         // First, try to load the URI as a static asset
         app.use(this.fileHandler);
