@@ -36,6 +36,7 @@
     "rosetta:extract": "npx projen rosetta:extract",
     "test": "npx projen test",
     "test:watch": "npx projen test:watch",
+    "test:watch:nocov": "npx projen test:watch:nocov",
     "unbump": "npx projen unbump",
     "update:readme": "npx projen update:readme",
     "upgrade": "npx projen upgrade",
@@ -71,7 +72,6 @@
     "@types/aws-lambda": "8.10.141",
     "@types/express": "5.0.0",
     "@types/glob": "^8.1.0",
-    "@types/jest": "^29.5.14",
     "@types/mime": "3.0.0",
     "@types/morgan": "1.9.9",
     "@types/node": "^18",
@@ -79,9 +79,10 @@
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
+    "@vitest/coverage-v8": "^3.0.9",
     "aws-cdk-lib": "2.177.0",
     "aws-sdk-client-mock": "^4.1.0",
-    "aws-sdk-client-mock-jest": "^4.1.0",
+    "aws-sdk-client-mock-vitest": "^6.1.1",
     "axios": "1.7.7",
     "cdk-nag": "2.34.0",
     "cdklabs-projen-project-types": "^0.1.230",
@@ -98,9 +99,7 @@
     "express-async-handler": "1.2.0",
     "glob": "^7.2.3",
     "husky": "^9.1.7",
-    "jest": "^29.7.0",
-    "jest-junit": "^16",
-    "jsii": "~5.7",
+    "jsii": "~5.8",
     "jsii-diff": "^1.110.0",
     "jsii-docgen": "^10.5.0",
     "jsii-pacmak": "^1.110.0",
@@ -111,17 +110,21 @@
     "prettier": "^3.5.3",
     "projen": "^0.91.11",
     "supertest": "^7.1.0",
-    "ts-jest": "^29.2.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2",
-    "uuid": "11.0.3"
+    "uuid": "11.0.3",
+    "vitest": "^3.0.9"
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.177.0",
     "constructs": "^10.0.5"
   },
   "resolutions": {
-    "cross-spawn": "^7.0.5"
+    "ansi-regex": "^5.0.1",
+    "cross-spawn": "^7.0.5",
+    "string-width": "^4.2.3",
+    "strip-ansi": "^6.0.1",
+    "wrap-ansi": "^7.0.0"
   },
   "keywords": [
     "aws",
@@ -138,55 +141,6 @@
     "access": "public"
   },
   "version": "0.0.0",
-  "jest": {
-    "coverageProvider": "v8",
-    "testMatch": [
-      "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
-      "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
-      "<rootDir>/@(projenrc)/**/*(*.)@(spec|test).ts?(x)",
-      "<rootDir>/@(projenrc)/**/__tests__/**/*.ts?(x)"
-    ],
-    "clearMocks": true,
-    "collectCoverage": true,
-    "coverageReporters": [
-      "json",
-      "lcov",
-      "clover",
-      "cobertura",
-      "text"
-    ],
-    "coverageDirectory": "coverage",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "utilities",
-      "<rootDir>/test/(.+/)?fixtures/"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "utilities",
-      "<rootDir>/test/(.+/)?fixtures/"
-    ],
-    "watchPathIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "reporters": [
-      "default",
-      [
-        "jest-junit",
-        {
-          "outputDirectory": "test-reports"
-        }
-      ]
-    ],
-    "transform": {
-      "^.+\\.[t]sx?$": [
-        "ts-jest",
-        {
-          "tsconfig": "tsconfig.dev.json"
-        }
-      ]
-    }
-  },
   "types": "lib/index.d.ts",
   "stability": "experimental",
   "jsii": {

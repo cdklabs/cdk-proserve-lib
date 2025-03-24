@@ -3,6 +3,7 @@
 
 import { join } from 'node:path';
 import request from 'supertest';
+import { describe, it, expect } from 'vitest';
 import {
     InlineHost,
     InlineHostingConfiguration
