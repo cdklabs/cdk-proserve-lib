@@ -10,6 +10,7 @@ import {
 } from '@aws-sdk/client-s3';
 import { mockClient } from 'aws-sdk-client-mock';
 import request from 'supertest';
+import { describe, beforeEach, it, expect } from 'vitest';
 import {
     S3Host,
     S3HostingConfiguration

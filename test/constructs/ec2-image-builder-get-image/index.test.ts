@@ -3,8 +3,9 @@
 
 import { Stack } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
+import { beforeEach, expect, it } from 'vitest';
 import { Ec2ImageBuilderGetImage } from '../../../src/constructs/ec2-image-builder-get-image';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 const imageBuildVersionArn =
     'arn:aws:imagebuilder:us-west-2:123456789012:image/example-image/1.0.0/1';

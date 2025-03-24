@@ -4,8 +4,9 @@
 import { Aspects, Stack } from 'aws-cdk-lib';
 import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NagSuppressions } from 'cdk-nag';
+import { beforeEach, it } from 'vitest';
 import { CreateLambdaLogGroup } from '../../../src/aspects/create-lambda-log-group';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(CreateLambdaLogGroup, (_, getStack, getTemplate) => {
     let stack: Stack;

@@ -44,7 +44,6 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         '@types/supertest',
         '@types/uuid',
         'aws-sdk-client-mock',
-        'aws-sdk-client-mock-jest',
         'cdk-nag@2.34.0',
         'cdklabs-projen-project-types',
         'cloudform-types',
@@ -52,7 +51,10 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         'glob',
         'husky',
         'lint-staged',
-        'supertest'
+        'supertest',
+        'vitest',
+        '@vitest/coverage-v8',
+        'aws-sdk-client-mock-vitest'
     ];
 
     project.addDevDeps(...lambdaHandlerDeps, ...ideAndTestDeps);
@@ -61,6 +63,10 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
      * Resolutions
      */
     project.package.addPackageResolutions(
-        'cross-spawn@^7.0.5' // grype finding nov24
+        'cross-spawn@^7.0.5', // grype finding nov24
+        'string-width@^4.2.3', // vitest compatibility
+        'strip-ansi@^6.0.1', // vitest compatibility
+        'ansi-regex@^5.0.1', // vitest compatiblity
+        'wrap-ansi@^7.0.0' // vitest compatiblity
     );
 };
