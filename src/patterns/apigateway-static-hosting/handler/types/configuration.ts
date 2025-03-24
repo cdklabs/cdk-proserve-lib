@@ -23,6 +23,13 @@ export interface CommonHostingConfiguration {
      * @default undefined Loads from the root of the store
      */
     readonly staticFilePath?: string;
+
+    /**
+     * If specified, the host will not log any HTTP requests
+     *
+     * @default false
+     */
+    readonly disableHttpLogging?: boolean;
 }
 
 /**
