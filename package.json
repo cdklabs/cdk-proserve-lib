@@ -72,7 +72,6 @@
     "@types/aws-lambda": "8.10.141",
     "@types/express": "5.0.0",
     "@types/glob": "^8.1.0",
-    "@types/jest": "^29.5.14",
     "@types/mime": "3.0.0",
     "@types/morgan": "1.9.9",
     "@types/node": "^18",

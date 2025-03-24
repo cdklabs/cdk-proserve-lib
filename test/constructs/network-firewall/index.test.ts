@@ -6,12 +6,10 @@ import { Stack } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Subnet, Vpc } from 'aws-cdk-lib/aws-ec2';
 import { Key } from 'aws-cdk-lib/aws-kms';
-import { vi } from 'vitest';
+import { vi, beforeEach, it, afterEach } from 'vitest';
 import { mockSuricataRulesCapacity, mockSuricataRulesPath } from './fixtures';
 import { NetworkFirewall } from '../../../src/constructs/network-firewall/index';
 import { describeCdkTest } from '../../../utilities/cdk-nag-test';
-
-// const originalReadFileSync = fs.readFileSync;
 
 describeCdkTest(NetworkFirewall, (id, getStack, getTemplate) => {
     let stack: Stack;

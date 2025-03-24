@@ -43,7 +43,6 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         '@types/glob',
         '@types/supertest',
         '@types/uuid',
-        '@types/jest',
         'aws-sdk-client-mock',
         'cdk-nag@2.34.0',
         'cdklabs-projen-project-types',

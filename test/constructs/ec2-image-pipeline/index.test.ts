@@ -6,6 +6,7 @@ import { Match } from 'aws-cdk-lib/assertions';
 import { SecurityGroup, Vpc } from 'aws-cdk-lib/aws-ec2';
 import { CfnComponent } from 'aws-cdk-lib/aws-imagebuilder';
 import { Key } from 'aws-cdk-lib/aws-kms';
+import { beforeEach, it, expect } from 'vitest';
 import { Ec2ImagePipeline } from '../../../src/constructs/ec2-image-pipeline';
 import { Ec2ImagePipelineBuildConfigError } from '../../../src/constructs/ec2-image-pipeline/types/exception';
 import { describeCdkTest } from '../../../utilities/cdk-nag-test';

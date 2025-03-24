@@ -4,7 +4,7 @@
 import { EC2, StopInstancesCommand } from '@aws-sdk/client-ec2';
 import { CloudWatchAlarmEvent } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
-import { vi } from 'vitest';
+import { vi, describe, beforeEach, it, expect } from 'vitest';
 import { handler } from '../../../../src/aspects/ec2-automated-shutdown/handler';
 import { mockContext } from '../../../fixtures';
 import {

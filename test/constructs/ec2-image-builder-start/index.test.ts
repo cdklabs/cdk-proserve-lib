@@ -6,6 +6,7 @@ import { Match } from 'aws-cdk-lib/assertions';
 import { Vpc } from 'aws-cdk-lib/aws-ec2';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { Topic } from 'aws-cdk-lib/aws-sns';
+import { beforeEach, it, expect } from 'vitest';
 import { Ec2ImageBuilderStart } from '../../../src/constructs/ec2-image-builder-start';
 import {
     Ec2ImageBuilderStartHashError,

@@ -9,6 +9,7 @@ import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { NagSuppressions } from 'cdk-nag';
 import { PolicyProperties } from 'cloudform-types/types/iam/policy';
 import { FunctionProperties } from 'cloudform-types/types/lambda/function';
+import { beforeEach, it, expect } from 'vitest';
 import {
     mockCertificateParameterName,
     mockCertificateValue,

@@ -20,7 +20,7 @@ import {
     CloudFormationCustomResourceUpdateEvent
 } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
-import { expect } from 'vitest';
+import { describe, beforeEach, it, expect } from 'vitest';
 import { handler } from '../../../../../src/constructs/iam-server-certificate/handler/on-event';
 import {
     FailedToCreateIamServerCertificateException,

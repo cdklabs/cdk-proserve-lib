@@ -5,6 +5,7 @@ import { Aspects, Stack } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
 import { NagSuppressions } from 'cdk-nag';
+import { beforeEach, it } from 'vitest';
 import { SqsRequireSsl } from '../../../src/aspects/sqs-require-ssl';
 import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 

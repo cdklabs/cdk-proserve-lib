@@ -3,7 +3,7 @@
 
 import { SNSEvent, Context } from 'aws-lambda';
 import axios from 'axios';
-import { vi } from 'vitest';
+import { vi, describe, beforeEach, afterEach, it, expect } from 'vitest';
 import { handler } from '../../../../src/constructs/ec2-image-builder-start/handler';
 
 vi.mock('axios');

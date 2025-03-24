@@ -8,6 +8,7 @@ import { Key } from 'aws-cdk-lib/aws-kms';
 import { NagSuppressions } from 'cdk-nag';
 import { PolicyProperties } from 'cloudform-types/types/iam/policy';
 import { FunctionProperties } from 'cloudform-types/types/lambda/function';
+import { beforeEach, it } from 'vitest';
 import {
     mockItemOne,
     mockItemPrimaryKey,

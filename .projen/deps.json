@@ -88,10 +88,6 @@
       "type": "build"
     },
     {
-      "name": "@types/jest",
-      "type": "build"
-    },
-    {
       "name": "@types/mime",
       "version": "3.0.0",
       "type": "build"

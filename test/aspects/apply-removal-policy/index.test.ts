@@ -4,6 +4,7 @@
 import { Aspects, RemovalPolicy, Stack } from 'aws-cdk-lib';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { LogGroup } from 'aws-cdk-lib/aws-logs';
+import { beforeEach, it } from 'vitest';
 import { ApplyRemovalPolicy } from '../../../src/aspects/apply-removal-policy';
 import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
