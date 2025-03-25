@@ -6,8 +6,9 @@ import { Key } from 'aws-cdk-lib/aws-kms';
 import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { NagSuppressions } from 'cdk-nag';
+import { beforeEach, it } from 'vitest';
 import { SetLogRetention } from '../../../src/aspects/set-log-retention';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(SetLogRetention, (_, getStack, getTemplate) => {
     let stack: Stack;

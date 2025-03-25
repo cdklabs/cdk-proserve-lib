@@ -5,8 +5,9 @@ import { App, Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { NagSuppressions } from 'cdk-nag';
+import { beforeEach, it } from 'vitest';
 import { FriendlyEmbrace } from '../../../src/constructs/friendly-embrace';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(FriendlyEmbrace, (id, getStack, getTemplate, getApp) => {
     let app: App;
@@ -122,7 +123,7 @@ describeCdkTest(FriendlyEmbrace, (id, getStack, getTemplate, getApp) => {
         });
     });
 
-    test('creates S3 bucket with custom KMS encryption', () => {
+    it('creates S3 bucket with custom KMS encryption', () => {
         const key = new Key(stack, 'TestKey');
         new FriendlyEmbrace(stack, id, {
             encryption: key
@@ -142,7 +143,7 @@ describeCdkTest(FriendlyEmbrace, (id, getStack, getTemplate, getApp) => {
         });
     });
 
-    test('sets ignoreInvalidStates in custom resource properties', () => {
+    it('sets ignoreInvalidStates in custom resource properties', () => {
         new FriendlyEmbrace(stack, 'TestFriendlyEmbrace', {
             ignoreInvalidStates: true
         });

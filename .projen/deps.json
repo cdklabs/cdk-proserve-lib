@@ -122,14 +122,6 @@
       "type": "build"
     },
     {
-      "name": "@types/jest",
-      "type": "build"
-    },
-    {
-      "name": "@types/js-yaml",
-      "type": "build"
-    },
-    {
       "name": "@types/mime",
       "version": "3.0.0",
       "type": "build"
@@ -163,8 +155,7 @@
       "type": "build"
     },
     {
-      "name": "adm-zip",
-      "version": "0.5.16",
+      "name": "@vitest/coverage-v8",
       "type": "build"
     },
     {
@@ -172,7 +163,7 @@
       "type": "build"
     },
     {
-      "name": "aws-sdk-client-mock-jest",
+      "name": "aws-sdk-client-mock-vitest",
       "type": "build"
     },
     {
@@ -242,20 +233,6 @@
       "type": "build"
     },
     {
-      "name": "jest",
-      "type": "build"
-    },
-    {
-      "name": "jest-junit",
-      "version": "^16",
-      "type": "build"
-    },
-    {
-      "name": "js-yaml",
-      "version": "4.1.0",
-      "type": "build"
-    },
-    {
       "name": "jsii-diff",
       "type": "build"
     },
@@ -274,7 +251,7 @@
     },
     {
       "name": "jsii",
-      "version": "~5.7",
+      "version": "~5.8",
       "type": "build"
     },
     {
@@ -304,10 +281,6 @@
       "type": "build"
     },
     {
-      "name": "ts-jest",
-      "type": "build"
-    },
-    {
       "name": "ts-node",
       "type": "build"
     },
@@ -321,6 +294,10 @@
       "type": "build"
     },
     {
+      "name": "vitest",
+      "type": "build"
+    },
+    {
       "name": "@aws-cdk/integ-runner",
       "version": "latest",
       "type": "devenv"
@@ -331,8 +308,28 @@
       "type": "devenv"
     },
     {
+      "name": "ansi-regex",
+      "version": "^5.0.1",
+      "type": "override"
+    },
+    {
       "name": "cross-spawn",
       "version": "^7.0.5",
+      "type": "override"
+    },
+    {
+      "name": "string-width",
+      "version": "^4.2.3",
+      "type": "override"
+    },
+    {
+      "name": "strip-ansi",
+      "version": "^6.0.1",
+      "type": "override"
+    },
+    {
+      "name": "wrap-ansi",
+      "version": "^7.0.0",
       "type": "override"
     },
     {

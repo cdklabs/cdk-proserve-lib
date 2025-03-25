@@ -3,10 +3,15 @@
 
 import { join } from 'node:path';
 import request from 'supertest';
+import { describe, it, expect } from 'vitest';
 import {
     InlineHost,
     InlineHostingConfiguration
 } from '../../../../../../src/patterns/apigateway-static-hosting/handler/hosts/inline';
+
+const commonConfig: Partial<InlineHostingConfiguration> = {
+    disableHttpLogging: true
+};
 
 // Must be relative to source file since __dirname is used
 const relativeFixturesDir = join(
@@ -27,7 +32,9 @@ describe('API Gateway Static Hosting Handler (Inline Host)', () => {
     describe('Default Configuration', () => {
         it('Should return 404 if asset directory is set incorrectly', async () => {
             // Arrange
-            const app = new InlineHost().create();
+            const app = new InlineHost({
+                ...commonConfig
+            }).create();
 
             // Act
             const response = await request(app).get('/assets/sample.txt');
@@ -39,6 +46,7 @@ describe('API Gateway Static Hosting Handler (Inline Host)', () => {
 
     describe('SPA', () => {
         const inlineSpaEnvironment: InlineHostingConfiguration = {
+            ...commonConfig,
             spaIndexPage: 'outer.html',
             staticFilePath: relativeFixturesDir
         };
@@ -70,6 +78,7 @@ describe('API Gateway Static Hosting Handler (Inline Host)', () => {
 
     describe('Not SPA', () => {
         const inlineNonSpaEnvironment: InlineHostingConfiguration = {
+            ...commonConfig,
             staticFilePath: relativeFixturesDir
         };
 

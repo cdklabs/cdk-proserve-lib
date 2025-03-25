@@ -427,7 +427,7 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "jest --passWithNoTests --updateSnapshot",
+          "exec": "vitest run --passWithNoTests -u --silent",
           "receiveArgs": true
         },
         {
@@ -440,10 +440,19 @@
     },
     "test:watch": {
       "name": "test:watch",
-      "description": "Run jest in watch mode",
+      "description": "Run vitest in watch mode.",
       "steps": [
         {
-          "exec": "jest --watch"
+          "exec": "vitest --watch"
+        }
+      ]
+    },
+    "test:watch:nocov": {
+      "name": "test:watch:nocov",
+      "description": "Run vitest in watch mode with no coverage.",
+      "steps": [
+        {
+          "exec": "vitest --watch --coverage=false"
         }
       ]
     },
@@ -520,13 +529,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@aws-sdk/client-pricing,@aws-sdk/client-wafv2,@aws-sdk/util-stream,@types/glob,@types/jest,@types/js-yaml,@types/supertest,@types/uuid,aws-sdk-client-mock,aws-sdk-client-mock-jest,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,glob,husky,jest,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,prettier,supertest,ts-jest,ts-node,typescript"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@aws-sdk/client-pricing,@aws-sdk/client-wafv2,@types/glob,@types/supertest,@types/uuid,@vitest/coverage-v8,aws-sdk-client-mock,aws-sdk-client-mock-vitest,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,glob,husky,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,prettier,supertest,ts-node,typescript,vitest"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-crypto/sha256-js @aws-sdk/client-cloudformation @aws-sdk/client-dynamodb @aws-sdk/client-ec2 @aws-sdk/client-iam @aws-sdk/client-imagebuilder @aws-sdk/client-opensearch @aws-sdk/client-pricing @aws-sdk/client-s3 @aws-sdk/client-secrets-manager @aws-sdk/client-ssm @aws-sdk/client-sts @aws-sdk/client-wafv2 @aws-sdk/credential-provider-node @aws-sdk/lib-dynamodb @aws-sdk/s3-request-presigner @aws-sdk/util-stream @codegenie/serverless-express @smithy/signature-v4 @smithy/types @smithy/util-stream-node @types/adm-zip @types/aws-lambda @types/express @types/glob @types/jest @types/js-yaml @types/mime @types/morgan @types/node @types/supertest @types/uuid @typescript-eslint/eslint-plugin @typescript-eslint/parser adm-zip aws-sdk-client-mock aws-sdk-client-mock-jest axios cdk-nag cloudform-types commit-and-tag-version esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint express-async-handler express glob husky jest jest-junit js-yaml jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii lint-staged mime morgan prettier supertest ts-jest ts-node typescript uuid @aws-cdk/integ-runner @aws-cdk/integ-tests-alpha"
+          "exec": "yarn upgrade @aws-sdk/client-cloudformation @aws-sdk/client-dynamodb @aws-sdk/client-ec2 @aws-sdk/client-iam @aws-sdk/client-imagebuilder @aws-sdk/client-opensearch @aws-sdk/client-pricing @aws-sdk/client-s3 @aws-sdk/client-secrets-manager @aws-sdk/client-ssm @aws-sdk/client-wafv2 @aws-sdk/lib-dynamodb @codegenie/serverless-express @smithy/types @smithy/util-stream-node @types/aws-lambda @types/express @types/glob @types/mime @types/morgan @types/node @types/supertest @types/uuid @typescript-eslint/eslint-plugin @typescript-eslint/parser @vitest/coverage-v8 aws-sdk-client-mock aws-sdk-client-mock-vitest axios cdk-nag cloudform-types commit-and-tag-version esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint express-async-handler express glob husky jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii lint-staged mime morgan prettier supertest ts-node typescript uuid vitest @aws-cdk/integ-runner @aws-cdk/integ-tests-alpha"
         },
         {
           "exec": "npx projen"

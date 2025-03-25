@@ -10,9 +10,10 @@ import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { NagSuppressions } from 'cdk-nag';
 import { PolicyProperties } from 'cloudform-types/types/iam/policy';
 import { FunctionProperties } from 'cloudform-types/types/lambda/function';
+import { beforeEach, it } from 'vitest';
 import { mockPasswordParameterName } from './fixtures';
 import { OpenSearchAdminUser } from '../../../src/constructs/opensearch-admin-user/index';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 const passwordParameterElementName = 'PasswordParamater';
 const passwordSecretElementName = 'PasswordSecret';

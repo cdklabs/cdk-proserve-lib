@@ -8,8 +8,9 @@ import { Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { LogGroup } from 'aws-cdk-lib/aws-logs';
 import { CfnNotebookInstance } from 'aws-cdk-lib/aws-sagemaker';
+import { beforeEach, it, expect } from 'vitest';
 import { SecureSageMakerNotebook } from '../../../src/aspects/secure-sagemaker-notebook';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(SecureSageMakerNotebook, (_, getStack, getTemplate) => {
     let stack: Stack;

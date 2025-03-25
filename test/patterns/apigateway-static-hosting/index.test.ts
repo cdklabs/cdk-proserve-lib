@@ -29,6 +29,7 @@ import { FunctionProperties } from 'cloudform-types/types/lambda/function';
 import { DeletionPolicy } from 'cloudform-types/types/resource';
 import CfnBucketElement from 'cloudform-types/types/s3/bucket';
 import { BucketPolicyProperties } from 'cloudform-types/types/s3/bucketPolicy';
+import { describe, beforeEach, it, expect } from 'vitest';
 import {
     mockBadAssetPath,
     mockFolderAsset,
@@ -40,7 +41,7 @@ import {
     ApiGatewayStaticHosting,
     ApiGatewayStaticHostingProps
 } from '../../../src/patterns/apigateway-static-hosting';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 import { buildMockArn, mockAccount, mockRegion } from '../../fixtures/account';
 
 type TestPatternCreator = () => ApiGatewayStaticHosting;

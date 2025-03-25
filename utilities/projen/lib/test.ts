@@ -5,6 +5,7 @@ import { CdklabsTypeScriptProject } from 'cdklabs-projen-project-types';
 import { YamlFile } from 'projen';
 
 export const configureTesting = (project: CdklabsTypeScriptProject) => {
+    // codecov
     new YamlFile(project, '.codecov.yml', {
         obj: {
             coverage: {
@@ -20,5 +21,27 @@ export const configureTesting = (project: CdklabsTypeScriptProject) => {
                 }
             }
         }
+    });
+    project.buildWorkflow?.addPostBuildSteps({
+        name: 'Upload coverage to Codecov',
+        uses: 'codecov/codecov-action@v4',
+        with: {
+            token: '${{ secrets.CODECOV_TOKEN }}',
+            directory: 'coverage'
+        }
+    });
+
+    // vitest
+    const testTask = project.tasks.tryFind('test');
+    testTask!.prependExec('vitest run --passWithNoTests -u --silent', {
+        receiveArgs: true
+    });
+    project.addTask('test:watch', {
+        description: 'Run vitest in watch mode.',
+        exec: 'vitest --watch'
+    });
+    project.addTask('test:watch:nocov', {
+        description: 'Run vitest in watch mode with no coverage.',
+        exec: 'vitest --watch --coverage=false'
     });
 };

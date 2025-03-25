@@ -7,8 +7,9 @@ import { Vpc } from 'aws-cdk-lib/aws-ec2';
 import * as elbv2 from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import * as logs from 'aws-cdk-lib/aws-logs';
+import { beforeEach, it, expect } from 'vitest';
 import { WebApplicationFirewall } from '../../../src/constructs/web-application-firewall';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
     let stack: Stack;
@@ -29,7 +30,7 @@ describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
         };
     });
 
-    test('creates WAF with CloudWatch metrics and sampled requests enabled', () => {
+    it('creates WAF with CloudWatch metrics and sampled requests enabled', () => {
         // Act
         new WebApplicationFirewall(stack, id, {
             cloudWatchMetricsEnabled: true,
@@ -47,7 +48,7 @@ describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
         });
     });
 
-    test('creates WAF with no rules', () => {
+    it('creates WAF with no rules', () => {
         // Act
         new WebApplicationFirewall(stack, id, {
             logging: loggingConfig
@@ -60,7 +61,7 @@ describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
         });
     });
 
-    test('creates WAF with visibility config', () => {
+    it('creates WAF with visibility config', () => {
         // Act
         new WebApplicationFirewall(stack, id, {
             cloudWatchMetricsEnabled: true,
@@ -78,7 +79,7 @@ describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
         });
     });
 
-    test('creates basic WAF with default configuration', () => {
+    it('creates basic WAF with default configuration', () => {
         // Act
         new WebApplicationFirewall(stack, id, {
             logging: loggingConfig
@@ -98,7 +99,7 @@ describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
         });
     });
 
-    test('creates WAF with AWS managed rules', () => {
+    it('creates WAF with AWS managed rules', () => {
         // Act
         new WebApplicationFirewall(stack, id, {
             awsManagedRuleGroups: [
@@ -138,7 +139,7 @@ describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
         });
     });
 
-    test('creates WAF with logging configuration', () => {
+    it('creates WAF with logging configuration', () => {
         // Act
         new WebApplicationFirewall(stack, id, {
             logging: loggingConfig
@@ -157,7 +158,7 @@ describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
         });
     });
 
-    test('associates WAF with ALB', () => {
+    it('associates WAF with ALB', () => {
         // Arrange
         const waf = new WebApplicationFirewall(stack, id, {
             logging: loggingConfig
@@ -179,7 +180,7 @@ describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
         });
     });
 
-    test('creates WAF with rule overrides', () => {
+    it('creates WAF with rule overrides', () => {
         // Act
         new WebApplicationFirewall(stack, id, {
             awsManagedRuleGroups: [
@@ -219,7 +220,7 @@ describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
         });
     });
 
-    test('does not allow incompatible resource association', () => {
+    it('does not allow incompatible resource association', () => {
         // Arrange
         const waf = new WebApplicationFirewall(stack, id, {
             logging: loggingConfig

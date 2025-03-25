@@ -8,6 +8,7 @@ import { Key } from 'aws-cdk-lib/aws-kms';
 import { NagSuppressions } from 'cdk-nag';
 import { PolicyProperties } from 'cloudform-types/types/iam/policy';
 import { FunctionProperties } from 'cloudform-types/types/lambda/function';
+import { beforeEach, it } from 'vitest';
 import {
     mockItemOne,
     mockItemPrimaryKey,
@@ -15,7 +16,7 @@ import {
     resourceType
 } from './fixtures';
 import { DynamoDbProvisionTable } from '../../../src/constructs';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 import { buildMockArn, mockAccount, mockRegion } from '../../fixtures';
 
 const tableElementName = 'Table';

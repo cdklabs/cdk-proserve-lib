@@ -10,11 +10,16 @@ import {
 } from '@aws-sdk/client-s3';
 import { mockClient } from 'aws-sdk-client-mock';
 import request from 'supertest';
+import { describe, beforeEach, it, expect } from 'vitest';
 import {
     S3Host,
     S3HostingConfiguration
 } from '../../../../../../src/patterns/apigateway-static-hosting/handler/hosts/s3';
 import { streamFile } from '../../utilities/stream-fixture';
+
+const commonConfig: Partial<S3HostingConfiguration> = {
+    disableHttpLogging: true
+};
 
 const fixturesDir = join(__dirname, '..', '..');
 
@@ -26,14 +31,15 @@ describe('API Gateway Static Hosting Handler (S3 Host)', () => {
     });
 
     const testBucketName = 'test-bucket';
-    const inlineTestEnvironment: S3HostingConfiguration = {
+    const testConfig: S3HostingConfiguration = {
+        ...commonConfig,
         bucketName: testBucketName
     };
 
     describe('Default Configuration', () => {
         it('Should return 404 if asset directory is set incorrectly', async () => {
             // Arrange
-            const app = new S3Host(inlineTestEnvironment).create();
+            const app = new S3Host(testConfig).create();
             const testFile = '/assets/sample.txt';
 
             s3Mock
@@ -58,15 +64,15 @@ describe('API Gateway Static Hosting Handler (S3 Host)', () => {
         const staticFilePath = 'fixtures';
         const spaIndex = 'outer.html';
 
-        const inlineSpaEnvironment: S3HostingConfiguration = {
-            ...inlineTestEnvironment,
+        const spaConfig: S3HostingConfiguration = {
+            ...testConfig,
             spaIndexPage: spaIndex,
             staticFilePath: staticFilePath
         };
 
         it('Should serve index page for any dynamic route when no asset found', async () => {
             // Arrange
-            const app = new S3Host(inlineSpaEnvironment).create();
+            const app = new S3Host(spaConfig).create();
             const url = '/my/wild/dynamic/url';
 
             s3Mock
@@ -98,7 +104,7 @@ describe('API Gateway Static Hosting Handler (S3 Host)', () => {
 
         it('Should serve static asset when found', async () => {
             // Arrange
-            const app = new S3Host(inlineSpaEnvironment).create();
+            const app = new S3Host(spaConfig).create();
             const url = '/assets/sample.txt';
 
             s3Mock
@@ -125,7 +131,7 @@ describe('API Gateway Static Hosting Handler (S3 Host)', () => {
 
         it('Should return 500 for an S3 error on the intial request', async () => {
             // Arrange
-            const app = new S3Host(inlineSpaEnvironment).create();
+            const app = new S3Host(spaConfig).create();
             const url = '/my/wild/dynamic/url';
 
             s3Mock
@@ -155,7 +161,7 @@ describe('API Gateway Static Hosting Handler (S3 Host)', () => {
 
         it('Should return 404 if the SPA index page is missing', async () => {
             // Arrange
-            const app = new S3Host(inlineSpaEnvironment).create();
+            const app = new S3Host(spaConfig).create();
             const url = '/my/wild/dynamic/url';
 
             s3Mock
@@ -182,7 +188,7 @@ describe('API Gateway Static Hosting Handler (S3 Host)', () => {
 
         it('Should return 500 if S3 returns no body', async () => {
             // Arrange
-            const app = new S3Host(inlineSpaEnvironment).create();
+            const app = new S3Host(spaConfig).create();
             const url = '/my/wild/dynamic/url';
 
             s3Mock
@@ -211,7 +217,7 @@ describe('API Gateway Static Hosting Handler (S3 Host)', () => {
 
         it('Should return 500 for an S3 error on the SPA index page', async () => {
             // Arrange
-            const app = new S3Host(inlineSpaEnvironment).create();
+            const app = new S3Host(spaConfig).create();
             const url = '/my/wild/dynamic/url';
 
             s3Mock
@@ -248,15 +254,15 @@ describe('API Gateway Static Hosting Handler (S3 Host)', () => {
     describe('Not SPA', () => {
         const staticFilePath = 'fixtures';
 
-        const inlineNonSpaEnvironment: S3HostingConfiguration = {
-            ...inlineTestEnvironment,
+        const nonSpaConfig: S3HostingConfiguration = {
+            ...testConfig,
             spaIndexPage: undefined,
             staticFilePath: staticFilePath
         };
 
         it('Should serve static asset when found', async () => {
             // Arrange
-            const app = new S3Host(inlineNonSpaEnvironment).create();
+            const app = new S3Host(nonSpaConfig).create();
             const testAssets = new Map([
                 ['/outer.html', 'outer'],
                 ['/assets/inner.html', 'inner'],
@@ -294,7 +300,7 @@ describe('API Gateway Static Hosting Handler (S3 Host)', () => {
 
         it('Should return 404 when no static asset found', async () => {
             // Arrange
-            const app = new S3Host(inlineNonSpaEnvironment).create();
+            const app = new S3Host(nonSpaConfig).create();
             const url = '/no/such/file.txt';
 
             s3Mock
@@ -316,7 +322,7 @@ describe('API Gateway Static Hosting Handler (S3 Host)', () => {
 
         it('Should return 500 if S3 returns no body', async () => {
             // Arrange
-            const app = new S3Host(inlineNonSpaEnvironment).create();
+            const app = new S3Host(nonSpaConfig).create();
             const url = '/outer.html';
 
             s3Mock
