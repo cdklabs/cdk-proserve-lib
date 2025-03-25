@@ -57,7 +57,7 @@ describeCdkTest(SecurityCompliance, (_, getStack, getTemplate) => {
             Aspects.of(stack).add(
                 new SecurityCompliance({
                     settings: {
-                        stepFunctions: { xRayTracing: { disabled: true } }
+                        stepFunctions: { tracing: { disabled: true } }
                     }
                 })
             );

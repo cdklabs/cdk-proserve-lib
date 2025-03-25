@@ -101,7 +101,7 @@ export interface StepFunctionsSettings {
      *
      * Defaults to true if not disabled.
      */
-    readonly xRayTracing?: DisableableSetting;
+    readonly tracing?: DisableableSetting;
 }
 
 export interface StageMethodLogging extends DisableableSetting {
@@ -127,8 +127,8 @@ export interface ApiGatewaySettings {
 }
 
 export interface Settings {
-    readonly apigateway?: ApiGatewaySettings;
-    readonly dynamodb?: DynamoDbSettings;
+    readonly apiGateway?: ApiGatewaySettings;
+    readonly dynamoDb?: DynamoDbSettings;
     readonly lambda?: LambdaSettings;
     readonly ecs?: EcsSettings;
     readonly s3?: S3Settings;

@@ -3,8 +3,8 @@
 
 import { Stack } from 'aws-cdk-lib';
 import { CfnPolicy } from 'aws-cdk-lib/aws-iam';
-import { SecurityCompliance } from '../../../src/aspects/security-compliance';
 import { describe, beforeEach, it, expect } from 'vitest';
+import { SecurityCompliance } from '../../../src/aspects/security-compliance';
 import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(SecurityCompliance, (_, getStack, __) => {

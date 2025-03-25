@@ -15,10 +15,7 @@ export class StepFunctionsVisitor extends BaseVisitor<
     }
 
     public override visit(node: CfnStateMachine): void {
-        if (
-            !this.settings?.xRayTracing?.disabled &&
-            !node.tracingConfiguration
-        ) {
+        if (!this.settings?.tracing?.disabled && !node.tracingConfiguration) {
             node.tracingConfiguration = {
                 enabled: true
             };

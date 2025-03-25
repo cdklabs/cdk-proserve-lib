@@ -51,13 +51,13 @@ export class SecurityCompliance implements IAspect {
         // set defaults
         this.settings = {
             ...props?.settings,
-            apigateway: {
+            apiGateway: {
                 stageMethodLogging: {
                     loggingLevel:
-                        props?.settings?.apigateway?.stageMethodLogging
+                        props?.settings?.apiGateway?.stageMethodLogging
                             ?.loggingLevel ?? MethodLoggingLevel.ERROR,
                     disabled:
-                        props?.settings?.apigateway?.stageMethodLogging
+                        props?.settings?.apiGateway?.stageMethodLogging
                             ?.disabled ?? false
                 }
             },
@@ -78,8 +78,8 @@ export class SecurityCompliance implements IAspect {
     }
 
     private registerVisitors(): void {
-        this.vr.register(new v.ApiGatewayVisitor(this.settings.apigateway));
-        this.vr.register(new v.DynamoDbVisitor(this.settings.dynamodb));
+        this.vr.register(new v.ApiGatewayVisitor(this.settings.apiGateway));
+        this.vr.register(new v.DynamoDbVisitor(this.settings.dynamoDb));
         this.vr.register(new v.EcsClusterVisitor(this.settings.ecs));
         this.vr.register(new v.LambdaVisitor(this.settings.lambda));
         this.vr.register(new v.S3Visitor(this.settings.s3));
