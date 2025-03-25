@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="181" failures="0" errors="0" time="113.706">
+  <testsuite name="Ec2AutomatedShutdown" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:41:09" time="49.679" tests="4">
+    <testcase classname="Ec2AutomatedShutdown should create alarm with direct lambda integration when visiting an EC2 instance" name="Ec2AutomatedShutdown should create alarm with direct lambda integration when visiting an EC2 instance" time="2.541">
+    </testcase>
+    <testcase classname="Ec2AutomatedShutdown should create alarms for multiple EC2 instances" name="Ec2AutomatedShutdown should create alarms for multiple EC2 instances" time="1.302">
+    </testcase>
+    <testcase classname="Ec2AutomatedShutdown should create alarm with default CPU metric when no metric config is provided" name="Ec2AutomatedShutdown should create alarm with default CPU metric when no metric config is provided" time="0.918">
+    </testcase>
+    <testcase classname="Ec2AutomatedShutdown should not create resources when no EC2 instances exist" name="Ec2AutomatedShutdown should not create resources when no EC2 instances exist" time="0.056">
+    </testcase>
+  </testsuite>
+  <testsuite name="friendly-embrace on-event handler" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:41:09" time="51.886" tests="15">
+    <testcase classname="friendly-embrace on-event handler should error if stack in progress" name="friendly-embrace on-event handler should error if stack in progress" time="2.057">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should error if no stacks are retrieved" name="friendly-embrace on-event handler should error if no stacks are retrieved" time="2.012">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should handle case where stack does not exist" name="friendly-embrace on-event handler should handle case where stack does not exist" time="0.006">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should handle other errors when getting template" name="friendly-embrace on-event handler should handle other errors when getting template" time="0.068">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should handle other errors when describing stacks" name="friendly-embrace on-event handler should handle other errors when describing stacks" time="0.008">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should handle unexpected stack states" name="friendly-embrace on-event handler should handle unexpected stack states" time="2.035">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should handle instances where there are no updates" name="friendly-embrace on-event handler should handle instances where there are no updates" time="0.02">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should handle case where stack has no outputs" name="friendly-embrace on-event handler should handle case where stack has no outputs" time="2.014">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should handle cases where there is no template body" name="friendly-embrace on-event handler should handle cases where there is no template body" time="0.005">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should handle create event successfully" name="friendly-embrace on-event handler should handle create event successfully" time="2.008">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should not update if no stacks were given" name="friendly-embrace on-event handler should not update if no stacks were given" time="0.001">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should handle invalid stack state when ignoreInvalidStates is true" name="friendly-embrace on-event handler should handle invalid stack state when ignoreInvalidStates is true" time="0.002">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should handle delete event without performing any actions" name="friendly-embrace on-event handler should handle delete event without performing any actions" time="0.004">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should handle rollback events without performing any actions" name="friendly-embrace on-event handler should handle rollback events without performing any actions" time="0.003">
+    </testcase>
+    <testcase classname="friendly-embrace on-event handler should handle arrays in template values" name="friendly-embrace on-event handler should handle arrays in template values" time="2.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="IamServerCertificate" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:41:09" time="54.626" tests="10">
+    <testcase classname="IamServerCertificate creates custom resource with correct properties (parameter)" name="IamServerCertificate creates custom resource with correct properties (parameter)" time="2.173">
+    </testcase>
+    <testcase classname="IamServerCertificate creates custom resource with correct properties (secret)" name="IamServerCertificate creates custom resource with correct properties (secret)" time="0.885">
+    </testcase>
+    <testcase classname="IamServerCertificate creates custom resource with correct properties (parameter, secret)" name="IamServerCertificate creates custom resource with correct properties (parameter, secret)" time="0.715">
+    </testcase>
+    <testcase classname="IamServerCertificate creates custom resource with correct properties (secret, parameter)" name="IamServerCertificate creates custom resource with correct properties (secret, parameter)" time="0.775">
+    </testcase>
+    <testcase classname="IamServerCertificate grants necessary permissions to Lambda function (unencrypted parameter)" name="IamServerCertificate grants necessary permissions to Lambda function (unencrypted parameter)" time="0.96">
+    </testcase>
+    <testcase classname="IamServerCertificate grants necessary permissions to Lambda function (encrypted parameter)" name="IamServerCertificate grants necessary permissions to Lambda function (encrypted parameter)" time="1.03">
+    </testcase>
+    <testcase classname="IamServerCertificate grants necessary permissions to Lambda function (unencrypted secret)" name="IamServerCertificate grants necessary permissions to Lambda function (unencrypted secret)" time="0.936">
+    </testcase>
+    <testcase classname="IamServerCertificate grants necessary permissions to Lambda function (encrypted secret)" name="IamServerCertificate grants necessary permissions to Lambda function (encrypted secret)" time="0.951">
+    </testcase>
+    <testcase classname="IamServerCertificate creates encrypted resources with provided key" name="IamServerCertificate creates encrypted resources with provided key" time="0.842">
+    </testcase>
+    <testcase classname="IamServerCertificate exposes certificate ARN" name="IamServerCertificate exposes certificate ARN" time="0.185">
+    </testcase>
+  </testsuite>
+  <testsuite name="Ec2ImageBuilderGetImage" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:01" time="4.557" tests="4">
+    <testcase classname="Ec2ImageBuilderGetImage creates custom resource with correct properties" name="Ec2ImageBuilderGetImage creates custom resource with correct properties" time="1.92">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderGetImage sets correct IAM policy" name="Ec2ImageBuilderGetImage sets correct IAM policy" time="0.661">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderGetImage exposes ami" name="Ec2ImageBuilderGetImage exposes ami" time="0.126">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderGetImage throws error for invalid ARN format" name="Ec2ImageBuilderGetImage throws error for invalid ARN format" time="0.043">
+    </testcase>
+  </testsuite>
+  <testsuite name="DynamoDbProvisionTable" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:04" time="4.944" tests="4">
+    <testcase classname="DynamoDbProvisionTable creates custom resource with correct properties" name="DynamoDbProvisionTable creates custom resource with correct properties" time="1.317">
+    </testcase>
+    <testcase classname="DynamoDbProvisionTable grants necessary permissions to Lambda function (unencrypted table)" name="DynamoDbProvisionTable grants necessary permissions to Lambda function (unencrypted table)" time="0.672">
+    </testcase>
+    <testcase classname="DynamoDbProvisionTable grants necessary permissions to Lambda function (encrypted table)" name="DynamoDbProvisionTable grants necessary permissions to Lambda function (encrypted table)" time="0.76">
+    </testcase>
+    <testcase classname="DynamoDbProvisionTable creates encrypted resources with provided key" name="DynamoDbProvisionTable creates encrypted resources with provided key" time="0.833">
+    </testcase>
+  </testsuite>
+  <testsuite name="Ec2ImagePipeline" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:41:59" time="11.948" tests="10">
+    <testcase classname="Ec2ImagePipeline creates image pipeline with default properties" name="Ec2ImagePipeline creates image pipeline with default properties" time="0.862">
+    </testcase>
+    <testcase classname="Ec2ImagePipeline creates image pipeline with custom properties" name="Ec2ImagePipeline creates image pipeline with custom properties" time="3.634">
+    </testcase>
+    <testcase classname="Ec2ImagePipeline exposes image pipeline ARN and SNS topic" name="Ec2ImagePipeline exposes image pipeline ARN and SNS topic" time="0.098">
+    </testcase>
+    <testcase classname="Ec2ImagePipeline sets latestAmi when waitForCompletion is true" name="Ec2ImagePipeline sets latestAmi when waitForCompletion is true" time="0.26">
+    </testcase>
+    <testcase classname="Ec2ImagePipeline does not set latestAmi when waitForCompletion is false" name="Ec2ImagePipeline does not set latestAmi when waitForCompletion is false" time="0.153">
+    </testcase>
+    <testcase classname="Ec2ImagePipeline creates image pipeline with custom CfnComponent" name="Ec2ImagePipeline creates image pipeline with custom CfnComponent" time="0.455">
+    </testcase>
+    <testcase classname="Ec2ImagePipeline creates image pipeline with provided security group" name="Ec2ImagePipeline creates image pipeline with provided security group" time="2.086">
+    </testcase>
+    <testcase classname="Ec2ImagePipeline creates image pipeline with no security group" name="Ec2ImagePipeline creates image pipeline with no security group" time="2.016">
+    </testcase>
+    <testcase classname="Ec2ImagePipeline throws error for invalid SEMVER format" name="Ec2ImagePipeline throws error for invalid SEMVER format" time="0.058">
+    </testcase>
+    <testcase classname="Ec2ImagePipeline grants encryption permissions to ImageBuilder service role when KMS key is provided" name="Ec2ImagePipeline grants encryption permissions to ImageBuilder service role when KMS key is provided" time="0.492">
+    </testcase>
+  </testsuite>
+  <testsuite name="WebApplicationFirewall" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:41:09" time="62.858" tests="9">
+    <testcase classname="WebApplicationFirewall creates WAF with CloudWatch metrics and sampled requests enabled" name="WebApplicationFirewall creates WAF with CloudWatch metrics and sampled requests enabled" time="3.091">
+    </testcase>
+    <testcase classname="WebApplicationFirewall creates WAF with no rules" name="WebApplicationFirewall creates WAF with no rules" time="1.804">
+    </testcase>
+    <testcase classname="WebApplicationFirewall creates WAF with visibility config" name="WebApplicationFirewall creates WAF with visibility config" time="2.119">
+    </testcase>
+    <testcase classname="WebApplicationFirewall creates basic WAF with default configuration" name="WebApplicationFirewall creates basic WAF with default configuration" time="1.934">
+    </testcase>
+    <testcase classname="WebApplicationFirewall creates WAF with AWS managed rules" name="WebApplicationFirewall creates WAF with AWS managed rules" time="1.891">
+    </testcase>
+    <testcase classname="WebApplicationFirewall creates WAF with logging configuration" name="WebApplicationFirewall creates WAF with logging configuration" time="1.947">
+    </testcase>
+    <testcase classname="WebApplicationFirewall associates WAF with ALB" name="WebApplicationFirewall associates WAF with ALB" time="2.12">
+    </testcase>
+    <testcase classname="WebApplicationFirewall creates WAF with rule overrides" name="WebApplicationFirewall creates WAF with rule overrides" time="2.028">
+    </testcase>
+    <testcase classname="WebApplicationFirewall does not allow incompatible resource association" name="WebApplicationFirewall does not allow incompatible resource association" time="0.443">
+    </testcase>
+  </testsuite>
+  <testsuite name="Ec2LinuxImagePipeline" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:41:09" time="63.002" tests="12">
+    <testcase classname="Ec2LinuxImagePipeline creates pipeline with default settings" name="Ec2LinuxImagePipeline creates pipeline with default settings" time="2.98">
+    </testcase>
+    <testcase classname="Ec2LinuxImagePipeline uses correct machine image for Amazon Linux 2023" name="Ec2LinuxImagePipeline uses correct machine image for Amazon Linux 2023" time="1.518">
+    </testcase>
+    <testcase classname="Ec2LinuxImagePipeline uses correct machine image for Red Hat Enterprise Linux 8.9" name="Ec2LinuxImagePipeline uses correct machine image for Red Hat Enterprise Linux 8.9" time="1.93">
+    </testcase>
+    <testcase classname="Ec2LinuxImagePipeline adds SCAP Compliance Checker for compatible OS" name="Ec2LinuxImagePipeline adds SCAP Compliance Checker for compatible OS" time="1.719">
+    </testcase>
+    <testcase classname="Ec2LinuxImagePipeline sets correct root volume size" name="Ec2LinuxImagePipeline sets correct root volume size" time="1.695">
+    </testcase>
+    <testcase classname="Ec2LinuxImagePipeline adds extra components" name="Ec2LinuxImagePipeline adds extra components" time="1.766">
+    </testcase>
+    <testcase classname="Ec2LinuxImagePipeline adds extra device mappings" name="Ec2LinuxImagePipeline adds extra device mappings" time="1.705">
+    </testcase>
+    <testcase classname="Ec2LinuxImagePipeline adds nice dcv feature for compatible operating systems" name="Ec2LinuxImagePipeline adds nice dcv feature for compatible operating systems" time="1.685">
+    </testcase>
+    <testcase classname="Ec2LinuxImagePipeline throws error for incompatible operating systems" name="Ec2LinuxImagePipeline throws error for incompatible operating systems" time="0.048">
+    </testcase>
+    <testcase classname="Ec2LinuxImagePipeline sets latestAmi and uses the getter from Ec2ImagePipeline" name="Ec2LinuxImagePipeline sets latestAmi and uses the getter from Ec2ImagePipeline" time="0.341">
+    </testcase>
+    <testcase classname="Ec2LinuxImagePipeline throws a feature error on incompatible operating systems" name="Ec2LinuxImagePipeline throws a feature error on incompatible operating systems" time="0.053">
+    </testcase>
+    <testcase classname="Ec2LinuxImagePipeline applies default buildConfiguration settings when not provided" name="Ec2LinuxImagePipeline applies default buildConfiguration settings when not provided" time="1.955">
+    </testcase>
+  </testsuite>
+  <testsuite name="ApplyRemovalPolicy" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:12" time="2.2" tests="1">
+    <testcase classname="ApplyRemovalPolicy should set removal policy on resource" name="ApplyRemovalPolicy should set removal policy on resource" time="0.62">
+    </testcase>
+  </testsuite>
+  <testsuite name="Lambda function handler" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:12" time="2.12" tests="9">
+    <testcase classname="Lambda function handler should handle CREATE event with password parameter successfully" name="Lambda function handler should handle CREATE event with password parameter successfully" time="0.018">
+    </testcase>
+    <testcase classname="Lambda function handler should handle CREATE event with password secret successfully" name="Lambda function handler should handle CREATE event with password secret successfully" time="0.004">
+    </testcase>
+    <testcase classname="Lambda function handler should handle UPDATE event successfully" name="Lambda function handler should handle UPDATE event successfully" time="0.003">
+    </testcase>
+    <testcase classname="Lambda function handler should handle DELETE event successfully" name="Lambda function handler should handle DELETE event successfully" time="0.003">
+    </testcase>
+    <testcase classname="Lambda function handler onCreate should return an error message if the credential source is missing" name="Lambda function handler onCreate should return an error message if the credential source is missing" time="0.006">
+    </testcase>
+    <testcase classname="Lambda function handler onCreate should return an error message if multiple credential sources are specified" name="Lambda function handler onCreate should return an error message if multiple credential sources are specified" time="0.001">
+    </testcase>
+    <testcase classname="Lambda function handler onCreate should return an error message when updateDomainConfig fails" name="Lambda function handler onCreate should return an error message when updateDomainConfig fails" time="0.039">
+    </testcase>
+    <testcase classname="Lambda function handler onCreate should return an error message when retrieving the credential as parameter fails" name="Lambda function handler onCreate should return an error message when retrieving the credential as parameter fails" time="0.003">
+    </testcase>
+    <testcase classname="Lambda function handler onCreate should return an error message when retrieving the credential as secret fails" name="Lambda function handler onCreate should return an error message when retrieving the credential as secret fails" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="SqsRequireSsl" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:14" time="2.67" tests="1">
+    <testcase classname="SqsRequireSsl adds SSL requirement policy to SQS queue" name="SqsRequireSsl adds SSL requirement policy to SQS queue" time="0.461">
+    </testcase>
+  </testsuite>
+  <testsuite name="NetworkFirewall" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:06" time="13.502" tests="4">
+    <testcase classname="NetworkFirewall creates a Network Firewall with basic configuration" name="NetworkFirewall creates a Network Firewall with basic configuration" time="2.567">
+    </testcase>
+    <testcase classname="NetworkFirewall creates a Network Firewall with logging" name="NetworkFirewall creates a Network Firewall with logging" time="2.747">
+    </testcase>
+    <testcase classname="NetworkFirewall configures VPC routes when specified" name="NetworkFirewall configures VPC routes when specified" time="3.961">
+    </testcase>
+    <testcase classname="NetworkFirewall uses KMS key for log encryption when provided" name="NetworkFirewall uses KMS key for log encryption when provided" time="2.572">
+    </testcase>
+  </testsuite>
+  <testsuite name="API Gateway Static Hosting Handler (S3 Host)" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:19" time="2.455" tests="10">
+    <testcase classname="API Gateway Static Hosting Handler (S3 Host) Default Configuration Should return 404 if asset directory is set incorrectly" name="API Gateway Static Hosting Handler (S3 Host) Default Configuration Should return 404 if asset directory is set incorrectly" time="0.045">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (S3 Host) SPA Should serve index page for any dynamic route when no asset found" name="API Gateway Static Hosting Handler (S3 Host) SPA Should serve index page for any dynamic route when no asset found" time="0.015">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (S3 Host) SPA Should serve static asset when found" name="API Gateway Static Hosting Handler (S3 Host) SPA Should serve static asset when found" time="0.007">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (S3 Host) SPA Should return 500 for an S3 error on the intial request" name="API Gateway Static Hosting Handler (S3 Host) SPA Should return 500 for an S3 error on the intial request" time="0.006">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (S3 Host) SPA Should return 404 if the SPA index page is missing" name="API Gateway Static Hosting Handler (S3 Host) SPA Should return 404 if the SPA index page is missing" time="0.003">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (S3 Host) SPA Should return 500 if S3 returns no body" name="API Gateway Static Hosting Handler (S3 Host) SPA Should return 500 if S3 returns no body" time="0.007">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (S3 Host) SPA Should return 500 for an S3 error on the SPA index page" name="API Gateway Static Hosting Handler (S3 Host) SPA Should return 500 for an S3 error on the SPA index page" time="0.01">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (S3 Host) Not SPA Should serve static asset when found" name="API Gateway Static Hosting Handler (S3 Host) Not SPA Should serve static asset when found" time="0.042">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (S3 Host) Not SPA Should return 404 when no static asset found" name="API Gateway Static Hosting Handler (S3 Host) Not SPA Should return 404 when no static asset found" time="0.031">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (S3 Host) Not SPA Should return 500 if S3 returns no body" name="API Gateway Static Hosting Handler (S3 Host) Not SPA Should return 500 if S3 returns no body" time="0.019">
+    </testcase>
+  </testsuite>
+  <testsuite name="Ec2ImageBuilderStart" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:09" time="13.974" tests="13">
+    <testcase classname="Ec2ImageBuilderStart creates custom resource" name="Ec2ImageBuilderStart creates custom resource" time="1.555">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderStart sets correct IAM policy" name="Ec2ImageBuilderStart sets correct IAM policy" time="0.836">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderStart exposes imageBuildVersionArn" name="Ec2ImageBuilderStart exposes imageBuildVersionArn" time="0.2">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderStart should not create any resources when waitForCompletion is unset" name="Ec2ImageBuilderStart should not create any resources when waitForCompletion is unset" time="0.826">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderStart should create necessary resources when waitForCompletion is true" name="Ec2ImageBuilderStart should create necessary resources when waitForCompletion is true" time="1.647">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderStart should use default timeout when not specified" name="Ec2ImageBuilderStart should use default timeout when not specified" time="1.364">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderStart should subscribe Lambda function to the provided SNS topic" name="Ec2ImageBuilderStart should subscribe Lambda function to the provided SNS topic" time="1.28">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderStart should create resources with hash" name="Ec2ImageBuilderStart should create resources with hash" time="0.657">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderStart creates resources in vpc when specified" name="Ec2ImageBuilderStart creates resources in vpc when specified" time="3.154">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderStart throws error for invalid ARN format" name="Ec2ImageBuilderStart throws error for invalid ARN format" time="0.046">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderStart throws error if timeout is over 12 hours" name="Ec2ImageBuilderStart throws error if timeout is over 12 hours" time="0.043">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderStart throws error if hash is more than 7 characters" name="Ec2ImageBuilderStart throws error if hash is more than 7 characters" time="0.054">
+    </testcase>
+    <testcase classname="Ec2ImageBuilderStart uses user provided log configuration for lambda" name="Ec2ImageBuilderStart uses user provided log configuration for lambda" time="0.752">
+    </testcase>
+  </testsuite>
+  <testsuite name="OpenSearchAdminUser" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:11" time="13.784" tests="8">
+    <testcase classname="OpenSearchAdminUser creates custom resource with correct properties (parameter)" name="OpenSearchAdminUser creates custom resource with correct properties (parameter)" time="1.982">
+    </testcase>
+    <testcase classname="OpenSearchAdminUser creates custom resource with correct properties (secret)" name="OpenSearchAdminUser creates custom resource with correct properties (secret)" time="1.331">
+    </testcase>
+    <testcase classname="OpenSearchAdminUser grants necessary permissions to Lambda function (unencrypted parameter)" name="OpenSearchAdminUser grants necessary permissions to Lambda function (unencrypted parameter)" time="1.276">
+    </testcase>
+    <testcase classname="OpenSearchAdminUser grants necessary permissions to Lambda function (encrypted parameter)" name="OpenSearchAdminUser grants necessary permissions to Lambda function (encrypted parameter)" time="1.233">
+    </testcase>
+    <testcase classname="OpenSearchAdminUser grants necessary permissions to Lambda function (unencrypted secret)" name="OpenSearchAdminUser grants necessary permissions to Lambda function (unencrypted secret)" time="1.08">
+    </testcase>
+    <testcase classname="OpenSearchAdminUser grants necessary permissions to Lambda function (encrypted secret)" name="OpenSearchAdminUser grants necessary permissions to Lambda function (encrypted secret)" time="1.22">
+    </testcase>
+    <testcase classname="OpenSearchAdminUser grants KMS permissions when domainKey is provided" name="OpenSearchAdminUser grants KMS permissions when domainKey is provided" time="1.735">
+    </testcase>
+    <testcase classname="OpenSearchAdminUser creates encrypted resources with provided key" name="OpenSearchAdminUser creates encrypted resources with provided key" time="1.142">
+    </testcase>
+  </testsuite>
+  <testsuite name="NetworkFirewallEndpoints" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:17" time="7.745" tests="4">
+    <testcase classname="NetworkFirewallEndpoints creates AWS Custom Resource" name="NetworkFirewallEndpoints creates AWS Custom Resource" time="1.457">
+    </testcase>
+    <testcase classname="NetworkFirewallEndpoints adds dependency on firewall" name="NetworkFirewallEndpoints adds dependency on firewall" time="0.876">
+    </testcase>
+    <testcase classname="NetworkFirewallEndpoints uses custom Lambda configuration when provided" name="NetworkFirewallEndpoints uses custom Lambda configuration when provided" time="2.995">
+    </testcase>
+    <testcase classname="NetworkFirewallEndpoints getEndpointId returns an unresolved token" name="NetworkFirewallEndpoints getEndpointId returns an unresolved token" time="0.175">
+    </testcase>
+  </testsuite>
+  <testsuite name="API Gateway Static Hosting Handler (Inline Host)" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:23" time="3.44" tests="5">
+    <testcase classname="API Gateway Static Hosting Handler (Inline Host) Default Configuration Should return 404 if asset directory is set incorrectly" name="API Gateway Static Hosting Handler (Inline Host) Default Configuration Should return 404 if asset directory is set incorrectly" time="0.04">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (Inline Host) SPA Should serve index page for any dynamic route when no asset found" name="API Gateway Static Hosting Handler (Inline Host) SPA Should serve index page for any dynamic route when no asset found" time="0.02">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (Inline Host) SPA Should serve static asset when found" name="API Gateway Static Hosting Handler (Inline Host) SPA Should serve static asset when found" time="0.012">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (Inline Host) Not SPA Should serve static asset when found" name="API Gateway Static Hosting Handler (Inline Host) Not SPA Should serve static asset when found" time="0.033">
+    </testcase>
+    <testcase classname="API Gateway Static Hosting Handler (Inline Host) Not SPA Should return 404 when no static asset found" name="API Gateway Static Hosting Handler (Inline Host) Not SPA Should return 404 when no static asset found" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="FriendlyEmbrace" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:14" time="12.911" tests="6">
+    <testcase classname="FriendlyEmbrace creates S3 bucket with default encryption" name="FriendlyEmbrace creates S3 bucket with default encryption" time="1.945">
+    </testcase>
+    <testcase classname="FriendlyEmbrace creates Lambda function with expected configuration" name="FriendlyEmbrace creates Lambda function with expected configuration" time="1.274">
+    </testcase>
+    <testcase classname="FriendlyEmbrace creates custom resource with expected properties" name="FriendlyEmbrace creates custom resource with expected properties" time="1.265">
+    </testcase>
+    <testcase classname="FriendlyEmbrace creates IAM role with required permissions" name="FriendlyEmbrace creates IAM role with required permissions" time="1.687">
+    </testcase>
+    <testcase classname="FriendlyEmbrace creates S3 bucket with custom KMS encryption" name="FriendlyEmbrace creates S3 bucket with custom KMS encryption" time="1.335">
+    </testcase>
+    <testcase classname="FriendlyEmbrace sets ignoreInvalidStates in custom resource properties" name="FriendlyEmbrace sets ignoreInvalidStates in custom resource properties" time="2.027">
+    </testcase>
+  </testsuite>
+  <testsuite name="SecureSageMakerNotebook" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:22" time="7.486" tests="2">
+    <testcase classname="SecureSageMakerNotebook should configure notebook instance with secure settings" name="SecureSageMakerNotebook should configure notebook instance with secure settings" time="3.406">
+    </testcase>
+    <testcase classname="SecureSageMakerNotebook should create &amp; attach managed policy for subnet restrictions" name="SecureSageMakerNotebook should create &amp; attach managed policy for subnet restrictions" time="1.524">
+    </testcase>
+  </testsuite>
+  <testsuite name="Lambda Handler" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:25" time="6.568" tests="4">
+    <testcase classname="Lambda Handler should signal SUCCESS when status is AVAILABLE" name="Lambda Handler should signal SUCCESS when status is AVAILABLE" time="0.045">
+    </testcase>
+    <testcase classname="Lambda Handler should signal FAILURE when status is not AVAILABLE" name="Lambda Handler should signal FAILURE when status is not AVAILABLE" time="0.001">
+    </testcase>
+    <testcase classname="Lambda Handler should throw error when WAIT_HANDLE_URL is not set" name="Lambda Handler should throw error when WAIT_HANDLE_URL is not set" time="0.011">
+    </testcase>
+    <testcase classname="Lambda Handler should not signal when ARN does not match" name="Lambda Handler should not signal when ARN does not match" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="FeatureError" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:25" time="6.486" tests="5">
+    <testcase classname="FeatureError should create an error with default message when only feature is provided" name="FeatureError should create an error with default message when only feature is provided" time="0.003">
+    </testcase>
+    <testcase classname="FeatureError should create an error with default message when feature and operating system are provided" name="FeatureError should create an error with default message when feature and operating system are provided" time="0.001">
+    </testcase>
+    <testcase classname="FeatureError should create an error with custom message when provided" name="FeatureError should create an error with custom message when provided" time="0.001">
+    </testcase>
+    <testcase classname="FeatureError should have the correct prototype chain" name="FeatureError should have the correct prototype chain" time="0.003">
+    </testcase>
+    <testcase classname="FeatureError should be throwable" name="FeatureError should be throwable" time="0.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="SecureFunction" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:26" time="8.442" tests="5">
+    <testcase classname="SecureFunction creates lambda function with default properties" name="SecureFunction creates lambda function with default properties" time="1.413">
+    </testcase>
+    <testcase classname="SecureFunction creates lambda function with custom log retention" name="SecureFunction creates lambda function with custom log retention" time="0.705">
+    </testcase>
+    <testcase classname="SecureFunction creates lambda function with encryption" name="SecureFunction creates lambda function with encryption" time="0.72">
+    </testcase>
+    <testcase classname="SecureFunction grants log write permissions to lambda" name="SecureFunction grants log write permissions to lambda" time="0.441">
+    </testcase>
+    <testcase classname="SecureFunction grants encryption permissions to logs service principal" name="SecureFunction grants encryption permissions to logs service principal" time="0.683">
+    </testcase>
+  </testsuite>
+  <testsuite name="SetLogRetention" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:27" time="8.981" tests="2">
+    <testcase classname="SetLogRetention should set retention on LogGroup" name="SetLogRetention should set retention on LogGroup" time="1.607">
+    </testcase>
+    <testcase classname="SetLogRetention should set retention on custom resource log retention" name="SetLogRetention should set retention on custom resource log retention" time="0.991">
+    </testcase>
+  </testsuite>
+  <testsuite name="CreateLambdaLogGroup" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:29" time="7.99" tests="1">
+    <testcase classname="CreateLambdaLogGroup should create log group when visiting a Lambda function" name="CreateLambdaLogGroup should create log group when visiting a Lambda function" time="1.659">
+    </testcase>
+  </testsuite>
+  <testsuite name="IamServerCertificate Custom Resource On Event Handler" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:42:31" time="6.416" tests="11">
+    <testcase classname="IamServerCertificate Custom Resource On Event Handler should create an IAM Server Certificate when all data values come from AWS Systems Manager Parameter Store" name="IamServerCertificate Custom Resource On Event Handler should create an IAM Server Certificate when all data values come from AWS Systems Manager Parameter Store" time="0.025">
+    </testcase>
+    <testcase classname="IamServerCertificate Custom Resource On Event Handler should create an IAM Server Certificate when all data values come from AWS Secrets Manager" name="IamServerCertificate Custom Resource On Event Handler should create an IAM Server Certificate when all data values come from AWS Secrets Manager" time="0.004">
+    </testcase>
+    <testcase classname="IamServerCertificate Custom Resource On Event Handler should create an IAM Server Certificate when the certificate comes from AWS Systems Manager Parameter Store and the private key comes from AWS Secrets Manager" name="IamServerCertificate Custom Resource On Event Handler should create an IAM Server Certificate when the certificate comes from AWS Systems Manager Parameter Store and the private key comes from AWS Secrets Manager" time="0.005">
+    </testcase>
+    <testcase classname="IamServerCertificate Custom Resource On Event Handler should create an IAM Server Certificate when the certificate comes from AWS Secrets Manager and the private key comes from AWS Systems Manager Parameter Store" name="IamServerCertificate Custom Resource On Event Handler should create an IAM Server Certificate when the certificate comes from AWS Secrets Manager and the private key comes from AWS Systems Manager Parameter Store" time="0.004">
+    </testcase>
+    <testcase classname="IamServerCertificate Custom Resource On Event Handler should return an appropriate error when the certificate fails to provision" name="IamServerCertificate Custom Resource On Event Handler should return an appropriate error when the certificate fails to provision" time="0.043">
+    </testcase>
+    <testcase classname="IamServerCertificate Custom Resource On Event Handler should return an appropriate error when the certificate cannot be loaded from AWS Systems Manager Parameter Store" name="IamServerCertificate Custom Resource On Event Handler should return an appropriate error when the certificate cannot be loaded from AWS Systems Manager Parameter Store" time="0.028">
+    </testcase>
+    <testcase classname="IamServerCertificate Custom Resource On Event Handler should return an appropriate error when the private key cannot be loaded from AWS Systems Manager Parameter Store" name="IamServerCertificate Custom Resource On Event Handler should return an appropriate error when the private key cannot be loaded from AWS Systems Manager Parameter Store" time="0.01">
+    </testcase>
+    <testcase classname="IamServerCertificate Custom Resource On Event Handler should return an appropriate error when the certificate cannot be loaded from AWS Secrets Manager" name="IamServerCertificate Custom Resource On Event Handler should return an appropriate error when the certificate cannot be loaded from AWS Secrets Manager" time="0.002">
+    </testcase>
+    <testcase classname="IamServerCertificate Custom Resource On Event Handler should return an appropriate error when the private key cannot be loaded from AWS Secrets Manager" name="IamServerCertificate Custom Resource On Event Handler should return an appropriate error when the private key cannot be loaded from AWS Secrets Manager" time="0.001">
+    </testcase>
+    <testcase classname="IamServerCertificate Custom Resource On Event Handler should do nothing on an update" name="IamServerCertificate Custom Resource On Event Handler should do nothing on an update" time="0.001">
+    </testcase>
+    <testcase classname="IamServerCertificate Custom Resource On Event Handler should remove the server certificate on a delete" name="IamServerCertificate Custom Resource On Event Handler should remove the server certificate on a delete" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="ApiGatewayStaticHosting" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:41:09" time="89.932" tests="18">
+    <testcase classname="ApiGatewayStaticHosting Storage Creates an Amazon S3 bucket to store static assets" name="ApiGatewayStaticHosting Storage Creates an Amazon S3 bucket to store static assets" time="3.809">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Storage Keeps the Amazon S3 bucket on stack deletion if requested" name="ApiGatewayStaticHosting Storage Keeps the Amazon S3 bucket on stack deletion if requested" time="2.509">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Storage Loads assets to the Amazon S3 bucket from the local file system" name="ApiGatewayStaticHosting Storage Loads assets to the Amazon S3 bucket from the local file system" time="2.52">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Storage Handles assets when they are folders" name="ApiGatewayStaticHosting Storage Handles assets when they are folders" time="0.465">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Storage Handles assets when they are zips" name="ApiGatewayStaticHosting Storage Handles assets when they are zips" time="0.438">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Storage Throws an error when assets are missing" name="ApiGatewayStaticHosting Storage Throws an error when assets are missing" time="0.225">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Storage Throws an error when assets are not an acceptable format" name="ApiGatewayStaticHosting Storage Throws an error when assets are not an acceptable format" time="0.233">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Storage Loads multiple assets to the Amazon S3 bucket from the local file system" name="ApiGatewayStaticHosting Storage Loads multiple assets to the Amazon S3 bucket from the local file system" time="2.492">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Storage Adds custom version information to the bucket deployment" name="ApiGatewayStaticHosting Storage Adds custom version information to the bucket deployment" time="2.559">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Storage Uses an AWS KM CMK to encrypt the storage and assets when provided (version tag)" name="ApiGatewayStaticHosting Storage Uses an AWS KM CMK to encrypt the storage and assets when provided (version tag)" time="3.208">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Storage Uses an AWS KM CMK to encrypt the storage and assets when provided" name="ApiGatewayStaticHosting Storage Uses an AWS KM CMK to encrypt the storage and assets when provided" time="3.476">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Backend Creates the backend handler with the correct properties (default endpoint)" name="ApiGatewayStaticHosting Backend Creates the backend handler with the correct properties (default endpoint)" time="2.827">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Backend Creates the backend handler with the correct properties (custom domain)" name="ApiGatewayStaticHosting Backend Creates the backend handler with the correct properties (custom domain)" time="3.756">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Serving Creates an API with a proxy endpoint for ALL routes/methods" name="ApiGatewayStaticHosting Serving Creates an API with a proxy endpoint for ALL routes/methods" time="4.208">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Serving Creates an API with a stage name that matches the base path when using the default endpoint" name="ApiGatewayStaticHosting Serving Creates an API with a stage name that matches the base path when using the default endpoint" time="3.044">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Serving Validates when the base path would lead to an invalid stage name when using the default endpoint" name="ApiGatewayStaticHosting Serving Validates when the base path would lead to an invalid stage name when using the default endpoint" time="0.586">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Serving Allows for custom endpoint configuration" name="ApiGatewayStaticHosting Serving Allows for custom endpoint configuration" time="4.289">
+    </testcase>
+    <testcase classname="ApiGatewayStaticHosting Serving Allows for custom domain usage" name="ApiGatewayStaticHosting Serving Allows for custom domain usage" time="4.054">
+    </testcase>
+  </testsuite>
+  <testsuite name="SageMakerAutomatedShutdown" errors="0" failures="0" skipped="0" timestamp="2025-03-24T17:41:09" time="99.82" tests="4">
+    <testcase classname="SageMakerAutomatedShutdown should create lifecycle config when visiting a notebook instance" name="SageMakerAutomatedShutdown should create lifecycle config when visiting a notebook instance" time="1.577">
+    </testcase>
+    <testcase classname="SageMakerAutomatedShutdown should use default timeout when not specified" name="SageMakerAutomatedShutdown should use default timeout when not specified" time="0.959">
+    </testcase>
+    <testcase classname="SageMakerAutomatedShutdown should use custom timeout when specified" name="SageMakerAutomatedShutdown should use custom timeout when specified" time="0.688">
+    </testcase>
+    <testcase classname="SageMakerAutomatedShutdown should handle multiple notebook instances" name="SageMakerAutomatedShutdown should handle multiple notebook instances" time="0.83">
+    </testcase>
+  </testsuite>
+</testsuites>
