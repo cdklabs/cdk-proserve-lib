@@ -12,7 +12,6 @@ export class LambdaVisitor extends BaseVisitor<CfnFunction, LambdaSettings> {
     }
 
     public override visit(node: CfnFunction): void {
-        console.log('Visiting Lambda', node.node.path);
         if (
             !this.settings?.reservedConcurrentExecutions?.disabled &&
             !node.reservedConcurrentExecutions
