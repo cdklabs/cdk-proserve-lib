@@ -99,7 +99,7 @@ export interface StepFunctionsSettings {
      * Resolves:
      *   - AwsSolutions-SF2
      *
-     * Defaults to true if not specified.
+     * Defaults to true if not disabled.
      */
     readonly xRayTracing?: DisableableSetting;
 }

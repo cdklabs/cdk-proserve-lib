@@ -1,6 +1,7 @@
-// src/aspects/security-compliance/index.test.ts
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
 
-import { App, Aspects, Stack } from 'aws-cdk-lib';
+import { Stack } from 'aws-cdk-lib';
 import { CfnPolicy } from 'aws-cdk-lib/aws-iam';
 import { SecurityCompliance } from '../../../src/aspects/security-compliance';
 import { describe, beforeEach, it, expect } from 'vitest';
