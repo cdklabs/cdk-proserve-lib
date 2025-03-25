@@ -4,7 +4,17 @@
 import path from 'node:path';
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { mockClient } from 'aws-sdk-client-mock';
+import {
+    describe,
+    beforeEach,
+    vi,
+    expect,
+    it,
+    Mocked,
+    MockedClass
+} from 'vitest';
 import { AwsHttpClient } from '../../../../../src/common/lambda/aws-http-client';
+import { downloadS3Asset } from '../../../../../src/common/lambda/download-s3-asset';
 import { handler } from '../../../../../src/constructs/opensearch-workflow/handler/on-event';
 import {
     createMockResponse,
@@ -18,43 +28,45 @@ import {
 } from '../../fixtures';
 
 // Mock the dependencies
-jest.mock('@aws-sdk/s3-request-presigner', () => ({
-    getSignedUrl: jest
-        .fn()
-        .mockResolvedValue('https://presigned-url.example.com')
+vi.mock('@aws-sdk/s3-request-presigner', () => ({
+    getSignedUrl: vi.fn().mockResolvedValue('https://presigned-url.example.com')
 }));
-jest.mock('../../../../../src/common/lambda/aws-http-client');
-jest.mock('../../../../../src/common/lambda/download-s3-asset');
+vi.mock('../../../../../src/common/lambda/aws-http-client');
+vi.mock('../../../../../src/common/lambda/download-s3-asset');
 
 describe('OpenSearch Workflow Handler', () => {
-    let mockHttpClient: jest.Mocked<AwsHttpClient>;
+    let mockHttpClient: Mocked<AwsHttpClient>;
     const s3Mock = mockClient(S3Client);
-    const {
-        downloadS3Asset
-    } = require('../../../../../src/common/lambda/download-s3-asset');
+
+    const mockedDownloadS3Asset = vi.mocked(downloadS3Asset);
 
     beforeEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
         s3Mock.reset();
 
         // Mock S3
         s3Mock.on(GetObjectCommand).resolves({});
 
         // Mock Download S3 Asset
-        downloadS3Asset.mockResolvedValue({
-            filePath: path.join(__dirname, '../../fixtures/test-template.yaml')
-        });
+        vi.mock('../../../../../src/common/lambda/download-s3-asset', () => ({
+            downloadS3Asset: vi.fn().mockResolvedValue({
+                filePath: path.join(
+                    __dirname,
+                    '../../fixtures/test-template.yaml'
+                )
+            })
+        }));
 
         // Mock HTTP client
         mockHttpClient = {
-            post: jest.fn(),
-            get: jest.fn(),
-            put: jest.fn(),
-            delete: jest.fn()
-        } as unknown as jest.Mocked<AwsHttpClient>;
-        (
-            AwsHttpClient as jest.MockedClass<typeof AwsHttpClient>
-        ).mockImplementation(() => mockHttpClient);
+            post: vi.fn(),
+            get: vi.fn(),
+            put: vi.fn(),
+            delete: vi.fn()
+        } as unknown as Mocked<AwsHttpClient>;
+        (AwsHttpClient as MockedClass<typeof AwsHttpClient>).mockImplementation(
+            () => mockHttpClient
+        );
 
         // GET
         mockHttpClient.get.mockImplementation(() => {
@@ -180,10 +192,13 @@ describe('OpenSearch Workflow Handler', () => {
     }, 15000);
 
     it('should handle invalid template format', async () => {
-        downloadS3Asset.mockResolvedValueOnce({
-            filePath: path.join(__dirname, '../../fixtures/invalid.txt')
+        mockedDownloadS3Asset.mockResolvedValueOnce({
+            filePath: path.join(__dirname, '../../fixtures/invalid.txt'),
+            etag: 'asdf'
         });
 
-        await expect(handler(mockCreateEvent, mockContext)).rejects.toThrow();
+        await expect(handler(mockCreateEvent, mockContext)).rejects.toThrow(
+            'Invalid template format. Must be valid JSON or YAML.'
+        );
     });
 });

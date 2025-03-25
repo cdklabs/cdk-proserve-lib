@@ -7,24 +7,34 @@ import { Sha256 } from '@aws-crypto/sha256-js';
 import { STS } from '@aws-sdk/client-sts';
 import { defaultProvider } from '@aws-sdk/credential-provider-node';
 import { SignatureV4 } from '@smithy/signature-v4';
+import {
+    describe,
+    beforeEach,
+    afterEach,
+    it,
+    vi,
+    expect,
+    Mock,
+    MockedClass
+} from 'vitest';
 import { AwsHttpClient } from '../../../../src/common/lambda/aws-http-client';
 import { HttpClientResponseError } from '../../../../src/common/lambda/http-client/types/exception';
 
 // Mock the AWS SDK modules
-jest.mock('@aws-sdk/client-sts');
-jest.mock('@aws-sdk/credential-provider-node');
-jest.mock('@smithy/signature-v4');
-jest.mock('http');
-jest.mock('https');
+vi.mock('@aws-sdk/client-sts');
+vi.mock('@aws-sdk/credential-provider-node');
+vi.mock('@smithy/signature-v4');
+vi.mock('http');
+vi.mock('https');
 
 describe('HttpClientAws', () => {
     // Store original environment variables
     const originalEnv = process.env;
 
     // Create reusable mocks and client instance
-    let mockSignFunction: jest.Mock;
-    let mockStsAssumeRole: jest.Mock;
-    let mockDefaultProvider: jest.Mock;
+    let mockSignFunction: Mock;
+    let mockStsAssumeRole: Mock;
+    let mockDefaultProvider: Mock;
     let client: AwsHttpClient;
 
     // Mock response setup
@@ -36,7 +46,7 @@ describe('HttpClientAws', () => {
         process.env = { ...originalEnv, AWS_REGION: 'us-east-1' };
 
         // Set up SignatureV4 mock
-        mockSignFunction = jest.fn().mockResolvedValue({
+        mockSignFunction = vi.fn().mockResolvedValue({
             hostname: 'api.example.com',
             protocol: 'https:',
             port: 443,
@@ -50,9 +60,7 @@ describe('HttpClientAws', () => {
             body: undefined
         });
 
-        (
-            SignatureV4 as jest.MockedClass<typeof SignatureV4>
-        ).mockImplementation(
+        (SignatureV4 as MockedClass<typeof SignatureV4>).mockImplementation(
             () =>
                 ({
                     sign: mockSignFunction
@@ -60,7 +68,7 @@ describe('HttpClientAws', () => {
         );
 
         // Set up STS mock
-        mockStsAssumeRole = jest.fn().mockResolvedValue({
+        mockStsAssumeRole = vi.fn().mockResolvedValue({
             Credentials: {
                 AccessKeyId: 'mock-access-key',
                 SecretAccessKey: 'mock-secret-key',
@@ -69,7 +77,7 @@ describe('HttpClientAws', () => {
             }
         });
 
-        (STS as jest.MockedClass<typeof STS>).mockImplementation(
+        (STS as MockedClass<typeof STS>).mockImplementation(
             () =>
                 ({
                     assumeRole: mockStsAssumeRole
@@ -77,18 +85,18 @@ describe('HttpClientAws', () => {
         );
 
         // Set up defaultProvider mock
-        mockDefaultProvider = jest.fn().mockReturnValue({
+        mockDefaultProvider = vi.fn().mockReturnValue({
             accessKeyId: 'default-access-key',
             secretAccessKey: 'default-secret-key'
         });
 
-        (defaultProvider as jest.Mock).mockImplementation(mockDefaultProvider);
+        (defaultProvider as Mock).mockImplementation(mockDefaultProvider);
 
         // Set up HTTP/HTTPS response mocks
         mockResponse = {
             statusCode: 200,
             headers: { 'content-type': 'application/json' },
-            on: jest.fn().mockImplementation((event, callback) => {
+            on: vi.fn().mockImplementation((event, callback) => {
                 if (event === 'data') {
                     callback(JSON.stringify({ success: true }));
                 } else if (event === 'end') {
@@ -100,20 +108,20 @@ describe('HttpClientAws', () => {
 
         // Set up request object mock
         mockRequest = {
-            on: jest.fn(),
-            write: jest.fn(),
-            end: jest.fn()
+            on: vi.fn(),
+            write: vi.fn(),
+            end: vi.fn()
         };
 
         // Mock http.request and https.request properly
-        (http.request as jest.Mock).mockImplementation((_, callback: any) => {
+        (http.request as Mock).mockImplementation((_, callback: any) => {
             if (callback) {
                 callback(mockResponse);
             }
             return mockRequest;
         });
 
-        (https.request as jest.Mock).mockImplementation((_, callback: any) => {
+        (https.request as Mock).mockImplementation((_, callback: any) => {
             if (callback) {
                 callback(mockResponse);
             }
@@ -131,7 +139,7 @@ describe('HttpClientAws', () => {
     afterEach(() => {
         // Restore environment
         process.env = originalEnv;
-        jest.clearAllMocks();
+        vi.clearAllMocks();
     });
 
     describe('Constructor', () => {
@@ -225,8 +233,7 @@ describe('HttpClientAws', () => {
             await client.get('/test');
 
             // Check if https.request was called with proper signed parameters
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.headers.authorization).toBe(
                 'AWS4-HMAC-SHA256 Credential=...'
             );
@@ -339,7 +346,7 @@ describe('HttpClientAws', () => {
             const errorResponse = {
                 statusCode: 400,
                 headers: { 'content-type': 'application/json' },
-                on: jest.fn().mockImplementation((event, callback) => {
+                on: vi.fn().mockImplementation((event, callback) => {
                     if (event === 'data') {
                         callback(JSON.stringify({ error: 'Bad request' }));
                     } else if (event === 'end') {
@@ -350,7 +357,7 @@ describe('HttpClientAws', () => {
             };
 
             // Mock https.request to return error response for just this test
-            (https.request as jest.Mock).mockImplementationOnce(
+            (https.request as Mock).mockImplementationOnce(
                 (_: any, callback: any) => {
                     if (callback) {
                         callback(errorResponse);

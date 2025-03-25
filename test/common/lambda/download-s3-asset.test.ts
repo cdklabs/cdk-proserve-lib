@@ -9,19 +9,26 @@ import { PassThrough } from 'stream';
 import { GetObjectCommand, HeadObjectCommand, S3 } from '@aws-sdk/client-s3';
 import { sdkStreamMixin } from '@aws-sdk/util-stream';
 import { mockClient } from 'aws-sdk-client-mock';
+import { vi, describe, beforeEach, it, expect, Mock } from 'vitest';
 import { downloadS3Asset } from '../../../src/common/lambda/download-s3-asset';
 
 // Mock fs.createWriteStream
-jest.mock('node:fs', () => ({
-    ...jest.requireActual('node:fs'),
-    createWriteStream: jest.fn()
-}));
+vi.mock('node:fs', async () => {
+    const createWriteStreamMock = vi.fn();
+
+    return {
+        default: {
+            createWriteStream: createWriteStreamMock
+        },
+        createWriteStream: createWriteStreamMock
+    };
+});
 
 describe('downloadS3Asset', () => {
     const mockS3 = mockClient(S3);
 
     beforeEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
         mockS3.reset();
     });
 
@@ -54,13 +61,14 @@ describe('downloadS3Asset', () => {
         });
 
         // Mock createWriteStream
-        (fs.createWriteStream as jest.Mock).mockReturnValue(mockPassThrough);
+        const mockCreateWriteStream = vi.mocked(fs.createWriteStream);
+        (fs.createWriteStream as Mock).mockReturnValue(mockPassThrough);
 
         // Store the original pipe method
         const originalPipe = Readable.prototype.pipe;
 
         // Mock the pipe method on all Readable instances
-        Readable.prototype.pipe = jest.fn(function () {
+        Readable.prototype.pipe = vi.fn(function () {
             // Emit finish event on next tick
             process.nextTick(() => {
                 mockPassThrough.emit('finish');
@@ -92,7 +100,7 @@ describe('downloadS3Asset', () => {
             Key: mockFileName
         });
 
-        expect(fs.createWriteStream).toHaveBeenCalledWith(expectedFilePath);
+        expect(mockCreateWriteStream).toHaveBeenCalledWith(expectedFilePath);
 
         expect(result).toEqual({
             filePath: expectedFilePath,
@@ -128,13 +136,13 @@ describe('downloadS3Asset', () => {
         });
 
         // Mock createWriteStream
-        (fs.createWriteStream as jest.Mock).mockReturnValue(mockPassThrough);
+        (fs.createWriteStream as Mock).mockReturnValue(mockPassThrough);
 
         // Store the original pipe method
         const originalPipe = Readable.prototype.pipe;
 
         // Mock the pipe method on all Readable instances
-        Readable.prototype.pipe = jest.fn(function () {
+        Readable.prototype.pipe = vi.fn(function () {
             // Emit finish event on next tick
             process.nextTick(() => {
                 mockPassThrough.emit('finish');

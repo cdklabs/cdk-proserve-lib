@@ -3,11 +3,12 @@
 
 import * as http from 'http';
 import * as https from 'https';
+import { vi, describe, beforeEach, expect, it, afterEach, Mock } from 'vitest';
 import { HttpClient } from '../../../../src/common/lambda/http-client';
 import { HttpClientResponseError } from '../../../../src/common/lambda/http-client/types/exception';
 
-jest.mock('http');
-jest.mock('https');
+vi.mock('http');
+vi.mock('https');
 
 describe('HttpClient', () => {
     // Create reusable mocks and client instance
@@ -20,7 +21,7 @@ describe('HttpClient', () => {
         mockResponse = {
             statusCode: 200,
             headers: { 'content-type': 'application/json' },
-            on: jest.fn().mockImplementation((event, callback) => {
+            on: vi.fn().mockImplementation((event, callback) => {
                 if (event === 'data') {
                     callback(JSON.stringify({ success: true }));
                 } else if (event === 'end') {
@@ -32,20 +33,20 @@ describe('HttpClient', () => {
 
         // Set up request object mock
         mockRequest = {
-            on: jest.fn(),
-            write: jest.fn(),
-            end: jest.fn()
+            on: vi.fn(),
+            write: vi.fn(),
+            end: vi.fn()
         };
 
         // Mock http.request and https.request properly
-        (http.request as jest.Mock).mockImplementation((_, callback: any) => {
+        (http.request as Mock).mockImplementation((_, callback: any) => {
             if (callback) {
                 callback(mockResponse);
             }
             return mockRequest;
         });
 
-        (https.request as jest.Mock).mockImplementation((_, callback: any) => {
+        (https.request as Mock).mockImplementation((_, callback: any) => {
             if (callback) {
                 callback(mockResponse);
             }
@@ -59,7 +60,7 @@ describe('HttpClient', () => {
     });
 
     afterEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
     });
 
     describe('Constructor', () => {
@@ -92,8 +93,7 @@ describe('HttpClient', () => {
             });
 
             expect(https.request).toHaveBeenCalled();
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.method).toBe('GET');
             expect(requestOptions.headers['x-custom-header']).toBe('value');
 
@@ -112,8 +112,7 @@ describe('HttpClient', () => {
             expect(mockRequest.write).toHaveBeenCalledWith(
                 JSON.stringify(data)
             );
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.method).toBe('POST');
             expect(requestOptions.headers['content-type']).toBe(
                 'application/json'
@@ -127,8 +126,7 @@ describe('HttpClient', () => {
             expect(mockRequest.write).toHaveBeenCalledWith(
                 JSON.stringify(data)
             );
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.method).toBe('PUT');
         });
 
@@ -136,8 +134,7 @@ describe('HttpClient', () => {
             await client.delete('/test');
 
             expect(mockRequest.write).not.toHaveBeenCalled();
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.method).toBe('DELETE');
         });
 
@@ -148,8 +145,7 @@ describe('HttpClient', () => {
             expect(mockRequest.write).toHaveBeenCalledWith(
                 JSON.stringify(data)
             );
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.method).toBe('PATCH');
         });
 
@@ -157,8 +153,7 @@ describe('HttpClient', () => {
             await client.head('/test');
 
             expect(mockRequest.write).not.toHaveBeenCalled();
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.method).toBe('HEAD');
         });
     });
@@ -169,8 +164,7 @@ describe('HttpClient', () => {
             const clientWithoutBaseUrl = new HttpClient();
             await clientWithoutBaseUrl.get('https://api.example.com/test');
 
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.hostname).toBe('api.example.com');
             expect(requestOptions.path).toBe('/test');
         });
@@ -182,8 +176,7 @@ describe('HttpClient', () => {
 
             await clientWithBaseUrl.get('/test');
 
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.hostname).toBe('api.example.com');
             expect(requestOptions.path).toBe('/test');
         });
@@ -195,8 +188,7 @@ describe('HttpClient', () => {
 
             await clientWithBaseUrl.get('test');
 
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.hostname).toBe('api.example.com');
             expect(requestOptions.path).toBe('/test');
         });
@@ -208,8 +200,7 @@ describe('HttpClient', () => {
 
             await clientWithBaseUrl.get('/test');
 
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.hostname).toBe('api.example.com');
             expect(requestOptions.path).toBe('/test');
         });
@@ -221,7 +212,7 @@ describe('HttpClient', () => {
             const errorResponse = {
                 statusCode: 400,
                 headers: { 'content-type': 'application/json' },
-                on: jest.fn().mockImplementation((event, callback) => {
+                on: vi.fn().mockImplementation((event, callback) => {
                     if (event === 'data') {
                         callback(JSON.stringify({ error: 'Bad request' }));
                     } else if (event === 'end') {
@@ -232,7 +223,7 @@ describe('HttpClient', () => {
             };
 
             // Mock https.request to return error response for just this test
-            (https.request as jest.Mock).mockImplementationOnce(
+            (https.request as Mock).mockImplementationOnce(
                 (_, callback: any) => {
                     if (callback) {
                         callback(errorResponse);
@@ -256,17 +247,17 @@ describe('HttpClient', () => {
             const networkError = new Error('Network error');
 
             // Override the mock for just this test
-            (https.request as jest.Mock).mockImplementationOnce(() => {
+            (https.request as Mock).mockImplementationOnce(() => {
                 const req = {
-                    on: jest.fn().mockImplementation((event, callback) => {
+                    on: vi.fn().mockImplementation((event, callback) => {
                         if (event === 'error' && callback) {
                             // Store the error callback to trigger later
                             setTimeout(() => callback(networkError), 0);
                         }
                         return req;
                     }),
-                    write: jest.fn(),
-                    end: jest.fn()
+                    write: vi.fn(),
+                    end: vi.fn()
                 };
                 return req;
             });
@@ -281,7 +272,7 @@ describe('HttpClient', () => {
             const nonJsonResponse = {
                 statusCode: 200,
                 headers: { 'content-type': 'text/plain' },
-                on: jest.fn().mockImplementation((event, callback) => {
+                on: vi.fn().mockImplementation((event, callback) => {
                     if (event === 'data') {
                         callback('This is plain text, not JSON');
                     } else if (event === 'end') {
@@ -292,7 +283,7 @@ describe('HttpClient', () => {
             };
 
             // Mock https.request to return non-JSON response for just this test
-            (https.request as jest.Mock).mockImplementationOnce(
+            (https.request as Mock).mockImplementationOnce(
                 (_, callback: any) => {
                     if (callback) {
                         callback(nonJsonResponse);
@@ -343,8 +334,7 @@ describe('HttpClient', () => {
 
             await clientWithDefaultHeaders.get('/test');
 
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.headers['x-api-key']).toBe('12345');
             expect(requestOptions.headers['user-agent']).toBe('test-client');
         });
@@ -363,8 +353,7 @@ describe('HttpClient', () => {
                 accept: 'application/xml'
             });
 
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.headers['x-api-key']).toBe('67890'); // Overridden
             expect(requestOptions.headers['content-type']).toBe(
                 'application/json'
@@ -377,8 +366,7 @@ describe('HttpClient', () => {
         it('should set the default timeout on requests', async () => {
             await client.get('/test');
 
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.timeout).toBe(30000);
         });
 
@@ -390,8 +378,7 @@ describe('HttpClient', () => {
 
             await customTimeoutClient.get('/test');
 
-            const requestOptions = (https.request as jest.Mock).mock
-                .calls[0][0];
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.timeout).toBe(5000);
         });
     });

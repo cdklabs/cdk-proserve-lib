@@ -1,6 +1,15 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import {
+    describe,
+    beforeEach,
+    vi,
+    expect,
+    it,
+    Mocked,
+    MockedClass
+} from 'vitest';
 import { AwsHttpClient } from '../../../../../src/common/lambda/aws-http-client';
 import { HttpClientResponseError } from '../../../../../src/common/lambda/http-client/types/exception';
 import { handler } from '../../../../../src/constructs/opensearch-workflow/handler/is-complete';
@@ -18,21 +27,21 @@ import {
 } from '../../fixtures';
 
 // Mock the dependencies
-jest.mock('../../../../../src/common/lambda/aws-http-client');
+vi.mock('../../../../../src/common/lambda/aws-http-client');
 
 describe('OpenSearch Workflow IsComplete Handler', () => {
-    let mockHttpClient: jest.Mocked<AwsHttpClient>;
+    let mockHttpClient: Mocked<AwsHttpClient>;
 
     beforeEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
 
         // Mock HTTP client
         mockHttpClient = {
-            get: jest.fn()
-        } as unknown as jest.Mocked<AwsHttpClient>;
-        (
-            AwsHttpClient as jest.MockedClass<typeof AwsHttpClient>
-        ).mockImplementation(() => mockHttpClient);
+            get: vi.fn()
+        } as unknown as Mocked<AwsHttpClient>;
+        (AwsHttpClient as MockedClass<typeof AwsHttpClient>).mockImplementation(
+            () => mockHttpClient
+        );
 
         // Default GET response
         mockHttpClient.get.mockImplementation(() => {

@@ -122,6 +122,10 @@
       "type": "build"
     },
     {
+      "name": "@types/js-yaml",
+      "type": "build"
+    },
+    {
       "name": "@types/mime",
       "version": "3.0.0",
       "type": "build"
@@ -156,6 +160,11 @@
     },
     {
       "name": "@vitest/coverage-v8",
+      "type": "build"
+    },
+    {
+      "name": "adm-zip",
+      "version": "0.5.16",
       "type": "build"
     },
     {
@@ -230,6 +239,11 @@
     },
     {
       "name": "husky",
+      "type": "build"
+    },
+    {
+      "name": "js-yaml",
+      "version": "4.1.0",
       "type": "build"
     },
     {

@@ -9,8 +9,9 @@ import { Domain, EngineVersion } from 'aws-cdk-lib/aws-opensearchservice';
 import { Asset } from 'aws-cdk-lib/aws-s3-assets';
 import { NagSuppressions } from 'cdk-nag';
 import { FunctionProperties } from 'cloudform-types/types/lambda/function';
+import { beforeEach, it, expect } from 'vitest';
 import { OpensearchWorkflow } from '../../../src/constructs/opensearch-workflow/index';
-import { describeCdkTest } from '../../../utilities/cdk-nag-jest';
+import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 describeCdkTest(OpensearchWorkflow, (id, getStack, getTemplate) => {
     let stack: Stack;
