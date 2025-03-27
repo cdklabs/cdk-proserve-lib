@@ -14,7 +14,7 @@ import { describe, beforeEach, it, expect } from 'vitest';
 import {
     S3Host,
     S3HostingConfiguration
-} from '../../../../../../src/patterns/apigateway-static-hosting/handler/hosts/s3';
+} from '../../../../../../src/patterns/apigateway-static-hosting/worker';
 import { streamFile } from '../../utilities/stream-fixture';
 
 const commonConfig: Partial<S3HostingConfiguration> = {
