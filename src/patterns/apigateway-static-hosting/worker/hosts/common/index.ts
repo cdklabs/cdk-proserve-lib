@@ -1,7 +1,14 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Express, Handler, Request, Response, NextFunction } from 'express';
+import {
+    Express,
+    Handler,
+    Request,
+    Response,
+    Router,
+    NextFunction
+} from 'express';
 import express = require('express');
 import helmet from 'helmet';
 import morgan = require('morgan');
@@ -80,6 +87,19 @@ export abstract class CommonHost<
      * Express handler for the fallthrough SPA route
      */
     protected abstract get spaHandler(): Handler;
+
+    /**
+     * Add the middleware to an existing Express router
+     * Either use this with an existing router or use the `create` method but not both
+     * @param router Express router on an existing app
+     */
+    addMiddleware(router: Router): void {
+        router.use(this.fileHandler);
+
+        if (this.props.spaIndexPage) {
+            router.get('*spa', this.spaHandler);
+        }
+    }
 
     /**
      * Create an Express app to host static assets
