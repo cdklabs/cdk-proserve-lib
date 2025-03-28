@@ -88,11 +88,6 @@
       "type": "build"
     },
     {
-      "name": "@types/mime",
-      "version": "3.0.0",
-      "type": "build"
-    },
-    {
       "name": "@types/morgan",
       "version": "1.9.9",
       "type": "build"
@@ -231,7 +226,7 @@
     },
     {
       "name": "mime",
-      "version": "3.0.0",
+      "version": "4.0.6",
       "type": "build"
     },
     {

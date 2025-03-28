@@ -8,7 +8,7 @@ import { type SdkStream } from '@smithy/types';
 import { sdkStreamMixin } from '@smithy/util-stream-node';
 import { Handler, Request, Response, NextFunction } from 'express';
 import expressAsyncHandler = require('express-async-handler');
-import { getType } from 'mime';
+import mime from 'mime';
 import { CommonHostingConfiguration } from '../../types/configuration';
 import { CommonHost } from '../common';
 
@@ -95,7 +95,8 @@ export class S3Host extends CommonHost<S3HostingConfiguration> {
                 try {
                     if (this.props.spaIndexPage) {
                         const defaultContentType =
-                            getType(this.props.spaIndexPage) ?? 'text/plain';
+                            mime.getType(this.props.spaIndexPage) ??
+                            'text/plain';
 
                         const file = await this.loadObject(
                             this.props.spaIndexPage
@@ -133,7 +134,7 @@ export class S3Host extends CommonHost<S3HostingConfiguration> {
         return expressAsyncHandler(
             async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const contentType = getType(req.path) ?? 'text/plain';
+                    const contentType = mime.getType(req.path) ?? 'text/plain';
 
                     const file = await this.loadObject(req.path);
 
