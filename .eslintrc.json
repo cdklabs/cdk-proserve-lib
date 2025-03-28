@@ -59,6 +59,7 @@
           "**/test/**",
           "**/build-tools/**",
           "**/handler/**/*.ts",
+          "**/worker/**/*.ts",
           "**/utilities/**/*.ts",
           ".projenrc.ts",
           "projenrc/**/*.ts"

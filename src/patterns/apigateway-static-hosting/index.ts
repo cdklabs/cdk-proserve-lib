@@ -31,7 +31,7 @@ import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
 import { Construct } from 'constructs';
 import { SecureFunction } from '../../constructs/secure-function';
 import { LambdaConfiguration } from '../../types';
-import { S3HostingConfiguration } from './handler/hosts/s3';
+import { S3HostingConfiguration } from './worker/hosts/s3';
 import { DefaultConfig } from '../../common/default-config';
 
 /**

@@ -7,7 +7,7 @@ import { describe, it, expect } from 'vitest';
 import {
     InlineHost,
     InlineHostingConfiguration
-} from '../../../../../../src/patterns/apigateway-static-hosting/handler/hosts/inline';
+} from '../../../../../../src/patterns/apigateway-static-hosting/worker';
 
 const commonConfig: Partial<InlineHostingConfiguration> = {
     disableHttpLogging: true
@@ -24,7 +24,7 @@ const relativeFixturesDir = join(
     'test',
     'patterns',
     'apigateway-static-hosting',
-    'handler',
+    'worker',
     'fixtures'
 );
 

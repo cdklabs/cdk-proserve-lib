@@ -98,6 +98,7 @@
     "express": "5.0.1",
     "express-async-handler": "1.2.0",
     "glob": "^7.2.3",
+    "helmet": "8.1.0",
     "husky": "^9.1.7",
     "jsii": "~5.8",
     "jsii-diff": "^1.110.0",
@@ -180,6 +181,7 @@
     "./aspects": "./aspects/index.js",
     "./constructs": "./constructs/index.js",
     "./patterns": "./patterns/index.js",
+    "./patterns/apigateway-static-hosting/worker": "./patterns/apigateway-static-hosting/worker/index.js",
     "./types": "./types/index.js"
   },
   "files": [

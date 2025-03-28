@@ -27,6 +27,7 @@ export const configureLinting = (project: CdklabsTypeScriptProject) => {
     });
 
     project.eslint?.allowDevDeps('**/handler/**/*.ts');
+    project.eslint?.allowDevDeps('**/worker/**/*.ts');
     project.eslint?.allowDevDeps('**/utilities/**/*.ts');
 
     project.eslint?.addRules({

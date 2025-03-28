@@ -195,6 +195,11 @@
       "type": "build"
     },
     {
+      "name": "helmet",
+      "version": "8.1.0",
+      "type": "build"
+    },
+    {
       "name": "husky",
       "type": "build"
     },

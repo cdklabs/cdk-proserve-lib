@@ -30,6 +30,14 @@ export interface CommonHostingConfiguration {
      * @default false
      */
     readonly disableHttpLogging?: boolean;
+
+    /**
+     * If specified, the host will allow full error stacks to be returned to the client
+     * It is recommended to not enable this in production
+     *
+     * @default false
+     */
+    readonly enableVerboseErrors?: boolean;
 }
 
 /**

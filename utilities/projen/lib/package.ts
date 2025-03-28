@@ -16,6 +16,8 @@ export const configurePackaging = (project: CdklabsTypeScriptProject) => {
             './aspects': './aspects/index.js',
             './constructs': './constructs/index.js',
             './patterns': './patterns/index.js',
+            './patterns/apigateway-static-hosting/worker':
+                './patterns/apigateway-static-hosting/worker/index.js',
             './types': './types/index.js'
         },
         // Represents the structure in the package staging directory

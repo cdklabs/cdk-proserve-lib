@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import SE from '@codegenie/serverless-express';
-import { InlineHost } from './hosts/inline';
-import { S3Host } from './hosts/s3';
-import { Configuration } from './types/configuration';
+import { InlineHost } from '../worker/hosts/inline';
+import { S3Host } from '../worker/hosts/s3';
+import { Configuration } from '../worker/types/configuration';
 
 /**
  * Lambda entry point
