@@ -34,6 +34,59 @@ export interface SecurityComplianceProps {
 /**
  * Applies best practice security settings to be in compliance with security
  * tools such as CDK Nag.
+ *
+ * This aspect automatically implements AWS security best practices and compliance
+ * requirements for various AWS services used in your CDK applications.
+ * It can be configured with custom settings and supports suppressing specific
+ * CDK Nag warnings with proper justification.
+ *
+ * @example
+ * ```ts
+ * import { App, Stack, Aspects } from 'aws-cdk-lib';
+ * import { Function, Runtime, Code } from 'aws-cdk-lib/aws-lambda';
+ * import { Bucket } from 'aws-cdk-lib/aws-s3';
+ * import { SecurityCompliance } from '../../../src/aspects/security-compliance';
+ *
+ * const app = new App();
+ * const stack = new Stack(app, 'MySecureStack');
+ *
+ * // Create resources
+ * const myBucket = new Bucket(stack, 'MyBucket');
+ * const myFunction = new Function(stack, 'MyFunction', {
+ *     runtime: Runtime.NODEJS_18_X,
+ *     handler: 'index.handler',
+ *     code: Code.fromInline(
+ *         'exports.handler = async () => { return { statusCode: 200 }; }'
+ *     )
+ * });
+ *
+ * // Apply the SecurityCompliance aspect with custom settings
+ * const securityAspect = new SecurityCompliance({
+ *     settings: {
+ *         s3: {
+ *             serverAccessLogs: {
+ *                 destinationBucketName: 'my-access-logs-bucket'
+ *             },
+ *             versioning: {
+ *                 disabled: false
+ *             }
+ *         },
+ *         lambda: {
+ *             reservedConcurrentExecutions: {
+ *                 concurrentExecutionCount: 5
+ *             }
+ *         }
+ *     },
+ *     suppressions: {
+ *         lambdaNotInVpc:
+ *             'This is a development environment where VPC is not required',
+ *         iamNoInlinePolicies: 'Inline policies are acceptable for this use case'
+ *     }
+ * });
+ *
+ * // Apply the aspect to the stack
+ * Aspects.of(app).add(securityAspect);
+ * ```
  */
 export class SecurityCompliance implements IAspect {
     /**
