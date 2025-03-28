@@ -7,10 +7,10 @@ export interface CdkNagSuppression {
     appliesTo?: string[];
 }
 
-export interface CdkNagRulesToSuppress {
+export interface CdkNagSuppressions {
     rules_to_suppress: CdkNagSuppression[];
 }
 
 export interface CdkNagMetadata {
-    cdk_nag?: CdkNagRulesToSuppress;
+    cdk_nag?: CdkNagSuppressions;
 }

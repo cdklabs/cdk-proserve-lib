@@ -32,8 +32,6 @@ export interface Suppressions {
      */
     readonly lambdaNotInVpc?: string;
 
-    // readonly s3ServerAccessLogs?: string;
-
     /**
      * Adds a stack suppression for `NIST.800.53.R5-S3BucketReplicationEnabled`.
      */

@@ -8,7 +8,7 @@ import { IConstruct } from 'constructs';
 import { Settings, Suppressions } from './types';
 import {
     CdkNagMetadata,
-    CdkNagRulesToSuppress,
+    CdkNagSuppressions,
     CdkNagSuppression
 } from './types/cdk-nag';
 import * as v from './visitors';
@@ -45,6 +45,11 @@ export class SecurityCompliance implements IAspect {
      */
     private readonly suppressions?: Suppressions;
 
+    /**
+     * Visitor Registry stores all of the Visitor classes that will be used
+     * by the Aspect to visit each node. The registry is organized by AWS
+     * service.
+     */
     private readonly vr = new VisitorRegistry();
 
     constructor(props?: SecurityComplianceProps) {
@@ -117,7 +122,7 @@ export class SecurityCompliance implements IAspect {
         ) {
             if (this.suppressions?.cdkGeneratedLambdas) {
                 const existingMetadata = resource.getMetadata('cdk_nag') as
-                    | CdkNagRulesToSuppress
+                    | CdkNagSuppressions
                     | undefined;
 
                 const suppressions = [

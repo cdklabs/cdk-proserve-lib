@@ -16,7 +16,7 @@ describeCdkTest(SecurityCompliance, (_, getStack, getTemplate) => {
     });
 
     describe('S3', () => {
-        it('does not apply reserved concurrency if disabled', () => {
+        it('does not apply versioning config if disabled', () => {
             // Arrange
             new Bucket(stack, 'TestBucket');
             Aspects.of(stack).add(

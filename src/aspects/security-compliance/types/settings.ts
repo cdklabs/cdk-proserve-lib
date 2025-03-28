@@ -16,6 +16,9 @@ export interface ReservedConcurrentSettings extends DisableableSetting {
     /**
      * The number of reserved concurrency executions.
      *
+     * Resolves:
+     *   - NIST.800.53.R5-LambdaConcurrency
+     *
      * Defaults to 1 if not specified.
      */
     readonly concurrentExecutionCount?: number;
@@ -57,7 +60,7 @@ export interface DynamoDbSettings {
     readonly pointInTimeRecovery?: DisableableSetting;
 }
 
-export interface ServerAccessLogsProps {
+export interface ServerAccessLogsSettings {
     /**
      * The bucket where server access logs will be sent. This must be configured
      * with the correct permissions to allow the target bucket to receive logs.
@@ -79,7 +82,7 @@ export interface S3Settings {
      *   - AwsSolutions-S1
      *   - NIST.800.53.R5-S3BucketLoggingEnabled
      */
-    readonly serverAccessLogs?: ServerAccessLogsProps;
+    readonly serverAccessLogs?: ServerAccessLogsSettings;
 
     /**
      * Enables versioning for S3 buckets.
