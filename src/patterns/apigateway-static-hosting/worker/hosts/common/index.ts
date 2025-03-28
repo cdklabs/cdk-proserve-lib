@@ -3,6 +3,7 @@
 
 import { Express, Handler, Request, Response, NextFunction } from 'express';
 import express = require('express');
+import helmet from 'helmet';
 import morgan = require('morgan');
 import { CommonHostingConfiguration } from '../../types/configuration';
 
@@ -92,6 +93,10 @@ export abstract class CommonHost<
             app.use(morgan('combined'));
         }
 
+        // Security
+        app.disable('x-powered-by');
+        app.use(helmet());
+
         // First, try to load the URI as a static asset
         app.use(this.fileHandler);
 
@@ -101,8 +106,9 @@ export abstract class CommonHost<
         }
 
         // Last, override error handler to only show 404 and nondescript 500 for everything else
-        // TODO: Allow verbose logging in dev
-        app.use(CommonHost.nonspecificErrorHandler);
+        if (!this.props.enableVerboseErrors) {
+            app.use(CommonHost.nonspecificErrorHandler);
+        }
 
         return app;
     }

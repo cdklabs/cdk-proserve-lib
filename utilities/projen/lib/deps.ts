@@ -32,6 +32,7 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         'axios@1.7.7',
         'express@5.0.1',
         'express-async-handler@1.2.0',
+        'helmet@8.1.0',
         'mime@3.0.0',
         'morgan@1.10.0',
         'uuid@11.0.3'

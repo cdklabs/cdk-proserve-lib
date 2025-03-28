@@ -98,6 +98,7 @@
     "express": "5.0.1",
     "express-async-handler": "1.2.0",
     "glob": "^7.2.3",
+    "helmet": "8.1.0",
     "husky": "^9.1.7",
     "jsii": "~5.8",
     "jsii-diff": "^1.110.0",
