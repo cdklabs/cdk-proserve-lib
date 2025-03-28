@@ -10,11 +10,11 @@ export class ApiGatewayVisitor extends BaseVisitor<
     CfnStage,
     ApiGatewaySettings
 > {
-    public canVisit(node: IConstruct): node is CfnStage {
+    public override canVisit(node: IConstruct): node is CfnStage {
         return node instanceof CfnStage;
     }
 
-    public visit(node: CfnStage): void {
+    public override visit(node: CfnStage): void {
         if (
             !this.settings?.stageMethodLogging?.disabled &&
             !node.methodSettings
