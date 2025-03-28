@@ -129,11 +129,79 @@ export interface ApiGatewaySettings {
     readonly stageMethodLogging?: StageMethodLogging;
 }
 
+/**
+ * Configuration settings for the security-compliance aspect.
+ *
+ * This interface provides a centralized way to configure security and compliance
+ * settings for various AWS resources. Each property corresponds to a specific
+ * AWS service and contains settings that help ensure resources comply with
+ * security best practices and compliance requirements.
+ *
+ * By default, most security settings are enabled unless explicitly disabled.
+ * Some settings may require additional configuration to be effective.
+ *
+ * @example
+ * ```ts
+ * const securitySettings: Settings = {
+ *   lambda: {
+ *     reservedConcurrentExecutions: {
+ *       concurrentExecutionCount: 5
+ *     }
+ *   },
+ *   s3: {
+ *     serverAccessLogs: {
+ *       destinationBucketName: 'access-logs-bucket'
+ *     }
+ *   }
+ * };
+ * ```
+ */
 export interface Settings {
+    /**
+     * Security and compliance settings for API Gateway resources.
+     *
+     * Controls settings like method logging to ensure proper monitoring
+     * and auditability of API usage.
+     */
     readonly apiGateway?: ApiGatewaySettings;
+
+    /**
+     * Security and compliance settings for DynamoDB tables.
+     *
+     * Configures features like Point-in-Time Recovery to improve
+     * data durability and recoverability.
+     */
     readonly dynamoDb?: DynamoDbSettings;
+
+    /**
+     * Security and compliance settings for Lambda functions.
+     *
+     * Controls execution limits and other settings to improve
+     * the security posture of Lambda functions.
+     */
     readonly lambda?: LambdaSettings;
+
+    /**
+     * Security and compliance settings for ECS clusters and services.
+     *
+     * Enables features like Container Insights for better
+     * monitoring and observability.
+     */
     readonly ecs?: EcsSettings;
+
+    /**
+     * Security and compliance settings for S3 buckets.
+     *
+     * Configures features like versioning and server access logging
+     * to improve data protection and meet compliance requirements.
+     */
     readonly s3?: S3Settings;
+
+    /**
+     * Security and compliance settings for Step Functions state machines.
+     *
+     * Controls settings like X-Ray tracing to improve
+     * observability and debugging capabilities.
+     */
     readonly stepFunctions?: StepFunctionsSettings;
 }
