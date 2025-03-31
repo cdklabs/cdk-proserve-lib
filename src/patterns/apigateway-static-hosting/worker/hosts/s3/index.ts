@@ -113,7 +113,7 @@ export class S3Host extends CommonHost<S3HostingConfiguration> {
                             res.sendStatus(500);
                         }
                     } else {
-                        res.sendStatus(404);
+                        next();
                     }
                 } catch (e) {
                     // Failed to load the default object

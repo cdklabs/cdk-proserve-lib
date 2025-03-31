@@ -94,11 +94,9 @@ export abstract class CommonHost<
      * @param router Express router on an existing app
      */
     addMiddleware(router: Router): void {
-        router.use(this.fileHandler);
-
-        if (this.props.spaIndexPage) {
-            router.get('*spa', this.spaHandler);
-        }
+        // First, try to load the URI as a static asset
+        // Second (only for SPA) load the base page which allows client to perform routing
+        router.use(this.fileHandler, this.spaHandler);
     }
 
     /**
@@ -117,13 +115,10 @@ export abstract class CommonHost<
         app.disable('x-powered-by');
         app.use(helmet());
 
-        // First, try to load the URI as a static asset
-        app.use(this.fileHandler);
+        const router = Router();
+        this.addMiddleware(router);
 
-        if (this.props.spaIndexPage) {
-            // Second (only for SPA) load the base page which allows client to perform routing
-            app.get('*spa', this.spaHandler);
-        }
+        app.use(router);
 
         // Last, override error handler to only show 404 and nondescript 500 for everything else
         if (!this.props.enableVerboseErrors) {
