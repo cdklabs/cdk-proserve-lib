@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { CfnResource } from 'aws-cdk-lib';
 import { CfnStage } from 'aws-cdk-lib/aws-apigateway';
 import { IConstruct } from 'constructs';
 import { ApiGatewaySettings } from '../../types';
@@ -11,7 +12,10 @@ export class ApiGatewayVisitor extends BaseVisitor<
     ApiGatewaySettings
 > {
     public override canVisit(node: IConstruct): node is CfnStage {
-        return node instanceof CfnStage;
+        return (
+            (node as CfnResource).cfnResourceType ===
+            CfnStage.CFN_RESOURCE_TYPE_NAME
+        );
     }
 
     public override visit(node: CfnStage): void {

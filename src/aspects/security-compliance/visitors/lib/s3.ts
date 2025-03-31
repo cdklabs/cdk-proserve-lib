@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Stack } from 'aws-cdk-lib';
+import { CfnResource, Stack } from 'aws-cdk-lib';
 import { CfnBucket, IBucket, Bucket } from 'aws-cdk-lib/aws-s3';
 import { IConstruct } from 'constructs';
 import { S3Settings } from '../../types';
@@ -11,7 +11,10 @@ export class S3Visitor extends BaseVisitor<CfnBucket, S3Settings> {
     private readonly accessLogBucket = new Map<string, IBucket>();
 
     public override canVisit(node: IConstruct): node is CfnBucket {
-        return node instanceof CfnBucket;
+        return (
+            (node as CfnResource).cfnResourceType ===
+            CfnBucket.CFN_RESOURCE_TYPE_NAME
+        );
     }
 
     public override visit(node: CfnBucket): void {

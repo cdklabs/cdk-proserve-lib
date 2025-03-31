@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { CfnResource } from 'aws-cdk-lib';
 import { CfnStateMachine } from 'aws-cdk-lib/aws-stepfunctions';
 import { IConstruct } from 'constructs';
 import { StepFunctionsSettings } from '../../types';
@@ -11,7 +12,10 @@ export class StepFunctionsVisitor extends BaseVisitor<
     StepFunctionsSettings
 > {
     public override canVisit(node: IConstruct): node is CfnStateMachine {
-        return node instanceof CfnStateMachine;
+        return (
+            (node as CfnResource).cfnResourceType ===
+            CfnStateMachine.CFN_RESOURCE_TYPE_NAME
+        );
     }
 
     public override visit(node: CfnStateMachine): void {

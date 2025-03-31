@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { CfnResource } from 'aws-cdk-lib';
 import { CfnCluster, ContainerInsights } from 'aws-cdk-lib/aws-ecs';
 import { IConstruct } from 'constructs';
 import { EcsSettings } from '../../types';
@@ -8,7 +9,10 @@ import { BaseVisitor } from '../base';
 
 export class EcsClusterVisitor extends BaseVisitor<CfnCluster, EcsSettings> {
     public override canVisit(node: IConstruct): node is CfnCluster {
-        return node instanceof CfnCluster;
+        return (
+            (node as CfnResource).cfnResourceType ===
+            CfnCluster.CFN_RESOURCE_TYPE_NAME
+        );
     }
 
     public override visit(node: CfnCluster): void {
