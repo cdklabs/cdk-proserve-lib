@@ -5,8 +5,8 @@ import { Aspects, IResolvable, Stack } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { CfnCluster, ContainerInsights, Cluster } from 'aws-cdk-lib/aws-ecs';
 import { beforeEach, it, describe } from 'vitest';
-import { SecurityCompliance } from '../../../../src/aspects/security-compliance';
-import { describeCdkTest } from '../../../../utilities/cdk-nag-test';
+import { SecurityCompliance } from '../../../../../src/aspects/security-compliance';
+import { describeCdkTest } from '../../../../../utilities/cdk-nag-test';
 
 describeCdkTest(SecurityCompliance, (_, getStack, getTemplate) => {
     let stack: Stack;

@@ -5,8 +5,8 @@ import { Aspects, Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { Bucket, CfnBucket } from 'aws-cdk-lib/aws-s3';
 import { beforeEach, describe, it } from 'vitest';
-import { SecurityCompliance } from '../../../../src/aspects/security-compliance';
-import { describeCdkTest } from '../../../../utilities/cdk-nag-test';
+import { SecurityCompliance } from '../../../../../src/aspects/security-compliance';
+import { describeCdkTest } from '../../../../../utilities/cdk-nag-test';
 
 describeCdkTest(SecurityCompliance, (_, getStack, getTemplate) => {
     let stack: Stack;

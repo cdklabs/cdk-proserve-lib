@@ -10,8 +10,8 @@ import {
     WaitTime
 } from 'aws-cdk-lib/aws-stepfunctions';
 import { beforeEach, describe, it } from 'vitest';
-import { SecurityCompliance } from '../../../../src/aspects/security-compliance';
-import { describeCdkTest } from '../../../../utilities/cdk-nag-test';
+import { SecurityCompliance } from '../../../../../src/aspects/security-compliance';
+import { describeCdkTest } from '../../../../../utilities/cdk-nag-test';
 
 describeCdkTest(SecurityCompliance, (_, getStack, getTemplate) => {
     let stack: Stack;

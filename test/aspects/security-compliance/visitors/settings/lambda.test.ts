@@ -4,9 +4,9 @@
 import { Aspects, Stack } from 'aws-cdk-lib';
 import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { beforeEach, describe, it } from 'vitest';
-import { SecurityCompliance } from '../../../../src/aspects/security-compliance';
-import { SecureFunction } from '../../../../src/constructs/secure-function';
-import { describeCdkTest } from '../../../../utilities/cdk-nag-test';
+import { SecurityCompliance } from '../../../../../src/aspects/security-compliance';
+import { SecureFunction } from '../../../../../src/constructs/secure-function';
+import { describeCdkTest } from '../../../../../utilities/cdk-nag-test';
 
 describeCdkTest(SecurityCompliance, (_, getStack, getTemplate) => {
     let stack: Stack;

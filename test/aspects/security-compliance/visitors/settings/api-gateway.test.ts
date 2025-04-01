@@ -4,8 +4,8 @@
 import { Aspects, Stack } from 'aws-cdk-lib';
 import { RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { beforeEach, it, describe } from 'vitest';
-import { SecurityCompliance } from '../../../../src/aspects/security-compliance';
-import { describeCdkTest } from '../../../../utilities/cdk-nag-test';
+import { SecurityCompliance } from '../../../../../src/aspects/security-compliance';
+import { describeCdkTest } from '../../../../../utilities/cdk-nag-test';
 
 describeCdkTest(SecurityCompliance, (_, getStack, getTemplate) => {
     let stack: Stack;
