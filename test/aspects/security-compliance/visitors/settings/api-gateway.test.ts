@@ -2,11 +2,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { Aspects, Stack } from 'aws-cdk-lib';
+import { Match } from 'aws-cdk-lib/assertions';
 import { MethodLoggingLevel, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { beforeEach, it, describe } from 'vitest';
 import { SecurityCompliance } from '../../../../../src/aspects/security-compliance';
 import { describeCdkTest } from '../../../../../utilities/cdk-nag-test';
-import { Match } from 'aws-cdk-lib/assertions';
 
 describeCdkTest(SecurityCompliance, (_, getStack, getTemplate) => {
     let stack: Stack;
