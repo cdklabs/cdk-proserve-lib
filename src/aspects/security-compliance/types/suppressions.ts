@@ -16,11 +16,18 @@ export interface Suppressions {
     readonly iamNoInlinePolicies?: string;
 
     /**
-     * Suppressions to add for CDK Nag on CDK generated Lambdas. If set to true,
-     * this will suppress `AwsSolutions-IAM5` on the policies that are auto
-     * created by CDK Generated Lambda functions.
+     * Suppressions to add for CDK Nag on CDK generated resources. If set to
+     * true, this will suppress `AwsSolutions-IAM5` on the policies that are
+     * created by CDK Generated Lambda functions, as well as other CDK generated
+     * resources such as Log Groups and Step Functions that support CDK
+     * generated custom resources. This only applies to resources that are
+     * created by the underlying CDK.
+     *
+     * - Policy suppression: AwsSolutions-IAM5
+     * - Log Group suppression: NIST.800.53.R5-CloudWatchLogGroupEncrypted
+     * - Step Function suppression: AwsSolutions-SF1
      */
-    readonly cdkGeneratedLambdas?: string;
+    readonly cdkGenerated?: string;
 
     /**
      * Adds a stack suppression for `NIST.800.53.R5-LambdaDLQ`.

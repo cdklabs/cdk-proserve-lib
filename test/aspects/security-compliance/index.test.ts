@@ -53,7 +53,7 @@ describeCdkTest(SecurityCompliance, (_, getStack, __) => {
             // Arrange
             const aspect = new SecurityCompliance({
                 suppressions: {
-                    cdkGeneratedLambdas: 'test reason for CDK generated lambdas'
+                    cdkGenerated: 'test reason for CDK generated lambdas'
                 }
             });
 
@@ -115,7 +115,7 @@ describeCdkTest(SecurityCompliance, (_, getStack, __) => {
             // Arrange
             const aspect = new SecurityCompliance({
                 suppressions: {
-                    cdkGeneratedLambdas: 'test reason'
+                    cdkGenerated: 'test reason'
                 }
             });
 
@@ -142,7 +142,7 @@ describeCdkTest(SecurityCompliance, (_, getStack, __) => {
             // Arrange
             const aspect = new SecurityCompliance({
                 suppressions: {
-                    cdkGeneratedLambdas: 'test reason'
+                    cdkGenerated: 'test reason'
                 }
             });
 

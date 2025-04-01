@@ -1,16 +1,10 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { IAspect, Stack } from 'aws-cdk-lib';
+import { IAspect } from 'aws-cdk-lib';
 import { MethodLoggingLevel } from 'aws-cdk-lib/aws-apigateway';
-import { CfnPolicy } from 'aws-cdk-lib/aws-iam';
 import { IConstruct } from 'constructs';
 import { Settings, Suppressions } from './types';
-import {
-    CdkNagMetadata,
-    CdkNagSuppressions,
-    CdkNagSuppression
-} from './types/cdk-nag';
 import * as v from './visitors';
 import { VisitorRegistry } from './visitors/registry';
 
@@ -24,6 +18,8 @@ export interface SecurityComplianceProps {
      * suppression. These helpers have been created for common nag suppression
      * use-cases. It is recommended to review the suppressions that are added
      * and ensure that they adhere to your organizational level of acceptance.
+     * Each suppression must be supplied with a reason for the suppression as
+     * a string to each suppression property.
      *
      * If you are not using CDK Nag or do not want to use any suppressions, you
      * can ignore this property.
@@ -144,6 +140,10 @@ export class SecurityCompliance implements IAspect {
         this.vr.register(
             new v.StepFunctionsVisitor(this.settings.stepFunctions)
         );
+        this.vr.register(new v.StackSuppressionsVisitor(this.suppressions));
+        this.vr.register(
+            new v.CdkGeneratedSuppressionsVisitor(this.suppressions)
+        );
     }
 
     /**
@@ -151,107 +151,5 @@ export class SecurityCompliance implements IAspect {
      */
     public visit(node: IConstruct): void {
         this.vr.visitNode(node);
-
-        if (this.suppressions) {
-            if (Stack.isStack(node)) {
-                this.applyStackSuppressions(node);
-            }
-
-            if (this.suppressions.cdkGeneratedLambdas) {
-                if (node instanceof CfnPolicy) {
-                    this.applyCdkGeneratedSuppressions(node);
-                }
-            }
-        }
-    }
-
-    private applyCdkGeneratedSuppressions(resource: CfnPolicy) {
-        if (
-            resource.node.path.includes('/framework-') ||
-            resource.node.path.includes('/waiter-state-machine/') ||
-            resource.node.path.includes(
-                '/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a'
-            )
-        ) {
-            if (this.suppressions?.cdkGeneratedLambdas) {
-                const existingMetadata = resource.getMetadata('cdk_nag') as
-                    | CdkNagSuppressions
-                    | undefined;
-
-                const suppressions = [
-                    ...(existingMetadata?.rules_to_suppress ?? [])
-                ];
-
-                if (resource instanceof CfnPolicy) {
-                    suppressions.push({
-                        id: 'AwsSolutions-IAM5',
-                        reason: this.suppressions.cdkGeneratedLambdas
-                    });
-                }
-
-                resource.addMetadata('cdk_nag', {
-                    rules_to_suppress: suppressions
-                });
-            }
-        }
-    }
-
-    /**
-     * Apply suppressions to a stack
-     */
-    private applyStackSuppressions(stack: Stack): void {
-        const suppressions: CdkNagSuppression[] = [];
-
-        const existingMetadata = stack.templateOptions.metadata as
-            | CdkNagMetadata
-            | undefined;
-        const existingRules = existingMetadata?.cdk_nag?.rules_to_suppress;
-
-        if (this.suppressions?.iamCommonCdkGrants) {
-            suppressions.push({
-                id: 'AwsSolutions-IAM5',
-                reason: this.suppressions.iamCommonCdkGrants,
-                appliesTo: [
-                    'Action::kms:ReEncrypt*',
-                    'Action::kms:GenerateDataKey*',
-                    'Action::s3:GetBucket*',
-                    'Action::s3:GetObject*',
-                    'Action::s3:List*',
-                    'Action::s3:DeleteObject*',
-                    'Action::s3:Abort*'
-                ]
-            });
-        }
-        if (this.suppressions?.iamNoInlinePolicies) {
-            suppressions.push({
-                id: 'NIST.800.53.R5-IAMNoInlinePolicy',
-                reason: this.suppressions.iamNoInlinePolicies
-            });
-        }
-
-        if (this.suppressions?.lambdaNoDlq) {
-            suppressions.push({
-                id: 'NIST.800.53.R5-LambdaDLQ',
-                reason: this.suppressions.lambdaNoDlq
-            });
-        }
-
-        if (this.suppressions?.lambdaNotInVpc) {
-            suppressions.push({
-                id: 'NIST.800.53.R5-LambdaInsideVPC',
-                reason: this.suppressions.lambdaNotInVpc
-            });
-        }
-
-        if (this.suppressions?.s3BucketReplication) {
-            suppressions.push({
-                id: 'NIST.800.53.R5-S3BucketReplicationEnabled',
-                reason: this.suppressions.s3BucketReplication
-            });
-        }
-
-        stack.addMetadata('cdk_nag', {
-            rules_to_suppress: [...(existingRules ?? []), ...suppressions]
-        });
     }
 }
