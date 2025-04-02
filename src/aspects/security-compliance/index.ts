@@ -8,6 +8,7 @@ import { Settings, Suppressions } from './types';
 import * as v from './visitors';
 import { VisitorRegistry } from './visitors/registry';
 
+export * from './types';
 export interface SecurityComplianceProps {
     /**
      * Settings for the aspect
@@ -37,7 +38,6 @@ export interface SecurityComplianceProps {
  * CDK Nag warnings with proper justification.
  *
  * @example
- * ```ts
  * import { App, Stack, Aspects } from 'aws-cdk-lib';
  * import { Function, Runtime, Code } from 'aws-cdk-lib/aws-lambda';
  * import { Bucket } from 'aws-cdk-lib/aws-s3';
@@ -82,7 +82,6 @@ export interface SecurityComplianceProps {
  *
  * // Apply the aspect to the stack
  * Aspects.of(app).add(securityAspect);
- * ```
  */
 export class SecurityCompliance implements IAspect {
     /**

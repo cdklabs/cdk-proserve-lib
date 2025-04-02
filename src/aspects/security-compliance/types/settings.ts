@@ -141,7 +141,6 @@ export interface ApiGatewaySettings {
  * Some settings may require additional configuration to be effective.
  *
  * @example
- * ```ts
  * const securitySettings: Settings = {
  *   lambda: {
  *     reservedConcurrentExecutions: {
@@ -154,7 +153,6 @@ export interface ApiGatewaySettings {
  *     }
  *   }
  * };
- * ```
  */
 export interface Settings {
     /**
