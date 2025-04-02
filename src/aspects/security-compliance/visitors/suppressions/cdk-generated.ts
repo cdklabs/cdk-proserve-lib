@@ -35,7 +35,7 @@ export class CdkGeneratedSuppressionsVisitor extends BaseVisitor<
     }
 
     public override visit(node: CfnResource): void {
-        if (!this.settings?.cdkGenerated) return;
+        if (!this.settings?.cdkGeneratedResources) return;
 
         const existingMetadata = node.getMetadata('cdk_nag') as
             | CdkNagSuppressions
@@ -46,19 +46,19 @@ export class CdkGeneratedSuppressionsVisitor extends BaseVisitor<
         if (node.cfnResourceType === CfnPolicy.CFN_RESOURCE_TYPE_NAME) {
             suppressions.push({
                 id: 'AwsSolutions-IAM5',
-                reason: this.settings.cdkGenerated
+                reason: this.settings.cdkGeneratedResources
             });
         }
         if (node.cfnResourceType === CfnLogGroup.CFN_RESOURCE_TYPE_NAME) {
             suppressions.push({
                 id: 'NIST.800.53.R5-CloudWatchLogGroupEncrypted',
-                reason: this.settings.cdkGenerated
+                reason: this.settings.cdkGeneratedResources
             });
         }
         if (node.cfnResourceType === CfnStateMachine.CFN_RESOURCE_TYPE_NAME) {
             suppressions.push({
                 id: 'AwsSolutions-SF1',
-                reason: this.settings.cdkGenerated
+                reason: this.settings.cdkGeneratedResources
             });
         }
 

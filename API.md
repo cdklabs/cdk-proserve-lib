@@ -4956,8 +4956,8 @@ const suppressions: aspects.SecurityCompliance.Suppressions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.cdkGenerated">cdkGenerated</a></code> | <code>string</code> | Suppressions to add for CDK Nag on CDK generated resources. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.iamCommonCdkGrants">iamCommonCdkGrants</a></code> | <code>string</code> | Suppressions to add for CDK Nag on CDK generated policies. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.cdkCommonGrants">cdkCommonGrants</a></code> | <code>string</code> | Suppressions to add for CDK Nag on CDK generated policies. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.cdkGeneratedResources">cdkGeneratedResources</a></code> | <code>string</code> | Suppressions to add for CDK Nag on CDK generated resources. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.iamNoInlinePolicies">iamNoInlinePolicies</a></code> | <code>string</code> | Adds a stack suppression for `NIST.800.53.R5-IAMNoInlinePolicy`. CDK commonly uses inline policies when adding permissions. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.lambdaNoDlq">lambdaNoDlq</a></code> | <code>string</code> | Adds a stack suppression for `NIST.800.53.R5-LambdaDLQ`. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.lambdaNotInVpc">lambdaNotInVpc</a></code> | <code>string</code> | Adds a stack suppression for `NIST.800.53.R5-LambdaInsideVPC`. |
@@ -4965,10 +4965,26 @@ const suppressions: aspects.SecurityCompliance.Suppressions = { ... }
 
 ---
 
-##### `cdkGenerated`<sup>Optional</sup> <a name="cdkGenerated" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.cdkGenerated"></a>
+##### `cdkCommonGrants`<sup>Optional</sup> <a name="cdkCommonGrants" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.cdkCommonGrants"></a>
 
 ```typescript
-public readonly cdkGenerated: string;
+public readonly cdkCommonGrants: string;
+```
+
+- *Type:* string
+
+Suppressions to add for CDK Nag on CDK generated policies.
+
+If enabled
+this will add a stack suppression for `AwsSolutions-IAM5` on the actions
+that CDK commonly generates when using `.grant(...)` methods.
+
+---
+
+##### `cdkGeneratedResources`<sup>Optional</sup> <a name="cdkGeneratedResources" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.cdkGeneratedResources"></a>
+
+```typescript
+public readonly cdkGeneratedResources: string;
 ```
 
 - *Type:* string
@@ -4985,22 +5001,6 @@ created by the underlying CDK.
 - Policy suppression: AwsSolutions-IAM5
 - Log Group suppression: NIST.800.53.R5-CloudWatchLogGroupEncrypted
 - Step Function suppression: AwsSolutions-SF1
-
----
-
-##### `iamCommonCdkGrants`<sup>Optional</sup> <a name="iamCommonCdkGrants" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.iamCommonCdkGrants"></a>
-
-```typescript
-public readonly iamCommonCdkGrants: string;
-```
-
-- *Type:* string
-
-Suppressions to add for CDK Nag on CDK generated policies.
-
-If enabled
-this will add a stack suppression for `AwsSolutions-IAM5` on the actions
-that CDK commonly generates when using `.grant(...)` methods.
 
 ---
 

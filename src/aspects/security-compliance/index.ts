@@ -359,13 +359,7 @@ export namespace SecurityCompliance {
          * this will add a stack suppression for `AwsSolutions-IAM5` on the actions
          * that CDK commonly generates when using `.grant(...)` methods.
          */
-        readonly iamCommonCdkGrants?: string;
-
-        /**
-         * Adds a stack suppression for `NIST.800.53.R5-IAMNoInlinePolicy`. CDK
-         * commonly uses inline policies when adding permissions.
-         */
-        readonly iamNoInlinePolicies?: string;
+        readonly cdkCommonGrants?: string;
 
         /**
          * Suppressions to add for CDK Nag on CDK generated resources. If enabled
@@ -379,7 +373,13 @@ export namespace SecurityCompliance {
          * - Log Group suppression: NIST.800.53.R5-CloudWatchLogGroupEncrypted
          * - Step Function suppression: AwsSolutions-SF1
          */
-        readonly cdkGenerated?: string;
+        readonly cdkGeneratedResources?: string;
+
+        /**
+         * Adds a stack suppression for `NIST.800.53.R5-IAMNoInlinePolicy`. CDK
+         * commonly uses inline policies when adding permissions.
+         */
+        readonly iamNoInlinePolicies?: string;
 
         /**
          * Adds a stack suppression for `NIST.800.53.R5-LambdaDLQ`.
