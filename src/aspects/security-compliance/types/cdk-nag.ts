@@ -6,15 +6,15 @@
  */
 export interface CdkNagSuppression {
     /** The identifier of the cdk-nag rule to suppress. */
-    id: string;
+    readonly id: string;
 
     /** The reason to ignore the rule (minimum 10 characters). */
-    reason: string;
+    readonly reason: string;
 
     /**
      * Optional array of actions to apply the suppression to. Granular control.
      */
-    appliesTo?: string[];
+    readonly appliesTo?: string[];
 }
 
 /**
@@ -22,7 +22,7 @@ export interface CdkNagSuppression {
  */
 export interface CdkNagSuppressions {
     /** Array of cdk-nag rule suppressions to apply. */
-    rules_to_suppress: CdkNagSuppression[];
+    readonly rules_to_suppress: CdkNagSuppression[];
 }
 
 /**
@@ -31,5 +31,5 @@ export interface CdkNagSuppressions {
  */
 export interface CdkNagMetadata {
     /** Optional cdk-nag suppressions configuration. */
-    cdk_nag?: CdkNagSuppressions;
+    readonly cdk_nag?: CdkNagSuppressions;
 }

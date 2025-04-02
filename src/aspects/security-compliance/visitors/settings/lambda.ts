@@ -4,10 +4,13 @@
 import { CfnResource } from 'aws-cdk-lib';
 import { CfnFunction } from 'aws-cdk-lib/aws-lambda';
 import { IConstruct } from 'constructs';
-import { LambdaSettings } from '../../types';
+import { SecurityCompliance } from '../..';
 import { BaseVisitor } from '../base';
 
-export class LambdaVisitor extends BaseVisitor<CfnFunction, LambdaSettings> {
+export class LambdaVisitor extends BaseVisitor<
+    CfnFunction,
+    SecurityCompliance.LambdaSettings
+> {
     public override canVisit(node: IConstruct): node is CfnFunction {
         return (
             (node as CfnResource).cfnResourceType ===

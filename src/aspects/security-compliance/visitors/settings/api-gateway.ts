@@ -4,12 +4,12 @@
 import { CfnResource } from 'aws-cdk-lib';
 import { CfnStage } from 'aws-cdk-lib/aws-apigateway';
 import { IConstruct } from 'constructs';
-import { ApiGatewaySettings } from '../../types';
+import { SecurityCompliance } from '../..';
 import { BaseVisitor } from '../base';
 
 export class ApiGatewayVisitor extends BaseVisitor<
     CfnStage,
-    ApiGatewaySettings
+    SecurityCompliance.ApiGatewaySettings
 > {
     public override canVisit(node: IConstruct): node is CfnStage {
         return (

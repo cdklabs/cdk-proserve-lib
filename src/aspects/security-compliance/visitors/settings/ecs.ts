@@ -4,10 +4,13 @@
 import { CfnResource } from 'aws-cdk-lib';
 import { CfnCluster, ContainerInsights } from 'aws-cdk-lib/aws-ecs';
 import { IConstruct } from 'constructs';
-import { EcsSettings } from '../../types';
+import { SecurityCompliance } from '../..';
 import { BaseVisitor } from '../base';
 
-export class EcsClusterVisitor extends BaseVisitor<CfnCluster, EcsSettings> {
+export class EcsClusterVisitor extends BaseVisitor<
+    CfnCluster,
+    SecurityCompliance.EcsSettings
+> {
     public override canVisit(node: IConstruct): node is CfnCluster {
         return (
             (node as CfnResource).cfnResourceType ===
