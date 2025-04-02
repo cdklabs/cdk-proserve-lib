@@ -24,10 +24,10 @@ export class StackSuppressionsVisitor extends BaseVisitor<
             | undefined;
         const existingRules = existingMetadata?.cdk_nag?.rules_to_suppress;
 
-        if (this.settings?.iamCommonCdkGrants) {
+        if (this.settings?.cdkCommonGrants) {
             suppressions.push({
                 id: 'AwsSolutions-IAM5',
-                reason: this.settings.iamCommonCdkGrants,
+                reason: this.settings.cdkCommonGrants,
                 appliesTo: [
                     'Action::kms:ReEncrypt*',
                     'Action::kms:GenerateDataKey*',
