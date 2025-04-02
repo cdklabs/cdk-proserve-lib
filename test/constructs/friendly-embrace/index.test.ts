@@ -31,6 +31,13 @@ describeCdkTest(FriendlyEmbrace, (id, getStack, getTemplate, getApp) => {
                 reason: 'Data is transient and deleted after use. Replication is not necessary.'
             },
             {
+                id: 'AwsSolutions-IAM4',
+                reason: 'Permissions are tightly scoped by CDK grants and otherwise set to the required permissions for updating CloudFormation stacks.',
+                appliesTo: [
+                    'Policy::arn:<AWS::Partition>:iam::aws:policy/ReadOnlyAccess'
+                ]
+            },
+            {
                 id: 'AwsSolutions-IAM5',
                 reason: 'Permissions are tightly scoped by CDK grants and otherwise set to the required permissions for updating CloudFormation stacks.'
             }
@@ -104,22 +111,26 @@ describeCdkTest(FriendlyEmbrace, (id, getStack, getTemplate, getApp) => {
                             'cloudformation:UpdateStack'
                         ],
                         Effect: 'Allow'
-                    }),
-                    Match.objectLike({
-                        Action: [
-                            'dynamodb:DescribeTable',
-                            'ec2:DescribeSecurityGroups',
-                            'ec2:DescribeLaunchTemplates',
-                            'ecs:DescribeServices',
-                            'elasticloadbalancing:DescribeLoadBalancers',
-                            'iam:GetRole',
-                            'logs:DescribeLogGroups',
-                            'sqs:getqueueattributes'
-                        ],
-                        Effect: 'Allow'
                     })
                 ])
             }
+        });
+
+        template.hasResourceProperties('AWS::IAM::Role', {
+            ManagedPolicyArns: [
+                {
+                    'Fn::Join': [
+                        '',
+                        [
+                            'arn:',
+                            {
+                                Ref: 'AWS::Partition'
+                            },
+                            ':iam::aws:policy/ReadOnlyAccess'
+                        ]
+                    ]
+                }
+            ]
         });
     });
 

@@ -3,7 +3,7 @@
 
 import { join } from 'node:path';
 import { Annotations, Aws, CustomResource, Duration } from 'aws-cdk-lib';
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Effect, ManagedPolicy, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
@@ -160,30 +160,10 @@ export class FriendlyEmbrace extends Construct {
             })
         });
 
-        /**
-         * This policy is required for the custom resource handler to be able
-         * to update CloudFormation stacks. Additional permissions may need to
-         * be added depending on the different resources being deployed by the
-         * application.
-         */
-        const readPolicy = new PolicyStatement({
-            actions: [
-                'dynamodb:DescribeTable',
-                'ec2:DescribeSecurityGroups',
-                'ec2:DescribeLaunchTemplates',
-                'ecs:DescribeServices',
-                'elasticloadbalancing:DescribeLoadBalancers',
-                'iam:GetRole',
-                'logs:DescribeLogGroups',
-                'sqs:getqueueattributes'
-            ],
-            effect: Effect.ALLOW,
-            resources: ['*']
-        });
-
-        [policy, readPolicy].forEach((p) => {
-            onEventHandler.function.addToRolePolicy(p);
-        });
+        onEventHandler.function.role!.addManagedPolicy(
+            ManagedPolicy.fromAwsManagedPolicyName('ReadOnlyAccess')
+        );
+        onEventHandler.function.addToRolePolicy(policy);
         cfnTemplateBucket.grantReadWrite(onEventHandler.function);
 
         return {
