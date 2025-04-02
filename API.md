@@ -2052,31 +2052,31 @@ The threshold value for the alarm.
 
 ---
 
-### ApiGatewaySettings <a name="ApiGatewaySettings" id="@cdklabs/cdk-proserve-lib.aspects.ApiGatewaySettings"></a>
+### ApiGatewaySettings <a name="ApiGatewaySettings" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ApiGatewaySettings"></a>
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.ApiGatewaySettings.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ApiGatewaySettings.Initializer"></a>
 
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const apiGatewaySettings: aspects.ApiGatewaySettings = { ... }
+const apiGatewaySettings: aspects.SecurityCompliance.ApiGatewaySettings = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.ApiGatewaySettings.property.stageMethodLogging">stageMethodLogging</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.StageMethodLogging</code> | Enable or disable CloudWatch logging for API Gateway stages. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ApiGatewaySettings.property.stageMethodLogging">stageMethodLogging</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StageMethodLogging</code> | Enable or disable CloudWatch logging for API Gateway stages. |
 
 ---
 
-##### `stageMethodLogging`<sup>Optional</sup> <a name="stageMethodLogging" id="@cdklabs/cdk-proserve-lib.aspects.ApiGatewaySettings.property.stageMethodLogging"></a>
+##### `stageMethodLogging`<sup>Optional</sup> <a name="stageMethodLogging" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ApiGatewaySettings.property.stageMethodLogging"></a>
 
 ```typescript
 public readonly stageMethodLogging: StageMethodLogging;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.StageMethodLogging
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StageMethodLogging
 
 Enable or disable CloudWatch logging for API Gateway stages.
 
@@ -2564,25 +2564,25 @@ such this base path will be used to create the deployment stage to serve assets 
 ```
 
 
-### DisableableSetting <a name="DisableableSetting" id="@cdklabs/cdk-proserve-lib.aspects.DisableableSetting"></a>
+### DisableableSetting <a name="DisableableSetting" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DisableableSetting"></a>
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.DisableableSetting.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DisableableSetting.Initializer"></a>
 
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const disableableSetting: aspects.DisableableSetting = { ... }
+const disableableSetting: aspects.SecurityCompliance.DisableableSetting = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.DisableableSetting.property.disabled">disabled</a></code> | <code>boolean</code> | Sets the setting to disabled. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DisableableSetting.property.disabled">disabled</a></code> | <code>boolean</code> | Sets the setting to disabled. |
 
 ---
 
-##### `disabled`<sup>Optional</sup> <a name="disabled" id="@cdklabs/cdk-proserve-lib.aspects.DisableableSetting.property.disabled"></a>
+##### `disabled`<sup>Optional</sup> <a name="disabled" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DisableableSetting.property.disabled"></a>
 
 ```typescript
 public readonly disabled: boolean;
@@ -2669,31 +2669,31 @@ Optional Lambda configuration settings.
 
 ---
 
-### DynamoDbSettings <a name="DynamoDbSettings" id="@cdklabs/cdk-proserve-lib.aspects.DynamoDbSettings"></a>
+### DynamoDbSettings <a name="DynamoDbSettings" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DynamoDbSettings"></a>
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.DynamoDbSettings.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DynamoDbSettings.Initializer"></a>
 
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const dynamoDbSettings: aspects.DynamoDbSettings = { ... }
+const dynamoDbSettings: aspects.SecurityCompliance.DynamoDbSettings = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.DynamoDbSettings.property.pointInTimeRecovery">pointInTimeRecovery</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.DisableableSetting</code> | Enables Point-in-Time Recovery for DynamoDB tables. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DynamoDbSettings.property.pointInTimeRecovery">pointInTimeRecovery</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DisableableSetting</code> | Enables Point-in-Time Recovery for DynamoDB tables. |
 
 ---
 
-##### `pointInTimeRecovery`<sup>Optional</sup> <a name="pointInTimeRecovery" id="@cdklabs/cdk-proserve-lib.aspects.DynamoDbSettings.property.pointInTimeRecovery"></a>
+##### `pointInTimeRecovery`<sup>Optional</sup> <a name="pointInTimeRecovery" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DynamoDbSettings.property.pointInTimeRecovery"></a>
 
 ```typescript
 public readonly pointInTimeRecovery: DisableableSetting;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.DisableableSetting
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DisableableSetting
 
 Enables Point-in-Time Recovery for DynamoDB tables.
 
@@ -3373,31 +3373,31 @@ Default: 10 GB.
 
 ---
 
-### EcsSettings <a name="EcsSettings" id="@cdklabs/cdk-proserve-lib.aspects.EcsSettings"></a>
+### EcsSettings <a name="EcsSettings" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.EcsSettings"></a>
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.EcsSettings.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.EcsSettings.Initializer"></a>
 
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const ecsSettings: aspects.EcsSettings = { ... }
+const ecsSettings: aspects.SecurityCompliance.EcsSettings = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.EcsSettings.property.clusterContainerInsights">clusterContainerInsights</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.DisableableSetting</code> | Enables container insights for ECS clusters. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.EcsSettings.property.clusterContainerInsights">clusterContainerInsights</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DisableableSetting</code> | Enables container insights for ECS clusters. |
 
 ---
 
-##### `clusterContainerInsights`<sup>Optional</sup> <a name="clusterContainerInsights" id="@cdklabs/cdk-proserve-lib.aspects.EcsSettings.property.clusterContainerInsights"></a>
+##### `clusterContainerInsights`<sup>Optional</sup> <a name="clusterContainerInsights" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.EcsSettings.property.clusterContainerInsights"></a>
 
 ```typescript
 public readonly clusterContainerInsights: DisableableSetting;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.DisableableSetting
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DisableableSetting
 
 Enables container insights for ECS clusters.
 
@@ -3661,31 +3661,31 @@ VPC where the Lambda functions will be deployed.
 
 ---
 
-### LambdaSettings <a name="LambdaSettings" id="@cdklabs/cdk-proserve-lib.aspects.LambdaSettings"></a>
+### LambdaSettings <a name="LambdaSettings" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.LambdaSettings"></a>
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.LambdaSettings.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.LambdaSettings.Initializer"></a>
 
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const lambdaSettings: aspects.LambdaSettings = { ... }
+const lambdaSettings: aspects.SecurityCompliance.LambdaSettings = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.LambdaSettings.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.ReservedConcurrentSettings</code> | Enables reserved concurrent executions for Lambda Functions. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.LambdaSettings.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ReservedConcurrentSettings</code> | Enables reserved concurrent executions for Lambda Functions. |
 
 ---
 
-##### `reservedConcurrentExecutions`<sup>Optional</sup> <a name="reservedConcurrentExecutions" id="@cdklabs/cdk-proserve-lib.aspects.LambdaSettings.property.reservedConcurrentExecutions"></a>
+##### `reservedConcurrentExecutions`<sup>Optional</sup> <a name="reservedConcurrentExecutions" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.LambdaSettings.property.reservedConcurrentExecutions"></a>
 
 ```typescript
 public readonly reservedConcurrentExecutions: ReservedConcurrentSettings;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.ReservedConcurrentSettings
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ReservedConcurrentSettings
 
 Enables reserved concurrent executions for Lambda Functions.
 
@@ -4359,26 +4359,26 @@ behave as expected or designed. You do so at your own risk.
 
 ---
 
-### ReservedConcurrentSettings <a name="ReservedConcurrentSettings" id="@cdklabs/cdk-proserve-lib.aspects.ReservedConcurrentSettings"></a>
+### ReservedConcurrentSettings <a name="ReservedConcurrentSettings" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ReservedConcurrentSettings"></a>
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.ReservedConcurrentSettings.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ReservedConcurrentSettings.Initializer"></a>
 
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const reservedConcurrentSettings: aspects.ReservedConcurrentSettings = { ... }
+const reservedConcurrentSettings: aspects.SecurityCompliance.ReservedConcurrentSettings = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.ReservedConcurrentSettings.property.disabled">disabled</a></code> | <code>boolean</code> | Sets the setting to disabled. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.ReservedConcurrentSettings.property.concurrentExecutionCount">concurrentExecutionCount</a></code> | <code>number</code> | The number of reserved concurrency executions. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ReservedConcurrentSettings.property.disabled">disabled</a></code> | <code>boolean</code> | Sets the setting to disabled. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ReservedConcurrentSettings.property.concurrentExecutionCount">concurrentExecutionCount</a></code> | <code>number</code> | The number of reserved concurrency executions. |
 
 ---
 
-##### `disabled`<sup>Optional</sup> <a name="disabled" id="@cdklabs/cdk-proserve-lib.aspects.ReservedConcurrentSettings.property.disabled"></a>
+##### `disabled`<sup>Optional</sup> <a name="disabled" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ReservedConcurrentSettings.property.disabled"></a>
 
 ```typescript
 public readonly disabled: boolean;
@@ -4394,7 +4394,7 @@ the specific setting.
 
 ---
 
-##### `concurrentExecutionCount`<sup>Optional</sup> <a name="concurrentExecutionCount" id="@cdklabs/cdk-proserve-lib.aspects.ReservedConcurrentSettings.property.concurrentExecutionCount"></a>
+##### `concurrentExecutionCount`<sup>Optional</sup> <a name="concurrentExecutionCount" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ReservedConcurrentSettings.property.concurrentExecutionCount"></a>
 
 ```typescript
 public readonly concurrentExecutionCount: number;
@@ -4411,32 +4411,32 @@ Defaults to 1 if not specified.
 
 ---
 
-### S3Settings <a name="S3Settings" id="@cdklabs/cdk-proserve-lib.aspects.S3Settings"></a>
+### S3Settings <a name="S3Settings" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.S3Settings"></a>
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.S3Settings.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.S3Settings.Initializer"></a>
 
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const s3Settings: aspects.S3Settings = { ... }
+const s3Settings: aspects.SecurityCompliance.S3Settings = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.S3Settings.property.serverAccessLogs">serverAccessLogs</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.ServerAccessLogsSettings</code> | Enable server access logs to a destination S3 bucket. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.S3Settings.property.versioning">versioning</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.DisableableSetting</code> | Enables versioning for S3 buckets. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.S3Settings.property.serverAccessLogs">serverAccessLogs</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ServerAccessLogsSettings</code> | Enable server access logs to a destination S3 bucket. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.S3Settings.property.versioning">versioning</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DisableableSetting</code> | Enables versioning for S3 buckets. |
 
 ---
 
-##### `serverAccessLogs`<sup>Optional</sup> <a name="serverAccessLogs" id="@cdklabs/cdk-proserve-lib.aspects.S3Settings.property.serverAccessLogs"></a>
+##### `serverAccessLogs`<sup>Optional</sup> <a name="serverAccessLogs" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.S3Settings.property.serverAccessLogs"></a>
 
 ```typescript
 public readonly serverAccessLogs: ServerAccessLogsSettings;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.ServerAccessLogsSettings
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ServerAccessLogsSettings
 
 Enable server access logs to a destination S3 bucket.
 
@@ -4450,13 +4450,13 @@ Resolves:
 
 ---
 
-##### `versioning`<sup>Optional</sup> <a name="versioning" id="@cdklabs/cdk-proserve-lib.aspects.S3Settings.property.versioning"></a>
+##### `versioning`<sup>Optional</sup> <a name="versioning" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.S3Settings.property.versioning"></a>
 
 ```typescript
 public readonly versioning: DisableableSetting;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.DisableableSetting
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DisableableSetting
 
 Enables versioning for S3 buckets.
 
@@ -4609,8 +4609,8 @@ const securityComplianceProps: aspects.SecurityComplianceProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityComplianceProps.property.settings">settings</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.Settings</code> | Settings for the aspect. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityComplianceProps.property.suppressions">suppressions</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.Suppressions</code> | Suppressions to add for CDK Nag. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityComplianceProps.property.settings">settings</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings</code> | Settings for the aspect. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityComplianceProps.property.suppressions">suppressions</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions</code> | Suppressions to add for CDK Nag. |
 
 ---
 
@@ -4620,7 +4620,7 @@ const securityComplianceProps: aspects.SecurityComplianceProps = { ... }
 public readonly settings: Settings;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.Settings
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings
 
 Settings for the aspect.
 
@@ -4632,7 +4632,7 @@ Settings for the aspect.
 public readonly suppressions: Suppressions;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.Suppressions
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions
 
 Suppressions to add for CDK Nag.
 
@@ -4648,25 +4648,25 @@ can ignore this property.
 
 ---
 
-### ServerAccessLogsSettings <a name="ServerAccessLogsSettings" id="@cdklabs/cdk-proserve-lib.aspects.ServerAccessLogsSettings"></a>
+### ServerAccessLogsSettings <a name="ServerAccessLogsSettings" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ServerAccessLogsSettings"></a>
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.ServerAccessLogsSettings.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ServerAccessLogsSettings.Initializer"></a>
 
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const serverAccessLogsSettings: aspects.ServerAccessLogsSettings = { ... }
+const serverAccessLogsSettings: aspects.SecurityCompliance.ServerAccessLogsSettings = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.ServerAccessLogsSettings.property.destinationBucketName">destinationBucketName</a></code> | <code>string</code> | The bucket where server access logs will be sent. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ServerAccessLogsSettings.property.destinationBucketName">destinationBucketName</a></code> | <code>string</code> | The bucket where server access logs will be sent. |
 
 ---
 
-##### `destinationBucketName`<sup>Required</sup> <a name="destinationBucketName" id="@cdklabs/cdk-proserve-lib.aspects.ServerAccessLogsSettings.property.destinationBucketName"></a>
+##### `destinationBucketName`<sup>Required</sup> <a name="destinationBucketName" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ServerAccessLogsSettings.property.destinationBucketName"></a>
 
 ```typescript
 public readonly destinationBucketName: string;
@@ -4717,7 +4717,7 @@ The retention period for the logs.
 
 ---
 
-### Settings <a name="Settings" id="@cdklabs/cdk-proserve-lib.aspects.Settings"></a>
+### Settings <a name="Settings" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings"></a>
 
 Configuration settings for the security-compliance aspect.
 
@@ -4747,34 +4747,34 @@ const securitySettings: Settings = {
 ```
 
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.Settings.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.Initializer"></a>
 
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const settings: aspects.Settings = { ... }
+const settings: aspects.SecurityCompliance.Settings = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Settings.property.apiGateway">apiGateway</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.ApiGatewaySettings</code> | Security and compliance settings for API Gateway resources. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Settings.property.dynamoDb">dynamoDb</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.DynamoDbSettings</code> | Security and compliance settings for DynamoDB tables. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Settings.property.ecs">ecs</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.EcsSettings</code> | Security and compliance settings for ECS clusters and services. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Settings.property.lambda">lambda</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.LambdaSettings</code> | Security and compliance settings for Lambda functions. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Settings.property.s3">s3</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.S3Settings</code> | Security and compliance settings for S3 buckets. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Settings.property.stepFunctions">stepFunctions</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.StepFunctionsSettings</code> | Security and compliance settings for Step Functions state machines. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.property.apiGateway">apiGateway</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ApiGatewaySettings</code> | Security and compliance settings for API Gateway resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.property.dynamoDb">dynamoDb</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DynamoDbSettings</code> | Security and compliance settings for DynamoDB tables. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.property.ecs">ecs</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.EcsSettings</code> | Security and compliance settings for ECS clusters and services. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.property.lambda">lambda</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.LambdaSettings</code> | Security and compliance settings for Lambda functions. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.property.s3">s3</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.S3Settings</code> | Security and compliance settings for S3 buckets. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.property.stepFunctions">stepFunctions</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StepFunctionsSettings</code> | Security and compliance settings for Step Functions state machines. |
 
 ---
 
-##### `apiGateway`<sup>Optional</sup> <a name="apiGateway" id="@cdklabs/cdk-proserve-lib.aspects.Settings.property.apiGateway"></a>
+##### `apiGateway`<sup>Optional</sup> <a name="apiGateway" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.property.apiGateway"></a>
 
 ```typescript
 public readonly apiGateway: ApiGatewaySettings;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.ApiGatewaySettings
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ApiGatewaySettings
 
 Security and compliance settings for API Gateway resources.
 
@@ -4783,13 +4783,13 @@ and auditability of API usage.
 
 ---
 
-##### `dynamoDb`<sup>Optional</sup> <a name="dynamoDb" id="@cdklabs/cdk-proserve-lib.aspects.Settings.property.dynamoDb"></a>
+##### `dynamoDb`<sup>Optional</sup> <a name="dynamoDb" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.property.dynamoDb"></a>
 
 ```typescript
 public readonly dynamoDb: DynamoDbSettings;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.DynamoDbSettings
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DynamoDbSettings
 
 Security and compliance settings for DynamoDB tables.
 
@@ -4798,13 +4798,13 @@ data durability and recoverability.
 
 ---
 
-##### `ecs`<sup>Optional</sup> <a name="ecs" id="@cdklabs/cdk-proserve-lib.aspects.Settings.property.ecs"></a>
+##### `ecs`<sup>Optional</sup> <a name="ecs" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.property.ecs"></a>
 
 ```typescript
 public readonly ecs: EcsSettings;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.EcsSettings
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.EcsSettings
 
 Security and compliance settings for ECS clusters and services.
 
@@ -4813,13 +4813,13 @@ monitoring and observability.
 
 ---
 
-##### `lambda`<sup>Optional</sup> <a name="lambda" id="@cdklabs/cdk-proserve-lib.aspects.Settings.property.lambda"></a>
+##### `lambda`<sup>Optional</sup> <a name="lambda" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.property.lambda"></a>
 
 ```typescript
 public readonly lambda: LambdaSettings;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.LambdaSettings
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.LambdaSettings
 
 Security and compliance settings for Lambda functions.
 
@@ -4828,13 +4828,13 @@ the security posture of Lambda functions.
 
 ---
 
-##### `s3`<sup>Optional</sup> <a name="s3" id="@cdklabs/cdk-proserve-lib.aspects.Settings.property.s3"></a>
+##### `s3`<sup>Optional</sup> <a name="s3" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.property.s3"></a>
 
 ```typescript
 public readonly s3: S3Settings;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.S3Settings
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.S3Settings
 
 Security and compliance settings for S3 buckets.
 
@@ -4843,13 +4843,13 @@ to improve data protection and meet compliance requirements.
 
 ---
 
-##### `stepFunctions`<sup>Optional</sup> <a name="stepFunctions" id="@cdklabs/cdk-proserve-lib.aspects.Settings.property.stepFunctions"></a>
+##### `stepFunctions`<sup>Optional</sup> <a name="stepFunctions" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Settings.property.stepFunctions"></a>
 
 ```typescript
 public readonly stepFunctions: StepFunctionsSettings;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.StepFunctionsSettings
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StepFunctionsSettings
 
 Security and compliance settings for Step Functions state machines.
 
@@ -4858,26 +4858,26 @@ observability and debugging capabilities.
 
 ---
 
-### StageMethodLogging <a name="StageMethodLogging" id="@cdklabs/cdk-proserve-lib.aspects.StageMethodLogging"></a>
+### StageMethodLogging <a name="StageMethodLogging" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StageMethodLogging"></a>
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.StageMethodLogging.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StageMethodLogging.Initializer"></a>
 
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const stageMethodLogging: aspects.StageMethodLogging = { ... }
+const stageMethodLogging: aspects.SecurityCompliance.StageMethodLogging = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.StageMethodLogging.property.disabled">disabled</a></code> | <code>boolean</code> | Sets the setting to disabled. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.StageMethodLogging.property.loggingLevel">loggingLevel</a></code> | <code>aws-cdk-lib.aws_apigateway.MethodLoggingLevel</code> | The logging level to use for the stage method logging. This applies to all resources and methods in all stages. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StageMethodLogging.property.disabled">disabled</a></code> | <code>boolean</code> | Sets the setting to disabled. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StageMethodLogging.property.loggingLevel">loggingLevel</a></code> | <code>aws-cdk-lib.aws_apigateway.MethodLoggingLevel</code> | The logging level to use for the stage method logging. This applies to all resources and methods in all stages. |
 
 ---
 
-##### `disabled`<sup>Optional</sup> <a name="disabled" id="@cdklabs/cdk-proserve-lib.aspects.StageMethodLogging.property.disabled"></a>
+##### `disabled`<sup>Optional</sup> <a name="disabled" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StageMethodLogging.property.disabled"></a>
 
 ```typescript
 public readonly disabled: boolean;
@@ -4893,7 +4893,7 @@ the specific setting.
 
 ---
 
-##### `loggingLevel`<sup>Optional</sup> <a name="loggingLevel" id="@cdklabs/cdk-proserve-lib.aspects.StageMethodLogging.property.loggingLevel"></a>
+##### `loggingLevel`<sup>Optional</sup> <a name="loggingLevel" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StageMethodLogging.property.loggingLevel"></a>
 
 ```typescript
 public readonly loggingLevel: MethodLoggingLevel;
@@ -4907,31 +4907,31 @@ Defaults to MethodLoggingLevel.ERROR if not specified.
 
 ---
 
-### StepFunctionsSettings <a name="StepFunctionsSettings" id="@cdklabs/cdk-proserve-lib.aspects.StepFunctionsSettings"></a>
+### StepFunctionsSettings <a name="StepFunctionsSettings" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StepFunctionsSettings"></a>
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.StepFunctionsSettings.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StepFunctionsSettings.Initializer"></a>
 
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const stepFunctionsSettings: aspects.StepFunctionsSettings = { ... }
+const stepFunctionsSettings: aspects.SecurityCompliance.StepFunctionsSettings = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.StepFunctionsSettings.property.tracing">tracing</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.DisableableSetting</code> | Enable or disable X-Ray tracing. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StepFunctionsSettings.property.tracing">tracing</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DisableableSetting</code> | Enable or disable X-Ray tracing. |
 
 ---
 
-##### `tracing`<sup>Optional</sup> <a name="tracing" id="@cdklabs/cdk-proserve-lib.aspects.StepFunctionsSettings.property.tracing"></a>
+##### `tracing`<sup>Optional</sup> <a name="tracing" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.StepFunctionsSettings.property.tracing"></a>
 
 ```typescript
 public readonly tracing: DisableableSetting;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.aspects.DisableableSetting
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.DisableableSetting
 
 Enable or disable X-Ray tracing.
 
@@ -4942,30 +4942,30 @@ Defaults to true if not disabled.
 
 ---
 
-### Suppressions <a name="Suppressions" id="@cdklabs/cdk-proserve-lib.aspects.Suppressions"></a>
+### Suppressions <a name="Suppressions" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions"></a>
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.Suppressions.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.Initializer"></a>
 
 ```typescript
 import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const suppressions: aspects.Suppressions = { ... }
+const suppressions: aspects.SecurityCompliance.Suppressions = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Suppressions.property.cdkGenerated">cdkGenerated</a></code> | <code>string</code> | Suppressions to add for CDK Nag on CDK generated resources. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Suppressions.property.iamCommonCdkGrants">iamCommonCdkGrants</a></code> | <code>string</code> | Suppressions to add for CDK Nag on CDK generated policies. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Suppressions.property.iamNoInlinePolicies">iamNoInlinePolicies</a></code> | <code>string</code> | Adds a stack suppression for `NIST.800.53.R5-IAMNoInlinePolicy`. CDK commonly uses inline policies when adding permissions. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Suppressions.property.lambdaNoDlq">lambdaNoDlq</a></code> | <code>string</code> | Adds a stack suppression for `NIST.800.53.R5-LambdaDLQ`. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Suppressions.property.lambdaNotInVpc">lambdaNotInVpc</a></code> | <code>string</code> | Adds a stack suppression for `NIST.800.53.R5-LambdaInsideVPC`. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.Suppressions.property.s3BucketReplication">s3BucketReplication</a></code> | <code>string</code> | Adds a stack suppression for `NIST.800.53.R5-S3BucketReplicationEnabled`. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.cdkGenerated">cdkGenerated</a></code> | <code>string</code> | Suppressions to add for CDK Nag on CDK generated resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.iamCommonCdkGrants">iamCommonCdkGrants</a></code> | <code>string</code> | Suppressions to add for CDK Nag on CDK generated policies. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.iamNoInlinePolicies">iamNoInlinePolicies</a></code> | <code>string</code> | Adds a stack suppression for `NIST.800.53.R5-IAMNoInlinePolicy`. CDK commonly uses inline policies when adding permissions. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.lambdaNoDlq">lambdaNoDlq</a></code> | <code>string</code> | Adds a stack suppression for `NIST.800.53.R5-LambdaDLQ`. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.lambdaNotInVpc">lambdaNotInVpc</a></code> | <code>string</code> | Adds a stack suppression for `NIST.800.53.R5-LambdaInsideVPC`. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.s3BucketReplication">s3BucketReplication</a></code> | <code>string</code> | Adds a stack suppression for `NIST.800.53.R5-S3BucketReplicationEnabled`. |
 
 ---
 
-##### `cdkGenerated`<sup>Optional</sup> <a name="cdkGenerated" id="@cdklabs/cdk-proserve-lib.aspects.Suppressions.property.cdkGenerated"></a>
+##### `cdkGenerated`<sup>Optional</sup> <a name="cdkGenerated" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.cdkGenerated"></a>
 
 ```typescript
 public readonly cdkGenerated: string;
@@ -4975,8 +4975,8 @@ public readonly cdkGenerated: string;
 
 Suppressions to add for CDK Nag on CDK generated resources.
 
-If set to
-true, this will suppress `AwsSolutions-IAM5` on the policies that are
+If enabled
+this will suppress `AwsSolutions-IAM5` on the policies that are
 created by CDK Generated Lambda functions, as well as other CDK generated
 resources such as Log Groups and Step Functions that support CDK
 generated custom resources. This only applies to resources that are
@@ -4988,7 +4988,7 @@ created by the underlying CDK.
 
 ---
 
-##### `iamCommonCdkGrants`<sup>Optional</sup> <a name="iamCommonCdkGrants" id="@cdklabs/cdk-proserve-lib.aspects.Suppressions.property.iamCommonCdkGrants"></a>
+##### `iamCommonCdkGrants`<sup>Optional</sup> <a name="iamCommonCdkGrants" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.iamCommonCdkGrants"></a>
 
 ```typescript
 public readonly iamCommonCdkGrants: string;
@@ -4998,13 +4998,13 @@ public readonly iamCommonCdkGrants: string;
 
 Suppressions to add for CDK Nag on CDK generated policies.
 
-If set to true,
+If enabled
 this will add a stack suppression for `AwsSolutions-IAM5` on the actions
 that CDK commonly generates when using `.grant(...)` methods.
 
 ---
 
-##### `iamNoInlinePolicies`<sup>Optional</sup> <a name="iamNoInlinePolicies" id="@cdklabs/cdk-proserve-lib.aspects.Suppressions.property.iamNoInlinePolicies"></a>
+##### `iamNoInlinePolicies`<sup>Optional</sup> <a name="iamNoInlinePolicies" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.iamNoInlinePolicies"></a>
 
 ```typescript
 public readonly iamNoInlinePolicies: string;
@@ -5016,7 +5016,7 @@ Adds a stack suppression for `NIST.800.53.R5-IAMNoInlinePolicy`. CDK commonly us
 
 ---
 
-##### `lambdaNoDlq`<sup>Optional</sup> <a name="lambdaNoDlq" id="@cdklabs/cdk-proserve-lib.aspects.Suppressions.property.lambdaNoDlq"></a>
+##### `lambdaNoDlq`<sup>Optional</sup> <a name="lambdaNoDlq" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.lambdaNoDlq"></a>
 
 ```typescript
 public readonly lambdaNoDlq: string;
@@ -5028,7 +5028,7 @@ Adds a stack suppression for `NIST.800.53.R5-LambdaDLQ`.
 
 ---
 
-##### `lambdaNotInVpc`<sup>Optional</sup> <a name="lambdaNotInVpc" id="@cdklabs/cdk-proserve-lib.aspects.Suppressions.property.lambdaNotInVpc"></a>
+##### `lambdaNotInVpc`<sup>Optional</sup> <a name="lambdaNotInVpc" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.lambdaNotInVpc"></a>
 
 ```typescript
 public readonly lambdaNotInVpc: string;
@@ -5040,7 +5040,7 @@ Adds a stack suppression for `NIST.800.53.R5-LambdaInsideVPC`.
 
 ---
 
-##### `s3BucketReplication`<sup>Optional</sup> <a name="s3BucketReplication" id="@cdklabs/cdk-proserve-lib.aspects.Suppressions.property.s3BucketReplication"></a>
+##### `s3BucketReplication`<sup>Optional</sup> <a name="s3BucketReplication" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.Suppressions.property.s3BucketReplication"></a>
 
 ```typescript
 public readonly s3BucketReplication: string;

@@ -4,12 +4,12 @@
 import { CfnResource } from 'aws-cdk-lib';
 import { CfnStateMachine } from 'aws-cdk-lib/aws-stepfunctions';
 import { IConstruct } from 'constructs';
-import { StepFunctionsSettings } from '../../types';
+import { SecurityCompliance } from '../..';
 import { BaseVisitor } from '../base';
 
 export class StepFunctionsVisitor extends BaseVisitor<
     CfnStateMachine,
-    StepFunctionsSettings
+    SecurityCompliance.StepFunctionsSettings
 > {
     public override canVisit(node: IConstruct): node is CfnStateMachine {
         return (

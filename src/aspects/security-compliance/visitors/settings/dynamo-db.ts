@@ -4,10 +4,13 @@
 import { CfnResource } from 'aws-cdk-lib';
 import { CfnTable } from 'aws-cdk-lib/aws-dynamodb';
 import { IConstruct } from 'constructs';
-import { DynamoDbSettings } from '../../types';
+import { SecurityCompliance } from '../..';
 import { BaseVisitor } from '../base';
 
-export class DynamoDbVisitor extends BaseVisitor<CfnTable, DynamoDbSettings> {
+export class DynamoDbVisitor extends BaseVisitor<
+    CfnTable,
+    SecurityCompliance.DynamoDbSettings
+> {
     public override canVisit(node: IConstruct): node is CfnTable {
         return (
             (node as CfnResource).cfnResourceType ===

@@ -4,10 +4,13 @@
 import { CfnResource, Stack } from 'aws-cdk-lib';
 import { CfnBucket, IBucket, Bucket } from 'aws-cdk-lib/aws-s3';
 import { IConstruct } from 'constructs';
-import { S3Settings } from '../../types';
+import { SecurityCompliance } from '../..';
 import { BaseVisitor } from '../base';
 
-export class S3Visitor extends BaseVisitor<CfnBucket, S3Settings> {
+export class S3Visitor extends BaseVisitor<
+    CfnBucket,
+    SecurityCompliance.S3Settings
+> {
     private readonly accessLogBucket = new Map<string, IBucket>();
 
     public override canVisit(node: IConstruct): node is CfnBucket {

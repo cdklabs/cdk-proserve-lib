@@ -3,11 +3,14 @@
 
 import { Stack } from 'aws-cdk-lib';
 import { IConstruct } from 'constructs';
-import { Suppressions } from '../../types';
+import { SecurityCompliance } from '../..';
 import { CdkNagMetadata, CdkNagSuppression } from '../../types/cdk-nag';
 import { BaseVisitor } from '../base';
 
-export class StackSuppressionsVisitor extends BaseVisitor<Stack, Suppressions> {
+export class StackSuppressionsVisitor extends BaseVisitor<
+    Stack,
+    SecurityCompliance.Suppressions
+> {
     public override canVisit(node: IConstruct): node is Stack {
         return Stack.isStack(node);
     }

@@ -6,13 +6,13 @@ import { CfnPolicy } from 'aws-cdk-lib/aws-iam';
 import { CfnLogGroup } from 'aws-cdk-lib/aws-logs';
 import { CfnStateMachine } from 'aws-cdk-lib/aws-stepfunctions';
 import { IConstruct } from 'constructs';
-import { Suppressions } from '../../types';
+import { SecurityCompliance } from '../..';
 import { CdkNagSuppressions } from '../../types/cdk-nag';
 import { BaseVisitor } from '../base';
 
 export class CdkGeneratedSuppressionsVisitor extends BaseVisitor<
     CfnResource,
-    Suppressions
+    SecurityCompliance.Suppressions
 > {
     public override canVisit(node: IConstruct): node is CfnResource {
         if (!(node instanceof CfnResource)) return false;
