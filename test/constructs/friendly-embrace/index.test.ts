@@ -3,6 +3,7 @@
 
 import { App, Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { NagSuppressions } from 'cdk-nag';
 import { beforeEach, it } from 'vitest';
@@ -131,6 +132,56 @@ describeCdkTest(FriendlyEmbrace, (id, getStack, getTemplate, getApp) => {
                     ]
                 }
             ]
+        });
+    });
+
+    it('allows the caller to reduce the read only permissions for operation', () => {
+        new FriendlyEmbrace(stack, id, {
+            manualReadPermissions: [
+                new PolicyStatement({
+                    actions: [
+                        'dynamodb:DescribeTable',
+                        'ec2:DescribeSecurityGroups',
+                        'ec2:DescribeLaunchTemplates',
+                        'ecs:DescribeServices',
+                        'elasticloadbalancing:DescribeLoadBalancers',
+                        'iam:GetRole',
+                        'logs:DescribeLogGroups',
+                        'sqs:getqueueattributes'
+                    ],
+                    effect: Effect.ALLOW,
+                    resources: ['*']
+                })
+            ]
+        });
+        template = getTemplate();
+
+        template.hasResourceProperties('AWS::IAM::Policy', {
+            PolicyDocument: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Action: [
+                            'cloudformation:DescribeStacks',
+                            'cloudformation:GetTemplate',
+                            'cloudformation:UpdateStack'
+                        ],
+                        Effect: 'Allow'
+                    }),
+                    Match.objectLike({
+                        Action: [
+                            'dynamodb:DescribeTable',
+                            'ec2:DescribeSecurityGroups',
+                            'ec2:DescribeLaunchTemplates',
+                            'ecs:DescribeServices',
+                            'elasticloadbalancing:DescribeLoadBalancers',
+                            'iam:GetRole',
+                            'logs:DescribeLogGroups',
+                            'sqs:getqueueattributes'
+                        ],
+                        Effect: 'Allow'
+                    })
+                ])
+            }
         });
     });
 

@@ -49,6 +49,16 @@ export interface FriendlyEmbraceProps {
      * Optional S3 Bucket configuration settings.
      */
     readonly bucketConfiguration?: BucketProps;
+
+    /**
+     * Manually provide specific read-only permissions for resources in your CloudFormation templates to support
+     * instead of using the AWS managed policy
+     * [ReadOnlyAccess](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/ReadOnlyAccess.html)
+     *
+     * This can be useful in environments where the caller wants to maintain tight control over the permissions granted
+     * to the custom resource worker.
+     */
+    readonly manualReadPermissions?: PolicyStatement[];
 }
 
 /**
@@ -160,10 +170,18 @@ export class FriendlyEmbrace extends Construct {
             })
         });
 
-        onEventHandler.function.role!.addManagedPolicy(
-            ManagedPolicy.fromAwsManagedPolicyName('ReadOnlyAccess')
-        );
         onEventHandler.function.addToRolePolicy(policy);
+
+        if (props?.manualReadPermissions) {
+            props.manualReadPermissions.forEach((statement) => {
+                onEventHandler.function.addToRolePolicy(statement);
+            });
+        } else {
+            onEventHandler.function.role!.addManagedPolicy(
+                ManagedPolicy.fromAwsManagedPolicyName('ReadOnlyAccess')
+            );
+        }
+
         cfnTemplateBucket.grantReadWrite(onEventHandler.function);
 
         return {
