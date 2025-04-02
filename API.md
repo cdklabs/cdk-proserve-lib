@@ -4185,6 +4185,63 @@ behave as expected or designed. You do so at your own risk.
 
 ---
 
+### SageMakerShutdownProps <a name="SageMakerShutdownProps" id="@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps"></a>
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+const sageMakerShutdownProps: aspects.SageMakerShutdownProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS Encryption Key to use for encrypting resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps.property.idleTimeoutMinutes">idleTimeoutMinutes</a></code> | <code>number</code> | Optional treshold of idle time before notebook instance shutdown. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional KMS Encryption Key to use for encrypting resources.
+
+---
+
+##### `idleTimeoutMinutes`<sup>Optional</sup> <a name="idleTimeoutMinutes" id="@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps.property.idleTimeoutMinutes"></a>
+
+```typescript
+public readonly idleTimeoutMinutes: number;
+```
+
+- *Type:* number
+- *Default:* = undefined
+
+Optional treshold of idle time before notebook instance shutdown.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
+
 ### SecretProps <a name="SecretProps" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps"></a>
 
 Properties for a server certificate element when it is stored in AWS Secrets Manager.
@@ -25155,6 +25212,55 @@ public readonly Z1D_XLARGE: string;
 z1d.xlarge vCPUs: 4 Memory: 32768 MiB.
 
 ---
+
+### SageMakerAutomatedShutdown <a name="SageMakerAutomatedShutdown" id="@cdklabs/cdk-proserve-lib.aspects.SageMakerAutomatedShutdown"></a>
+
+- *Implements:* aws-cdk-lib.IAspect
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.SageMakerAutomatedShutdown.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+new aspects.SageMakerAutomatedShutdown(props?: SageMakerShutdownProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SageMakerAutomatedShutdown.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps</code> | *No description.* |
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.SageMakerAutomatedShutdown.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SageMakerAutomatedShutdown.visit">visit</a></code> | All aspects can visit an IConstruct. |
+
+---
+
+##### `visit` <a name="visit" id="@cdklabs/cdk-proserve-lib.aspects.SageMakerAutomatedShutdown.visit"></a>
+
+```typescript
+public visit(node: IConstruct): void
+```
+
+All aspects can visit an IConstruct.
+
+###### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.aspects.SageMakerAutomatedShutdown.visit.parameter.node"></a>
+
+- *Type:* constructs.IConstruct
+
+---
+
+
+
 
 ### SageMakerNotebookInstanceType <a name="SageMakerNotebookInstanceType" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType"></a>
 
