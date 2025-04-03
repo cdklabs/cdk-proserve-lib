@@ -4,8 +4,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { Readable } from 'node:stream';
-import { PassThrough } from 'stream';
+import { PassThrough, Readable } from 'node:stream';
 import { GetObjectCommand, HeadObjectCommand, S3 } from '@aws-sdk/client-s3';
 import { sdkStreamMixin } from '@aws-sdk/util-stream';
 import { mockClient } from 'aws-sdk-client-mock';

@@ -25,7 +25,7 @@ export interface HttpClientOptions {
     defaultHeaders?: Record<string, string>;
 }
 
-export interface HttpClientResponse<T = any> {
+export interface HttpClientResponse<T> {
     data: T;
     statusCode?: number;
     headers: Record<string, string | string[] | undefined>;

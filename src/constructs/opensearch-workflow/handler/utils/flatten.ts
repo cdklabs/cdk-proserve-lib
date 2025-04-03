@@ -4,6 +4,12 @@
 import { IResponseData } from '../types/resource-response';
 import { WorkflowStatusResponse } from '../types/workflow-response';
 
+/**
+ * Flattens a workflow status response object into a simpler key-value structure
+ *
+ * @param response - The workflow status response object to flatten
+ * @returns A flattened object containing workflow_id and resource identifiers mapped to their step IDs
+ */
 export function flattenResponse(
     response: WorkflowStatusResponse
 ): IResponseData {

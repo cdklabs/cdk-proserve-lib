@@ -1,8 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import * as http from 'http';
-import * as https from 'https';
+import * as http from 'node:http';
+import * as https from 'node:https';
 import { Sha256 } from '@aws-crypto/sha256-js';
 import { STS } from '@aws-sdk/client-sts';
 import { defaultProvider } from '@aws-sdk/credential-provider-node';

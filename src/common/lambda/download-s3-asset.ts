@@ -3,10 +3,16 @@
 
 import { createWriteStream } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { basename, join } from 'node:path';
 import { Readable } from 'node:stream';
 import { S3 } from '@aws-sdk/client-s3';
 
+/**
+ * Downloads an S3 object to a local file.
+ *
+ * @param s3ObjectUri - The S3 URI of the object to download
+ * @returns The path to the downloaded file and the ETag of the object
+ */
 export async function downloadS3Asset(
     s3ObjectUri: string
 ): Promise<{ filePath: string; etag: string }> {
@@ -14,7 +20,7 @@ export async function downloadS3Asset(
     const targetParts = s3ObjectUri.replace('s3://', '').split('/');
     const bucket = targetParts[0];
     const key = targetParts.slice(1).join('/');
-    const fileName = targetParts.slice(-1).pop() ?? 'fileAsset';
+    const fileName = basename(key) ?? 'fileAsset';
 
     // Get object metadata
     const metadata = await s3Client.headObject({

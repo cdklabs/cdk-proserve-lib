@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { readFileSync } from 'fs';
+import { readFileSync } from 'node:fs';
 import {
     CdkCustomResourceEvent,
     CdkCustomResourceResponse,
@@ -28,7 +28,10 @@ import {
  *
  * Creates an OpenSearch Workflow and provisions it immediately.
  *
- * @param event Input metadata for the custom resource
+ * @param client AwsHttpClient for making requests to OpenSearch
+ * @param template The workflow template
+ * @param provisionVariables Variables to be substituted into the template
+ *
  * @returns Metadata about the outcome or an error message
  */
 async function onCreate(
@@ -59,9 +62,10 @@ async function onCreate(
  * Deprovisions an existing workflow, updates it with the new template,
  * and then provisions it again.
  *
- * @param event Input metadata for the custom resource
- * @param client AxiosInstance for making requests to OpenSearch
- * @param template The new workflow template
+ * @param client AwsHttpClient for making requests to OpenSearch
+ * @param workflowId The ID of the workflow to update
+ * @param template The workflow template
+ * @param provisionVariables Variables to be substituted into the template
  * @returns Metadata about the outcome or an error message
  */
 async function onUpdate(
@@ -107,7 +111,9 @@ async function onUpdate(
  * Attempts to deprovision and delete the workflow. The custom resource will
  * perform a deprovision and delete, but will move on if any error occurs.
  *
- * @param event Input metadata for the custom resource
+ * @param client AwsHttpClient for making requests to OpenSearch
+ * @param workflowId The ID of the workflow to delete
+ *
  * @returns Metadata about the outcome or an error message
  */
 async function onDelete(
@@ -125,6 +131,15 @@ async function onDelete(
     };
 }
 
+/**
+ * Waits for a workflow to reach a specific target status
+ *
+ * @param client AwsHttpClient for making requests to OpenSearch
+ * @param workflowId The ID of the workflow to wait for
+ * @param targetStatus The target status to wait for
+ * @param maxAttempts The maximum number of attempts to wait for the target status
+ * @param interval The interval (in milliseconds) between attempts
+ */
 async function waitForWorkflowStatus(
     client: AwsHttpClient,
     workflowId: string,
@@ -153,6 +168,17 @@ async function waitForWorkflowStatus(
     );
 }
 
+/**
+ * Retrieves the template from S3 and substitutes in variables and creates
+ * pre-signed URLs if the workflow needs to download a file from a public URL.
+ * For example, if you are provisioning the workflow in VPC and need to download
+ * a model or reference file from a URL in your template.
+ *
+ * @param s3ObjectUrl The URL of the template in S3
+ * @param templateCreationVariables Variables to be substituted into the template
+ * @param templateS3ObjectVariables Objects to generate Presigned URLs for and substite into the template
+ * @returns
+ */
 async function getAndParseTemplateFromS3(
     s3ObjectUrl: string,
     templateCreationVariables?: Record<string, string>,

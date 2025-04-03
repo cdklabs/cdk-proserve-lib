@@ -15,7 +15,17 @@ import {
 } from '../http-client/types';
 
 export class AwsHttpClient extends HttpClient {
+    /**
+     * Cached credentials used to sign requests. This class will store
+     * credentials while they are active and refresh the cache if needed
+     * based on the `credentialsExpiration` class property.
+     */
     private cachedCredentials?: AwsCredentialIdentity;
+
+    /**
+     * Expiration date of the cached credentials. This class will refresh
+     * the cache if the credentials expire within 5 minutes.
+     */
     private credentialsExpiration?: Date;
 
     /**
@@ -109,7 +119,7 @@ export class AwsHttpClient extends HttpClient {
         const signer = new SignatureV4({
             credentials: credentials,
             region: region,
-            service: (this.options as AwsHttpClientOptions).service!,
+            service: (this.options as AwsHttpClientOptions).service,
             sha256: Sha256
         });
 

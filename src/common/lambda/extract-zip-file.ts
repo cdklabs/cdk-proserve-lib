@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { basename, join } from 'node:path';
 import * as AdmZip from 'adm-zip';
 
 /**
@@ -18,7 +18,7 @@ export function extractZipFile(
     extractPath?: string
 ): string {
     // Determine extraction path - use provided path or create one in temp directory
-    const fileName = zipFilePath.split('/').pop() ?? 'archive';
+    const fileName = basename(zipFilePath) ?? 'archive';
     const targetPath = extractPath || join(tmpdir(), `${fileName}-extracted`);
 
     // Extract ZIP contents

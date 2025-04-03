@@ -1,8 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import * as http from 'http';
-import * as https from 'https';
+import * as http from 'node:http';
+import * as https from 'node:https';
 import { vi, describe, beforeEach, expect, it, afterEach, Mock } from 'vitest';
 import { HttpClient } from '../../../../src/common/lambda/http-client';
 import { HttpClientResponseError } from '../../../../src/common/lambda/http-client/types/exception';

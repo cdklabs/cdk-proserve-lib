@@ -16,7 +16,7 @@ import { flattenResponse } from '../utils/flatten';
 /**
  * Checks OpenSearch to determine if the workflow has been completed or not.
  *
- * @param client OpenSearch Axios Client
+ * @param client OpenSearch Aws Http Client
  * @param workflowId Workflow Id for the workflow in OpenSearch
  * @returns CloudFormation response if the workflow has completed or not
  */
@@ -58,6 +58,9 @@ async function isProvisioned(
  * Returns a CloudFormation success response. The deletion happens in the
  * background, and we do not want to risk CloudFormation errors from deletion
  * failures. Messages are logged to CloudWatch for investigation.
+ *
+ * @param client OpenSearch Aws Http Client
+ * @param workflowId Workflow Id for the workflow in OpenSearch
  *
  * @returns Successful completion status
  */

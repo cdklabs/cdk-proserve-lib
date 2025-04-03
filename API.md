@@ -30845,27 +30845,38 @@ Tests whether yum repository works successfully.
 
 ### DestructiveOperation <a name="DestructiveOperation" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation"></a>
 
+Represents types of destructive operations that can be performed on resources.
+
+Destructive operations are actions that modify or remove existing resources,
+potentially resulting in data loss if not handled properly.
+
 #### Members <a name="Members" id="Members"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.DestructiveOperation.UPDATE">UPDATE</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.DestructiveOperation.DELETE">DELETE</a></code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.DestructiveOperation.ALL">ALL</a></code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.DestructiveOperation.UPDATE">UPDATE</a></code> | Indicates an operation that modifies existing resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.DestructiveOperation.DELETE">DELETE</a></code> | Indicates an operation that removes resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.DestructiveOperation.ALL">ALL</a></code> | Represents all types of destructive operations. |
 
 ---
 
 ##### `UPDATE` <a name="UPDATE" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation.UPDATE"></a>
+
+Indicates an operation that modifies existing resources.
 
 ---
 
 
 ##### `DELETE` <a name="DELETE" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation.DELETE"></a>
 
+Indicates an operation that removes resources.
+
 ---
 
 
 ##### `ALL` <a name="ALL" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation.ALL"></a>
+
+Represents all types of destructive operations.
 
 ---
 

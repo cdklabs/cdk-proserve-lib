@@ -1,9 +1,9 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { request as httpRequest } from 'http';
-import { request as httpsRequest } from 'https';
-import { parse } from 'url';
+import { request as httpRequest } from 'node:http';
+import { request as httpsRequest } from 'node:https';
+import { parse } from 'node:url';
 import {
     HttpClientOptions,
     HttpClientResponse,
@@ -36,7 +36,7 @@ export class HttpClient {
      * @param headers - Optional additional headers
      * @returns Promise resolving to the typed response
      */
-    async get<T = any>(
+    async get<T>(
         url: string,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
@@ -51,7 +51,7 @@ export class HttpClient {
      * @param headers - Optional additional headers
      * @returns Promise resolving to the typed response
      */
-    async post<T = any>(
+    async post<T>(
         url: string,
         data?: unknown,
         headers?: Record<string, string>
@@ -67,7 +67,7 @@ export class HttpClient {
      * @param headers - Optional additional headers
      * @returns Promise resolving to the typed response
      */
-    async put<T = any>(
+    async put<T>(
         url: string,
         data?: unknown,
         headers?: Record<string, string>
@@ -82,7 +82,7 @@ export class HttpClient {
      * @param headers - Optional additional headers
      * @returns Promise resolving to the typed response
      */
-    async delete<T = any>(
+    async delete<T>(
         url: string,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
@@ -97,7 +97,7 @@ export class HttpClient {
      * @param headers - Optional additional headers
      * @returns Promise resolving to the typed response
      */
-    async patch<T = any>(
+    async patch<T>(
         url: string,
         data?: unknown,
         headers?: Record<string, string>
@@ -112,7 +112,7 @@ export class HttpClient {
      * @param headers - Optional additional headers
      * @returns Promise resolving to the typed response
      */
-    async head<T = any>(
+    async head<T>(
         url: string,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
@@ -128,7 +128,7 @@ export class HttpClient {
      * @param headers - Optional additional headers
      * @returns Promise resolving to the typed response
      */
-    async request<T = any>(
+    async request<T>(
         method: HttpMethod,
         url: string,
         data?: unknown,
