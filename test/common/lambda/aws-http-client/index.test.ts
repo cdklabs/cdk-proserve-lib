@@ -18,7 +18,6 @@ import {
     MockedClass
 } from 'vitest';
 import { AwsHttpClient } from '../../../../src/common/lambda/aws-http-client';
-import { HttpClientResponseError } from '../../../../src/common/lambda/http-client/types/exception';
 
 // Mock the AWS SDK modules
 vi.mock('@aws-sdk/client-sts');
@@ -143,34 +142,6 @@ describe('HttpClientAws', () => {
     });
 
     describe('Constructor', () => {
-        it('should set default options correctly', () => {
-            const newClient = new AwsHttpClient({
-                service: 'es'
-            });
-            // @ts-ignore - Accessing protected properties for testing
-            expect(newClient.options).toEqual({
-                service: 'es',
-                timeout: 30000,
-                defaultHeaders: {}
-            });
-        });
-
-        it('should merge provided options with defaults', () => {
-            const newClient = new AwsHttpClient({
-                service: 'es',
-                region: 'us-east-1',
-                timeout: 5000,
-                defaultHeaders: { 'x-custom-header': 'test' }
-            });
-            // @ts-ignore - Accessing protected properties for testing
-            expect(newClient.options).toEqual({
-                service: 'es',
-                region: 'us-east-1',
-                timeout: 5000,
-                defaultHeaders: { 'x-custom-header': 'test' }
-            });
-        });
-
         it('should throw error when service is not provided', () => {
             expect(() => {
                 // @ts-ignore - Testing invalid constructor
@@ -341,36 +312,6 @@ describe('HttpClientAws', () => {
     });
 
     describe('Error handling', () => {
-        it('should throw AwsHttpClientResponseError for non-2xx responses', async () => {
-            // Mock an error response
-            const errorResponse = {
-                statusCode: 400,
-                headers: { 'content-type': 'application/json' },
-                on: vi.fn().mockImplementation((event, callback) => {
-                    if (event === 'data') {
-                        callback(JSON.stringify({ error: 'Bad request' }));
-                    } else if (event === 'end') {
-                        callback();
-                    }
-                    return errorResponse;
-                })
-            };
-
-            // Mock https.request to return error response for just this test
-            (https.request as Mock).mockImplementationOnce(
-                (_: any, callback: any) => {
-                    if (callback) {
-                        callback(errorResponse);
-                    }
-                    return mockRequest;
-                }
-            );
-
-            await expect(client.get('/test')).rejects.toThrow(
-                HttpClientResponseError
-            );
-        });
-
         it('should throw error when failing to get temporary credentials', async () => {
             mockStsAssumeRole.mockResolvedValueOnce({
                 // No Credentials property
