@@ -19,7 +19,6 @@ import {
     createMockResponse,
     mockContext,
     mockCreateCompleteEvent,
-    mockCreateProvisioningEvent,
     mockDeleteEvent,
     mockDeleteNoDestructiveEvent,
     mockUpdateEvent,
@@ -75,10 +74,7 @@ describe('OpenSearch Workflow IsComplete Handler', () => {
         );
 
         // Act
-        const response = await handler(
-            mockCreateProvisioningEvent,
-            mockContext
-        );
+        const response = await handler(mockCreateCompleteEvent, mockContext);
 
         // Assert
         expect(mockHttpClient.get).toHaveBeenCalledWith(
@@ -96,10 +92,7 @@ describe('OpenSearch Workflow IsComplete Handler', () => {
         );
 
         // Act
-        const response = await handler(
-            mockCreateProvisioningEvent,
-            mockContext
-        );
+        const response = await handler(mockCreateCompleteEvent, mockContext);
 
         // Assert
         expect(response).toEqual({

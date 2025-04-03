@@ -9,96 +9,68 @@ import {
 import { HttpClientResponse } from '../../../../src/common/lambda/http-client/types';
 import { IResourceProperties } from '../../../../src/constructs/opensearch-workflow/handler/types/resource-properties';
 import { DestructiveOperation } from '../../../../src/types/destructive-operation';
+import {
+    buildMockCreateEvent,
+    buildMockUpdateEvent,
+    buildMockDeleteEvent
+} from '../../../fixtures/custom-resource';
 
 export const mockWorkflowId = 'test-workflow-id';
 export const mockTemplateCreationVariables = { var1: 'value1' };
 export const mockTemplateProvisionVariables = { var2: 'value2' };
+export const resourceType = 'Custom::OpenSearchWorkflow';
 
-const mockBaseEvent: CdkCustomResourceEvent<IResourceProperties> = {
-    RequestType: 'Create',
-    ServiceToken: 'token',
-    ResponseURL: 'https://response-url.example.com',
-    StackId: 'stack-id',
-    RequestId: 'request-id',
-    LogicalResourceId: 'logical-id',
-    ResourceType: 'Custom::OpenSearchWorkflow',
-    ResourceProperties: {
-        ServiceToken: 'token',
-        RoleArn: 'arn:aws:iam::123456789012:role/TestRole',
-        DomainEndpoint: 'test-domain.us-west-2.es.amazonaws.com',
-        AssetS3ObjectUrl: 's3://my-bucket/template.json',
-        TemplateCreationVariables: mockTemplateCreationVariables,
-        TemplateProvisionVariables: mockTemplateProvisionVariables,
-        TemplateS3ObjectUrlVariables: {
-            bucketUrl: 's3://asset-bucket/file.txt'
+const resourceProps: IResourceProperties = {
+    RoleArn: 'arn:aws:iam::123456789012:role/TestRole',
+    DomainEndpoint: 'test-domain.us-west-2.es.amazonaws.com',
+    AssetS3ObjectUrl: 's3://my-bucket/template.json',
+    TemplateCreationVariables: mockTemplateCreationVariables,
+    TemplateProvisionVariables: mockTemplateProvisionVariables,
+    TemplateS3ObjectUrlVariables: {
+        bucketUrl: 's3://asset-bucket/file.txt'
+    }
+};
+
+export const mockCreateEvent: CdkCustomResourceEvent<IResourceProperties> =
+    buildMockCreateEvent(resourceType, {
+        ...resourceProps,
+        AllowDestructiveOperations: DestructiveOperation.ALL
+    });
+
+export const mockUpdateEvent: CdkCustomResourceEvent<IResourceProperties> =
+    buildMockUpdateEvent(
+        mockWorkflowId,
+        resourceType,
+        {
+            ...resourceProps,
+            AllowDestructiveOperations: DestructiveOperation.ALL
+        },
+        {
+            ...resourceProps,
+            AllowDestructiveOperations: DestructiveOperation.ALL
         }
-    }
-};
+    );
 
-export const mockCreateEvent: CdkCustomResourceEvent<IResourceProperties> = {
-    ...mockBaseEvent,
-    RequestType: 'Create',
-    ResourceProperties: {
-        ...mockBaseEvent.ResourceProperties,
+export const mockDeleteEvent: CdkCustomResourceEvent<IResourceProperties> =
+    buildMockDeleteEvent(mockWorkflowId, resourceType, {
+        ...resourceProps,
         AllowDestructiveOperations: DestructiveOperation.ALL
-    }
-};
-
-export const mockUpdateEvent: CdkCustomResourceEvent<IResourceProperties> = {
-    ...mockBaseEvent,
-    RequestType: 'Update',
-    PhysicalResourceId: mockWorkflowId,
-    OldResourceProperties: mockCreateEvent.ResourceProperties,
-    ResourceProperties: {
-        ...mockCreateEvent.ResourceProperties,
-        AllowDestructiveOperations: DestructiveOperation.ALL
-    }
-};
-
-export const mockDeleteEvent: CdkCustomResourceEvent<IResourceProperties> = {
-    ...mockBaseEvent,
-    RequestType: 'Delete',
-    PhysicalResourceId: mockWorkflowId,
-    ResourceProperties: {
-        ...mockCreateEvent.ResourceProperties,
-        AllowDestructiveOperations: DestructiveOperation.ALL
-    }
-};
+    });
 
 export const mockUpdateNoDestructiveEvent: CdkCustomResourceEvent<IResourceProperties> =
-    {
-        ...mockBaseEvent,
-        RequestType: 'Update',
-        PhysicalResourceId: mockWorkflowId,
-        OldResourceProperties: mockCreateEvent.ResourceProperties
-    };
+    buildMockUpdateEvent(
+        mockWorkflowId,
+        resourceType,
+        resourceProps,
+        resourceProps
+    );
 
 export const mockDeleteNoDestructiveEvent: CdkCustomResourceEvent<IResourceProperties> =
-    {
-        ...mockBaseEvent,
-        RequestType: 'Delete',
-        PhysicalResourceId: mockWorkflowId
-    };
+    buildMockDeleteEvent(mockWorkflowId, resourceType, resourceProps);
 
 export const mockCreateCompleteEvent: CdkCustomResourceIsCompleteEvent<IResourceProperties> =
     {
-        RequestType: 'Create',
-        ServiceToken: 'token',
-        ResponseURL: 'https://response-url.example.com',
-        StackId: 'stack-id',
-        RequestId: 'request-id',
-        LogicalResourceId: 'logical-id',
-        ResourceType: 'Custom::OpenSearchWorkflow',
-        PhysicalResourceId: mockWorkflowId,
-        ResourceProperties: {
-            ...mockBaseEvent.ResourceProperties,
-            AllowDestructiveOperations: DestructiveOperation.ALL
-        }
-    };
-
-export const mockCreateProvisioningEvent: CdkCustomResourceIsCompleteEvent<IResourceProperties> =
-    {
-        ...mockCreateCompleteEvent,
+        ...mockCreateEvent,
         PhysicalResourceId: mockWorkflowId
     };
 
