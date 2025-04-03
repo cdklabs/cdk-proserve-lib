@@ -1753,37 +1753,63 @@ The tree node.
 ---
 
 
-### OpensearchWorkflow <a name="OpensearchWorkflow" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow"></a>
+### OpenSearchWorkflow <a name="OpenSearchWorkflow" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow"></a>
 
-A CDK construct that creates and manages an OpenSearch workflow.
+Create OpenSearch Workflows using the flow framework to automate the provisioning of complex tasks using JSON or YAML.
 
-This construct creates a custom resource that deploys a Flow Framework template to an OpenSearch domain.
-It handles the deployment and lifecycle management of the workflow through Lambda-backed custom resources.
+This construct creates a custom resource that deploys a Flow Framework
+template to an OpenSearch domain. It handles the deployment and lifecycle
+management of the workflow through a Lambda-backed custom resources. You can
+read more about the flow framework on AWS at the reference link below.
 
-The construct:
-- Creates a provider with onEvent and isComplete Lambda functions
-- Uploads the workflow template to S3 as an asset
-- Sets up necessary IAM permissions and networking configuration
-- Manages workflow deployment state through a custom resource
-- Exposes the deployed workflow ID
+*Example*
 
-#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.Initializer"></a>
+```typescript
+import { OpenSearchWorkflow } from '@cdklabs/cdk-proserve-lib/constructs';
+import { Domain } from 'aws-cdk-lib/aws-opensearchservice';
+import { Role } from 'aws-cdk-lib/aws-iam';
+
+const aosDomain = Domain.fromDomainEndpoint(this, 'Domain', 'aos-endpoint');
+const aosRole = Role.fromRoleName(this, 'Role', 'AosRole');
+
+// Create OpenSearch Workflow using a YAML workflow template
+const nlpIngestPipeline = new OpenSearchWorkflow(
+    this,
+    'NlpIngestPipeline',
+    {
+        domain: aosDomain,
+        domainAuthentication: aosRole,
+        flowFrameworkTemplatePath: join(
+            __dirname,
+            'nlp-ingest-pipeline.yaml'
+        )
+    }
+);
+
+// Retrieve the deployed model from the OpenSearch Workflow
+this.embeddingModelId = nlpIngestPipeline.getResourceId(
+    'deploy_sentence_model'
+);
+```
+
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer"></a>
 
 ```typescript
 import { constructs } from '@cdklabs/cdk-proserve-lib'
 
-new constructs.OpensearchWorkflow(scope: Construct, id: string, props: OpensearchWorkflowProps)
+new constructs.OpenSearchWorkflow(scope: Construct, id: string, props: OpensearchWorkflowProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the custom resource belongs. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the custom resource. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps</code> | Metadata for configuring the custom resource. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the custom resource belongs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the custom resource. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps</code> | Metadata for configuring the custom resource. |
 
 ---
 
-##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.Initializer.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.scope"></a>
 
 - *Type:* constructs.Construct
 
@@ -1791,7 +1817,7 @@ Parent to which the custom resource belongs.
 
 ---
 
-##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.Initializer.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.id"></a>
 
 - *Type:* string
 
@@ -1799,7 +1825,7 @@ Unique identifier for the custom resource.
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.Initializer.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.props"></a>
 
 - *Type:* @cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps
 
@@ -1811,12 +1837,12 @@ Metadata for configuring the custom resource.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.getResourceId">getResourceId</a></code> | Retrieves a created Resource ID from the Workflow by the provided workflowStepId. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.getResourceId">getResourceId</a></code> | Retrieves a created Resource ID from the Workflow by the provided workflowStepId. |
 
 ---
 
-##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.toString"></a>
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.toString"></a>
 
 ```typescript
 public toString(): string
@@ -1824,7 +1850,7 @@ public toString(): string
 
 Returns a string representation of this construct.
 
-##### `getResourceId` <a name="getResourceId" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.getResourceId"></a>
+##### `getResourceId` <a name="getResourceId" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.getResourceId"></a>
 
 ```typescript
 public getResourceId(workflowStepId: string): string
@@ -1835,7 +1861,7 @@ Retrieves a created Resource ID from the Workflow by the provided workflowStepId
 The workflowStepId is the `id` value of the node in your
 list of workflow nodes from your workflow template
 
-###### `workflowStepId`<sup>Required</sup> <a name="workflowStepId" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.getResourceId.parameter.workflowStepId"></a>
+###### `workflowStepId`<sup>Required</sup> <a name="workflowStepId" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.getResourceId.parameter.workflowStepId"></a>
 
 - *Type:* string
 
@@ -1847,21 +1873,21 @@ the workflow step id from the workflow template.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.isConstruct"></a>
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.isConstruct"></a>
 
 ```typescript
 import { constructs } from '@cdklabs/cdk-proserve-lib'
 
-constructs.OpensearchWorkflow.isConstruct(x: any)
+constructs.OpenSearchWorkflow.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
 
-###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.isConstruct.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
@@ -1873,14 +1899,14 @@ Any object.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.property.isCompleteHandler">isCompleteHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.property.onEventHandler">onEventHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.property.workflowId">workflowId</a></code> | <code>string</code> | The unique identifier of the deployed OpenSearch workflow. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.isCompleteHandler">isCompleteHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.onEventHandler">onEventHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.workflowId">workflowId</a></code> | <code>string</code> | The unique identifier of the deployed OpenSearch workflow. |
 
 ---
 
-##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.property.node"></a>
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.node"></a>
 
 ```typescript
 public readonly node: Node;
@@ -1892,7 +1918,7 @@ The tree node.
 
 ---
 
-##### `isCompleteHandler`<sup>Required</sup> <a name="isCompleteHandler" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.property.isCompleteHandler"></a>
+##### `isCompleteHandler`<sup>Required</sup> <a name="isCompleteHandler" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.isCompleteHandler"></a>
 
 ```typescript
 public readonly isCompleteHandler: IFunction;
@@ -1902,7 +1928,7 @@ public readonly isCompleteHandler: IFunction;
 
 ---
 
-##### `onEventHandler`<sup>Required</sup> <a name="onEventHandler" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.property.onEventHandler"></a>
+##### `onEventHandler`<sup>Required</sup> <a name="onEventHandler" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.onEventHandler"></a>
 
 ```typescript
 public readonly onEventHandler: IFunction;
@@ -1912,7 +1938,7 @@ public readonly onEventHandler: IFunction;
 
 ---
 
-##### `workflowId`<sup>Required</sup> <a name="workflowId" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflow.property.workflowId"></a>
+##### `workflowId`<sup>Required</sup> <a name="workflowId" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.workflowId"></a>
 
 ```typescript
 public readonly workflowId: string;

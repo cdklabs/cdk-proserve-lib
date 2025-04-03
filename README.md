@@ -94,7 +94,7 @@ Count: 11
 - [**NetworkFirewall**](API.md#networkfirewall-): Creates an AWS Network Firewall using a user-supplied Suricata rules file in a VPC.
 - [**NetworkFirewallEndpoints**](API.md#networkfirewallendpoints-): Retrieves Network Firewall endpoints so that you can reference them in your other resources.
 - [**OpenSearchAdminUser**](API.md#opensearchadminuser-): Manages an admin user for an Amazon OpenSearch domain.
-- [**OpensearchWorkflow**](API.md#opensearchworkflow-): A CDK construct that creates and manages an OpenSearch workflow.
+- [**OpenSearchWorkflow**](API.md#opensearchworkflow-): Create OpenSearch Workflows using the flow framework to automate the provisioning of complex tasks using JSON or YAML.
 - [**WebApplicationFirewall**](API.md#webapplicationfirewall-): Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
 
 ### 🎭 Aspects

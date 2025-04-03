@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { join } from 'path';
+import { join } from 'node:path';
 import { CustomResource, Duration } from 'aws-cdk-lib';
 import { IRole } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
@@ -81,18 +81,44 @@ export interface OpensearchWorkflowProps {
 }
 
 /**
- * A CDK construct that creates and manages an OpenSearch workflow.
- * This construct creates a custom resource that deploys a Flow Framework template to an OpenSearch domain.
- * It handles the deployment and lifecycle management of the workflow through Lambda-backed custom resources.
+ * Create OpenSearch Workflows using the flow framework to automate the
+ * provisioning of complex tasks using JSON or YAML.
  *
- * The construct:
- * - Creates a provider with onEvent and isComplete Lambda functions
- * - Uploads the workflow template to S3 as an asset
- * - Sets up necessary IAM permissions and networking configuration
- * - Manages workflow deployment state through a custom resource
- * - Exposes the deployed workflow ID
+ * This construct creates a custom resource that deploys a Flow Framework
+ * template to an OpenSearch domain. It handles the deployment and lifecycle
+ * management of the workflow through a Lambda-backed custom resources. You can
+ * read more about the flow framework on AWS at the reference link below.
+ *
+ * @ref https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ml-workflow-framework.html
+ *
+ * @example
+ * import { OpenSearchWorkflow } from '@cdklabs/cdk-proserve-lib/constructs';
+ * import { Domain } from 'aws-cdk-lib/aws-opensearchservice';
+ * import { Role } from 'aws-cdk-lib/aws-iam';
+ *
+ * const aosDomain = Domain.fromDomainEndpoint(this, 'Domain', 'aos-endpoint');
+ * const aosRole = Role.fromRoleName(this, 'Role', 'AosRole');
+ *
+ * // Create OpenSearch Workflow using a YAML workflow template
+ * const nlpIngestPipeline = new OpenSearchWorkflow(
+ *     this,
+ *     'NlpIngestPipeline',
+ *     {
+ *         domain: aosDomain,
+ *         domainAuthentication: aosRole,
+ *         flowFrameworkTemplatePath: join(
+ *             __dirname,
+ *             'nlp-ingest-pipeline.yaml'
+ *         )
+ *     }
+ * );
+ *
+ * // Retrieve the deployed model from the OpenSearch Workflow
+ * this.embeddingModelId = nlpIngestPipeline.getResourceId(
+ *     'deploy_sentence_model'
+ * );
  */
-export class OpensearchWorkflow extends Construct {
+export class OpenSearchWorkflow extends Construct {
     private static serviceTokens = new Map<string, Provider>();
 
     /**
@@ -109,10 +135,10 @@ export class OpensearchWorkflow extends Construct {
     ): Provider {
         const stackId = scope.node.id;
 
-        if (!OpensearchWorkflow.serviceTokens.has(stackId)) {
+        if (!OpenSearchWorkflow.serviceTokens.has(stackId)) {
             const provider = new Construct(
                 scope,
-                `Cr${OpensearchWorkflow.name}`
+                `Cr${OpenSearchWorkflow.name}`
             );
 
             const onEventHandler = new SecureFunction(provider, 'OnEvent', {
@@ -145,7 +171,7 @@ export class OpensearchWorkflow extends Construct {
                 props.domainAuthentication.grantAssumeRole(handler.role!);
             });
 
-            OpensearchWorkflow.serviceTokens.set(
+            OpenSearchWorkflow.serviceTokens.set(
                 stackId,
                 new Provider(provider, 'Provider', {
                     onEventHandler: onEventHandler.function,
@@ -155,7 +181,7 @@ export class OpensearchWorkflow extends Construct {
                 })
             );
         }
-        return OpensearchWorkflow.serviceTokens.get(stackId)!;
+        return OpenSearchWorkflow.serviceTokens.get(stackId)!;
     }
 
     /**
@@ -210,7 +236,7 @@ export class OpensearchWorkflow extends Construct {
             throw new Error('Template must be a YAML or JSON file.');
         }
 
-        const provider = OpensearchWorkflow.getOrBuildProvider(scope, props);
+        const provider = OpenSearchWorkflow.getOrBuildProvider(scope, props);
 
         [provider.onEventHandler, provider.isCompleteHandler].forEach(
             (handler) => {
@@ -236,12 +262,12 @@ export class OpensearchWorkflow extends Construct {
 
         this.cr = new CustomResource(this, 'OpensearchWorkflow', {
             serviceToken: provider.serviceToken,
-            properties: OpensearchWorkflow.createCustomResourceProperties(
+            properties: OpenSearchWorkflow.createCustomResourceProperties(
                 props,
                 asset,
                 s3ObjectUrlVariables
             ),
-            resourceType: 'Custom::OpensearchWorkflow'
+            resourceType: 'Custom::OpenSearchWorkflow'
         });
 
         const attribute: keyof IResponseData = 'workflow_id';

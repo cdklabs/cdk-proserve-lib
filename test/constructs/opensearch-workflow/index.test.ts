@@ -10,10 +10,10 @@ import { Asset } from 'aws-cdk-lib/aws-s3-assets';
 import { NagSuppressions } from 'cdk-nag';
 import { FunctionProperties } from 'cloudform-types/types/lambda/function';
 import { beforeEach, it, expect } from 'vitest';
-import { OpensearchWorkflow } from '../../../src/constructs/opensearch-workflow/index';
+import { OpenSearchWorkflow } from '../../../src/constructs/opensearch-workflow/index';
 import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
-describeCdkTest(OpensearchWorkflow, (id, getStack, getTemplate) => {
+describeCdkTest(OpenSearchWorkflow, (id, getStack, getTemplate) => {
     let stack: Stack;
     let domain: Domain;
     let authRole: Role;
@@ -41,7 +41,7 @@ describeCdkTest(OpensearchWorkflow, (id, getStack, getTemplate) => {
 
     it('creates custom resource with correct properties', () => {
         // Arrange & Act
-        new OpensearchWorkflow(stack, id, {
+        new OpenSearchWorkflow(stack, id, {
             domain,
             domainAuthentication: authRole,
             flowFrameworkTemplatePath: testTemplatePath
@@ -50,7 +50,7 @@ describeCdkTest(OpensearchWorkflow, (id, getStack, getTemplate) => {
         // Assert
         const template = getTemplate();
 
-        template.hasResourceProperties('Custom::OpensearchWorkflow', {
+        template.hasResourceProperties('Custom::OpenSearchWorkflow', {
             ServiceToken: {
                 'Fn::GetAtt': Match.anyValue()
             }
@@ -76,7 +76,7 @@ describeCdkTest(OpensearchWorkflow, (id, getStack, getTemplate) => {
         });
 
         // Act
-        new OpensearchWorkflow(stack, id, {
+        new OpenSearchWorkflow(stack, id, {
             domain,
             domainAuthentication: authRole,
             flowFrameworkTemplatePath: testTemplatePath,
@@ -90,7 +90,7 @@ describeCdkTest(OpensearchWorkflow, (id, getStack, getTemplate) => {
         const template = getTemplate();
 
         // Check that the custom resource has the template asset variables
-        template.hasResourceProperties('Custom::OpensearchWorkflow', {
+        template.hasResourceProperties('Custom::OpenSearchWorkflow', {
             TemplateS3ObjectUrlVariables: Match.objectLike({
                 asset1: Match.stringLikeRegexp('s3://.*'),
                 s3Path: 's3://my-bucket/my-key'
@@ -100,7 +100,7 @@ describeCdkTest(OpensearchWorkflow, (id, getStack, getTemplate) => {
 
     it('exposes workflowId attribute', () => {
         // Arrange & Act
-        const workflow = new OpensearchWorkflow(stack, id, {
+        const workflow = new OpenSearchWorkflow(stack, id, {
             domain,
             domainAuthentication: authRole,
             flowFrameworkTemplatePath: testTemplatePath
@@ -112,7 +112,7 @@ describeCdkTest(OpensearchWorkflow, (id, getStack, getTemplate) => {
 
     it('exposes getResourceId method', () => {
         // Arrange
-        const workflow = new OpensearchWorkflow(stack, id, {
+        const workflow = new OpenSearchWorkflow(stack, id, {
             domain,
             domainAuthentication: authRole,
             flowFrameworkTemplatePath: testTemplatePath
@@ -131,7 +131,7 @@ describeCdkTest(OpensearchWorkflow, (id, getStack, getTemplate) => {
 
         // Act & Assert
         expect(() => {
-            new OpensearchWorkflow(stack, id, {
+            new OpenSearchWorkflow(stack, id, {
                 domain,
                 domainAuthentication: authRole,
                 flowFrameworkTemplatePath: invalidPath
@@ -141,7 +141,7 @@ describeCdkTest(OpensearchWorkflow, (id, getStack, getTemplate) => {
 
     it('applies custom lambda configuration', () => {
         // Arrange & Act
-        new OpensearchWorkflow(stack, id, {
+        new OpenSearchWorkflow(stack, id, {
             domain,
             domainAuthentication: authRole,
             flowFrameworkTemplatePath: testTemplatePath,
