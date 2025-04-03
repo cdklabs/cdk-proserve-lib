@@ -3602,6 +3602,7 @@ const friendlyEmbraceProps: constructs.FriendlyEmbraceProps = { ... }
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the Lambda environment. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.ignoreInvalidStates">ignoreInvalidStates</a></code> | <code>boolean</code> | Whether or not stacks in error state should be fatal to CR completion. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.manualReadPermissions">manualReadPermissions</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | Manually provide specific read-only permissions for resources in your CloudFormation templates to support instead of using the AWS managed policy [ReadOnlyAccess](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/ReadOnlyAccess.html). |
 
 ---
 
@@ -3650,6 +3651,21 @@ public readonly lambdaConfiguration: LambdaConfiguration;
 - *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
 
 Optional Lambda configuration settings.
+
+---
+
+##### `manualReadPermissions`<sup>Optional</sup> <a name="manualReadPermissions" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps.property.manualReadPermissions"></a>
+
+```typescript
+public readonly manualReadPermissions: PolicyStatement[];
+```
+
+- *Type:* aws-cdk-lib.aws_iam.PolicyStatement[]
+
+Manually provide specific read-only permissions for resources in your CloudFormation templates to support instead of using the AWS managed policy [ReadOnlyAccess](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/ReadOnlyAccess.html).
+
+This can be useful in environments where the caller wants to maintain tight control over the permissions granted
+to the custom resource worker.
 
 ---
 

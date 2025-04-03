@@ -3,6 +3,7 @@
 
 import { App, Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { NagSuppressions } from 'cdk-nag';
 import { beforeEach, it } from 'vitest';
@@ -29,6 +30,13 @@ describeCdkTest(FriendlyEmbrace, (id, getStack, getTemplate, getApp) => {
             {
                 id: 'NIST.800.53.R5-S3BucketReplicationEnabled',
                 reason: 'Data is transient and deleted after use. Replication is not necessary.'
+            },
+            {
+                id: 'AwsSolutions-IAM4',
+                reason: 'Permissions are tightly scoped by CDK grants and otherwise set to the required permissions for updating CloudFormation stacks.',
+                appliesTo: [
+                    'Policy::arn:<AWS::Partition>:iam::aws:policy/ReadOnlyAccess'
+                ]
             },
             {
                 id: 'AwsSolutions-IAM5',
@@ -93,6 +101,60 @@ describeCdkTest(FriendlyEmbrace, (id, getStack, getTemplate, getApp) => {
                 ]
             }
         });
+
+        template.hasResourceProperties('AWS::IAM::Policy', {
+            PolicyDocument: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Action: [
+                            'cloudformation:DescribeStacks',
+                            'cloudformation:GetTemplate',
+                            'cloudformation:UpdateStack'
+                        ],
+                        Effect: 'Allow'
+                    })
+                ])
+            }
+        });
+
+        template.hasResourceProperties('AWS::IAM::Role', {
+            ManagedPolicyArns: [
+                {
+                    'Fn::Join': [
+                        '',
+                        [
+                            'arn:',
+                            {
+                                Ref: 'AWS::Partition'
+                            },
+                            ':iam::aws:policy/ReadOnlyAccess'
+                        ]
+                    ]
+                }
+            ]
+        });
+    });
+
+    it('allows the caller to reduce the read only permissions for operation', () => {
+        new FriendlyEmbrace(stack, id, {
+            manualReadPermissions: [
+                new PolicyStatement({
+                    actions: [
+                        'dynamodb:DescribeTable',
+                        'ec2:DescribeSecurityGroups',
+                        'ec2:DescribeLaunchTemplates',
+                        'ecs:DescribeServices',
+                        'elasticloadbalancing:DescribeLoadBalancers',
+                        'iam:GetRole',
+                        'logs:DescribeLogGroups',
+                        'sqs:getqueueattributes'
+                    ],
+                    effect: Effect.ALLOW,
+                    resources: ['*']
+                })
+            ]
+        });
+        template = getTemplate();
 
         template.hasResourceProperties('AWS::IAM::Policy', {
             PolicyDocument: {
