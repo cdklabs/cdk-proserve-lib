@@ -3,7 +3,7 @@
 
 import { join } from 'node:path';
 import { Annotations, Aws, CustomResource, Duration } from 'aws-cdk-lib';
-import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Effect, ManagedPolicy, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Code, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
@@ -49,6 +49,16 @@ export interface FriendlyEmbraceProps {
      * Optional S3 Bucket configuration settings.
      */
     readonly bucketConfiguration?: BucketProps;
+
+    /**
+     * Manually provide specific read-only permissions for resources in your CloudFormation templates to support
+     * instead of using the AWS managed policy
+     * [ReadOnlyAccess](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/ReadOnlyAccess.html)
+     *
+     * This can be useful in environments where the caller wants to maintain tight control over the permissions granted
+     * to the custom resource worker.
+     */
+    readonly manualReadPermissions?: PolicyStatement[];
 }
 
 /**
@@ -160,30 +170,18 @@ export class FriendlyEmbrace extends Construct {
             })
         });
 
-        /**
-         * This policy is required for the custom resource handler to be able
-         * to update CloudFormation stacks. Additional permissions may need to
-         * be added depending on the different resources being deployed by the
-         * application.
-         */
-        const readPolicy = new PolicyStatement({
-            actions: [
-                'dynamodb:DescribeTable',
-                'ec2:DescribeSecurityGroups',
-                'ec2:DescribeLaunchTemplates',
-                'ecs:DescribeServices',
-                'elasticloadbalancing:DescribeLoadBalancers',
-                'iam:GetRole',
-                'logs:DescribeLogGroups',
-                'sqs:getqueueattributes'
-            ],
-            effect: Effect.ALLOW,
-            resources: ['*']
-        });
+        onEventHandler.function.addToRolePolicy(policy);
 
-        [policy, readPolicy].forEach((p) => {
-            onEventHandler.function.addToRolePolicy(p);
-        });
+        if (props?.manualReadPermissions) {
+            props.manualReadPermissions.forEach((statement) => {
+                onEventHandler.function.addToRolePolicy(statement);
+            });
+        } else {
+            onEventHandler.function.role!.addManagedPolicy(
+                ManagedPolicy.fromAwsManagedPolicyName('ReadOnlyAccess')
+            );
+        }
+
         cfnTemplateBucket.grantReadWrite(onEventHandler.function);
 
         return {
