@@ -1,8 +1,16 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Express, Handler, Request, Response, NextFunction } from 'express';
+import {
+    Express,
+    Handler,
+    Request,
+    Response,
+    Router,
+    NextFunction
+} from 'express';
 import express = require('express');
+import helmet from 'helmet';
 import morgan = require('morgan');
 import { CommonHostingConfiguration } from '../../types/configuration';
 
@@ -81,6 +89,17 @@ export abstract class CommonHost<
     protected abstract get spaHandler(): Handler;
 
     /**
+     * Add the middleware to an existing Express router
+     * Either use this with an existing router or use the `create` method but not both
+     * @param router Express router on an existing app
+     */
+    addMiddleware(router: Router): void {
+        // First, try to load the URI as a static asset
+        // Second (only for SPA) load the base page which allows client to perform routing
+        router.use(this.fileHandler, this.spaHandler);
+    }
+
+    /**
      * Create an Express app to host static assets
      * @returns Express app for static asset hosting
      */
@@ -92,17 +111,19 @@ export abstract class CommonHost<
             app.use(morgan('combined'));
         }
 
-        // First, try to load the URI as a static asset
-        app.use(this.fileHandler);
+        // Security
+        app.disable('x-powered-by');
+        app.use(helmet());
 
-        if (this.props.spaIndexPage) {
-            // Second (only for SPA) load the base page which allows client to perform routing
-            app.get('*spa', this.spaHandler);
-        }
+        const router = Router();
+        this.addMiddleware(router);
+
+        app.use(router);
 
         // Last, override error handler to only show 404 and nondescript 500 for everything else
-        // TODO: Allow verbose logging in dev
-        app.use(CommonHost.nonspecificErrorHandler);
+        if (!this.props.enableVerboseErrors) {
+            app.use(CommonHost.nonspecificErrorHandler);
+        }
 
         return app;
     }

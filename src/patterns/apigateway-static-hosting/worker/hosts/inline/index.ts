@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { join } from 'node:path';
-import { Handler, Request, Response } from 'express';
+import { Handler, NextFunction, Request, Response } from 'express';
 import express = require('express');
 import { CommonHostingConfiguration } from '../../types/configuration';
 import { CommonHost } from '../common';
@@ -28,7 +28,7 @@ export class InlineHost extends CommonHost<InlineHostingConfiguration> {
      * Express handler for the fallthrough SPA route
      */
     protected get spaHandler(): Handler {
-        return (_req: Request, res: Response) => {
+        return (_req: Request, res: Response, next: NextFunction) => {
             if (this.props.spaIndexPage) {
                 res.sendFile(
                     join(
@@ -38,7 +38,7 @@ export class InlineHost extends CommonHost<InlineHostingConfiguration> {
                     )
                 );
             } else {
-                res.sendStatus(500);
+                next();
             }
         };
     }
