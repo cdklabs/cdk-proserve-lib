@@ -19,7 +19,7 @@ import { DestructiveOperation } from '../../types/destructive-operation';
 /**
  * Properties for configuring an OpenSearch workflow
  */
-export interface OpensearchWorkflowProps {
+export interface OpenSearchWorkflowProps {
     /**
      * The OpenSearch domain to deploy the workflow to
      */
@@ -131,7 +131,7 @@ export class OpenSearchWorkflow extends Construct {
      */
     private static getOrBuildProvider(
         scope: Construct,
-        props: OpensearchWorkflowProps
+        props: OpenSearchWorkflowProps
     ): Provider {
         const stackId = scope.node.id;
 
@@ -191,7 +191,7 @@ export class OpenSearchWorkflow extends Construct {
      * @returns Input for the actual custom resource worker
      */
     private static createCustomResourceProperties(
-        props: OpensearchWorkflowProps,
+        props: OpenSearchWorkflowProps,
         asset: Asset,
         templateS3ObjectUrlVariables: Record<string, string>
     ): IResourceProperties {
@@ -211,16 +211,31 @@ export class OpenSearchWorkflow extends Construct {
      * This ID can be used to reference and manage the workflow after deployment.
      */
     public readonly workflowId: string;
+
+    /**
+     * The Lambda function that will handle On Event requests for the custom
+     * resource.
+     */
     public readonly onEventHandler: IFunction;
+
+    /**
+     * The Lambda function that will be called to determine if the execution is
+     * complete for the custom resource.
+     */
     public readonly isCompleteHandler: IFunction;
+
+    /**
+     * The custom resource that manages the OpenSearch workflow lifecycle.
+     */
     private readonly cr: CustomResource;
+
     /**
      * Constructor
      * @param scope Parent to which the custom resource belongs
      * @param id Unique identifier for the custom resource
      * @param props Metadata for configuring the custom resource
      */
-    constructor(scope: Construct, id: string, props: OpensearchWorkflowProps) {
+    constructor(scope: Construct, id: string, props: OpenSearchWorkflowProps) {
         super(scope, id);
 
         const asset = new Asset(this, 'TemplateAsset', {

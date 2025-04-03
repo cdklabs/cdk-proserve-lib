@@ -1798,14 +1798,14 @@ this.embeddingModelId = nlpIngestPipeline.getResourceId(
 ```typescript
 import { constructs } from '@cdklabs/cdk-proserve-lib'
 
-new constructs.OpenSearchWorkflow(scope: Construct, id: string, props: OpensearchWorkflowProps)
+new constructs.OpenSearchWorkflow(scope: Construct, id: string, props: OpenSearchWorkflowProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the custom resource belongs. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the custom resource. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps</code> | Metadata for configuring the custom resource. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps</code> | Metadata for configuring the custom resource. |
 
 ---
 
@@ -1827,7 +1827,7 @@ Unique identifier for the custom resource.
 
 ##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.props"></a>
 
-- *Type:* @cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps
 
 Metadata for configuring the custom resource.
 
@@ -1900,8 +1900,8 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.isCompleteHandler">isCompleteHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.onEventHandler">onEventHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.isCompleteHandler">isCompleteHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | The Lambda function that will be called to determine if the execution is complete for the custom resource. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.onEventHandler">onEventHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | The Lambda function that will handle On Event requests for the custom resource. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.workflowId">workflowId</a></code> | <code>string</code> | The unique identifier of the deployed OpenSearch workflow. |
 
 ---
@@ -1926,6 +1926,8 @@ public readonly isCompleteHandler: IFunction;
 
 - *Type:* aws-cdk-lib.aws_lambda.IFunction
 
+The Lambda function that will be called to determine if the execution is complete for the custom resource.
+
 ---
 
 ##### `onEventHandler`<sup>Required</sup> <a name="onEventHandler" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.onEventHandler"></a>
@@ -1935,6 +1937,8 @@ public readonly onEventHandler: IFunction;
 ```
 
 - *Type:* aws-cdk-lib.aws_lambda.IFunction
+
+The Lambda function that will handle On Event requests for the custom resource.
 
 ---
 
@@ -4328,35 +4332,35 @@ Optional Lambda configuration settings.
 
 ---
 
-### OpensearchWorkflowProps <a name="OpensearchWorkflowProps" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps"></a>
+### OpenSearchWorkflowProps <a name="OpenSearchWorkflowProps" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps"></a>
 
 Properties for configuring an OpenSearch workflow.
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.Initializer"></a>
 
 ```typescript
 import { constructs } from '@cdklabs/cdk-proserve-lib'
 
-const opensearchWorkflowProps: constructs.OpensearchWorkflowProps = { ... }
+const openSearchWorkflowProps: constructs.OpenSearchWorkflowProps = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.domain">domain</a></code> | <code>aws-cdk-lib.aws_opensearchservice.IDomain</code> | The OpenSearch domain to deploy the workflow to. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.domainAuthentication">domainAuthentication</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | IAM role used for domain authentication. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.flowFrameworkTemplatePath">flowFrameworkTemplatePath</a></code> | <code>string</code> | Path to the Flow Framework template file (YAML or JSON). |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.allowDestructiveOperations">allowDestructiveOperations</a></code> | <code>@cdklabs/cdk-proserve-lib.types.DestructiveOperation</code> | Whether to allow destructive operations like updating/deleting workflows. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS key for encryption. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional lambda configuration settings for the custom resource provider. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.templateAssetVariables">templateAssetVariables</a></code> | <code>{[ key: string ]: string \| aws-cdk-lib.aws_s3_assets.Asset}</code> | Optional asset variables for the workflow. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.templateCreationVariables">templateCreationVariables</a></code> | <code>{[ key: string ]: string}</code> | Optional creation variables for the workflow. Your template must be configured to accept these variables using `${{{ my_variable }}}` syntax. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.templateProvisionVariables">templateProvisionVariables</a></code> | <code>{[ key: string ]: string}</code> | Optional provisioning variables for the workflow. Your template must be configured to accept these variables using `${{ my_variable }}` syntax. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.domain">domain</a></code> | <code>aws-cdk-lib.aws_opensearchservice.IDomain</code> | The OpenSearch domain to deploy the workflow to. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.domainAuthentication">domainAuthentication</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | IAM role used for domain authentication. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.flowFrameworkTemplatePath">flowFrameworkTemplatePath</a></code> | <code>string</code> | Path to the Flow Framework template file (YAML or JSON). |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.allowDestructiveOperations">allowDestructiveOperations</a></code> | <code>@cdklabs/cdk-proserve-lib.types.DestructiveOperation</code> | Whether to allow destructive operations like updating/deleting workflows. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS key for encryption. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional lambda configuration settings for the custom resource provider. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.templateAssetVariables">templateAssetVariables</a></code> | <code>{[ key: string ]: string \| aws-cdk-lib.aws_s3_assets.Asset}</code> | Optional asset variables for the workflow. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.templateCreationVariables">templateCreationVariables</a></code> | <code>{[ key: string ]: string}</code> | Optional creation variables for the workflow. Your template must be configured to accept these variables using `${{{ my_variable }}}` syntax. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.templateProvisionVariables">templateProvisionVariables</a></code> | <code>{[ key: string ]: string}</code> | Optional provisioning variables for the workflow. Your template must be configured to accept these variables using `${{ my_variable }}` syntax. |
 
 ---
 
-##### `domain`<sup>Required</sup> <a name="domain" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.domain"></a>
+##### `domain`<sup>Required</sup> <a name="domain" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.domain"></a>
 
 ```typescript
 public readonly domain: IDomain;
@@ -4368,7 +4372,7 @@ The OpenSearch domain to deploy the workflow to.
 
 ---
 
-##### `domainAuthentication`<sup>Required</sup> <a name="domainAuthentication" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.domainAuthentication"></a>
+##### `domainAuthentication`<sup>Required</sup> <a name="domainAuthentication" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.domainAuthentication"></a>
 
 ```typescript
 public readonly domainAuthentication: IRole;
@@ -4380,7 +4384,7 @@ IAM role used for domain authentication.
 
 ---
 
-##### `flowFrameworkTemplatePath`<sup>Required</sup> <a name="flowFrameworkTemplatePath" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.flowFrameworkTemplatePath"></a>
+##### `flowFrameworkTemplatePath`<sup>Required</sup> <a name="flowFrameworkTemplatePath" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.flowFrameworkTemplatePath"></a>
 
 ```typescript
 public readonly flowFrameworkTemplatePath: string;
@@ -4392,7 +4396,7 @@ Path to the Flow Framework template file (YAML or JSON).
 
 ---
 
-##### `allowDestructiveOperations`<sup>Optional</sup> <a name="allowDestructiveOperations" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.allowDestructiveOperations"></a>
+##### `allowDestructiveOperations`<sup>Optional</sup> <a name="allowDestructiveOperations" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.allowDestructiveOperations"></a>
 
 ```typescript
 public readonly allowDestructiveOperations: DestructiveOperation;
@@ -4404,7 +4408,7 @@ Whether to allow destructive operations like updating/deleting workflows.
 
 ---
 
-##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.encryption"></a>
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.encryption"></a>
 
 ```typescript
 public readonly encryption: IKey;
@@ -4416,7 +4420,7 @@ Optional KMS key for encryption.
 
 ---
 
-##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.lambdaConfiguration"></a>
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.lambdaConfiguration"></a>
 
 ```typescript
 public readonly lambdaConfiguration: LambdaConfiguration;
@@ -4428,7 +4432,7 @@ Optional lambda configuration settings for the custom resource provider.
 
 ---
 
-##### `templateAssetVariables`<sup>Optional</sup> <a name="templateAssetVariables" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.templateAssetVariables"></a>
+##### `templateAssetVariables`<sup>Optional</sup> <a name="templateAssetVariables" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.templateAssetVariables"></a>
 
 ```typescript
 public readonly templateAssetVariables: {[ key: string ]: string | Asset};
@@ -4449,7 +4453,7 @@ resource to be able to generate a pre-signed url.
 
 ---
 
-##### `templateCreationVariables`<sup>Optional</sup> <a name="templateCreationVariables" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.templateCreationVariables"></a>
+##### `templateCreationVariables`<sup>Optional</sup> <a name="templateCreationVariables" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.templateCreationVariables"></a>
 
 ```typescript
 public readonly templateCreationVariables: {[ key: string ]: string};
@@ -4464,7 +4468,7 @@ be available during creation time and provision time.
 
 ---
 
-##### `templateProvisionVariables`<sup>Optional</sup> <a name="templateProvisionVariables" id="@cdklabs/cdk-proserve-lib.constructs.OpensearchWorkflowProps.property.templateProvisionVariables"></a>
+##### `templateProvisionVariables`<sup>Optional</sup> <a name="templateProvisionVariables" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.templateProvisionVariables"></a>
 
 ```typescript
 public readonly templateProvisionVariables: {[ key: string ]: string};

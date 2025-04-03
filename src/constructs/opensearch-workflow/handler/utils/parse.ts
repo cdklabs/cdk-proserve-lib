@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { GetObjectCommand, S3 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { load } from 'js-yaml';
 import { Json } from '../types/json';
@@ -55,7 +55,7 @@ export async function generatePresignedUrlMapping(
     if (!s3PathMappings) return {};
 
     const substitutions: Record<string, string> = {};
-    const client = new S3Client();
+    const client = new S3();
 
     for (const [replacementKey, s3Path] of Object.entries(s3PathMappings)) {
         const [bucket, ...keyParts] = s3Path.replace('s3://', '').split('/');
