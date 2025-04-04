@@ -15,6 +15,7 @@ header:
     - "**/*.json"
     - test/patterns/apigateway-static-hosting/**/fixtures/**/*.html
     - test/patterns/apigateway-static-hosting/**/fixtures/**/*.txt
+    - test/constructs/opensearch-workflow/fixtures/invalid.txt
   paths:
     - src
     - test
