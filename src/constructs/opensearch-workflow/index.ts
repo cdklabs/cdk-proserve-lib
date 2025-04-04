@@ -188,6 +188,8 @@ export class OpenSearchWorkflow extends Construct {
      * Translates the CDK construct properties to the custom resource
      * property format
      * @param props Metadata for configuring the custom resource
+     * @param asset S3 asset for the workflow template
+     * @param templateS3ObjectUrlVariables S3 object URLs for any asset variables
      * @returns Input for the actual custom resource worker
      */
     private static createCustomResourceProperties(

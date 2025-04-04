@@ -4,31 +4,31 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { PassThrough, Readable } from 'node:stream';
+import { Readable } from 'node:stream';
 import { GetObjectCommand, HeadObjectCommand, S3 } from '@aws-sdk/client-s3';
 import { sdkStreamMixin } from '@aws-sdk/util-stream';
 import { mockClient } from 'aws-sdk-client-mock';
-import { vi, describe, beforeEach, it, expect, Mock } from 'vitest';
+import mockFs from 'mock-fs';
+import { vi, describe, beforeEach, afterEach, it, expect } from 'vitest';
 import { downloadS3Asset } from '../../../src/common/lambda/download-s3-asset';
-
-// Mock fs.createWriteStream
-vi.mock('node:fs', async () => {
-    const createWriteStreamMock = vi.fn();
-
-    return {
-        default: {
-            createWriteStream: createWriteStreamMock
-        },
-        createWriteStream: createWriteStreamMock
-    };
-});
 
 describe('downloadS3Asset', () => {
     const mockS3 = mockClient(S3);
+    const tempDir = os.tmpdir();
 
     beforeEach(() => {
         vi.clearAllMocks();
         mockS3.reset();
+
+        // Setup mock filesystem
+        mockFs({
+            [tempDir]: {} // Mock the temp directory as empty
+        });
+    });
+
+    afterEach(() => {
+        // Restore the real filesystem
+        mockFs.restore();
     });
 
     it('should download an S3 asset successfully', async () => {
@@ -37,50 +37,28 @@ describe('downloadS3Asset', () => {
         const mockFileName = 'test-file.json';
         const s3ObjectUri = `s3://test-bucket/${mockFileName}`;
         const expectedFilePath = path.join(os.tmpdir(), mockFileName);
+        const mockContent = 'file content';
 
         // Mock the S3 response for HeadObject
         mockS3.on(HeadObjectCommand).resolves({
             ETag: mockETag
         });
 
-        // Create mock streams
-        const mockReadable = new Readable({
-            read() {} // required implementation
-        });
+        // Create a readable stream with mock content
+        const mockReadable = new Readable();
+        mockReadable.push(mockContent);
+        mockReadable.push(null); // End the stream
 
         // Convert to SDK stream
         const mockSdkStream = sdkStreamMixin(mockReadable);
-
-        // Use a PassThrough stream which is both readable and writable
-        const mockPassThrough = new PassThrough();
 
         // Mock the S3 response for GetObject
         mockS3.on(GetObjectCommand).resolves({
             Body: mockSdkStream
         });
 
-        // Mock createWriteStream
-        const mockCreateWriteStream = vi.mocked(fs.createWriteStream);
-        (fs.createWriteStream as Mock).mockReturnValue(mockPassThrough);
-
-        // Store the original pipe method
-        const originalPipe = Readable.prototype.pipe;
-
-        // Mock the pipe method on all Readable instances
-        Readable.prototype.pipe = vi.fn(function () {
-            // Emit finish event on next tick
-            process.nextTick(() => {
-                mockPassThrough.emit('finish');
-            });
-
-            return mockPassThrough;
-        }) as any;
-
         // Call the function
         const result = await downloadS3Asset(s3ObjectUri);
-
-        // Restore original pipe method
-        Readable.prototype.pipe = originalPipe;
 
         // Assertions
         expect(mockS3.calls()).toHaveLength(2); // One call to headObject, one to getObject
@@ -99,7 +77,9 @@ describe('downloadS3Asset', () => {
             Key: mockFileName
         });
 
-        expect(mockCreateWriteStream).toHaveBeenCalledWith(expectedFilePath);
+        // Verify the file was created with correct content
+        expect(fs.existsSync(expectedFilePath)).toBe(true);
+        expect(fs.readFileSync(expectedFilePath, 'utf8')).toBe(mockContent);
 
         expect(result).toEqual({
             filePath: expectedFilePath,
@@ -113,48 +93,27 @@ describe('downloadS3Asset', () => {
         const s3ObjectUri = 's3://test-bucket/nested/path/test-file.json';
         const mockFileName = 'test-file.json';
         const expectedFilePath = path.join(os.tmpdir(), mockFileName);
+        const mockContent = 'nested file content';
 
         // Mock the S3 response
         mockS3.on(HeadObjectCommand).resolves({
             ETag: mockETag
         });
 
-        // Create mock streams
-        const mockReadable = new Readable({
-            read() {} // required implementation
-        });
+        // Create a readable stream with mock content
+        const mockReadable = new Readable();
+        mockReadable.push(mockContent);
+        mockReadable.push(null); // End the stream
 
         // Convert to SDK stream
         const mockSdkStream = sdkStreamMixin(mockReadable);
-
-        // Use a PassThrough stream which is both readable and writable
-        const mockPassThrough = new PassThrough();
 
         mockS3.on(GetObjectCommand).resolves({
             Body: mockSdkStream
         });
 
-        // Mock createWriteStream
-        (fs.createWriteStream as Mock).mockReturnValue(mockPassThrough);
-
-        // Store the original pipe method
-        const originalPipe = Readable.prototype.pipe;
-
-        // Mock the pipe method on all Readable instances
-        Readable.prototype.pipe = vi.fn(function () {
-            // Emit finish event on next tick
-            process.nextTick(() => {
-                mockPassThrough.emit('finish');
-            });
-
-            return mockPassThrough;
-        }) as any;
-
         // Call the function
         const result = await downloadS3Asset(s3ObjectUri);
-
-        // Restore original pipe method
-        Readable.prototype.pipe = originalPipe;
 
         // Assertions
         // Check HeadObject was called with correct parameters
@@ -171,7 +130,9 @@ describe('downloadS3Asset', () => {
             Key: 'nested/path/test-file.json'
         });
 
-        expect(fs.createWriteStream).toHaveBeenCalledWith(expectedFilePath);
+        // Verify the file was created with correct content
+        expect(fs.existsSync(expectedFilePath)).toBe(true);
+        expect(fs.readFileSync(expectedFilePath, 'utf8')).toBe(mockContent);
 
         expect(result).toEqual({
             filePath: expectedFilePath,

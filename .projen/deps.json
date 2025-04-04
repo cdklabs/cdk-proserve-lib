@@ -278,6 +278,10 @@
       "type": "build"
     },
     {
+      "name": "mock-fs",
+      "type": "build"
+    },
+    {
       "name": "morgan",
       "version": "1.10.0",
       "type": "build"

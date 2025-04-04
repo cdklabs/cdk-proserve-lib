@@ -251,7 +251,7 @@ export class HttpClient {
         const request: HttpClientRequest = {
             hostname: parsedUrl.hostname,
             protocol: parsedUrl.protocol ?? 'https:',
-            port: Number(parsedUrl.port),
+            port: Number(parsedUrl.port ?? 443),
             path: parsedUrl.path ?? '/',
             method,
             headers: requestHeaders,

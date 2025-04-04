@@ -12,7 +12,6 @@ import * as AdmZip from 'adm-zip';
  * @param extractPath Optional path to extract to; if not provided, a temp directory is used
  * @returns Path where the files were extracted
  */
-
 export function extractZipFile(
     zipFilePath: string,
     extractPath?: string
