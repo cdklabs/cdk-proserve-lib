@@ -64,7 +64,8 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         'supertest',
         'vitest',
         '@vitest/coverage-v8',
-        'aws-sdk-client-mock-vitest'
+        'aws-sdk-client-mock-vitest',
+        'mock-fs'
     ];
 
     project.addDevDeps(...lambdaHandlerDeps, ...ideAndTestDeps);
