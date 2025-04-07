@@ -7,6 +7,7 @@ import { defaultProvider } from '@aws-sdk/credential-provider-node';
 import { SignatureV4 } from '@smithy/signature-v4';
 import type { AwsCredentialIdentity, Provider } from '@smithy/types';
 import { AwsHttpClientOptions as AwsHttpClientOptions } from './types';
+import { Json } from '../../../types/json';
 import { HttpClient } from '../http-client';
 import {
     HttpMethod,
@@ -49,7 +50,7 @@ export class AwsHttpClient extends HttpClient {
         url: string,
         method: HttpMethod,
         headers: Record<string, string> = {},
-        body?: unknown
+        body?: Json
     ): Promise<RequestResponse> {
         const request = this.createRequest(url, method, headers, body);
         const signedRequest = (await this.signRequest(

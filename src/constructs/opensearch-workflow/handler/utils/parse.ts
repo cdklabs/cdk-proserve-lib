@@ -4,7 +4,7 @@
 import { GetObjectCommand, S3 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { load } from 'js-yaml';
-import { Json } from '../types/json';
+import { Json } from '../../../../types/json';
 
 /**
  * Parses a given template string that can be JSON or YAML.

@@ -10,7 +10,7 @@ import {
 import { AwsHttpClient } from '../../../../common/lambda/aws-http-client';
 import { downloadS3Asset } from '../../../../common/lambda/download-s3-asset';
 import { DestructiveOperation } from '../../../../types/destructive-operation';
-import { Json } from '../types/json';
+import { Json } from '../../../../types/json';
 import { IResourceProperties } from '../types/resource-properties';
 import {
     WorkflowResponse,

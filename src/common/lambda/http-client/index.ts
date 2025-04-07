@@ -12,6 +12,7 @@ import {
     HttpClientRequest
 } from './types';
 import { HttpClientResponseError } from './types/exception';
+import { Json } from '../../../types/json';
 
 export class HttpClient {
     protected readonly options: HttpClientOptions;
@@ -53,7 +54,7 @@ export class HttpClient {
      */
     async post<T>(
         url: string,
-        data?: unknown,
+        data?: Json,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
         return this.request<T>('POST', url, data, headers);
@@ -69,7 +70,7 @@ export class HttpClient {
      */
     async put<T>(
         url: string,
-        data?: unknown,
+        data?: Json,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
         return this.request<T>('PUT', url, data, headers);
@@ -99,7 +100,7 @@ export class HttpClient {
      */
     async patch<T>(
         url: string,
-        data?: unknown,
+        data?: Json,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
         return this.request<T>('PATCH', url, data, headers);
@@ -131,7 +132,7 @@ export class HttpClient {
     async request<T>(
         method: HttpMethod,
         url: string,
-        data?: unknown,
+        data?: Json,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
         // Build the full URL
@@ -211,7 +212,7 @@ export class HttpClient {
         url: string,
         method: HttpMethod,
         headers: Record<string, string> = {},
-        body?: unknown
+        body?: Json
     ): Promise<RequestResponse> {
         const request = this.createRequest(url, method, headers, body);
         return this.sendRequest(request);
@@ -230,7 +231,7 @@ export class HttpClient {
         requestUrl: string,
         method: HttpMethod,
         headers: Record<string, string> = {},
-        body?: unknown
+        body?: Json
     ): HttpClientRequest {
         const parsedUrl = parse(requestUrl);
         if (!parsedUrl.hostname) {
