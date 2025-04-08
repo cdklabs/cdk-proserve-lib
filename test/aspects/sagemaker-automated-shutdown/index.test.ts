@@ -232,88 +232,95 @@ describeCdkTest(SageMakerAutomatedShutdown, (_, getStack, getTemplate) => {
         });
     });
 
-    // it('should handle multiple notebook instances with different existing configs', () => {
-    //     // Arrange
-    //     const existingConfig1 = new CfnNotebookInstanceLifecycleConfig(
-    //         stack,
-    //         'ExistingConfig1',
-    //         {
-    //             notebookInstanceLifecycleConfigName: 'existing-config-1',
-    //             onStart: [
-    //                 {
-    //                     content: Buffer.from(
-    //                         '#!/bin/bash\necho "existing script 1"'
-    //                     ).toString('base64')
-    //                 }
-    //             ]
-    //         }
-    //     );
+    it('should handle multiple notebook instances with different existing configs', () => {
+        // Arrange
+        const existingConfig1 = new CfnNotebookInstanceLifecycleConfig(
+            stack,
+            'ExistingConfig1',
+            {
+                notebookInstanceLifecycleConfigName: 'existing-config-1',
+                onStart: [
+                    {
+                        content: Buffer.from(
+                            '#!/bin/bash\necho "existing script 1"'
+                        ).toString('base64')
+                    }
+                ]
+            }
+        );
 
-    //     const existingConfig2 = new CfnNotebookInstanceLifecycleConfig(
-    //         stack,
-    //         'ExistingConfig2',
-    //         {
-    //             notebookInstanceLifecycleConfigName: 'existing-config-2',
-    //             onStart: [
-    //                 {
-    //                     content: Buffer.from(
-    //                         '#!/bin/bash\necho "existing script 2"'
-    //                     ).toString('base64')
-    //                 }
-    //             ]
-    //         }
-    //     );
+        const existingConfig2 = new CfnNotebookInstanceLifecycleConfig(
+            stack,
+            'ExistingConfig2',
+            {
+                notebookInstanceLifecycleConfigName: 'existing-config-2',
+                onStart: [
+                    {
+                        content: Buffer.from(
+                            '#!/bin/bash\necho "existing script 2"'
+                        ).toString('base64')
+                    }
+                ]
+            }
+        );
 
-    //     const notebook1 = new CfnNotebookInstance(stack, 'Notebook1', {
-    //         instanceType: 'ml.t3.medium',
-    //         roleArn: role.roleArn,
-    //         lifecycleConfigName: existingConfig1.ref
-    //     });
+        const notebook1 = new CfnNotebookInstance(stack, 'Notebook1', {
+            instanceType: 'ml.t3.medium',
+            roleArn: role.roleArn,
+            lifecycleConfigName:
+                existingConfig1.notebookInstanceLifecycleConfigName
+        });
 
-    //     const notebook2 = new CfnNotebookInstance(stack, 'Notebook2', {
-    //         instanceType: 'ml.t3.medium',
-    //         roleArn: role.roleArn,
-    //         lifecycleConfigName: existingConfig2.ref
-    //     });
+        const notebook2 = new CfnNotebookInstance(stack, 'Notebook2', {
+            instanceType: 'ml.t3.medium',
+            roleArn: role.roleArn,
+            lifecycleConfigName:
+                existingConfig2.notebookInstanceLifecycleConfigName
+        });
 
-    //     // Act
-    //     Aspects.of(stack).add(new SageMakerAutomatedShutdown());
+        // Act
+        Aspects.of(stack).add(new SageMakerAutomatedShutdown());
 
-    //     const template = Template.fromStack(stack);
+        const template = Template.fromStack(stack);
 
-    //     // Assert
-    //     const configs = template.findResources(
-    //         'AWS::SageMaker::NotebookInstanceLifecycleConfig'
-    //     );
-    //     const notebooks = template.findResources(
-    //         'AWS::SageMaker::NotebookInstance'
-    //     );
+        // Assert
+        const lifecycleConfigs = template.findResources(
+            'AWS::SageMaker::NotebookInstanceLifecycleConfig'
+        );
 
-    //     Object.values(notebooks).forEach((notebook, index) => {
-    //         const configRef = notebook.Properties.LifecycleConfigName.Ref;
-    //         const config = configs[configRef];
-    //         expect(config).toBeDefined();
+        const mergedConfigs = Object.values(lifecycleConfigs).filter((config) =>
+            config.Properties.NotebookInstanceLifecycleConfigName.startsWith(
+                'merged-auto-shutdown-'
+            )
+        );
 
-    //         // Verify the content includes both the existing script and auto-stop script
-    //         const content = config.Properties.OnStart[0].Content;
-    //         if (typeof content === 'string') {
-    //             const decodedContent = Buffer.from(content, 'base64').toString(
-    //                 'utf-8'
-    //             );
-    //             expect(decodedContent).toContain(
-    //                 `existing script ${index + 1}`
-    //             );
-    //             expect(decodedContent).toContain('auto-stop-script.py');
-    //         }
-    //     });
+        expect(mergedConfigs).toHaveLength(2);
+        mergedConfigs.forEach((config, index) => {
+            const decodedContent = Buffer.from(
+                config.Properties.OnStart[0].Content,
+                'base64'
+            ).toString('utf-8');
+            expect(decodedContent).toContain(`existing script ${index + 1}`);
+            expect(decodedContent).toContain('auto-stop-script.py');
+        });
 
-    //     // const customResources = {
-    //     //     ...template.findResources('Custom::AWS'),
-    //     //     ...template.findResources('AWS::CloudFormation::CustomResource')
-    //     // };
-
-    //     // expect(Object.keys(customResources).length).toBeGreaterThan(1);
-
-    //     // template.resourceCountIs('AWS::Lambda::Function', 2); // Including VPC function
-    // });
+        const notebooks = template.findResources(
+            'AWS::SageMaker::NotebookInstance'
+        );
+        Object.values(notebooks).forEach((notebook) => {
+            if (
+                notebook.Properties.LifecycleConfigName.startsWith(
+                    'merged-auto-shutdown-'
+                )
+            ) {
+                expect(notebook.Properties.LifecycleConfigName).toMatch(
+                    /merged-auto-shutdown-.*/
+                );
+            } else {
+                expect(notebook.Properties.LifecycleConfigName).toMatch(
+                    /auto-shutdown-.*/
+                );
+            }
+        });
+    });
 });
