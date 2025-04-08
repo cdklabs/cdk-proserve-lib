@@ -15,7 +15,7 @@ import {
     HttpClientRequest
 } from '../http-client/types';
 
-export class AwsHttpClient extends HttpClient {
+export class AwsHttpClient extends HttpClient<AwsHttpClientOptions> {
     /**
      * Cached credentials used to sign requests. This class will store
      * credentials while they are active and refresh the cache if needed
@@ -73,9 +73,7 @@ export class AwsHttpClient extends HttpClient {
             | Provider<AwsCredentialIdentity>;
 
         // Get region from options or use the Lambda environment variable
-        const region =
-            (this.options as AwsHttpClientOptions).region ??
-            process.env.AWS_REGION;
+        const region = this.options.region ?? process.env.AWS_REGION;
         if (!region) {
             throw new Error(
                 'Region is not specified and could not be determined from environment.'

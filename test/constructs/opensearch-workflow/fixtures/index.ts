@@ -80,6 +80,6 @@ export function createMockResponse<T>(data: T): HttpClientResponse<T> {
     return {
         data,
         headers: {},
-        rawBody: JSON.stringify(data)
+        body: JSON.stringify(data)
     };
 }

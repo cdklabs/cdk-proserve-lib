@@ -162,7 +162,7 @@ describe('HttpClientAws', () => {
                 data: { success: true },
                 statusCode: 200,
                 headers: { 'content-type': 'application/json' },
-                rawBody: JSON.stringify({ success: true })
+                body: JSON.stringify({ success: true })
             });
 
             // Verify SignatureV4 was initialized correctly

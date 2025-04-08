@@ -1,10 +1,10 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-
 import * as http from 'node:http';
 import * as https from 'node:https';
 import { vi, describe, beforeEach, expect, it, afterEach, Mock } from 'vitest';
 import { HttpClient } from '../../../../src/common/lambda/http-client';
+import { HttpClientOptions } from '../../../../src/common/lambda/http-client/types';
 import { HttpClientResponseError } from '../../../../src/common/lambda/http-client/types/exception';
 
 vi.mock('http');
@@ -12,7 +12,7 @@ vi.mock('https');
 
 describe('HttpClient', () => {
     // Create reusable mocks and client instance
-    let client: HttpClient;
+    let client: HttpClient<HttpClientOptions>;
     let mockResponse: any;
     let mockRequest: any;
 
@@ -76,32 +76,49 @@ describe('HttpClient', () => {
         it('should merge provided options with defaults', () => {
             const newClient = new HttpClient({
                 timeout: 5000,
-                defaultHeaders: { 'x-custom-header': 'test' }
+                defaultHeaders: { 'X-Custom-Header': 'test' }
             });
             // @ts-ignore - Accessing protected properties for testing
             expect(newClient.options).toEqual({
                 timeout: 5000,
-                defaultHeaders: { 'x-custom-header': 'test' }
+                defaultHeaders: { 'x-custom-header': 'test' } // Note: header normalized to lowercase
             });
+        });
+    });
+
+    describe('Header normalization', () => {
+        it('should normalize header keys to lowercase', async () => {
+            await client.get('/test', {
+                'Content-Type': 'application/json',
+                'X-API-Key': 'abc123'
+            });
+
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
+            expect(requestOptions.headers['content-type']).toBe(
+                'application/json'
+            );
+            expect(requestOptions.headers['x-api-key']).toBe('abc123');
+            // Original capitalized keys should not exist
+            expect(requestOptions.headers['Content-Type']).toBeUndefined();
+            expect(requestOptions.headers['X-API-Key']).toBeUndefined();
         });
     });
 
     describe('HTTP methods', () => {
         it('should make GET requests correctly', async () => {
             const response = await client.get('/test', {
-                'x-custom-header': 'value'
+                'X-Custom-Header': 'value'
             });
 
             expect(https.request).toHaveBeenCalled();
             const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.method).toBe('GET');
-            expect(requestOptions.headers['x-custom-header']).toBe('value');
-
+            expect(requestOptions.headers['x-custom-header']).toBe('value'); // lowercase key
             expect(response).toEqual({
                 data: { success: true },
                 statusCode: 200,
                 headers: { 'content-type': 'application/json' },
-                rawBody: JSON.stringify({ success: true })
+                body: JSON.stringify({ success: true })
             });
         });
 
@@ -296,7 +313,7 @@ describe('HttpClient', () => {
 
             // Expect the raw string to be passed as data since JSON parsing failed
             expect(response.data).toBe('This is plain text, not JSON');
-            expect(response.rawBody).toBe('This is plain text, not JSON');
+            expect(response.body).toBe('This is plain text, not JSON');
         });
     });
 
@@ -327,38 +344,63 @@ describe('HttpClient', () => {
             const clientWithDefaultHeaders = new HttpClient({
                 baseUrl: 'https://api.example.com',
                 defaultHeaders: {
-                    'x-api-key': '12345',
-                    'user-agent': 'test-client'
+                    'X-Header-Info': '12345',
+                    'User-Agent': 'test-client'
                 }
             });
 
             await clientWithDefaultHeaders.get('/test');
 
             const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.headers['x-api-key']).toBe('12345');
+            expect(requestOptions.headers['x-header-info']).toBe('12345');
             expect(requestOptions.headers['user-agent']).toBe('test-client');
+            // Original case should not exist
+            expect(requestOptions.headers['X-Header-Info']).toBeUndefined();
+            expect(requestOptions.headers['User-Agent']).toBeUndefined();
         });
 
         it('should override default headers with request-specific headers', async () => {
             const clientWithDefaultHeaders = new HttpClient({
                 baseUrl: 'https://api.example.com',
                 defaultHeaders: {
-                    'x-api-key': '12345',
+                    'X-Header-Info': '12345',
+                    'Content-Type': 'application/json'
+                }
+            });
+            await clientWithDefaultHeaders.get('/test', {
+                'X-Header-Info': '67890',
+                Accept: 'application/xml'
+            });
+            const requestOptions = (https.request as Mock).mock.calls[0][0];
+            expect(requestOptions.headers['x-header-info']).toBe('67890'); // Overridden
+            expect(requestOptions.headers['content-type']).toBe(
+                'application/json'
+            ); // From defaults
+            expect(requestOptions.headers.accept).toBe('application/xml'); // New header - normalized
+            // Original cases should not exist
+            expect(requestOptions.headers['X-Header-Info']).toBeUndefined();
+            expect(requestOptions.headers.Accept).toBeUndefined();
+        });
+
+        it('should handle case insensitive header matching', async () => {
+            const clientWithDefaultHeaders = new HttpClient({
+                baseUrl: 'https://api.example.com',
+                defaultHeaders: {
                     'content-type': 'application/json'
                 }
             });
 
+            // Use different casing for the same header
             await clientWithDefaultHeaders.get('/test', {
-                'x-api-key': '67890',
-                accept: 'application/xml'
+                'Content-Type': 'application/xml'
             });
 
             const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.headers['x-api-key']).toBe('67890'); // Overridden
+
             expect(requestOptions.headers['content-type']).toBe(
-                'application/json'
-            ); // From defaults
-            expect(requestOptions.headers.accept).toBe('application/xml'); // New header
+                'application/xml'
+            );
+            expect(requestOptions.headers['Content-Type']).toBeUndefined();
         });
     });
 

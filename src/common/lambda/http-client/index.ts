@@ -14,20 +14,44 @@ import {
 import { HttpClientResponseError } from './types/exception';
 import { Json } from '../../../types/json';
 
-export class HttpClient {
-    protected readonly options: HttpClientOptions;
+export class HttpClient<TOptions extends HttpClientOptions> {
+    protected readonly options: TOptions;
 
     /**
      * Creates a new HTTP client
      *
      * @param options - Configuration options for the client
      */
-    constructor(options: HttpClientOptions = {}) {
-        this.options = {
+    constructor(options?: TOptions) {
+        const defaultOptions = {
             timeout: 30000,
-            defaultHeaders: {},
-            ...options
-        };
+            defaultHeaders: {}
+        } as Partial<TOptions>;
+
+        this.options = {
+            ...defaultOptions,
+            ...options,
+            // Ensure normalized headers after merging
+            defaultHeaders: this.normalizeHeaders(options?.defaultHeaders ?? {})
+        } as TOptions;
+    }
+
+    /**
+     * Normalizes header keys to lowercase
+     *
+     * @param headers - Headers to normalize
+     * @returns Headers with lowercase keys
+     */
+    private normalizeHeaders(
+        headers: Record<string, string>
+    ): Record<string, string> {
+        return Object.keys(headers).reduce(
+            (acc, key) => {
+                acc[key.toLowerCase()] = headers[key];
+                return acc;
+            },
+            {} as Record<string, string>
+        );
     }
 
     /**
@@ -41,7 +65,12 @@ export class HttpClient {
         url: string,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>('GET', url, undefined, headers);
+        return this.request<T>(
+            'GET',
+            url,
+            undefined,
+            headers ? this.normalizeHeaders(headers) : undefined
+        );
     }
 
     /**
@@ -57,7 +86,12 @@ export class HttpClient {
         data?: Json,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>('POST', url, data, headers);
+        return this.request<T>(
+            'POST',
+            url,
+            data,
+            headers ? this.normalizeHeaders(headers) : undefined
+        );
     }
 
     /**
@@ -73,7 +107,12 @@ export class HttpClient {
         data?: Json,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>('PUT', url, data, headers);
+        return this.request<T>(
+            'PUT',
+            url,
+            data,
+            headers ? this.normalizeHeaders(headers) : undefined
+        );
     }
 
     /**
@@ -87,7 +126,12 @@ export class HttpClient {
         url: string,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>('DELETE', url, undefined, headers);
+        return this.request<T>(
+            'DELETE',
+            url,
+            undefined,
+            headers ? this.normalizeHeaders(headers) : undefined
+        );
     }
 
     /**
@@ -103,7 +147,12 @@ export class HttpClient {
         data?: Json,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>('PATCH', url, data, headers);
+        return this.request<T>(
+            'PATCH',
+            url,
+            data,
+            headers ? this.normalizeHeaders(headers) : undefined
+        );
     }
 
     /**
@@ -117,7 +166,12 @@ export class HttpClient {
         url: string,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>('HEAD', url, undefined, headers);
+        return this.request<T>(
+            'HEAD',
+            url,
+            undefined,
+            headers ? this.normalizeHeaders(headers) : undefined
+        );
     }
 
     /**
@@ -141,7 +195,7 @@ export class HttpClient {
         // Merge default headers with request-specific headers
         const mergedHeaders = {
             ...this.options.defaultHeaders,
-            ...headers
+            ...(headers ? this.normalizeHeaders(headers) : {})
         };
 
         // Make the HTTP request
@@ -173,7 +227,7 @@ export class HttpClient {
             data: parsedData,
             statusCode: response.statusCode,
             headers: response.headers,
-            rawBody: response.body
+            body: response.body
         };
     }
 
@@ -239,8 +293,9 @@ export class HttpClient {
         }
 
         // Prepare headers with host
+        const normalizedHeaders = this.normalizeHeaders(headers);
         const requestHeaders: Record<string, string> = {
-            ...headers,
+            ...normalizedHeaders,
             host: parsedUrl.hostname
         };
 

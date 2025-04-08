@@ -25,9 +25,6 @@ export interface HttpClientOptions {
     defaultHeaders?: Record<string, string>;
 }
 
-export interface HttpClientResponse<T> {
+export interface HttpClientResponse<T> extends RequestResponse {
     data: T;
-    statusCode?: number;
-    headers: Record<string, string | string[] | undefined>;
-    rawBody?: string;
 }
