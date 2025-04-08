@@ -4201,7 +4201,6 @@ const sageMakerShutdownProps: aspects.SageMakerShutdownProps = { ... }
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS Encryption Key to use for encrypting resources. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps.property.idleTimeoutMinutes">idleTimeoutMinutes</a></code> | <code>number</code> | Optional treshold of idle time before notebook instance shutdown. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings. |
 
 ---
 
@@ -4227,18 +4226,6 @@ public readonly idleTimeoutMinutes: number;
 - *Default:* = undefined
 
 Optional treshold of idle time before notebook instance shutdown.
-
----
-
-##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.aspects.SageMakerShutdownProps.property.lambdaConfiguration"></a>
-
-```typescript
-public readonly lambdaConfiguration: LambdaConfiguration;
-```
-
-- *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
-
-Optional Lambda configuration settings.
 
 ---
 

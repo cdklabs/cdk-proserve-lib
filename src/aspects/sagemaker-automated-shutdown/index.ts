@@ -1,21 +1,15 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Stack, IAspect, CustomResource, Duration } from 'aws-cdk-lib';
-import { Provider } from 'aws-cdk-lib/custom-resources';
-
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { Stack, IAspect } from 'aws-cdk-lib';
+import { IKey } from 'aws-cdk-lib/aws-kms';
 import {
     CfnNotebookInstance,
     CfnNotebookInstanceLifecycleConfig
 } from 'aws-cdk-lib/aws-sagemaker';
-import * as lambda from 'aws-cdk-lib/aws-lambda';
-import * as iam from 'aws-cdk-lib/aws-iam';
 import { IConstruct } from 'constructs';
-import { SecureFunction } from '../../constructs/secure-function';
-import { IKey } from 'aws-cdk-lib/aws-kms';
-import { readFileSync } from 'fs';
-import { join } from 'path';
-import { LambdaConfiguration } from '../../types/lambda-configuration';
 
 export interface SageMakerShutdownProps {
     /**
@@ -25,11 +19,6 @@ export interface SageMakerShutdownProps {
     readonly idleTimeoutMinutes?: number;
 
     /**
-     * Optional Lambda configuration settings.
-     */
-    readonly lambdaConfiguration?: LambdaConfiguration;
-
-    /**
      * Optional KMS Encryption Key to use for encrypting resources.
      */
     readonly encryption?: IKey;
@@ -37,8 +26,6 @@ export interface SageMakerShutdownProps {
 
 export class SageMakerAutomatedShutdown implements IAspect {
     private processedInstances: Set<string> = new Set();
-    private lambdaFunctions: Map<string, Provider> = new Map();
-
     constructor(private readonly props: SageMakerShutdownProps = {}) {}
 
     visit(node: IConstruct): void {
@@ -61,7 +48,8 @@ export class SageMakerAutomatedShutdown implements IAspect {
         stack: Stack
     ): void {
         const lifecycleConfig = this.createLifecycleConfig(instance, stack);
-        instance.lifecycleConfigName = lifecycleConfig.ref;
+        instance.lifecycleConfigName =
+            lifecycleConfig.notebookInstanceLifecycleConfigName;
     }
 
     private createLifecycleConfig(
@@ -81,35 +69,47 @@ export class SageMakerAutomatedShutdown implements IAspect {
         );
 
         if (instance.lifecycleConfigName) {
-            const provider = this.createCustomResourceLambda(stack);
+            const originalConfig = stack.node
+                .findAll()
+                .find(
+                    (c) =>
+                        c instanceof CfnNotebookInstanceLifecycleConfig &&
+                        (c as CfnNotebookInstanceLifecycleConfig)
+                            .notebookInstanceLifecycleConfigName ===
+                            instance.lifecycleConfigName
+                ) as CfnNotebookInstanceLifecycleConfig;
 
-            const customResource = new CustomResource(
-                stack,
-                `MergeConfig-${instance.node.id}`,
-                {
-                    serviceToken: provider.serviceToken,
-                    properties: {
-                        ConfigName: instance.lifecycleConfigName,
-                        Region: stack.region,
-                        NewScript:
-                            Buffer.from(onStartScript).toString('base64'),
-                        ConfigId: instance.node.id
-                    }
+            let mergedScript = onStartScript;
+
+            if (originalConfig && originalConfig.onStart) {
+                const onStart = originalConfig.onStart;
+                if (
+                    Array.isArray(onStart) &&
+                    onStart.length > 0 &&
+                    typeof onStart[0] === 'object' &&
+                    'content' in onStart[0] &&
+                    onStart[0].content
+                ) {
+                    const existingContent = Buffer.from(
+                        onStart[0].content,
+                        'base64'
+                    ).toString('utf8');
+                    mergedScript = `${existingContent}\n\n${onStartScript}`;
                 }
-            );
+            }
+
+            const mergedConfigName = `merged-auto-shutdown-${instance.node.id}`;
 
             return new CfnNotebookInstanceLifecycleConfig(stack, configId, {
-                notebookInstanceLifecycleConfigName:
-                    instance.lifecycleConfigName,
+                notebookInstanceLifecycleConfigName: mergedConfigName,
                 onStart: [
                     {
-                        content: customResource.getAttString('MergedContent')
+                        content: Buffer.from(mergedScript).toString('base64')
                     }
                 ]
             });
         }
 
-        // Create new lifecycle config if none exists
         return new CfnNotebookInstanceLifecycleConfig(stack, configId, {
             notebookInstanceLifecycleConfigName: `auto-shutdown-${instance.node.id}`,
             onStart: [
@@ -118,121 +118,6 @@ export class SageMakerAutomatedShutdown implements IAspect {
                 }
             ]
         });
-    }
-
-    private createCustomResourceLambda(stack: Stack): Provider {
-        const stackId = stack.stackId;
-
-        if (this.lambdaFunctions.has(stackId)) {
-            return this.lambdaFunctions.get(stackId)!;
-        }
-
-        const lambdaRole = new iam.Role(stack, 'LifecycleConfigLambdaRole', {
-            assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com'),
-            managedPolicies: [
-                iam.ManagedPolicy.fromAwsManagedPolicyName(
-                    'service-role/AWSLambdaBasicExecutionRole'
-                )
-            ],
-            inlinePolicies: {
-                SageMakerAccess: new iam.PolicyDocument({
-                    statements: [
-                        new iam.PolicyStatement({
-                            actions: [
-                                'sagemaker:DescribeNotebookInstanceLifecycleConfig',
-                                'sagemaker:UpdateNotebookInstanceLifecycleConfig'
-                            ],
-                            resources: [
-                                `arn:aws:sagemaker:${stack.region}:${stack.account}:notebook-instance-lifecycle-config/*`
-                            ]
-                        })
-                    ]
-                })
-            }
-        });
-
-        const secureFunction = new SecureFunction(
-            stack,
-            'FetchLifecycleConfigFunction',
-            {
-                runtime: lambda.Runtime.PYTHON_3_13,
-                handler: 'index.handler',
-                code: lambda.Code.fromInline(`
-                import boto3
-                import base64
-                import cfnresponse
-                import json
-                
-                def handler(event, context):
-                    try:
-                        print(f"Received event: {json.dumps(event)}")
-                        
-                        if event['RequestType'] in ['Create', 'Update']:
-                            config_name = event['ResourceProperties']['ConfigName']
-                            region = event['ResourceProperties']['Region']
-                            new_script = event['ResourceProperties']['NewScript']
-                            config_id = event['ResourceProperties'].get('ConfigId', '')
-                            
-                            sagemaker = boto3.client('sagemaker', region_name=region)
-                            
-                            try:
-                                # Get the existing lifecycle config
-                                response = sagemaker.describe_notebook_instance_lifecycle_config(
-                                    NotebookInstanceLifecycleConfigName=config_name
-                                )
-                                
-                                # Extract existing OnStart scripts, excluding any auto-stop scripts
-                                existing_scripts = []
-                                if 'OnStart' in response:
-                                    for script in response['OnStart']:
-                                        content = base64.b64decode(script['Content']).decode('utf-8')
-                                        if 'auto-stop-script.py' not in content:
-                                            existing_scripts.append(content)
-                                
-                                final_script = '\\n\\n'.join(existing_scripts + [base64.b64decode(new_script).decode('utf-8')])
-                                
-                                sagemaker.update_notebook_instance_lifecycle_config(
-                                    NotebookInstanceLifecycleConfigName=config_name,
-                                    OnStart=[{
-                                        'Content': base64.b64encode(final_script.encode('utf-8')).decode('utf-8')
-                                    }]
-                                )
-                                
-                                response_data = {
-                                    'MergedContent': base64.b64encode(final_script.encode('utf-8')).decode('utf-8')
-                                }
-                                
-                            except sagemaker.exceptions.ResourceNotFound:
-                                print(f"Lifecycle config {config_name} not found, using new script only")
-                                response_data = {
-                                    'MergedContent': new_script
-                                }
-                            
-                            cfnresponse.send(event, context, cfnresponse.SUCCESS, response_data, config_name)
-                            
-                        elif event['RequestType'] == 'Delete':
-                            cfnresponse.send(event, context, cfnresponse.SUCCESS, {}, 
-                                           event.get('PhysicalResourceId', event['ResourceProperties'].get('ConfigName')))
-                            
-                    except Exception as e:
-                        print(f"Error occurred: {str(e)}")
-                        cfnresponse.send(event, context, cfnresponse.FAILED, {
-                            'Error': str(e)
-                        }, event.get('PhysicalResourceId', 'error'))
-            `),
-                role: lambdaRole,
-                timeout: Duration.seconds(30),
-                reservedConcurrentExecutions: 10,
-                encryption: this.props.encryption
-            }
-        );
-
-        const provider = new Provider(stack, 'LifecycleConfigProvider', {
-            onEventHandler: secureFunction.function
-        });
-
-        this.lambdaFunctions.set(stackId, provider);
-        return provider;
     }
 
     private generateStartupScript(
