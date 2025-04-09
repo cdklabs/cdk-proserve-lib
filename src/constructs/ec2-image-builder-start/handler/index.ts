@@ -2,7 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { SNSEvent, Context } from 'aws-lambda';
-import axios from 'axios';
+import { HttpClient } from '../../../common/lambda/http-client';
+import { Json } from '../../../types/json';
 
 type SignalStatus = 'SUCCESS' | 'FAILURE';
 type ImagePipelineStatus = 'AVAILABLE' | 'FAILED';
@@ -26,59 +27,52 @@ export const handler = async (
     event: SNSEvent,
     context: Context
 ): Promise<void> => {
-    try {
-        const message: ImagePipelineSnsMessage = JSON.parse(
-            event.Records[0].Sns.Message
+    const client = new HttpClient();
+
+    const message: ImagePipelineSnsMessage = JSON.parse(
+        event.Records[0].Sns.Message
+    );
+    console.info(`Received message: ${JSON.stringify(message)}`);
+
+    // Process the message as needed
+    const receivedStatus: ImagePipelineStatus = message.state.status;
+    console.info(`Received status: ${receivedStatus}`);
+
+    let status: SignalStatus;
+    if (receivedStatus === 'AVAILABLE') {
+        status = 'SUCCESS';
+    } else {
+        status = 'FAILURE';
+    }
+
+    // Environment
+    const waitHandleUrl = process.env.WAIT_HANDLE_URL;
+    if (!waitHandleUrl) {
+        throw new Error('WAIT_HANDLE_URL environment variable is not set');
+    }
+    const imageBuildArn = process.env.IMAGE_BUILD_ARN;
+
+    if (message.arn == imageBuildArn) {
+        console.info('Image build ARN matches.');
+
+        // Signal the WaitCondition
+        const signalMessage: SignalMessage = {
+            Status: status,
+            Reason:
+                status == 'FAILURE'
+                    ? `Pipeline has given a ${status} signal. ${message.state.reason}`
+                    : 'Complete.',
+            UniqueId: context.awsRequestId,
+            Data: `Pipeline has given a ${status} signal from SNS.`
+        };
+        await client.put<void>(waitHandleUrl, signalMessage as unknown as Json);
+
+        console.info(
+            `Successfully signaled WaitCondition: ${JSON.stringify(signalMessage)}`
         );
-        console.info(`Received message: ${JSON.stringify(message)}`);
-
-        // Process the message as needed
-        const receivedStatus: ImagePipelineStatus = message.state.status;
-        console.info(`Received status: ${receivedStatus}`);
-
-        let status: SignalStatus;
-        if (receivedStatus === 'AVAILABLE') {
-            status = 'SUCCESS';
-        } else {
-            status = 'FAILURE';
-        }
-
-        // Environment
-        const waitHandleUrl = process.env.WAIT_HANDLE_URL;
-        if (!waitHandleUrl) {
-            throw new Error('WAIT_HANDLE_URL environment variable is not set');
-        }
-        const imageBuildArn = process.env.IMAGE_BUILD_ARN;
-
-        if (message.arn == imageBuildArn) {
-            console.info('Image build ARN matches.');
-
-            // Signal the WaitCondition
-            const signalMessage: SignalMessage = {
-                Status: status,
-                Reason:
-                    status == 'FAILURE'
-                        ? `Pipeline has given a ${status} signal. ${message.state.reason}`
-                        : 'Complete.',
-                UniqueId: context.awsRequestId,
-                Data: `Pipeline has given a ${status} signal from SNS.`
-            };
-            await axios.put(waitHandleUrl, signalMessage);
-
-            console.info(
-                `Successfully signaled WaitCondition: ${JSON.stringify(signalMessage)}`
-            );
-        } else {
-            console.info(
-                `Image build ARN ${message.arn} does not match ${imageBuildArn}.`
-            );
-        }
-    } catch (error) {
-        if (axios.isAxiosError(error)) {
-            throw new Error(
-                `${error.response?.status} ${JSON.stringify(error.response?.data)}`
-            );
-        }
-        throw error;
+    } else {
+        console.info(
+            `Image build ARN ${message.arn} does not match ${imageBuildArn}.`
+        );
     }
 };
