@@ -45,12 +45,12 @@ export class HttpClient<TOptions extends HttpClientOptions> {
     private normalizeHeaders(
         headers: Record<string, string>
     ): Record<string, string> {
-        return Object.keys(headers).reduce(
+        return Object.keys(headers).reduce<Record<string, string>>(
             (acc, key) => {
                 acc[key.toLowerCase()] = headers[key];
                 return acc;
             },
-            {} as Record<string, string>
+            {}
         );
     }
 
@@ -65,12 +65,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
         url: string,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>(
-            'GET',
-            url,
-            undefined,
-            headers ? this.normalizeHeaders(headers) : undefined
-        );
+        return this.request<T>('GET', url, undefined, headers);
     }
 
     /**
@@ -86,12 +81,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
         data?: Json,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>(
-            'POST',
-            url,
-            data,
-            headers ? this.normalizeHeaders(headers) : undefined
-        );
+        return this.request<T>('POST', url, data, headers);
     }
 
     /**
@@ -107,12 +97,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
         data?: Json,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>(
-            'PUT',
-            url,
-            data,
-            headers ? this.normalizeHeaders(headers) : undefined
-        );
+        return this.request<T>('PUT', url, data, headers);
     }
 
     /**
@@ -126,12 +111,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
         url: string,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>(
-            'DELETE',
-            url,
-            undefined,
-            headers ? this.normalizeHeaders(headers) : undefined
-        );
+        return this.request<T>('DELETE', url, undefined, headers);
     }
 
     /**
@@ -147,12 +127,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
         data?: Json,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>(
-            'PATCH',
-            url,
-            data,
-            headers ? this.normalizeHeaders(headers) : undefined
-        );
+        return this.request<T>('PATCH', url, data, headers);
     }
 
     /**
@@ -166,12 +141,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
         url: string,
         headers?: Record<string, string>
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>(
-            'HEAD',
-            url,
-            undefined,
-            headers ? this.normalizeHeaders(headers) : undefined
-        );
+        return this.request<T>('HEAD', url, undefined, headers);
     }
 
     /**
@@ -242,15 +212,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
             return url;
         }
 
-        // Remove trailing slash from baseUrl if present
-        const base = this.options.baseUrl.endsWith('/')
-            ? this.options.baseUrl.slice(0, -1)
-            : this.options.baseUrl;
-
-        // Remove leading slash from url if present
-        const path = url.startsWith('/') ? url.slice(1) : url;
-
-        return `${base}/${path}`;
+        return new URL(url, this.options.baseUrl).toString();
     }
 
     /**

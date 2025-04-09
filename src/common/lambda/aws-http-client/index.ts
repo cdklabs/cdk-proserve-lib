@@ -6,7 +6,7 @@ import { STS } from '@aws-sdk/client-sts';
 import { defaultProvider } from '@aws-sdk/credential-provider-node';
 import { SignatureV4 } from '@smithy/signature-v4';
 import type { AwsCredentialIdentity, Provider } from '@smithy/types';
-import { AwsHttpClientOptions as AwsHttpClientOptions } from './types';
+import { AwsHttpClientOptions } from './types';
 import { Json } from '../../../types/json';
 import { HttpClient } from '../http-client';
 import {
@@ -53,9 +53,7 @@ export class AwsHttpClient extends HttpClient<AwsHttpClientOptions> {
         body?: Json
     ): Promise<RequestResponse> {
         const request = this.createRequest(url, method, headers, body);
-        const signedRequest = (await this.signRequest(
-            request
-        )) as HttpClientRequest;
+        const signedRequest = await this.signRequest(request);
         return this.sendRequest(signedRequest);
     }
 
@@ -80,7 +78,7 @@ export class AwsHttpClient extends HttpClient<AwsHttpClientOptions> {
             );
         }
 
-        if ((this.options as AwsHttpClientOptions).roleArn) {
+        if (this.options.roleArn) {
             // Check if we need new credentials (undefined or expiring within 5 minutes)
             const now = new Date();
             const needNewCredentials =
@@ -92,7 +90,7 @@ export class AwsHttpClient extends HttpClient<AwsHttpClientOptions> {
             if (needNewCredentials) {
                 const stsClient = new STS();
                 const response = await stsClient.assumeRole({
-                    RoleArn: (this.options as AwsHttpClientOptions).roleArn!,
+                    RoleArn: this.options.roleArn,
                     RoleSessionName: 'AwsSigV4Request',
                     DurationSeconds: 900 // 15m (minimum)
                 });
@@ -118,7 +116,7 @@ export class AwsHttpClient extends HttpClient<AwsHttpClientOptions> {
         const signer = new SignatureV4({
             credentials: credentials,
             region: region,
-            service: (this.options as AwsHttpClientOptions).service,
+            service: this.options.service,
             sha256: Sha256
         });
 

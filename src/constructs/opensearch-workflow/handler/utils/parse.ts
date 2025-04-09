@@ -49,6 +49,30 @@ export function substituteTemplateValues(
     }, templateContents);
 }
 
+/**
+ * Generates a mapping of keys to pre-signed S3 URLs.
+ *
+ * This function takes a record of key-value pairs where the value is an S3 path in the format
+ * 's3://bucket-name/path/to/object', and transforms each value into a pre-signed URL that allows
+ * temporary access to the object for 1 hour.
+ *
+ * @param s3PathMappings - An optional record mapping keys to S3 paths in the format 's3://bucket-name/path/to/object'
+ * @returns A promise that resolves to a record mapping the original keys to their corresponding pre-signed URLs.
+ * If no mappings are provided, returns an empty object.
+ *
+ * @example
+ * // Input
+ * const mappings = {
+ *   'myImage': 's3://my-bucket/images/picture.jpg',
+ *   'myDocument': 's3://my-bucket/documents/file.pdf'
+ * };
+ *
+ * // Output
+ * // {
+ * //   'myImage': 'https://my-bucket.s3.amazonaws.com/images/picture.jpg?...',
+ * //   'myDocument': 'https://my-bucket.s3.amazonaws.com/documents/file.pdf?...'
+ * // }
+ */
 export async function generatePresignedUrlMapping(
     s3PathMappings?: Record<string, string>
 ): Promise<Record<string, string>> {
