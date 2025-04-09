@@ -12,12 +12,12 @@ import {
     Mocked,
     MockedClass
 } from 'vitest';
-import { handler } from '../../../../src/constructs/ec2-image-builder-start/handler';
 import { HttpClient } from '../../../../src/common/lambda/http-client';
 import {
     HttpClientOptions,
     HttpClientResponse
 } from '../../../../src/common/lambda/http-client/types';
+import { handler } from '../../../../src/constructs/ec2-image-builder-start/handler';
 
 // Mock the dependencies
 vi.mock('../../../../src/common/lambda/http-client');
