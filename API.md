@@ -1753,6 +1753,210 @@ The tree node.
 ---
 
 
+### OpenSearchWorkflow <a name="OpenSearchWorkflow" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow"></a>
+
+Create OpenSearch Workflows using the flow framework to automate the provisioning of complex tasks using JSON or YAML.
+
+This construct creates a custom resource that deploys a Flow Framework
+template to an OpenSearch domain. It handles the deployment and lifecycle
+management of the workflow through a Lambda-backed custom resources. You can
+read more about the flow framework on AWS at the reference link below.
+
+*Example*
+
+```typescript
+import { OpenSearchWorkflow } from '@cdklabs/cdk-proserve-lib/constructs';
+import { Domain } from 'aws-cdk-lib/aws-opensearchservice';
+import { Role } from 'aws-cdk-lib/aws-iam';
+
+const aosDomain = Domain.fromDomainEndpoint(this, 'Domain', 'aos-endpoint');
+const aosRole = Role.fromRoleName(this, 'Role', 'AosRole');
+
+// Create OpenSearch Workflow using a YAML workflow template
+const nlpIngestPipeline = new OpenSearchWorkflow(
+    this,
+    'NlpIngestPipeline',
+    {
+        domain: aosDomain,
+        domainAuthentication: aosRole,
+        flowFrameworkTemplatePath: join(
+            __dirname,
+            'nlp-ingest-pipeline.yaml'
+        )
+    }
+);
+
+// Retrieve the deployed model from the OpenSearch Workflow
+this.embeddingModelId = nlpIngestPipeline.getResourceId(
+    'deploy_sentence_model'
+);
+```
+
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+new constructs.OpenSearchWorkflow(scope: Construct, id: string, props: OpenSearchWorkflowProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the custom resource belongs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the custom resource. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps</code> | Metadata for configuring the custom resource. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+Parent to which the custom resource belongs.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+Unique identifier for the custom resource.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps
+
+Metadata for configuring the custom resource.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.getResourceId">getResourceId</a></code> | Retrieves a created Resource ID from the Workflow by the provided workflowStepId. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `getResourceId` <a name="getResourceId" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.getResourceId"></a>
+
+```typescript
+public getResourceId(workflowStepId: string): string
+```
+
+Retrieves a created Resource ID from the Workflow by the provided workflowStepId.
+
+The workflowStepId is the `id` value of the node in your
+list of workflow nodes from your workflow template
+
+###### `workflowStepId`<sup>Required</sup> <a name="workflowStepId" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.getResourceId.parameter.workflowStepId"></a>
+
+- *Type:* string
+
+the workflow step id from the workflow template.
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.isConstruct"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+constructs.OpenSearchWorkflow.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.isCompleteHandler">isCompleteHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | The Lambda function that will be called to determine if the execution is complete for the custom resource. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.onEventHandler">onEventHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | The Lambda function that will handle On Event requests for the custom resource. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.workflowId">workflowId</a></code> | <code>string</code> | The unique identifier of the deployed OpenSearch workflow. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `isCompleteHandler`<sup>Required</sup> <a name="isCompleteHandler" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.isCompleteHandler"></a>
+
+```typescript
+public readonly isCompleteHandler: IFunction;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.IFunction
+
+The Lambda function that will be called to determine if the execution is complete for the custom resource.
+
+---
+
+##### `onEventHandler`<sup>Required</sup> <a name="onEventHandler" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.onEventHandler"></a>
+
+```typescript
+public readonly onEventHandler: IFunction;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.IFunction
+
+The Lambda function that will handle On Event requests for the custom resource.
+
+---
+
+##### `workflowId`<sup>Required</sup> <a name="workflowId" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.property.workflowId"></a>
+
+```typescript
+public readonly workflowId: string;
+```
+
+- *Type:* string
+
+The unique identifier of the deployed OpenSearch workflow.
+
+This ID can be used to reference and manage the workflow after deployment.
+
+---
+
+
 ### WebApplicationFirewall <a name="WebApplicationFirewall" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall"></a>
 
 Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
@@ -4125,6 +4329,156 @@ public readonly lambdaConfiguration: LambdaConfiguration;
 - *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
 
 Optional Lambda configuration settings.
+
+---
+
+### OpenSearchWorkflowProps <a name="OpenSearchWorkflowProps" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps"></a>
+
+Properties for configuring an OpenSearch workflow.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const openSearchWorkflowProps: constructs.OpenSearchWorkflowProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.domain">domain</a></code> | <code>aws-cdk-lib.aws_opensearchservice.IDomain</code> | The OpenSearch domain to deploy the workflow to. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.domainAuthentication">domainAuthentication</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | IAM role used for domain authentication. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.flowFrameworkTemplatePath">flowFrameworkTemplatePath</a></code> | <code>string</code> | Path to the Flow Framework template file (YAML or JSON). |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.allowDestructiveOperations">allowDestructiveOperations</a></code> | <code>@cdklabs/cdk-proserve-lib.types.DestructiveOperation</code> | Whether to allow destructive operations like updating/deleting workflows. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS key for encryption. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional lambda configuration settings for the custom resource provider. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.templateAssetVariables">templateAssetVariables</a></code> | <code>{[ key: string ]: string \| aws-cdk-lib.aws_s3_assets.Asset}</code> | Optional asset variables for the workflow. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.templateCreationVariables">templateCreationVariables</a></code> | <code>{[ key: string ]: string}</code> | Optional creation variables for the workflow. Your template must be configured to accept these variables using `${{{ my_variable }}}` syntax. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.templateProvisionVariables">templateProvisionVariables</a></code> | <code>{[ key: string ]: string}</code> | Optional provisioning variables for the workflow. Your template must be configured to accept these variables using `${{ my_variable }}` syntax. |
+
+---
+
+##### `domain`<sup>Required</sup> <a name="domain" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.domain"></a>
+
+```typescript
+public readonly domain: IDomain;
+```
+
+- *Type:* aws-cdk-lib.aws_opensearchservice.IDomain
+
+The OpenSearch domain to deploy the workflow to.
+
+---
+
+##### `domainAuthentication`<sup>Required</sup> <a name="domainAuthentication" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.domainAuthentication"></a>
+
+```typescript
+public readonly domainAuthentication: IRole;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IRole
+
+IAM role used for domain authentication.
+
+---
+
+##### `flowFrameworkTemplatePath`<sup>Required</sup> <a name="flowFrameworkTemplatePath" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.flowFrameworkTemplatePath"></a>
+
+```typescript
+public readonly flowFrameworkTemplatePath: string;
+```
+
+- *Type:* string
+
+Path to the Flow Framework template file (YAML or JSON).
+
+---
+
+##### `allowDestructiveOperations`<sup>Optional</sup> <a name="allowDestructiveOperations" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.allowDestructiveOperations"></a>
+
+```typescript
+public readonly allowDestructiveOperations: DestructiveOperation;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.types.DestructiveOperation
+
+Whether to allow destructive operations like updating/deleting workflows.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Optional KMS key for encryption.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
+
+Optional lambda configuration settings for the custom resource provider.
+
+---
+
+##### `templateAssetVariables`<sup>Optional</sup> <a name="templateAssetVariables" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.templateAssetVariables"></a>
+
+```typescript
+public readonly templateAssetVariables: {[ key: string ]: string | Asset};
+```
+
+- *Type:* {[ key: string ]: string | aws-cdk-lib.aws_s3_assets.Asset}
+
+Optional asset variables for the workflow.
+
+This can either be an AWS CDK
+S3 Asset object or a string that represents an S3 path (e.g. `s3://my-bucket/my-key`).
+Your template must be configured to accept these variables using
+`${{{ my_variable }}}` syntax. For each one of these variables, an S3
+pre-signed URL will be generated and substituted into your template right
+before workflow creation time. If you provide an S3 path, you must grant
+read permissions to the appropriate bucket in order for the custom
+resource to be able to generate a pre-signed url.
+
+---
+
+##### `templateCreationVariables`<sup>Optional</sup> <a name="templateCreationVariables" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.templateCreationVariables"></a>
+
+```typescript
+public readonly templateCreationVariables: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Optional creation variables for the workflow. Your template must be configured to accept these variables using `${{{ my_variable }}}` syntax.
+
+These variables will be substituted in prior to creation, so that will
+be available during creation time and provision time.
+
+---
+
+##### `templateProvisionVariables`<sup>Optional</sup> <a name="templateProvisionVariables" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflowProps.property.templateProvisionVariables"></a>
+
+```typescript
+public readonly templateProvisionVariables: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Optional provisioning variables for the workflow. Your template must be configured to accept these variables using `${{ my_variable }}` syntax.
+
+https://opensearch.org/docs/latest/automating-configurations/api/provision-workflow
 
 ---
 
@@ -30531,6 +30885,44 @@ The installation is performed by enabling the Windows features built into the Wi
 ##### `YUM_REPOSITORY_TEST_LINUX` <a name="YUM_REPOSITORY_TEST_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.YUM_REPOSITORY_TEST_LINUX"></a>
 
 Tests whether yum repository works successfully.
+
+---
+
+
+### DestructiveOperation <a name="DestructiveOperation" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation"></a>
+
+Represents types of destructive operations that can be performed on resources.
+
+Destructive operations are actions that modify or remove existing resources,
+potentially resulting in data loss if not handled properly.
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.DestructiveOperation.UPDATE">UPDATE</a></code> | Indicates an operation that modifies existing resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.DestructiveOperation.DELETE">DELETE</a></code> | Indicates an operation that removes resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.DestructiveOperation.ALL">ALL</a></code> | Represents all types of destructive operations. |
+
+---
+
+##### `UPDATE` <a name="UPDATE" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation.UPDATE"></a>
+
+Indicates an operation that modifies existing resources.
+
+---
+
+
+##### `DELETE` <a name="DELETE" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation.DELETE"></a>
+
+Indicates an operation that removes resources.
+
+---
+
+
+##### `ALL` <a name="ALL" id="@cdklabs/cdk-proserve-lib.types.DestructiveOperation.ALL"></a>
+
+Represents all types of destructive operations.
 
 ---
 

@@ -27,7 +27,8 @@ export const configureLicense = (project: CdklabsTypeScriptProject) => {
                     ...['html', 'txt'].map(
                         (type) =>
                             `test/patterns/apigateway-static-hosting/**/fixtures/**/*.${type}`
-                    )
+                    ),
+                    'test/constructs/opensearch-workflow/fixtures/invalid.txt'
                 ],
                 paths: ['src', 'test', 'utilities'],
                 language: {
