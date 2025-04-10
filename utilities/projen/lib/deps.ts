@@ -36,7 +36,6 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         '@types/mime@3.0.0',
         '@types/morgan@1.9.9',
         'adm-zip@0.5.16',
-        'axios@1.7.7',
         'express@5.0.1',
         'express-async-handler@1.2.0',
         'js-yaml@4.1.0',
