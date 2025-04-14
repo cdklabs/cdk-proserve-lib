@@ -27,17 +27,6 @@ describeCdkTest(SageMakerAutomatedShutdown, (_, getStack, getTemplate) => {
             enableKeyRotation: true
         });
 
-        NagSuppressions.addStackSuppressions(stack, [
-            {
-                id: 'AwsSolutions-IAM4',
-                reason: 'Using best practice AWS Managed Lambda policy'
-            },
-            {
-                id: 'AwsSolutions-IAM5',
-                reason: 'Lambda needs to describe any existing lifecycle config that might be attached to the notebook instance. The name is not known at deployment time as it depends on the instance configuration.'
-            }
-        ]);
-
         vpc = new Vpc(stack, 'TestVpc', {
             maxAzs: 2,
             subnetConfiguration: [

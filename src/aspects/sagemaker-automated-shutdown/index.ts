@@ -25,7 +25,6 @@ export interface SageMakerShutdownProps {
 }
 
 export class SageMakerAutomatedShutdown implements IAspect {
-    private processedInstances: Set<string> = new Set();
     constructor(private readonly props: SageMakerShutdownProps = {}) {}
 
     visit(node: IConstruct): void {
@@ -34,13 +33,8 @@ export class SageMakerAutomatedShutdown implements IAspect {
         }
 
         const cfnInstance = node as CfnNotebookInstance;
-        if (this.processedInstances.has(cfnInstance.ref)) {
-            return;
-        }
-
         const stack = Stack.of(node);
         this.applyShutdownMechanism(cfnInstance, stack);
-        this.processedInstances.add(cfnInstance.ref);
     }
 
     private applyShutdownMechanism(

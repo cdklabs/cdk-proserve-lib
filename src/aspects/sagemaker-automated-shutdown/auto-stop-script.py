@@ -1,3 +1,6 @@
+## Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+## SPDX-License-Identifier: Apache-2.0
+
 import requests
 from datetime import datetime
 import getopt, sys
@@ -17,7 +20,7 @@ class Capturing(list):
         sys.stdout = self._stdout
 
 # OVERVIEW
-# This script is adapted from https://github.com/aws-samples/amazon-sagemaker-notebook-instance-lifecycle-config-samples/blob/master/scripts/auto-stop-idle/autostop.py. Modifications are made to calculate four quantities (CPU utilization, CPU memory utilization, GPU utilization, GPU memory utilization) at regular intervals defined by the cron expression of the on-start script. These aggregate values are also added as tags to the notebook instance so users can get an idea of what the utilization looks like without accessing the actual jupyter notebook. Additionally, a cloudwatch agent logs more detailed metrics for users to monitor notebook instance usage. Fianlly, an example query (commented out) is provided to use within Cost Explorer to visualize aggregate metrics. 
+# This script is adapted from https://github.com/aws-samples/amazon-sagemaker-notebook-instance-lifecycle-config-samples/blob/master/scripts/auto-stop-idle/autostop.py. Modifications are made to calculate four quantities (CPU utilization, CPU memory utilization, GPU utilization, GPU memory utilization) at regular intervals defined by the cron expression of the on-start script. These aggregate values are also added as tags to the notebook instance so users can get an idea of what the utilization looks like without accessing the actual jupyter notebook. Additionally, a cloudwatch agent logs more detailed metrics for users to monitor notebook instance usage. Finally, an example query (commented out) is provided to use within Cost Explorer to visualize aggregate metrics. 
 
 # Usage
 usageInfo = """Usage:
