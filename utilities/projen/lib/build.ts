@@ -38,6 +38,7 @@ export const configureBuild = (project: CdklabsTypeScriptProject) => {
         ]
     });
     project.tsconfigDev?.addInclude('esbuild.ts');
+    project.tsconfigDev?.addInclude('vitest.config.ts');
     project.postCompileTask.spawn(compileLambdas);
 
     // Clean Up Task

@@ -58,6 +58,8 @@
         "devDependencies": [
           "**/test/**",
           "**/build-tools/**",
+          "esbuild.ts",
+          "vitest.config.ts",
           "**/handler/**/*.ts",
           "**/utilities/**/*.ts",
           "src/common/lambda/**/*.ts",
