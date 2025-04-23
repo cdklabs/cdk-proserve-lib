@@ -1,8 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { dirname, join } from 'node:path';
 import { mkdirSync, rmSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { build, BuildOptions } from 'esbuild';
 import glob from 'glob';
 
@@ -102,7 +102,8 @@ function emptyHandlerDirectories(entryPoints: string[]) {
 void (async () => {
     const entryPoints = await findHandlers();
     emptyHandlerDirectories(entryPoints);
-    build({
+
+    await build({
         ...buildDefaults,
         entryPoints: entryPoints,
         outdir: determineOutdir(entryPoints, 'lib')

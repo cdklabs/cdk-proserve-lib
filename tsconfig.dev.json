@@ -29,6 +29,7 @@
     "src/**/*.ts",
     "test/**/*.ts",
     "esbuild.ts",
+    "vitest.config.ts",
     "utilities/**/*.ts",
     ".projenrc.ts",
     "projenrc/**/*.ts"
