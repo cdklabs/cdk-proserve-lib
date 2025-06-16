@@ -61,12 +61,12 @@
     "@aws-sdk/client-iam": "3.600.0",
     "@aws-sdk/client-imagebuilder": "3.600.0",
     "@aws-sdk/client-opensearch": "3.600.0",
-    "@aws-sdk/client-pricing": "^3.826.0",
+    "@aws-sdk/client-pricing": "^3.828.0",
     "@aws-sdk/client-s3": "3.600.0",
     "@aws-sdk/client-secrets-manager": "3.600.0",
     "@aws-sdk/client-ssm": "3.600.0",
     "@aws-sdk/client-sts": "3.600.0",
-    "@aws-sdk/client-wafv2": "^3.826.0",
+    "@aws-sdk/client-wafv2": "^3.828.0",
     "@aws-sdk/credential-provider-node": "3.600.0",
     "@aws-sdk/lib-dynamodb": "3.600.0",
     "@aws-sdk/s3-request-presigner": "3.600.0",
@@ -123,7 +123,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "uuid": "11.0.3",
-    "vitest": "^3.2.1"
+    "vitest": "^3.2.3"
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.188.0",
