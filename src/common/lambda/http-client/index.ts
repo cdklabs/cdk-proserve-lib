@@ -9,7 +9,8 @@ import {
     HttpClientResponse,
     HttpMethod,
     RequestResponse,
-    HttpClientRequest
+    HttpClientRequest,
+    HttpRequestOptions
 } from './types';
 import { HttpClientResponseError } from './types/exception';
 import { Json } from '../../../types/json';
@@ -58,14 +59,14 @@ export class HttpClient<TOptions extends HttpClientOptions> {
      * Makes a GET request
      *
      * @param url - URL path (appended to baseUrl if provided in options)
-     * @param headers - Optional additional headers
+     * @param options - Optional additional data
      * @returns Promise resolving to the typed response
      */
     async get<T>(
         url: string,
-        headers?: Record<string, string>
+        options?: HttpRequestOptions
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>('GET', url, undefined, headers);
+        return this.request<T>('GET', url, undefined, options);
     }
 
     /**
@@ -73,15 +74,15 @@ export class HttpClient<TOptions extends HttpClientOptions> {
      *
      * @param url - URL path (appended to baseUrl if provided in options)
      * @param data - Request body
-     * @param headers - Optional additional headers
+     * @param options - Optional additional data
      * @returns Promise resolving to the typed response
      */
     async post<T>(
         url: string,
         data?: Json,
-        headers?: Record<string, string>
+        options?: HttpRequestOptions
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>('POST', url, data, headers);
+        return this.request<T>('POST', url, data, options);
     }
 
     /**
@@ -89,29 +90,29 @@ export class HttpClient<TOptions extends HttpClientOptions> {
      *
      * @param url - URL path (appended to baseUrl if provided in options)
      * @param data - Request body
-     * @param headers - Optional additional headers
+     * @param options - Optional additional data
      * @returns Promise resolving to the typed response
      */
     async put<T>(
         url: string,
         data?: Json,
-        headers?: Record<string, string>
+        options?: HttpRequestOptions
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>('PUT', url, data, headers);
+        return this.request<T>('PUT', url, data, options);
     }
 
     /**
      * Makes a DELETE request
      *
      * @param url - URL path (appended to baseUrl if provided in options)
-     * @param headers - Optional additional headers
+     * @param options - Optional additional data
      * @returns Promise resolving to the typed response
      */
     async delete<T>(
         url: string,
-        headers?: Record<string, string>
+        options?: HttpRequestOptions
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>('DELETE', url, undefined, headers);
+        return this.request<T>('DELETE', url, undefined, options);
     }
 
     /**
@@ -119,29 +120,29 @@ export class HttpClient<TOptions extends HttpClientOptions> {
      *
      * @param url - URL path (appended to baseUrl if provided in options)
      * @param data - Request body
-     * @param headers - Optional additional headers
+     * @param options - Optional additional data
      * @returns Promise resolving to the typed response
      */
     async patch<T>(
         url: string,
         data?: Json,
-        headers?: Record<string, string>
+        options?: HttpRequestOptions
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>('PATCH', url, data, headers);
+        return this.request<T>('PATCH', url, data, options);
     }
 
     /**
      * Makes a HEAD request
      *
      * @param url - URL path (appended to baseUrl if provided in options)
-     * @param headers - Optional additional headers
+     * @param options - Optional additional data
      * @returns Promise resolving to the typed response
      */
     async head<T>(
         url: string,
-        headers?: Record<string, string>
+        options?: HttpRequestOptions
     ): Promise<HttpClientResponse<T>> {
-        return this.request<T>('HEAD', url, undefined, headers);
+        return this.request<T>('HEAD', url, undefined, options);
     }
 
     /**
@@ -150,14 +151,14 @@ export class HttpClient<TOptions extends HttpClientOptions> {
      * @param method - HTTP method
      * @param url - URL path (appended to baseUrl if provided in options)
      * @param data - Optional request body
-     * @param headers - Optional additional headers
+     * @param options - Optional additional data
      * @returns Promise resolving to the typed response
      */
     async request<T>(
         method: HttpMethod,
         url: string,
         data?: Json,
-        headers?: Record<string, string>
+        options?: HttpRequestOptions
     ): Promise<HttpClientResponse<T>> {
         // Build the full URL
         const fullUrl = this.buildUrl(url);
@@ -165,7 +166,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
         // Merge default headers with request-specific headers
         const mergedHeaders = {
             ...this.options.defaultHeaders,
-            ...(headers ? this.normalizeHeaders(headers) : {})
+            ...(options?.headers ? this.normalizeHeaders(options.headers) : {})
         };
 
         // Make the HTTP request
@@ -178,6 +179,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
 
         // Check if status code is not in the 2xx range
         if (
+            !this.options.passNonSuccessfulStatusCodes &&
             response.statusCode &&
             (response.statusCode < 200 || response.statusCode >= 300)
         ) {
@@ -239,14 +241,14 @@ export class HttpClient<TOptions extends HttpClientOptions> {
      *
      * @param requestUrl - Full URL for the request
      * @param method - HTTP method (GET, POST, etc.)
-     * @param headers - Optional additional headers
+     * @param options - Optional data
      * @param body - Optional request body
      * @returns An HTTP request object
      */
     protected createRequest(
         requestUrl: string,
         method: HttpMethod,
-        headers: Record<string, string> = {},
+        options?: HttpRequestOptions,
         body?: Json
     ): HttpClientRequest {
         const parsedUrl = parse(requestUrl);
@@ -255,7 +257,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
         }
 
         // Prepare headers with host
-        const normalizedHeaders = this.normalizeHeaders(headers);
+        const normalizedHeaders = this.normalizeHeaders(options?.headers ?? {});
         const requestHeaders: Record<string, string> = {
             ...normalizedHeaders,
             host: parsedUrl.hostname
@@ -273,6 +275,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
             path: parsedUrl.path ?? '/',
             method,
             headers: requestHeaders,
+            params: options?.params,
             body: body ? JSON.stringify(body) : undefined
         };
 
@@ -292,6 +295,10 @@ export class HttpClient<TOptions extends HttpClientOptions> {
             const isHttps = request.protocol === 'https:';
             const protocolRequest = isHttps ? httpsRequest : httpRequest;
 
+            const params = request.params
+                ? new URLSearchParams(request.params)
+                : undefined;
+
             const req = protocolRequest(
                 {
                     hostname: request.hostname,
@@ -299,6 +306,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
                     path: request.path,
                     method: request.method,
                     headers: request.headers,
+                    searchParams: params,
                     timeout: this.options.timeout
                 },
                 (res) => {
