@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { getRandomValues } from 'node:crypto';
+import { ProvisionerConfiguration } from '../../../types/provisioner-configuration';
 import { ProvisioningConfigurationFile } from '../../../types/provisioning-configuration-file';
 import { BaseProvisioner, EntityType } from './base';
 
@@ -24,6 +25,20 @@ export class SavedObjectProvisioner extends BaseProvisioner {
 
     protected override type: EntityType = 'saved-objects';
 
+    /**
+     * Partial endpoint for the visualization tool
+     */
+    private endpoint: string;
+
+    constructor(configuration: ProvisionerConfiguration) {
+        super(configuration);
+
+        this.endpoint =
+            configuration.domainType === 'Elasticsearch'
+                ? '_kibana'
+                : '_dashboards';
+    }
+
     protected override async create(
         entity: ProvisioningConfigurationFile
     ): Promise<void> {
@@ -40,13 +55,16 @@ export class SavedObjectProvisioner extends BaseProvisioner {
             boundaryFooter
         ];
 
+        const xsrfTokenPreamble =
+            this.configuration.domainType === 'OpenSearch' ? 'osd' : 'kbn';
+
         await this.configuration.client.post(
-            '/_dashboards/api/saved_objects/_import?overwrite=true', // TODO: Make generalized to Kibana too
+            `/${this.endpoint}/api/saved_objects/_import?overwrite=true`,
             requestBody.join('\r\n'),
             {
                 headers: {
                     'Content-Type': `multipart/form-data; boundary=${boundary}`,
-                    'osd-xsrf': 'true'
+                    [`${xsrfTokenPreamble}-xsrf`]: 'true'
                 }
             }
         );

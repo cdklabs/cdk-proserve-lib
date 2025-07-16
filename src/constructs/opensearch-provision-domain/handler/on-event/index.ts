@@ -49,7 +49,8 @@ function createProvisionerConfig(
         allowDestructiveOperations:
             event.ResourceProperties.AllowDestructiveOperations,
         assetPath: assetPath,
-        client: client
+        client: client,
+        domainType: event.ResourceProperties.DomainType
     };
 }
 
