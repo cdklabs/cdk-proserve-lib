@@ -19,6 +19,21 @@ export interface RequestResponse {
 }
 
 /**
+ * Represents the options for making an HTTP request
+ */
+export interface HttpRequestOptions {
+    /**
+     * Additional HTTP headers to send
+     */
+    headers?: Record<string, string>;
+
+    /**
+     * Query string parameters to send
+     */
+    params?: Record<string, string>;
+}
+
+/**
  * Represents an outgoing HTTP client request.
  */
 export interface HttpClientRequest {
@@ -34,6 +49,8 @@ export interface HttpClientRequest {
     method: string;
     /** The HTTP headers to include in the request. */
     headers: Record<string, string>;
+    /** The query string parameters to include in the request. */
+    params?: Record<string, string>;
     /** The request body as a string. */
     body?: string;
 }
@@ -48,6 +65,8 @@ export interface HttpClientOptions {
     timeout?: number;
     /** Default headers to include in all requests. */
     defaultHeaders?: Record<string, string>;
+    /** If specified, errors will NOT be thrown for status codes outside of 200-300 */
+    passNonSuccessfulStatusCodes?: boolean;
 }
 
 /**
