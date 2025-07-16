@@ -138,20 +138,27 @@ async function onUpdate(
     event: CloudFormationCustomResourceUpdateEvent<ResourceProperties>
 ): Promise<CdkCustomResourceResponse<never>> {
     // TODO: Probably doesnt work properly since no access to OLD resource properties
-    const asset = await downloadAndExtractAsset(
-        event.ResourceProperties.AssetS3Uri
-    );
 
-    const config = createProvisionerConfig(event, asset.path);
-    const provisioners = getProvisioners(event, config);
+    return new Promise((resolve) => {
+        resolve({
+            PhysicalResourceId: event.PhysicalResourceId
+        });
+    });
 
-    for (const provisioner of provisioners) {
-        await provisioner.run();
-    }
+    // const asset = await downloadAndExtractAsset(
+    //     event.ResourceProperties.AssetS3Uri
+    // );
 
-    return {
-        PhysicalResourceId: asset.etag
-    };
+    // const config = createProvisionerConfig(event, asset.path);
+    // const provisioners = getProvisioners(event, config);
+
+    // for (const provisioner of provisioners) {
+    //     await provisioner.run();
+    // }
+
+    // return {
+    //     PhysicalResourceId: asset.etag
+    // };
 }
 
 /**
