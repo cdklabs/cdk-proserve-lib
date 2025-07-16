@@ -1,8 +1,10 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { HttpRequestOptions } from '../../../../../../common/lambda/http-client/types';
 import { OpenSearchIsmGetPolicyResponse } from '../../../types/opensearch/ilm/get-policy';
 import { OpenSearchIsmPolicy } from '../../../types/opensearch/ilm/policy';
+import { ProvisionerConfiguration } from '../../../types/provisioner-configuration';
 import { ProvisioningConfigurationFile } from '../../../types/provisioning-configuration-file';
 import { BaseProvisioner, EntityType } from './base';
 
@@ -12,12 +14,26 @@ import { BaseProvisioner, EntityType } from './base';
 export class IsmPolicyProvisioner extends BaseProvisioner {
     protected override type: EntityType = 'ism-policies';
 
+    /**
+     * Partial endpoint for the security tool
+     */
+    private endpoint: string;
+
+    constructor(configuration: ProvisionerConfiguration) {
+        super(configuration);
+
+        this.endpoint =
+            this.configuration.domainType === 'Elasticsearch'
+                ? '_ilm/policy'
+                : '_plugins/_ism/policies';
+    }
+
     protected override async create(
         entity: ProvisioningConfigurationFile
     ): Promise<void> {
         // Check if policy exists using HEAD request
         const current = await this.configuration.client.head(
-            `/_plugins/_ism/policies/${entity.name}`
+            `/${this.endpoint}/${entity.name}`
         );
 
         if (current.statusCode === 200) {
@@ -27,7 +43,7 @@ export class IsmPolicyProvisioner extends BaseProvisioner {
         } else if (current.statusCode === 404) {
             // Only create if it doesn't exist
             await this.configuration.client.put(
-                `/_plugins/_ism/policies/${entity.name}`, // TODO: Make generalized to Kibana too
+                `/${this.endpoint}/${entity.name}`,
                 JSON.parse(entity.contents),
                 { headers: BaseProvisioner.jsonContentTypeHeader }
             );
@@ -41,45 +57,57 @@ export class IsmPolicyProvisioner extends BaseProvisioner {
     protected override async update(
         entity: ProvisioningConfigurationFile
     ): Promise<void> {
-        const newPolicy = JSON.parse(entity.contents) as OpenSearchIsmPolicy;
-
         const currentPolicyResponse = await this.configuration.client.get(
-            `_plugins/_ism/policies/${entity.name}` // TODO: Make generalized to Kibana too
+            `/${this.endpoint}/${entity.name}`
         );
 
         if (currentPolicyResponse.statusCode !== 404) {
-            const currentPolicy =
-                currentPolicyResponse.data as OpenSearchIsmGetPolicyResponse;
+            const currentPolicy = currentPolicyResponse.data;
+
+            const options: HttpRequestOptions = {
+                headers: BaseProvisioner.jsonContentTypeHeader
+            };
+
+            if (this.configuration.domainType === 'OpenSearch') {
+                options.params = {
+                    if_seq_no: (
+                        currentPolicy as OpenSearchIsmGetPolicyResponse
+                    )._seq_no.toString(),
+                    if_primary_term: (
+                        currentPolicy as OpenSearchIsmGetPolicyResponse
+                    )._primary_term.toString()
+                };
+            }
 
             const updateResponse = await this.configuration.client.put(
-                `/_plugins/_ism/policies/${entity.name}`, // TODO: Make generalized to Kibana too
+                `/${this.endpoint}/${entity.name}`,
                 JSON.parse(entity.contents),
-                {
-                    headers: BaseProvisioner.jsonContentTypeHeader,
-                    params: {
-                        if_seq_no: currentPolicy._seq_no.toString(),
-                        if_primary_term: currentPolicy._primary_term.toString()
-                    }
-                }
+                options
             );
 
             if (updateResponse.statusCode !== 200) {
-                throw new Error(`Failed to update ISM policy ${entity.name}`);
+                throw new Error(`Failed to update policy ${entity.name}`);
             }
 
-            const indexPatterns =
-                newPolicy.policy?.ism_template?.index_patterns ?? [];
+            if (this.configuration.domainType === 'OpenSearch') {
+                const newPolicy = JSON.parse(
+                    entity.contents
+                ) as OpenSearchIsmPolicy;
 
-            for (const pattern of indexPatterns) {
-                await this.configuration.client.post(
-                    `_plugins/_ism/change_policy/${pattern}`, // TODO: Make generalized to Kibana too
-                    {
-                        policy_id: entity.name
-                    },
-                    {
-                        headers: BaseProvisioner.jsonContentTypeHeader
-                    }
-                );
+                const indexPatterns =
+                    newPolicy.policy?.ism_template?.index_patterns ?? [];
+
+                for (const pattern of indexPatterns) {
+                    await this.configuration.client.post(
+                        `/_plugins/_ism/change_policy/${pattern}`,
+                        {
+                            policy_id: entity.name
+                        },
+                        {
+                            headers: BaseProvisioner.jsonContentTypeHeader
+                        }
+                    );
+                }
             }
         } else {
             await this.create(entity);
@@ -90,7 +118,7 @@ export class IsmPolicyProvisioner extends BaseProvisioner {
         entity: ProvisioningConfigurationFile
     ): Promise<void> {
         await this.configuration.client.delete(
-            `/_plugins/_ism/policies/${entity.name}` // TODO: Make generalized to Kibana too
+            `/${this.endpoint}/${entity.name}`
         );
     }
 }

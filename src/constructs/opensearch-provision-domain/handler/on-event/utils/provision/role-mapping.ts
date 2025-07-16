@@ -16,6 +16,12 @@ export class RoleMappingProvisioner extends BaseProvisioner {
      * to that role (e.g. AWS IAM Role ARNs, LDAP DNs, roles, etc.)
      */
     private dynamicMappings?: Map<string, string[]>;
+
+    /**
+     * Partial endpoint for the security tool
+     */
+    private endpoint: string;
+
     protected override type: EntityType = 'role-mappings';
 
     /**
@@ -32,6 +38,11 @@ export class RoleMappingProvisioner extends BaseProvisioner {
         if (dynamicMappings) {
             this.dynamicMappings = new Map(Object.entries(dynamicMappings));
         }
+
+        this.endpoint =
+            this.configuration.domainType === 'Elasticsearch'
+                ? '_security/role_mapping'
+                : '_plugins/_security/api/rolesmapping';
     }
 
     /**
@@ -41,7 +52,7 @@ export class RoleMappingProvisioner extends BaseProvisioner {
      */
     private async mapBackendRole(aosRole: string, roles: string[]) {
         await this.configuration.client.put(
-            `/_plugins/_security/api/rolesmapping/${aosRole}`, // TODO: Make generalized to Kibana too
+            `/${this.endpoint}/${aosRole}`,
             {
                 backend_roles: roles
             },
@@ -56,9 +67,7 @@ export class RoleMappingProvisioner extends BaseProvisioner {
      * @param aosRole Name of the role
      */
     private async removeBackendRole(aosRole: string) {
-        await this.configuration.client.delete(
-            `/_plugins/_security/api/rolesmapping/${aosRole}` // TODO: Make generalized to Kibana too
-        );
+        await this.configuration.client.delete(`/${this.endpoint}/${aosRole}`);
     }
 
     /**

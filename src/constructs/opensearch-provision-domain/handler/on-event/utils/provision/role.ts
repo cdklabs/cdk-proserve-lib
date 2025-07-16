@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { ProvisionerConfiguration } from '../../../types/provisioner-configuration';
 import { ProvisioningConfigurationFile } from '../../../types/provisioning-configuration-file';
 import { BaseProvisioner, EntityType } from './base';
 
@@ -10,11 +11,25 @@ import { BaseProvisioner, EntityType } from './base';
 export class RoleProvisioner extends BaseProvisioner {
     protected override type: EntityType = 'roles';
 
+    /**
+     * Partial endpoint for the security tool
+     */
+    private endpoint: string;
+
+    constructor(configuration: ProvisionerConfiguration) {
+        super(configuration);
+
+        this.endpoint =
+            this.configuration.domainType === 'Elasticsearch'
+                ? '_security/role'
+                : '_plugins/_security/api/roles';
+    }
+
     protected override async create(
         entity: ProvisioningConfigurationFile
     ): Promise<void> {
         await this.configuration.client.put(
-            `/_plugins/_security/api/roles/${entity.name}`, // TODO: Make generalized to Kibana too
+            `/${this.endpoint}/${entity.name}`,
             JSON.parse(entity.contents),
             {
                 headers: BaseProvisioner.jsonContentTypeHeader
@@ -32,7 +47,7 @@ export class RoleProvisioner extends BaseProvisioner {
         entity: ProvisioningConfigurationFile
     ): Promise<void> {
         await this.configuration.client.delete(
-            `/_plugins/_security/api/roles/${entity.name}` // TODO: Make generalized to Kibana too
+            `/${this.endpoint}/${entity.name}`
         );
     }
 }

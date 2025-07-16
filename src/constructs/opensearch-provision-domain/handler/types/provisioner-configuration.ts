@@ -3,6 +3,7 @@
 
 import { AwsHttpClient } from '../../../../common/lambda/aws-http-client';
 import { DestructiveOperation } from '../../../../types';
+import { DomainType } from './domain-type';
 
 /**
  * Defines the configuration for each entity provisioner
@@ -27,4 +28,9 @@ export interface ProvisionerConfiguration {
      * Which AWS CloudFormation destructive operations, if any, should be handled
      */
     readonly allowDestructiveOperations?: DestructiveOperation;
+
+    /**
+     * Type of the managed Amazon OpenSearch Service domain
+     */
+    readonly domainType: DomainType;
 }

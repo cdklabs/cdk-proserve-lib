@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { DestructiveOperation } from '../../../../types';
+import { DomainType } from './domain-type';
 
 /**
  * Invocation properties for the Custom Resource
@@ -11,6 +12,11 @@ export interface ResourceProperties {
      * Endpoint for the Amazon OpenSearch Service (AOS) domain
      */
     readonly DomainEndpoint: string;
+
+    /**
+     * Type of the managed Amazon OpenSearch Service domain
+     */
+    readonly DomainType: DomainType;
 
     /**
      * Amazon Resource Name (ARN) for the AWS Identity and Access Management (IAM) Role that is an administrative user
