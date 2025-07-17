@@ -173,7 +173,10 @@ export class HttpClient<TOptions extends HttpClientOptions> {
         const response = await this.sendHttpRequest(
             fullUrl,
             method,
-            mergedHeaders,
+            {
+                headers: mergedHeaders,
+                params: options?.params
+            },
             data
         );
 
@@ -222,17 +225,17 @@ export class HttpClient<TOptions extends HttpClientOptions> {
      *
      * @param url - The full URL for the request
      * @param method - HTTP method (GET, POST, etc.)
-     * @param headers - Optional additional headers
+     * @param options - Optional additional data
      * @param body - Optional request body
      * @returns Promise resolving to the response
      */
     protected async sendHttpRequest(
         url: string,
         method: HttpMethod,
-        headers: Record<string, string> = {},
+        options?: HttpRequestOptions,
         body?: Json
     ): Promise<RequestResponse> {
-        const request = this.createRequest(url, method, headers, body);
+        const request = this.createRequest(url, method, options, body);
         return this.sendRequest(request);
     }
 

@@ -30,7 +30,7 @@ export interface HttpRequestOptions {
     /**
      * Query string parameters to send
      */
-    params?: Record<string, string>;
+    params?: Record<string, string | string[]>;
 }
 
 /**
@@ -50,7 +50,7 @@ export interface HttpClientRequest {
     /** The HTTP headers to include in the request. */
     headers: Record<string, string>;
     /** The query string parameters to include in the request. */
-    params?: Record<string, string>;
+    params?: Record<string, string | string[]>;
     /** The request body as a string. */
     body?: string;
 }
