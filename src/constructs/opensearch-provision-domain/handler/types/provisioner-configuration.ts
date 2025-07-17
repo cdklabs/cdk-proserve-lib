@@ -1,9 +1,9 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { DomainType } from './domain-type';
 import { AwsHttpClient } from '../../../../common/lambda/aws-http-client';
 import { DestructiveOperation } from '../../../../types';
-import { DomainType } from './domain-type';
 
 /**
  * Defines the configuration for each entity provisioner

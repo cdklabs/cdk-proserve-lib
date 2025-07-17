@@ -1,8 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { ProvisioningConfigurationFile } from '../../../types/provisioning-configuration-file';
 import { BaseProvisioner, EntityType } from './base';
+import { ProvisioningConfigurationFile } from '../../../types/provisioning-configuration-file';
 
 /**
  * Provisioner for indices within an Amazon OpenSearch Service domain

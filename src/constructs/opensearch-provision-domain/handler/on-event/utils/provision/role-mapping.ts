@@ -1,10 +1,10 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { BaseProvisioner, EntityType } from './base';
 import { DestructiveOperation } from '../../../../../../types';
 import { ProvisionerConfiguration } from '../../../types/provisioner-configuration';
 import { ProvisioningConfigurationFile } from '../../../types/provisioning-configuration-file';
-import { BaseProvisioner, EntityType } from './base';
 
 /**
  * Provisioner for Role Mappings within an Amazon OpenSearch Service domain
