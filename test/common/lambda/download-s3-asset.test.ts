@@ -1,34 +1,31 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import fs from 'node:fs';
-import os from 'node:os';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { Readable } from 'node:stream';
 import { GetObjectCommand, HeadObjectCommand, S3 } from '@aws-sdk/client-s3';
 import { sdkStreamMixin } from '@aws-sdk/util-stream';
 import { mockClient } from 'aws-sdk-client-mock';
-import mockFs from 'mock-fs';
-import { vi, describe, beforeEach, afterEach, it, expect } from 'vitest';
+import { vol, fs } from 'memfs';
+import { vi, describe, beforeEach, it, expect } from 'vitest';
 import { downloadS3Asset } from '../../../src/common/lambda/download-s3-asset';
+
+vi.mock('node:os');
 
 describe('downloadS3Asset', () => {
     const mockS3 = mockClient(S3);
-    const tempDir = os.tmpdir();
+    const tempDir = tmpdir();
 
     beforeEach(() => {
         vi.clearAllMocks();
         mockS3.reset();
+        vol.reset();
 
-        // Setup mock filesystem
-        mockFs({
-            [tempDir]: {} // Mock the temp directory as empty
+        // Create empty directory on mocked filesystem
+        vol.fromJSON({
+            [tempDir]: null
         });
-    });
-
-    afterEach(() => {
-        // Restore the real filesystem
-        mockFs.restore();
     });
 
     it('should download an S3 asset successfully', async () => {
@@ -36,7 +33,7 @@ describe('downloadS3Asset', () => {
         const mockETag = '"abc123"';
         const mockFileName = 'test-file.json';
         const s3ObjectUri = `s3://test-bucket/${mockFileName}`;
-        const expectedFilePath = path.join(os.tmpdir(), mockFileName);
+        const expectedFilePath = path.join(tempDir, mockFileName);
         const mockContent = 'file content';
 
         // Mock the S3 response for HeadObject
@@ -92,7 +89,7 @@ describe('downloadS3Asset', () => {
         const mockETag = '"xyz789"';
         const s3ObjectUri = 's3://test-bucket/nested/path/test-file.json';
         const mockFileName = 'test-file.json';
-        const expectedFilePath = path.join(os.tmpdir(), mockFileName);
+        const expectedFilePath = path.join(tempDir, mockFileName);
         const mockContent = 'nested file content';
 
         // Mock the S3 response
