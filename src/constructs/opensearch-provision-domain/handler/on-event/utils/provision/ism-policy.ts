@@ -1,12 +1,12 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { BaseProvisioner, EntityType } from './base';
 import { HttpRequestOptions } from '../../../../../../common/lambda/http-client/types';
 import { OpenSearchIsmGetPolicyResponse } from '../../../types/opensearch/ilm/get-policy';
 import { OpenSearchIsmPolicy } from '../../../types/opensearch/ilm/policy';
 import { ProvisionerConfiguration } from '../../../types/provisioner-configuration';
 import { ProvisioningConfigurationFile } from '../../../types/provisioning-configuration-file';
-import { BaseProvisioner, EntityType } from './base';
 
 /**
  * Provisioner for Index State Management (ISM) within an Amazon OpenSearch Service domain

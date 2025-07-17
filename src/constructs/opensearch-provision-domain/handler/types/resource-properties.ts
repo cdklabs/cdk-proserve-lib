@@ -1,8 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { DestructiveOperation } from '../../../../types';
 import { DomainType } from './domain-type';
+import { DestructiveOperation } from '../../../../types';
 
 /**
  * Invocation properties for the Custom Resource
