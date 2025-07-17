@@ -2,10 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0
 import * as http from 'node:http';
 import * as https from 'node:https';
+import { URL } from 'node:url';
 import { vi, describe, beforeEach, expect, it, afterEach, Mock } from 'vitest';
 import { HttpClient } from '../../../../src/common/lambda/http-client';
 import { HttpClientOptions } from '../../../../src/common/lambda/http-client/types';
 import { HttpClientResponseError } from '../../../../src/common/lambda/http-client/types/exception';
+
+type RequestOptions = https.RequestOptions & URL;
 
 vi.mock('http');
 vi.mock('https');
@@ -89,8 +92,10 @@ describe('HttpClient', () => {
     describe('Header normalization', () => {
         it('should normalize header keys to lowercase', async () => {
             await client.get('/test', {
-                'Content-Type': 'application/json',
-                'X-API-Key': 'abc123'
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-Key': 'abc123'
+                }
             });
 
             const requestOptions = (https.request as Mock).mock.calls[0][0];
@@ -107,7 +112,9 @@ describe('HttpClient', () => {
     describe('HTTP methods', () => {
         it('should make GET requests correctly', async () => {
             const response = await client.get('/test', {
-                'X-Custom-Header': 'value'
+                headers: {
+                    'X-Custom-Header': 'value'
+                }
             });
 
             expect(https.request).toHaveBeenCalled();
@@ -368,8 +375,10 @@ describe('HttpClient', () => {
                 }
             });
             await clientWithDefaultHeaders.get('/test', {
-                'X-Header-Info': '67890',
-                Accept: 'application/xml'
+                headers: {
+                    'X-Header-Info': '67890',
+                    Accept: 'application/xml'
+                }
             });
             const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.headers['x-header-info']).toBe('67890'); // Overridden
@@ -392,7 +401,9 @@ describe('HttpClient', () => {
 
             // Use different casing for the same header
             await clientWithDefaultHeaders.get('/test', {
-                'Content-Type': 'application/xml'
+                headers: {
+                    'Content-Type': 'application/xml'
+                }
             });
 
             const requestOptions = (https.request as Mock).mock.calls[0][0];
@@ -422,6 +433,54 @@ describe('HttpClient', () => {
 
             const requestOptions = (https.request as Mock).mock.calls[0][0];
             expect(requestOptions.timeout).toBe(5000);
+        });
+    });
+
+    describe('URL parameters', () => {
+        it('should handle query parameters correctly', async () => {
+            await client.get('/test', {
+                params: {
+                    page: '1',
+                    limit: '10',
+                    filter: 'active'
+                }
+            });
+
+            const requestOptions = (https.request as Mock).mock
+                .calls[0][0] as RequestOptions;
+            expect(requestOptions.searchParams.toString()).toBe(
+                'page=1&limit=10&filter=active'
+            );
+        });
+
+        it('should encode query parameter values', async () => {
+            await client.get('/test', {
+                params: {
+                    search: 'hello world',
+                    tag: 'special&char'
+                }
+            });
+
+            const requestOptions = (https.request as Mock).mock
+                .calls[0][0] as RequestOptions;
+            expect(requestOptions.searchParams.toString()).toBe(
+                'search=hello+world&tag=special%26char'
+            );
+        });
+
+        it('should handle array values in query parameters', async () => {
+            await client.get('/test', {
+                params: {
+                    ids: ['1', '2', '3'],
+                    tags: ['tag1', 'tag2']
+                }
+            });
+
+            const requestOptions = (https.request as Mock).mock
+                .calls[0][0] as RequestOptions;
+            expect(requestOptions.searchParams.toString()).toBe(
+                'ids=1%2C2%2C3&tags=tag1%2Ctag2'
+            );
         });
     });
 });
