@@ -5,6 +5,3 @@ import { allCustomMatcher } from 'aws-sdk-client-mock-vitest';
 import { expect, vi } from 'vitest';
 
 expect.extend(allCustomMatcher);
-
-vi.mock('node:fs');
-vi.mock('node:fs/promises');

@@ -11,6 +11,8 @@ import { vol, fs } from 'memfs';
 import { vi, describe, beforeEach, it, expect } from 'vitest';
 import { downloadS3Asset } from '../../../src/common/lambda/download-s3-asset';
 
+vi.mock('node:fs');
+vi.mock('node:fs/promises');
 vi.mock('node:os');
 
 describe('downloadS3Asset', () => {
