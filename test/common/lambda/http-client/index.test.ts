@@ -98,14 +98,17 @@ describe('HttpClient', () => {
                 }
             });
 
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.headers['content-type']).toBe(
-                'application/json'
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    // Full object match for headers ensures the original capitalized keys are not there
+                    headers: {
+                        host: 'api.example.com',
+                        'content-type': 'application/json',
+                        'x-api-key': 'abc123'
+                    }
+                }),
+                expect.anything() // Callback function
             );
-            expect(requestOptions.headers['x-api-key']).toBe('abc123');
-            // Original capitalized keys should not exist
-            expect(requestOptions.headers['Content-Type']).toBeUndefined();
-            expect(requestOptions.headers['X-API-Key']).toBeUndefined();
         });
     });
 
@@ -117,10 +120,16 @@ describe('HttpClient', () => {
                 }
             });
 
-            expect(https.request).toHaveBeenCalled();
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.method).toBe('GET');
-            expect(requestOptions.headers['x-custom-header']).toBe('value'); // lowercase key
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    method: 'GET',
+                    headers: expect.objectContaining({
+                        'x-custom-header': 'value' // Lowercase key
+                    })
+                }),
+                expect.anything() // Callback function
+            );
+
             expect(response).toEqual({
                 data: { success: true },
                 statusCode: 200,
@@ -136,10 +145,15 @@ describe('HttpClient', () => {
             expect(mockRequest.write).toHaveBeenCalledWith(
                 JSON.stringify(data)
             );
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.method).toBe('POST');
-            expect(requestOptions.headers['content-type']).toBe(
-                'application/json'
+
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    method: 'POST',
+                    headers: expect.objectContaining({
+                        'content-type': 'application/json'
+                    })
+                }),
+                expect.anything() // Callback function
             );
         });
 
@@ -150,16 +164,26 @@ describe('HttpClient', () => {
             expect(mockRequest.write).toHaveBeenCalledWith(
                 JSON.stringify(data)
             );
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.method).toBe('PUT');
+
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    method: 'PUT'
+                }),
+                expect.anything() // Callback function
+            );
         });
 
         it('should make DELETE requests correctly', async () => {
             await client.delete('/test');
 
             expect(mockRequest.write).not.toHaveBeenCalled();
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.method).toBe('DELETE');
+
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    method: 'DELETE'
+                }),
+                expect.anything() // Callback function
+            );
         });
 
         it('should make PATCH requests correctly', async () => {
@@ -169,16 +193,26 @@ describe('HttpClient', () => {
             expect(mockRequest.write).toHaveBeenCalledWith(
                 JSON.stringify(data)
             );
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.method).toBe('PATCH');
+
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    method: 'PATCH'
+                }),
+                expect.anything() // Callback function
+            );
         });
 
         it('should make HEAD requests correctly', async () => {
             await client.head('/test');
 
             expect(mockRequest.write).not.toHaveBeenCalled();
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.method).toBe('HEAD');
+
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    method: 'HEAD'
+                }),
+                expect.anything() // Callback function
+            );
         });
     });
 
@@ -188,9 +222,13 @@ describe('HttpClient', () => {
             const clientWithoutBaseUrl = new HttpClient();
             await clientWithoutBaseUrl.get('https://api.example.com/test');
 
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.hostname).toBe('api.example.com');
-            expect(requestOptions.path).toBe('/test');
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    hostname: 'api.example.com',
+                    path: '/test'
+                }),
+                expect.anything() // Callback function
+            );
         });
 
         it('should combine baseUrl with path', async () => {
@@ -200,9 +238,13 @@ describe('HttpClient', () => {
 
             await clientWithBaseUrl.get('/test');
 
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.hostname).toBe('api.example.com');
-            expect(requestOptions.path).toBe('/test');
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    hostname: 'api.example.com',
+                    path: '/test'
+                }),
+                expect.anything() // Callback function
+            );
         });
 
         it('should handle trailing slashes in baseUrl', async () => {
@@ -212,9 +254,13 @@ describe('HttpClient', () => {
 
             await clientWithBaseUrl.get('test');
 
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.hostname).toBe('api.example.com');
-            expect(requestOptions.path).toBe('/test');
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    hostname: 'api.example.com',
+                    path: '/test'
+                }),
+                expect.anything() // Callback function
+            );
         });
 
         it('should handle leading slashes in path', async () => {
@@ -224,9 +270,13 @@ describe('HttpClient', () => {
 
             await clientWithBaseUrl.get('/test');
 
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.hostname).toBe('api.example.com');
-            expect(requestOptions.path).toBe('/test');
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    hostname: 'api.example.com',
+                    path: '/test'
+                }),
+                expect.anything() // Callback function
+            );
         });
     });
 
@@ -358,12 +408,17 @@ describe('HttpClient', () => {
 
             await clientWithDefaultHeaders.get('/test');
 
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.headers['x-header-info']).toBe('12345');
-            expect(requestOptions.headers['user-agent']).toBe('test-client');
-            // Original case should not exist
-            expect(requestOptions.headers['X-Header-Info']).toBeUndefined();
-            expect(requestOptions.headers['User-Agent']).toBeUndefined();
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    // Full object match ensures the original case headers do not exist
+                    headers: {
+                        host: 'api.example.com',
+                        'user-agent': 'test-client',
+                        'x-header-info': '12345'
+                    }
+                }),
+                expect.anything() // Callback function
+            );
         });
 
         it('should override default headers with request-specific headers', async () => {
@@ -380,15 +435,19 @@ describe('HttpClient', () => {
                     Accept: 'application/xml'
                 }
             });
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.headers['x-header-info']).toBe('67890'); // Overridden
-            expect(requestOptions.headers['content-type']).toBe(
-                'application/json'
-            ); // From defaults
-            expect(requestOptions.headers.accept).toBe('application/xml'); // New header - normalized
-            // Original cases should not exist
-            expect(requestOptions.headers['X-Header-Info']).toBeUndefined();
-            expect(requestOptions.headers.Accept).toBeUndefined();
+
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    // Full object match ensures the original case headers do not exist
+                    headers: {
+                        accept: 'application/xml', // New heaer - normalized
+                        'content-type': 'application/json', // From defaults
+                        host: 'api.example.com',
+                        'x-header-info': '67890' // Overridden
+                    }
+                }),
+                expect.anything() // Callback function
+            );
         });
 
         it('should handle case insensitive header matching', async () => {
@@ -406,12 +465,16 @@ describe('HttpClient', () => {
                 }
             });
 
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-
-            expect(requestOptions.headers['content-type']).toBe(
-                'application/xml'
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    // Full object match ensures the original case headers do not exist
+                    headers: {
+                        'content-type': 'application/xml',
+                        host: 'api.example.com'
+                    }
+                }),
+                expect.anything() // Callback function
             );
-            expect(requestOptions.headers['Content-Type']).toBeUndefined();
         });
     });
 
@@ -419,8 +482,12 @@ describe('HttpClient', () => {
         it('should set the default timeout on requests', async () => {
             await client.get('/test');
 
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.timeout).toBe(30000);
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    timeout: 30000
+                }),
+                expect.anything() // Callback function
+            );
         });
 
         it('should use custom timeout when provided', async () => {
@@ -431,8 +498,12 @@ describe('HttpClient', () => {
 
             await customTimeoutClient.get('/test');
 
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.timeout).toBe(5000);
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    timeout: 5000
+                }),
+                expect.anything() // Callback function
+            );
         });
     });
 
