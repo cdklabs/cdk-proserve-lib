@@ -153,7 +153,9 @@ describe('HttpClientAws', () => {
     describe('HTTP methods with AWS signing', () => {
         it('should make GET requests with AWS signature', async () => {
             const response = await client.get('/test', {
-                'x-custom-header': 'value'
+                headers: {
+                    'x-custom-header': 'value'
+                }
             });
 
             expect(mockSignFunction).toHaveBeenCalled();
@@ -178,10 +180,15 @@ describe('HttpClientAws', () => {
             const data = { name: 'test' };
             await client.post('/test', data);
 
-            const requestArg = mockSignFunction.mock.calls[0][0];
-            expect(requestArg.method).toBe('POST');
-            expect(requestArg.body).toBe(JSON.stringify(data));
-            expect(requestArg.headers['content-type']).toBe('application/json');
+            expect(mockSignFunction).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: expect.objectContaining({
+                        'content-type': 'application/json'
+                    })
+                })
+            );
         });
 
         it('should use the signed request for making the actual HTTP request', async () => {
@@ -204,12 +211,14 @@ describe('HttpClientAws', () => {
             await client.get('/test');
 
             // Check if https.request was called with proper signed parameters
-            const requestOptions = (https.request as Mock).mock.calls[0][0];
-            expect(requestOptions.headers.authorization).toBe(
-                'AWS4-HMAC-SHA256 Credential=...'
-            );
-            expect(requestOptions.headers['x-amz-date']).toBe(
-                '20220101T000000Z'
+            expect(https.request).toHaveBeenCalledExactlyOnceWith(
+                expect.objectContaining({
+                    headers: expect.objectContaining({
+                        authorization: 'AWS4-HMAC-SHA256 Credential=...',
+                        'x-amz-date': '20220101T000000Z'
+                    })
+                }),
+                expect.anything() // Callback function
             );
         });
     });
