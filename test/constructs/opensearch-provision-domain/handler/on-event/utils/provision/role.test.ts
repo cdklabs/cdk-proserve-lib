@@ -5,17 +5,15 @@ import { vol } from 'memfs';
 import { beforeEach, describe, expect, it, Mocked, vi } from 'vitest';
 import { AwsHttpClient } from '../../../../../../../src/common/lambda/aws-http-client';
 import { HttpClientResponse } from '../../../../../../../src/common/lambda/http-client/types';
-import { IndexProvisioner } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/on-event/utils/provision';
-import { BaseProvisioner } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/on-event/utils/provision/base';
+import { RoleProvisioner } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/on-event/utils/provision';
 import { ProvisionerConfiguration } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/types/provisioner-configuration';
 import { DestructiveOperation } from '../../../../../../../src/types';
 import { Mutable } from '../../../../../../fixtures/types';
 
 vi.mock('node:fs');
 
-describe('OpenSearch Domain Index Provisioner', () => {
+describe('OpenSearch Domain Role Provisioner', () => {
     const assetPath = '/asset';
-    const noopMethodName = 'noOperation';
     const errorResponse: Promise<HttpClientResponse<null>> = new Promise(
         (resolve) =>
             resolve({
@@ -34,7 +32,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
 
         vol.fromJSON(
             {
-                './indices/1.json': '{}'
+                './roles/1.json': '{}'
             },
             assetPath
         );
@@ -59,80 +57,70 @@ describe('OpenSearch Domain Index Provisioner', () => {
             };
         });
 
-        it('should create an index when it does not already exist', async () => {
-            // Arrange
-            client.get?.mockReturnValueOnce(
-                new Promise((resolve) =>
-                    resolve({
-                        data: null,
-                        headers: {},
-                        statusCode: 404
+        describe('OpenSearch', () => {
+            it('should create the role for OpenSearch', async () => {
+                // Arrange
+                client.put?.mockReturnValueOnce(
+                    new Promise((resolve) => {
+                        resolve({
+                            data: null,
+                            headers: {},
+                            statusCode: 200
+                        });
                     })
-                )
-            );
+                );
 
-            client.put?.mockReturnValueOnce(
-                new Promise((resolve) =>
-                    resolve({
-                        data: null,
-                        headers: {},
-                        statusCode: 200
-                    })
-                )
-            );
+                const provisioner = new RoleProvisioner(config);
 
-            const provisioner = new IndexProvisioner(config);
+                // Act
+                await provisioner.run();
 
-            // Act
-            await provisioner.run();
-
-            // Assert
-            expect(client.get).toHaveBeenCalledExactlyOnceWith('/1');
-            expect(client.put).toHaveBeenCalledExactlyOnceWith(
-                '/1',
-                {},
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
+                // Assert
+                expect(client.put).toHaveBeenCalledExactlyOnceWith(
+                    '/_plugins/_security/api/roles/1',
+                    {},
+                    {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
                     }
-                }
-            );
+                );
+            });
         });
 
-        it('should skip creating an index that already exists', async () => {
-            // Arrange
-            client.get?.mockReturnValueOnce(
-                new Promise((resolve) =>
-                    resolve({
-                        data: null,
-                        headers: {},
-                        statusCode: 200
+        describe('Elasticsearch', () => {
+            beforeEach(() => {
+                config.domainType = 'Elasticsearch';
+            });
+
+            it('should create the role for Elasticsearch', async () => {
+                // Arrange
+                client.put?.mockReturnValueOnce(
+                    new Promise((resolve) => {
+                        resolve({
+                            data: null,
+                            headers: {},
+                            statusCode: 200
+                        });
                     })
-                )
-            );
+                );
 
-            const provisioner = new IndexProvisioner(config);
+                const provisioner = new RoleProvisioner(config);
 
-            // Act
-            await provisioner.run();
+                // Act
+                await provisioner.run();
 
-            // Assert
-            expect(client.get).toHaveBeenCalledExactlyOnceWith('/1');
-            expect(client.put).not.toHaveBeenCalled();
-        });
-
-        it('should throw an error in any other case', async () => {
-            // Arrange
-            const provisioner = new IndexProvisioner(config);
-
-            // Act
-            await expect(provisioner.run()).rejects.toThrow(
-                'Unknown state of index 1. Query returned 500'
-            );
-
-            // Assert
-            expect(client.get).toHaveBeenCalledExactlyOnceWith('/1');
-            expect(client.put).not.toHaveBeenCalled();
+                // Assert
+                expect(client.put).toHaveBeenCalledExactlyOnceWith(
+                    '/_security/role/1',
+                    {},
+                    {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }
+                );
+            });
         });
     });
 
@@ -150,7 +138,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
 
         it('should not take any action if the UPDATE or ALL destructive actions are not specified', async () => {
             // Arange
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new RoleProvisioner(config);
             const updateSpy = vi.spyOn(provisioner as any, updateMethodName);
 
             // Act
@@ -164,7 +152,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.UPDATE;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new RoleProvisioner(config);
             const updateSpy = vi.spyOn(provisioner as any, updateMethodName);
 
             // Act
@@ -178,7 +166,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.ALL;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new RoleProvisioner(config);
             const updateSpy = vi.spyOn(provisioner as any, updateMethodName);
 
             // Act
@@ -193,25 +181,16 @@ describe('OpenSearch Domain Index Provisioner', () => {
                 config.allowDestructiveOperations = DestructiveOperation.UPDATE;
             });
 
-            it('should be a no-operation', async () => {
-                // Arange
-                const provisioner = new IndexProvisioner(config);
-                const noopSpy = vi.spyOn(
-                    BaseProvisioner as any,
-                    noopMethodName
-                );
+            it('should perform the same action as CREATE', async () => {
+                // Arrange
+                const provisioner = new RoleProvisioner(config);
+                const createSpy = vi.spyOn(provisioner as any, 'create');
 
                 // Act
                 await provisioner.run();
 
                 // Assert
-                expect(noopSpy).toHaveBeenCalled();
-                expect(client.delete).not.toHaveBeenCalled();
-                expect(client.get).not.toHaveBeenCalled();
-                expect(client.head).not.toHaveBeenCalled();
-                expect(client.patch).not.toHaveBeenCalled();
-                expect(client.post).not.toHaveBeenCalled();
-                expect(client.put).not.toHaveBeenCalled();
+                expect(createSpy).toHaveBeenCalled();
             });
         });
     });
@@ -230,7 +209,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
 
         it('should not take any action if the DELETE or ALL destructive actions are not specified', async () => {
             // Arange
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new RoleProvisioner(config);
             const deleteSpy = vi.spyOn(provisioner as any, deleteMethodName);
 
             // Act
@@ -244,7 +223,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.DELETE;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new RoleProvisioner(config);
             const deleteSpy = vi.spyOn(provisioner as any, deleteMethodName);
 
             // Act
@@ -258,7 +237,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.ALL;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new RoleProvisioner(config);
             const deleteSpy = vi.spyOn(provisioner as any, deleteMethodName);
 
             // Act
@@ -273,25 +252,58 @@ describe('OpenSearch Domain Index Provisioner', () => {
                 config.allowDestructiveOperations = DestructiveOperation.DELETE;
             });
 
-            it('should delete the index', async () => {
-                // Arange
-                client.delete?.mockReturnValueOnce(
-                    new Promise((resolve) =>
-                        resolve({
-                            data: null,
-                            headers: {},
-                            statusCode: 200
+            describe('OpenSearch', () => {
+                it('should delete the role', async () => {
+                    // Arrange
+                    client.delete?.mockReturnValueOnce(
+                        new Promise((resolve) => {
+                            resolve({
+                                data: null,
+                                headers: {},
+                                statusCode: 200
+                            });
                         })
-                    )
-                );
+                    );
 
-                const provisioner = new IndexProvisioner(config);
+                    const provisioner = new RoleProvisioner(config);
 
-                // Act
-                await provisioner.run();
+                    // Act
+                    await provisioner.run();
 
-                // Assert
-                expect(client.delete).toHaveBeenCalledExactlyOnceWith('/1');
+                    // Assert
+                    expect(client.delete).toHaveBeenCalledExactlyOnceWith(
+                        '/_plugins/_security/api/roles/1'
+                    );
+                });
+            });
+
+            describe('Elasticsearch', () => {
+                beforeEach(() => {
+                    config.domainType = 'Elasticsearch';
+                });
+
+                it('should delete the role', async () => {
+                    // Arrange
+                    client.delete?.mockReturnValueOnce(
+                        new Promise((resolve) => {
+                            resolve({
+                                data: null,
+                                headers: {},
+                                statusCode: 200
+                            });
+                        })
+                    );
+
+                    const provisioner = new RoleProvisioner(config);
+
+                    // Act
+                    await provisioner.run();
+
+                    // Assert
+                    expect(client.delete).toHaveBeenCalledExactlyOnceWith(
+                        '/_security/role/1'
+                    );
+                });
             });
         });
     });

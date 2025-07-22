@@ -3,6 +3,7 @@
 
 import { BaseProvisioner, EntityType } from './base';
 import { DestructiveOperation } from '../../../../../../types';
+import { Json } from '../../../../../../types/json';
 import { ProvisionerConfiguration } from '../../../types/provisioner-configuration';
 
 /**
@@ -12,7 +13,7 @@ export class ClusterSettingsProvisioner extends BaseProvisioner {
     /**
      * Settings to configure within the Amazon OpenSearch Service domain
      */
-    private clusterSettings?: Map<string, string>;
+    private clusterSettings?: Json;
 
     protected override type: EntityType = 'cluster-settings';
 
@@ -23,12 +24,12 @@ export class ClusterSettingsProvisioner extends BaseProvisioner {
      */
     constructor(
         configuration: ProvisionerConfiguration,
-        clusterSettings?: Record<string, string>
+        clusterSettings?: Json
     ) {
         super(configuration);
 
         if (clusterSettings) {
-            this.clusterSettings = new Map(Object.entries(clusterSettings));
+            this.clusterSettings = clusterSettings;
         }
     }
 
@@ -66,11 +67,13 @@ export class ClusterSettingsProvisioner extends BaseProvisioner {
      * Handles the CREATE action
      */
     protected override async create(): Promise<void> {
-        const settings = this.clusterSettings
-            ? Object.fromEntries(this.clusterSettings)
-            : undefined;
-
-        await this.configuration.client.put('/_cluster/settings', settings);
+        await this.configuration.client.put(
+            '/_cluster/settings',
+            this.clusterSettings,
+            {
+                headers: BaseProvisioner.jsonContentTypeHeader
+            }
+        );
     }
 
     /**
