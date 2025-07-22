@@ -3,19 +3,17 @@
 
 import { vol } from 'memfs';
 import { beforeEach, describe, expect, it, Mocked, vi } from 'vitest';
-import { AwsHttpClient } from '../../../../../../../src/common/lambda/aws-http-client';
-import { HttpClientResponse } from '../../../../../../../src/common/lambda/http-client/types';
-import { IndexProvisioner } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/on-event/utils/provision';
-import { BaseProvisioner } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/on-event/utils/provision/base';
-import { ProvisionerConfiguration } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/types/provisioner-configuration';
-import { DestructiveOperation } from '../../../../../../../src/types';
-import { Mutable } from '../../../../../../fixtures/types';
+import { AwsHttpClient } from '../../../../../../../../src/common/lambda/aws-http-client';
+import { HttpClientResponse } from '../../../../../../../../src/common/lambda/http-client/types';
+import { ComponentTemplateProvisioner } from '../../../../../../../../src/constructs/opensearch-provision-domain/handler/on-event/utils/provision';
+import { ProvisionerConfiguration } from '../../../../../../../../src/constructs/opensearch-provision-domain/handler/types/provisioner-configuration';
+import { DestructiveOperation } from '../../../../../../../../src/types';
+import { Mutable } from '../../../../../../../fixtures/types';
 
 vi.mock('node:fs');
 
-describe('OpenSearch Domain Index Provisioner', () => {
+describe('OpenSearch Domain Component Template Provisioner', () => {
     const assetPath = '/asset';
-    const noopMethodName = 'noOperation';
     const errorResponse: Promise<HttpClientResponse<null>> = new Promise(
         (resolve) =>
             resolve({
@@ -34,7 +32,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
 
         vol.fromJSON(
             {
-                './indices/1.json': '{}'
+                './templates/component/1.json': '{}'
             },
             assetPath
         );
@@ -59,9 +57,9 @@ describe('OpenSearch Domain Index Provisioner', () => {
             };
         });
 
-        it('should create an index when it does not already exist', async () => {
+        it('should create a component template when it does not already exist', async () => {
             // Arrange
-            client.get?.mockReturnValueOnce(
+            client.head?.mockReturnValueOnce(
                 new Promise((resolve) =>
                     resolve({
                         data: null,
@@ -81,15 +79,17 @@ describe('OpenSearch Domain Index Provisioner', () => {
                 )
             );
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ComponentTemplateProvisioner(config);
 
             // Act
             await provisioner.run();
 
             // Assert
-            expect(client.get).toHaveBeenCalledExactlyOnceWith('/1');
+            expect(client.head).toHaveBeenCalledExactlyOnceWith(
+                '/_component_template/1'
+            );
             expect(client.put).toHaveBeenCalledExactlyOnceWith(
-                '/1',
+                '/_component_template/1',
                 {},
                 {
                     headers: {
@@ -99,9 +99,9 @@ describe('OpenSearch Domain Index Provisioner', () => {
             );
         });
 
-        it('should skip creating an index that already exists', async () => {
+        it('should skip creating a component template that already exists', async () => {
             // Arrange
-            client.get?.mockReturnValueOnce(
+            client.head?.mockReturnValueOnce(
                 new Promise((resolve) =>
                     resolve({
                         data: null,
@@ -111,27 +111,31 @@ describe('OpenSearch Domain Index Provisioner', () => {
                 )
             );
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ComponentTemplateProvisioner(config);
 
             // Act
             await provisioner.run();
 
             // Assert
-            expect(client.get).toHaveBeenCalledExactlyOnceWith('/1');
+            expect(client.head).toHaveBeenCalledExactlyOnceWith(
+                '/_component_template/1'
+            );
             expect(client.put).not.toHaveBeenCalled();
         });
 
         it('should throw an error in any other case', async () => {
             // Arrange
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ComponentTemplateProvisioner(config);
 
             // Act
             await expect(provisioner.run()).rejects.toThrow(
-                'Unknown state of index 1. Query returned 500'
+                'Unknown state of component template 1. Query returned 500'
             );
 
             // Assert
-            expect(client.get).toHaveBeenCalledExactlyOnceWith('/1');
+            expect(client.head).toHaveBeenCalledExactlyOnceWith(
+                '/_component_template/1'
+            );
             expect(client.put).not.toHaveBeenCalled();
         });
     });
@@ -146,11 +150,21 @@ describe('OpenSearch Domain Index Provisioner', () => {
                 client: client as unknown as AwsHttpClient,
                 domainType: 'OpenSearch'
             };
+
+            client.head?.mockReturnValueOnce(
+                new Promise((resolve) =>
+                    resolve({
+                        data: null,
+                        headers: {},
+                        statusCode: 200
+                    })
+                )
+            );
         });
 
         it('should not take any action if the UPDATE or ALL destructive actions are not specified', async () => {
             // Arange
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ComponentTemplateProvisioner(config);
             const updateSpy = vi.spyOn(provisioner as any, updateMethodName);
 
             // Act
@@ -164,7 +178,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.UPDATE;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ComponentTemplateProvisioner(config);
             const updateSpy = vi.spyOn(provisioner as any, updateMethodName);
 
             // Act
@@ -178,7 +192,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.ALL;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ComponentTemplateProvisioner(config);
             const updateSpy = vi.spyOn(provisioner as any, updateMethodName);
 
             // Act
@@ -193,25 +207,16 @@ describe('OpenSearch Domain Index Provisioner', () => {
                 config.allowDestructiveOperations = DestructiveOperation.UPDATE;
             });
 
-            it('should be a no-operation', async () => {
+            it('should perform the same action as CREATE', async () => {
                 // Arange
-                const provisioner = new IndexProvisioner(config);
-                const noopSpy = vi.spyOn(
-                    BaseProvisioner as any,
-                    noopMethodName
-                );
+                const provisioner = new ComponentTemplateProvisioner(config);
+                const createSpy = vi.spyOn(provisioner as any, 'create');
 
                 // Act
                 await provisioner.run();
 
                 // Assert
-                expect(noopSpy).toHaveBeenCalled();
-                expect(client.delete).not.toHaveBeenCalled();
-                expect(client.get).not.toHaveBeenCalled();
-                expect(client.head).not.toHaveBeenCalled();
-                expect(client.patch).not.toHaveBeenCalled();
-                expect(client.post).not.toHaveBeenCalled();
-                expect(client.put).not.toHaveBeenCalled();
+                expect(createSpy).toHaveBeenCalled();
             });
         });
     });
@@ -230,7 +235,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
 
         it('should not take any action if the DELETE or ALL destructive actions are not specified', async () => {
             // Arange
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ComponentTemplateProvisioner(config);
             const deleteSpy = vi.spyOn(provisioner as any, deleteMethodName);
 
             // Act
@@ -244,7 +249,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.DELETE;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ComponentTemplateProvisioner(config);
             const deleteSpy = vi.spyOn(provisioner as any, deleteMethodName);
 
             // Act
@@ -258,7 +263,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.ALL;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ComponentTemplateProvisioner(config);
             const deleteSpy = vi.spyOn(provisioner as any, deleteMethodName);
 
             // Act
@@ -273,7 +278,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
                 config.allowDestructiveOperations = DestructiveOperation.DELETE;
             });
 
-            it('should delete the index', async () => {
+            it('should delete the component template when performed', async () => {
                 // Arange
                 client.delete?.mockReturnValueOnce(
                     new Promise((resolve) =>
@@ -285,13 +290,33 @@ describe('OpenSearch Domain Index Provisioner', () => {
                     )
                 );
 
-                const provisioner = new IndexProvisioner(config);
+                const provisioner = new ComponentTemplateProvisioner(config);
 
                 // Act
                 await provisioner.run();
 
                 // Assert
-                expect(client.delete).toHaveBeenCalledExactlyOnceWith('/1');
+                expect(client.delete).toHaveBeenCalledExactlyOnceWith(
+                    '/_component_template/1'
+                );
+            });
+
+            it('should emit a warning message when the component template fails to delete', async () => {
+                // Arange
+                const warnSpy = vi.spyOn(console, 'warn');
+
+                const provisioner = new ComponentTemplateProvisioner(config);
+
+                // Act
+                await provisioner.run();
+
+                // Assert
+                expect(client.delete).toHaveBeenCalledExactlyOnceWith(
+                    '/_component_template/1'
+                );
+                expect(warnSpy).toHaveBeenCalledExactlyOnceWith(
+                    'Failed to delete component template 1'
+                );
             });
         });
     });

@@ -1,19 +1,16 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { vol } from 'memfs';
 import { beforeEach, describe, expect, it, Mocked, vi } from 'vitest';
 import { AwsHttpClient } from '../../../../../../../src/common/lambda/aws-http-client';
 import { HttpClientResponse } from '../../../../../../../src/common/lambda/http-client/types';
-import { IndexProvisioner } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/on-event/utils/provision';
+import { ClusterSettingsProvisioner } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/on-event/utils/provision';
 import { BaseProvisioner } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/on-event/utils/provision/base';
 import { ProvisionerConfiguration } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/types/provisioner-configuration';
 import { DestructiveOperation } from '../../../../../../../src/types';
 import { Mutable } from '../../../../../../fixtures/types';
 
-vi.mock('node:fs');
-
-describe('OpenSearch Domain Index Provisioner', () => {
+describe('OpenSearch Domain Cluster Settings Provisioner', () => {
     const assetPath = '/asset';
     const noopMethodName = 'noOperation';
     const errorResponse: Promise<HttpClientResponse<null>> = new Promise(
@@ -30,14 +27,6 @@ describe('OpenSearch Domain Index Provisioner', () => {
 
     beforeEach(() => {
         vi.clearAllMocks();
-        vol.reset();
-
-        vol.fromJSON(
-            {
-                './indices/1.json': '{}'
-            },
-            assetPath
-        );
 
         client = {
             delete: vi.fn().mockReturnValue(errorResponse),
@@ -47,6 +36,29 @@ describe('OpenSearch Domain Index Provisioner', () => {
             post: vi.fn().mockReturnValue(errorResponse),
             put: vi.fn().mockReturnValue(errorResponse)
         };
+    });
+
+    describe('Error Checking', () => {
+        beforeEach(() => {
+            config = {
+                action: 'Create',
+                assetPath: assetPath,
+                client: client as unknown as AwsHttpClient,
+                domainType: 'OpenSearch'
+            };
+        });
+
+        it('can identify unknown actions when running', async () => {
+            // Arrange
+            config.action = 'Bad' as 'Create';
+
+            const provisioner = new ClusterSettingsProvisioner(config);
+
+            // Act & Assert
+            await expect(provisioner.run()).rejects.toThrow(
+                'Unknown provisioning action'
+            );
+        });
     });
 
     describe('Create', () => {
@@ -59,80 +71,42 @@ describe('OpenSearch Domain Index Provisioner', () => {
             };
         });
 
-        it('should create an index when it does not already exist', async () => {
+        it('should call the cluster settings update API with the new settings', async () => {
             // Arrange
-            client.get?.mockReturnValueOnce(
-                new Promise((resolve) =>
-                    resolve({
-                        data: null,
-                        headers: {},
-                        statusCode: 404
-                    })
-                )
-            );
-
             client.put?.mockReturnValueOnce(
-                new Promise((resolve) =>
+                new Promise((resolve) => {
                     resolve({
                         data: null,
                         headers: {},
                         statusCode: 200
-                    })
-                )
+                    });
+                })
             );
 
-            const provisioner = new IndexProvisioner(config);
+            const settings = {
+                persistent: {
+                    test: true
+                }
+            };
+
+            const provisioner = new ClusterSettingsProvisioner(
+                config,
+                settings
+            );
 
             // Act
             await provisioner.run();
 
             // Assert
-            expect(client.get).toHaveBeenCalledExactlyOnceWith('/1');
             expect(client.put).toHaveBeenCalledExactlyOnceWith(
-                '/1',
-                {},
+                '/_cluster/settings',
+                settings,
                 {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 }
             );
-        });
-
-        it('should skip creating an index that already exists', async () => {
-            // Arrange
-            client.get?.mockReturnValueOnce(
-                new Promise((resolve) =>
-                    resolve({
-                        data: null,
-                        headers: {},
-                        statusCode: 200
-                    })
-                )
-            );
-
-            const provisioner = new IndexProvisioner(config);
-
-            // Act
-            await provisioner.run();
-
-            // Assert
-            expect(client.get).toHaveBeenCalledExactlyOnceWith('/1');
-            expect(client.put).not.toHaveBeenCalled();
-        });
-
-        it('should throw an error in any other case', async () => {
-            // Arrange
-            const provisioner = new IndexProvisioner(config);
-
-            // Act
-            await expect(provisioner.run()).rejects.toThrow(
-                'Unknown state of index 1. Query returned 500'
-            );
-
-            // Assert
-            expect(client.get).toHaveBeenCalledExactlyOnceWith('/1');
-            expect(client.put).not.toHaveBeenCalled();
         });
     });
 
@@ -150,7 +124,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
 
         it('should not take any action if the UPDATE or ALL destructive actions are not specified', async () => {
             // Arange
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ClusterSettingsProvisioner(config);
             const updateSpy = vi.spyOn(provisioner as any, updateMethodName);
 
             // Act
@@ -164,7 +138,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.UPDATE;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ClusterSettingsProvisioner(config);
             const updateSpy = vi.spyOn(provisioner as any, updateMethodName);
 
             // Act
@@ -178,7 +152,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.ALL;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ClusterSettingsProvisioner(config);
             const updateSpy = vi.spyOn(provisioner as any, updateMethodName);
 
             // Act
@@ -193,25 +167,16 @@ describe('OpenSearch Domain Index Provisioner', () => {
                 config.allowDestructiveOperations = DestructiveOperation.UPDATE;
             });
 
-            it('should be a no-operation', async () => {
-                // Arange
-                const provisioner = new IndexProvisioner(config);
-                const noopSpy = vi.spyOn(
-                    BaseProvisioner as any,
-                    noopMethodName
-                );
+            it('should perform the same action as CREATE', async () => {
+                // Arrange
+                const provisioner = new ClusterSettingsProvisioner(config);
+                const createSpy = vi.spyOn(provisioner as any, 'create');
 
                 // Act
                 await provisioner.run();
 
                 // Assert
-                expect(noopSpy).toHaveBeenCalled();
-                expect(client.delete).not.toHaveBeenCalled();
-                expect(client.get).not.toHaveBeenCalled();
-                expect(client.head).not.toHaveBeenCalled();
-                expect(client.patch).not.toHaveBeenCalled();
-                expect(client.post).not.toHaveBeenCalled();
-                expect(client.put).not.toHaveBeenCalled();
+                expect(createSpy).toHaveBeenCalled();
             });
         });
     });
@@ -230,7 +195,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
 
         it('should not take any action if the DELETE or ALL destructive actions are not specified', async () => {
             // Arange
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ClusterSettingsProvisioner(config);
             const deleteSpy = vi.spyOn(provisioner as any, deleteMethodName);
 
             // Act
@@ -244,7 +209,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.DELETE;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ClusterSettingsProvisioner(config);
             const deleteSpy = vi.spyOn(provisioner as any, deleteMethodName);
 
             // Act
@@ -258,7 +223,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.ALL;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new ClusterSettingsProvisioner(config);
             const deleteSpy = vi.spyOn(provisioner as any, deleteMethodName);
 
             // Act
@@ -273,25 +238,25 @@ describe('OpenSearch Domain Index Provisioner', () => {
                 config.allowDestructiveOperations = DestructiveOperation.DELETE;
             });
 
-            it('should delete the index', async () => {
+            it('should be a no-operation', async () => {
                 // Arange
-                client.delete?.mockReturnValueOnce(
-                    new Promise((resolve) =>
-                        resolve({
-                            data: null,
-                            headers: {},
-                            statusCode: 200
-                        })
-                    )
+                const provisioner = new ClusterSettingsProvisioner(config);
+                const noopSpy = vi.spyOn(
+                    BaseProvisioner as any,
+                    noopMethodName
                 );
-
-                const provisioner = new IndexProvisioner(config);
 
                 // Act
                 await provisioner.run();
 
                 // Assert
-                expect(client.delete).toHaveBeenCalledExactlyOnceWith('/1');
+                expect(noopSpy).toHaveBeenCalled();
+                expect(client.delete).not.toHaveBeenCalled();
+                expect(client.get).not.toHaveBeenCalled();
+                expect(client.head).not.toHaveBeenCalled();
+                expect(client.patch).not.toHaveBeenCalled();
+                expect(client.post).not.toHaveBeenCalled();
+                expect(client.put).not.toHaveBeenCalled();
             });
         });
     });

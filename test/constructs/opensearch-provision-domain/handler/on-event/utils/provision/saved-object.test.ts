@@ -5,7 +5,7 @@ import { vol } from 'memfs';
 import { beforeEach, describe, expect, it, Mocked, vi } from 'vitest';
 import { AwsHttpClient } from '../../../../../../../src/common/lambda/aws-http-client';
 import { HttpClientResponse } from '../../../../../../../src/common/lambda/http-client/types';
-import { IndexProvisioner } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/on-event/utils/provision';
+import { SavedObjectProvisioner } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/on-event/utils/provision';
 import { BaseProvisioner } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/on-event/utils/provision/base';
 import { ProvisionerConfiguration } from '../../../../../../../src/constructs/opensearch-provision-domain/handler/types/provisioner-configuration';
 import { DestructiveOperation } from '../../../../../../../src/types';
@@ -13,7 +13,7 @@ import { Mutable } from '../../../../../../fixtures/types';
 
 vi.mock('node:fs');
 
-describe('OpenSearch Domain Index Provisioner', () => {
+describe('OpenSearch Domain Saved Object Provisioner', () => {
     const assetPath = '/asset';
     const noopMethodName = 'noOperation';
     const errorResponse: Promise<HttpClientResponse<null>> = new Promise(
@@ -34,7 +34,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
 
         vol.fromJSON(
             {
-                './indices/1.json': '{}'
+                './saved-objects/1.ndjson': '{}'
             },
             assetPath
         );
@@ -59,80 +59,80 @@ describe('OpenSearch Domain Index Provisioner', () => {
             };
         });
 
-        it('should create an index when it does not already exist', async () => {
-            // Arrange
-            client.get?.mockReturnValueOnce(
-                new Promise((resolve) =>
-                    resolve({
-                        data: null,
-                        headers: {},
-                        statusCode: 404
+        describe('OpenSearch', () => {
+            it('should publish the saved object', async () => {
+                // Arrange
+                client.post?.mockReturnValueOnce(
+                    new Promise((resolve) => {
+                        resolve({
+                            data: null,
+                            headers: {},
+                            statusCode: 200
+                        });
                     })
-                )
-            );
+                );
 
-            client.put?.mockReturnValueOnce(
-                new Promise((resolve) =>
-                    resolve({
-                        data: null,
-                        headers: {},
-                        statusCode: 200
-                    })
-                )
-            );
+                const provisioner = new SavedObjectProvisioner(config);
 
-            const provisioner = new IndexProvisioner(config);
+                // Act
+                await provisioner.run();
 
-            // Act
-            await provisioner.run();
-
-            // Assert
-            expect(client.get).toHaveBeenCalledExactlyOnceWith('/1');
-            expect(client.put).toHaveBeenCalledExactlyOnceWith(
-                '/1',
-                {},
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
+                // Assert
+                expect(client.post).toHaveBeenCalledExactlyOnceWith(
+                    '/_dashboards/api/saved_objects/_import?overwrite=true',
+                    expect.stringMatching(
+                        /-{28}\d+\r\nContent-Disposition: form-data; name="file"; filename="1.ndjson"\r\nContent-Type: application\/x-ndjson\r\n\r\n{}\r\n-{28}\d+--/
+                    ),
+                    {
+                        headers: {
+                            'Content-Type': expect.stringMatching(
+                                /^multipart\/form-data; boundary=-{26}\d+$/
+                            ),
+                            'osd-xsrf': 'true'
+                        }
                     }
-                }
-            );
+                );
+            });
         });
 
-        it('should skip creating an index that already exists', async () => {
-            // Arrange
-            client.get?.mockReturnValueOnce(
-                new Promise((resolve) =>
-                    resolve({
-                        data: null,
-                        headers: {},
-                        statusCode: 200
+        describe('Elasticsearch', () => {
+            beforeEach(() => {
+                config.domainType = 'Elasticsearch';
+            });
+
+            it('should publish the saved object', async () => {
+                // Arrange
+                client.post?.mockReturnValueOnce(
+                    new Promise((resolve) => {
+                        resolve({
+                            data: null,
+                            headers: {},
+                            statusCode: 200
+                        });
                     })
-                )
-            );
+                );
 
-            const provisioner = new IndexProvisioner(config);
+                const provisioner = new SavedObjectProvisioner(config);
 
-            // Act
-            await provisioner.run();
+                // Act
+                await provisioner.run();
 
-            // Assert
-            expect(client.get).toHaveBeenCalledExactlyOnceWith('/1');
-            expect(client.put).not.toHaveBeenCalled();
-        });
-
-        it('should throw an error in any other case', async () => {
-            // Arrange
-            const provisioner = new IndexProvisioner(config);
-
-            // Act
-            await expect(provisioner.run()).rejects.toThrow(
-                'Unknown state of index 1. Query returned 500'
-            );
-
-            // Assert
-            expect(client.get).toHaveBeenCalledExactlyOnceWith('/1');
-            expect(client.put).not.toHaveBeenCalled();
+                // Assert
+                expect(client.post).toHaveBeenCalledExactlyOnceWith(
+                    '/_kibana/api/saved_objects/_import?overwrite=true',
+                    expect.stringMatching(
+                        /-{28}\d+\r\nContent-Disposition: form-data; name="file"; filename="1.ndjson"\r\nContent-Type: application\/x-ndjson\r\n\r\n{}\r\n-{28}\d+--/
+                    ),
+                    {
+                        headers: {
+                            'Content-Type': expect.stringMatching(
+                                /^multipart\/form-data; boundary=-{26}\d+$/
+                            ),
+                            'kbn-xsrf': 'true'
+                        }
+                    }
+                );
+            });
         });
     });
 
@@ -150,7 +150,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
 
         it('should not take any action if the UPDATE or ALL destructive actions are not specified', async () => {
             // Arange
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new SavedObjectProvisioner(config);
             const updateSpy = vi.spyOn(provisioner as any, updateMethodName);
 
             // Act
@@ -164,7 +164,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.UPDATE;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new SavedObjectProvisioner(config);
             const updateSpy = vi.spyOn(provisioner as any, updateMethodName);
 
             // Act
@@ -178,7 +178,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.ALL;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new SavedObjectProvisioner(config);
             const updateSpy = vi.spyOn(provisioner as any, updateMethodName);
 
             // Act
@@ -195,7 +195,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
 
             it('should be a no-operation', async () => {
                 // Arange
-                const provisioner = new IndexProvisioner(config);
+                const provisioner = new SavedObjectProvisioner(config);
                 const noopSpy = vi.spyOn(
                     BaseProvisioner as any,
                     noopMethodName
@@ -230,7 +230,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
 
         it('should not take any action if the DELETE or ALL destructive actions are not specified', async () => {
             // Arange
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new SavedObjectProvisioner(config);
             const deleteSpy = vi.spyOn(provisioner as any, deleteMethodName);
 
             // Act
@@ -244,7 +244,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.DELETE;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new SavedObjectProvisioner(config);
             const deleteSpy = vi.spyOn(provisioner as any, deleteMethodName);
 
             // Act
@@ -258,7 +258,7 @@ describe('OpenSearch Domain Index Provisioner', () => {
             // Arange
             config.allowDestructiveOperations = DestructiveOperation.ALL;
 
-            const provisioner = new IndexProvisioner(config);
+            const provisioner = new SavedObjectProvisioner(config);
             const deleteSpy = vi.spyOn(provisioner as any, deleteMethodName);
 
             // Act
@@ -273,25 +273,25 @@ describe('OpenSearch Domain Index Provisioner', () => {
                 config.allowDestructiveOperations = DestructiveOperation.DELETE;
             });
 
-            it('should delete the index', async () => {
+            it('should be a no-operation', async () => {
                 // Arange
-                client.delete?.mockReturnValueOnce(
-                    new Promise((resolve) =>
-                        resolve({
-                            data: null,
-                            headers: {},
-                            statusCode: 200
-                        })
-                    )
+                const provisioner = new SavedObjectProvisioner(config);
+                const noopSpy = vi.spyOn(
+                    BaseProvisioner as any,
+                    noopMethodName
                 );
-
-                const provisioner = new IndexProvisioner(config);
 
                 // Act
                 await provisioner.run();
 
                 // Assert
-                expect(client.delete).toHaveBeenCalledExactlyOnceWith('/1');
+                expect(noopSpy).toHaveBeenCalled();
+                expect(client.delete).not.toHaveBeenCalled();
+                expect(client.get).not.toHaveBeenCalled();
+                expect(client.head).not.toHaveBeenCalled();
+                expect(client.patch).not.toHaveBeenCalled();
+                expect(client.post).not.toHaveBeenCalled();
+                expect(client.put).not.toHaveBeenCalled();
             });
         });
     });

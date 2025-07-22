@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { parse } from 'node:path';
 import { BaseProvisioner, EntityType } from './base';
 import { DestructiveOperation } from '../../../../../../types';
 import { ProvisionerConfiguration } from '../../../types/provisioner-configuration';
@@ -81,7 +82,7 @@ export class RoleMappingProvisioner extends BaseProvisioner {
         const allRoles = entity.contents.split('\n');
 
         if (this.dynamicMappings?.has(entity.name)) {
-            const dynamicRoles = this.dynamicMappings.get(entity.name) ?? [];
+            const dynamicRoles = this.dynamicMappings.get(entity.name)!;
             allRoles.push(...dynamicRoles);
         }
 
@@ -89,16 +90,21 @@ export class RoleMappingProvisioner extends BaseProvisioner {
     }
 
     override async run(): Promise<void> {
-        const filePaths = RoleMappingProvisioner.getFilePaths(
-            this.type,
-            this.configuration.assetPath
-        );
+        await super.run();
 
-        if (filePaths.length) {
-            await super.run();
-        } else if (this.dynamicMappings) {
-            for (const aosRole of this.dynamicMappings.keys()) {
-                const backendRoles = this.dynamicMappings.get(aosRole) ?? [];
+        if (this.dynamicMappings) {
+            const filePaths = RoleMappingProvisioner.getFilePaths(
+                this.type,
+                this.configuration.assetPath
+            );
+
+            const allEntities = filePaths.map((p) => parse(p).name);
+            const standaloneEntities = Array.from(
+                this.dynamicMappings.keys()
+            ).filter((e) => !allEntities.includes(e));
+
+            for (const aosRole of standaloneEntities) {
+                const backendRoles = this.dynamicMappings.get(aosRole)!;
 
                 switch (this.configuration.action) {
                     case 'Create':
@@ -124,8 +130,6 @@ export class RoleMappingProvisioner extends BaseProvisioner {
                             await this.removeBackendRole(aosRole);
                         }
                         break;
-                    default:
-                        throw new Error('Unknown provisioning action');
                 }
             }
         }
