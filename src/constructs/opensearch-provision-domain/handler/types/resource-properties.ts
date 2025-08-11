@@ -3,7 +3,6 @@
 
 import { DomainType } from './domain-type';
 import { DestructiveOperation } from '../../../../types';
-import { Json } from '../../../../types/json';
 
 /**
  * Invocation properties for the Custom Resource
@@ -55,5 +54,5 @@ export interface ResourceProperties {
      * Additional details can be found
      * [here](https://docs.opensearch.org/docs/latest/api-reference/cluster-api/cluster-settings/)
      */
-    readonly ClusterSettings?: Json;
+    readonly ClusterSettings?: object;
 }

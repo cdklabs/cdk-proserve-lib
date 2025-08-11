@@ -13,6 +13,7 @@ import {
     SavedObjectProvisioner
 } from './provision';
 import { BaseProvisioner } from './provision/base';
+import { Json } from '../../../../../types/json';
 import { ProvisionerConfiguration } from '../../types/provisioner-configuration';
 import { ResourceProperties } from '../../types/resource-properties';
 
@@ -31,7 +32,7 @@ export function getProvisioners(
     provisioners.push(
         new ClusterSettingsProvisioner(
             config,
-            event.ResourceProperties.ClusterSettings
+            event.ResourceProperties.ClusterSettings as Json
         )
     );
     provisioners.push(new IsmPolicyProvisioner(config));

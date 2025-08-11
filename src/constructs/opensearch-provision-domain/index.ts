@@ -11,7 +11,6 @@ import { Asset } from 'aws-cdk-lib/aws-s3-assets';
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 import { DestructiveOperation, LambdaConfiguration } from '../../types';
-import { Json } from '../../types/json';
 import { SecureFunction } from '../secure-function';
 import { DomainType } from './handler/types/domain-type';
 import { ResourceProperties } from './handler/types/resource-properties';
@@ -52,7 +51,7 @@ export interface OpenSearchProvisionDomainProps {
      * Additional details can be found
      * [here](https://docs.opensearch.org/docs/latest/api-reference/cluster-api/cluster-settings/)
      */
-    readonly clusterSettings?: Json;
+    readonly clusterSettings?: object;
 
     /**
      * If specified, defines which destructive operations the Custom Resource will handle.
