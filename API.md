@@ -1753,6 +1753,210 @@ The tree node.
 ---
 
 
+### OpenSearchProvisionDomain <a name="OpenSearchProvisionDomain" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain"></a>
+
+Controls the contents of an Amazon OpenSearch Service domain from Infrastructure as Code.
+
+This construct allows you to manage indices, component/index templates, cluster settings, Index State Management
+(ISM) policies, role / role mappings, and saved objects for a managed OpenSearch domain from CDK. Within your
+repository, you would create a directory containing the following sub-directories:
+
+- indices
+- ism-policies
+- role-mappings
+- roles
+- saved-objects
+- templates
+  - component
+  - index
+
+Within each subfolder, you can add JSON files to represent objects you want to be provisioned. The schema of the
+JSON file will be specific to the entity being provisioned and you can find more information withiin the OpenSearch
+documentation. The name of each file will be used as the name of the entity that is created within OpenSearch.
+
+The role-mappings entity is special and its structure is not found in the OpenSearch documentation. The name of the
+file should be the name of an internal OpenSearch role and will be used to send a PUT request to
+`/_plugins/_security/api/rolesmapping/<name>`. The contents of the file should be backend role names to map to the
+internal OpenSearch role (where each backend role appears on a separate line). These backend roles can be LDAP
+Distinguished Names, AWS Identity and Access Management (IAM) Role ARNs, etc.
+
+The custom resource property 'dynamicRoleMappings' allows you to supplement role mappings at CDK deployment time.
+This is useful in situations where you are dynamically creating the backend role as part of IaC and its identifier
+will not be known ahead of time. For example, if you create an AWS IAM Role that will be mapped to an internal
+OpenSearch role like `all_access` via CDK, you can pass that Role ARN to the resource through `dynamicRoleMappings`
+as such:
+
+```
+dynamicRoleMappings: {
+    all_access: [myRole.roleArn]
+}
+```
+
+The property allows you to map multiple backend roles to a single internal OpenSearch role hence the value being a
+list of strings.
+
+The custom resource proeprty `clusterSettings` allows you to dynamicall configure cluster settings via IaC. Note
+that not all OpenSearch settings will be configurable in the managed Amazon OpenSearch Service and you receive an
+error when trying to do so. Additional details can be found
+[here](https://docs.opensearch.org/docs/latest/api-reference/cluster-api/cluster-settings/)
+
+By default, the custom resource will only modify the domain during AWS CloudFormation CREATE calls. This is to
+prevent potential data loss or issues as the domain will most likely drift from its initial provisioning
+configuration once established and used. If you would like to allow the custom resource to manage the domain
+provisioning during other CloudForamtion lifecycle events, you can do so by setting the `allowDestructiveOperations`
+property on the custom resource.
+
+The construct also handles encryption for the framework resources using either a provided KMS key or an
+AWS managed key.
+
+The recommended pattern for provisioning a managed OpenSearch domain is to leverage this custom resource in a
+separate CDK stack from the one that deploys your domain. Typically OpenSearch domain deployments and teardowns
+take a significant amount of time and so you want to minimize errors in the stack that deploys your domain to
+prevent rollbacks and the need to redeploy. By separating your domain creation and provisioning, failures in
+provisioning will not cause the domain to be destroyed and will save a significant amount of development time.
+
+*Example*
+
+```typescript
+import { join } from 'node:path';
+import { OpenSearchProvisionDomain } from '@cdklabs/cdk-proserve-lib/constructs';
+import { DestructiveOperation } from '@cdklabs/cdk-proserve-lib/types';
+import { Role } from 'aws-cdk-lib/aws-iam';
+import { Domain } from 'aws-cdk-lib/aws-opensearchservice';
+
+const domain = Domain.fromDomainAttributes(this, 'Domain', {
+    domainArn: 'XXXX',
+    domainEndpoint: 'XXXX'
+});
+
+const admin = Role.fromRoleArn(this, 'DomainAdmin', 'XXXX');
+const user = Role.fromRoleArn(this, 'DomainUser', 'XXXX');
+
+new OpenSearchProvisionDomain(this, 'ProvisionDomain', {
+    domain: domain,
+    domainAdmin: admin,
+    provisioningConfigurationPath: join(
+        __dirname,
+        '..',
+        'dist',
+        'cluster-configuration'
+    ),
+    allowDestructiveOperations: DestructiveOperation.UPDATE,
+    clusterSettings: {
+        persistent: {
+            'plugins.ml_commons.model_access_control_enabled': 'true'
+        }
+    },
+    dynamicRoleMappings: {
+        all_access: [user.roleArn]
+    }
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+new constructs.OpenSearchProvisionDomain(scope: Construct, id: string, props: OpenSearchProvisionDomainProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which the Custom Resource belongs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for this instance. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps</code> | Metadata for configuring the Custom Resource. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+Parent to which the Custom Resource belongs.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+Unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps
+
+Metadata for configuring the Custom Resource.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.isConstruct"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+constructs.OpenSearchProvisionDomain.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+
 ### OpenSearchWorkflow <a name="OpenSearchWorkflow" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow"></a>
 
 Create OpenSearch Workflows using the flow framework to automate the provisioning of complex tasks using JSON or YAML.
@@ -4321,6 +4525,153 @@ If provided, this key will be used for encryption; otherwise, an AWS managed key
 ---
 
 ##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUserProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
+
+Optional Lambda configuration settings.
+
+---
+
+### OpenSearchProvisionDomainProps <a name="OpenSearchProvisionDomainProps" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps"></a>
+
+Properties for the OpenSearchProvisionDomain construct.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const openSearchProvisionDomainProps: constructs.OpenSearchProvisionDomainProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.domain">domain</a></code> | <code>aws-cdk-lib.aws_opensearchservice.IDomain</code> | Amazon OpenSearch Service domain to provision. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.domainAdmin">domainAdmin</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | AWS IAM Role that is configured as an administrative user of the Amazon OpenSearch Service domain. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.domainType">domainType</a></code> | <code>string</code> | Type of the managed Amazon OpenSearch Service domain. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.provisioningConfigurationPath">provisioningConfigurationPath</a></code> | <code>string</code> | Path on the local disk to the files that will be used to provision the Amazon OpenSearch Service domain. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.allowDestructiveOperations">allowDestructiveOperations</a></code> | <code>@cdklabs/cdk-proserve-lib.types.DestructiveOperation</code> | If specified, defines which destructive operations the Custom Resource will handle. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.clusterSettings">clusterSettings</a></code> | <code>object</code> | Additional settings to configure on the Amazon OpenSearch Service domain cluster itself. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.dynamicRoleMappings">dynamicRoleMappings</a></code> | <code>{[ key: string ]: string[]}</code> | Allows mapping of a role in an Amazon OpenSearch Service domain to multiple backend roles (like IAM Role ARNs, LDAP DNs, etc.). |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the framework resources. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings. |
+
+---
+
+##### `domain`<sup>Required</sup> <a name="domain" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.domain"></a>
+
+```typescript
+public readonly domain: IDomain;
+```
+
+- *Type:* aws-cdk-lib.aws_opensearchservice.IDomain
+
+Amazon OpenSearch Service domain to provision.
+
+---
+
+##### `domainAdmin`<sup>Required</sup> <a name="domainAdmin" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.domainAdmin"></a>
+
+```typescript
+public readonly domainAdmin: IRole;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IRole
+
+AWS IAM Role that is configured as an administrative user of the Amazon OpenSearch Service domain.
+
+---
+
+##### `domainType`<sup>Required</sup> <a name="domainType" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.domainType"></a>
+
+```typescript
+public readonly domainType: string;
+```
+
+- *Type:* string
+
+Type of the managed Amazon OpenSearch Service domain.
+
+---
+
+##### `provisioningConfigurationPath`<sup>Required</sup> <a name="provisioningConfigurationPath" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.provisioningConfigurationPath"></a>
+
+```typescript
+public readonly provisioningConfigurationPath: string;
+```
+
+- *Type:* string
+
+Path on the local disk to the files that will be used to provision the Amazon OpenSearch Service domain.
+
+---
+
+##### `allowDestructiveOperations`<sup>Optional</sup> <a name="allowDestructiveOperations" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.allowDestructiveOperations"></a>
+
+```typescript
+public readonly allowDestructiveOperations: DestructiveOperation;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.types.DestructiveOperation
+
+If specified, defines which destructive operations the Custom Resource will handle.
+
+If this is not specified, then the Custom Resource will only modify the domain on a CREATE call from AWS
+CloudFormation
+
+---
+
+##### `clusterSettings`<sup>Optional</sup> <a name="clusterSettings" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.clusterSettings"></a>
+
+```typescript
+public readonly clusterSettings: object;
+```
+
+- *Type:* object
+
+Additional settings to configure on the Amazon OpenSearch Service domain cluster itself.
+
+These settings will be sent as a JSON request to the /_cluster/settings API on OpenSearch.
+
+Additional details can be found
+[here](https://docs.opensearch.org/docs/latest/api-reference/cluster-api/cluster-settings/)
+
+---
+
+##### `dynamicRoleMappings`<sup>Optional</sup> <a name="dynamicRoleMappings" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.dynamicRoleMappings"></a>
+
+```typescript
+public readonly dynamicRoleMappings: {[ key: string ]: string[]};
+```
+
+- *Type:* {[ key: string ]: string[]}
+
+Allows mapping of a role in an Amazon OpenSearch Service domain to multiple backend roles (like IAM Role ARNs, LDAP DNs, etc.).
+
+The key is the role name in OpenSearch and the value is a list of entities to map to that role (e.g. local
+database users or AWS IAM role ARNs)
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Encryption key for protecting the framework resources.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.lambdaConfiguration"></a>
 
 ```typescript
 public readonly lambdaConfiguration: LambdaConfiguration;
