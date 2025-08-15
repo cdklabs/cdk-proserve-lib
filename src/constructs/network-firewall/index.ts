@@ -270,7 +270,7 @@ export class NetworkFirewall extends Construct {
                         routeTableId: returnSubnet.routeTable.routeTableId,
                         destinationCidrBlock: protectedSubnet.ipv4CidrBlock,
                         vpcEndpointId: endpoints.getEndpointId(
-                            returnSubnet.availabilityZone
+                            protectedSubnet.availabilityZone
                         )
                     });
                 }
