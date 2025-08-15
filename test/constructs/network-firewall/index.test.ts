@@ -188,7 +188,7 @@ describeCdkTest(NetworkFirewall, (id, getStack, getTemplate) => {
             VpcEndpointId: {
                 'Fn::GetAtt': [
                     Match.stringLikeRegexp('Endpoints'),
-                    'FirewallStatus.SyncStates.us-east-1c.Attachment.EndpointId'
+                    'FirewallStatus.SyncStates.us-east-1b.Attachment.EndpointId'
                 ]
             }
         });
