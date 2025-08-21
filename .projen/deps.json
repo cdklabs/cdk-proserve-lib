@@ -268,12 +268,12 @@
       "type": "build"
     },
     {
-      "name": "mime",
-      "version": "3.0.0",
+      "name": "memfs",
       "type": "build"
     },
     {
-      "name": "mock-fs",
+      "name": "mime",
+      "version": "3.0.0",
       "type": "build"
     },
     {
