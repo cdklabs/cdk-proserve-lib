@@ -378,6 +378,12 @@ export class KeycloakService extends Construct {
 
 export namespace KeycloakService {
     /**
+     * Utilities
+     */
+    export const EngineVersion = KeycloakVersion;
+    export type EngineConfiguration = KeycloakConfiguration;
+
+    /**
      * Policies to lifecycle various components of the pattern during stack actions
      */
     export interface RemovalPolicies {

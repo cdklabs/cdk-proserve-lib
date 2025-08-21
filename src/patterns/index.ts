@@ -3,3 +3,4 @@
 
 export * from './apigateway-static-hosting';
 export * from './ec2-linux-image-pipeline';
+export * from './keycloak-service';
