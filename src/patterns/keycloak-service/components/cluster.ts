@@ -15,9 +15,10 @@ import {
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
+import { KeycloakService } from '..';
+import { PortConfiguration } from '../types/configuration';
 import { KeycloakConfigurationBuilder } from './configuration/builder';
 import { KeycloakDatabase } from './database';
-import { KeycloakPortConfiguration } from '../keycloak-configuration';
 
 /**
  * Properties for configuring the cluster for Keycloak
@@ -26,7 +27,7 @@ export interface KeycloakClusterProps {
     /**
      * Optional overrides to the default prescribed configuration
      */
-    readonly configuration?: KeycloakCluster.Configuration;
+    readonly configuration?: KeycloakService.ClusterConfiguration;
 
     /**
      * Infrastructure resources for the database
@@ -300,56 +301,11 @@ export namespace KeycloakCluster {
         /**
          * Container ports on which the workloads are exposed
          */
-        readonly ports: KeycloakPortConfiguration;
+        readonly ports: PortConfiguration;
 
         /**
          * Fargate service for managing the workloads
          */
         readonly service: FargateService;
-    }
-
-    /**
-     * Configuration options for the cluster
-     */
-    export interface Configuration {
-        /**
-         * Container ports to use for workload traffic
-         */
-        readonly containerPorts?: Partial<KeycloakPortConfiguration>;
-
-        /**
-         * Boundaries for cluster scaling
-         */
-        readonly scaling?: {
-            /**
-             * The desired amount of Keycloak tasks to run at any given time
-             */
-            readonly desired?: number;
-
-            /**
-             * The minimum amount of Keycloak tasks that should be active at any given time
-             */
-            readonly maximum?: number;
-
-            /**
-             * The maximum amount of Keycloak tasks that should be active at any given time
-             */
-            readonly minimum?: number;
-        };
-
-        /**
-         * Resource allocation options for each Keycloak task
-         */
-        readonly sizing?: {
-            /**
-             * vCPU allocation for each task
-             */
-            readonly cpu?: number;
-
-            /**
-             * Memory allocation in MiB for each task
-             */
-            readonly memoryMb?: number;
-        };
     }
 }

@@ -7,9 +7,8 @@ import { IKey } from 'aws-cdk-lib/aws-kms';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import {
     AuroraPostgresEngineVersion,
-    BackupProps,
-    CfnDBCluster,
     ClientPasswordAuthType,
+    ClusterInstance,
     Credentials,
     DatabaseCluster,
     DatabaseClusterEngine,
@@ -19,6 +18,7 @@ import {
 } from 'aws-cdk-lib/aws-rds';
 import { ISecret } from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
+import { KeycloakService } from '..';
 
 /**
  * Properties for configuring the database for Keycloak
@@ -27,7 +27,7 @@ export interface KeycloakDatabaseProps {
     /**
      * Optional overrides to the default prescribed configuration
      */
-    readonly confugration?: KeycloakDatabase.Configuration;
+    readonly confugration?: KeycloakService.DatabaseConfiguration;
 
     /**
      * Key for encrypting resource data
@@ -83,9 +83,9 @@ export class KeycloakDatabase extends Construct {
      * @returns Whether the configuration options are for a serverless database or not
      */
     private databaseIsServerless(
-        props?: KeycloakDatabase.Configuration
-    ): props is KeycloakDatabase.ServerlessDatabaseConfiguration {
-        const serverlessProp: keyof KeycloakDatabase.ServerlessDatabaseConfiguration =
+        props?: KeycloakService.DatabaseConfiguration
+    ): props is KeycloakService.ServerlessDatabaseConfiguration {
+        const serverlessProp: keyof KeycloakService.ServerlessDatabaseConfiguration =
             'scaling';
 
         return props !== undefined && serverlessProp in props;
@@ -128,16 +128,18 @@ export class KeycloakDatabase extends Construct {
             }
         };
 
-        const additionalConfiguration:
-            | Partial<DatabaseClusterProps>
-            | undefined = this.databaseIsServerless(this.props.confugration)
-            ? {
-                  serverlessV2MaxCapacity:
-                      this.props.confugration.scaling.maxCapacity,
-                  serverlessV2MinCapacity:
-                      this.props.confugration.scaling.minCapacity
-              }
-            : undefined;
+        const additionalConfiguration: Partial<DatabaseClusterProps> =
+            this.databaseIsServerless(this.props.confugration)
+                ? {
+                      serverlessV2MaxCapacity:
+                          this.props.confugration.scaling.maxCapacity,
+                      serverlessV2MinCapacity:
+                          this.props.confugration.scaling.minCapacity,
+                      writer: ClusterInstance.serverlessV2('ClusterInstance')
+                  }
+                : {
+                      writer: ClusterInstance.provisioned('ClusterInstance')
+                  };
 
         return {
             ...baseConfiguration,
@@ -286,48 +288,4 @@ export namespace KeycloakDatabase {
          */
         readonly databaseName: string;
     }
-
-    /**
-     * Configuration options common to all database models
-     */
-    interface CommonDatabaseConfiguration {
-        /**
-         * Backup lifecycle plan for the database
-         */
-        readonly backup?: BackupProps;
-
-        /**
-         * How long to retain logs for the database and supporting infrastructure
-         */
-        readonly logRetentionDuration?: RetentionDays;
-
-        /**
-         * Alternate database engine version to use
-         */
-        readonly versionOverride?: AuroraPostgresEngineVersion;
-    }
-
-    /**
-     * Configuration options for a non-serverless database model
-     */
-    export interface TraditionalDatabaseConfiguration
-        extends CommonDatabaseConfiguration {}
-
-    /**
-     * Configuration options for a serverless database model
-     */
-    export interface ServerlessDatabaseConfiguration
-        extends CommonDatabaseConfiguration {
-        /**
-         * How to scale the database
-         */
-        readonly scaling: CfnDBCluster.ServerlessV2ScalingConfigurationProperty;
-    }
-
-    /**
-     * Configuration options for the database
-     */
-    export type Configuration =
-        | ServerlessDatabaseConfiguration
-        | TraditionalDatabaseConfiguration;
 }

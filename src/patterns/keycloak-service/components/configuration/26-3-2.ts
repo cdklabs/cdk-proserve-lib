@@ -3,13 +3,13 @@
 
 import { Secret } from 'aws-cdk-lib/aws-ecs';
 import { KeycloakConfigurationBuilder } from './builder';
-import { KeycloakConfiguration } from '../../keycloak-configuration';
+import { ServiceConfiguration } from '../../types/configuration';
 
 /**
  * Options for configuring Keycloak
  */
 export interface Keycloak_26_3_2_ConfigurationBuilderOptions
-    extends KeycloakConfiguration {}
+    extends ServiceConfiguration {}
 
 /**
  * Builder for creating dynamic standard and secure Keycloak configurations that are consumed by the Keycloak

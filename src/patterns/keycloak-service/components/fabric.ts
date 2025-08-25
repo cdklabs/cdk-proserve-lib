@@ -7,11 +7,10 @@ import {
     NetworkLoadBalancer,
     Protocol as ElbProtocol
 } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
+import { ARecord, HostedZone, RecordTarget } from 'aws-cdk-lib/aws-route53';
+import { LoadBalancerTarget } from 'aws-cdk-lib/aws-route53-targets';
 import { Construct } from 'constructs';
-import {
-    KeycloakConfiguration,
-    KeycloakPortConfiguration
-} from '../keycloak-configuration';
+import { KeycloakService } from '..';
 import { KeycloakCluster } from './cluster';
 
 /**
@@ -21,7 +20,7 @@ export interface KeycloakFabricProps {
     /**
      * Optional overrides to the default prescribed configuration
      */
-    readonly configuration?: KeycloakFabric.Configuration;
+    readonly configuration?: KeycloakService.FabricConfiguration;
 
     /**
      * Infrastructure resources for the cluster hosting the Keycloak application
@@ -36,7 +35,7 @@ export interface KeycloakFabricProps {
     /**
      * Configuration for the Keycloak application
      */
-    readonly appConfiguration: KeycloakConfiguration;
+    readonly appConfiguration: KeycloakService.ApplicationConfiguration;
 
     /**
      * Network where the Keycloak resources are deployed
@@ -81,13 +80,14 @@ export class KeycloakFabric extends Construct {
             this.props.configuration?.ports?.management ??
             KeycloakFabric.Defaults.managementPort;
 
-        this.buildLoadBalancer();
+        const endpoint = this.buildEndpoint();
+        this.configureEndpointDns(endpoint);
     }
 
     /**
      * Build the load balancer for the Keycloak service
      */
-    private buildLoadBalancer() {
+    private buildEndpoint(): NetworkLoadBalancer {
         const lb = new NetworkLoadBalancer(this, 'LoadBalancer', {
             vpc: this.props.vpc,
             crossZoneEnabled: true,
@@ -147,6 +147,39 @@ export class KeycloakFabric extends Construct {
             containerPort: this.props.cluster.ports.management,
             protocol: Protocol.TCP
         });
+
+        return lb;
+    }
+
+    /**
+     * Add a DNS record that points hostnames to the load balancer
+     * @param endpoint Load balancer for the Keycloak service
+     * @returns Custom DNS name if applicable
+     */
+    private configureEndpointDns(endpoint: NetworkLoadBalancer): void {
+        if (this.props.configuration?.dnsZoneName) {
+            const zone = HostedZone.fromLookup(this, 'Zone', {
+                domainName: this.props.configuration.dnsZoneName
+            });
+
+            new ARecord(this, 'DefaultHostDnsRecord', {
+                target: RecordTarget.fromAlias(
+                    new LoadBalancerTarget(endpoint)
+                ),
+                zone: zone,
+                recordName: this.props.appConfiguration.hostnames.default
+            });
+
+            if (this.props.appConfiguration.hostnames.admin) {
+                new ARecord(this, 'AdminHostDnsRecord', {
+                    target: RecordTarget.fromAlias(
+                        new LoadBalancerTarget(endpoint)
+                    ),
+                    zone: zone,
+                    recordName: this.props.appConfiguration.hostnames.admin
+                });
+            }
+        }
     }
 }
 
@@ -171,20 +204,5 @@ export namespace KeycloakFabric {
          * Equivalent to /
          */
         export const managementPath = '';
-    }
-
-    /**
-     * Configuration options for the fabric
-     */
-    export interface Configuration {
-        /**
-         * Whether or not the load balancer should be exposed to the external network
-         */
-        readonly internetFacing?: boolean;
-
-        /**
-         * Ports to use for serving traffic on the load balancer
-         */
-        readonly ports?: Partial<KeycloakPortConfiguration>;
     }
 }

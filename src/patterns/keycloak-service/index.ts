@@ -6,16 +6,18 @@ import { ISubnet, IVpc } from 'aws-cdk-lib/aws-ec2';
 import { ContainerImage } from 'aws-cdk-lib/aws-ecs';
 import { IKey, Key } from 'aws-cdk-lib/aws-kms';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
+import {
+    AuroraPostgresEngineVersion,
+    BackupProps,
+    CfnDBCluster
+} from 'aws-cdk-lib/aws-rds';
+import { ISecret, Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
 import { KeycloakCluster } from './components/cluster';
 import { Keycloak_26_3_2_ConfigurationBuilder } from './components/configuration/26-3-2';
 import { KeycloakDatabase } from './components/database';
 import { KeycloakFabric } from './components/fabric';
-import {
-    DatabaseConfiguration,
-    KeycloakConfiguration
-} from './keycloak-configuration';
-import { KeycloakVersion } from './version';
+import { DatabaseConnectionConfiguration } from './types/configuration';
 
 /**
  * Properties for the KeycloakService construct
@@ -58,6 +60,14 @@ export interface KeycloakServiceProps {
     readonly logRetentionDuration?: RetentionDays;
 }
 
+/**
+ * Deploys a production-grade Keycloak service.
+ *
+ * This service deploys a containerized version of Keycloak using AWS Fargate to host and scale the application. The
+ * backend database is supported via Amazon Relational Database Service (RDS) and the application is fronted by a
+ * Network Load Balancer.
+ *
+ */
 export class KeycloakService extends Construct {
     /**
      * Default lifecycle policy for resources during stack actions
@@ -79,6 +89,11 @@ export class KeycloakService extends Construct {
      * differing lifecycle policies
      */
     private readonly overallRemovalPolicy: RemovalPolicy;
+
+    /**
+     * Bootstrapped admin user for Keycloak
+     */
+    readonly adminUser: KeycloakService.AdminUserConfiguration;
 
     /**
      * Create a new Keycloak service
@@ -108,12 +123,42 @@ export class KeycloakService extends Construct {
                 KeycloakService.defaultRemovalPolicy
         ]);
 
+        this.adminUser = this.buildOrImportAdminUser();
+
         const database = this.buildDatabase(workloadSubnets);
         const cluster = this.buildCluster(database.resources, workloadSubnets);
 
         if (cluster) {
             this.buildFabric(cluster.resources, ingressSubnets);
         }
+    }
+
+    /**
+     * Uses the supplied admin credentials, or substitutes defaults when not provided, to bootstrap the Keycloak
+     * instance
+     * @returns Bootstrapped admin user
+     */
+    private buildOrImportAdminUser(): KeycloakService.AdminUserConfiguration {
+        const credentials =
+            this.props.keycloak.configuration.adminUser?.credentials ??
+            new Secret(this, 'AdminUserCredentials', {
+                encryptionKey: this.encryption,
+                generateSecretString: {
+                    includeSpace: false,
+                    passwordLength: 20,
+                    requireEachIncludedType: true
+                },
+                removalPolicy:
+                    this.props.removalPolicies?.data ??
+                    KeycloakService.defaultRemovalPolicy
+            });
+
+        return {
+            credentials: credentials,
+            username:
+                this.props.keycloak.configuration.adminUser?.username ??
+                'kcadmin'
+        };
     }
 
     /**
@@ -183,7 +228,9 @@ export class KeycloakService extends Construct {
      * Performs validation of the Keycloak application configuration
      * @param configuration Keycloak application configuration
      */
-    private validateConfiguration(configuration: KeycloakConfiguration): void {
+    private validateConfiguration(
+        configuration: KeycloakService.ApplicationConfiguration
+    ): void {
         if (!configuration.hostnames.admin) {
             Annotations.of(this).addWarningV2(
                 'cdk-proserve-lib:KeycloakService.adminInterface',
@@ -312,7 +359,7 @@ export class KeycloakService extends Construct {
         database: KeycloakDatabase.Infrastructure,
         workloadSubnets: ISubnet[]
     ): KeycloakCluster | undefined {
-        const databaseConfiguration: DatabaseConfiguration = {
+        const databaseConfiguration: DatabaseConnectionConfiguration = {
             credentials: database.credentials,
             endpoint: database.proxy.endpoint,
             name: database.databaseName,
@@ -321,12 +368,24 @@ export class KeycloakService extends Construct {
         };
 
         const configBuilder = (() => {
-            if (this.props.keycloak.version.is(KeycloakVersion.V26_3_2)) {
+            if (
+                this.props.keycloak.version.is(
+                    KeycloakService.EngineVersion.V26_3_2
+                )
+            ) {
                 return new Keycloak_26_3_2_ConfigurationBuilder({
-                    adminUser: this.props.keycloak.configuration.adminUser,
+                    adminUser: this.adminUser,
                     database: databaseConfiguration,
                     hostnames: this.props.keycloak.configuration.hostnames,
-                    ports: this.props.keycloak.configuration.ports,
+                    ports: {
+                        management:
+                            this.props.keycloak.configuration.ports
+                                ?.management ??
+                            KeycloakFabric.Defaults.managementPort,
+                        traffic:
+                            this.props.keycloak.configuration.ports?.traffic ??
+                            KeycloakFabric.Defaults.trafficPort
+                    },
                     loggingLevel:
                         this.props.keycloak.configuration.loggingLevel,
                     paths: this.props.keycloak.configuration.paths
@@ -378,10 +437,149 @@ export class KeycloakService extends Construct {
 
 export namespace KeycloakService {
     /**
-     * Utilities
+     * Versions of the Keycloak application
      */
-    export const EngineVersion = KeycloakVersion;
-    export type EngineConfiguration = KeycloakConfiguration;
+    export class EngineVersion {
+        /**
+         * Version 26.3.2
+         */
+        public static readonly V26_3_2 = EngineVersion.of('26.3.2');
+
+        /**
+         * Create a new KeycloakVersion with an arbitrary version
+         * @param version Version of Keycloak
+         * @returns KeycloakVersion
+         */
+        public static of(version: string): EngineVersion {
+            return new EngineVersion(version);
+        }
+
+        /**
+         * The full version string
+         */
+        readonly value: string;
+
+        /**
+         * Create a new KeycloakVersion from a version string
+         * @param version Version of Keycloak
+         */
+        private constructor(version: string) {
+            this.value = version;
+        }
+
+        /**
+         * Determines if the KeycloakVersion matches a specific version
+         * @param keycloak Version to match against
+         * @returns True if the current version matches the target version, false otherwise
+         */
+        public is(keycloak: EngineVersion): boolean {
+            return this.value === keycloak.value;
+        }
+    }
+
+    /**
+     * Details for the bootstrapped admin user within Keycloak
+     *
+     * [Guide: Bootstrapping an Admin Account](https://www.keycloak.org/server/hostname)
+     */
+    export interface AdminUserConfiguration {
+        /**
+         * Username for the bootstrapped admin user in Keycloak
+         */
+        readonly username: string;
+
+        /**
+         * Credentials for the bootstrapped admin user in Keycloak
+         */
+        readonly credentials: ISecret;
+    }
+
+    /**
+     * Details for the Keycloak hostname configuration
+     *
+     * [Guide: Configuring the hostname](https://www.keycloak.org/server/hostname)
+     */
+    export interface HostnameConfiguration {
+        /**
+         * Hostname for all endpoints
+         */
+        readonly default: string;
+
+        /**
+         * Optional hostname for the administration endpoint
+         *
+         * This allows for the separation of the user and administration endpoints for increased security
+         */
+        readonly admin?: string;
+    }
+
+    /**
+     * Details for the Keycloak path configuration to allow for serving Keycloak interfaces from non-root locations
+     */
+    export interface PathConfiguration {
+        /**
+         * Optional alternative relative path for serving content
+         */
+        readonly default?: string;
+
+        /**
+         * Optional alternative relative path for serving content specifically for management
+         */
+        readonly management?: string;
+    }
+
+    /**
+     * Details for which ports are used to serve the Keycloak content
+     */
+    export interface OptionalPortConfiguration {
+        /**
+         * Port to serve the standard HTTPS web traffic on
+         */
+        readonly traffic?: number;
+
+        /**
+         * Port to serve the management web traffic on
+         */
+        readonly management?: number;
+    }
+
+    /**
+     * Configuration for the Keycloak application
+     */
+    export interface ApplicationConfiguration {
+        /**
+         * Bootstrapped admin user
+         */
+        readonly adminUser?: AdminUserConfiguration;
+
+        /**
+         * Hostname configuration for Keycloak
+         */
+        readonly hostnames: HostnameConfiguration;
+
+        /**
+         * Level of information for Keycloak to log
+         */
+        readonly loggingLevel?:
+            | 'off'
+            | 'fatal'
+            | 'error'
+            | 'warn'
+            | 'info'
+            | 'debug'
+            | 'trace'
+            | 'all';
+
+        /**
+         * Alternative paths to serve Keycloak content
+         */
+        readonly paths?: PathConfiguration;
+
+        /**
+         * Ports for accessing exposed Keycloak HTTPS endpoints
+         */
+        readonly ports?: OptionalPortConfiguration;
+    }
 
     /**
      * Policies to lifecycle various components of the pattern during stack actions
@@ -405,7 +603,7 @@ export namespace KeycloakService {
         /**
          * Configuration for Keycloak
          */
-        readonly configuration: KeycloakConfiguration;
+        readonly configuration: ApplicationConfiguration;
 
         /**
          * Keycloak container image to use
@@ -415,8 +613,127 @@ export namespace KeycloakService {
         /**
          * Keycloak version
          */
-        readonly version: KeycloakVersion;
+        readonly version: EngineVersion;
     }
+
+    /**
+     * Configuration options for the fabric
+     */
+    export interface FabricConfiguration {
+        /**
+         * Whether or not the load balancer should be exposed to the external network
+         */
+        readonly internetFacing?: boolean;
+
+        /**
+         * Ports to use for serving traffic on the load balancer
+         */
+        readonly ports?: OptionalPortConfiguration;
+
+        /**
+         * Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided
+         */
+        readonly dnsZoneName?: string;
+    }
+
+    /**
+     * Configuration options for scaling the cluster
+     */
+    export interface ClusterScalingConfiguration {
+        /**
+         * The desired amount of Keycloak tasks to run at any given time
+         */
+        readonly desired?: number;
+
+        /**
+         * The minimum amount of Keycloak tasks that should be active at any given time
+         */
+        readonly maximum?: number;
+
+        /**
+         * The maximum amount of Keycloak tasks that should be active at any given time
+         */
+        readonly minimum?: number;
+    }
+
+    /**
+     * Configuration options for scaling the tasks
+     */
+    export interface TaskSizingConfiguration {
+        /**
+         * vCPU allocation for each task
+         */
+        readonly cpu?: number;
+
+        /**
+         * Memory allocation in MiB for each task
+         */
+        readonly memoryMb?: number;
+    }
+
+    /**
+     * Configuration options for the cluster
+     */
+    export interface ClusterConfiguration {
+        /**
+         * Container ports to use for workload traffic
+         */
+        readonly containerPorts?: OptionalPortConfiguration;
+
+        /**
+         * Boundaries for cluster scaling
+         */
+        readonly scaling?: ClusterScalingConfiguration;
+
+        /**
+         * Resource allocation options for each Keycloak task
+         */
+        readonly sizing?: TaskSizingConfiguration;
+    }
+
+    /**
+     * Configuration options common to all database models
+     */
+    interface CommonDatabaseConfiguration {
+        /**
+         * Backup lifecycle plan for the database
+         */
+        readonly backup?: BackupProps;
+
+        /**
+         * How long to retain logs for the database and supporting infrastructure
+         */
+        readonly logRetentionDuration?: RetentionDays;
+
+        /**
+         * Alternate database engine version to use
+         */
+        readonly versionOverride?: AuroraPostgresEngineVersion;
+    }
+
+    /**
+     * Configuration options for a non-serverless database model
+     */
+    export interface TraditionalDatabaseConfiguration
+        extends CommonDatabaseConfiguration {}
+
+    /**
+     * Configuration options for a serverless database model
+     */
+    export interface ServerlessDatabaseConfiguration
+        extends CommonDatabaseConfiguration {
+        /**
+         * How to scale the database
+         */
+        readonly scaling: CfnDBCluster.ServerlessV2ScalingConfigurationProperty;
+    }
+
+    /**
+     * Configuration options for the database
+     */
+    export type DatabaseConfiguration =
+        | ServerlessDatabaseConfiguration
+        | TraditionalDatabaseConfiguration;
 
     /**
      * Overrides for prescribed defaults for the infrastructure
@@ -425,16 +742,16 @@ export namespace KeycloakService {
         /**
          * Overrides related to the application hosting infrastructure
          */
-        readonly cluster?: KeycloakCluster.Configuration;
+        readonly cluster?: ClusterConfiguration;
 
         /**
          * Overrides related to the database infrastructure
          */
-        readonly database?: KeycloakDatabase.Configuration;
+        readonly database?: DatabaseConfiguration;
 
         /**
          * Overrides related to the networking infrastructure
          */
-        readonly fabric?: KeycloakFabric.Configuration;
+        readonly fabric?: FabricConfiguration;
     }
 }
