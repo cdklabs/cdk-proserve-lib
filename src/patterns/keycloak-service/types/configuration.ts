@@ -69,9 +69,9 @@ export interface PortConfiguration {
 export interface ServiceConfiguration
     extends Omit<KeycloakService.ApplicationConfiguration, 'port'> {
     /**
-     * Bootstrapped admin user
+     * Credentials for bootstrapping a local admin user in Keycloak
      */
-    readonly adminUser: KeycloakService.AdminUserConfiguration;
+    readonly adminUser: ISecret;
 
     /**
      * Backend database to support Keycloak

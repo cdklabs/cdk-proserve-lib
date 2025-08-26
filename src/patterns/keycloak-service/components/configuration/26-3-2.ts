@@ -40,13 +40,6 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
 
     generateStandardDynamicConfiguration(): Record<string, string> {
         /**
-         * Bootstrap
-         */
-        const bootstrapConfiguration: Record<string, string> = {
-            KC_BOOTSTRAP_ADMIN_USERNAME: this.opts.adminUser.username
-        };
-
-        /**
          * HTTP(S)
          */
         const httpConfiguration: Record<string, string> = {
@@ -114,7 +107,6 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
         // KC_LOG_ASYNC: 'true'
 
         return {
-            ...bootstrapConfiguration,
             ...httpConfiguration,
             ...hostnameConfiguration,
             ...databaseConfiguration,
@@ -129,7 +121,12 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
          */
         const bootstrapConfiguration: Record<string, Secret> = {
             KC_BOOTSTRAP_ADMIN_PASSWORD: Secret.fromSecretsManager(
-                this.opts.adminUser.credentials
+                this.opts.adminUser,
+                'password'
+            ),
+            KC_BOOTSTRAP_ADMIN_USERNAME: Secret.fromSecretsManager(
+                this.opts.adminUser,
+                'username'
             )
         };
 

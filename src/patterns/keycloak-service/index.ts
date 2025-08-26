@@ -101,9 +101,9 @@ export class KeycloakService extends Construct {
     private readonly ports: PortConfiguration;
 
     /**
-     * Bootstrapped admin user for Keycloak
+     * Credentials for bootstrapping a local admin user in Keycloak
      */
-    readonly adminUser: KeycloakService.AdminUserConfiguration;
+    readonly adminUser: ISecret;
 
     /**
      * Create a new Keycloak service
@@ -155,29 +155,28 @@ export class KeycloakService extends Construct {
     /**
      * Uses the supplied admin credentials, or substitutes defaults when not provided, to bootstrap the Keycloak
      * instance
-     * @returns Bootstrapped admin user
+     * @returns Credentials for bootstrapping a local admin user in Keycloak
      */
-    private buildOrImportAdminUser(): KeycloakService.AdminUserConfiguration {
-        const credentials =
-            this.props.keycloak.configuration.adminUser?.credentials ??
-            new Secret(this, 'AdminUserCredentials', {
+    private buildOrImportAdminUser(): ISecret {
+        if (this.props.keycloak.configuration.adminUser) {
+            return this.props.keycloak.configuration.adminUser;
+        } else {
+            return new Secret(this, 'AdminUserCredentials', {
                 encryptionKey: this.encryption,
                 generateSecretString: {
+                    generateStringKey: 'password',
                     includeSpace: false,
                     passwordLength: 20,
-                    requireEachIncludedType: true
+                    requireEachIncludedType: true,
+                    secretStringTemplate: JSON.stringify({
+                        username: 'kcadmin'
+                    })
                 },
                 removalPolicy:
                     this.props.removalPolicies?.data ??
                     KeycloakService.defaultRemovalPolicy
             });
-
-        return {
-            credentials: credentials,
-            username:
-                this.props.keycloak.configuration.adminUser?.username ??
-                'kcadmin'
-        };
+        }
     }
 
     /**
@@ -581,23 +580,6 @@ export namespace KeycloakService {
     }
 
     /**
-     * Details for the bootstrapped admin user within Keycloak
-     *
-     * [Guide: Bootstrapping an Admin Account](https://www.keycloak.org/server/hostname)
-     */
-    export interface AdminUserConfiguration {
-        /**
-         * Username for the bootstrapped admin user in Keycloak
-         */
-        readonly username: string;
-
-        /**
-         * Credentials for the bootstrapped admin user in Keycloak
-         */
-        readonly credentials: ISecret;
-    }
-
-    /**
      * Details for the Keycloak hostname configuration
      *
      * [Guide: Configuring the hostname](https://www.keycloak.org/server/hostname)
@@ -643,9 +625,13 @@ export namespace KeycloakService {
      */
     export interface ApplicationConfiguration {
         /**
-         * Bootstrapped admin user
+         * Credentials for bootstrapping a local admin user within Keycloak
+         *
+         * Must be a key-value secret with `username` and `password` fields
+         *
+         * [Guide: Bootstrapping an Admin Account](https://www.keycloak.org/server/hostname)
          */
-        readonly adminUser?: AdminUserConfiguration;
+        readonly adminUser?: ISecret;
 
         /**
          * Hostname configuration for Keycloak
