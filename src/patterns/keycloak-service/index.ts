@@ -4,6 +4,7 @@
 import { Annotations, RemovalPolicy } from 'aws-cdk-lib';
 import { ISubnet, IVpc } from 'aws-cdk-lib/aws-ec2';
 import { ContainerImage } from 'aws-cdk-lib/aws-ecs';
+import { ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import { IKey, Key } from 'aws-cdk-lib/aws-kms';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import {
@@ -437,9 +438,15 @@ export class KeycloakService extends Construct {
         if (this.props.encryption) {
             return this.props.encryption;
         } else {
-            return new Key(this, 'Encryption', {
+            const encryption = new Key(this, 'Encryption', {
                 removalPolicy: this.overallRemovalPolicy
             });
+
+            encryption.grantEncryptDecrypt(
+                new ServicePrincipal('logs.amazonaws.com')
+            );
+
+            return encryption;
         }
     }
 
