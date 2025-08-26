@@ -111,12 +111,7 @@ export class KeycloakFabric extends Construct {
                 this.props.cluster.service.taskDefinition.defaultContainer!
                     .containerName,
             listener: ListenerConfig.networkListener(trafficListener, {
-                port: this.trafficPort,
-                healthCheck: {
-                    enabled: true,
-                    path: `${this.props.appConfiguration.paths?.management ?? KeycloakFabric.Defaults.managementPath}/health/live`,
-                    port: this.managementPort.toString()
-                }
+                port: this.trafficPort
             }),
             newTargetGroupId: 'TrafficWorkers',
             containerPort: this.props.cluster.ports.traffic,
@@ -136,12 +131,7 @@ export class KeycloakFabric extends Construct {
                 this.props.cluster.service.taskDefinition.defaultContainer!
                     .containerName,
             listener: ListenerConfig.networkListener(managementListener, {
-                port: this.managementPort,
-                healthCheck: {
-                    enabled: true,
-                    path: `${this.props.appConfiguration.paths?.management ?? KeycloakFabric.Defaults.managementPath}/health/live`,
-                    port: this.managementPort.toString()
-                }
+                port: this.managementPort
             }),
             newTargetGroupId: 'ManagementWorkers',
             containerPort: this.props.cluster.ports.management,
