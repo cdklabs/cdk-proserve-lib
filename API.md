@@ -1418,7 +1418,7 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.adminUser">adminUser</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.AdminUserConfiguration</code> | Bootstrapped admin user for Keycloak. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.adminUser">adminUser</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Credentials for bootstrapping a local admin user in Keycloak. |
 
 ---
 
@@ -1437,12 +1437,12 @@ The tree node.
 ##### `adminUser`<sup>Required</sup> <a name="adminUser" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.adminUser"></a>
 
 ```typescript
-public readonly adminUser: AdminUserConfiguration;
+public readonly adminUser: ISecret;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.AdminUserConfiguration
+- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
 
-Bootstrapped admin user for Keycloak.
+Credentials for bootstrapping a local admin user in Keycloak.
 
 ---
 
@@ -2462,53 +2462,6 @@ have configured `logging` on the construct.
 
 ## Structs <a name="Structs" id="Structs"></a>
 
-### AdminUserConfiguration <a name="AdminUserConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.AdminUserConfiguration"></a>
-
-Details for the bootstrapped admin user within Keycloak.
-
-[Guide: Bootstrapping an Admin Account](https://www.keycloak.org/server/hostname)
-
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.AdminUserConfiguration.Initializer"></a>
-
-```typescript
-import { patterns } from '@cdklabs/cdk-proserve-lib'
-
-const adminUserConfiguration: patterns.KeycloakService.AdminUserConfiguration = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.AdminUserConfiguration.property.credentials">credentials</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Credentials for the bootstrapped admin user in Keycloak. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.AdminUserConfiguration.property.username">username</a></code> | <code>string</code> | Username for the bootstrapped admin user in Keycloak. |
-
----
-
-##### `credentials`<sup>Required</sup> <a name="credentials" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.AdminUserConfiguration.property.credentials"></a>
-
-```typescript
-public readonly credentials: ISecret;
-```
-
-- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
-
-Credentials for the bootstrapped admin user in Keycloak.
-
----
-
-##### `username`<sup>Required</sup> <a name="username" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.AdminUserConfiguration.property.username"></a>
-
-```typescript
-public readonly username: string;
-```
-
-- *Type:* string
-
-Username for the bootstrapped admin user in Keycloak.
-
----
-
 ### AlarmConfig <a name="AlarmConfig" id="@cdklabs/cdk-proserve-lib.aspects.AlarmConfig"></a>
 
 Optional custom metric configuration for CloudWatch Alarms.
@@ -2844,10 +2797,11 @@ const applicationConfiguration: patterns.KeycloakService.ApplicationConfiguratio
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.hostnames">hostnames</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.HostnameConfiguration</code> | Hostname configuration for Keycloak. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.adminUser">adminUser</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.AdminUserConfiguration</code> | Bootstrapped admin user. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.adminUser">adminUser</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Credentials for bootstrapping a local admin user within Keycloak. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.loggingLevel">loggingLevel</a></code> | <code>string</code> | Level of information for Keycloak to log. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.paths">paths</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.PathConfiguration</code> | Alternative paths to serve Keycloak content. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.ports">ports</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.OptionalPortConfiguration</code> | Ports for accessing exposed Keycloak HTTPS endpoints. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.management">management</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration</code> | Configuration options for the management interface. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.path">path</a></code> | <code>string</code> | Optional alternative relative path for serving content. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.port">port</a></code> | <code>number</code> | Port to serve the standard HTTPS web traffic on. |
 
 ---
 
@@ -2866,12 +2820,16 @@ Hostname configuration for Keycloak.
 ##### `adminUser`<sup>Optional</sup> <a name="adminUser" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.adminUser"></a>
 
 ```typescript
-public readonly adminUser: AdminUserConfiguration;
+public readonly adminUser: ISecret;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.AdminUserConfiguration
+- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
 
-Bootstrapped admin user.
+Credentials for bootstrapping a local admin user within Keycloak.
+
+Must be a key-value secret with `username` and `password` fields
+
+[Guide: Bootstrapping an Admin Account](https://www.keycloak.org/server/hostname)
 
 ---
 
@@ -2887,27 +2845,41 @@ Level of information for Keycloak to log.
 
 ---
 
-##### `paths`<sup>Optional</sup> <a name="paths" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.paths"></a>
+##### `management`<sup>Optional</sup> <a name="management" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.management"></a>
 
 ```typescript
-public readonly paths: PathConfiguration;
+public readonly management: ManagementConfiguration;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.PathConfiguration
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration
 
-Alternative paths to serve Keycloak content.
+Configuration options for the management interface.
+
+If not specified, the management interface is disabled
 
 ---
 
-##### `ports`<sup>Optional</sup> <a name="ports" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.ports"></a>
+##### `path`<sup>Optional</sup> <a name="path" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.path"></a>
 
 ```typescript
-public readonly ports: OptionalPortConfiguration;
+public readonly path: string;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.OptionalPortConfiguration
+- *Type:* string
 
-Ports for accessing exposed Keycloak HTTPS endpoints.
+Optional alternative relative path for serving content.
+
+---
+
+##### `port`<sup>Optional</sup> <a name="port" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.port"></a>
+
+```typescript
+public readonly port: number;
+```
+
+- *Type:* number
+
+Port to serve the standard HTTPS web traffic on.
 
 ---
 
@@ -3169,21 +3141,8 @@ const clusterConfiguration: patterns.KeycloakService.ClusterConfiguration = { ..
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.containerPorts">containerPorts</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.OptionalPortConfiguration</code> | Container ports to use for workload traffic. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.scaling">scaling</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration</code> | Boundaries for cluster scaling. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.sizing">sizing</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TaskSizingConfiguration</code> | Resource allocation options for each Keycloak task. |
-
----
-
-##### `containerPorts`<sup>Optional</sup> <a name="containerPorts" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.containerPorts"></a>
-
-```typescript
-public readonly containerPorts: OptionalPortConfiguration;
-```
-
-- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.OptionalPortConfiguration
-
-Container ports to use for workload traffic.
 
 ---
 
@@ -4205,7 +4164,6 @@ const fabricConfiguration: patterns.KeycloakService.FabricConfiguration = { ... 
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.dnsZoneName">dnsZoneName</a></code> | <code>string</code> | Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.internetFacing">internetFacing</a></code> | <code>boolean</code> | Whether or not the load balancer should be exposed to the external network. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.ports">ports</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.OptionalPortConfiguration</code> | Ports to use for serving traffic on the load balancer. |
 
 ---
 
@@ -4230,18 +4188,6 @@ public readonly internetFacing: boolean;
 - *Type:* boolean
 
 Whether or not the load balancer should be exposed to the external network.
-
----
-
-##### `ports`<sup>Optional</sup> <a name="ports" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.ports"></a>
-
-```typescript
-public readonly ports: OptionalPortConfiguration;
-```
-
-- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.OptionalPortConfiguration
-
-Ports to use for serving traffic on the load balancer.
 
 ---
 
@@ -4892,6 +4838,75 @@ Default: one week
 
 ---
 
+### ManagementConfiguration <a name="ManagementConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration"></a>
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const managementConfiguration: patterns.KeycloakService.ManagementConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.port">port</a></code> | <code>number</code> | Port to serve the management web traffic on. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.health">health</a></code> | <code>boolean</code> | Whether the health management API is enabled. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.metrics">metrics</a></code> | <code>boolean</code> | Whether the metrics management API is enabled. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.path">path</a></code> | <code>string</code> | Optional alternative relative path for serving content specifically for management. |
+
+---
+
+##### `port`<sup>Required</sup> <a name="port" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.port"></a>
+
+```typescript
+public readonly port: number;
+```
+
+- *Type:* number
+
+Port to serve the management web traffic on.
+
+---
+
+##### `health`<sup>Optional</sup> <a name="health" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.health"></a>
+
+```typescript
+public readonly health: boolean;
+```
+
+- *Type:* boolean
+
+Whether the health management API is enabled.
+
+---
+
+##### `metrics`<sup>Optional</sup> <a name="metrics" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.metrics"></a>
+
+```typescript
+public readonly metrics: boolean;
+```
+
+- *Type:* boolean
+
+Whether the metrics management API is enabled.
+
+---
+
+##### `path`<sup>Optional</sup> <a name="path" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.path"></a>
+
+```typescript
+public readonly path: string;
+```
+
+- *Type:* string
+
+Optional alternative relative path for serving content specifically for management.
+
+---
+
 ### NetworkFirewallEndpointsProps <a name="NetworkFirewallEndpointsProps" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpointsProps"></a>
 
 Properties for the NetworkFirewallEndpoints construct.
@@ -5530,51 +5545,6 @@ https://opensearch.org/docs/latest/automating-configurations/api/provision-workf
 
 ---
 
-### OptionalPortConfiguration <a name="OptionalPortConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.OptionalPortConfiguration"></a>
-
-Details for which ports are used to serve the Keycloak content.
-
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.OptionalPortConfiguration.Initializer"></a>
-
-```typescript
-import { patterns } from '@cdklabs/cdk-proserve-lib'
-
-const optionalPortConfiguration: patterns.KeycloakService.OptionalPortConfiguration = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.OptionalPortConfiguration.property.management">management</a></code> | <code>number</code> | Port to serve the management web traffic on. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.OptionalPortConfiguration.property.traffic">traffic</a></code> | <code>number</code> | Port to serve the standard HTTPS web traffic on. |
-
----
-
-##### `management`<sup>Optional</sup> <a name="management" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.OptionalPortConfiguration.property.management"></a>
-
-```typescript
-public readonly management: number;
-```
-
-- *Type:* number
-
-Port to serve the management web traffic on.
-
----
-
-##### `traffic`<sup>Optional</sup> <a name="traffic" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.OptionalPortConfiguration.property.traffic"></a>
-
-```typescript
-public readonly traffic: number;
-```
-
-- *Type:* number
-
-Port to serve the standard HTTPS web traffic on.
-
----
-
 ### OverrideConfig <a name="OverrideConfig" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.OverrideConfig"></a>
 
 Configuration for rule overrides.
@@ -5752,51 +5722,6 @@ public readonly encryption: IKey;
 - *Type:* aws-cdk-lib.aws_kms.IKey
 
 Optional encryption key that protects the secret.
-
----
-
-### PathConfiguration <a name="PathConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.PathConfiguration"></a>
-
-Details for the Keycloak path configuration to allow for serving Keycloak interfaces from non-root locations.
-
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.PathConfiguration.Initializer"></a>
-
-```typescript
-import { patterns } from '@cdklabs/cdk-proserve-lib'
-
-const pathConfiguration: patterns.KeycloakService.PathConfiguration = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.PathConfiguration.property.default">default</a></code> | <code>string</code> | Optional alternative relative path for serving content. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.PathConfiguration.property.management">management</a></code> | <code>string</code> | Optional alternative relative path for serving content specifically for management. |
-
----
-
-##### `default`<sup>Optional</sup> <a name="default" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.PathConfiguration.property.default"></a>
-
-```typescript
-public readonly default: string;
-```
-
-- *Type:* string
-
-Optional alternative relative path for serving content.
-
----
-
-##### `management`<sup>Optional</sup> <a name="management" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.PathConfiguration.property.management"></a>
-
-```typescript
-public readonly management: string;
-```
-
-- *Type:* string
-
-Optional alternative relative path for serving content specifically for management.
 
 ---
 
