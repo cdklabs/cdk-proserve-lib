@@ -87,8 +87,7 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
             KC_DB: 'postgres',
             KC_DB_URL_DATABASE: this.opts.database.name,
             KC_DB_URL_HOST: this.opts.database.endpoint,
-            KC_DB_URL_PORT: this.opts.database.port.toString(),
-            KC_DB_USERNAME: this.opts.database.username
+            KC_DB_URL_PORT: this.opts.database.port.toString()
         };
 
         // KC_DB_URL: this.props.database.endpoint
@@ -143,7 +142,12 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
          */
         const databaseConfiguration: Record<string, Secret> = {
             KC_DB_PASSWORD: Secret.fromSecretsManager(
-                this.opts.database.credentials
+                this.opts.database.credentials,
+                'password'
+            ),
+            KC_DB_USERNAME: Secret.fromSecretsManager(
+                this.opts.database.credentials,
+                'username'
             )
         };
 

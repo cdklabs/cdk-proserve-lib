@@ -24,11 +24,6 @@ export interface DatabaseConnectionConfiguration {
     readonly port: number;
 
     /**
-     * Username for authenticating to the database
-     */
-    readonly username: string;
-
-    /**
      * Credentials for authenticating to the database
      */
     readonly credentials: ISecret;

@@ -202,8 +202,7 @@ export class KeycloakDatabase extends Construct {
             credentials: db.secret!,
             databaseName: KeycloakDatabase.Defaults.username,
             port: KeycloakDatabase.Defaults.proxyPort,
-            proxy: proxy,
-            username: credentials.username
+            proxy: proxy
         };
     }
 }
@@ -267,11 +266,6 @@ export namespace KeycloakDatabase {
          * Security group for controlling access to the database proxy
          */
         readonly access: SecurityGroup;
-
-        /**
-         * Username for the database admin
-         */
-        readonly username: string;
 
         /**
          * Credentials for the database admin

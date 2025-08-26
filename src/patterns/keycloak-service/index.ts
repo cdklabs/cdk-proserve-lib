@@ -515,8 +515,7 @@ export class KeycloakService extends Construct {
             credentials: database.credentials,
             endpoint: database.proxy.endpoint,
             name: database.databaseName,
-            port: database.port,
-            username: database.username
+            port: database.port
         };
 
         const configBuilder = (() => {
