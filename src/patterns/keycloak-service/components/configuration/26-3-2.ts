@@ -76,13 +76,6 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
         }
 
         /**
-         * Proxy
-         */
-        const proxyConfiguration: Record<string, string> = {
-            KC_PROXY_PROTOCOL_ENABLED: 'true'
-        };
-
-        /**
          * Database
          */
         const databaseConfiguration: Record<string, string> = {
@@ -122,7 +115,6 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
             ...bootstrapConfiguration,
             ...httpConfiguration,
             ...hostnameConfiguration,
-            ...proxyConfiguration,
             ...databaseConfiguration,
             ...managementConfiguration,
             ...loggingConfiguration
