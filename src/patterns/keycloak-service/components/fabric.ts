@@ -12,6 +12,7 @@ import { LoadBalancerTarget } from 'aws-cdk-lib/aws-route53-targets';
 import { Construct } from 'constructs';
 import { KeycloakService } from '..';
 import { KeycloakCluster } from './cluster';
+import { PortConfiguration } from '../types/configuration';
 
 /**
  * Properties for configuring the networking fabric for Keycloak
@@ -31,6 +32,11 @@ export interface KeycloakFabricProps {
      * Subnets where the resources should be deployed
      */
     readonly ingressSubnets: ISubnet[];
+
+    /**
+     * Ports to use for serving container
+     */
+    readonly ports: PortConfiguration;
 
     /**
      * Configuration for the Keycloak application
@@ -53,16 +59,6 @@ export class KeycloakFabric extends Construct {
     private readonly props: KeycloakFabricProps;
 
     /**
-     * Port on the load balancer to use for default HTTPS web traffic
-     */
-    private readonly trafficPort: number;
-
-    /**
-     * Port on the load balancer to use for management HTTPS web traffic
-     */
-    private readonly managementPort: number;
-
-    /**
      * Create the networking fabric for the Keycloak service
      * @param scope Parent to which this construct belongs
      * @param id Unique identifier for the component
@@ -72,13 +68,6 @@ export class KeycloakFabric extends Construct {
         super(scope, id);
 
         this.props = props;
-
-        this.trafficPort =
-            this.props.configuration?.ports?.traffic ??
-            KeycloakFabric.Defaults.trafficPort;
-        this.managementPort =
-            this.props.configuration?.ports?.management ??
-            KeycloakFabric.Defaults.managementPort;
 
         const endpoint = this.buildEndpoint();
         this.configureEndpointDns(endpoint);
@@ -102,7 +91,7 @@ export class KeycloakFabric extends Construct {
          * Traffic
          */
         const trafficListener = lb.addListener('TrafficListener', {
-            port: this.trafficPort,
+            port: this.props.ports.traffic,
             protocol: ElbProtocol.TCP
         });
 
@@ -111,10 +100,10 @@ export class KeycloakFabric extends Construct {
                 this.props.cluster.service.taskDefinition.defaultContainer!
                     .containerName,
             listener: ListenerConfig.networkListener(trafficListener, {
-                port: this.trafficPort
+                port: this.props.ports.traffic
             }),
             newTargetGroupId: 'TrafficWorkers',
-            containerPort: this.props.cluster.ports.traffic,
+            containerPort: KeycloakCluster.Defaults.containerTrafficPort,
             protocol: Protocol.TCP
         });
 
@@ -122,7 +111,7 @@ export class KeycloakFabric extends Construct {
          * Management
          */
         const managementListener = lb.addListener('ManagementListener', {
-            port: this.managementPort,
+            port: this.props.ports.management,
             protocol: ElbProtocol.TCP
         });
 
@@ -131,10 +120,10 @@ export class KeycloakFabric extends Construct {
                 this.props.cluster.service.taskDefinition.defaultContainer!
                     .containerName,
             listener: ListenerConfig.networkListener(managementListener, {
-                port: this.managementPort
+                port: this.props.ports.management
             }),
             newTargetGroupId: 'ManagementWorkers',
-            containerPort: this.props.cluster.ports.management,
+            containerPort: KeycloakCluster.Defaults.containerManagementPort,
             protocol: Protocol.TCP
         });
 

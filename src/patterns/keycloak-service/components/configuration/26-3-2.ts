@@ -4,6 +4,7 @@
 import { Secret } from 'aws-cdk-lib/aws-ecs';
 import { KeycloakConfigurationBuilder } from './builder';
 import { ServiceConfiguration } from '../../types/configuration';
+import { KeycloakCluster } from '../cluster';
 
 /**
  * Options for configuring Keycloak
@@ -50,7 +51,8 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
          */
         const httpConfiguration: Record<string, string> = {
             KC_HTTP_ENABLED: 'false',
-            KC_HTTPS_PORT: this.opts.ports.traffic.toString(),
+            KC_HTTPS_PORT:
+                KeycloakCluster.Defaults.containerTrafficPort.toString(),
             KC_HTTP_MAX_QUEUED_REQUESTS: '1000'
         };
 
@@ -62,7 +64,7 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
          * Hostname v2
          */
         const hostnameConfiguration: Record<string, string> = {
-            KC_HOSTNAME: this.opts.hostnames.default
+            KC_HOSTNAME: `https://${this.opts.hostnames.default}:${this.opts.ports.traffic}`
         };
 
         // KC_HOSTNAME_BACKCHANNEL_DYNAMIC: 'false',
@@ -70,7 +72,7 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
         // KC_HOSTNAME_STRICT: 'true'
 
         if (this.opts.hostnames.admin) {
-            hostnameConfiguration.KC_HOSTNAME_ADMIN = this.opts.hostnames.admin;
+            hostnameConfiguration.KC_HOSTNAME_ADMIN = `https://${this.opts.hostnames.admin}:${this.opts.ports.traffic}`;
         }
 
         /**
@@ -97,7 +99,8 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
         const managementConfiguration: Record<string, string> = {
             KC_HEALTH_ENABLED: 'true',
             KC_METRICS_ENABLED: 'true',
-            KC_HTTP_MANAGEMENT_PORT: this.opts.ports.management.toString()
+            KC_HTTP_MANAGEMENT_PORT:
+                KeycloakCluster.Defaults.containerManagementPort.toString()
         };
 
         if (this.opts.paths?.management) {

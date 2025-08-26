@@ -55,6 +55,11 @@ export interface KeycloakClusterProps {
     readonly logRetentionDuration?: RetentionDays;
 
     /**
+     * Ports to use for serving container
+     */
+    readonly ports: PortConfiguration;
+
+    /**
      * Policy for lifecycling resources on stack actions
      */
     readonly removalPolicy?: RemovalPolicy;
@@ -80,16 +85,6 @@ export class KeycloakCluster extends Construct {
     private readonly props: KeycloakClusterProps;
 
     /**
-     * Container port to use for default HTTPS web traffic
-     */
-    private readonly trafficPort: number;
-
-    /**
-     * Container port to use for management HTTPS web traffic
-     */
-    private readonly managementPort: number;
-
-    /**
      * Infrastructure resources for the cluster
      */
     readonly resources: KeycloakCluster.Infrastructure;
@@ -104,12 +99,6 @@ export class KeycloakCluster extends Construct {
         super(scope, id);
 
         this.props = props;
-        this.trafficPort =
-            this.props.configuration?.containerPorts?.traffic ??
-            KeycloakCluster.Defaults.containerTrafficPort;
-        this.managementPort =
-            this.props.configuration?.containerPorts?.management ??
-            KeycloakCluster.Defaults.containerManagementPort;
 
         this.resources = this.buildContainerService();
     }
@@ -126,13 +115,13 @@ export class KeycloakCluster extends Construct {
 
         access.addIngressRule(
             Peer.ipv4(this.props.vpc.vpcCidrBlock),
-            Port.tcp(this.trafficPort),
+            Port.tcp(KeycloakCluster.Defaults.containerTrafficPort),
             'Inbound traffic from load balancer'
         );
 
         access.addIngressRule(
             Peer.ipv4(this.props.vpc.vpcCidrBlock),
-            Port.tcp(this.managementPort),
+            Port.tcp(KeycloakCluster.Defaults.containerManagementPort),
             'Inbound management from load balancer'
         );
 
@@ -202,13 +191,15 @@ export class KeycloakCluster extends Construct {
             }),
             portMappings: [
                 {
-                    containerPort: this.trafficPort,
-                    hostPort: this.trafficPort,
+                    containerPort:
+                        KeycloakCluster.Defaults.containerTrafficPort,
+                    hostPort: KeycloakCluster.Defaults.containerTrafficPort,
                     protocol: Protocol.TCP
                 },
                 {
-                    containerPort: this.managementPort,
-                    hostPort: this.managementPort,
+                    containerPort:
+                        KeycloakCluster.Defaults.containerManagementPort,
+                    hostPort: KeycloakCluster.Defaults.containerManagementPort,
                     protocol: Protocol.TCP
                 }
             ],
@@ -250,10 +241,6 @@ export class KeycloakCluster extends Construct {
 
         return {
             access: externalAccess,
-            ports: {
-                management: this.managementPort,
-                traffic: this.trafficPort
-            },
             service: service
         };
     }
@@ -297,11 +284,6 @@ export namespace KeycloakCluster {
          * Security group for providing access to the workload
          */
         readonly access: SecurityGroup;
-
-        /**
-         * Container ports on which the workloads are exposed
-         */
-        readonly ports: PortConfiguration;
 
         /**
          * Fargate service for managing the workloads

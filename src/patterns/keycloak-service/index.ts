@@ -20,7 +20,8 @@ import { KeycloakDatabase } from './components/database';
 import { KeycloakFabric } from './components/fabric';
 import {
     DatabaseConnectionConfiguration,
-    ParsedHostnameConfiguration
+    ParsedHostnameConfiguration,
+    PortConfiguration
 } from './types/configuration';
 
 /**
@@ -95,6 +96,11 @@ export class KeycloakService extends Construct {
     private readonly overallRemovalPolicy: RemovalPolicy;
 
     /**
+     * Ports to expose for Keycloak traffic
+     */
+    private readonly ports: PortConfiguration;
+
+    /**
      * Bootstrapped admin user for Keycloak
      */
     readonly adminUser: KeycloakService.AdminUserConfiguration;
@@ -111,6 +117,15 @@ export class KeycloakService extends Construct {
         this.props = props;
 
         this.validateConfiguration(this.props.keycloak.configuration);
+
+        this.ports = {
+            management:
+                this.props.keycloak.configuration.ports?.management ??
+                KeycloakFabric.Defaults.managementPort,
+            traffic:
+                this.props.keycloak.configuration.ports?.traffic ??
+                KeycloakFabric.Defaults.trafficPort
+        };
 
         const workloadSubnets = this.selectWorkloadSubnets(this.props.vpc);
         const ingressSubnets = this.selectIngressSubnets(
@@ -228,6 +243,42 @@ export class KeycloakService extends Construct {
         }
     }
 
+    private parseHostname(hostname: string): string {
+        let parsedHostname = hostname;
+
+        const headerMatch = parsedHostname.match(/^https?:\/\/(.*?)$/i);
+
+        if (headerMatch) {
+            Annotations.of(this).addError(
+                `The hostname [${hostname}] has a protocol specified when it should not as HTTPS is always used.`
+            );
+
+            parsedHostname = headerMatch[1];
+        }
+
+        const portMatch = parsedHostname.match(/^(.*?):\d+(.*?)$/i);
+
+        if (portMatch) {
+            Annotations.of(this).addError(
+                `The hostname [${hostname}] has a port specified when it should be specified through the application ports configuration`
+            );
+
+            parsedHostname = `${portMatch[1]}${portMatch[2]}`;
+        }
+
+        const pathMatch = parsedHostname.match(/^(.*?)\/.*?$/i);
+
+        if (pathMatch) {
+            Annotations.of(this).addError(
+                `The hostname [${hostname}] has a path specified when it should be specified through the application path configuration`
+            );
+
+            parsedHostname = pathMatch[1];
+        }
+
+        return parsedHostname;
+    }
+
     /**
      * Performs validation of the Keycloak application configuration
      * @param configuration Keycloak application configuration
@@ -248,39 +299,18 @@ export class KeycloakService extends Construct {
         /**
          * Hostname validation
          */
-        const defaultHostname = (() => {
-            if (!configuration.hostnames.default.match(/^https?:\/\//i)) {
-                Annotations.of(this).addWarningV2(
-                    '@cdklabs/cdk-proserve-lib:KeycloakService.defaultHostnameHasNoProtocol',
-                    'The hostname for the default Keycloak endpoints has no protocol specified. HTTPS will be assumed'
-                );
-
-                return `https://${configuration.hostnames.default}`;
-            } else {
-                return configuration.hostnames.default;
-            }
-        })();
-
-        const adminHostname = (() => {
-            if (configuration.hostnames.admin) {
-                if (!configuration.hostnames.admin.match(/^https?:\/\//i)) {
-                    Annotations.of(this).addWarningV2(
-                        '@cdklabs/cdk-proserve-lib:KeycloakService.adminHostnameHasNoProtocol',
-                        'The hostname for the administrative Keycloak endpoints has no protocol specified. HTTPS will be assumed'
-                    );
-
-                    return `https://${configuration.hostnames.admin}`;
-                } else {
-                    return configuration.hostnames.admin;
-                }
-            } else {
-                return undefined;
-            }
-        })();
+        const defaultHostname = this.parseHostname(
+            configuration.hostnames.default
+        );
+        const adminHostname = configuration.hostnames.admin
+            ? this.parseHostname(configuration.hostnames.admin)
+            : undefined;
 
         const hosts: ParsedHostnameConfiguration = {
-            default: new URL(defaultHostname),
-            admin: adminHostname ? new URL(adminHostname) : undefined
+            default: new URL(`https://${defaultHostname}`),
+            admin: adminHostname
+                ? new URL(`https://${adminHostname}`)
+                : undefined
         };
 
         if (!hosts.admin) {
@@ -334,79 +364,6 @@ export class KeycloakService extends Construct {
             Annotations.of(this).addError(
                 'Keycloak management relative path must start with "/" and not end with "/"'
             );
-        }
-
-        if (
-            configuration.paths?.default &&
-            hosts.default.pathname !== '/' &&
-            hosts.default.pathname !== configuration.paths.default
-        ) {
-            Annotations.of(this).addError(
-                'An alternative relative path was specified for the default route in both the hostname configuration and the paths configuration and they were not consistent'
-            );
-        }
-
-        if (
-            configuration.paths?.management &&
-            hosts.admin &&
-            hosts.admin.pathname !== '/' &&
-            hosts.admin.pathname !== configuration.paths.management
-        ) {
-            Annotations.of(this).addError(
-                'An alternative relative path was specified for the management route in both the hostname configuration and the paths configuration and they were not consistent'
-            );
-        }
-
-        /**
-         * Port validation
-         */
-        const defaultTrafficPorts = ['', KeycloakFabric.Defaults.trafficPort];
-
-        if (
-            !defaultTrafficPorts.includes(hosts.default.port) &&
-            !configuration.ports?.traffic
-        ) {
-            Annotations.of(this).addError(
-                'A non-default port was specified in the hostname but not in the port configuration for the default endpoints'
-            );
-        }
-
-        if (
-            configuration.ports?.traffic &&
-            configuration.ports.traffic !==
-                KeycloakFabric.Defaults.trafficPort &&
-            hosts.default.port !== configuration.ports.traffic.toString()
-        ) {
-            Annotations.of(this).addError(
-                'A non-default traffic port was specified and is not included in the hostname for the default endpoints'
-            );
-        }
-
-        if (hosts.admin) {
-            const defaultManagementPorts = [
-                '',
-                KeycloakFabric.Defaults.managementPort
-            ];
-
-            if (
-                !defaultManagementPorts.includes(hosts.admin.port) &&
-                !configuration.ports?.management
-            ) {
-                Annotations.of(this).addError(
-                    'A non-default port was specified in the hostname but not in the port configuration for the management endpoints'
-                );
-            }
-
-            if (
-                configuration.ports?.management &&
-                configuration.ports.management !==
-                    KeycloakFabric.Defaults.managementPort &&
-                hosts.admin.port !== configuration.ports.management.toString()
-            ) {
-                Annotations.of(this).addError(
-                    'A non-default management port was specified and is not included in the hostname for the management endpoints'
-                );
-            }
         }
     }
 
@@ -528,15 +485,7 @@ export class KeycloakService extends Construct {
                     adminUser: this.adminUser,
                     database: databaseConfiguration,
                     hostnames: this.props.keycloak.configuration.hostnames,
-                    ports: {
-                        management:
-                            this.props.keycloak.configuration.ports
-                                ?.management ??
-                            KeycloakFabric.Defaults.managementPort,
-                        traffic:
-                            this.props.keycloak.configuration.ports?.traffic ??
-                            KeycloakFabric.Defaults.trafficPort
-                    },
+                    ports: this.ports,
                     loggingLevel:
                         this.props.keycloak.configuration.loggingLevel,
                     paths: this.props.keycloak.configuration.paths
@@ -558,9 +507,10 @@ export class KeycloakService extends Construct {
                 encryption: this.encryption,
                 image: this.props.keycloak.image,
                 logRetentionDuration: this.props.logRetentionDuration,
+                ports: this.ports,
+                removalPolicy: this.props.removalPolicies?.logs,
                 vpc: this.props.vpc,
-                workloadSubnets: workloadSubnets,
-                removalPolicy: this.props.removalPolicies?.logs
+                workloadSubnets: workloadSubnets
             });
         } else {
             return undefined;
@@ -580,6 +530,7 @@ export class KeycloakService extends Construct {
             cluster: cluster,
             configuration: this.props.overrides?.fabric,
             ingressSubnets: ingressSubnets,
+            ports: this.ports,
             appConfiguration: this.props.keycloak.configuration,
             vpc: this.props.vpc
         });
@@ -777,11 +728,6 @@ export namespace KeycloakService {
         readonly internetFacing?: boolean;
 
         /**
-         * Ports to use for serving traffic on the load balancer
-         */
-        readonly ports?: OptionalPortConfiguration;
-
-        /**
          * Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided
          */
         readonly dnsZoneName?: string;
@@ -826,11 +772,6 @@ export namespace KeycloakService {
      * Configuration options for the cluster
      */
     export interface ClusterConfiguration {
-        /**
-         * Container ports to use for workload traffic
-         */
-        readonly containerPorts?: OptionalPortConfiguration;
-
         /**
          * Boundaries for cluster scaling
          */
