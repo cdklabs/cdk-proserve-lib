@@ -119,7 +119,6 @@ export class KeycloakService extends Construct {
             this.props.overrides?.fabric?.internetFacing
         );
 
-        this.encryption = this.buildEncryption();
         this.overallRemovalPolicy = this.findMostRestrictiveRemovalPolicy([
             this.props.removalPolicies?.data ??
                 KeycloakService.defaultRemovalPolicy,
@@ -127,6 +126,7 @@ export class KeycloakService extends Construct {
                 KeycloakService.defaultRemovalPolicy
         ]);
 
+        this.encryption = this.buildEncryption();
         this.adminUser = this.buildOrImportAdminUser();
 
         const database = this.buildDatabase(workloadSubnets);
