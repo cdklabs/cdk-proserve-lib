@@ -235,24 +235,58 @@ export class KeycloakService extends Construct {
     private validateConfiguration(
         configuration: KeycloakService.ApplicationConfiguration
     ): void {
+        /**
+         * Logging
+         */
+        if (!configuration.loggingLevel) {
+            Annotations.of(this).addWarningV2(
+                '@cdklabs/cdk-proserve-lib:KeycloakService.logging',
+                'The Keycloak logging level is not specified and will use defaults'
+            );
+        }
+
+        /**
+         * Hostname validation
+         */
+        const defaultHostname = (() => {
+            if (!configuration.hostnames.default.match(/^https?:\/\//i)) {
+                Annotations.of(this).addWarningV2(
+                    '@cdklabs/cdk-proserve-lib:KeycloakService.defaultHostnameHasNoProtocol',
+                    'The hostname for the default Keycloak endpoints has no protocol specified. HTTPS will be assumed'
+                );
+
+                return `https://${configuration.hostnames.default}`;
+            } else {
+                return configuration.hostnames.default;
+            }
+        })();
+
+        const adminHostname = (() => {
+            if (configuration.hostnames.admin) {
+                if (!configuration.hostnames.admin.match(/^https?:\/\//i)) {
+                    Annotations.of(this).addWarningV2(
+                        '@cdklabs/cdk-proserve-lib:KeycloakService.adminHostnameHasNoProtocol',
+                        'The hostname for the administrative Keycloak endpoints has no protocol specified. HTTPS will be assumed'
+                    );
+
+                    return `https://${configuration.hostnames.admin}`;
+                } else {
+                    return configuration.hostnames.admin;
+                }
+            } else {
+                return undefined;
+            }
+        })();
+
         const hosts: ParsedHostnameConfiguration = {
-            default: new URL(configuration.hostnames.default),
-            admin: configuration.hostnames.admin
-                ? new URL(configuration.hostnames.admin)
-                : undefined
+            default: new URL(defaultHostname),
+            admin: adminHostname ? new URL(adminHostname) : undefined
         };
 
         if (!hosts.admin) {
             Annotations.of(this).addWarningV2(
-                'cdk-proserve-lib:KeycloakService.adminInterface',
+                '@cdklabs/cdk-proserve-lib:KeycloakService.adminInterface',
                 'The Keycloak administration console hostname is not specified which means the administration console will be exposed on the same host as the public endpoints'
-            );
-        }
-
-        if (!configuration.loggingLevel) {
-            Annotations.of(this).addWarningV2(
-                'cdk-proserve-lib:KeycloakService.logging',
-                'The Keycloak logging level is not specified and will use defaults'
             );
         }
 
@@ -283,8 +317,9 @@ export class KeycloakService extends Construct {
          * Path validation
          */
         if (
-            !configuration.paths?.default?.startsWith('/') ||
-            configuration.paths.default.endsWith('/')
+            configuration.paths?.default &&
+            (!configuration.paths?.default?.startsWith('/') ||
+                configuration.paths.default.endsWith('/'))
         ) {
             Annotations.of(this).addError(
                 'Keycloak default relative path must start with "/" and not end with "/"'
@@ -292,8 +327,9 @@ export class KeycloakService extends Construct {
         }
 
         if (
-            !configuration.paths?.management?.startsWith('/') ||
-            configuration.paths.management.endsWith('/')
+            configuration.paths?.management &&
+            (!configuration.paths?.management?.startsWith('/') ||
+                configuration.paths.management.endsWith('/'))
         ) {
             Annotations.of(this).addError(
                 'Keycloak management relative path must start with "/" and not end with "/"'
