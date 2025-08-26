@@ -17,7 +17,10 @@ import { KeycloakCluster } from './components/cluster';
 import { Keycloak_26_3_2_ConfigurationBuilder } from './components/configuration/26-3-2';
 import { KeycloakDatabase } from './components/database';
 import { KeycloakFabric } from './components/fabric';
-import { DatabaseConnectionConfiguration } from './types/configuration';
+import {
+    DatabaseConnectionConfiguration,
+    ParsedHostnameConfiguration
+} from './types/configuration';
 
 /**
  * Properties for the KeycloakService construct
@@ -243,6 +246,36 @@ export class KeycloakService extends Construct {
                 'cdk-proserve-lib:KeycloakService.logging',
                 'The Keycloak logging level is not specified and will use defaults'
             );
+        }
+
+        if (this.props.overrides?.fabric?.dnsZoneName) {
+            const hosts: ParsedHostnameConfiguration = {
+                default: new URL(configuration.hostnames.default),
+                admin: configuration.hostnames.admin
+                    ? new URL(configuration.hostnames.admin)
+                    : undefined
+            };
+
+            if (
+                !hosts.default.hostname.endsWith(
+                    this.props.overrides.fabric.dnsZoneName
+                )
+            ) {
+                Annotations.of(this).addError(
+                    `Automatic Route53 configuration of a DNS zone for the default host requires the hostname end with the zone names`
+                );
+            }
+
+            if (
+                hosts.admin &&
+                !hosts.admin.hostname.endsWith(
+                    this.props.overrides.fabric.dnsZoneName
+                )
+            ) {
+                Annotations.of(this).addError(
+                    `Automatic Route53 configuration of a DNS zone for the admin host requires the hostname end with the zone names`
+                );
+            }
         }
 
         if (
