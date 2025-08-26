@@ -235,7 +235,7 @@ export namespace KeycloakDatabase {
         /**
          * Version of the database engine to use
          */
-        export const version = AuroraPostgresEngineVersion.VER_17_2;
+        export const version = AuroraPostgresEngineVersion.VER_17_5;
 
         /**
          * How long to retain logs for the database and supporting infrastructure
