@@ -110,22 +110,24 @@ export class KeycloakFabric extends Construct {
         /**
          * Management
          */
-        const managementListener = lb.addListener('ManagementListener', {
-            port: this.props.ports.management,
-            protocol: ElbProtocol.TCP
-        });
+        if (this.props.ports.management) {
+            const managementListener = lb.addListener('ManagementListener', {
+                port: this.props.ports.management,
+                protocol: ElbProtocol.TCP
+            });
 
-        this.props.cluster.service.registerLoadBalancerTargets({
-            containerName:
-                this.props.cluster.service.taskDefinition.defaultContainer!
-                    .containerName,
-            listener: ListenerConfig.networkListener(managementListener, {
-                port: this.props.ports.management
-            }),
-            newTargetGroupId: 'ManagementWorkers',
-            containerPort: KeycloakCluster.Defaults.containerManagementPort,
-            protocol: Protocol.TCP
-        });
+            this.props.cluster.service.registerLoadBalancerTargets({
+                containerName:
+                    this.props.cluster.service.taskDefinition.defaultContainer!
+                        .containerName,
+                listener: ListenerConfig.networkListener(managementListener, {
+                    port: this.props.ports.management
+                }),
+                newTargetGroupId: 'ManagementWorkers',
+                containerPort: KeycloakCluster.Defaults.containerManagementPort,
+                protocol: Protocol.TCP
+            });
+        }
 
         return lb;
     }
@@ -171,11 +173,6 @@ export namespace KeycloakFabric {
          * Port to serve default HTTPS web traffic
          */
         export const trafficPort = 443;
-
-        /**
-         * Port to serve management HTTPS web traffic
-         */
-        export const managementPort = 9006;
 
         /**
          * Relative path to serve management content

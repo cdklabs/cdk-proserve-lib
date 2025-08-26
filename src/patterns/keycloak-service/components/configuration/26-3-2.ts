@@ -56,15 +56,15 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
             KC_HTTP_MAX_QUEUED_REQUESTS: '1000'
         };
 
-        if (this.opts.paths?.default) {
-            httpConfiguration.KC_HTTP_RELATIVE_PATH = this.opts.paths.default;
+        if (this.opts.path) {
+            httpConfiguration.KC_HTTP_RELATIVE_PATH = this.opts.path;
         }
 
         /**
          * Hostname v2
          */
         const hostnameConfiguration: Record<string, string> = {
-            KC_HOSTNAME: `https://${this.opts.hostnames.default}:${this.opts.ports.traffic}`
+            KC_HOSTNAME: `https://${this.opts.hostnames.default}:${this.opts.port}`
         };
 
         // KC_HOSTNAME_BACKCHANNEL_DYNAMIC: 'false',
@@ -72,7 +72,7 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
         // KC_HOSTNAME_STRICT: 'true'
 
         if (this.opts.hostnames.admin) {
-            hostnameConfiguration.KC_HOSTNAME_ADMIN = `https://${this.opts.hostnames.admin}:${this.opts.ports.traffic}`;
+            hostnameConfiguration.KC_HOSTNAME_ADMIN = `https://${this.opts.hostnames.admin}:${this.opts.port}`;
         }
 
         /**
@@ -90,15 +90,17 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
          * Management
          */
         const managementConfiguration: Record<string, string> = {
-            KC_HEALTH_ENABLED: 'true',
-            KC_METRICS_ENABLED: 'true',
+            KC_HEALTH_ENABLED: this.opts.management?.health ? 'true' : 'false',
+            KC_METRICS_ENABLED: this.opts.management?.metrics
+                ? 'true'
+                : 'false',
             KC_HTTP_MANAGEMENT_PORT:
                 KeycloakCluster.Defaults.containerManagementPort.toString()
         };
 
-        if (this.opts.paths?.management) {
+        if (this.opts.management?.path) {
             managementConfiguration.KC_HTTP_MANAGEMENT_RELATIVE_PATH =
-                this.opts.paths.management;
+                this.opts.management.path;
         }
 
         /**

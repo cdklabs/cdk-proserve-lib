@@ -119,11 +119,11 @@ export class KeycloakService extends Construct {
         this.validateConfiguration(this.props.keycloak.configuration);
 
         this.ports = {
-            management:
-                this.props.keycloak.configuration.ports?.management ??
-                KeycloakFabric.Defaults.managementPort,
+            management: this.props.keycloak.configuration.management
+                ? this.props.keycloak.configuration.management.port
+                : undefined,
             traffic:
-                this.props.keycloak.configuration.ports?.traffic ??
+                this.props.keycloak.configuration.port ??
                 KeycloakFabric.Defaults.trafficPort
         };
 
@@ -347,9 +347,9 @@ export class KeycloakService extends Construct {
          * Path validation
          */
         if (
-            configuration.paths?.default &&
-            (!configuration.paths?.default?.startsWith('/') ||
-                configuration.paths.default.endsWith('/'))
+            configuration.path &&
+            (!configuration.path.startsWith('/') ||
+                configuration.path.endsWith('/'))
         ) {
             Annotations.of(this).addError(
                 'Keycloak default relative path must start with "/" and not end with "/"'
@@ -357,9 +357,9 @@ export class KeycloakService extends Construct {
         }
 
         if (
-            configuration.paths?.management &&
-            (!configuration.paths?.management?.startsWith('/') ||
-                configuration.paths.management.endsWith('/'))
+            configuration.management?.path &&
+            (!configuration.management.path.startsWith('/') ||
+                configuration.management.path.endsWith('/'))
         ) {
             Annotations.of(this).addError(
                 'Keycloak management relative path must start with "/" and not end with "/"'
@@ -485,10 +485,11 @@ export class KeycloakService extends Construct {
                     adminUser: this.adminUser,
                     database: databaseConfiguration,
                     hostnames: this.props.keycloak.configuration.hostnames,
-                    ports: this.ports,
                     loggingLevel:
                         this.props.keycloak.configuration.loggingLevel,
-                    paths: this.props.keycloak.configuration.paths
+                    management: this.props.keycloak.configuration.management,
+                    path: this.props.keycloak.configuration.path,
+                    port: this.ports.traffic
                 });
             } else {
                 Annotations.of(this).addError(
@@ -615,34 +616,26 @@ export namespace KeycloakService {
         readonly admin?: string;
     }
 
-    /**
-     * Details for the Keycloak path configuration to allow for serving Keycloak interfaces from non-root locations
-     */
-    export interface PathConfiguration {
+    export interface ManagementConfiguration {
         /**
-         * Optional alternative relative path for serving content
+         * Whether the health management API is enabled
          */
-        readonly default?: string;
+        readonly health?: boolean;
+
+        /**
+         * Whether the metrics management API is enabled
+         */
+        readonly metrics?: boolean;
 
         /**
          * Optional alternative relative path for serving content specifically for management
          */
-        readonly management?: string;
-    }
-
-    /**
-     * Details for which ports are used to serve the Keycloak content
-     */
-    export interface OptionalPortConfiguration {
-        /**
-         * Port to serve the standard HTTPS web traffic on
-         */
-        readonly traffic?: number;
+        readonly path?: string;
 
         /**
          * Port to serve the management web traffic on
          */
-        readonly management?: number;
+        readonly port: number;
     }
 
     /**
@@ -673,14 +666,21 @@ export namespace KeycloakService {
             | 'all';
 
         /**
-         * Alternative paths to serve Keycloak content
+         * Configuration options for the management interface
+         *
+         * If not specified, the management interface is disabled
          */
-        readonly paths?: PathConfiguration;
+        readonly management?: ManagementConfiguration;
 
         /**
-         * Ports for accessing exposed Keycloak HTTPS endpoints
+         * Optional alternative relative path for serving content
          */
-        readonly ports?: OptionalPortConfiguration;
+        readonly path?: string;
+
+        /**
+         * Port to serve the standard HTTPS web traffic on
+         */
+        readonly port?: number;
     }
 
     /**

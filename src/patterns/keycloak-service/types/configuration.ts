@@ -58,16 +58,16 @@ export interface PortConfiguration {
     readonly traffic: number;
 
     /**
-     * Port to serve the management web traffic on
+     * Port to serve the management API on
      */
-    readonly management: number;
+    readonly management?: number;
 }
 
 /**
  * Configuration for the full Keycloak service
  */
 export interface ServiceConfiguration
-    extends KeycloakService.ApplicationConfiguration {
+    extends Omit<KeycloakService.ApplicationConfiguration, 'port'> {
     /**
      * Bootstrapped admin user
      */
@@ -79,7 +79,7 @@ export interface ServiceConfiguration
     readonly database: DatabaseConnectionConfiguration;
 
     /**
-     * Ports for accessing exposed Keycloak HTTPS endpoints
+     * Port to serve the standard HTTPS web traffic on
      */
-    readonly ports: PortConfiguration;
+    readonly port: number;
 }
