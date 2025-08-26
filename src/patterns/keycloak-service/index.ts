@@ -234,7 +234,14 @@ export class KeycloakService extends Construct {
     private validateConfiguration(
         configuration: KeycloakService.ApplicationConfiguration
     ): void {
-        if (!configuration.hostnames.admin) {
+        const hosts: ParsedHostnameConfiguration = {
+            default: new URL(configuration.hostnames.default),
+            admin: configuration.hostnames.admin
+                ? new URL(configuration.hostnames.admin)
+                : undefined
+        };
+
+        if (!hosts.admin) {
             Annotations.of(this).addWarningV2(
                 'cdk-proserve-lib:KeycloakService.adminInterface',
                 'The Keycloak administration console hostname is not specified which means the administration console will be exposed on the same host as the public endpoints'
@@ -249,13 +256,6 @@ export class KeycloakService extends Construct {
         }
 
         if (this.props.overrides?.fabric?.dnsZoneName) {
-            const hosts: ParsedHostnameConfiguration = {
-                default: new URL(configuration.hostnames.default),
-                admin: configuration.hostnames.admin
-                    ? new URL(configuration.hostnames.admin)
-                    : undefined
-            };
-
             if (
                 !hosts.default.hostname.endsWith(
                     this.props.overrides.fabric.dnsZoneName
@@ -278,6 +278,9 @@ export class KeycloakService extends Construct {
             }
         }
 
+        /**
+         * Path validation
+         */
         if (
             !configuration.paths?.default?.startsWith('/') ||
             configuration.paths.default.endsWith('/')
@@ -293,6 +296,27 @@ export class KeycloakService extends Construct {
         ) {
             Annotations.of(this).addError(
                 'Keycloak management relative path must start with "/" and not end with "/"'
+            );
+        }
+
+        if (
+            configuration.paths?.default &&
+            hosts.default.pathname !== '/' &&
+            hosts.default.pathname !== configuration.paths.default
+        ) {
+            Annotations.of(this).addError(
+                'An alternative relative path was specified for the default route in both the hostname configuration and the paths configuration and they were not consistent'
+            );
+        }
+
+        if (
+            configuration.paths?.management &&
+            hosts.admin &&
+            hosts.admin.pathname !== '/' &&
+            hosts.admin.pathname !== configuration.paths.management
+        ) {
+            Annotations.of(this).addError(
+                'An alternative relative path was specified for the management route in both the hostname configuration and the paths configuration and they were not consistent'
             );
         }
     }
