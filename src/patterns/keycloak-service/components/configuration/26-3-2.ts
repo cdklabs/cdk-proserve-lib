@@ -85,9 +85,8 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
          */
         const databaseConfiguration: Record<string, string> = {
             KC_DB: 'postgres',
-            KC_DB_URL_DATABASE: this.opts.database.name,
-            KC_DB_URL_HOST: this.opts.database.endpoint,
-            KC_DB_URL_PORT: this.opts.database.port.toString()
+            KC_DB_DRIVER: 'software.amazon.jdbc.Driver',
+            KC_DB_URL: `jdbc:aws-wrapper:postgresql://${this.opts.database.endpoint}:${this.opts.database.port}/${this.opts.database.name}`
         };
 
         // KC_DB_URL: this.props.database.endpoint

@@ -200,7 +200,7 @@ export class KeycloakDatabase extends Construct {
             access: proxyAccess,
             cluster: db,
             credentials: db.secret!,
-            databaseName: KeycloakDatabase.Defaults.username,
+            databaseName: KeycloakDatabase.Defaults.name,
             port: KeycloakDatabase.Defaults.proxyPort,
             proxy: proxy
         };
