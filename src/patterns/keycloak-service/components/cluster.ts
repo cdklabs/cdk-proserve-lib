@@ -193,11 +193,11 @@ export class KeycloakCluster extends Construct {
             logging: new AwsLogDriver({
                 logGroup: new LogGroup(this, 'LogDestination', {
                     encryptionKey: this.props.encryption,
-                    removalPolicy: this.props.removalPolicy
+                    removalPolicy: this.props.removalPolicy,
+                    retention:
+                        this.props.logRetentionDuration ??
+                        KeycloakCluster.Defaults.logRetentionDuration
                 }),
-                logRetention:
-                    this.props.logRetentionDuration ??
-                    KeycloakCluster.Defaults.logRetentionDuration,
                 streamPrefix: 'keycloak'
             }),
             portMappings: [
