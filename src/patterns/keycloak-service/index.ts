@@ -319,6 +319,58 @@ export class KeycloakService extends Construct {
                 'An alternative relative path was specified for the management route in both the hostname configuration and the paths configuration and they were not consistent'
             );
         }
+
+        /**
+         * Port validation
+         */
+        const defaultTrafficPorts = ['', KeycloakFabric.Defaults.trafficPort];
+
+        if (
+            !defaultTrafficPorts.includes(hosts.default.port) &&
+            !configuration.ports?.traffic
+        ) {
+            Annotations.of(this).addError(
+                'A non-default port was specified in the hostname but not in the port configuration for the default endpoints'
+            );
+        }
+
+        if (
+            configuration.ports?.traffic &&
+            configuration.ports.traffic !==
+                KeycloakFabric.Defaults.trafficPort &&
+            hosts.default.port !== configuration.ports.traffic.toString()
+        ) {
+            Annotations.of(this).addError(
+                'A non-default traffic port was specified and is not included in the hostname for the default endpoints'
+            );
+        }
+
+        if (hosts.admin) {
+            const defaultManagementPorts = [
+                '',
+                KeycloakFabric.Defaults.managementPort
+            ];
+
+            if (
+                !defaultManagementPorts.includes(hosts.admin.port) &&
+                !configuration.ports?.management
+            ) {
+                Annotations.of(this).addError(
+                    'A non-default port was specified in the hostname but not in the port configuration for the management endpoints'
+                );
+            }
+
+            if (
+                configuration.ports?.management &&
+                configuration.ports.management !==
+                    KeycloakFabric.Defaults.managementPort &&
+                hosts.admin.port !== configuration.ports.management.toString()
+            ) {
+                Annotations.of(this).addError(
+                    'A non-default management port was specified and is not included in the hostname for the management endpoints'
+                );
+            }
+        }
     }
 
     /**
