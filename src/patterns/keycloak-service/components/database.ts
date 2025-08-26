@@ -189,7 +189,7 @@ export class KeycloakDatabase extends Construct {
             clientPasswordAuthType:
                 ClientPasswordAuthType.POSTGRES_SCRAM_SHA_256,
             requireTLS: true,
-            securityGroups: [databaseAccess],
+            securityGroups: [proxyAccess],
             vpcSubnets: {
                 onePerAz: true,
                 subnets: this.props.workloadSubnets
