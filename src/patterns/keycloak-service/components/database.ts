@@ -85,7 +85,7 @@ export class KeycloakDatabase extends Construct {
     private databaseIsServerless(
         props?: KeycloakService.DatabaseConfiguration
     ): props is KeycloakService.ServerlessDatabaseConfiguration {
-        return props === undefined || props.serverless === true;
+        return props === undefined || props.serverless !== false;
     }
 
     /**
