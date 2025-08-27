@@ -72,6 +72,86 @@ export interface KeycloakServiceProps {
  * backend database is supported via Amazon Relational Database Service (RDS) and the application is fronted by a
  * Network Load Balancer.
  *
+ * The database will auto-scale based on CDK defaults or a consumer-specified scaling policy. The containers will not
+ * automatically scale unless a consumer-specified policy is applied.
+ *
+ * At a minimum this pattern requires the consumer to build and provide their own Keycloak container image for
+ * deployment as well provide hostname configuration details. The Keycloak container image version MUST match the
+ * version specified for use here and must include the Amazon Aurora JDBC driver pre-installed. A minimum viable
+ * Dockerfile for that container image looks like:
+ *
+ * ```Dockerfile
+ * ARG VERSION=26.3.2
+ *
+ * FROM quay.io/keycloak/keycloak:${VERSION} AS builder
+ *
+ * # Optimizations (not necessary but speed up the container startup)
+ * ENV KC_DB=postgres
+ * ENV KC_DB_DRIVER=software.amazon.jdbc.Driver
+ *
+ * WORKDIR /opt/keycloak
+ *
+ * # TLS Configuration
+ * COPY --chmod=0666 certs/server.keystore conf/
+ *
+ * # Database Provider
+ * ADD --chmod=0666 https://github.com/aws/aws-advanced-jdbc-wrapper/releases/download/2.6.2/aws-advanced-jdbc-wrapper-2.6.2.jar providers/aws-advanced-jdbc-wrapper.jar
+ *
+ * RUN /opt/keycloak/bin/kc.sh build
+ *
+ * FROM quay.io/keycloak/keycloak:${VERSION}
+ * COPY --from=builder /opt/keycloak /opt/keycloak
+ *
+ * ENTRYPOINT [ "/opt/keycloak/bin/kc.sh" ]
+ * CMD [ "start" ]
+ * ```
+ * ---
+ * By default, the Keycloak service is deployed internally in isolated and/or private subnets but can be exposed by
+ * providing the fabric configuration option to expose the service with an internet-facing load balancer.
+ *
+ * @example
+ *
+ * import { join } from 'node:path';
+ * import { KeycloakService } from '@cdklabs/cdk-proserve-lib/patterns';
+ * import { App, Environment, RemovalPolicy, Stack } from 'aws-cdk-lib';
+ * import { IpAddresses, SubnetType, Vpc } from 'aws-cdk-lib/aws-ec2';
+ * import { AssetImage } from 'aws-cdk-lib/aws-ecs';
+ * import { Platform } from 'aws-cdk-lib/aws-ecr-assets';
+ *
+ * const dnsZoneName = 'example.com';
+ * const network = Vpc.fromLookup(this, 'Network', {
+ *     vpcId: 'vpc-xxxx'
+ * });
+ *
+ * new KeycloakService(this, 'Keycloak', {
+ *     keycloak: {
+ *         image: AssetImage.fromAsset(join(__dirname, '..', 'src', 'keycloak'), {
+ *             platform: Platform.LINUX_AMD64
+ *         }),
+ *         configuration: {
+ *             hostnames: {
+ *                 default: `auth.${dnsZoneName}`,
+ *                 admin: `admin.auth.${dnsZoneName}`
+ *             },
+ *             loggingLevel: 'info'
+ *         },
+ *         version: KeycloakService.EngineVersion.V26_3_2
+ *     },
+ *     overrides: {
+ *         cluster: {
+ *             scaling: {
+ *                 minimum: 1,
+ *                 maximum: 2
+ *             }
+ *         }
+ *         fabric: {
+ *             dnsZoneName: dnsZoneName,
+ *             internetFacing: true
+ *         }
+ *     },
+ *     vpc: network
+ * });
+ *
  */
 export class KeycloakService extends Construct {
     /**
@@ -242,6 +322,11 @@ export class KeycloakService extends Construct {
         }
     }
 
+    /**
+     * Validates the hostname
+     * @param hostname Hostname to validate
+     * @returns Validated hostname
+     */
     private parseHostname(hostname: string): string {
         let parsedHostname = hostname;
 
@@ -587,6 +672,7 @@ export namespace KeycloakService {
     export interface HostnameConfiguration {
         /**
          * Hostname for all endpoints
+         * @example auth.example.com
          */
         readonly default: string;
 
@@ -594,6 +680,10 @@ export namespace KeycloakService {
          * Optional hostname for the administration endpoint
          *
          * This allows for the separation of the user and administration endpoints for increased security
+         *
+         * By default, the administrative endpoints will use the default hostname unless this is specified
+         *
+         * @example admin.auth.example.com
          */
         readonly admin?: string;
     }
@@ -601,21 +691,25 @@ export namespace KeycloakService {
     export interface ManagementConfiguration {
         /**
          * Whether the health management API is enabled
+         * @default false
          */
         readonly health?: boolean;
 
         /**
          * Whether the metrics management API is enabled
+         * @default false
          */
         readonly metrics?: boolean;
 
         /**
          * Optional alternative relative path for serving content specifically for management
+         * @default /
          */
         readonly path?: string;
 
         /**
          * Port to serve the management web traffic on
+         * @example 9006
          */
         readonly port: number;
     }
@@ -630,6 +724,8 @@ export namespace KeycloakService {
          * Must be a key-value secret with `username` and `password` fields
          *
          * [Guide: Bootstrapping an Admin Account](https://www.keycloak.org/server/hostname)
+         *
+         * By default, a new secret will be created with a username and randomly generated password
          */
         readonly adminUser?: ISecret;
 
@@ -640,6 +736,7 @@ export namespace KeycloakService {
 
         /**
          * Level of information for Keycloak to log
+         * @default warn
          */
         readonly loggingLevel?:
             | 'off'
@@ -660,11 +757,13 @@ export namespace KeycloakService {
 
         /**
          * Optional alternative relative path for serving content
+         * @default /
          */
         readonly path?: string;
 
         /**
          * Port to serve the standard HTTPS web traffic on
+         * @default 443
          */
         readonly port?: number;
     }
@@ -675,11 +774,13 @@ export namespace KeycloakService {
     export interface RemovalPolicies {
         /**
          * How to deal with data-related elements
+         * @default RemovalPolicy.RETAIN
          */
         readonly data?: RemovalPolicy;
 
         /**
          * How to deal with log-related elements
+         * @default RemovalPolicy.RETAIN
          */
         readonly logs?: RemovalPolicy;
     }
@@ -710,11 +811,16 @@ export namespace KeycloakService {
     export interface FabricConfiguration {
         /**
          * Whether or not the load balancer should be exposed to the external network
+         * @default false
          */
         readonly internetFacing?: boolean;
 
         /**
          * Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided
+         *
+         * By default, no Route53 records will be created
+         *
+         * @example example.com
          */
         readonly dnsZoneName?: string;
     }
@@ -725,16 +831,24 @@ export namespace KeycloakService {
     export interface ClusterScalingConfiguration {
         /**
          * The desired amount of Keycloak tasks to run at any given time
+         *
+         * If not specified, the minimum count is used
          */
         readonly desired?: number;
 
         /**
          * The minimum amount of Keycloak tasks that should be active at any given time
+         *
+         * If not specified in conjunction with `minimum`, autoscaling is not enabled
          */
         readonly maximum?: number;
 
         /**
          * The maximum amount of Keycloak tasks that should be active at any given time
+         *
+         * If not specified in conjunction with `maximum`, autoscaling is not enabled
+         *
+         * @default 1
          */
         readonly minimum?: number;
     }
@@ -745,11 +859,25 @@ export namespace KeycloakService {
     export interface TaskSizingConfiguration {
         /**
          * vCPU allocation for each task
+         *
+         * Values match the permitted values for `FargateTaskDefinitionProps.cpu`
+         *
+         * By default 1 vCPU (1024) is allocated
+         *
+         * @default 1024
+         * @see https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.FargateTaskDefinition.html#cpu
          */
         readonly cpu?: number;
 
         /**
          * Memory allocation in MiB for each task
+         *
+         * Values match the permitted values for `FargateTaskDefinitionProps.memoryLimitMiB`
+         *
+         * By default 2048 MiB (2GB) is allocated
+         *
+         * @default 2048
+         * @see https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.FargateTaskDefinition.html#memorylimitmib
          */
         readonly memoryMb?: number;
     }
@@ -760,11 +888,17 @@ export namespace KeycloakService {
     export interface ClusterConfiguration {
         /**
          * Boundaries for cluster scaling
+         *
+         * If not specified, auto scaling is disabled
          */
         readonly scaling?: ClusterScalingConfiguration;
 
         /**
          * Resource allocation options for each Keycloak task
+         *
+         * If not specified, each task gets 1 vCPU and 2GB memory
+         *
+         * Guidance on sizing can be found [here](https://www.keycloak.org/high-availability/concepts-memory-and-cpu-sizing)
          */
         readonly sizing?: TaskSizingConfiguration;
     }
@@ -774,17 +908,29 @@ export namespace KeycloakService {
      */
     interface CommonDatabaseConfiguration {
         /**
+         * Whether a ServerlessV2 Aurora database should be deployed or not
+         * @default true
+         */
+        readonly serverless?: boolean;
+
+        /**
          * Backup lifecycle plan for the database
+         *
+         * If not specified, CDK defaults are used
+         *
+         * @see https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseCluster.html#backup
          */
         readonly backup?: BackupProps;
 
         /**
          * How long to retain logs for the database and supporting infrastructure
+         * @default RetentionDays.ONE_WEEK
          */
         readonly logRetentionDuration?: RetentionDays;
 
         /**
          * Alternate database engine version to use
+         * @default AuroraPostgresEngineVersion.VER_17_5
          */
         readonly versionOverride?: AuroraPostgresEngineVersion;
     }
@@ -802,8 +948,14 @@ export namespace KeycloakService {
         extends CommonDatabaseConfiguration {
         /**
          * How to scale the database
+         *
+         * If not specified, CDK defaults are used
+         *
+         * @see https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseClusterProps.html#serverlessv2autopauseduration
+         * @see https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseClusterProps.html#serverlessv2maxcapacity
+         * @see https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseClusterProps.html#serverlessv2mincapacity
          */
-        readonly scaling: CfnDBCluster.ServerlessV2ScalingConfigurationProperty;
+        readonly scaling?: CfnDBCluster.ServerlessV2ScalingConfigurationProperty;
     }
 
     /**

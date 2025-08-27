@@ -85,10 +85,7 @@ export class KeycloakDatabase extends Construct {
     private databaseIsServerless(
         props?: KeycloakService.DatabaseConfiguration
     ): props is KeycloakService.ServerlessDatabaseConfiguration {
-        const serverlessProp: keyof KeycloakService.ServerlessDatabaseConfiguration =
-            'scaling';
-
-        return props !== undefined && serverlessProp in props;
+        return props === undefined || props.serverless === true;
     }
 
     /**
@@ -133,9 +130,9 @@ export class KeycloakDatabase extends Construct {
             this.databaseIsServerless(this.props.confugration)
                 ? {
                       serverlessV2MaxCapacity:
-                          this.props.confugration.scaling.maxCapacity,
+                          this.props.confugration.scaling?.maxCapacity,
                       serverlessV2MinCapacity:
-                          this.props.confugration.scaling.minCapacity,
+                          this.props.confugration.scaling?.minCapacity,
                       writer: ClusterInstance.serverlessV2('ClusterInstance')
                   }
                 : {
