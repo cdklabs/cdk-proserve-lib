@@ -1,3 +1,6 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+
 import { AwsHttpClient } from '../../../../../common/lambda/aws-http-client';
 import { DomainInfoResponse } from '../../types/domain-info';
 import { DomainType } from '../../types/domain-type';
