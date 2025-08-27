@@ -209,7 +209,7 @@ export class KeycloakCluster extends Construct {
 
         const service = new FargateService(this, 'Service', {
             cluster: new Cluster(this, 'ContainerCluster', {
-                containerInsightsV2: ContainerInsights.ENHANCED,
+                containerInsightsV2: ContainerInsights.ENABLED,
                 vpc: this.props.vpc
             }),
             taskDefinition: serviceDefinition,

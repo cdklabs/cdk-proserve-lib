@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { RemovalPolicy } from 'aws-cdk-lib';
 import { ISubnet, IVpc } from 'aws-cdk-lib/aws-ec2';
 import { ListenerConfig, Protocol } from 'aws-cdk-lib/aws-ecs';
 import {
@@ -44,6 +45,11 @@ export interface KeycloakFabricProps {
     readonly appConfiguration: KeycloakService.ApplicationConfiguration;
 
     /**
+     * Policy for lifecycling resources on stack actions
+     */
+    readonly removalPolicy?: RemovalPolicy;
+
+    /**
      * Network where the Keycloak resources are deployed
      */
     readonly vpc: IVpc;
@@ -80,6 +86,8 @@ export class KeycloakFabric extends Construct {
         const lb = new NetworkLoadBalancer(this, 'LoadBalancer', {
             vpc: this.props.vpc,
             crossZoneEnabled: true,
+            deletionProtection:
+                this.props.removalPolicy !== RemovalPolicy.DESTROY,
             internetFacing: this.props.configuration?.internetFacing,
             vpcSubnets: {
                 onePerAz: true,

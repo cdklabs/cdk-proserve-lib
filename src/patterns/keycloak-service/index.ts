@@ -516,6 +516,7 @@ export class KeycloakService extends Construct {
             return this.props.encryption;
         } else {
             const encryption = new Key(this, 'Encryption', {
+                enableKeyRotation: true,
                 removalPolicy: this.overallRemovalPolicy
             });
 
@@ -617,6 +618,7 @@ export class KeycloakService extends Construct {
             ingressSubnets: ingressSubnets,
             ports: this.ports,
             appConfiguration: this.props.keycloak.configuration,
+            removalPolicy: this.overallRemovalPolicy,
             vpc: this.props.vpc
         });
     }

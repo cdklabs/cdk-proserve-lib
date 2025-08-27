@@ -108,6 +108,7 @@ export class KeycloakDatabase extends Construct {
                     KeycloakDatabase.Defaults.version
             }),
             backup: this.props.confugration?.backup,
+            cloudwatchLogsExports: ['postgresql'],
             cloudwatchLogsRetention:
                 this.props.confugration?.logRetentionDuration ??
                 KeycloakDatabase.Defaults.logRetentionDuration,
