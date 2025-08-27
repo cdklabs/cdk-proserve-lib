@@ -14,11 +14,6 @@ export interface ResourceProperties {
     readonly DomainEndpoint: string;
 
     /**
-     * Type of the managed Amazon OpenSearch Service domain
-     */
-    readonly DomainType: DomainType;
-
-    /**
      * Amazon Resource Name (ARN) for the AWS Identity and Access Management (IAM) Role that is an administrative user
      * for the Amazon OpenSearch Service domain
      */

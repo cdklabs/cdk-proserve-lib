@@ -59,6 +59,8 @@ tsconfig.json
 test.json
 .vscode/
 .yarn/
+cdk.out
+package-lock.json
 !/.licenserc.yaml
 !/.github/workflows/lint.yml
 !/.codecov.yml

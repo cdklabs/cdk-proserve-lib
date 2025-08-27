@@ -3,6 +3,7 @@
 
 import { CdkCustomResourceEvent } from 'aws-lambda';
 import { getClient } from './client';
+import { detectDomainType } from './detect-domain-type';
 import { ProvisionerConfiguration } from '../../types/provisioner-configuration';
 import { ResourceProperties } from '../../types/resource-properties';
 
@@ -12,16 +13,19 @@ import { ResourceProperties } from '../../types/resource-properties';
  * @param assetPath Location of the extracted provisioning configuration assets
  * @returns Provisioner configuration
  */
-export function createProvisionerConfig(
+export async function createProvisionerConfig(
     event: CdkCustomResourceEvent<ResourceProperties>,
     assetPath: string
-): ProvisionerConfiguration {
+): Promise<ProvisionerConfiguration> {
+    const client = getClient(event);
+    const domainType = await detectDomainType(client);
+
     return {
         action: event.RequestType,
         allowDestructiveOperations:
             event.ResourceProperties.AllowDestructiveOperations,
         assetPath: assetPath,
-        client: getClient(event),
-        domainType: event.ResourceProperties.DomainType
+        client: client,
+        domainType: domainType
     };
 }
