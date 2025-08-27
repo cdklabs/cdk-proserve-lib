@@ -67,7 +67,7 @@ export class AosProvisionAndFlowStack extends Stack {
                 '..',
                 'data',
                 'aos-workflows',
-                'model.yaml'
+                'my-nlp-pipeline.yaml'
             )
         });
     }
