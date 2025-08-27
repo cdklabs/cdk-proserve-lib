@@ -101,6 +101,9 @@ export class KeycloakDatabase extends Construct {
         accessGroup: SecurityGroup,
         credentials: Credentials
     ): DatabaseClusterProps {
+        const removalPolicy =
+            this.props.removalPolicy ?? KeycloakDatabase.Defaults.removalPolicy;
+
         const baseConfiguration: DatabaseClusterProps = {
             engine: DatabaseClusterEngine.auroraPostgres({
                 version:
@@ -113,11 +116,9 @@ export class KeycloakDatabase extends Construct {
                 KeycloakDatabase.Defaults.logRetentionDuration,
             credentials: credentials,
             defaultDatabaseName: KeycloakDatabase.Defaults.name,
-            deletionProtection: true,
+            deletionProtection: removalPolicy !== RemovalPolicy.DESTROY,
             port: KeycloakDatabase.Defaults.port,
-            removalPolicy:
-                this.props.removalPolicy ??
-                KeycloakDatabase.Defaults.removalPolicy,
+            removalPolicy: removalPolicy,
             securityGroups: [accessGroup],
             storageEncrypted: true,
             storageEncryptionKey: this.props.encryption,
