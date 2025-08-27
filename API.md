@@ -1331,6 +1331,89 @@ This service deploys a containerized version of Keycloak using AWS Fargate to ho
 backend database is supported via Amazon Relational Database Service (RDS) and the application is fronted by a
 Network Load Balancer.
 
+The database will auto-scale based on CDK defaults or a consumer-specified scaling policy. The containers will not
+automatically scale unless a consumer-specified policy is applied.
+
+At a minimum this pattern requires the consumer to build and provide their own Keycloak container image for
+deployment as well provide hostname configuration details. The Keycloak container image version MUST match the
+version specified for use here and must include the Amazon Aurora JDBC driver pre-installed. A minimum viable
+Dockerfile for that container image looks like:
+
+```Dockerfile
+ARG VERSION=26.3.2
+
+FROM quay.io/keycloak/keycloak:${VERSION} AS builder
+
+# Optimizations (not necessary but speed up the container startup)
+ENV KC_DB=postgres
+ENV KC_DB_DRIVER=software.amazon.jdbc.Driver
+
+WORKDIR /opt/keycloak
+
+# TLS Configuration
+COPY --chmod=0666 certs/server.keystore conf/
+
+# Database Provider
+ADD --chmod=0666 https://github.com/aws/aws-advanced-jdbc-wrapper/releases/download/2.6.2/aws-advanced-jdbc-wrapper-2.6.2.jar providers/aws-advanced-jdbc-wrapper.jar
+
+RUN /opt/keycloak/bin/kc.sh build
+
+FROM quay.io/keycloak/keycloak:${VERSION}
+COPY --from=builder /opt/keycloak /opt/keycloak
+
+ENTRYPOINT [ "/opt/keycloak/bin/kc.sh" ]
+CMD [ "start" ]
+```
+---
+By default, the Keycloak service is deployed internally in isolated and/or private subnets but can be exposed by
+providing the fabric configuration option to expose the service with an internet-facing load balancer.
+
+*Example*
+
+```typescript
+import { join } from 'node:path';
+import { KeycloakService } from '@cdklabs/cdk-proserve-lib/patterns';
+import { App, Environment, RemovalPolicy, Stack } from 'aws-cdk-lib';
+import { IpAddresses, SubnetType, Vpc } from 'aws-cdk-lib/aws-ec2';
+import { AssetImage } from 'aws-cdk-lib/aws-ecs';
+import { Platform } from 'aws-cdk-lib/aws-ecr-assets';
+
+const dnsZoneName = 'example.com';
+const network = Vpc.fromLookup(this, 'Network', {
+    vpcId: 'vpc-xxxx'
+});
+
+new KeycloakService(this, 'Keycloak', {
+    keycloak: {
+        image: AssetImage.fromAsset(join(__dirname, '..', 'src', 'keycloak'), {
+            platform: Platform.LINUX_AMD64
+        }),
+        configuration: {
+            hostnames: {
+                default: `auth.${dnsZoneName}`,
+                admin: `admin.auth.${dnsZoneName}`
+            },
+            loggingLevel: 'info'
+        },
+        version: KeycloakService.EngineVersion.V26_3_2
+    },
+    overrides: {
+        cluster: {
+            scaling: {
+                minimum: 1,
+                maximum: 2
+            }
+        }
+        fabric: {
+            dnsZoneName: dnsZoneName,
+            internetFacing: true
+        }
+    },
+    vpc: network
+});
+```
+
+
 #### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.Initializer"></a>
 
 ```typescript
@@ -2831,6 +2914,8 @@ Must be a key-value secret with `username` and `password` fields
 
 [Guide: Bootstrapping an Admin Account](https://www.keycloak.org/server/hostname)
 
+By default, a new secret will be created with a username and randomly generated password
+
 ---
 
 ##### `loggingLevel`<sup>Optional</sup> <a name="loggingLevel" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.loggingLevel"></a>
@@ -2840,6 +2925,7 @@ public readonly loggingLevel: string;
 ```
 
 - *Type:* string
+- *Default:* warn
 
 Level of information for Keycloak to log.
 
@@ -2866,6 +2952,7 @@ public readonly path: string;
 ```
 
 - *Type:* string
+- *Default:* /
 
 Optional alternative relative path for serving content.
 
@@ -2878,6 +2965,7 @@ public readonly port: number;
 ```
 
 - *Type:* number
+- *Default:* 443
 
 Port to serve the standard HTTPS web traffic on.
 
@@ -3156,6 +3244,8 @@ public readonly scaling: ClusterScalingConfiguration;
 
 Boundaries for cluster scaling.
 
+If not specified, auto scaling is disabled
+
 ---
 
 ##### `sizing`<sup>Optional</sup> <a name="sizing" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.sizing"></a>
@@ -3167,6 +3257,10 @@ public readonly sizing: TaskSizingConfiguration;
 - *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.TaskSizingConfiguration
 
 Resource allocation options for each Keycloak task.
+
+If not specified, each task gets 1 vCPU and 2GB memory
+
+Guidance on sizing can be found [here](https://www.keycloak.org/high-availability/concepts-memory-and-cpu-sizing)
 
 ---
 
@@ -3202,6 +3296,8 @@ public readonly desired: number;
 
 The desired amount of Keycloak tasks to run at any given time.
 
+If not specified, the minimum count is used
+
 ---
 
 ##### `maximum`<sup>Optional</sup> <a name="maximum" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.maximum"></a>
@@ -3214,6 +3310,8 @@ public readonly maximum: number;
 
 The minimum amount of Keycloak tasks that should be active at any given time.
 
+If not specified in conjunction with `minimum`, autoscaling is not enabled
+
 ---
 
 ##### `minimum`<sup>Optional</sup> <a name="minimum" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.minimum"></a>
@@ -3223,8 +3321,11 @@ public readonly minimum: number;
 ```
 
 - *Type:* number
+- *Default:* 1
 
 The maximum amount of Keycloak tasks that should be active at any given time.
+
+If not specified in conjunction with `maximum`, autoscaling is not enabled
 
 ---
 
@@ -4177,7 +4278,16 @@ public readonly dnsZoneName: string;
 
 Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided.
 
+By default, no Route53 records will be created
+
 ---
+
+*Example*
+
+```typescript
+example.com
+```
+
 
 ##### `internetFacing`<sup>Optional</sup> <a name="internetFacing" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.internetFacing"></a>
 
@@ -4186,6 +4296,7 @@ public readonly internetFacing: boolean;
 ```
 
 - *Type:* boolean
+- *Default:* false
 
 Whether or not the load balancer should be exposed to the external network.
 
@@ -4313,6 +4424,13 @@ Hostname for all endpoints.
 
 ---
 
+*Example*
+
+```typescript
+auth.example.com
+```
+
+
 ##### `admin`<sup>Optional</sup> <a name="admin" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.HostnameConfiguration.property.admin"></a>
 
 ```typescript
@@ -4325,7 +4443,16 @@ Optional hostname for the administration endpoint.
 
 This allows for the separation of the user and administration endpoints for increased security
 
+By default, the administrative endpoints will use the default hostname unless this is specified
+
 ---
+
+*Example*
+
+```typescript
+admin.auth.example.com
+```
+
 
 ### IamServerCertificateProps <a name="IamServerCertificateProps" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps"></a>
 
@@ -4871,6 +4998,13 @@ Port to serve the management web traffic on.
 
 ---
 
+*Example*
+
+```typescript
+9006
+```
+
+
 ##### `health`<sup>Optional</sup> <a name="health" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.health"></a>
 
 ```typescript
@@ -4878,6 +5012,7 @@ public readonly health: boolean;
 ```
 
 - *Type:* boolean
+- *Default:* false
 
 Whether the health management API is enabled.
 
@@ -4890,6 +5025,7 @@ public readonly metrics: boolean;
 ```
 
 - *Type:* boolean
+- *Default:* false
 
 Whether the metrics management API is enabled.
 
@@ -4902,6 +5038,7 @@ public readonly path: string;
 ```
 
 - *Type:* string
+- *Default:* /
 
 Optional alternative relative path for serving content specifically for management.
 
@@ -5820,6 +5957,7 @@ public readonly data: RemovalPolicy;
 ```
 
 - *Type:* aws-cdk-lib.RemovalPolicy
+- *Default:* RemovalPolicy.RETAIN
 
 How to deal with data-related elements.
 
@@ -5832,6 +5970,7 @@ public readonly logs: RemovalPolicy;
 ```
 
 - *Type:* aws-cdk-lib.RemovalPolicy
+- *Default:* RemovalPolicy.RETAIN
 
 How to deal with log-related elements.
 
@@ -6179,22 +6318,11 @@ const serverlessDatabaseConfiguration: patterns.KeycloakService.ServerlessDataba
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.scaling">scaling</a></code> | <code>aws-cdk-lib.aws_rds.CfnDBCluster.ServerlessV2ScalingConfigurationProperty</code> | How to scale the database. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.backup">backup</a></code> | <code>aws-cdk-lib.aws_rds.BackupProps</code> | Backup lifecycle plan for the database. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.logRetentionDuration">logRetentionDuration</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | How long to retain logs for the database and supporting infrastructure. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.scaling">scaling</a></code> | <code>aws-cdk-lib.aws_rds.CfnDBCluster.ServerlessV2ScalingConfigurationProperty</code> | How to scale the database. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.serverless">serverless</a></code> | <code>boolean</code> | Whether a ServerlessV2 Aurora database should be deployed or not. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.versionOverride">versionOverride</a></code> | <code>aws-cdk-lib.aws_rds.AuroraPostgresEngineVersion</code> | Alternate database engine version to use. |
-
----
-
-##### `scaling`<sup>Required</sup> <a name="scaling" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.scaling"></a>
-
-```typescript
-public readonly scaling: ServerlessV2ScalingConfigurationProperty;
-```
-
-- *Type:* aws-cdk-lib.aws_rds.CfnDBCluster.ServerlessV2ScalingConfigurationProperty
-
-How to scale the database.
 
 ---
 
@@ -6208,6 +6336,10 @@ public readonly backup: BackupProps;
 
 Backup lifecycle plan for the database.
 
+If not specified, CDK defaults are used
+
+> [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseCluster.html#backup](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseCluster.html#backup)
+
 ---
 
 ##### `logRetentionDuration`<sup>Optional</sup> <a name="logRetentionDuration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.logRetentionDuration"></a>
@@ -6217,8 +6349,38 @@ public readonly logRetentionDuration: RetentionDays;
 ```
 
 - *Type:* aws-cdk-lib.aws_logs.RetentionDays
+- *Default:* RetentionDays.ONE_WEEK
 
 How long to retain logs for the database and supporting infrastructure.
+
+---
+
+##### `scaling`<sup>Optional</sup> <a name="scaling" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.scaling"></a>
+
+```typescript
+public readonly scaling: ServerlessV2ScalingConfigurationProperty;
+```
+
+- *Type:* aws-cdk-lib.aws_rds.CfnDBCluster.ServerlessV2ScalingConfigurationProperty
+
+How to scale the database.
+
+If not specified, CDK defaults are used
+
+> [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseClusterProps.html#serverlessv2mincapacity](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseClusterProps.html#serverlessv2mincapacity)
+
+---
+
+##### `serverless`<sup>Optional</sup> <a name="serverless" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.serverless"></a>
+
+```typescript
+public readonly serverless: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether a ServerlessV2 Aurora database should be deployed or not.
 
 ---
 
@@ -6229,6 +6391,7 @@ public readonly versionOverride: AuroraPostgresEngineVersion;
 ```
 
 - *Type:* aws-cdk-lib.aws_rds.AuroraPostgresEngineVersion
+- *Default:* AuroraPostgresEngineVersion.VER_17_5
 
 Alternate database engine version to use.
 
@@ -6700,8 +6863,15 @@ public readonly cpu: number;
 ```
 
 - *Type:* number
+- *Default:* 1024
 
 vCPU allocation for each task.
+
+Values match the permitted values for `FargateTaskDefinitionProps.cpu`
+
+By default 1 vCPU (1024) is allocated
+
+> [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.FargateTaskDefinition.html#cpu](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.FargateTaskDefinition.html#cpu)
 
 ---
 
@@ -6712,8 +6882,15 @@ public readonly memoryMb: number;
 ```
 
 - *Type:* number
+- *Default:* 2048
 
 Memory allocation in MiB for each task.
+
+Values match the permitted values for `FargateTaskDefinitionProps.memoryLimitMiB`
+
+By default 2048 MiB (2GB) is allocated
+
+> [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.FargateTaskDefinition.html#memorylimitmib](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.FargateTaskDefinition.html#memorylimitmib)
 
 ---
 
@@ -6735,6 +6912,7 @@ const traditionalDatabaseConfiguration: patterns.KeycloakService.TraditionalData
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.backup">backup</a></code> | <code>aws-cdk-lib.aws_rds.BackupProps</code> | Backup lifecycle plan for the database. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.logRetentionDuration">logRetentionDuration</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | How long to retain logs for the database and supporting infrastructure. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.serverless">serverless</a></code> | <code>boolean</code> | Whether a ServerlessV2 Aurora database should be deployed or not. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.versionOverride">versionOverride</a></code> | <code>aws-cdk-lib.aws_rds.AuroraPostgresEngineVersion</code> | Alternate database engine version to use. |
 
 ---
@@ -6749,6 +6927,10 @@ public readonly backup: BackupProps;
 
 Backup lifecycle plan for the database.
 
+If not specified, CDK defaults are used
+
+> [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseCluster.html#backup](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseCluster.html#backup)
+
 ---
 
 ##### `logRetentionDuration`<sup>Optional</sup> <a name="logRetentionDuration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.logRetentionDuration"></a>
@@ -6758,8 +6940,22 @@ public readonly logRetentionDuration: RetentionDays;
 ```
 
 - *Type:* aws-cdk-lib.aws_logs.RetentionDays
+- *Default:* RetentionDays.ONE_WEEK
 
 How long to retain logs for the database and supporting infrastructure.
+
+---
+
+##### `serverless`<sup>Optional</sup> <a name="serverless" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.serverless"></a>
+
+```typescript
+public readonly serverless: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether a ServerlessV2 Aurora database should be deployed or not.
 
 ---
 
@@ -6770,6 +6966,7 @@ public readonly versionOverride: AuroraPostgresEngineVersion;
 ```
 
 - *Type:* aws-cdk-lib.aws_rds.AuroraPostgresEngineVersion
+- *Default:* AuroraPostgresEngineVersion.VER_17_5
 
 Alternate database engine version to use.
 
