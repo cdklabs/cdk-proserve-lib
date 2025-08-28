@@ -1,9 +1,6 @@
 {
   "name": "aos-provision-and-flow",
   "version": "0.1.0",
-  "bin": {
-    "aos-provision-and-flow": "ts-node bin/main.ts"
-  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
