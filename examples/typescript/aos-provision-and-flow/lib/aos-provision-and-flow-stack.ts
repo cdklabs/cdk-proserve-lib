@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { join } from 'node:path';
-import { Aws, Stack, StackProps } from 'aws-cdk-lib';
+import { Aws, RemovalPolicy, Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { Domain, EngineVersion } from 'aws-cdk-lib/aws-opensearchservice';
 import {
@@ -41,7 +41,8 @@ export class AosProvisionAndFlowStack extends Stack {
             encryptionAtRest: {
                 enabled: true
             },
-            enforceHttps: true
+            enforceHttps: true,
+            removalPolicy: RemovalPolicy.DESTROY
         });
 
         // Provision the OpenSearch Domain
@@ -80,7 +81,7 @@ export class AosProvisionAndFlowStack extends Stack {
         });
         workflow.node.addDependency(provision);
 
-        // Export the model used for the embeddings
+        // Output the model used for the embeddings
         this.exportValue(workflow.getResourceId('deploy_sentence_model'));
     }
 }
