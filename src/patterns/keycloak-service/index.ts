@@ -245,6 +245,7 @@ export class KeycloakService extends Construct {
                 encryptionKey: this.encryption,
                 generateSecretString: {
                     generateStringKey: 'password',
+                    excludeCharacters: '"$&\'()*,-./:;<=>?[\\]^_`{|}~', // Permits: !#%+@
                     includeSpace: false,
                     passwordLength: 20,
                     requireEachIncludedType: true,
