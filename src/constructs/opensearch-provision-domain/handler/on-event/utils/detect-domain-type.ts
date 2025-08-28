@@ -18,16 +18,10 @@ export async function detectDomainType(
         response.data.version.distribution;
 
         // Check version info to determine if it's Elasticsearch or OpenSearch
-        const version = response.data.version.number;
         const distribution = response.data.version.distribution;
+        const tagline = response.data.tagline;
 
-        // OpenSearch versions start from 1.0.0 and have distribution field
-        // Elasticsearch versions are 7.x and below without distribution field
-        if (
-            distribution === 'opensearch' ||
-            version.startsWith('1.') ||
-            version.startsWith('2.')
-        ) {
+        if (distribution === 'opensearch' || tagline.match(/opensearch/i)) {
             return 'OpenSearch';
         }
 

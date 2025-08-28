@@ -8,7 +8,10 @@ import { Domain, EngineVersion } from 'aws-cdk-lib/aws-opensearchservice';
 import {
     Role,
     AccountRootPrincipal,
-    PrincipalWithConditions
+    PrincipalWithConditions,
+    PolicyStatement,
+    AnyPrincipal,
+    Effect
 } from 'aws-cdk-lib/aws-iam';
 import {
     OpenSearchProvisionDomain,
@@ -42,7 +45,17 @@ export class AosProvisionAndFlowStack extends Stack {
                 enabled: true
             },
             enforceHttps: true,
-            removalPolicy: RemovalPolicy.DESTROY
+            removalPolicy: RemovalPolicy.DESTROY,
+            accessPolicies: [
+                new PolicyStatement({
+                    actions: ['es:*'],
+                    effect: Effect.ALLOW,
+                    principals: [new AnyPrincipal()],
+                    resources: [
+                        `arn:${Aws.PARTITION}:es:${Aws.REGION}:${Aws.ACCOUNT_ID}:domain/*`
+                    ]
+                })
+            ]
         });
 
         // Provision the OpenSearch Domain

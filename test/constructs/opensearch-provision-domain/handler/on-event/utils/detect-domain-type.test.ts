@@ -47,7 +47,7 @@ describe('detectDomainType', () => {
             expect(mockClient.get).toHaveBeenCalledWith('/');
         });
 
-        it('should detect OpenSearch when version starts with "1."', async () => {
+        it('should detect OpenSearch when tagline has opensearch', async () => {
             const mockResponse: DomainInfoResponse = {
                 name: 'test-domain',
                 cluster_name: 'test-cluster',
@@ -75,39 +75,10 @@ describe('detectDomainType', () => {
 
             expect(result).toBe('OpenSearch');
         });
-
-        it('should detect OpenSearch when version starts with "2."', async () => {
-            const mockResponse: DomainInfoResponse = {
-                name: 'test-domain',
-                cluster_name: 'test-cluster',
-                cluster_uuid: 'test-uuid',
-                version: {
-                    number: '2.11.0',
-                    build_hash: 'test-hash',
-                    build_date: '2023-01-01',
-                    build_snapshot: false,
-                    lucene_version: '9.7.0',
-                    minimum_wire_compatibility_version: '7.10.0',
-                    minimum_index_compatibility_version: '7.0.0'
-                },
-                tagline: 'The OpenSearch Project'
-            };
-
-            vi.mocked(mockClient.get).mockResolvedValue({
-                data: mockResponse,
-                statusCode: 200,
-                headers: {},
-                body: JSON.stringify(mockResponse)
-            });
-
-            const result = await detectDomainType(mockClient);
-
-            expect(result).toBe('OpenSearch');
-        });
     });
 
     describe('Elasticsearch detection', () => {
-        it('should detect Elasticsearch when version is 7.x without distribution field', async () => {
+        it('should detect Elasticsearch when no distribution field', async () => {
             const mockResponse: DomainInfoResponse = {
                 name: 'test-domain',
                 cluster_name: 'test-cluster',
@@ -120,35 +91,6 @@ describe('detectDomainType', () => {
                     lucene_version: '8.7.0',
                     minimum_wire_compatibility_version: '6.8.0',
                     minimum_index_compatibility_version: '6.0.0'
-                },
-                tagline: 'You Know, for Search'
-            };
-
-            vi.mocked(mockClient.get).mockResolvedValue({
-                data: mockResponse,
-                statusCode: 200,
-                headers: {},
-                body: JSON.stringify(mockResponse)
-            });
-
-            const result = await detectDomainType(mockClient);
-
-            expect(result).toBe('Elasticsearch');
-        });
-
-        it('should detect Elasticsearch when version is 6.x', async () => {
-            const mockResponse: DomainInfoResponse = {
-                name: 'test-domain',
-                cluster_name: 'test-cluster',
-                cluster_uuid: 'test-uuid',
-                version: {
-                    number: '6.8.0',
-                    build_hash: 'test-hash',
-                    build_date: '2023-01-01',
-                    build_snapshot: false,
-                    lucene_version: '7.7.3',
-                    minimum_wire_compatibility_version: '5.6.0',
-                    minimum_index_compatibility_version: '5.0.0'
                 },
                 tagline: 'You Know, for Search'
             };
