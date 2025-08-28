@@ -8,11 +8,12 @@ When you ingest documents, the pipeline automatically generates embeddings using
 
 ```json
 {
-  "_index": "my-nlp-index",
-  "_source": {
-    "text": "Sample document content",
-    "text_embedding": [0.1234, -0.5678, 0.9012, ...]
-  }
+    "_index": "my-nlp-index",
+    "_source": {
+        "id": "1234.jpg",
+        "text": "A person holds up a sign with the numbers 1234.",
+        "passage_embedding": [0.1234, -0.5678, 0.9012, ...]
+    }
 }
 ```
 
