@@ -1334,6 +1334,10 @@ Network Load Balancer.
 The database will auto-scale based on CDK defaults or a consumer-specified scaling policy. The containers will not
 automatically scale unless a consumer-specified policy is applied.
 
+It is recommended to set the CDK feature flag `@aws-cdk/aws-rds:databaseProxyUniqueResourceName` in
+`cdk.json` to true. If not done, the database proxy name may conflict with other proxies in your account and
+will prevent you from being able to deploy more than one KeycloakService.
+
 At a minimum this pattern requires the consumer to build and provide their own Keycloak container image for
 deployment as well provide hostname configuration details. The Keycloak container image version MUST match the
 version specified for use here and must include the Amazon Aurora JDBC driver pre-installed. A minimum viable
@@ -3280,23 +3284,8 @@ const clusterScalingConfiguration: patterns.KeycloakService.ClusterScalingConfig
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.desired">desired</a></code> | <code>number</code> | The desired amount of Keycloak tasks to run at any given time. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.maximum">maximum</a></code> | <code>number</code> | The minimum amount of Keycloak tasks that should be active at any given time. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.minimum">minimum</a></code> | <code>number</code> | The maximum amount of Keycloak tasks that should be active at any given time. |
-
----
-
-##### `desired`<sup>Optional</sup> <a name="desired" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.desired"></a>
-
-```typescript
-public readonly desired: number;
-```
-
-- *Type:* number
-
-The desired amount of Keycloak tasks to run at any given time.
-
-If not specified, the minimum count is used
 
 ---
 
