@@ -79,6 +79,19 @@ function parseApiDoc(filePath: string): DocItems {
 
                 // Extract name and create new item
                 const name = line.replace(/### /, '').split(' ')[0];
+
+                // Skip nested classes (if the second last item of the ID is not one of the allowed types for the
+                // README then it is a nested class)
+                const idParts = id.split('.');
+                if (
+                    !['constructs', 'patterns', 'aspects'].includes(
+                        idParts.at(-2) ?? ''
+                    )
+                ) {
+                    currentItem = null;
+                    continue;
+                }
+
                 currentItem = {
                     name,
                     description: ''
