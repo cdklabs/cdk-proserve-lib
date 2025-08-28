@@ -77,7 +77,7 @@ go get github.com/cdklabs/cdk-proserve-lib-go/cdklabscdkproservelib
 
 The library consists of [constructs](#-constructs), [aspects](#-aspects), and [patterns](#-patterns) that you can utilize in AWS CDK applications.
 
-Total: 22
+Total: 23
 
 ### 🧱 Constructs
 
