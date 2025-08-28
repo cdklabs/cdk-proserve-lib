@@ -1,7 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { DomainType } from './domain-type';
 import { DestructiveOperation } from '../../../../types';
 
 /**
@@ -12,11 +11,6 @@ export interface ResourceProperties {
      * Endpoint for the Amazon OpenSearch Service (AOS) domain
      */
     readonly DomainEndpoint: string;
-
-    /**
-     * Type of the managed Amazon OpenSearch Service domain
-     */
-    readonly DomainType: DomainType;
 
     /**
      * Amazon Resource Name (ARN) for the AWS Identity and Access Management (IAM) Role that is an administrative user

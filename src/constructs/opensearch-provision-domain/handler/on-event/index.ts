@@ -26,7 +26,7 @@ async function onCreate(
         event.ResourceProperties.AssetS3Uri
     );
 
-    const config = createProvisionerConfig(event, asset.path);
+    const config = await createProvisionerConfig(event, asset.path);
     const provisioners = getProvisioners(event, config);
 
     for (const provisioner of provisioners) {
@@ -67,7 +67,7 @@ async function onDelete(
         event.ResourceProperties.AssetS3Uri
     );
 
-    const config = createProvisionerConfig(event, asset.path);
+    const config = await createProvisionerConfig(event, asset.path);
     const provisioners = getProvisioners(event, config);
 
     for (const provisioner of provisioners) {

@@ -62,7 +62,6 @@ describeCdkTest(OpenSearchProvisionDomain, (id, getStack, getTemplate) => {
         new OpenSearchProvisionDomain(stack, id, {
             domain: domain,
             domainAdmin: admin,
-            domainType: 'OpenSearch',
             provisioningConfigurationPath: 'test',
             allowDestructiveOperations: DestructiveOperation.ALL,
             clusterSettings: {
@@ -88,7 +87,6 @@ describeCdkTest(OpenSearchProvisionDomain, (id, getStack, getTemplate) => {
                 AdminRoleArn: roleArn,
                 AssetS3Uri: Match.stringLikeRegexp('^s3://.*?$'),
                 DomainEndpoint: domainEndpoint,
-                DomainType: 'OpenSearch',
                 AllowDestructiveOperations: 'ALL',
                 ClusterSettings: {
                     persistent: {
@@ -143,7 +141,6 @@ describeCdkTest(OpenSearchProvisionDomain, (id, getStack, getTemplate) => {
         new OpenSearchProvisionDomain(stack, id, {
             domain: domain,
             domainAdmin: admin,
-            domainType: 'OpenSearch',
             provisioningConfigurationPath: 'test'
         });
 
@@ -193,7 +190,6 @@ describeCdkTest(OpenSearchProvisionDomain, (id, getStack, getTemplate) => {
         new OpenSearchProvisionDomain(stack, id, {
             domain: domain,
             domainAdmin: admin,
-            domainType: 'OpenSearch',
             provisioningConfigurationPath: 'test',
             encryption: encryption
         });

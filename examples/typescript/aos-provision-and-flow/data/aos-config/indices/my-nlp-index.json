@@ -1,0 +1,21 @@
+{
+    "settings": {
+        "index.knn": true,
+        "default_pipeline": "nlp-ingest-pipeline"
+    },
+    "mappings": {
+        "properties": {
+            "id": {
+                "type": "text"
+            },
+            "passage_embedding": {
+                "type": "knn_vector",
+                "dimension": 768,
+                "space_type": "l2"
+            },
+            "text": {
+                "type": "text"
+            }
+        }
+    }
+}

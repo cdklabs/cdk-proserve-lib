@@ -4554,7 +4554,6 @@ const openSearchProvisionDomainProps: constructs.OpenSearchProvisionDomainProps 
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.domain">domain</a></code> | <code>aws-cdk-lib.aws_opensearchservice.IDomain</code> | Amazon OpenSearch Service domain to provision. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.domainAdmin">domainAdmin</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | AWS IAM Role that is configured as an administrative user of the Amazon OpenSearch Service domain. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.domainType">domainType</a></code> | <code>string</code> | Type of the managed Amazon OpenSearch Service domain. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.provisioningConfigurationPath">provisioningConfigurationPath</a></code> | <code>string</code> | Path on the local disk to the files that will be used to provision the Amazon OpenSearch Service domain. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.allowDestructiveOperations">allowDestructiveOperations</a></code> | <code>@cdklabs/cdk-proserve-lib.types.DestructiveOperation</code> | If specified, defines which destructive operations the Custom Resource will handle. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.clusterSettings">clusterSettings</a></code> | <code>object</code> | Additional settings to configure on the Amazon OpenSearch Service domain cluster itself. |
@@ -4585,18 +4584,6 @@ public readonly domainAdmin: IRole;
 - *Type:* aws-cdk-lib.aws_iam.IRole
 
 AWS IAM Role that is configured as an administrative user of the Amazon OpenSearch Service domain.
-
----
-
-##### `domainType`<sup>Required</sup> <a name="domainType" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomainProps.property.domainType"></a>
-
-```typescript
-public readonly domainType: string;
-```
-
-- *Type:* string
-
-Type of the managed Amazon OpenSearch Service domain.
 
 ---
 

@@ -12,7 +12,6 @@ import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 import { DestructiveOperation, LambdaConfiguration } from '../../types';
 import { SecureFunction } from '../secure-function';
-import { DomainType } from './handler/types/domain-type';
 import { ResourceProperties } from './handler/types/resource-properties';
 
 /**
@@ -28,11 +27,6 @@ export interface OpenSearchProvisionDomainProps {
      * AWS IAM Role that is configured as an administrative user of the Amazon OpenSearch Service domain
      */
     readonly domainAdmin: IRole;
-
-    /**
-     * Type of the managed Amazon OpenSearch Service domain
-     */
-    readonly domainType: DomainType;
 
     /**
      * Allows mapping of a role in an Amazon OpenSearch Service domain to multiple backend roles (like IAM Role ARNs,
@@ -238,7 +232,6 @@ export class OpenSearchProvisionDomain extends Construct {
             AdminRoleArn: props.domainAdmin.roleArn,
             AssetS3Uri: asset.s3ObjectUrl,
             DomainEndpoint: props.domain.domainEndpoint,
-            DomainType: props.domainType,
             AllowDestructiveOperations: props.allowDestructiveOperations,
             ClusterSettings: props.clusterSettings,
             DynamicRoleMappings: props.dynamicRoleMappings
