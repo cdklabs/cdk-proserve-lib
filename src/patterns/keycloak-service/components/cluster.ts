@@ -14,6 +14,7 @@ import {
 } from 'aws-cdk-lib/aws-ecs';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
+import { CfnDBProxyTargetGroup } from 'aws-cdk-lib/aws-rds';
 import { Construct } from 'constructs';
 import { KeycloakService } from '..';
 import { PortConfiguration } from '../types/configuration';
@@ -216,11 +217,9 @@ export class KeycloakCluster extends Construct {
             assignPublicIp: false,
             circuitBreaker: {
                 enable: true,
-                rollback: true
+                rollback: false
             },
-            desiredCount:
-                this.props.configuration?.scaling?.desired ??
-                this.props.configuration?.scaling?.minimum,
+            desiredCount: 1, // Force 1 on first start to prevent competition in initiailizing the DB
             healthCheckGracePeriod: Duration.minutes(2),
             securityGroups: [intraClusterAccess, externalAccess]
         });
@@ -235,6 +234,18 @@ export class KeycloakCluster extends Construct {
                 maxCapacity: this.props.configuration.scaling.maximum,
                 minCapacity: this.props.configuration.scaling.minimum
             });
+        }
+
+        // Wait for the DB to be ready
+        service.node.addDependency(this.props.database.cluster);
+        service.node.addDependency(this.props.database.proxy);
+
+        const targetGroup = this.props.database.proxy.node.children.find(
+            (c) => c instanceof CfnDBProxyTargetGroup
+        );
+
+        if (targetGroup) {
+            service.node.addDependency(targetGroup);
         }
 
         this.props.database.proxy.grantConnect(serviceDefinition.taskRole);

@@ -75,6 +75,10 @@ export interface KeycloakServiceProps {
  * The database will auto-scale based on CDK defaults or a consumer-specified scaling policy. The containers will not
  * automatically scale unless a consumer-specified policy is applied.
  *
+ * It is recommended to set the CDK feature flag `@aws-cdk/aws-rds:databaseProxyUniqueResourceName` in
+ * `cdk.json` to true. If not done, the database proxy name may conflict with other proxies in your account and
+ * will prevent you from being able to deploy more than one KeycloakService.
+ *
  * At a minimum this pattern requires the consumer to build and provide their own Keycloak container image for
  * deployment as well provide hostname configuration details. The Keycloak container image version MUST match the
  * version specified for use here and must include the Amazon Aurora JDBC driver pre-installed. A minimum viable
@@ -832,13 +836,6 @@ export namespace KeycloakService {
      * Configuration options for scaling the cluster
      */
     export interface ClusterScalingConfiguration {
-        /**
-         * The desired amount of Keycloak tasks to run at any given time
-         *
-         * If not specified, the minimum count is used
-         */
-        readonly desired?: number;
-
         /**
          * The minimum amount of Keycloak tasks that should be active at any given time
          *

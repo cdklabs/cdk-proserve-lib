@@ -625,42 +625,6 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                     cluster: {
                         scaling: {
                             minimum: 2,
-                            maximum: 10,
-                            desired: 3
-                        }
-                    }
-                }
-            });
-
-            const template = getTemplate();
-            template.hasResourceProperties('AWS::ECS::Service', {
-                DesiredCount: 3
-            });
-            template.hasResourceProperties(
-                'AWS::ApplicationAutoScaling::ScalableTarget',
-                {
-                    MaxCapacity: 10,
-                    MinCapacity: 2
-                }
-            );
-        });
-
-        it('configures cluster scaling when the desired count is not specified', () => {
-            new KeycloakService(stack, id, {
-                keycloak: {
-                    image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
-                    configuration: {
-                        hostnames: {
-                            default: 'auth.example.com'
-                        }
-                    }
-                },
-                vpc,
-                overrides: {
-                    cluster: {
-                        scaling: {
-                            minimum: 2,
                             maximum: 10
                         }
                     }
@@ -669,7 +633,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
 
             const template = getTemplate();
             template.hasResourceProperties('AWS::ECS::Service', {
-                DesiredCount: 2
+                DesiredCount: 1
             });
             template.hasResourceProperties(
                 'AWS::ApplicationAutoScaling::ScalableTarget',
