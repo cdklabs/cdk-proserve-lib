@@ -65,6 +65,11 @@ export class KeycloakFabric extends Construct {
     private readonly props: KeycloakFabricProps;
 
     /**
+     * Infrastructure resources for the fabric
+     */
+    readonly resources: KeycloakFabric.Infrastructure;
+
+    /**
      * Create the networking fabric for the Keycloak service
      * @param scope Parent to which this construct belongs
      * @param id Unique identifier for the component
@@ -77,6 +82,10 @@ export class KeycloakFabric extends Construct {
 
         const endpoint = this.buildEndpoint();
         this.configureEndpointDns(endpoint);
+
+        this.resources = {
+            loadBalancer: endpoint
+        };
     }
 
     /**
@@ -188,5 +197,15 @@ export namespace KeycloakFabric {
          * Equivalent to /
          */
         export const managementPath = '';
+    }
+
+    /**
+     * Infrastructure related to the fabric
+     */
+    export interface Infrastructure {
+        /**
+         * Load balancer for managing requests in the networking fabric
+         */
+        readonly loadBalancer: NetworkLoadBalancer;
     }
 }

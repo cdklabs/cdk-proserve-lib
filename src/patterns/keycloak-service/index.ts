@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Annotations, RemovalPolicy } from 'aws-cdk-lib';
+import { Annotations, Duration, RemovalPolicy } from 'aws-cdk-lib';
 import { ISubnet, IVpc } from 'aws-cdk-lib/aws-ec2';
 import { ContainerImage } from 'aws-cdk-lib/aws-ecs';
 import { ServicePrincipal } from 'aws-cdk-lib/aws-iam';
@@ -232,7 +232,36 @@ export class KeycloakService extends Construct {
         const cluster = this.buildCluster(database.resources, workloadSubnets);
 
         if (cluster) {
-            this.buildFabric(cluster.resources, ingressSubnets);
+            const fabric = this.buildFabric(cluster.resources, ingressSubnets);
+
+            this.configureClusterRequestCountScaling(cluster, fabric);
+        }
+    }
+
+    /**
+     * Configures autoscaling for the cluster tasks based on the number of active requests
+     * @param cluster Infrastructure for the cluster
+     * @param fabric Infrastructure for the networking fabric
+     */
+    private configureClusterRequestCountScaling(
+        cluster: KeycloakCluster,
+        fabric: KeycloakFabric
+    ): void {
+        if (
+            cluster.resources.scaling &&
+            this.props.overrides?.cluster?.scaling?.requestCountScaling?.enabled
+        ) {
+            cluster.resources.scaling.scaleToTrackCustomMetric(
+                'RequestScaling',
+                {
+                    metric: fabric.resources.loadBalancer.metrics.activeFlowCount(),
+                    targetValue:
+                        this.props.overrides.cluster.scaling.requestCountScaling
+                            .threshold ?? 80,
+                    scaleInCooldown: Duration.minutes(5),
+                    scaleOutCooldown: Duration.minutes(5)
+                }
+            );
         }
     }
 
@@ -616,8 +645,8 @@ export class KeycloakService extends Construct {
     private buildFabric(
         cluster: KeycloakCluster.Infrastructure,
         ingressSubnets: ISubnet[]
-    ): void {
-        new KeycloakFabric(this, 'Fabric', {
+    ): KeycloakFabric {
+        return new KeycloakFabric(this, 'Fabric', {
             cluster: cluster,
             configuration: this.props.overrides?.fabric,
             ingressSubnets: ingressSubnets,
@@ -833,24 +862,47 @@ export namespace KeycloakService {
     }
 
     /**
+     * Configuration options for scaling the cluster based on number of active requests
+     */
+    export interface ClusterRequestCountScalingConfiguration {
+        /**
+         * Whether to enable scaling based on the number of active requests.
+         *
+         * Scaling is always enabled based on CPU utilization if the scaling bounds have been provided
+         */
+        readonly enabled: boolean;
+
+        /**
+         * The pivotal number of active requests through the load balancer before a scaling action is triggered. Used
+         * to fine-tune scaling to your specific capacity needs.
+         *
+         * If not specified but auto scaling is enabled, then by default scaling out will occur when the number of
+         * active requests exceeds 80 and scaling in will occur when this number drops below 80. All scaling activities
+         * incur a 5 minute cooldown period.
+         */
+        readonly threshold?: number;
+    }
+
+    /**
      * Configuration options for scaling the cluster
      */
     export interface ClusterScalingConfiguration {
         /**
          * The minimum amount of Keycloak tasks that should be active at any given time
-         *
-         * If not specified in conjunction with `minimum`, autoscaling is not enabled
          */
-        readonly maximum?: number;
+        readonly maximum: number;
 
         /**
          * The maximum amount of Keycloak tasks that should be active at any given time
-         *
-         * If not specified in conjunction with `maximum`, autoscaling is not enabled
-         *
-         * @default 1
          */
-        readonly minimum?: number;
+        readonly minimum: number;
+
+        /**
+         * Configuration options for scaling the cluster based on number of active requests
+         *
+         * Scaling is always enabled based on CPU utilization if the scaling bounds have been provided
+         */
+        readonly requestCountScaling?: ClusterRequestCountScalingConfiguration;
     }
 
     /**

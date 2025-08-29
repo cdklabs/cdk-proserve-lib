@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Duration, RemovalPolicy } from 'aws-cdk-lib';
+import { Annotations, Duration, RemovalPolicy } from 'aws-cdk-lib';
 import { ISubnet, IVpc, Peer, Port, SecurityGroup } from 'aws-cdk-lib/aws-ec2';
 import {
     AwsLogDriver,
@@ -10,7 +10,8 @@ import {
     ContainerInsights,
     FargateService,
     FargateTaskDefinition,
-    Protocol
+    Protocol,
+    ScalableTaskCount
 } from 'aws-cdk-lib/aws-ecs';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
@@ -224,17 +225,31 @@ export class KeycloakCluster extends Construct {
             securityGroups: [intraClusterAccess, externalAccess]
         });
 
-        if (
-            this.props.configuration?.scaling?.maximum &&
-            this.props.configuration.scaling.minimum &&
-            this.props.configuration?.scaling?.minimum !==
-                this.props.configuration?.scaling?.maximum
-        ) {
-            service.autoScaleTaskCount({
-                maxCapacity: this.props.configuration.scaling.maximum,
-                minCapacity: this.props.configuration.scaling.minimum
-            });
-        }
+        const scaling = (() => {
+            if (this.props.configuration?.scaling) {
+                if (
+                    this.props.configuration.scaling.maximum ===
+                    this.props.configuration.scaling.minimum
+                ) {
+                    Annotations.of(this).addError(
+                        'Scaling configuration must specify different minimum and maximum bounds'
+                    );
+                }
+
+                const control = service.autoScaleTaskCount({
+                    maxCapacity: this.props.configuration.scaling.maximum,
+                    minCapacity: this.props.configuration.scaling.minimum
+                });
+
+                control.scaleOnCpuUtilization('CpuScaling', {
+                    targetUtilizationPercent: 70
+                });
+
+                return control;
+            } else {
+                return undefined;
+            }
+        })();
 
         // Wait for the DB to be ready
         service.node.addDependency(this.props.database.cluster);
@@ -252,7 +267,8 @@ export class KeycloakCluster extends Construct {
 
         return {
             access: externalAccess,
-            service: service
+            service: service,
+            scaling: scaling
         };
     }
 }
@@ -281,6 +297,7 @@ export namespace KeycloakCluster {
          * Memory allocation in MiB for each task
          */
         export const memoryAllocation = 2048;
+
         /**
          * How long to retain logs for the cluster and supporting infrastructure
          */
@@ -300,5 +317,10 @@ export namespace KeycloakCluster {
          * Fargate service for managing the workloads
          */
         readonly service: FargateService;
+
+        /**
+         * Scaling control for the Fargate service
+         */
+        readonly scaling: ScalableTaskCount | undefined;
     }
 }

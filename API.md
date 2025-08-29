@@ -3268,6 +3268,60 @@ Guidance on sizing can be found [here](https://www.keycloak.org/high-availabilit
 
 ---
 
+### ClusterRequestCountScalingConfiguration <a name="ClusterRequestCountScalingConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration"></a>
+
+Configuration options for scaling the cluster based on number of active requests.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const clusterRequestCountScalingConfiguration: patterns.KeycloakService.ClusterRequestCountScalingConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration.property.enabled">enabled</a></code> | <code>boolean</code> | Whether to enable scaling based on the number of active requests. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration.property.threshold">threshold</a></code> | <code>number</code> | The pivotal number of active requests through the load balancer before a scaling action is triggered. |
+
+---
+
+##### `enabled`<sup>Required</sup> <a name="enabled" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+Whether to enable scaling based on the number of active requests.
+
+Scaling is always enabled based on CPU utilization if the scaling bounds have been provided
+
+---
+
+##### `threshold`<sup>Optional</sup> <a name="threshold" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration.property.threshold"></a>
+
+```typescript
+public readonly threshold: number;
+```
+
+- *Type:* number
+
+The pivotal number of active requests through the load balancer before a scaling action is triggered.
+
+Used
+to fine-tune scaling to your specific capacity needs.
+
+If not specified but auto scaling is enabled, then by default scaling out will occur when the number of
+active requests exceeds 80 and scaling in will occur when this number drops below 80. All scaling activities
+incur a 5 minute cooldown period.
+
+---
+
 ### ClusterScalingConfiguration <a name="ClusterScalingConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration"></a>
 
 Configuration options for scaling the cluster.
@@ -3286,10 +3340,11 @@ const clusterScalingConfiguration: patterns.KeycloakService.ClusterScalingConfig
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.maximum">maximum</a></code> | <code>number</code> | The minimum amount of Keycloak tasks that should be active at any given time. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.minimum">minimum</a></code> | <code>number</code> | The maximum amount of Keycloak tasks that should be active at any given time. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.requestCountScaling">requestCountScaling</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration</code> | Configuration options for scaling the cluster based on number of active requests. |
 
 ---
 
-##### `maximum`<sup>Optional</sup> <a name="maximum" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.maximum"></a>
+##### `maximum`<sup>Required</sup> <a name="maximum" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.maximum"></a>
 
 ```typescript
 public readonly maximum: number;
@@ -3299,22 +3354,31 @@ public readonly maximum: number;
 
 The minimum amount of Keycloak tasks that should be active at any given time.
 
-If not specified in conjunction with `minimum`, autoscaling is not enabled
-
 ---
 
-##### `minimum`<sup>Optional</sup> <a name="minimum" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.minimum"></a>
+##### `minimum`<sup>Required</sup> <a name="minimum" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.minimum"></a>
 
 ```typescript
 public readonly minimum: number;
 ```
 
 - *Type:* number
-- *Default:* 1
 
 The maximum amount of Keycloak tasks that should be active at any given time.
 
-If not specified in conjunction with `maximum`, autoscaling is not enabled
+---
+
+##### `requestCountScaling`<sup>Optional</sup> <a name="requestCountScaling" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.requestCountScaling"></a>
+
+```typescript
+public readonly requestCountScaling: ClusterRequestCountScalingConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration
+
+Configuration options for scaling the cluster based on number of active requests.
+
+Scaling is always enabled based on CPU utilization if the scaling bounds have been provided
 
 ---
 

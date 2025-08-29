@@ -644,6 +644,169 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             );
         });
 
+        it('configures CPU-based scaling when scaling is enabled', () => {
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    cluster: {
+                        scaling: {
+                            minimum: 1,
+                            maximum: 5
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ApplicationAutoScaling::ScalingPolicy',
+                {
+                    PolicyType: 'TargetTrackingScaling',
+                    TargetTrackingScalingPolicyConfiguration: {
+                        TargetValue: 70,
+                        PredefinedMetricSpecification: {
+                            PredefinedMetricType:
+                                'ECSServiceAverageCPUUtilization'
+                        }
+                    }
+                }
+            );
+        });
+
+        it('configures request-based scaling with default strategy', () => {
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    cluster: {
+                        scaling: {
+                            minimum: 1,
+                            maximum: 3,
+                            requestCountScaling: {
+                                enabled: true
+                            }
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ApplicationAutoScaling::ScalingPolicy',
+                {
+                    PolicyType: 'TargetTrackingScaling',
+                    TargetTrackingScalingPolicyConfiguration: {
+                        TargetValue: 80,
+                        ScaleInCooldown: 300,
+                        ScaleOutCooldown: 300,
+                        CustomizedMetricSpecification: {
+                            MetricName: 'ActiveFlowCount',
+                            Namespace: 'AWS/NetworkELB',
+                            Statistic: 'Average'
+                        }
+                    }
+                }
+            );
+        });
+
+        it('configures request-based scaling with custom strategy', () => {
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    cluster: {
+                        scaling: {
+                            minimum: 2,
+                            maximum: 8,
+                            requestCountScaling: {
+                                enabled: true,
+                                threshold: 50
+                            }
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            console.log(JSON.stringify(template));
+            template.hasResourceProperties(
+                'AWS::ApplicationAutoScaling::ScalingPolicy',
+                {
+                    PolicyType: 'TargetTrackingScaling',
+                    TargetTrackingScalingPolicyConfiguration: {
+                        TargetValue: 50,
+                        ScaleInCooldown: 300,
+                        ScaleOutCooldown: 300,
+                        CustomizedMetricSpecification: {
+                            MetricName: 'ActiveFlowCount',
+                            Namespace: 'AWS/NetworkELB',
+                            Statistic: 'Average'
+                        }
+                    }
+                }
+            );
+        });
+
+        it('validates scaling configuration when minimum equals maximum', () => {
+            expect(() => {
+                new KeycloakService(stack, id, {
+                    keycloak: {
+                        image,
+                        version: KeycloakService.EngineVersion.V26_3_2,
+                        configuration: {
+                            hostnames: {
+                                default: 'auth.example.com'
+                            }
+                        }
+                    },
+                    vpc,
+                    overrides: {
+                        cluster: {
+                            scaling: {
+                                minimum: 2,
+                                maximum: 2
+                            }
+                        }
+                    }
+                });
+            }).not.toThrow();
+
+            const annotations = Annotations.fromStack(stack);
+            expect(
+                annotations.findError(
+                    '*',
+                    Match.stringLikeRegexp(
+                        'different minimum and maximum bounds'
+                    )
+                )
+            ).toHaveLength(1);
+        });
+
         it('configures task sizing', () => {
             new KeycloakService(stack, id, {
                 keycloak: {
