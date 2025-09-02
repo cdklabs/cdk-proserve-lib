@@ -1323,6 +1323,217 @@ ARN for the created AWS IAM Server Certificate.
 ---
 
 
+### KeycloakService <a name="KeycloakService" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService"></a>
+
+Deploys a production-grade Keycloak service.
+
+This service deploys a containerized version of Keycloak using AWS Fargate to host and scale the application. The
+backend database is supported via Amazon Relational Database Service (RDS) and the application is fronted by a
+Network Load Balancer.
+
+The database will auto-scale based on CDK defaults or a consumer-specified scaling policy. The containers will not
+automatically scale unless a consumer-specified policy is applied.
+
+It is recommended to set the CDK feature flag `@aws-cdk/aws-rds:databaseProxyUniqueResourceName` in
+`cdk.json` to true. If not done, the database proxy name may conflict with other proxies in your account and
+will prevent you from being able to deploy more than one KeycloakService.
+
+At a minimum this pattern requires the consumer to build and provide their own Keycloak container image for
+deployment as well provide hostname configuration details. The Keycloak container image version MUST match the
+version specified for use here and must include the Amazon Aurora JDBC driver pre-installed. A minimum viable
+Dockerfile for that container image looks like:
+
+```Dockerfile
+ARG VERSION=26.3.2
+
+FROM quay.io/keycloak/keycloak:${VERSION} AS builder
+
+# Optimizations (not necessary but speed up the container startup)
+ENV KC_DB=postgres
+ENV KC_DB_DRIVER=software.amazon.jdbc.Driver
+
+WORKDIR /opt/keycloak
+
+# TLS Configuration
+COPY --chmod=0666 certs/server.keystore conf/
+
+# Database Provider
+ADD --chmod=0666 https://github.com/aws/aws-advanced-jdbc-wrapper/releases/download/2.6.2/aws-advanced-jdbc-wrapper-2.6.2.jar providers/aws-advanced-jdbc-wrapper.jar
+
+RUN /opt/keycloak/bin/kc.sh build
+
+FROM quay.io/keycloak/keycloak:${VERSION}
+COPY --from=builder /opt/keycloak /opt/keycloak
+
+ENTRYPOINT [ "/opt/keycloak/bin/kc.sh" ]
+CMD [ "start" ]
+```
+---
+By default, the Keycloak service is deployed internally in isolated and/or private subnets but can be exposed by
+providing the fabric configuration option to expose the service with an internet-facing load balancer.
+
+*Example*
+
+```typescript
+import { join } from 'node:path';
+import { KeycloakService } from '@cdklabs/cdk-proserve-lib/patterns';
+import { App, Environment, RemovalPolicy, Stack } from 'aws-cdk-lib';
+import { IpAddresses, SubnetType, Vpc } from 'aws-cdk-lib/aws-ec2';
+import { AssetImage } from 'aws-cdk-lib/aws-ecs';
+import { Platform } from 'aws-cdk-lib/aws-ecr-assets';
+
+const dnsZoneName = 'example.com';
+const network = Vpc.fromLookup(this, 'Network', {
+    vpcId: 'vpc-xxxx'
+});
+
+new KeycloakService(this, 'Keycloak', {
+    keycloak: {
+        image: AssetImage.fromAsset(join(__dirname, '..', 'src', 'keycloak'), {
+            platform: Platform.LINUX_AMD64
+        }),
+        configuration: {
+            hostnames: {
+                default: `auth.${dnsZoneName}`,
+                admin: `admin.auth.${dnsZoneName}`
+            },
+            loggingLevel: 'info'
+        },
+        version: KeycloakService.EngineVersion.V26_3_2
+    },
+    overrides: {
+        cluster: {
+            scaling: {
+                minimum: 1,
+                maximum: 2
+            }
+        }
+        fabric: {
+            dnsZoneName: dnsZoneName,
+            internetFacing: true
+        }
+    },
+    vpc: network
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+new patterns.KeycloakService(scope: Construct, id: string, props: KeycloakServiceProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | Parent to which this construct belongs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.Initializer.parameter.id">id</a></code> | <code>string</code> | Unique identifier for the component. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps</code> | Properties for configuring the cluster for Keycloak. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+Parent to which this construct belongs.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+Unique identifier for the component.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps
+
+Properties for configuring the cluster for Keycloak.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.isConstruct"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+patterns.KeycloakService.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.adminUser">adminUser</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Credentials for bootstrapping a local admin user in Keycloak. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `adminUser`<sup>Required</sup> <a name="adminUser" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.adminUser"></a>
+
+```typescript
+public readonly adminUser: ISecret;
+```
+
+- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
+
+Credentials for bootstrapping a local admin user in Keycloak.
+
+---
+
+
 ### NetworkFirewall <a name="NetworkFirewall" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall"></a>
 
 Creates an AWS Network Firewall using a user-supplied Suricata rules file in a VPC.
@@ -2656,6 +2867,114 @@ A version identifier to deploy to the Amazon S3 bucket to help with rapid identi
 ```
 
 
+### ApplicationConfiguration <a name="ApplicationConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration"></a>
+
+Configuration for the Keycloak application.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const applicationConfiguration: patterns.KeycloakService.ApplicationConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.hostnames">hostnames</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.HostnameConfiguration</code> | Hostname configuration for Keycloak. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.adminUser">adminUser</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Credentials for bootstrapping a local admin user within Keycloak. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.loggingLevel">loggingLevel</a></code> | <code>string</code> | Level of information for Keycloak to log. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.management">management</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration</code> | Configuration options for the management interface. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.path">path</a></code> | <code>string</code> | Optional alternative relative path for serving content. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.port">port</a></code> | <code>number</code> | Port to serve the standard HTTPS web traffic on. |
+
+---
+
+##### `hostnames`<sup>Required</sup> <a name="hostnames" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.hostnames"></a>
+
+```typescript
+public readonly hostnames: HostnameConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.HostnameConfiguration
+
+Hostname configuration for Keycloak.
+
+---
+
+##### `adminUser`<sup>Optional</sup> <a name="adminUser" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.adminUser"></a>
+
+```typescript
+public readonly adminUser: ISecret;
+```
+
+- *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
+
+Credentials for bootstrapping a local admin user within Keycloak.
+
+Must be a key-value secret with `username` and `password` fields
+
+[Guide: Bootstrapping an Admin Account](https://www.keycloak.org/server/hostname)
+
+By default, a new secret will be created with a username and randomly generated password
+
+---
+
+##### `loggingLevel`<sup>Optional</sup> <a name="loggingLevel" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.loggingLevel"></a>
+
+```typescript
+public readonly loggingLevel: string;
+```
+
+- *Type:* string
+- *Default:* warn
+
+Level of information for Keycloak to log.
+
+---
+
+##### `management`<sup>Optional</sup> <a name="management" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.management"></a>
+
+```typescript
+public readonly management: ManagementConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration
+
+Configuration options for the management interface.
+
+If not specified, the management interface is disabled
+
+---
+
+##### `path`<sup>Optional</sup> <a name="path" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.path"></a>
+
+```typescript
+public readonly path: string;
+```
+
+- *Type:* string
+- *Default:* /
+
+Optional alternative relative path for serving content.
+
+---
+
+##### `port`<sup>Optional</sup> <a name="port" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration.property.port"></a>
+
+```typescript
+public readonly port: number;
+```
+
+- *Type:* number
+- *Default:* 443
+
+Port to serve the standard HTTPS web traffic on.
+
+---
+
 ### ApplyRemovalPolicyProps <a name="ApplyRemovalPolicyProps" id="@cdklabs/cdk-proserve-lib.aspects.ApplyRemovalPolicyProps"></a>
 
 Properties for configuring the removal policy settings.
@@ -2895,6 +3214,171 @@ public readonly waitForCompletion: boolean;
 ```
 
 - *Type:* boolean
+
+---
+
+### ClusterConfiguration <a name="ClusterConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration"></a>
+
+Configuration options for the cluster.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const clusterConfiguration: patterns.KeycloakService.ClusterConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.scaling">scaling</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration</code> | Boundaries for cluster scaling. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.sizing">sizing</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TaskSizingConfiguration</code> | Resource allocation options for each Keycloak task. |
+
+---
+
+##### `scaling`<sup>Optional</sup> <a name="scaling" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.scaling"></a>
+
+```typescript
+public readonly scaling: ClusterScalingConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration
+
+Boundaries for cluster scaling.
+
+If not specified, auto scaling is disabled
+
+---
+
+##### `sizing`<sup>Optional</sup> <a name="sizing" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.sizing"></a>
+
+```typescript
+public readonly sizing: TaskSizingConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.TaskSizingConfiguration
+
+Resource allocation options for each Keycloak task.
+
+If not specified, each task gets 1 vCPU and 2GB memory
+
+Guidance on sizing can be found [here](https://www.keycloak.org/high-availability/concepts-memory-and-cpu-sizing)
+
+---
+
+### ClusterRequestCountScalingConfiguration <a name="ClusterRequestCountScalingConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration"></a>
+
+Configuration options for scaling the cluster based on number of active requests.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const clusterRequestCountScalingConfiguration: patterns.KeycloakService.ClusterRequestCountScalingConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration.property.enabled">enabled</a></code> | <code>boolean</code> | Whether to enable scaling based on the number of active requests. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration.property.threshold">threshold</a></code> | <code>number</code> | The pivotal number of active requests through the load balancer before a scaling action is triggered. |
+
+---
+
+##### `enabled`<sup>Required</sup> <a name="enabled" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+Whether to enable scaling based on the number of active requests.
+
+Scaling is always enabled based on CPU utilization if the scaling bounds have been provided
+
+---
+
+##### `threshold`<sup>Optional</sup> <a name="threshold" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration.property.threshold"></a>
+
+```typescript
+public readonly threshold: number;
+```
+
+- *Type:* number
+
+The pivotal number of active requests through the load balancer before a scaling action is triggered.
+
+Used
+to fine-tune scaling to your specific capacity needs.
+
+If not specified but auto scaling is enabled, then by default scaling out will occur when the number of
+active requests exceeds 80 and scaling in will occur when this number drops below 80. All scaling activities
+incur a 5 minute cooldown period.
+
+---
+
+### ClusterScalingConfiguration <a name="ClusterScalingConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration"></a>
+
+Configuration options for scaling the cluster.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const clusterScalingConfiguration: patterns.KeycloakService.ClusterScalingConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.maximum">maximum</a></code> | <code>number</code> | The minimum amount of Keycloak tasks that should be active at any given time. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.minimum">minimum</a></code> | <code>number</code> | The maximum amount of Keycloak tasks that should be active at any given time. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.requestCountScaling">requestCountScaling</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration</code> | Configuration options for scaling the cluster based on number of active requests. |
+
+---
+
+##### `maximum`<sup>Required</sup> <a name="maximum" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.maximum"></a>
+
+```typescript
+public readonly maximum: number;
+```
+
+- *Type:* number
+
+The minimum amount of Keycloak tasks that should be active at any given time.
+
+---
+
+##### `minimum`<sup>Required</sup> <a name="minimum" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.minimum"></a>
+
+```typescript
+public readonly minimum: number;
+```
+
+- *Type:* number
+
+The maximum amount of Keycloak tasks that should be active at any given time.
+
+---
+
+##### `requestCountScaling`<sup>Optional</sup> <a name="requestCountScaling" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration.property.requestCountScaling"></a>
+
+```typescript
+public readonly requestCountScaling: ClusterRequestCountScalingConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterRequestCountScalingConfiguration
+
+Configuration options for scaling the cluster based on number of active requests.
+
+Scaling is always enabled based on CPU utilization if the scaling bounds have been provided
 
 ---
 
@@ -3816,6 +4300,61 @@ Defaults to ContainerInsights.ENABLED if not disabled.
 
 ---
 
+### FabricConfiguration <a name="FabricConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration"></a>
+
+Configuration options for the fabric.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const fabricConfiguration: patterns.KeycloakService.FabricConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.dnsZoneName">dnsZoneName</a></code> | <code>string</code> | Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.internetFacing">internetFacing</a></code> | <code>boolean</code> | Whether or not the load balancer should be exposed to the external network. |
+
+---
+
+##### `dnsZoneName`<sup>Optional</sup> <a name="dnsZoneName" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.dnsZoneName"></a>
+
+```typescript
+public readonly dnsZoneName: string;
+```
+
+- *Type:* string
+
+Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided.
+
+By default, no Route53 records will be created
+
+---
+
+*Example*
+
+```typescript
+example.com
+```
+
+
+##### `internetFacing`<sup>Optional</sup> <a name="internetFacing" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.internetFacing"></a>
+
+```typescript
+public readonly internetFacing: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether or not the load balancer should be exposed to the external network.
+
+---
+
 ### FriendlyEmbraceProps <a name="FriendlyEmbraceProps" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps"></a>
 
 Input metadata for the custom resource.
@@ -3903,6 +4442,71 @@ to the custom resource worker.
 
 ---
 
+### HostnameConfiguration <a name="HostnameConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.HostnameConfiguration"></a>
+
+Details for the Keycloak hostname configuration.
+
+[Guide: Configuring the hostname](https://www.keycloak.org/server/hostname)
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.HostnameConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const hostnameConfiguration: patterns.KeycloakService.HostnameConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.HostnameConfiguration.property.default">default</a></code> | <code>string</code> | Hostname for all endpoints. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.HostnameConfiguration.property.admin">admin</a></code> | <code>string</code> | Optional hostname for the administration endpoint. |
+
+---
+
+##### `default`<sup>Required</sup> <a name="default" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.HostnameConfiguration.property.default"></a>
+
+```typescript
+public readonly default: string;
+```
+
+- *Type:* string
+
+Hostname for all endpoints.
+
+---
+
+*Example*
+
+```typescript
+auth.example.com
+```
+
+
+##### `admin`<sup>Optional</sup> <a name="admin" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.HostnameConfiguration.property.admin"></a>
+
+```typescript
+public readonly admin: string;
+```
+
+- *Type:* string
+
+Optional hostname for the administration endpoint.
+
+This allows for the separation of the user and administration endpoints for increased security
+
+By default, the administrative endpoints will use the default hostname unless this is specified
+
+---
+
+*Example*
+
+```typescript
+admin.auth.example.com
+```
+
+
 ### IamServerCertificateProps <a name="IamServerCertificateProps" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps"></a>
 
 Properties for the IamServerCertificate construct.
@@ -3984,6 +4588,225 @@ public readonly lambdaConfiguration: LambdaConfiguration;
 - *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
 
 Optional Lambda configuration settings.
+
+---
+
+### InfrastructureConfiguration <a name="InfrastructureConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration"></a>
+
+Overrides for prescribed defaults for the infrastructure.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const infrastructureConfiguration: patterns.KeycloakService.InfrastructureConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration.property.cluster">cluster</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration</code> | Overrides related to the application hosting infrastructure. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration.property.database">database</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration \| @cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration</code> | Overrides related to the database infrastructure. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration.property.fabric">fabric</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration</code> | Overrides related to the networking infrastructure. |
+
+---
+
+##### `cluster`<sup>Optional</sup> <a name="cluster" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration.property.cluster"></a>
+
+```typescript
+public readonly cluster: ClusterConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration
+
+Overrides related to the application hosting infrastructure.
+
+---
+
+##### `database`<sup>Optional</sup> <a name="database" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration.property.database"></a>
+
+```typescript
+public readonly database: ServerlessDatabaseConfiguration | TraditionalDatabaseConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration | @cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration
+
+Overrides related to the database infrastructure.
+
+---
+
+##### `fabric`<sup>Optional</sup> <a name="fabric" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration.property.fabric"></a>
+
+```typescript
+public readonly fabric: FabricConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration
+
+Overrides related to the networking infrastructure.
+
+---
+
+### KeycloakProps <a name="KeycloakProps" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.KeycloakProps"></a>
+
+Options related to Keycloak.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.KeycloakProps.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const keycloakProps: patterns.KeycloakService.KeycloakProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.KeycloakProps.property.configuration">configuration</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration</code> | Configuration for Keycloak. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.KeycloakProps.property.image">image</a></code> | <code>aws-cdk-lib.aws_ecs.ContainerImage</code> | Keycloak container image to use. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.KeycloakProps.property.version">version</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion</code> | Keycloak version. |
+
+---
+
+##### `configuration`<sup>Required</sup> <a name="configuration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.KeycloakProps.property.configuration"></a>
+
+```typescript
+public readonly configuration: ApplicationConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ApplicationConfiguration
+
+Configuration for Keycloak.
+
+---
+
+##### `image`<sup>Required</sup> <a name="image" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.KeycloakProps.property.image"></a>
+
+```typescript
+public readonly image: ContainerImage;
+```
+
+- *Type:* aws-cdk-lib.aws_ecs.ContainerImage
+
+Keycloak container image to use.
+
+---
+
+##### `version`<sup>Required</sup> <a name="version" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.KeycloakProps.property.version"></a>
+
+```typescript
+public readonly version: EngineVersion;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion
+
+Keycloak version.
+
+---
+
+### KeycloakServiceProps <a name="KeycloakServiceProps" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps"></a>
+
+Properties for the KeycloakService construct.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const keycloakServiceProps: patterns.KeycloakServiceProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.property.keycloak">keycloak</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.KeycloakProps</code> | Options related to Keycloak. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | Network where Keycloak should be deployed. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Key for encrypting resource data. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.property.logRetentionDuration">logRetentionDuration</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | How long to retain logs for all components. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.property.overrides">overrides</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration</code> | Overrides for prescribed defaults for the infrastructure. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.property.removalPolicies">removalPolicies</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.RemovalPolicies</code> | Policies to lifecycle various components of the pattern during stack actions. |
+
+---
+
+##### `keycloak`<sup>Required</sup> <a name="keycloak" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.property.keycloak"></a>
+
+```typescript
+public readonly keycloak: KeycloakProps;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.KeycloakProps
+
+Options related to Keycloak.
+
+---
+
+##### `vpc`<sup>Required</sup> <a name="vpc" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.property.vpc"></a>
+
+```typescript
+public readonly vpc: IVpc;
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.IVpc
+
+Network where Keycloak should be deployed.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Key for encrypting resource data.
+
+If not specified, a new key will be created
+
+---
+
+##### `logRetentionDuration`<sup>Optional</sup> <a name="logRetentionDuration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.property.logRetentionDuration"></a>
+
+```typescript
+public readonly logRetentionDuration: RetentionDays;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.RetentionDays
+
+How long to retain logs for all components.
+
+If not specified, logs will be retained for one week
+
+---
+
+##### `overrides`<sup>Optional</sup> <a name="overrides" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.property.overrides"></a>
+
+```typescript
+public readonly overrides: InfrastructureConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration
+
+Overrides for prescribed defaults for the infrastructure.
+
+---
+
+##### `removalPolicies`<sup>Optional</sup> <a name="removalPolicies" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakServiceProps.property.removalPolicies"></a>
+
+```typescript
+public readonly removalPolicies: RemovalPolicies;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.RemovalPolicies
+
+Policies to lifecycle various components of the pattern during stack actions.
+
+If not specified, resources will be retained
 
 ---
 
@@ -4192,6 +5015,85 @@ public readonly logRetention: RetentionDays;
 If you do not specify a log group, the amount of time to keep logs in the automatically created Log Group.
 
 Default: one week
+
+---
+
+### ManagementConfiguration <a name="ManagementConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration"></a>
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const managementConfiguration: patterns.KeycloakService.ManagementConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.port">port</a></code> | <code>number</code> | Port to serve the management web traffic on. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.health">health</a></code> | <code>boolean</code> | Whether the health management API is enabled. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.metrics">metrics</a></code> | <code>boolean</code> | Whether the metrics management API is enabled. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.path">path</a></code> | <code>string</code> | Optional alternative relative path for serving content specifically for management. |
+
+---
+
+##### `port`<sup>Required</sup> <a name="port" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.port"></a>
+
+```typescript
+public readonly port: number;
+```
+
+- *Type:* number
+
+Port to serve the management web traffic on.
+
+---
+
+*Example*
+
+```typescript
+9006
+```
+
+
+##### `health`<sup>Optional</sup> <a name="health" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.health"></a>
+
+```typescript
+public readonly health: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether the health management API is enabled.
+
+---
+
+##### `metrics`<sup>Optional</sup> <a name="metrics" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.metrics"></a>
+
+```typescript
+public readonly metrics: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether the metrics management API is enabled.
+
+---
+
+##### `path`<sup>Optional</sup> <a name="path" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ManagementConfiguration.property.path"></a>
+
+```typescript
+public readonly path: string;
+```
+
+- *Type:* string
+- *Default:* /
+
+Optional alternative relative path for serving content specifically for management.
 
 ---
 
@@ -5067,6 +5969,53 @@ behave as expected or designed. You do so at your own risk.
 
 ---
 
+### RemovalPolicies <a name="RemovalPolicies" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.RemovalPolicies"></a>
+
+Policies to lifecycle various components of the pattern during stack actions.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.RemovalPolicies.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const removalPolicies: patterns.KeycloakService.RemovalPolicies = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.RemovalPolicies.property.data">data</a></code> | <code>aws-cdk-lib.RemovalPolicy</code> | How to deal with data-related elements. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.RemovalPolicies.property.logs">logs</a></code> | <code>aws-cdk-lib.RemovalPolicy</code> | How to deal with log-related elements. |
+
+---
+
+##### `data`<sup>Optional</sup> <a name="data" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.RemovalPolicies.property.data"></a>
+
+```typescript
+public readonly data: RemovalPolicy;
+```
+
+- *Type:* aws-cdk-lib.RemovalPolicy
+- *Default:* RemovalPolicy.RETAIN
+
+How to deal with data-related elements.
+
+---
+
+##### `logs`<sup>Optional</sup> <a name="logs" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.RemovalPolicies.property.logs"></a>
+
+```typescript
+public readonly logs: RemovalPolicy;
+```
+
+- *Type:* aws-cdk-lib.RemovalPolicy
+- *Default:* RemovalPolicy.RETAIN
+
+How to deal with log-related elements.
+
+---
+
 ### ReservedConcurrentSettings <a name="ReservedConcurrentSettings" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ReservedConcurrentSettings"></a>
 
 #### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.SecurityCompliance.ReservedConcurrentSettings.Initializer"></a>
@@ -5390,6 +6339,101 @@ with the correct permissions to allow the target bucket to receive logs.
 If not specified, server access logs will not be enabled.
 
 > [https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html)
+
+---
+
+### ServerlessDatabaseConfiguration <a name="ServerlessDatabaseConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration"></a>
+
+Configuration options for a serverless database model.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const serverlessDatabaseConfiguration: patterns.KeycloakService.ServerlessDatabaseConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.backup">backup</a></code> | <code>aws-cdk-lib.aws_rds.BackupProps</code> | Backup lifecycle plan for the database. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.logRetentionDuration">logRetentionDuration</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | How long to retain logs for the database and supporting infrastructure. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.scaling">scaling</a></code> | <code>aws-cdk-lib.aws_rds.CfnDBCluster.ServerlessV2ScalingConfigurationProperty</code> | How to scale the database. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.serverless">serverless</a></code> | <code>boolean</code> | Whether a ServerlessV2 Aurora database should be deployed or not. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.versionOverride">versionOverride</a></code> | <code>aws-cdk-lib.aws_rds.AuroraPostgresEngineVersion</code> | Alternate database engine version to use. |
+
+---
+
+##### `backup`<sup>Optional</sup> <a name="backup" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.backup"></a>
+
+```typescript
+public readonly backup: BackupProps;
+```
+
+- *Type:* aws-cdk-lib.aws_rds.BackupProps
+
+Backup lifecycle plan for the database.
+
+If not specified, CDK defaults are used
+
+> [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseCluster.html#backup](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseCluster.html#backup)
+
+---
+
+##### `logRetentionDuration`<sup>Optional</sup> <a name="logRetentionDuration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.logRetentionDuration"></a>
+
+```typescript
+public readonly logRetentionDuration: RetentionDays;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.RetentionDays
+- *Default:* RetentionDays.ONE_WEEK
+
+How long to retain logs for the database and supporting infrastructure.
+
+---
+
+##### `scaling`<sup>Optional</sup> <a name="scaling" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.scaling"></a>
+
+```typescript
+public readonly scaling: ServerlessV2ScalingConfigurationProperty;
+```
+
+- *Type:* aws-cdk-lib.aws_rds.CfnDBCluster.ServerlessV2ScalingConfigurationProperty
+
+How to scale the database.
+
+If not specified, CDK defaults are used
+
+> [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseClusterProps.html#serverlessv2mincapacity](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseClusterProps.html#serverlessv2mincapacity)
+
+---
+
+##### `serverless`<sup>Optional</sup> <a name="serverless" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.serverless"></a>
+
+```typescript
+public readonly serverless: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether a ServerlessV2 Aurora database should be deployed or not.
+
+---
+
+##### `versionOverride`<sup>Optional</sup> <a name="versionOverride" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration.property.versionOverride"></a>
+
+```typescript
+public readonly versionOverride: AuroraPostgresEngineVersion;
+```
+
+- *Type:* aws-cdk-lib.aws_rds.AuroraPostgresEngineVersion
+- *Default:* AuroraPostgresEngineVersion.VER_17_5
+
+Alternate database engine version to use.
 
 ---
 
@@ -5828,6 +6872,143 @@ public readonly sortKeyName: string;
 - *Type:* string
 
 Name of the sort key for the table if applicable.
+
+---
+
+### TaskSizingConfiguration <a name="TaskSizingConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TaskSizingConfiguration"></a>
+
+Configuration options for scaling the tasks.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TaskSizingConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const taskSizingConfiguration: patterns.KeycloakService.TaskSizingConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TaskSizingConfiguration.property.cpu">cpu</a></code> | <code>number</code> | vCPU allocation for each task. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TaskSizingConfiguration.property.memoryMb">memoryMb</a></code> | <code>number</code> | Memory allocation in MiB for each task. |
+
+---
+
+##### `cpu`<sup>Optional</sup> <a name="cpu" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TaskSizingConfiguration.property.cpu"></a>
+
+```typescript
+public readonly cpu: number;
+```
+
+- *Type:* number
+- *Default:* 1024
+
+vCPU allocation for each task.
+
+Values match the permitted values for `FargateTaskDefinitionProps.cpu`
+
+By default 1 vCPU (1024) is allocated
+
+> [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.FargateTaskDefinition.html#cpu](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.FargateTaskDefinition.html#cpu)
+
+---
+
+##### `memoryMb`<sup>Optional</sup> <a name="memoryMb" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TaskSizingConfiguration.property.memoryMb"></a>
+
+```typescript
+public readonly memoryMb: number;
+```
+
+- *Type:* number
+- *Default:* 2048
+
+Memory allocation in MiB for each task.
+
+Values match the permitted values for `FargateTaskDefinitionProps.memoryLimitMiB`
+
+By default 2048 MiB (2GB) is allocated
+
+> [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.FargateTaskDefinition.html#memorylimitmib](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs.FargateTaskDefinition.html#memorylimitmib)
+
+---
+
+### TraditionalDatabaseConfiguration <a name="TraditionalDatabaseConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration"></a>
+
+Configuration options for a non-serverless database model.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const traditionalDatabaseConfiguration: patterns.KeycloakService.TraditionalDatabaseConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.backup">backup</a></code> | <code>aws-cdk-lib.aws_rds.BackupProps</code> | Backup lifecycle plan for the database. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.logRetentionDuration">logRetentionDuration</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | How long to retain logs for the database and supporting infrastructure. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.serverless">serverless</a></code> | <code>boolean</code> | Whether a ServerlessV2 Aurora database should be deployed or not. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.versionOverride">versionOverride</a></code> | <code>aws-cdk-lib.aws_rds.AuroraPostgresEngineVersion</code> | Alternate database engine version to use. |
+
+---
+
+##### `backup`<sup>Optional</sup> <a name="backup" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.backup"></a>
+
+```typescript
+public readonly backup: BackupProps;
+```
+
+- *Type:* aws-cdk-lib.aws_rds.BackupProps
+
+Backup lifecycle plan for the database.
+
+If not specified, CDK defaults are used
+
+> [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseCluster.html#backup](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_rds.DatabaseCluster.html#backup)
+
+---
+
+##### `logRetentionDuration`<sup>Optional</sup> <a name="logRetentionDuration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.logRetentionDuration"></a>
+
+```typescript
+public readonly logRetentionDuration: RetentionDays;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.RetentionDays
+- *Default:* RetentionDays.ONE_WEEK
+
+How long to retain logs for the database and supporting infrastructure.
+
+---
+
+##### `serverless`<sup>Optional</sup> <a name="serverless" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.serverless"></a>
+
+```typescript
+public readonly serverless: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether a ServerlessV2 Aurora database should be deployed or not.
+
+---
+
+##### `versionOverride`<sup>Optional</sup> <a name="versionOverride" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration.property.versionOverride"></a>
+
+```typescript
+public readonly versionOverride: AuroraPostgresEngineVersion;
+```
+
+- *Type:* aws-cdk-lib.aws_rds.AuroraPostgresEngineVersion
+- *Default:* AuroraPostgresEngineVersion.VER_17_5
+
+Alternate database engine version to use.
 
 ---
 
@@ -26568,6 +27749,100 @@ public readonly Z1D_XLARGE: string;
 - *Type:* string
 
 z1d.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+### EngineVersion <a name="EngineVersion" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion"></a>
+
+Versions of the Keycloak application.
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.is">is</a></code> | Determines if the KeycloakVersion matches a specific version. |
+
+---
+
+##### `is` <a name="is" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.is"></a>
+
+```typescript
+public is(keycloak: EngineVersion): boolean
+```
+
+Determines if the KeycloakVersion matches a specific version.
+
+###### `keycloak`<sup>Required</sup> <a name="keycloak" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.is.parameter.keycloak"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion
+
+Version to match against.
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.of">of</a></code> | Create a new KeycloakVersion with an arbitrary version. |
+
+---
+
+##### `of` <a name="of" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.of"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+patterns.KeycloakService.EngineVersion.of(version: string)
+```
+
+Create a new KeycloakVersion with an arbitrary version.
+
+###### `version`<sup>Required</sup> <a name="version" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.of.parameter.version"></a>
+
+- *Type:* string
+
+Version of Keycloak.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.property.value">value</a></code> | <code>string</code> | The full version string. |
+
+---
+
+##### `value`<sup>Required</sup> <a name="value" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.property.value"></a>
+
+```typescript
+public readonly value: string;
+```
+
+- *Type:* string
+
+The full version string.
+
+---
+
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.property.V26_3_2">V26_3_2</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion</code> | Version 26.3.2. |
+
+---
+
+##### `V26_3_2`<sup>Required</sup> <a name="V26_3_2" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.property.V26_3_2"></a>
+
+```typescript
+public readonly V26_3_2: EngineVersion;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion
+
+Version 26.3.2.
 
 ---
 
