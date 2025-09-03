@@ -2,69 +2,37 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { join } from 'node:path';
-import { Aws, RemovalPolicy, Stack, StackProps } from 'aws-cdk-lib';
+import { Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { Domain, EngineVersion } from 'aws-cdk-lib/aws-opensearchservice';
-import {
-    Role,
-    AccountRootPrincipal,
-    PrincipalWithConditions,
-    PolicyStatement,
-    AnyPrincipal,
-    Effect
-} from 'aws-cdk-lib/aws-iam';
+import { Domain } from 'aws-cdk-lib/aws-opensearchservice';
+import { Role } from 'aws-cdk-lib/aws-iam';
 import {
     OpenSearchProvisionDomain,
     OpenSearchWorkflow
 } from '@cdklabs/cdk-proserve-lib/constructs';
 
+export interface AosProvisionAndFlowStackProps extends StackProps {
+    readonly domain: Domain;
+    readonly domainAdminRole: Role;
+}
+
 export class AosProvisionAndFlowStack extends Stack {
-    constructor(scope: Construct, id: string, props?: StackProps) {
+    readonly domain: Domain;
+
+    constructor(
+        scope: Construct,
+        id: string,
+        props: AosProvisionAndFlowStackProps
+    ) {
         super(scope, id, props);
-
-        // Create an Admin Role to be used for the OpenSearch Domain access
-        const adminRole = new Role(this, 'OpenSearchAdminRole', {
-            assumedBy: new PrincipalWithConditions(new AccountRootPrincipal(), {
-                StringLike: {
-                    'aws:PrincipalArn': `arn:${Aws.PARTITION}:iam::${Aws.ACCOUNT_ID}:role/${this.stackName}-*`
-                }
-            })
-        });
-
-        // Create the OpenSearch Domain
-        const openSearchDomain = new Domain(this, 'AosDomain', {
-            version: EngineVersion.OPENSEARCH_2_19,
-            fineGrainedAccessControl: {
-                masterUserArn: adminRole.roleArn
-            },
-            ebs: {
-                volumeSize: 100
-            },
-            nodeToNodeEncryption: true,
-            encryptionAtRest: {
-                enabled: true
-            },
-            enforceHttps: true,
-            removalPolicy: RemovalPolicy.DESTROY,
-            accessPolicies: [
-                new PolicyStatement({
-                    actions: ['es:*'],
-                    effect: Effect.ALLOW,
-                    principals: [new AnyPrincipal()],
-                    resources: [
-                        `arn:${Aws.PARTITION}:es:${Aws.REGION}:${Aws.ACCOUNT_ID}:domain/*`
-                    ]
-                })
-            ]
-        });
 
         // Provision the OpenSearch Domain
         const provision = new OpenSearchProvisionDomain(
             this,
             'AosProvisionDomain',
             {
-                domain: openSearchDomain,
-                domainAdmin: adminRole,
+                domain: props.domain,
+                domainAdmin: props.domainAdminRole,
                 clusterSettings: {
                     persistent: {
                         'plugins.ml_commons.only_run_on_ml_node': 'false',
@@ -82,8 +50,8 @@ export class AosProvisionAndFlowStack extends Stack {
 
         // Setup an ingest pipeline in OpenSearch that creates embeddings
         const workflow = new OpenSearchWorkflow(this, 'EmbeddingsFlow', {
-            domain: openSearchDomain,
-            domainAuthentication: adminRole,
+            domain: props.domain,
+            domainAuthentication: props.domainAdminRole,
             flowFrameworkTemplatePath: join(
                 __dirname,
                 '..',

@@ -12,9 +12,11 @@ import { extractZipFile } from '../../../../../common/lambda/extract-zip-file';
 export async function downloadAndExtractAsset(
     uri: string
 ): Promise<{ etag: string; path: string }> {
+    console.log(`Downloading asset from ${uri}`);
     const asset = await downloadS3Asset(uri);
+    console.log(`Extracting asset to ${asset.filePath}`);
     const finalPath = extractZipFile(asset.filePath);
-
+    console.log('returning after downloading and extracting');
     return {
         etag: asset.etag,
         path: finalPath

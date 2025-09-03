@@ -22,6 +22,7 @@ import {
     parseTemplate,
     substituteTemplateValues
 } from '../utils/parse';
+import { waitForOpenSearchAvailability } from '../../../../common/lambda/aos-availability-check';
 
 /**
  * Handles AWS CloudFormation CREATE calls
@@ -208,6 +209,7 @@ export async function handler(
     event: CdkCustomResourceEvent<IResourceProperties>,
     _context: Context
 ): Promise<CdkCustomResourceResponse<never>> {
+    console.info('Handler started');
     console.info(JSON.stringify(event));
 
     const props = event.ResourceProperties;
@@ -217,6 +219,10 @@ export async function handler(
         baseUrl: `https://${props.DomainEndpoint}`,
         timeout: 45000
     });
+
+    // Wait for OpenSearch to be available before proceeding
+    await waitForOpenSearchAvailability(client);
+
     let template: Json;
 
     switch (event.RequestType) {

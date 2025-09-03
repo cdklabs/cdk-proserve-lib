@@ -6,6 +6,7 @@ import { getClient } from './client';
 import { detectDomainType } from './detect-domain-type';
 import { ProvisionerConfiguration } from '../../types/provisioner-configuration';
 import { ResourceProperties } from '../../types/resource-properties';
+import { waitForOpenSearchAvailability } from '../../../../../common/lambda/aos-availability-check';
 
 /**
  * Creates the configuration to be used by provisioners
@@ -17,7 +18,13 @@ export async function createProvisionerConfig(
     event: CdkCustomResourceEvent<ResourceProperties>,
     assetPath: string
 ): Promise<ProvisionerConfiguration> {
+    console.log('getting client');
     const client = getClient(event);
+
+    console.log('waiting for OpenSearch to be available');
+    // Wait for OpenSearch to be available before proceeding
+    await waitForOpenSearchAvailability(client);
+
     const domainType = await detectDomainType(client);
 
     return {

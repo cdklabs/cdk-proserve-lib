@@ -16,10 +16,12 @@ export function extractZipFile(
     zipFilePath: string,
     extractPath?: string
 ): string {
+    console.log('in extract zip file function');
     // Determine extraction path - use provided path or create one in temp directory
     const fileName = basename(zipFilePath) ?? 'archive';
     const targetPath = extractPath || join(tmpdir(), `${fileName}-extracted`);
 
+    console.log('extracting');
     // Extract ZIP contents
     const zip = new AdmZip(zipFilePath);
     zip.extractAllTo(targetPath, true); // True to overwrite existing files
