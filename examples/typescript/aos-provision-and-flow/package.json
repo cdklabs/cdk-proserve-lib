@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@cdklabs/cdk-proserve-lib": "^0.7.0",
-    "aws-cdk-lib": "2.206.0",
+    "aws-cdk-lib": "2.212.0",
     "constructs": "^10.0.0"
   }
 }

@@ -11,10 +11,12 @@ import { S3 } from '@aws-sdk/client-s3';
  * Downloads an S3 object to a local file.
  *
  * @param s3ObjectUri - The S3 URI of the object to download
+ * @param retryDelayMs - Delay between retry attempts in milliseconds (default: 10000)
  * @returns The path to the downloaded file and the ETag of the object
  */
 export async function downloadS3Asset(
-    s3ObjectUri: string
+    s3ObjectUri: string,
+    retryDelayMs: number = 10000
 ): Promise<{ filePath: string; etag: string }> {
     const s3Client = new S3();
     const targetParts = s3ObjectUri.replace('s3://', '').split('/');
@@ -58,7 +60,7 @@ export async function downloadS3Asset(
             };
         } catch (error) {
             if (attempt === 9) throw error;
-            await new Promise((resolve) => setTimeout(resolve, 10000));
+            await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
         }
     }
 

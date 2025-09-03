@@ -3,7 +3,7 @@
 
 import { join } from 'node:path';
 import { CustomResource, Duration, Stack } from 'aws-cdk-lib';
-import { IRole, Policy } from 'aws-cdk-lib/aws-iam';
+import { IRole } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { IDomain } from 'aws-cdk-lib/aws-opensearchservice';
@@ -262,12 +262,8 @@ export class OpenSearchProvisionDomain extends Construct {
         const asset = new Asset(this, 'ProvisioningConfigurationFiles', {
             path: props.provisioningConfigurationPath
         });
-
-        // Create permissions as a separate policy to ensure in DELETEs they are not removed until after the CR has run
-        const providerPermissions = new Policy(this, 'Permissions');
-        asset.grantRead(providerPermissions);
+        asset.grantRead(provider.onEventHandler);
         props.domainAdmin.grantAssumeRole(provider.onEventHandler.role!);
-        provider.onEventHandler.role!.attachInlinePolicy(providerPermissions);
 
         new CustomResource(this, 'OpenSearchProvisionDomain', {
             serviceToken: provider.serviceToken,
