@@ -22,12 +22,10 @@ import { getProvisioners } from './utils/get-provisioners';
 async function onCreate(
     event: CloudFormationCustomResourceCreateEvent<ResourceProperties>
 ): Promise<CdkCustomResourceResponse<never>> {
-    console.log('getting the asset');
     const asset = await downloadAndExtractAsset(
         event.ResourceProperties.AssetS3Uri
     );
 
-    console.log('creating provisioner config');
     const config = await createProvisionerConfig(event, asset.path);
     const provisioners = getProvisioners(event, config);
 
@@ -91,7 +89,6 @@ export async function handler(
     event: CdkCustomResourceEvent<ResourceProperties>,
     _context: Context
 ): Promise<CdkCustomResourceResponse<never>> {
-    console.log('starting handler');
     switch (event.RequestType) {
         case 'Create':
             return onCreate(event);

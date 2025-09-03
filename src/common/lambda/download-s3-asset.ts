@@ -16,30 +16,23 @@ import { S3 } from '@aws-sdk/client-s3';
 export async function downloadS3Asset(
     s3ObjectUri: string
 ): Promise<{ filePath: string; etag: string }> {
-    console.log('starting download in function');
     const s3Client = new S3();
     const targetParts = s3ObjectUri.replace('s3://', '').split('/');
     const bucket = targetParts[0];
     const key = targetParts.slice(1).join('/');
     const fileName = basename(key) ?? 'fileAsset';
 
-    console.log('about to start for loop');
     for (let attempt = 0; attempt < 10; attempt++) {
         try {
-            console.log(
-                `tmpdir for bucket: ${bucket}, key: ${key}, ${fileName}`
-            );
             // Create path to download template
             const filePath = join(tmpdir(), fileName);
 
-            console.log('get object');
             // Get the object
             const response = await s3Client.getObject({
                 Bucket: bucket,
                 Key: key
             });
 
-            console.log('write object');
             // Write the object data to a file
             if (response.Body instanceof Readable) {
                 const output = createWriteStream(filePath);
@@ -54,20 +47,17 @@ export async function downloadS3Asset(
             }
 
             // Get object metadata
-            console.log('head object');
             const metadata = await s3Client.headObject({
                 Bucket: bucket,
                 Key: key
             });
 
-            console.log('returning');
             return {
                 filePath,
                 etag: metadata.ETag!
             };
         } catch (error) {
             if (attempt === 9) throw error;
-            console.log(`Failed to download S3 asset: ${error}`);
             await new Promise((resolve) => setTimeout(resolve, 10000));
         }
     }

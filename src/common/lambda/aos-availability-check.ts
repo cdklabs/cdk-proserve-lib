@@ -17,24 +17,12 @@ export async function waitForOpenSearchAvailability(
 ): Promise<void> {
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
         try {
-            console.info('Trying to query the root');
-            const rootResponse = await client.get('/');
-            console.log(rootResponse.statusCode);
-            console.log(rootResponse.body);
-            console.log(rootResponse.data);
-
             // Try to hit the cluster health endpoint
-            console.log('Trying to query health endpoint');
             const healthResponse = await client.get('/_cluster/health');
-            console.log(healthResponse.statusCode);
-            console.log(healthResponse.body);
-            console.log(healthResponse.data);
-
             if (healthResponse.statusCode !== 200) {
-                throw new Error('OpenSearch is not ready: HEALTH RESPONSE');
-            }
-            if (rootResponse.statusCode !== 200) {
-                throw new Error('OpenSearch is not ready: STATUS RESPONSE');
+                throw new Error(
+                    'Unable to get /_cluster/health to determine availability.'
+                );
             }
 
             console.info('OpenSearch is available and ready');

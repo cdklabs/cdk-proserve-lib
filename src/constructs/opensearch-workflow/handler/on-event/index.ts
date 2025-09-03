@@ -209,7 +209,6 @@ export async function handler(
     event: CdkCustomResourceEvent<IResourceProperties>,
     _context: Context
 ): Promise<CdkCustomResourceResponse<never>> {
-    console.info('Handler started');
     console.info(JSON.stringify(event));
 
     const props = event.ResourceProperties;
