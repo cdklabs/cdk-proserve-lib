@@ -251,6 +251,9 @@ export class OpenSearchProvisionDomain extends Construct {
     ) {
         super(scope, id);
 
+        // Add dependency on the underlying OpenSearch Domain and child objects
+        this.node.addDependency(props.domain);
+
         const provider = OpenSearchProvisionDomain.getOrBuildProvider(
             scope,
             props

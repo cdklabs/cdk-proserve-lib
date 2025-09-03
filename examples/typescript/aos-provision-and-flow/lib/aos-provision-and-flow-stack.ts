@@ -6,12 +6,12 @@ import { Aws, RemovalPolicy, Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { Domain, EngineVersion } from 'aws-cdk-lib/aws-opensearchservice';
 import {
+    Role,
     AccountRootPrincipal,
-    AnyPrincipal,
-    Effect,
-    PolicyStatement,
     PrincipalWithConditions,
-    Role
+    PolicyStatement,
+    AnyPrincipal,
+    Effect
 } from 'aws-cdk-lib/aws-iam';
 import {
     OpenSearchProvisionDomain,
@@ -23,7 +23,7 @@ export class AosProvisionAndFlowStack extends Stack {
         super(scope, id, props);
 
         // Create an Admin Role to be used for the OpenSearch Domain access
-        const domainAdminRole = new Role(this, 'OpenSearchAdminRole', {
+        const adminRole = new Role(this, 'OpenSearchAdminRole', {
             assumedBy: new PrincipalWithConditions(new AccountRootPrincipal(), {
                 StringLike: {
                     'aws:PrincipalArn': `arn:${Aws.PARTITION}:iam::${Aws.ACCOUNT_ID}:role/${this.stackName}-*`
@@ -32,10 +32,10 @@ export class AosProvisionAndFlowStack extends Stack {
         });
 
         // Create the OpenSearch Domain
-        const domain = new Domain(this, 'AosDomain', {
+        const openSearchDomain = new Domain(this, 'AosDomain', {
             version: EngineVersion.OPENSEARCH_2_19,
             fineGrainedAccessControl: {
-                masterUserArn: domainAdminRole.roleArn
+                masterUserArn: adminRole.roleArn
             },
             ebs: {
                 volumeSize: 100
@@ -63,8 +63,8 @@ export class AosProvisionAndFlowStack extends Stack {
             this,
             'AosProvisionDomain',
             {
-                domain: domain,
-                domainAdmin: domainAdminRole,
+                domain: openSearchDomain,
+                domainAdmin: adminRole,
                 clusterSettings: {
                     persistent: {
                         'plugins.ml_commons.only_run_on_ml_node': 'false',
@@ -82,8 +82,8 @@ export class AosProvisionAndFlowStack extends Stack {
 
         // Setup an ingest pipeline in OpenSearch that creates embeddings
         const workflow = new OpenSearchWorkflow(this, 'EmbeddingsFlow', {
-            domain: domain,
-            domainAuthentication: domainAdminRole,
+            domain: openSearchDomain,
+            domainAuthentication: adminRole,
             flowFrameworkTemplatePath: join(
                 __dirname,
                 '..',
