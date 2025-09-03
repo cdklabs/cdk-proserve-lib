@@ -3,7 +3,7 @@
 
 import { join } from 'node:path';
 import { CustomResource, Duration, Stack } from 'aws-cdk-lib';
-import { IRole } from 'aws-cdk-lib/aws-iam';
+import { IRole, Policy } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { IDomain } from 'aws-cdk-lib/aws-opensearchservice';
@@ -251,9 +251,6 @@ export class OpenSearchProvisionDomain extends Construct {
     ) {
         super(scope, id);
 
-        // Add dependency on the underlying OpenSearch Domain and child objects
-        this.node.addDependency(props.domain);
-
         const provider = OpenSearchProvisionDomain.getOrBuildProvider(
             scope,
             props
@@ -264,12 +261,10 @@ export class OpenSearchProvisionDomain extends Construct {
         });
 
         // Create permissions as a separate policy to ensure in DELETEs they are not removed until after the CR has run
-        // const providerPermissions = new Policy(this, 'Permissions');
-
-        asset.grantRead(provider.onEventHandler);
+        const providerPermissions = new Policy(this, 'Permissions');
+        asset.grantRead(providerPermissions);
         props.domainAdmin.grantAssumeRole(provider.onEventHandler.role!);
-
-        // provider.onEventHandler.role!.attachInlinePolicy(providerPermissions);
+        provider.onEventHandler.role!.attachInlinePolicy(providerPermissions);
 
         new CustomResource(this, 'OpenSearchProvisionDomain', {
             serviceToken: provider.serviceToken,

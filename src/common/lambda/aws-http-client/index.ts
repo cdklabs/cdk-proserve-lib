@@ -89,35 +89,13 @@ export class AwsHttpClient extends HttpClient<AwsHttpClientOptions> {
 
             if (needNewCredentials) {
                 const stsClient = new STS();
-                let response;
+                const response = await stsClient.assumeRole({
+                    RoleArn: this.options.roleArn,
+                    RoleSessionName: 'AwsSigV4Request',
+                    DurationSeconds: 900 // 15m (minimum)
+                });
 
-                // Retry assumeRole to handle IAM propagation delays
-                for (let attempt = 0; attempt < 5; attempt++) {
-                    try {
-                        response = await stsClient.assumeRole({
-                            RoleArn: this.options.roleArn,
-                            RoleSessionName: 'AwsSigV4Request',
-                            DurationSeconds: 900 // 15m (minimum)
-                        });
-                        break;
-                    } catch (error: any) {
-                        if (
-                            error.$metadata?.httpStatusCode === 403 &&
-                            attempt < 4
-                        ) {
-                            console.log(
-                                `AssumeRole attempt ${attempt + 1} failed, retrying in 10 seconds...`
-                            );
-                            await new Promise((resolve) =>
-                                setTimeout(resolve, 10000)
-                            );
-                            continue;
-                        }
-                        throw error;
-                    }
-                }
-
-                if (!response?.Credentials) {
+                if (!response.Credentials) {
                     throw new Error('Failed to get temporary credentials');
                 }
 
