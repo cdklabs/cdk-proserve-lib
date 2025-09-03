@@ -7,6 +7,7 @@ import {
     CdkCustomResourceResponse,
     Context
 } from 'aws-lambda';
+import { waitForOpenSearchAvailability } from '../../../../common/lambda/aos-availability-check';
 import { AwsHttpClient } from '../../../../common/lambda/aws-http-client';
 import { downloadS3Asset } from '../../../../common/lambda/download-s3-asset';
 import { DestructiveOperation } from '../../../../types/destructive-operation';
@@ -22,7 +23,6 @@ import {
     parseTemplate,
     substituteTemplateValues
 } from '../utils/parse';
-import { waitForOpenSearchAvailability } from '../../../../common/lambda/aos-availability-check';
 
 /**
  * Handles AWS CloudFormation CREATE calls

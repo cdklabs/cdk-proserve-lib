@@ -4,9 +4,9 @@
 import { CdkCustomResourceEvent } from 'aws-lambda';
 import { getClient } from './client';
 import { detectDomainType } from './detect-domain-type';
+import { waitForOpenSearchAvailability } from '../../../../../common/lambda/aos-availability-check';
 import { ProvisionerConfiguration } from '../../types/provisioner-configuration';
 import { ResourceProperties } from '../../types/resource-properties';
-import { waitForOpenSearchAvailability } from '../../../../../common/lambda/aos-availability-check';
 
 /**
  * Creates the configuration to be used by provisioners
