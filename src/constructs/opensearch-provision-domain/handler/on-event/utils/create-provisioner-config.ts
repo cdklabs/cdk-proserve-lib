@@ -18,10 +18,8 @@ export async function createProvisionerConfig(
     event: CdkCustomResourceEvent<ResourceProperties>,
     assetPath: string
 ): Promise<ProvisionerConfiguration> {
-    console.log('getting client');
     const client = getClient(event);
 
-    console.log('waiting for OpenSearch to be available');
     // Wait for OpenSearch to be available before proceeding
     await waitForOpenSearchAvailability(client);
 
