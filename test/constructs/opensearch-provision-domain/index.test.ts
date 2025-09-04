@@ -104,7 +104,7 @@ describeCdkTest(OpenSearchProvisionDomain, (id, getStack, getTemplate) => {
             Handler: 'index.handler',
             ReservedConcurrentExecutions: 5,
             Runtime: 'nodejs22.x',
-            Timeout: 60,
+            Timeout: 300,
             MemorySize: 512
         };
 

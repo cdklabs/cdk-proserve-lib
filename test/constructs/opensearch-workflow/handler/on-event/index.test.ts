@@ -32,7 +32,12 @@ vi.mock('@aws-sdk/s3-request-presigner', () => ({
     getSignedUrl: vi.fn().mockResolvedValue('https://presigned-url.example.com')
 }));
 vi.mock('../../../../../src/common/lambda/aws-http-client');
-vi.mock('../../../../../src/common/lambda/download-s3-asset');
+vi.mock('../../../../../src/common/lambda/download-s3-asset', () => ({
+    downloadS3Asset: vi.fn()
+}));
+vi.mock('../../../../../src/common/lambda/aos-availability-check', () => ({
+    waitForOpenSearchAvailability: vi.fn().mockResolvedValue(undefined)
+}));
 
 describe('OpenSearch Workflow Handler', () => {
     let mockHttpClient: Mocked<AwsHttpClient>;
@@ -48,14 +53,10 @@ describe('OpenSearch Workflow Handler', () => {
         s3Mock.on(GetObjectCommand).resolves({});
 
         // Mock Download S3 Asset
-        vi.mock('../../../../../src/common/lambda/download-s3-asset', () => ({
-            downloadS3Asset: vi.fn().mockResolvedValue({
-                filePath: path.join(
-                    __dirname,
-                    '../../fixtures/test-template.yaml'
-                )
-            })
-        }));
+        mockedDownloadS3Asset.mockResolvedValue({
+            filePath: path.join(__dirname, '../../fixtures/test-template.yaml'),
+            etag: 'test-etag'
+        });
 
         // Mock HTTP client
         mockHttpClient = {
@@ -68,7 +69,7 @@ describe('OpenSearch Workflow Handler', () => {
             () => mockHttpClient
         );
 
-        // GET
+        // GET - Return target status immediately to avoid wait loops
         mockHttpClient.get.mockImplementation(() => {
             return Promise.resolve(
                 createMockResponse({ state: 'NOT_STARTED' })
