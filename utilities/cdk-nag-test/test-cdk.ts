@@ -3,10 +3,9 @@
 
 import { App, IAspect, Stack } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
-import { validateNoCdkNagFindings } from '.';
-import { getTemplateWithCdkNag } from '.';
 import { Construct } from 'constructs';
 import { describe, beforeEach, afterEach } from 'vitest';
+import { validateNoCdkNagFindings, getTemplateWithCdkNag } from '.';
 
 export function describeCdkTest(
     subject: new (...args: any[]) => Construct | IAspect,

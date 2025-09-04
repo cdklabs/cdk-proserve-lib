@@ -268,12 +268,12 @@
       "type": "build"
     },
     {
-      "name": "mime",
-      "version": "3.0.0",
+      "name": "memfs",
       "type": "build"
     },
     {
-      "name": "mock-fs",
+      "name": "mime",
+      "version": "3.0.0",
       "type": "build"
     },
     {
@@ -347,7 +347,7 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "^2.188.0",
+      "version": "^2.212.0",
       "type": "peer"
     },
     {

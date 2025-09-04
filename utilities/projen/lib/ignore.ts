@@ -13,7 +13,9 @@ export const configureIgnores = (project: CdklabsTypeScriptProject) => {
         '.nvmrc',
         'test.json',
         '.vscode/',
-        '.yarn/'
+        '.yarn/',
+        'cdk.out',
+        'package-lock.json'
     ];
 
     ignores.forEach((ignore) => {

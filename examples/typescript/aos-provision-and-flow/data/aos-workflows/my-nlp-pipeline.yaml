@@ -1,0 +1,41 @@
+---
+name: NLP Ingest Pipeline
+description: |
+  Deploys a Natural Language Processing (NLP) Ingest Pipeline using the
+  Hugging Face Sentence Transformers model. This pipeline will automatically
+  create a vector embedding for the `passage_embedding` field in the input data.
+use_case: PROVISION
+version:
+  template: 1.0.0
+  compatibility:
+    - 2.12.0
+    - 3.0.0
+workflows:
+  provision:
+    nodes:
+      - id: register_sentence_model
+        type: register_local_pretrained_model
+        user_inputs:
+          name: huggingface/sentence-transformers/msmarco-distilbert-base-tas-b
+          version: "1.0.1"
+          model_format: TORCH_SCRIPT
+          node_timeout: 300s
+      - id: deploy_sentence_model
+        type: deploy_model
+        user_inputs:
+          node_timeout: 300s
+        previous_node_inputs:
+          register_sentence_model: model_id
+      - id: ingest_pipeline
+        type: create_ingest_pipeline
+        user_inputs:
+          pipeline_id: nlp-ingest-pipeline
+          configurations:
+            processors:
+              - text_embedding:
+                  model_id: "${{ deploy_sentence_model.model_id }}"
+                  field_map:
+                    text: passage_embedding
+    edges:
+      - source: deploy_sentence_model
+        dest: ingest_pipeline

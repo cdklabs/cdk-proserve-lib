@@ -3,7 +3,7 @@
 
 import { tmpdir } from 'node:os';
 import { basename, join } from 'node:path';
-import * as AdmZip from 'adm-zip';
+import AdmZip = require('adm-zip');
 
 /**
  * Extracts a ZIP file to a specified location

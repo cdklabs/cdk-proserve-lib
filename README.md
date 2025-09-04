@@ -77,13 +77,13 @@ go get github.com/cdklabs/cdk-proserve-lib-go/cdklabscdkproservelib
 
 The library consists of [constructs](#-constructs), [aspects](#-aspects), and [patterns](#-patterns) that you can utilize in AWS CDK applications.
 
-Total: 20
+Total: 22
 
 ### 🧱 Constructs
 
 Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) applications. A construct is a component within your application that represents one or more AWS CloudFormation resources and their configuration. You build your application, piece by piece, by importing and configuring constructs. To learn more about constructs, check out the [AWS CDK documentation](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html).
 
-Count: 11
+Count: 12
 
 - [**DynamoDbProvisionTable**](API.md#dynamodbprovisiontable-): Controls the contents of an Amazon DynamoDB table from Infrastructure as Code.
 - [**Ec2ImageBuilderGetImage**](API.md#ec2imagebuildergetimage-): Retrieves an EC2 Image Builder image build version.
@@ -94,6 +94,7 @@ Count: 11
 - [**NetworkFirewall**](API.md#networkfirewall-): Creates an AWS Network Firewall using a user-supplied Suricata rules file in a VPC.
 - [**NetworkFirewallEndpoints**](API.md#networkfirewallendpoints-): Retrieves Network Firewall endpoints so that you can reference them in your other resources.
 - [**OpenSearchAdminUser**](API.md#opensearchadminuser-): Manages an admin user for an Amazon OpenSearch domain.
+- [**OpenSearchProvisionDomain**](API.md#opensearchprovisiondomain-): Controls the contents of an Amazon OpenSearch Service domain from Infrastructure as Code.
 - [**OpenSearchWorkflow**](API.md#opensearchworkflow-): Create OpenSearch Workflows using the flow framework to automate the provisioning of complex tasks using JSON or YAML.
 - [**WebApplicationFirewall**](API.md#webapplicationfirewall-): Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
 
@@ -115,10 +116,11 @@ Count: 7
 
 Patterns are higher-level abstractions that combine multiple constructs and their configurations to form an opinionated solution. They help developers implement best practices and reduce the amount of code needed to build well-architected infrastructure. Patterns typically orchestrate multiple AWS services together in a way that follows AWS best practices. To learn more about patterns, check out the [AWS CDK documentation](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html#constructs_lib_levels).
 
-Count: 2
+Count: 3
 
 - [**ApiGatewayStaticHosting**](API.md#apigatewaystatichosting-): A pattern that deploys resources to support the hosting of static assets within an AWS account.
 - [**Ec2LinuxImagePipeline**](API.md#ec2linuximagepipeline-): A pattern to build an EC2 Image Pipeline specifically for Linux.
+- [**KeycloakService**](API.md#keycloakservice-): Deploys a production-grade Keycloak service.
 
 ## 🤝 Contributors
 

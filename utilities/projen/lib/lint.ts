@@ -26,6 +26,8 @@ export const configureLinting = (project: CdklabsTypeScriptProject) => {
         prepare: 'husky'
     });
 
+    project.eslint?.allowDevDeps('esbuild.ts');
+    project.eslint?.allowDevDeps('vitest.config.ts');
     project.eslint?.allowDevDeps('**/handler/**/*.ts');
     project.eslint?.allowDevDeps('**/utilities/**/*.ts');
     project.eslint?.allowDevDeps('src/common/lambda/**/*.ts');

@@ -277,7 +277,7 @@ export class OpenSearchWorkflow extends Construct {
             }
         }
 
-        this.cr = new CustomResource(this, 'OpensearchWorkflow', {
+        this.cr = new CustomResource(this, 'OpenSearchWorkflow', {
             serviceToken: provider.serviceToken,
             properties: OpenSearchWorkflow.createCustomResourceProperties(
                 props,
