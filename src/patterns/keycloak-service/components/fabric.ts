@@ -298,6 +298,9 @@ export class KeycloakFabric extends Construct {
                     this.props.cluster.service.taskDefinition.defaultContainer!
                         .containerName,
                 listener: ListenerConfig.applicationListener(trafficListener, {
+                    healthCheck: {
+                        healthyHttpCodes: '200,302'
+                    },
                     port: this.props.ports.traffic,
                     protocol: ApplicationProtocol.HTTPS
                 }),
