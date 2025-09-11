@@ -1506,6 +1506,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.adminUser">adminUser</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Credentials for bootstrapping a local admin user in Keycloak. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.endpoint">endpoint</a></code> | <code>aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer \| aws-cdk-lib.aws_elasticloadbalancingv2.INetworkLoadBalancer</code> | Endpoint for accessing the Keycloak service. |
 
 ---
 
@@ -1530,6 +1531,18 @@ public readonly adminUser: ISecret;
 - *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
 
 Credentials for bootstrapping a local admin user in Keycloak.
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.endpoint"></a>
+
+```typescript
+public readonly endpoint: IApplicationLoadBalancer | INetworkLoadBalancer;
+```
+
+- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer | aws-cdk-lib.aws_elasticloadbalancingv2.INetworkLoadBalancer
+
+Endpoint for accessing the Keycloak service.
 
 ---
 
@@ -3382,6 +3395,61 @@ Scaling is always enabled based on CPU utilization if the scaling bounds have be
 
 ---
 
+### ConstructedFabricConfiguration <a name="ConstructedFabricConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ConstructedFabricConfiguration"></a>
+
+Configuration options for constructing a fabric.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ConstructedFabricConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const constructedFabricConfiguration: patterns.KeycloakService.ConstructedFabricConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ConstructedFabricConfiguration.property.dnsZoneName">dnsZoneName</a></code> | <code>string</code> | Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ConstructedFabricConfiguration.property.internetFacing">internetFacing</a></code> | <code>boolean</code> | Whether or not the load balancer should be exposed to the external network. |
+
+---
+
+##### `dnsZoneName`<sup>Optional</sup> <a name="dnsZoneName" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ConstructedFabricConfiguration.property.dnsZoneName"></a>
+
+```typescript
+public readonly dnsZoneName: string;
+```
+
+- *Type:* string
+
+Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided.
+
+By default, no Route53 records will be created
+
+---
+
+*Example*
+
+```typescript
+example.com
+```
+
+
+##### `internetFacing`<sup>Optional</sup> <a name="internetFacing" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ConstructedFabricConfiguration.property.internetFacing"></a>
+
+```typescript
+public readonly internetFacing: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether or not the load balancer should be exposed to the external network.
+
+---
+
 ### CustomDomainConfiguration <a name="CustomDomainConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.CustomDomainConfiguration"></a>
 
 Domain configuration when using a Custom Domain Name for Amazon API Gateway.
@@ -4300,61 +4368,6 @@ Defaults to ContainerInsights.ENABLED if not disabled.
 
 ---
 
-### FabricConfiguration <a name="FabricConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration"></a>
-
-Configuration options for the fabric.
-
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.Initializer"></a>
-
-```typescript
-import { patterns } from '@cdklabs/cdk-proserve-lib'
-
-const fabricConfiguration: patterns.KeycloakService.FabricConfiguration = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.dnsZoneName">dnsZoneName</a></code> | <code>string</code> | Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.internetFacing">internetFacing</a></code> | <code>boolean</code> | Whether or not the load balancer should be exposed to the external network. |
-
----
-
-##### `dnsZoneName`<sup>Optional</sup> <a name="dnsZoneName" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.dnsZoneName"></a>
-
-```typescript
-public readonly dnsZoneName: string;
-```
-
-- *Type:* string
-
-Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided.
-
-By default, no Route53 records will be created
-
----
-
-*Example*
-
-```typescript
-example.com
-```
-
-
-##### `internetFacing`<sup>Optional</sup> <a name="internetFacing" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.internetFacing"></a>
-
-```typescript
-public readonly internetFacing: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Whether or not the load balancer should be exposed to the external network.
-
----
-
 ### FriendlyEmbraceProps <a name="FriendlyEmbraceProps" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbraceProps"></a>
 
 Input metadata for the custom resource.
@@ -4591,6 +4604,148 @@ Optional Lambda configuration settings.
 
 ---
 
+### ImportApplicationLoadBalancerConfiguration <a name="ImportApplicationLoadBalancerConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration"></a>
+
+Configuration options for importing an Application Load Balancer to use for the fabric.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const importApplicationLoadBalancerConfiguration: patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration.property.certificate">certificate</a></code> | <code>aws-cdk-lib.aws_certificatemanager.ICertificate</code> | TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration.property.resource">resource</a></code> | <code>aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer</code> | Load Balancer to use in front of Keycloak. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration.property.managementCertificate">managementCertificate</a></code> | <code>aws-cdk-lib.aws_certificatemanager.ICertificate</code> | TLS certificate to support SSL termination at the load balancer level for the management Keycloak endpoint. |
+
+---
+
+##### `certificate`<sup>Required</sup> <a name="certificate" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration.property.certificate"></a>
+
+```typescript
+public readonly certificate: ICertificate;
+```
+
+- *Type:* aws-cdk-lib.aws_certificatemanager.ICertificate
+
+TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration.property.resource"></a>
+
+```typescript
+public readonly resource: IApplicationLoadBalancer;
+```
+
+- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer
+
+Load Balancer to use in front of Keycloak.
+
+---
+
+##### `managementCertificate`<sup>Optional</sup> <a name="managementCertificate" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration.property.managementCertificate"></a>
+
+```typescript
+public readonly managementCertificate: ICertificate;
+```
+
+- *Type:* aws-cdk-lib.aws_certificatemanager.ICertificate
+
+TLS certificate to support SSL termination at the load balancer level for the management Keycloak endpoint.
+
+---
+
+### ImportedFabricConfiguration <a name="ImportedFabricConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportedFabricConfiguration"></a>
+
+Configuraiton options for constructing a fabric using imported resources.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportedFabricConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const importedFabricConfiguration: patterns.KeycloakService.ImportedFabricConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportedFabricConfiguration.property.loadBalancer">loadBalancer</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration \| @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportNetworkLoadBalancerConfiguration</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportedFabricConfiguration.property.dnsZoneName">dnsZoneName</a></code> | <code>string</code> | Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided. |
+
+---
+
+##### `loadBalancer`<sup>Required</sup> <a name="loadBalancer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportedFabricConfiguration.property.loadBalancer"></a>
+
+```typescript
+public readonly loadBalancer: ImportApplicationLoadBalancerConfiguration | ImportNetworkLoadBalancerConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration | @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportNetworkLoadBalancerConfiguration
+
+---
+
+##### `dnsZoneName`<sup>Optional</sup> <a name="dnsZoneName" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportedFabricConfiguration.property.dnsZoneName"></a>
+
+```typescript
+public readonly dnsZoneName: string;
+```
+
+- *Type:* string
+
+Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided.
+
+By default, no Route53 records will be created
+
+---
+
+*Example*
+
+```typescript
+example.com
+```
+
+
+### ImportNetworkLoadBalancerConfiguration <a name="ImportNetworkLoadBalancerConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportNetworkLoadBalancerConfiguration"></a>
+
+Configuration options for importing a Network Load Balancer to use for the fabric.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportNetworkLoadBalancerConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const importNetworkLoadBalancerConfiguration: patterns.KeycloakService.ImportNetworkLoadBalancerConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportNetworkLoadBalancerConfiguration.property.resource">resource</a></code> | <code>aws-cdk-lib.aws_elasticloadbalancingv2.INetworkLoadBalancer</code> | Load Balancer to use in front of Keycloak. |
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportNetworkLoadBalancerConfiguration.property.resource"></a>
+
+```typescript
+public readonly resource: INetworkLoadBalancer;
+```
+
+- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.INetworkLoadBalancer
+
+Load Balancer to use in front of Keycloak.
+
+---
+
 ### InfrastructureConfiguration <a name="InfrastructureConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration"></a>
 
 Overrides for prescribed defaults for the infrastructure.
@@ -4609,7 +4764,7 @@ const infrastructureConfiguration: patterns.KeycloakService.InfrastructureConfig
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration.property.cluster">cluster</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration</code> | Overrides related to the application hosting infrastructure. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration.property.database">database</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ServerlessDatabaseConfiguration \| @cdklabs/cdk-proserve-lib.patterns.KeycloakService.TraditionalDatabaseConfiguration</code> | Overrides related to the database infrastructure. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration.property.fabric">fabric</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration</code> | Overrides related to the networking infrastructure. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration.property.fabric">fabric</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportedFabricConfiguration \| @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ConstructedFabricConfiguration</code> | Overrides related to the networking infrastructure. |
 
 ---
 
@@ -4640,10 +4795,10 @@ Overrides related to the database infrastructure.
 ##### `fabric`<sup>Optional</sup> <a name="fabric" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.InfrastructureConfiguration.property.fabric"></a>
 
 ```typescript
-public readonly fabric: FabricConfiguration;
+public readonly fabric: ImportedFabricConfiguration | ConstructedFabricConfiguration;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportedFabricConfiguration | @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ConstructedFabricConfiguration
 
 Overrides related to the networking infrastructure.
 

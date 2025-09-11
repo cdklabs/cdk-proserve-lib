@@ -3,8 +3,13 @@
 
 import { Stack, RemovalPolicy } from 'aws-cdk-lib';
 import { Annotations, Match } from 'aws-cdk-lib/assertions';
+import { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
 import { Vpc, IpAddresses } from 'aws-cdk-lib/aws-ec2';
 import { ContainerImage } from 'aws-cdk-lib/aws-ecs';
+import {
+    ApplicationLoadBalancer,
+    NetworkLoadBalancer
+} from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
@@ -966,6 +971,260 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 }
             );
         });
+
+        it('imports existing Network Load Balancer', () => {
+            const existingNlb =
+                NetworkLoadBalancer.fromNetworkLoadBalancerAttributes(
+                    stack,
+                    'ExistingNlb',
+                    {
+                        loadBalancerArn:
+                            'arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/test-nlb/1234567890123456',
+                        loadBalancerDnsName:
+                            'test-nlb-1234567890123456.elb.us-east-1.amazonaws.com',
+                        vpc: Vpc.fromVpcAttributes(stack, 'ExistingVpc', {
+                            availabilityZones: ['us-east-1a', 'us-east-1b'],
+                            vpcId: 'vpc-abc1234'
+                        })
+                    }
+                );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    fabric: {
+                        loadBalancer: {
+                            resource: existingNlb
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::Listener',
+                {
+                    LoadBalancerArn:
+                        'arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/test-nlb/1234567890123456',
+                    Port: 443,
+                    Protocol: 'TCP'
+                }
+            );
+        });
+
+        it('imports existing Application Load Balancer with certificate', () => {
+            const existingAlb =
+                ApplicationLoadBalancer.fromApplicationLoadBalancerAttributes(
+                    stack,
+                    'ExistingAlb',
+                    {
+                        loadBalancerArn:
+                            'arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/app/test-alb/1234567890123456',
+                        loadBalancerDnsName:
+                            'test-alb-1234567890123456.elb.us-east-1.amazonaws.com',
+                        securityGroupId: 'sg-12345678',
+                        vpc: Vpc.fromVpcAttributes(stack, 'ExistingVpc', {
+                            availabilityZones: ['us-east-1a', 'us-east-1b'],
+                            vpcId: 'vpc-abc1234'
+                        })
+                    }
+                );
+
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    cluster: {
+                        scaling: {
+                            maximum: 3,
+                            minimum: 1,
+                            requestCountScaling: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    fabric: {
+                        loadBalancer: {
+                            resource: existingAlb,
+                            certificate: certificate
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::Listener',
+                {
+                    LoadBalancerArn:
+                        'arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/app/test-alb/1234567890123456',
+                    Port: 443,
+                    Protocol: 'HTTPS',
+                    Certificates: [
+                        {
+                            CertificateArn:
+                                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+                        }
+                    ]
+                }
+            );
+        });
+
+        it('imports ALB with separate management certificate', () => {
+            const existingAlb =
+                ApplicationLoadBalancer.fromApplicationLoadBalancerAttributes(
+                    stack,
+                    'ExistingAlb',
+                    {
+                        loadBalancerArn:
+                            'arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/app/test-alb/1234567890123456',
+                        loadBalancerDnsName:
+                            'test-alb-1234567890123456.elb.us-east-1.amazonaws.com',
+                        securityGroupId: 'sg-12345678',
+                        vpc: Vpc.fromVpcAttributes(stack, 'ExistingVpc', {
+                            availabilityZones: ['us-east-1a', 'us-east-1b'],
+                            vpcId: 'vpc-abc1234'
+                        })
+                    }
+                );
+
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+            const managementCertificate = Certificate.fromCertificateArn(
+                stack,
+                'ManagementCertificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/87654321-4321-4321-4321-210987654321'
+            );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        },
+                        management: {
+                            port: 9000
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    fabric: {
+                        loadBalancer: {
+                            resource: existingAlb,
+                            certificate: certificate,
+                            managementCertificate: managementCertificate
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::Listener',
+                {
+                    LoadBalancerArn:
+                        'arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/app/test-alb/1234567890123456',
+                    Port: 9000,
+                    Protocol: 'HTTPS',
+                    Certificates: [
+                        {
+                            CertificateArn:
+                                'arn:aws:acm:us-east-1:123456789012:certificate/87654321-4321-4321-4321-210987654321'
+                        }
+                    ]
+                }
+            );
+        });
+
+        it('validates management certificate required for ALB with management interface', () => {
+            const existingAlb =
+                ApplicationLoadBalancer.fromApplicationLoadBalancerAttributes(
+                    stack,
+                    'ExistingAlb',
+                    {
+                        loadBalancerArn:
+                            'arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/app/test-alb/1234567890123456',
+                        loadBalancerDnsName:
+                            'test-alb-1234567890123456.elb.us-east-1.amazonaws.com',
+                        securityGroupId: 'sg-12345678',
+                        vpc: Vpc.fromVpcAttributes(stack, 'ExistingVpc', {
+                            availabilityZones: ['us-east-1a', 'us-east-1b'],
+                            vpcId: 'vpc-abc1234'
+                        })
+                    }
+                );
+
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+
+            expect(() => {
+                new KeycloakService(stack, id, {
+                    keycloak: {
+                        image,
+                        version: KeycloakService.EngineVersion.V26_3_2,
+                        configuration: {
+                            hostnames: {
+                                default: 'auth.example.com'
+                            },
+                            management: {
+                                port: 9000
+                            }
+                        }
+                    },
+                    vpc,
+                    overrides: {
+                        fabric: {
+                            loadBalancer: {
+                                resource: existingAlb,
+                                certificate: certificate
+                            }
+                        }
+                    }
+                });
+            }).not.toThrow();
+
+            const annotations = Annotations.fromStack(stack);
+            expect(
+                annotations.findError(
+                    '*',
+                    Match.stringLikeRegexp(
+                        'TLS certificate.*management endpoint'
+                    )
+                )
+            ).toHaveLength(1);
+        });
     });
 
     describe('Management Interface', () => {
@@ -1115,6 +1374,104 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 annotations.findError(
                     '*',
                     Match.stringLikeRegexp('public subnets')
+                )
+            ).toHaveLength(1);
+        });
+    });
+
+    describe('Load Balancer VPC Validation', () => {
+        it('validates imported Network Load Balancer has VPC specified', () => {
+            const existingNlb =
+                NetworkLoadBalancer.fromNetworkLoadBalancerAttributes(
+                    stack,
+                    'ExistingNlb',
+                    {
+                        loadBalancerArn:
+                            'arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/test-nlb/1234567890123456',
+                        loadBalancerDnsName:
+                            'test-nlb-1234567890123456.elb.us-east-1.amazonaws.com'
+                    }
+                );
+
+            expect(() => {
+                new KeycloakService(stack, id, {
+                    keycloak: {
+                        image,
+                        version: KeycloakService.EngineVersion.V26_3_2,
+                        configuration: {
+                            hostnames: {
+                                default: 'auth.example.com'
+                            }
+                        }
+                    },
+                    vpc,
+                    overrides: {
+                        fabric: {
+                            loadBalancer: {
+                                resource: existingNlb
+                            }
+                        }
+                    }
+                });
+            }).not.toThrow();
+
+            const annotations = Annotations.fromStack(stack);
+            expect(
+                annotations.findError(
+                    '*',
+                    Match.stringLikeRegexp('must have a VPC specified')
+                )
+            ).toHaveLength(1);
+        });
+
+        it('validates imported Application Load Balancer has VPC specified', () => {
+            const existingAlb =
+                ApplicationLoadBalancer.fromApplicationLoadBalancerAttributes(
+                    stack,
+                    'ExistingAlb',
+                    {
+                        loadBalancerArn:
+                            'arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/app/test-alb/1234567890123456',
+                        loadBalancerDnsName:
+                            'test-alb-1234567890123456.elb.us-east-1.amazonaws.com',
+                        securityGroupId: 'sg-12345678'
+                    }
+                );
+
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate2',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+
+            expect(() => {
+                new KeycloakService(stack, id + '2', {
+                    keycloak: {
+                        image,
+                        version: KeycloakService.EngineVersion.V26_3_2,
+                        configuration: {
+                            hostnames: {
+                                default: 'auth.example.com'
+                            }
+                        }
+                    },
+                    vpc,
+                    overrides: {
+                        fabric: {
+                            loadBalancer: {
+                                resource: existingAlb,
+                                certificate: certificate
+                            }
+                        }
+                    }
+                });
+            }).not.toThrow();
+
+            const annotations = Annotations.fromStack(stack);
+            expect(
+                annotations.findError(
+                    '*',
+                    Match.stringLikeRegexp('must have a VPC specified')
                 )
             ).toHaveLength(1);
         });

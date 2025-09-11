@@ -2,8 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { Annotations, Duration, RemovalPolicy } from 'aws-cdk-lib';
+import { ICertificate } from 'aws-cdk-lib/aws-certificatemanager';
 import { ISubnet, IVpc } from 'aws-cdk-lib/aws-ec2';
 import { ContainerImage } from 'aws-cdk-lib/aws-ecs';
+import {
+    IApplicationLoadBalancer,
+    INetworkLoadBalancer
+} from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import { IKey, Key } from 'aws-cdk-lib/aws-kms';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
@@ -190,6 +195,11 @@ export class KeycloakService extends Construct {
     readonly adminUser: ISecret;
 
     /**
+     * Endpoint for accessing the Keycloak service
+     */
+    readonly endpoint?: IApplicationLoadBalancer | INetworkLoadBalancer;
+
+    /**
      * Create a new Keycloak service
      * @param scope Parent to which this construct belongs
      * @param id Unique identifier for the component
@@ -212,11 +222,15 @@ export class KeycloakService extends Construct {
         };
 
         const workloadSubnets = this.selectWorkloadSubnets(this.props.vpc);
-        const ingressSubnets = this.selectIngressSubnets(
-            this.props.vpc,
-            workloadSubnets,
-            this.props.overrides?.fabric?.internetFacing
-        );
+        const ingressSubnets = !KeycloakFabric.isImportConfiguration(
+            this.props.overrides?.fabric
+        )
+            ? this.selectIngressSubnets(
+                  this.props.vpc,
+                  workloadSubnets,
+                  this.props.overrides?.fabric?.internetFacing
+              )
+            : undefined;
 
         this.overallRemovalPolicy = this.findMostRestrictiveRemovalPolicy([
             this.props.removalPolicies?.data ??
@@ -235,6 +249,8 @@ export class KeycloakService extends Construct {
             const fabric = this.buildFabric(cluster.resources, ingressSubnets);
 
             this.configureClusterRequestCountScaling(cluster, fabric);
+
+            this.endpoint = fabric.resources.loadBalancer;
         }
     }
 
@@ -254,7 +270,16 @@ export class KeycloakService extends Construct {
             cluster.resources.scaling.scaleToTrackCustomMetric(
                 'RequestScaling',
                 {
-                    metric: fabric.resources.loadBalancer.metrics.activeFlowCount(),
+                    metric:
+                        fabric.resources.type === 'app'
+                            ? (
+                                  fabric.resources
+                                      .loadBalancer as IApplicationLoadBalancer
+                              ).metrics.activeConnectionCount()
+                            : (
+                                  fabric.resources
+                                      .loadBalancer as INetworkLoadBalancer
+                              ).metrics.activeFlowCount(),
                     targetValue:
                         this.props.overrides.cluster.scaling.requestCountScaling
                             .threshold ?? 80,
@@ -644,7 +669,7 @@ export class KeycloakService extends Construct {
      */
     private buildFabric(
         cluster: KeycloakCluster.Infrastructure,
-        ingressSubnets: ISubnet[]
+        ingressSubnets: ISubnet[] | undefined
     ): KeycloakFabric {
         return new KeycloakFabric(this, 'Fabric', {
             cluster: cluster,
@@ -842,15 +867,9 @@ export namespace KeycloakService {
     }
 
     /**
-     * Configuration options for the fabric
+     * Configuration options common to all fabric types
      */
-    export interface FabricConfiguration {
-        /**
-         * Whether or not the load balancer should be exposed to the external network
-         * @default false
-         */
-        readonly internetFacing?: boolean;
-
+    interface CommonFabricConfiguration {
         /**
          * Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided
          *
@@ -860,6 +879,70 @@ export namespace KeycloakService {
          */
         readonly dnsZoneName?: string;
     }
+
+    /**
+     * Configuration options for constructing a fabric
+     */
+    export interface ConstructedFabricConfiguration
+        extends CommonFabricConfiguration {
+        /**
+         * Whether or not the load balancer should be exposed to the external network
+         * @default false
+         */
+        readonly internetFacing?: boolean;
+    }
+
+    /**
+     * Configuration options for importing a Network Load Balancer to use for the fabric
+     */
+    export interface ImportNetworkLoadBalancerConfiguration {
+        /**
+         * Load Balancer to use in front of Keycloak
+         */
+        readonly resource: INetworkLoadBalancer;
+    }
+
+    /**
+     * Configuration options for importing an Application Load Balancer to use for the fabric
+     */
+    export interface ImportApplicationLoadBalancerConfiguration {
+        /**
+         * Load Balancer to use in front of Keycloak
+         */
+        readonly resource: IApplicationLoadBalancer;
+
+        /**
+         * TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint
+         */
+        readonly certificate: ICertificate;
+
+        /**
+         * TLS certificate to support SSL termination at the load balancer level for the management Keycloak endpoint
+         */
+        readonly managementCertificate?: ICertificate;
+    }
+
+    /**
+     * Configuration options for importing an existing load balancer to use as the endpoint for Keycloak
+     */
+    export type ImportedLoadBalancerConfiguration =
+        | ImportNetworkLoadBalancerConfiguration
+        | ImportApplicationLoadBalancerConfiguration;
+
+    /**
+     * Configuraiton options for constructing a fabric using imported resources
+     */
+    export interface ImportedFabricConfiguration
+        extends CommonFabricConfiguration {
+        readonly loadBalancer: ImportedLoadBalancerConfiguration;
+    }
+
+    /**
+     * Configuration options for the fabric
+     */
+    export type FabricConfiguration =
+        | ImportedFabricConfiguration
+        | ConstructedFabricConfiguration;
 
     /**
      * Configuration options for scaling the cluster based on number of active requests
