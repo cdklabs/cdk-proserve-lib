@@ -11,7 +11,8 @@ import {
     INetworkLoadBalancer,
     IApplicationLoadBalancer,
     ApplicationProtocol,
-    ApplicationTargetGroup
+    ApplicationTargetGroup,
+    ListenerAction
 } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { ARecord, HostedZone, RecordTarget } from 'aws-cdk-lib/aws-route53';
 import { LoadBalancerTarget } from 'aws-cdk-lib/aws-route53-targets';
@@ -290,10 +291,21 @@ export class KeycloakFabric extends Construct {
             /**
              * Traffic
              */
+            endpoint.addListener('TrafficRedirect', {
+                defaultAction: ListenerAction.redirect({
+                    port: this.props.ports.traffic.toString(),
+                    protocol: ApplicationProtocol.HTTPS
+                }),
+                port: 80,
+                protocol: ApplicationProtocol.HTTP,
+                open: false
+            });
+
             const trafficListener = endpoint.addListener('TrafficListener', {
                 port: this.props.ports.traffic,
                 certificates: [certificate],
-                protocol: ApplicationProtocol.HTTPS
+                protocol: ApplicationProtocol.HTTPS,
+                open: false
             });
 
             this.props.cluster.service.registerLoadBalancerTargets({
@@ -337,7 +349,8 @@ export class KeycloakFabric extends Construct {
                     {
                         port: this.props.ports.management,
                         certificates: [managementCertificate ?? certificate],
-                        protocol: ApplicationProtocol.HTTPS
+                        protocol: ApplicationProtocol.HTTPS,
+                        open: false
                     }
                 );
 
