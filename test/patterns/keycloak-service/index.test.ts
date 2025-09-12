@@ -758,7 +758,6 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             });
 
             const template = getTemplate();
-            console.log(JSON.stringify(template));
             template.hasResourceProperties(
                 'AWS::ApplicationAutoScaling::ScalingPolicy',
                 {
