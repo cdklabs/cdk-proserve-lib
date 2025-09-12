@@ -1,12 +1,16 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { RemovalPolicy } from 'aws-cdk-lib';
-import { ISubnet, IVpc } from 'aws-cdk-lib/aws-ec2';
+import { Annotations, Duration, RemovalPolicy } from 'aws-cdk-lib';
+import { ISubnet, IVpc, SecurityGroup } from 'aws-cdk-lib/aws-ec2';
 import { ListenerConfig, Protocol } from 'aws-cdk-lib/aws-ecs';
 import {
     NetworkLoadBalancer,
-    Protocol as ElbProtocol
+    Protocol as ElbProtocol,
+    ApplicationLoadBalancer,
+    ApplicationProtocol,
+    ApplicationTargetGroup,
+    ListenerAction
 } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { ARecord, HostedZone, RecordTarget } from 'aws-cdk-lib/aws-route53';
 import { LoadBalancerTarget } from 'aws-cdk-lib/aws-route53-targets';
@@ -80,7 +84,15 @@ export class KeycloakFabric extends Construct {
 
         this.props = props;
 
-        const endpoint = this.buildEndpoint();
+        const loadBalanceAtApplicationLayer =
+            this.props.configuration?.applicationLoadBalancing !== undefined;
+
+        const endpoint = loadBalanceAtApplicationLayer
+            ? this.buildApplicationEndpoint(
+                  this.props.configuration.applicationLoadBalancing
+              )
+            : this.buildNetworkEndpoint();
+
         this.configureEndpointDns(endpoint);
 
         this.resources = {
@@ -89,9 +101,10 @@ export class KeycloakFabric extends Construct {
     }
 
     /**
-     * Build the load balancer for the Keycloak service
+     * Build the layer 4 load balancer for the Keycloak service
+     * @returns Load balancer
      */
-    private buildEndpoint(): NetworkLoadBalancer {
+    private buildNetworkEndpoint(): NetworkLoadBalancer {
         const lb = new NetworkLoadBalancer(this, 'LoadBalancer', {
             vpc: this.props.vpc,
             crossZoneEnabled: true,
@@ -150,11 +163,132 @@ export class KeycloakFabric extends Construct {
     }
 
     /**
+     * Build the layer 7 load balancer for the Keycloak service
+     * @param configuration Configuration for the layer 7 load balancer
+     * @returns Load balancer
+     */
+    private buildApplicationEndpoint(
+        configuration: KeycloakService.FabricApplicationLoadBalancingConfiguration
+    ): ApplicationLoadBalancer {
+        const access = new SecurityGroup(this, 'LoadBalancerAccess', {
+            vpc: this.props.vpc
+        });
+
+        const lb = new ApplicationLoadBalancer(this, 'LoadBalancer', {
+            vpc: this.props.vpc,
+            crossZoneEnabled: true,
+            deletionProtection:
+                this.props.removalPolicy !== RemovalPolicy.DESTROY,
+            dropInvalidHeaderFields: true,
+            internetFacing: this.props.configuration?.internetFacing,
+            securityGroup: access,
+            vpcSubnets: {
+                onePerAz: true,
+                subnets: this.props.ingressSubnets
+            }
+        });
+
+        /**
+         * Traffic
+         */
+        lb.addListener('TrafficRedirect', {
+            defaultAction: ListenerAction.redirect({
+                port: this.props.ports.traffic.toString(),
+                protocol: ApplicationProtocol.HTTPS
+            }),
+            port: 80,
+            protocol: ApplicationProtocol.HTTP,
+            open: false
+        });
+
+        const trafficListener = lb.addListener('TrafficListener', {
+            port: this.props.ports.traffic,
+            certificates: [configuration.certificate],
+            protocol: ApplicationProtocol.HTTPS,
+            open: false
+        });
+
+        this.props.cluster.service.registerLoadBalancerTargets({
+            containerName:
+                this.props.cluster.service.taskDefinition.defaultContainer!
+                    .containerName,
+            listener: ListenerConfig.applicationListener(trafficListener, {
+                healthCheck: {
+                    healthyHttpCodes: '200,302'
+                },
+                port: this.props.ports.traffic,
+                protocol: ApplicationProtocol.HTTPS
+            }),
+            newTargetGroupId: 'TrafficWorkers',
+            containerPort: KeycloakCluster.Defaults.containerTrafficPort,
+            protocol: Protocol.TCP
+        });
+
+        // Enables session stickiness
+        trafficListener.node.children.forEach((c) => {
+            if (c instanceof ApplicationTargetGroup) {
+                c.enableCookieStickiness(Duration.hours(1), 'AUTH_SESSION_ID');
+            }
+        });
+
+        /**
+         * Management
+         */
+        if (this.props.ports.management) {
+            if (!configuration.managementCertificate) {
+                Annotations.of(this).addError(
+                    'Must specify a TLS certificate to use for the management endpoint when it is enabled'
+                );
+            }
+
+            const managementListener = lb.addListener('ManagementListener', {
+                port: this.props.ports.management,
+                certificates: [
+                    configuration.managementCertificate ??
+                        configuration.certificate
+                ],
+                protocol: ApplicationProtocol.HTTPS,
+                open: false
+            });
+
+            this.props.cluster.service.registerLoadBalancerTargets({
+                containerName:
+                    this.props.cluster.service.taskDefinition.defaultContainer!
+                        .containerName,
+                listener: ListenerConfig.applicationListener(
+                    managementListener,
+                    {
+                        port: this.props.ports.management,
+                        protocol: ApplicationProtocol.HTTPS
+                    }
+                ),
+                newTargetGroupId: 'ManagementWorkers',
+                containerPort: KeycloakCluster.Defaults.containerManagementPort,
+                protocol: Protocol.TCP
+            });
+
+            // Enables session stickiness
+            managementListener.node.children.forEach((c) => {
+                if (c instanceof ApplicationTargetGroup) {
+                    c.enableCookieStickiness(
+                        Duration.hours(1),
+                        'AUTH_SESSION_ID'
+                    );
+                }
+            });
+        }
+
+        return lb;
+    }
+
+    /**
      * Add a DNS record that points hostnames to the load balancer
      * @param endpoint Load balancer for the Keycloak service
      * @returns Custom DNS name if applicable
      */
-    private configureEndpointDns(endpoint: NetworkLoadBalancer): void {
+    private configureEndpointDns(
+        endpoint: ApplicationLoadBalancer | NetworkLoadBalancer
+    ): void {
         if (this.props.configuration?.dnsZoneName) {
             const zone = HostedZone.fromLookup(this, 'Zone', {
                 domainName: this.props.configuration.dnsZoneName
@@ -206,6 +340,6 @@ export namespace KeycloakFabric {
         /**
          * Load balancer for managing requests in the networking fabric
          */
-        readonly loadBalancer: NetworkLoadBalancer;
+        readonly loadBalancer: ApplicationLoadBalancer | NetworkLoadBalancer;
     }
 }

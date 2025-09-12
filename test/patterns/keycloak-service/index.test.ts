@@ -3,6 +3,7 @@
 
 import { Stack, RemovalPolicy } from 'aws-cdk-lib';
 import { Annotations, Match } from 'aws-cdk-lib/assertions';
+import { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
 import { Vpc, IpAddresses } from 'aws-cdk-lib/aws-ec2';
 import { ContainerImage } from 'aws-cdk-lib/aws-ecs';
 import { Key } from 'aws-cdk-lib/aws-kms';
@@ -34,6 +35,10 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 {
                     id: 'CdkNagValidationFailure',
                     reason: 'Not validated for test'
+                },
+                {
+                    id: 'NIST.800.53.R5-ALBWAFEnabled',
+                    reason: 'This is left for the consumer to enable if desired'
                 },
                 {
                     id: 'NIST.800.53.R5-ELBLoggingEnabled',
@@ -467,11 +472,40 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
 
             const template = getTemplate();
             template.hasResourceProperties('AWS::Route53::RecordSet', {
-                Name: 'auth.example.com.'
+                Name: 'auth.example.com.',
+                Type: 'A'
             });
             template.hasResourceProperties('AWS::Route53::RecordSet', {
-                Name: 'admin.auth.example.com.'
+                Name: 'admin.auth.example.com.',
+                Type: 'A'
             });
+        });
+
+        it('creates only default Route53 record when admin hostname not provided', () => {
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    fabric: {
+                        dnsZoneName: 'example.com'
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties('AWS::Route53::RecordSet', {
+                Name: 'auth.example.com.',
+                Type: 'A'
+            });
+            template.resourceCountIs('AWS::Route53::RecordSet', 1);
         });
     });
 
@@ -837,6 +871,339 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
         });
     });
 
+    describe('Application Load Balancing', () => {
+        it('creates Application Load Balancer when layer 7 is configured', () => {
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    fabric: {
+                        applicationLoadBalancing: {
+                            certificate: certificate
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::LoadBalancer',
+                {
+                    Type: 'application'
+                }
+            );
+        });
+
+        it('configures HTTPS listeners for Application Load Balancer', () => {
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    fabric: {
+                        applicationLoadBalancing: {
+                            certificate: certificate
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::Listener',
+                {
+                    Protocol: 'HTTPS',
+                    Port: 443
+                }
+            );
+        });
+
+        it('requires management certificate when management interface is enabled with layer 7', () => {
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+
+            expect(() => {
+                new KeycloakService(stack, id, {
+                    keycloak: {
+                        image,
+                        version: KeycloakService.EngineVersion.V26_3_2,
+                        configuration: {
+                            hostnames: {
+                                default: 'auth.example.com'
+                            },
+                            management: {
+                                port: 9000
+                            }
+                        }
+                    },
+                    vpc,
+                    overrides: {
+                        fabric: {
+                            applicationLoadBalancing: {
+                                certificate: certificate
+                            }
+                        }
+                    }
+                });
+            }).not.toThrow();
+
+            const annotations = Annotations.fromStack(stack);
+            expect(
+                annotations.findError(
+                    '*',
+                    Match.stringLikeRegexp(
+                        'TLS certificate.*management endpoint'
+                    )
+                )
+            ).toHaveLength(1);
+        });
+
+        it('uses separate management certificate when provided', () => {
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+            const managementCertificate = Certificate.fromCertificateArn(
+                stack,
+                'ManagementCertificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/87654321-4321-4321-4321-210987654321'
+            );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        },
+                        management: {
+                            port: 9000
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    fabric: {
+                        applicationLoadBalancing: {
+                            certificate: certificate,
+                            managementCertificate: managementCertificate
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::Listener',
+                {
+                    Protocol: 'HTTPS',
+                    Port: 9000
+                }
+            );
+        });
+
+        it('configures request-based scaling with Application Load Balancer metrics', () => {
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    cluster: {
+                        scaling: {
+                            minimum: 1,
+                            maximum: 3,
+                            requestCountScaling: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    fabric: {
+                        applicationLoadBalancing: {
+                            certificate: certificate
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ApplicationAutoScaling::ScalingPolicy',
+                {
+                    PolicyType: 'TargetTrackingScaling',
+                    TargetTrackingScalingPolicyConfiguration: {
+                        TargetValue: 80,
+                        CustomizedMetricSpecification: {
+                            MetricName: 'ActiveConnectionCount',
+                            Namespace: 'AWS/ApplicationELB',
+                            Statistic: 'Sum'
+                        }
+                    }
+                }
+            );
+        });
+    });
+
+    describe('Target Group Health Checks', () => {
+        it('configures health check for Application Load Balancer', () => {
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    fabric: {
+                        applicationLoadBalancing: {
+                            certificate: certificate
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::TargetGroup',
+                {
+                    Matcher: {
+                        HttpCode: '200,302'
+                    }
+                }
+            );
+        });
+
+        it('enables sticky sessions for Application Load Balancer', () => {
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    fabric: {
+                        applicationLoadBalancing: {
+                            certificate: certificate
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::TargetGroup',
+                {
+                    TargetGroupAttributes: [
+                        {
+                            Key: 'stickiness.enabled',
+                            Value: 'true'
+                        },
+                        {
+                            Key: 'stickiness.type',
+                            Value: 'app_cookie'
+                        },
+                        {
+                            Key: 'stickiness.app_cookie.cookie_name',
+                            Value: 'AUTH_SESSION_ID'
+                        },
+                        {
+                            Key: 'stickiness.app_cookie.duration_seconds',
+                            Value: '3600'
+                        }
+                    ]
+                }
+            );
+        });
+
+        it('does not configure HTTP health check for Network Load Balancer', () => {
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::TargetGroup',
+                {
+                    Protocol: 'TCP'
+                }
+            );
+        });
+    });
+
     describe('Database Configuration', () => {
         it('creates serverless database by default', () => {
             new KeycloakService(stack, id, {
@@ -963,6 +1330,126 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 'AWS::ElasticLoadBalancingV2::LoadBalancer',
                 {
                     Scheme: 'internet-facing'
+                }
+            );
+        });
+
+        it('configures deletion protection based on removal policy', () => {
+            NagSuppressions.addStackSuppressions(
+                stack,
+                [
+                    {
+                        id: 'NIST.800.53.R5-RDSInstanceDeletionProtectionEnabled',
+                        reason: 'Intentionally disabled for test'
+                    },
+                    {
+                        id: 'NIST.800.53.R5-ELBDeletionProtectionEnabled',
+                        reason: 'Intentionally disabled for test'
+                    },
+                    {
+                        id: 'AwsSolutions-RDS10',
+                        reason: 'Intentionally disabled for test'
+                    }
+                ],
+                true
+            );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                removalPolicies: {
+                    data: RemovalPolicy.DESTROY,
+                    logs: RemovalPolicy.DESTROY
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::LoadBalancer',
+                {
+                    LoadBalancerAttributes: Match.arrayWith([
+                        Match.objectLike({
+                            Key: 'deletion_protection.enabled',
+                            Value: 'false'
+                        })
+                    ])
+                }
+            );
+        });
+
+        it('enables cross-zone load balancing', () => {
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::LoadBalancer',
+                {
+                    LoadBalancerAttributes: Match.arrayWith([
+                        Match.objectLike({
+                            Key: 'load_balancing.cross_zone.enabled',
+                            Value: 'true'
+                        })
+                    ])
+                }
+            );
+        });
+
+        it('drops invalid header fields for Application Load Balancer', () => {
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    fabric: {
+                        applicationLoadBalancing: {
+                            certificate: certificate
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::LoadBalancer',
+                {
+                    LoadBalancerAttributes: Match.arrayWith([
+                        Match.objectLike({
+                            Key: 'routing.http.drop_invalid_header_fields.enabled',
+                            Value: 'true'
+                        })
+                    ])
                 }
             );
         });

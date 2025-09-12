@@ -1506,6 +1506,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.adminUser">adminUser</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Credentials for bootstrapping a local admin user in Keycloak. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.endpoint">endpoint</a></code> | <code>aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer \| aws-cdk-lib.aws_elasticloadbalancingv2.INetworkLoadBalancer</code> | Endpoint for the Keycloak service. |
 
 ---
 
@@ -1530,6 +1531,18 @@ public readonly adminUser: ISecret;
 - *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
 
 Credentials for bootstrapping a local admin user in Keycloak.
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.endpoint"></a>
+
+```typescript
+public readonly endpoint: IApplicationLoadBalancer | INetworkLoadBalancer;
+```
+
+- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer | aws-cdk-lib.aws_elasticloadbalancingv2.INetworkLoadBalancer
+
+Endpoint for the Keycloak service.
 
 ---
 
@@ -2460,14 +2473,14 @@ Returns a string representation of this construct.
 ##### `associate` <a name="associate" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.associate"></a>
 
 ```typescript
-public associate(resource: ApplicationLoadBalancer): void
+public associate(resource: IApplicationLoadBalancer): void
 ```
 
 Associates the Web Application Firewall to an applicable resource.
 
 ###### `resource`<sup>Required</sup> <a name="resource" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.associate.parameter.resource"></a>
 
-- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.ApplicationLoadBalancer
+- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer
 
 ---
 
@@ -4300,6 +4313,51 @@ Defaults to ContainerInsights.ENABLED if not disabled.
 
 ---
 
+### FabricApplicationLoadBalancingConfiguration <a name="FabricApplicationLoadBalancingConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration"></a>
+
+Configuration for using application load balancing (layer 7) for the fabric endpoint.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const fabricApplicationLoadBalancingConfiguration: patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.property.certificate">certificate</a></code> | <code>aws-cdk-lib.aws_certificatemanager.ICertificate</code> | TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.property.managementCertificate">managementCertificate</a></code> | <code>aws-cdk-lib.aws_certificatemanager.ICertificate</code> | TLS certificate to support SSL termination at the load balancer level for the management Keycloak endpoint. |
+
+---
+
+##### `certificate`<sup>Required</sup> <a name="certificate" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.property.certificate"></a>
+
+```typescript
+public readonly certificate: ICertificate;
+```
+
+- *Type:* aws-cdk-lib.aws_certificatemanager.ICertificate
+
+TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint.
+
+---
+
+##### `managementCertificate`<sup>Optional</sup> <a name="managementCertificate" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.property.managementCertificate"></a>
+
+```typescript
+public readonly managementCertificate: ICertificate;
+```
+
+- *Type:* aws-cdk-lib.aws_certificatemanager.ICertificate
+
+TLS certificate to support SSL termination at the load balancer level for the management Keycloak endpoint.
+
+---
+
 ### FabricConfiguration <a name="FabricConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration"></a>
 
 Configuration options for the fabric.
@@ -4316,8 +4374,30 @@ const fabricConfiguration: patterns.KeycloakService.FabricConfiguration = { ... 
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.applicationLoadBalancing">applicationLoadBalancing</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration</code> | If specified, an Application Load Balancer will be used for the Keycloak service endpoint instead of a Network Load Balancer. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.dnsZoneName">dnsZoneName</a></code> | <code>string</code> | Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.internetFacing">internetFacing</a></code> | <code>boolean</code> | Whether or not the load balancer should be exposed to the external network. |
+
+---
+
+##### `applicationLoadBalancing`<sup>Optional</sup> <a name="applicationLoadBalancing" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.applicationLoadBalancing"></a>
+
+```typescript
+public readonly applicationLoadBalancing: FabricApplicationLoadBalancingConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration
+
+If specified, an Application Load Balancer will be used for the Keycloak service endpoint instead of a Network Load Balancer.
+
+This is useful if you want to have fine grain control over the routes exposed as well
+as implement application-based firewall rules.
+
+The default is to use a Network Load Balancer (Layer 4) with TCP passthrough for performance.
+
+NOTE: If you switch to application (layer 7) load balancing, you will not be able to perform mutual TLS
+authentication and authorization flows at the Keycloak service itself as SSL will be terminated at the load
+balancer and re-encrypted to the backend which will drop the client certificate.
 
 ---
 

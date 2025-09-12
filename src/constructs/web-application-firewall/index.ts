@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { RemovalPolicy } from 'aws-cdk-lib';
-import { ApplicationLoadBalancer } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
+import { IApplicationLoadBalancer } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
 import {
@@ -144,15 +144,11 @@ export class WebApplicationFirewall extends Construct {
     /**
      * Associates the Web Application Firewall to an applicable resource.
      */
-    public associate(resource: ApplicationLoadBalancer): void {
-        if (resource instanceof ApplicationLoadBalancer) {
-            new CfnWebACLAssociation(this, 'WebAclAssociation', {
-                resourceArn: resource.loadBalancerArn,
-                webAclArn: this.webAcl.attrArn
-            });
-        } else {
-            throw new Error('Resource type not supported for WAF attachment.');
-        }
+    public associate(resource: IApplicationLoadBalancer): void {
+        new CfnWebACLAssociation(this, 'WebAclAssociation', {
+            resourceArn: resource.loadBalancerArn,
+            webAclArn: this.webAcl.attrArn
+        });
     }
 
     /**
