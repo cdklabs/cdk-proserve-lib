@@ -1127,6 +1127,59 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             );
         });
 
+        it('enables sticky sessions for Application Load Balancer', () => {
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    fabric: {
+                        layer7LoadBalancing: {
+                            certificate: certificate
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.hasResourceProperties(
+                'AWS::ElasticLoadBalancingV2::TargetGroup',
+                {
+                    TargetGroupAttributes: [
+                        {
+                            Key: 'stickiness.enabled',
+                            Value: 'true'
+                        },
+                        {
+                            Key: 'stickiness.type',
+                            Value: 'app_cookie'
+                        },
+                        {
+                            Key: 'stickiness.app_cookie.cookie_name',
+                            Value: 'AUTH_SESSION_ID'
+                        },
+                        {
+                            Key: 'stickiness.app_cookie.duration_seconds',
+                            Value: '3600'
+                        }
+                    ]
+                }
+            );
+        });
+
         it('does not configure HTTP health check for Network Load Balancer', () => {
             new KeycloakService(stack, id, {
                 keycloak: {

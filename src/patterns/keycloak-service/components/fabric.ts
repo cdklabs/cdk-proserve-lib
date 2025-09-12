@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Annotations, RemovalPolicy } from 'aws-cdk-lib';
+import { Annotations, Duration, RemovalPolicy } from 'aws-cdk-lib';
 import {
     CfnSecurityGroup,
     ISubnet,
@@ -13,7 +13,8 @@ import {
     NetworkLoadBalancer,
     Protocol as ElbProtocol,
     ApplicationLoadBalancer,
-    ApplicationProtocol
+    ApplicationProtocol,
+    ApplicationTargetGroup
 } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { ARecord, HostedZone, RecordTarget } from 'aws-cdk-lib/aws-route53';
 import { LoadBalancerTarget } from 'aws-cdk-lib/aws-route53-targets';
@@ -253,6 +254,13 @@ export class KeycloakFabric extends Construct {
                 protocol: Protocol.TCP
             });
         }
+
+        // Enables session stickiness
+        trafficListener.node.children.forEach((c) => {
+            if (c instanceof ApplicationTargetGroup) {
+                c.enableCookieStickiness(Duration.hours(1), 'AUTH_SESSION_ID');
+            }
+        });
 
         // Removes the permissive inbound rule that gets automatically added
         (access.node.defaultChild as CfnSecurityGroup).securityGroupIngress =
