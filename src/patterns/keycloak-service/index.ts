@@ -268,7 +268,8 @@ export class KeycloakService extends Construct {
             cluster.resources.scaling.scaleToTrackCustomMetric(
                 'RequestScaling',
                 {
-                    metric: this.props.overrides.fabric?.layer7LoadBalancing
+                    metric: this.props.overrides.fabric
+                        ?.applicationLoadBalancing
                         ? (
                               fabric.resources
                                   .loadBalancer as ApplicationLoadBalancer
@@ -632,8 +633,8 @@ export class KeycloakService extends Construct {
                     path: this.props.keycloak.configuration.path,
                     port: this.ports.traffic,
                     useProxy:
-                        this.props.overrides?.fabric?.layer7LoadBalancing !==
-                        undefined
+                        this.props.overrides?.fabric
+                            ?.applicationLoadBalancing !== undefined
                 });
             } else {
                 Annotations.of(this).addError(
@@ -867,9 +868,9 @@ export namespace KeycloakService {
     }
 
     /**
-     * Configuration for using Layer 7 load balancing for the fabric endpoint
+     * Configuration for using application load balancing (layer 7) for the fabric endpoint
      */
-    export interface FabricLayer7EndpointConfiguration {
+    export interface FabricApplicationLoadBalancingConfiguration {
         /**
          * TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint
          */
@@ -907,11 +908,11 @@ export namespace KeycloakService {
          *
          * The default is to use a Network Load Balancer (Layer 4) with TCP passthrough for performance.
          *
-         * NOTE: If you switch to layer 7 load balancing, you will not be able to perform mutual TLS authentication and
-         * authorization flows at the Keycloak service itself as SSL will be terminated at the load balancer and
-         * re-encrypted to the backend which will drop the client certificate.
+         * NOTE: If you switch to application (layer 7) load balancing, you will not be able to perform mutual TLS
+         * authentication and authorization flows at the Keycloak service itself as SSL will be terminated at the load
+         * balancer and re-encrypted to the backend which will drop the client certificate.
          */
-        readonly layer7LoadBalancing?: FabricLayer7EndpointConfiguration;
+        readonly applicationLoadBalancing?: FabricApplicationLoadBalancingConfiguration;
     }
 
     /**

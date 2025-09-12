@@ -4313,6 +4313,51 @@ Defaults to ContainerInsights.ENABLED if not disabled.
 
 ---
 
+### FabricApplicationLoadBalancingConfiguration <a name="FabricApplicationLoadBalancingConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration"></a>
+
+Configuration for using application load balancing (layer 7) for the fabric endpoint.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const fabricApplicationLoadBalancingConfiguration: patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.property.certificate">certificate</a></code> | <code>aws-cdk-lib.aws_certificatemanager.ICertificate</code> | TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.property.managementCertificate">managementCertificate</a></code> | <code>aws-cdk-lib.aws_certificatemanager.ICertificate</code> | TLS certificate to support SSL termination at the load balancer level for the management Keycloak endpoint. |
+
+---
+
+##### `certificate`<sup>Required</sup> <a name="certificate" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.property.certificate"></a>
+
+```typescript
+public readonly certificate: ICertificate;
+```
+
+- *Type:* aws-cdk-lib.aws_certificatemanager.ICertificate
+
+TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint.
+
+---
+
+##### `managementCertificate`<sup>Optional</sup> <a name="managementCertificate" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.property.managementCertificate"></a>
+
+```typescript
+public readonly managementCertificate: ICertificate;
+```
+
+- *Type:* aws-cdk-lib.aws_certificatemanager.ICertificate
+
+TLS certificate to support SSL termination at the load balancer level for the management Keycloak endpoint.
+
+---
+
 ### FabricConfiguration <a name="FabricConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration"></a>
 
 Configuration options for the fabric.
@@ -4329,9 +4374,30 @@ const fabricConfiguration: patterns.KeycloakService.FabricConfiguration = { ... 
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.applicationLoadBalancing">applicationLoadBalancing</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration</code> | If specified, an Application Load Balancer will be used for the Keycloak service endpoint instead of a Network Load Balancer. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.dnsZoneName">dnsZoneName</a></code> | <code>string</code> | Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.internetFacing">internetFacing</a></code> | <code>boolean</code> | Whether or not the load balancer should be exposed to the external network. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.layer7LoadBalancing">layer7LoadBalancing</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricLayer7EndpointConfiguration</code> | If specified, an Application Load Balancer will be used for the Keycloak service endpoint instead of a Network Load Balancer. |
+
+---
+
+##### `applicationLoadBalancing`<sup>Optional</sup> <a name="applicationLoadBalancing" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.applicationLoadBalancing"></a>
+
+```typescript
+public readonly applicationLoadBalancing: FabricApplicationLoadBalancingConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration
+
+If specified, an Application Load Balancer will be used for the Keycloak service endpoint instead of a Network Load Balancer.
+
+This is useful if you want to have fine grain control over the routes exposed as well
+as implement application-based firewall rules.
+
+The default is to use a Network Load Balancer (Layer 4) with TCP passthrough for performance.
+
+NOTE: If you switch to application (layer 7) load balancing, you will not be able to perform mutual TLS
+authentication and authorization flows at the Keycloak service itself as SSL will be terminated at the load
+balancer and re-encrypted to the backend which will drop the client certificate.
 
 ---
 
@@ -4366,72 +4432,6 @@ public readonly internetFacing: boolean;
 - *Default:* false
 
 Whether or not the load balancer should be exposed to the external network.
-
----
-
-##### `layer7LoadBalancing`<sup>Optional</sup> <a name="layer7LoadBalancing" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.layer7LoadBalancing"></a>
-
-```typescript
-public readonly layer7LoadBalancing: FabricLayer7EndpointConfiguration;
-```
-
-- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricLayer7EndpointConfiguration
-
-If specified, an Application Load Balancer will be used for the Keycloak service endpoint instead of a Network Load Balancer.
-
-This is useful if you want to have fine grain control over the routes exposed as well
-as implement application-based firewall rules.
-
-The default is to use a Network Load Balancer (Layer 4) with TCP passthrough for performance.
-
-NOTE: If you switch to layer 7 load balancing, you will not be able to perform mutual TLS authentication and
-authorization flows at the Keycloak service itself as SSL will be terminated at the load balancer and
-re-encrypted to the backend which will drop the client certificate.
-
----
-
-### FabricLayer7EndpointConfiguration <a name="FabricLayer7EndpointConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricLayer7EndpointConfiguration"></a>
-
-Configuration for using Layer 7 load balancing for the fabric endpoint.
-
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricLayer7EndpointConfiguration.Initializer"></a>
-
-```typescript
-import { patterns } from '@cdklabs/cdk-proserve-lib'
-
-const fabricLayer7EndpointConfiguration: patterns.KeycloakService.FabricLayer7EndpointConfiguration = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricLayer7EndpointConfiguration.property.certificate">certificate</a></code> | <code>aws-cdk-lib.aws_certificatemanager.ICertificate</code> | TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricLayer7EndpointConfiguration.property.managementCertificate">managementCertificate</a></code> | <code>aws-cdk-lib.aws_certificatemanager.ICertificate</code> | TLS certificate to support SSL termination at the load balancer level for the management Keycloak endpoint. |
-
----
-
-##### `certificate`<sup>Required</sup> <a name="certificate" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricLayer7EndpointConfiguration.property.certificate"></a>
-
-```typescript
-public readonly certificate: ICertificate;
-```
-
-- *Type:* aws-cdk-lib.aws_certificatemanager.ICertificate
-
-TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint.
-
----
-
-##### `managementCertificate`<sup>Optional</sup> <a name="managementCertificate" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricLayer7EndpointConfiguration.property.managementCertificate"></a>
-
-```typescript
-public readonly managementCertificate: ICertificate;
-```
-
-- *Type:* aws-cdk-lib.aws_certificatemanager.ICertificate
-
-TLS certificate to support SSL termination at the load balancer level for the management Keycloak endpoint.
 
 ---
 

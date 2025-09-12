@@ -871,7 +871,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
         });
     });
 
-    describe('Layer 7 Load Balancing', () => {
+    describe('Application Load Balancing', () => {
         it('creates Application Load Balancer when layer 7 is configured', () => {
             const certificate = Certificate.fromCertificateArn(
                 stack,
@@ -892,7 +892,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 vpc,
                 overrides: {
                     fabric: {
-                        layer7LoadBalancing: {
+                        applicationLoadBalancing: {
                             certificate: certificate
                         }
                     }
@@ -928,7 +928,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 vpc,
                 overrides: {
                     fabric: {
-                        layer7LoadBalancing: {
+                        applicationLoadBalancing: {
                             certificate: certificate
                         }
                     }
@@ -969,7 +969,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                     vpc,
                     overrides: {
                         fabric: {
-                            layer7LoadBalancing: {
+                            applicationLoadBalancing: {
                                 certificate: certificate
                             }
                         }
@@ -1016,7 +1016,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 vpc,
                 overrides: {
                     fabric: {
-                        layer7LoadBalancing: {
+                        applicationLoadBalancing: {
                             certificate: certificate,
                             managementCertificate: managementCertificate
                         }
@@ -1063,7 +1063,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                         }
                     },
                     fabric: {
-                        layer7LoadBalancing: {
+                        applicationLoadBalancing: {
                             certificate: certificate
                         }
                     }
@@ -1109,7 +1109,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 vpc,
                 overrides: {
                     fabric: {
-                        layer7LoadBalancing: {
+                        applicationLoadBalancing: {
                             certificate: certificate
                         }
                     }
@@ -1147,7 +1147,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 vpc,
                 overrides: {
                     fabric: {
-                        layer7LoadBalancing: {
+                        applicationLoadBalancing: {
                             certificate: certificate
                         }
                     }
@@ -1433,7 +1433,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 vpc,
                 overrides: {
                     fabric: {
-                        layer7LoadBalancing: {
+                        applicationLoadBalancing: {
                             certificate: certificate
                         }
                     }

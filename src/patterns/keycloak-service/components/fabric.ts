@@ -84,12 +84,12 @@ export class KeycloakFabric extends Construct {
 
         this.props = props;
 
-        const operateAtLayer7 =
-            this.props.configuration?.layer7LoadBalancing !== undefined;
+        const loadBalanceAtApplicationLayer =
+            this.props.configuration?.applicationLoadBalancing !== undefined;
 
-        const endpoint = operateAtLayer7
+        const endpoint = loadBalanceAtApplicationLayer
             ? this.buildApplicationEndpoint(
-                  this.props.configuration.layer7LoadBalancing
+                  this.props.configuration.applicationLoadBalancing
               )
             : this.buildNetworkEndpoint();
 
@@ -168,7 +168,7 @@ export class KeycloakFabric extends Construct {
      * @returns Load balancer
      */
     private buildApplicationEndpoint(
-        configuration: KeycloakService.FabricLayer7EndpointConfiguration
+        configuration: KeycloakService.FabricApplicationLoadBalancingConfiguration
     ): ApplicationLoadBalancer {
         const access = new SecurityGroup(this, 'LoadBalancerAccess', {
             vpc: this.props.vpc
