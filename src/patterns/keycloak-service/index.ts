@@ -2,8 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { Annotations, Duration, RemovalPolicy } from 'aws-cdk-lib';
-import { ISubnet, IVpc } from 'aws-cdk-lib/aws-ec2';
+import { ICertificate } from 'aws-cdk-lib/aws-certificatemanager';
+import { ISecurityGroup, ISubnet, IVpc } from 'aws-cdk-lib/aws-ec2';
 import { ContainerImage } from 'aws-cdk-lib/aws-ecs';
+import {
+    ApplicationLoadBalancer,
+    NetworkLoadBalancer
+} from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import { IKey, Key } from 'aws-cdk-lib/aws-kms';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
@@ -190,6 +195,14 @@ export class KeycloakService extends Construct {
     readonly adminUser: ISecret;
 
     /**
+     * Access control for the Keycloak service endpoint
+     *
+     * This should be available if Layer 7 load balancing is used. By default it would start with no inbound access
+     * rules but consumers can use methods off the group to s
+     */
+    readonly endpointSecurityGroup?: ISecurityGroup;
+
+    /**
      * Create a new Keycloak service
      * @param scope Parent to which this construct belongs
      * @param id Unique identifier for the component
@@ -233,6 +246,7 @@ export class KeycloakService extends Construct {
 
         if (cluster) {
             const fabric = this.buildFabric(cluster.resources, ingressSubnets);
+            this.endpointSecurityGroup = fabric.resources.endpointSecurityGroup;
 
             this.configureClusterRequestCountScaling(cluster, fabric);
         }
@@ -254,7 +268,15 @@ export class KeycloakService extends Construct {
             cluster.resources.scaling.scaleToTrackCustomMetric(
                 'RequestScaling',
                 {
-                    metric: fabric.resources.loadBalancer.metrics.activeFlowCount(),
+                    metric: this.props.overrides.fabric?.layer7LoadBalancing
+                        ? (
+                              fabric.resources
+                                  .loadBalancer as ApplicationLoadBalancer
+                          ).metrics.activeConnectionCount()
+                        : (
+                              fabric.resources
+                                  .loadBalancer as NetworkLoadBalancer
+                          ).metrics.activeFlowCount(),
                     targetValue:
                         this.props.overrides.cluster.scaling.requestCountScaling
                             .threshold ?? 80,
@@ -842,6 +864,21 @@ export namespace KeycloakService {
     }
 
     /**
+     * Configuration for using Layer 7 load balancing for the fabric endpoint
+     */
+    export interface FabricLayer7EndpointConfiguration {
+        /**
+         * TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint
+         */
+        readonly certificate: ICertificate;
+
+        /**
+         * TLS certificate to support SSL termination at the load balancer level for the management Keycloak endpoint
+         */
+        readonly managementCertificate?: ICertificate;
+    }
+
+    /**
      * Configuration options for the fabric
      */
     export interface FabricConfiguration {
@@ -859,6 +896,19 @@ export namespace KeycloakService {
          * @example example.com
          */
         readonly dnsZoneName?: string;
+
+        /**
+         * If specified, an Application Load Balancer will be used for the Keycloak service endpoint instead of a
+         * Network Load Balancer. This is useful if you want to have fine grain control over the routes exposed as well
+         * as implement application-based firewall rules.
+         *
+         * The default is to use a Network Load Balancer (Layer 4) with TCP passthrough for performance.
+         *
+         * NOTE: If you switch to layer 7 load balancing, you will not be able to perform mutual TLS authentication and
+         * authorization flows at the Keycloak service itself as SSL will be terminated at the load balancer and
+         * re-encrypted to the backend which will drop the client certificate.
+         */
+        readonly layer7LoadBalancing?: FabricLayer7EndpointConfiguration;
     }
 
     /**
