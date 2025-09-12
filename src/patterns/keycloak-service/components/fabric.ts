@@ -87,29 +87,22 @@ export class KeycloakFabric extends Construct {
         const operateAtLayer7 =
             this.props.configuration?.layer7LoadBalancing !== undefined;
 
-        const access = operateAtLayer7
-            ? new SecurityGroup(this, 'LoadBalancerAccess', {
-                  vpc: this.props.vpc
-              })
-            : undefined;
-
         const endpoint = operateAtLayer7
             ? this.buildApplicationEndpoint(
-                  this.props.configuration.layer7LoadBalancing,
-                  access!
+                  this.props.configuration.layer7LoadBalancing
               )
             : this.buildNetworkEndpoint();
 
         this.configureEndpointDns(endpoint);
 
         this.resources = {
-            endpointSecurityGroup: access,
             loadBalancer: endpoint
         };
     }
 
     /**
      * Build the layer 4 load balancer for the Keycloak service
+     * @returns Load balancer
      */
     private buildNetworkEndpoint(): NetworkLoadBalancer {
         const lb = new NetworkLoadBalancer(this, 'LoadBalancer', {
@@ -171,11 +164,16 @@ export class KeycloakFabric extends Construct {
 
     /**
      * Build the layer 7 load balancer for the Keycloak service
+     * @param configuration Configuration for the layer 7 load balancer
+     * @returns Load balancer
      */
     private buildApplicationEndpoint(
-        configuration: KeycloakService.FabricLayer7EndpointConfiguration,
-        access: SecurityGroup
+        configuration: KeycloakService.FabricLayer7EndpointConfiguration
     ): ApplicationLoadBalancer {
+        const access = new SecurityGroup(this, 'LoadBalancerAccess', {
+            vpc: this.props.vpc
+        });
+
         const lb = new ApplicationLoadBalancer(this, 'LoadBalancer', {
             vpc: this.props.vpc,
             crossZoneEnabled: true,
@@ -343,10 +341,5 @@ export namespace KeycloakFabric {
          * Load balancer for managing requests in the networking fabric
          */
         readonly loadBalancer: ApplicationLoadBalancer | NetworkLoadBalancer;
-
-        /**
-         * Access control for the Keycloak service endpoint
-         */
-        readonly endpointSecurityGroup?: SecurityGroup;
     }
 }
