@@ -2,19 +2,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { Annotations, Duration, RemovalPolicy } from 'aws-cdk-lib';
-import {
-    CfnSecurityGroup,
-    ISubnet,
-    IVpc,
-    SecurityGroup
-} from 'aws-cdk-lib/aws-ec2';
+import { ISubnet, IVpc, SecurityGroup } from 'aws-cdk-lib/aws-ec2';
 import { ListenerConfig, Protocol } from 'aws-cdk-lib/aws-ecs';
 import {
     NetworkLoadBalancer,
     Protocol as ElbProtocol,
     ApplicationLoadBalancer,
     ApplicationProtocol,
-    ApplicationTargetGroup
+    ApplicationTargetGroup,
+    ListenerAction
 } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { ARecord, HostedZone, RecordTarget } from 'aws-cdk-lib/aws-route53';
 import { LoadBalancerTarget } from 'aws-cdk-lib/aws-route53-targets';
@@ -197,10 +193,21 @@ export class KeycloakFabric extends Construct {
         /**
          * Traffic
          */
+        lb.addListener('TrafficRedirect', {
+            defaultAction: ListenerAction.redirect({
+                port: this.props.ports.traffic.toString(),
+                protocol: ApplicationProtocol.HTTPS
+            }),
+            port: 80,
+            protocol: ApplicationProtocol.HTTP,
+            open: false
+        });
+
         const trafficListener = lb.addListener('TrafficListener', {
             port: this.props.ports.traffic,
             certificates: [configuration.certificate],
-            protocol: ApplicationProtocol.HTTPS
+            protocol: ApplicationProtocol.HTTPS,
+            open: false
         });
 
         this.props.cluster.service.registerLoadBalancerTargets({
@@ -219,6 +226,13 @@ export class KeycloakFabric extends Construct {
             protocol: Protocol.TCP
         });
 
+        // Enables session stickiness
+        trafficListener.node.children.forEach((c) => {
+            if (c instanceof ApplicationTargetGroup) {
+                c.enableCookieStickiness(Duration.hours(1), 'AUTH_SESSION_ID');
+            }
+        });
+
         /**
          * Management
          */
@@ -235,7 +249,8 @@ export class KeycloakFabric extends Construct {
                     configuration.managementCertificate ??
                         configuration.certificate
                 ],
-                protocol: ApplicationProtocol.HTTPS
+                protocol: ApplicationProtocol.HTTPS,
+                open: false
             });
 
             this.props.cluster.service.registerLoadBalancerTargets({
@@ -253,18 +268,17 @@ export class KeycloakFabric extends Construct {
                 containerPort: KeycloakCluster.Defaults.containerManagementPort,
                 protocol: Protocol.TCP
             });
+
+            // Enables session stickiness
+            managementListener.node.children.forEach((c) => {
+                if (c instanceof ApplicationTargetGroup) {
+                    c.enableCookieStickiness(
+                        Duration.hours(1),
+                        'AUTH_SESSION_ID'
+                    );
+                }
+            });
         }
-
-        // Enables session stickiness
-        trafficListener.node.children.forEach((c) => {
-            if (c instanceof ApplicationTargetGroup) {
-                c.enableCookieStickiness(Duration.hours(1), 'AUTH_SESSION_ID');
-            }
-        });
-
-        // Removes the permissive inbound rule that gets automatically added
-        (access.node.defaultChild as CfnSecurityGroup).securityGroupIngress =
-            undefined;
 
         return lb;
     }

@@ -219,19 +219,4 @@ describeCdkTest(WebApplicationFirewall, (id, getStack, getTemplate) => {
             ]
         });
     });
-
-    it('does not allow incompatible resource association', () => {
-        // Arrange
-        const waf = new WebApplicationFirewall(stack, id, {
-            logging: loggingConfig
-        });
-        const nlb = new elbv2.NetworkLoadBalancer(stack, 'TestNLB', {
-            vpc: vpc
-        });
-
-        // Act & Assert
-        expect(() => {
-            waf.associate(nlb as unknown as elbv2.ApplicationLoadBalancer);
-        }).toThrow();
-    });
 });

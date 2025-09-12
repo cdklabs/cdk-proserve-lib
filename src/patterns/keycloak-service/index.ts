@@ -3,10 +3,12 @@
 
 import { Annotations, Duration, RemovalPolicy } from 'aws-cdk-lib';
 import { ICertificate } from 'aws-cdk-lib/aws-certificatemanager';
-import { ISecurityGroup, ISubnet, IVpc } from 'aws-cdk-lib/aws-ec2';
+import { ISubnet, IVpc } from 'aws-cdk-lib/aws-ec2';
 import { ContainerImage } from 'aws-cdk-lib/aws-ecs';
 import {
     ApplicationLoadBalancer,
+    IApplicationLoadBalancer,
+    INetworkLoadBalancer,
     NetworkLoadBalancer
 } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { ServicePrincipal } from 'aws-cdk-lib/aws-iam';
@@ -195,12 +197,9 @@ export class KeycloakService extends Construct {
     readonly adminUser: ISecret;
 
     /**
-     * Access control for the Keycloak service endpoint
-     *
-     * This should be available if Layer 7 load balancing is used. By default it would start with no inbound access
-     * rules but consumers can use methods off the group to s
+     * Endpoint for the Keycloak service
      */
-    readonly endpointSecurityGroup?: ISecurityGroup;
+    readonly endpoint?: IApplicationLoadBalancer | INetworkLoadBalancer;
 
     /**
      * Create a new Keycloak service
@@ -246,7 +245,8 @@ export class KeycloakService extends Construct {
 
         if (cluster) {
             const fabric = this.buildFabric(cluster.resources, ingressSubnets);
-            this.endpointSecurityGroup = fabric.resources.endpointSecurityGroup;
+
+            this.endpoint = fabric.resources.loadBalancer;
 
             this.configureClusterRequestCountScaling(cluster, fabric);
         }

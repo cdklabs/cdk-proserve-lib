@@ -1506,7 +1506,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.adminUser">adminUser</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Credentials for bootstrapping a local admin user in Keycloak. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.endpointSecurityGroup">endpointSecurityGroup</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup</code> | Access control for the Keycloak service endpoint. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.endpoint">endpoint</a></code> | <code>aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer \| aws-cdk-lib.aws_elasticloadbalancingv2.INetworkLoadBalancer</code> | Endpoint for the Keycloak service. |
 
 ---
 
@@ -1534,18 +1534,15 @@ Credentials for bootstrapping a local admin user in Keycloak.
 
 ---
 
-##### `endpointSecurityGroup`<sup>Optional</sup> <a name="endpointSecurityGroup" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.endpointSecurityGroup"></a>
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.endpoint"></a>
 
 ```typescript
-public readonly endpointSecurityGroup: ISecurityGroup;
+public readonly endpoint: IApplicationLoadBalancer | INetworkLoadBalancer;
 ```
 
-- *Type:* aws-cdk-lib.aws_ec2.ISecurityGroup
+- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer | aws-cdk-lib.aws_elasticloadbalancingv2.INetworkLoadBalancer
 
-Access control for the Keycloak service endpoint.
-
-This should be available if Layer 7 load balancing is used. By default it would start with no inbound access
-rules but consumers can use methods off the group to s
+Endpoint for the Keycloak service.
 
 ---
 
@@ -2476,14 +2473,14 @@ Returns a string representation of this construct.
 ##### `associate` <a name="associate" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.associate"></a>
 
 ```typescript
-public associate(resource: ApplicationLoadBalancer): void
+public associate(resource: IApplicationLoadBalancer): void
 ```
 
 Associates the Web Application Firewall to an applicable resource.
 
 ###### `resource`<sup>Required</sup> <a name="resource" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.associate.parameter.resource"></a>
 
-- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.ApplicationLoadBalancer
+- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer
 
 ---
 
