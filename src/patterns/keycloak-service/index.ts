@@ -633,7 +633,14 @@ export class KeycloakService extends Construct {
                         this.props.keycloak.configuration.loggingLevel,
                     management: this.props.keycloak.configuration.management,
                     path: this.props.keycloak.configuration.path,
-                    port: this.ports.traffic
+                    port: this.ports.traffic,
+                    useProxy:
+                        KeycloakFabric.isImportConfiguration(
+                            this.props.overrides?.fabric
+                        ) &&
+                        KeycloakFabric.isApplicationEndpoint(
+                            this.props.overrides.fabric.loadBalancer
+                        )
                 });
             } else {
                 Annotations.of(this).addError(

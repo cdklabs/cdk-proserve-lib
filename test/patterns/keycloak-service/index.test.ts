@@ -1225,6 +1225,87 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 )
             ).toHaveLength(1);
         });
+
+        it('enables sticky sessions for Application Load Balancer', () => {
+            const existingAlb =
+                ApplicationLoadBalancer.fromApplicationLoadBalancerAttributes(
+                    stack,
+                    'ExistingAlb',
+                    {
+                        loadBalancerArn:
+                            'arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/app/test-alb/1234567890123456',
+                        loadBalancerDnsName:
+                            'test-alb-1234567890123456.elb.us-east-1.amazonaws.com',
+                        securityGroupId: 'sg-12345678',
+                        vpc: Vpc.fromVpcAttributes(stack, 'ExistingVpc', {
+                            availabilityZones: ['us-east-1a', 'us-east-1b'],
+                            vpcId: 'vpc-abc1234'
+                        })
+                    }
+                );
+
+            const certificate = Certificate.fromCertificateArn(
+                stack,
+                'Certificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012'
+            );
+            const managementCertificate = Certificate.fromCertificateArn(
+                stack,
+                'ManagementCertificate',
+                'arn:aws:acm:us-east-1:123456789012:certificate/87654321-4321-4321-4321-210987654321'
+            );
+
+            new KeycloakService(stack, id, {
+                keycloak: {
+                    image,
+                    version: KeycloakService.EngineVersion.V26_3_2,
+                    configuration: {
+                        hostnames: {
+                            default: 'auth.example.com'
+                        },
+                        management: {
+                            port: 9000
+                        }
+                    }
+                },
+                vpc,
+                overrides: {
+                    fabric: {
+                        loadBalancer: {
+                            resource: existingAlb,
+                            certificate: certificate,
+                            managementCertificate: managementCertificate
+                        }
+                    }
+                }
+            });
+
+            const template = getTemplate();
+            template.resourcePropertiesCountIs(
+                'AWS::ElasticLoadBalancingV2::TargetGroup',
+                {
+                    TargetGroupAttributes: [
+                        {
+                            Key: 'stickiness.enabled',
+                            Value: 'true'
+                        },
+                        {
+                            Key: 'stickiness.type',
+                            Value: 'app_cookie'
+                        },
+                        {
+                            Key: 'stickiness.app_cookie.cookie_name',
+                            Value: 'AUTH_SESSION_ID'
+                        },
+                        {
+                            Key: 'stickiness.app_cookie.duration_seconds',
+                            Value: '3600'
+                        }
+                    ]
+                },
+                2
+            );
+        });
     });
 
     describe('Management Interface', () => {

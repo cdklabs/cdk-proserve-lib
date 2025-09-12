@@ -10,7 +10,12 @@ import { KeycloakCluster } from '../cluster';
  * Options for configuring Keycloak
  */
 export interface Keycloak_26_3_2_ConfigurationBuilderOptions
-    extends ServiceConfiguration {}
+    extends ServiceConfiguration {
+    /**
+     * Determines whether proxy configuration should be specified on the service
+     */
+    readonly useProxy?: boolean;
+}
 
 /**
  * Builder for creating dynamic standard and secure Keycloak configurations that are consumed by the Keycloak
@@ -106,12 +111,22 @@ export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationB
 
         // KC_LOG_ASYNC: 'true'
 
+        /**
+         * Proxy
+         */
+        const proxyConfiguration: Record<string, string> = {};
+
+        if (this.opts.useProxy) {
+            proxyConfiguration.KC_PROXY_HEADERS = 'xforwarded';
+        }
+
         return {
             ...httpConfiguration,
             ...hostnameConfiguration,
             ...databaseConfiguration,
             ...managementConfiguration,
-            ...loggingConfiguration
+            ...loggingConfiguration,
+            ...proxyConfiguration
         };
     }
 

@@ -4678,7 +4678,7 @@ const importedFabricConfiguration: patterns.KeycloakService.ImportedFabricConfig
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportedFabricConfiguration.property.loadBalancer">loadBalancer</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration \| @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportNetworkLoadBalancerConfiguration</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportedFabricConfiguration.property.loadBalancer">loadBalancer</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportNetworkLoadBalancerConfiguration \| @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportedFabricConfiguration.property.dnsZoneName">dnsZoneName</a></code> | <code>string</code> | Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided. |
 
 ---
@@ -4686,10 +4686,10 @@ const importedFabricConfiguration: patterns.KeycloakService.ImportedFabricConfig
 ##### `loadBalancer`<sup>Required</sup> <a name="loadBalancer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportedFabricConfiguration.property.loadBalancer"></a>
 
 ```typescript
-public readonly loadBalancer: ImportApplicationLoadBalancerConfiguration | ImportNetworkLoadBalancerConfiguration;
+public readonly loadBalancer: ImportNetworkLoadBalancerConfiguration | ImportApplicationLoadBalancerConfiguration;
 ```
 
-- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration | @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportNetworkLoadBalancerConfiguration
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportNetworkLoadBalancerConfiguration | @cdklabs/cdk-proserve-lib.patterns.KeycloakService.ImportApplicationLoadBalancerConfiguration
 
 ---
 

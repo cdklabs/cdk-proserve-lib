@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Annotations, RemovalPolicy } from 'aws-cdk-lib';
+import { Annotations, Duration, RemovalPolicy } from 'aws-cdk-lib';
 import { ICertificate } from 'aws-cdk-lib/aws-certificatemanager';
 import { ISubnet, IVpc } from 'aws-cdk-lib/aws-ec2';
 import { ListenerConfig, Protocol } from 'aws-cdk-lib/aws-ecs';
@@ -10,7 +10,8 @@ import {
     Protocol as ElbProtocol,
     INetworkLoadBalancer,
     IApplicationLoadBalancer,
-    ApplicationProtocol
+    ApplicationProtocol,
+    ApplicationTargetGroup
 } from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { ARecord, HostedZone, RecordTarget } from 'aws-cdk-lib/aws-route53';
 import { LoadBalancerTarget } from 'aws-cdk-lib/aws-route53-targets';
@@ -80,6 +81,20 @@ export class KeycloakFabric extends Construct {
     }
 
     /**
+     * Determines if the import fabric configuration specifies importing an existing Application Load Balancer
+     * @param configuration Import fabric configuration
+     * @returns Fabric configuration that specifies importing an existing Application Load Balancer
+     */
+    static isApplicationEndpoint(
+        configuration: KeycloakService.ImportedLoadBalancerConfiguration
+    ): configuration is KeycloakService.ImportApplicationLoadBalancerConfiguration {
+        const prop: keyof KeycloakService.ImportApplicationLoadBalancerConfiguration =
+            'certificate';
+
+        return prop in configuration;
+    }
+
+    /**
      * Properties for configuring the networking fabric for Keycloak
      */
     private readonly props: KeycloakFabricProps;
@@ -102,7 +117,9 @@ export class KeycloakFabric extends Construct {
 
         const loadBalancerType: KeycloakFabric.LoadBalancerType =
             KeycloakFabric.isImportConfiguration(this.props.configuration) &&
-            this.isApplicationEndpoint(this.props.configuration.loadBalancer)
+            KeycloakFabric.isApplicationEndpoint(
+                this.props.configuration.loadBalancer
+            )
                 ? 'app'
                 : 'net';
 
@@ -111,7 +128,7 @@ export class KeycloakFabric extends Construct {
                 KeycloakFabric.isImportConfiguration(this.props.configuration)
             ) {
                 if (
-                    this.isApplicationEndpoint(
+                    KeycloakFabric.isApplicationEndpoint(
                         this.props.configuration.loadBalancer
                     )
                 ) {
@@ -150,20 +167,6 @@ export class KeycloakFabric extends Construct {
             loadBalancer: loadBalancer,
             type: loadBalancerType
         };
-    }
-
-    /**
-     * Determines if the import fabric configuration specifies importing an existing Application Load Balancer
-     * @param configuration Import fabric configuration
-     * @returns Fabric configuration that specifies importing an existing Application Load Balancer
-     */
-    private isApplicationEndpoint(
-        configuration: KeycloakService.ImportedLoadBalancerConfiguration
-    ): configuration is KeycloakService.ImportApplicationLoadBalancerConfiguration {
-        const prop: keyof KeycloakService.ImportApplicationLoadBalancerConfiguration =
-            'certificate';
-
-        return prop in configuration;
     }
 
     /**
@@ -309,6 +312,16 @@ export class KeycloakFabric extends Construct {
                 protocol: Protocol.TCP
             });
 
+            // Enables session stickiness
+            trafficListener.node.children.forEach((c) => {
+                if (c instanceof ApplicationTargetGroup) {
+                    c.enableCookieStickiness(
+                        Duration.hours(1),
+                        'AUTH_SESSION_ID'
+                    );
+                }
+            });
+
             /**
              * Management
              */
@@ -343,6 +356,16 @@ export class KeycloakFabric extends Construct {
                     containerPort:
                         KeycloakCluster.Defaults.containerManagementPort,
                     protocol: Protocol.TCP
+                });
+
+                // Enables session stickiness
+                managementListener.node.children.forEach((c) => {
+                    if (c instanceof ApplicationTargetGroup) {
+                        c.enableCookieStickiness(
+                            Duration.hours(1),
+                            'AUTH_SESSION_ID'
+                        );
+                    }
                 });
             }
         } else {
