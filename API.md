@@ -2400,7 +2400,7 @@ This ID can be used to reference and manage the workflow after deployment.
 
 ### RdsOracleMultiTenant <a name="RdsOracleMultiTenant" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant"></a>
 
-A CDK construct that enables Oracle MultiTenant configuration on an existing RDS Oracle database.
+Enables Oracle MultiTenant configuration on an existing RDS Oracle database.
 
 This construct creates a Lambda-backed custom resource that uses the AWS RDS ModifyDBInstance API
 to enable Oracle MultiTenant architecture, allowing the database to function as a Container Database (CDB)
@@ -2432,7 +2432,6 @@ Before using this construct, ensure your RDS Oracle instance meets these require
 
 - **Irreversible Operation**: Oracle MultiTenant conversion cannot be undone once applied
 - **Downtime Required**: Conversion requires a database restart, causing temporary unavailability
-- **Immediate Application**: Changes are applied immediately as this is an Infrastructure as Code resource
 - **Connection Impact**: All existing database connections will be terminated during the restart
 - **Backup Recommendation**: Ensure you have a recent backup before performing the conversion
 
@@ -2456,7 +2455,7 @@ Monitor the conversion through:
 - RDS Events for database-level notifications
 - CloudFormation stack events for resource status
 
-> [{@link https://docs.oracle.com/en/database/oracle/oracle-database/19/multi/introduction-to-the-multitenant-architecture.html Oracle MultiTenant Architecture Documentation}]({@link https://docs.oracle.com/en/database/oracle/oracle-database/19/multi/introduction-to-the-multitenant-architecture.html Oracle MultiTenant Architecture Documentation})
+> [{@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS}]({@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS})
 
 *Example*
 
