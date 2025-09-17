@@ -23,6 +23,7 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         `@aws-sdk/client-s3@${sdkVersion}`,
         `@aws-sdk/s3-request-presigner@${sdkVersion}`,
         `@aws-sdk/client-sts@${sdkVersion}`,
+        `@aws-sdk/client-rds@${sdkVersion}`,
         `@aws-sdk/credential-provider-node@${sdkVersion}`,
         `@aws-crypto/sha256-js@5.2.0`,
         `@aws-sdk/client-ec2@${sdkVersion}`,

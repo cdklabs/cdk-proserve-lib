@@ -12,4 +12,5 @@ export * from './network-firewall-endpoints';
 export * from './opensearch-admin-user';
 export * from './opensearch-provision-domain';
 export * from './opensearch-workflow';
+export * from './rds-oracle-multi-tenant';
 export * from './web-application-firewall';
