@@ -4,7 +4,11 @@
 import { Annotations, Duration, RemovalPolicy } from 'aws-cdk-lib';
 import { ICertificate } from 'aws-cdk-lib/aws-certificatemanager';
 import { ISubnet, IVpc } from 'aws-cdk-lib/aws-ec2';
-import { ContainerImage } from 'aws-cdk-lib/aws-ecs';
+import {
+    ContainerImage,
+    Secret as ContainerSecret,
+    FargateService
+} from 'aws-cdk-lib/aws-ecs';
 import {
     ApplicationLoadBalancer,
     IApplicationLoadBalancer,
@@ -202,6 +206,11 @@ export class KeycloakService extends Construct {
     readonly endpoint?: IApplicationLoadBalancer | INetworkLoadBalancer;
 
     /**
+     * Container service for the Keycloak cluster
+     */
+    readonly service?: FargateService;
+
+    /**
      * Create a new Keycloak service
      * @param scope Parent to which this construct belongs
      * @param id Unique identifier for the component
@@ -249,6 +258,8 @@ export class KeycloakService extends Construct {
             this.endpoint = fabric.resources.loadBalancer;
 
             this.configureClusterRequestCountScaling(cluster, fabric);
+
+            this.service = cluster.resources.service;
         }
     }
 
@@ -1007,6 +1018,16 @@ export namespace KeycloakService {
          * Guidance on sizing can be found [here](https://www.keycloak.org/high-availability/concepts-memory-and-cpu-sizing)
          */
         readonly sizing?: TaskSizingConfiguration;
+
+        /**
+         * Environment variables to make accessible to the service containers
+         */
+        readonly environment?: Record<string, string>;
+
+        /**
+         * Environment variables to make accessible to the service containers via secrets
+         */
+        readonly secrets?: Record<string, ContainerSecret>;
     }
 
     /**

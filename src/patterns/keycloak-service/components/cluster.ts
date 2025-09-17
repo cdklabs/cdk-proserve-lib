@@ -179,8 +179,10 @@ export class KeycloakCluster extends Construct {
 
         serviceDefinition.addContainer('Application', {
             image: this.props.image,
-            environment:
-                this.props.dynamicConfigurationBuilder.generateStandardDynamicConfiguration(),
+            environment: {
+                ...this.props.dynamicConfigurationBuilder.generateStandardDynamicConfiguration(),
+                ...this.props.configuration?.environment
+            },
             logging: new AwsLogDriver({
                 logGroup: new LogGroup(this, 'LogDestination', {
                     encryptionKey: this.props.encryption,
@@ -205,8 +207,10 @@ export class KeycloakCluster extends Construct {
                     protocol: Protocol.TCP
                 }
             ],
-            secrets:
-                this.props.dynamicConfigurationBuilder.generateSecureDynamicConfiguration()
+            secrets: {
+                ...this.props.dynamicConfigurationBuilder.generateSecureDynamicConfiguration(),
+                ...this.props.configuration?.secrets
+            }
         });
 
         const service = new FargateService(this, 'Service', {
