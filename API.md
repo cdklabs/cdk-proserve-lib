@@ -1507,6 +1507,7 @@ Any object.
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.adminUser">adminUser</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Credentials for bootstrapping a local admin user in Keycloak. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.endpoint">endpoint</a></code> | <code>aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer \| aws-cdk-lib.aws_elasticloadbalancingv2.INetworkLoadBalancer</code> | Endpoint for the Keycloak service. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.service">service</a></code> | <code>aws-cdk-lib.aws_ecs.FargateService</code> | Container service for the Keycloak cluster. |
 
 ---
 
@@ -1543,6 +1544,18 @@ public readonly endpoint: IApplicationLoadBalancer | INetworkLoadBalancer;
 - *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer | aws-cdk-lib.aws_elasticloadbalancingv2.INetworkLoadBalancer
 
 Endpoint for the Keycloak service.
+
+---
+
+##### `service`<sup>Optional</sup> <a name="service" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.service"></a>
+
+```typescript
+public readonly service: FargateService;
+```
+
+- *Type:* aws-cdk-lib.aws_ecs.FargateService
+
+Container service for the Keycloak cluster.
 
 ---
 
@@ -3246,8 +3259,22 @@ const clusterConfiguration: patterns.KeycloakService.ClusterConfiguration = { ..
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.environment">environment</a></code> | <code>{[ key: string ]: string}</code> | Environment variables to make accessible to the service containers. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.scaling">scaling</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration</code> | Boundaries for cluster scaling. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.secrets">secrets</a></code> | <code>{[ key: string ]: aws-cdk-lib.aws_ecs.Secret}</code> | Environment variables to make accessible to the service containers via secrets. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.sizing">sizing</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TaskSizingConfiguration</code> | Resource allocation options for each Keycloak task. |
+
+---
+
+##### `environment`<sup>Optional</sup> <a name="environment" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.environment"></a>
+
+```typescript
+public readonly environment: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Environment variables to make accessible to the service containers.
 
 ---
 
@@ -3262,6 +3289,18 @@ public readonly scaling: ClusterScalingConfiguration;
 Boundaries for cluster scaling.
 
 If not specified, auto scaling is disabled
+
+---
+
+##### `secrets`<sup>Optional</sup> <a name="secrets" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.secrets"></a>
+
+```typescript
+public readonly secrets: {[ key: string ]: Secret};
+```
+
+- *Type:* {[ key: string ]: aws-cdk-lib.aws_ecs.Secret}
+
+Environment variables to make accessible to the service containers via secrets.
 
 ---
 
