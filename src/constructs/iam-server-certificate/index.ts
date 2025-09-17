@@ -17,7 +17,10 @@ import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 import { LambdaConfiguration } from '../../types';
 import { SecureFunction } from '../secure-function';
-import { ResourceProperties } from './handler/types/resource-properties';
+import {
+    ResourceProperties,
+    ServerCertificateElement
+} from './handler/types/resource-properties';
 
 /**
  * Properties for the IamServerCertificate construct.
@@ -32,6 +35,13 @@ export interface IamServerCertificateProps {
      * AWS Systems Manager parameter or AWS Secrets Manager secret which contains the public certificate
      */
     readonly certificate:
+        | IamServerCertificate.ParameterProps
+        | IamServerCertificate.SecretProps;
+
+    /**
+     * AWS Systems Manager parameter or AWS Secrets Manager secret which contains the certificate chain if applicable
+     */
+    readonly certificateChain?:
         | IamServerCertificate.ParameterProps
         | IamServerCertificate.SecretProps;
 
@@ -175,6 +185,22 @@ export class IamServerCertificate extends Construct {
             props.privateKey
         );
 
+        const certificateChain: ServerCertificateElement | undefined = (() => {
+            if (props.certificateChain) {
+                const certificateChainFromSecret =
+                    IamServerCertificate.isSecret(props.certificateChain);
+
+                return {
+                    Id: certificateChainFromSecret
+                        ? props.certificateChain.secret.secretArn
+                        : props.certificateChain.parameter.parameterName,
+                    Source: certificateChainFromSecret ? 'secret' : 'parameter'
+                };
+            } else {
+                return undefined;
+            }
+        })();
+
         return {
             Certificate: {
                 Id: certificateFromSecret
@@ -182,6 +208,7 @@ export class IamServerCertificate extends Construct {
                     : props.certificate.parameter.parameterName,
                 Source: certificateFromSecret ? 'secret' : 'parameter'
             },
+            CertificateChain: certificateChain,
             CertificatePrefix: props.prefix.endsWith('-')
                 ? props.prefix.slice(0, -1)
                 : props.prefix,
@@ -240,6 +267,23 @@ export class IamServerCertificate extends Construct {
             this.grantReadForSecret(providerPermissions, props.certificate);
         } else {
             props.certificate.parameter.grantRead(providerPermissions);
+        }
+
+        if (props.certificateChain) {
+            if (props.certificateChain.encryption) {
+                props.certificateChain.encryption.grantDecrypt(
+                    providerPermissions
+                );
+            }
+
+            if (IamServerCertificate.isSecret(props.certificateChain)) {
+                this.grantReadForSecret(
+                    providerPermissions,
+                    props.certificateChain
+                );
+            } else {
+                props.certificateChain.parameter.grantRead(providerPermissions);
+            }
         }
 
         if (props.privateKey.encryption) {

@@ -36,6 +36,11 @@ export interface ResourceProperties {
     readonly Certificate: ServerCertificateElement;
 
     /**
+     * Properties for the certificate chain portion of the server certificate if applicable
+     */
+    readonly CertificateChain?: ServerCertificateElement;
+
+    /**
      * Properties for the private key portion of the server certificate
      */
     readonly PrivateKey: ServerCertificateElement;

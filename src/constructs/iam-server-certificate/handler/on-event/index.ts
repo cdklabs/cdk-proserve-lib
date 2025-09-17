@@ -72,6 +72,9 @@ async function onCreate(
     const props = event.ResourceProperties;
 
     const certificate = await getValue(props.Certificate);
+    const certificateChain = props.CertificateChain
+        ? await getValue(props.CertificateChain)
+        : undefined;
     const privateKey = await getValue(props.PrivateKey);
 
     const name = `${props.CertificatePrefix}-${v4()}`.substring(
@@ -81,6 +84,7 @@ async function onCreate(
 
     const response = await iam.uploadServerCertificate({
         CertificateBody: certificate,
+        CertificateChain: certificateChain,
         PrivateKey: privateKey,
         ServerCertificateName: name
     });

@@ -4645,6 +4645,7 @@ const iamServerCertificateProps: constructs.IamServerCertificateProps = { ... }
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.certificate">certificate</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps \| @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps</code> | AWS Systems Manager parameter or AWS Secrets Manager secret which contains the public certificate. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.prefix">prefix</a></code> | <code>string</code> | Prefix to prepend to the AWS IAM Server Certificate name. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.privateKey">privateKey</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps \| @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps</code> | AWS Systems Manager parameter or AWS Secrets Manager secret which contains the private key. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.certificateChain">certificateChain</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps \| @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps</code> | AWS Systems Manager parameter or AWS Secrets Manager secret which contains the certificate chain if applicable. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the framework resources. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings. |
 
@@ -4683,6 +4684,18 @@ public readonly privateKey: ParameterProps | SecretProps;
 - *Type:* @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps | @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps
 
 AWS Systems Manager parameter or AWS Secrets Manager secret which contains the private key.
+
+---
+
+##### `certificateChain`<sup>Optional</sup> <a name="certificateChain" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.certificateChain"></a>
+
+```typescript
+public readonly certificateChain: ParameterProps | SecretProps;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps | @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps
+
+AWS Systems Manager parameter or AWS Secrets Manager secret which contains the certificate chain if applicable.
 
 ---
 
