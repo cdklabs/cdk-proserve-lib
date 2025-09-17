@@ -688,6 +688,91 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
             expect(result.Status).toBe('SUCCESS');
             expect(result.Data?.PendingModifications).toBeUndefined();
         });
+
+        it('should re-throw generic errors in validateDatabase', async () => {
+            // Mock a generic error (not RDS service exception)
+            const genericError = new TypeError('Generic type error');
+            rdsMock.on(DescribeDBInstancesCommand).rejects(genericError);
+
+            const event = mockCreateEvent;
+            const result = await handler(event, mockContext);
+
+            expect(result.Status).toBe('FAILED');
+            expect(result.Reason).toContain('Generic type error');
+        });
+
+        it('should re-throw generic errors in enableOracleMultiTenant', async () => {
+            // Mock successful validation
+            rdsMock.on(DescribeDBInstancesCommand).resolves({
+                DBInstances: [mockValidOracleInstance]
+            });
+
+            // Mock a generic error (not RDS service exception) in ModifyDBInstance
+            const genericError = new TypeError('Generic modification error');
+            rdsMock.on(ModifyDBInstanceCommand).rejects(genericError);
+
+            const event = mockCreateEvent;
+            const result = await handler(event, mockContext);
+
+            expect(result.Status).toBe('FAILED');
+            expect(result.Reason).toContain('Generic modification error');
+        });
+
+        it('should re-throw generic errors in getDatabaseStatus', async () => {
+            // Mock a generic error (not RDS service exception) for UPDATE operation
+            const genericError = new TypeError('Generic status error');
+            rdsMock.on(DescribeDBInstancesCommand).rejects(genericError);
+
+            const event = mockUpdateEvent;
+            const result = await handler(event, mockContext);
+
+            expect(result.Status).toBe('FAILED');
+            expect(result.Reason).toContain('Generic status error');
+        });
+
+        it('should re-throw non-Error objects in validateDatabase', async () => {
+            // Mock a non-Error object rejection
+            rdsMock
+                .on(DescribeDBInstancesCommand)
+                .rejects({ message: 'Not an Error object' });
+
+            const event = mockCreateEvent;
+            const result = await handler(event, mockContext);
+
+            expect(result.Status).toBe('FAILED');
+            expect(result.Reason).toContain('Not an Error object');
+        });
+
+        it('should re-throw non-Error objects in enableOracleMultiTenant', async () => {
+            // Mock successful validation
+            rdsMock.on(DescribeDBInstancesCommand).resolves({
+                DBInstances: [mockValidOracleInstance]
+            });
+
+            // Mock a non-Error object rejection in ModifyDBInstance
+            rdsMock
+                .on(ModifyDBInstanceCommand)
+                .rejects({ message: 'Not an Error object' });
+
+            const event = mockCreateEvent;
+            const result = await handler(event, mockContext);
+
+            expect(result.Status).toBe('FAILED');
+            expect(result.Reason).toContain('Not an Error object');
+        });
+
+        it('should re-throw non-Error objects in getDatabaseStatus', async () => {
+            // Mock a non-Error object rejection for UPDATE operation
+            rdsMock
+                .on(DescribeDBInstancesCommand)
+                .rejects({ message: 'Not an Error object' });
+
+            const event = mockUpdateEvent;
+            const result = await handler(event, mockContext);
+
+            expect(result.Status).toBe('FAILED');
+            expect(result.Reason).toContain('Not an Error object');
+        });
     });
 
     describe('Individual Function Tests', () => {

@@ -96,7 +96,7 @@ Count: 13
 - [**OpenSearchAdminUser**](API.md#opensearchadminuser-): Manages an admin user for an Amazon OpenSearch domain.
 - [**OpenSearchProvisionDomain**](API.md#opensearchprovisiondomain-): Controls the contents of an Amazon OpenSearch Service domain from Infrastructure as Code.
 - [**OpenSearchWorkflow**](API.md#opensearchworkflow-): Create OpenSearch Workflows using the flow framework to automate the provisioning of complex tasks using JSON or YAML.
-- [**RdsOracleMultiTenant**](API.md#rdsoraclemultitenant-): A CDK construct that enables Oracle MultiTenant configuration on an existing RDS Oracle database.
+- [**RdsOracleMultiTenant**](API.md#rdsoraclemultitenant-): Enables Oracle MultiTenant configuration on an existing RDS Oracle database.
 - [**WebApplicationFirewall**](API.md#webapplicationfirewall-): Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
 
 ### 🎭 Aspects
