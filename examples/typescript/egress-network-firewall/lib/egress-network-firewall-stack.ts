@@ -31,7 +31,7 @@ export class EgressNetworkFirewallStack extends Stack {
                 __dirname,
                 '..',
                 'data',
-                'egress-rules.md'
+                'egress-rules.txt'
             ),
             configureVpcRoutes: {
                 protectedSubnets: vpc.selectSubnets({
