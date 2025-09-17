@@ -11,6 +11,8 @@ import { PolicyProperties } from 'cloudform-types/types/iam/policy';
 import { FunctionProperties } from 'cloudform-types/types/lambda/function';
 import { beforeEach, it, expect } from 'vitest';
 import {
+    mockCertificateChainParameterName,
+    mockCertificateChainValue,
     mockCertificateParameterName,
     mockCertificateValue,
     mockPrefix,
@@ -21,9 +23,11 @@ import { IamServerCertificate } from '../../../src/constructs';
 import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 
 const certificateParameterElementName = 'CertificateParameter';
+const certificateChainParameterElementName = 'CertificateChainParameter';
 const privateKeyParameterElementName = 'PrivateKeyParameter';
 const keyElementName = 'EncryptionKey';
 const certificateSecretElementName = 'CertificateSecret';
+const certificateChainSecretElementName = 'CertificateChainSecret';
 const privateKeySecretElementName = 'PrivateKeySecret';
 
 describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
@@ -192,6 +196,169 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
         );
     });
 
+    it('creates custom resource with correct properties when supplying the certificate chain (parameter)', () => {
+        // Arrange
+        const certificate = new StringParameter(
+            stack,
+            certificateParameterElementName,
+            {
+                parameterName: mockCertificateParameterName,
+                stringValue: mockCertificateValue
+            }
+        );
+        const certificateChain = new StringParameter(
+            stack,
+            certificateChainParameterElementName,
+            {
+                parameterName: mockCertificateChainParameterName,
+                stringValue: mockCertificateChainValue
+            }
+        );
+        const privateKey = new StringParameter(
+            stack,
+            privateKeyParameterElementName,
+            {
+                parameterName: mockPrivateKeyParameterName,
+                stringValue: mockPrivateKeyValue
+            }
+        );
+
+        // Act
+        new IamServerCertificate(stack, id, {
+            certificate: {
+                parameter: certificate
+            },
+            certificateChain: {
+                parameter: certificateChain
+            },
+            prefix: mockPrefix,
+            privateKey: {
+                parameter: privateKey
+            }
+        });
+
+        // Assert
+        const template = getTemplate();
+
+        template.hasResourceProperties('Custom::IamServerCertificate', {
+            ServiceToken: {
+                'Fn::GetAtt': Match.anyValue()
+            },
+            CertificatePrefix: mockPrefix,
+            Certificate: {
+                Source: 'parameter',
+                Id: Match.objectLike({
+                    Ref: Match.stringLikeRegexp(certificateParameterElementName)
+                })
+            },
+            CertificateChain: {
+                Source: 'parameter',
+                Id: Match.objectLike({
+                    Ref: Match.stringLikeRegexp(
+                        certificateChainParameterElementName
+                    )
+                })
+            },
+            PrivateKey: {
+                Source: 'parameter',
+                Id: Match.objectLike({
+                    Ref: Match.stringLikeRegexp(privateKeyParameterElementName)
+                })
+            }
+        });
+
+        const lambdaResourceProperties: Partial<FunctionProperties> = {
+            Handler: 'index.handler',
+            ReservedConcurrentExecutions: 5,
+            Runtime: 'nodejs22.x',
+            Timeout: 60,
+            MemorySize: 512
+        };
+
+        template.hasResourceProperties(
+            'AWS::Lambda::Function',
+            lambdaResourceProperties
+        );
+    });
+
+    it('creates custom resource with correct properties when supplying the certificate chain (secret)', () => {
+        // Arrange
+        const key = new Key(stack, keyElementName);
+        const certificate = new Secret(stack, certificateSecretElementName, {
+            encryptionKey: key
+        });
+        const certificateChain = new Secret(
+            stack,
+            certificateChainSecretElementName,
+            {
+                encryptionKey: key
+            }
+        );
+        const privateKey = new Secret(stack, privateKeySecretElementName, {
+            encryptionKey: key
+        });
+
+        // Act
+        new IamServerCertificate(stack, id, {
+            certificate: {
+                secret: certificate,
+                encryption: key
+            },
+            certificateChain: {
+                secret: certificateChain,
+                encryption: key
+            },
+            prefix: mockPrefix,
+            privateKey: {
+                secret: privateKey,
+                encryption: key
+            }
+        });
+
+        // Assert
+        const template = getTemplateWithSecretsAndNag(stack);
+
+        template.hasResourceProperties('Custom::IamServerCertificate', {
+            ServiceToken: {
+                'Fn::GetAtt': Match.anyValue()
+            },
+            CertificatePrefix: mockPrefix,
+            Certificate: {
+                Source: 'secret',
+                Id: Match.objectLike({
+                    Ref: Match.stringLikeRegexp(certificateSecretElementName)
+                })
+            },
+            CertificateChain: {
+                Source: 'secret',
+                Id: Match.objectLike({
+                    Ref: Match.stringLikeRegexp(
+                        certificateChainSecretElementName
+                    )
+                })
+            },
+            PrivateKey: {
+                Source: 'secret',
+                Id: Match.objectLike({
+                    Ref: Match.stringLikeRegexp(privateKeySecretElementName)
+                })
+            }
+        });
+
+        const lambdaResourceProperties: Partial<FunctionProperties> = {
+            Handler: 'index.handler',
+            ReservedConcurrentExecutions: 5,
+            Runtime: 'nodejs22.x',
+            Timeout: 60,
+            MemorySize: 512
+        };
+
+        template.hasResourceProperties(
+            'AWS::Lambda::Function',
+            lambdaResourceProperties
+        );
+    });
+
     it('creates custom resource with correct properties (parameter, secret)', () => {
         // Arrange
         const key = new Key(stack, keyElementName);
@@ -328,6 +495,14 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
                 stringValue: mockCertificateValue
             }
         );
+        const certificateChain = new StringParameter(
+            stack,
+            certificateChainParameterElementName,
+            {
+                parameterName: mockCertificateChainParameterName,
+                stringValue: mockCertificateChainValue
+            }
+        );
         const privateKey = new StringParameter(
             stack,
             privateKeyParameterElementName,
@@ -341,6 +516,9 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
         new IamServerCertificate(stack, id, {
             certificate: {
                 parameter: certificate
+            },
+            certificateChain: {
+                parameter: certificateChain
             },
             prefix: mockPrefix,
             privateKey: {
@@ -401,6 +579,14 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
                 stringValue: mockCertificateValue
             }
         );
+        const certificateChain = new StringParameter(
+            stack,
+            certificateChainParameterElementName,
+            {
+                parameterName: mockCertificateChainParameterName,
+                stringValue: mockCertificateChainValue
+            }
+        );
         const privateKey = new StringParameter(
             stack,
             privateKeyParameterElementName,
@@ -414,6 +600,10 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
         new IamServerCertificate(stack, id, {
             certificate: {
                 parameter: certificate,
+                encryption: key
+            },
+            certificateChain: {
+                parameter: certificateChain,
                 encryption: key
             },
             prefix: mockPrefix,
@@ -478,12 +668,19 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
     it('grants necessary permissions to Lambda function (unencrypted secret)', () => {
         // Arrange
         const certificate = new Secret(stack, certificateSecretElementName);
+        const certificateChain = new Secret(
+            stack,
+            certificateChainSecretElementName
+        );
         const privateKey = new Secret(stack, privateKeySecretElementName);
 
         // Act
         new IamServerCertificate(stack, id, {
             certificate: {
                 secret: certificate
+            },
+            certificateChain: {
+                secret: certificateChain
             },
             prefix: mockPrefix,
             privateKey: {
@@ -548,6 +745,26 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
                                 [
                                     {
                                         Ref: Match.stringLikeRegexp(
+                                            certificateChainSecretElementName
+                                        )
+                                    },
+                                    '*'
+                                ]
+                            ]
+                        }
+                    }),
+                    Match.objectLike({
+                        Action: [
+                            'secretsmanager:GetSecretValue',
+                            'secretsmanager:DescribeSecret'
+                        ],
+                        Effect: 'Allow',
+                        Resource: {
+                            'Fn::Join': [
+                                '',
+                                [
+                                    {
+                                        Ref: Match.stringLikeRegexp(
                                             privateKeySecretElementName
                                         )
                                     },
@@ -567,9 +784,15 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
         // Arrange
         const key = new Key(stack, keyElementName);
         const certificate = new Secret(stack, certificateSecretElementName, {
-            secretName: 'CertificateSecret',
             encryptionKey: key
         });
+        const certificateChain = new Secret(
+            stack,
+            certificateChainSecretElementName,
+            {
+                encryptionKey: key
+            }
+        );
         const privateKey = new Secret(stack, privateKeySecretElementName, {
             encryptionKey: key
         });
@@ -578,6 +801,10 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
         new IamServerCertificate(stack, id, {
             certificate: {
                 secret: certificate,
+                encryption: key
+            },
+            certificateChain: {
+                secret: certificateChain,
                 encryption: key
             },
             prefix: mockPrefix,
@@ -635,6 +862,26 @@ describeCdkTest(IamServerCertificate, (id, getStack, getTemplate) => {
                                     {
                                         Ref: Match.stringLikeRegexp(
                                             certificateSecretElementName
+                                        )
+                                    },
+                                    '*'
+                                ]
+                            ]
+                        }
+                    }),
+                    Match.objectLike({
+                        Action: [
+                            'secretsmanager:GetSecretValue',
+                            'secretsmanager:DescribeSecret'
+                        ],
+                        Effect: 'Allow',
+                        Resource: {
+                            'Fn::Join': [
+                                '',
+                                [
+                                    {
+                                        Ref: Match.stringLikeRegexp(
+                                            certificateChainSecretElementName
                                         )
                                     },
                                     '*'
