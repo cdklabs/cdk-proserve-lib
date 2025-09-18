@@ -5,13 +5,13 @@ import { join } from 'node:path';
 import { Aws, CustomResource, Duration, Stack } from 'aws-cdk-lib';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
-import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { Code, IFunction, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { IDatabaseInstance } from 'aws-cdk-lib/aws-rds';
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
 import { LambdaConfiguration } from '../../types';
 import { SecureFunction } from '../secure-function';
-import { ResourceProperties } from './handler';
+import { IResourceProperties } from './handler/types/resource-properties';
 
 /**
  * Properties for the RDS Oracle MultiTenant construct
@@ -197,14 +197,30 @@ export class RdsOracleMultiTenant extends Construct {
             );
 
             const onEventHandler = new SecureFunction(provider, 'OnEvent', {
-                code: Code.fromAsset(join(__dirname, 'handler')),
+                code: Code.fromAsset(join(__dirname, 'handler', 'on-event')),
                 handler: 'index.handler',
                 memorySize: 512,
-                timeout: Duration.minutes(15),
+                timeout: Duration.minutes(5),
                 runtime: Runtime.NODEJS_22_X,
                 encryption: props.encryption,
                 ...props.lambdaConfiguration
             });
+
+            const isCompleteHandler = new SecureFunction(
+                provider,
+                'IsComplete',
+                {
+                    code: Code.fromAsset(
+                        join(__dirname, 'handler', 'is-complete')
+                    ),
+                    handler: 'index.handler',
+                    memorySize: 512,
+                    timeout: Duration.minutes(5),
+                    runtime: Runtime.NODEJS_22_X,
+                    encryption: props.encryption,
+                    ...props.lambdaConfiguration
+                }
+            );
 
             // Grant minimal required RDS permissions following principle of least privilege
             const rdsPolicy = new PolicyStatement({
@@ -212,7 +228,7 @@ export class RdsOracleMultiTenant extends Construct {
                 actions: ['rds:ModifyDBInstance', 'rds:DescribeDBInstances'],
                 resources: [props.database.instanceArn]
             });
-            onEventHandler.function.addToRolePolicy(rdsPolicy);
+
             const tenantPolicy = new PolicyStatement({
                 effect: Effect.ALLOW,
                 actions: ['rds:CreateTenantDatabase'],
@@ -221,16 +237,25 @@ export class RdsOracleMultiTenant extends Construct {
                     `arn:${Aws.PARTITION}:rds:${Aws.REGION}:${Aws.ACCOUNT_ID}:tenant-database:*`
                 ]
             });
-            onEventHandler.function.addToRolePolicy(tenantPolicy);
-            // Grant KMS permissions if encryption key is provided
-            if (props.encryption) {
-                props.encryption.grantEncryptDecrypt(onEventHandler.function);
-            }
+
+            // Apply permissions to both handlers
+            [onEventHandler, isCompleteHandler].forEach((handler) => {
+                handler.function.addToRolePolicy(rdsPolicy);
+                handler.function.addToRolePolicy(tenantPolicy);
+
+                // Grant KMS permissions if encryption key is provided
+                if (props.encryption) {
+                    props.encryption.grantEncryptDecrypt(handler.function);
+                }
+            });
 
             RdsOracleMultiTenant.serviceTokens.set(
                 stackId,
                 new Provider(provider, 'Provider', {
-                    onEventHandler: onEventHandler.function
+                    onEventHandler: onEventHandler.function,
+                    isCompleteHandler: isCompleteHandler.function,
+                    queryInterval: Duration.seconds(30),
+                    totalTimeout: Duration.hours(1)
                 })
             );
         }
@@ -246,11 +271,23 @@ export class RdsOracleMultiTenant extends Construct {
      */
     private static createCustomResourceProperties(
         props: RdsOracleMultiTenantProps
-    ): ResourceProperties {
+    ): IResourceProperties {
         return {
             DBInstanceIdentifier: props.database.instanceIdentifier
         };
     }
+
+    /**
+     * The Lambda function that handles OnEvent requests for the custom resource.
+     * This function performs validation and initiates the Oracle MultiTenant conversion.
+     */
+    public readonly onEventHandler: IFunction;
+
+    /**
+     * The Lambda function that handles IsComplete requests for the custom resource.
+     * This function monitors the conversion progress and determines when the operation is complete.
+     */
+    public readonly isCompleteHandler: IFunction;
 
     /**
      * The Custom Resource that manages the Oracle MultiTenant configuration.
@@ -362,6 +399,9 @@ export class RdsOracleMultiTenant extends Construct {
         this.node.addDependency(props.database);
 
         const provider = RdsOracleMultiTenant.getOrBuildProvider(scope, props);
+
+        this.onEventHandler = provider.onEventHandler;
+        this.isCompleteHandler = provider.isCompleteHandler!;
 
         this.customResource = new CustomResource(this, 'RdsOracleMultiTenant', {
             serviceToken: provider.serviceToken,
