@@ -15,6 +15,7 @@ import { NagSuppressions } from 'cdk-nag';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { RdsOracleMultiTenant } from '../../../src/constructs/rds-oracle-multi-tenant';
 import { describeCdkTest } from '../../../utilities/cdk-nag-test';
+import { writeFileSync } from 'fs';
 
 // Test fixtures for RDS database instances
 const createMockOracleInstance = (
@@ -41,12 +42,18 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
         stack = getStack();
         oracleInstance = createMockOracleInstance(stack);
 
-        // Add CDK Nag suppressions only for VPC-related wildcard permissions from SecureFunction
+        // Add CDK Nag suppressions for wildcard permissions
         NagSuppressions.addStackSuppressions(stack, [
             {
                 id: 'AwsSolutions-IAM5',
-                reason: 'VPC-related permissions (ec2:CreateNetworkInterface, ec2:DescribeNetworkInterfaces, etc.) require wildcard permissions as they operate on ENIs that are created dynamically. This is a standard requirement for Lambda functions in VPC.',
-                appliesTo: ['Resource::*']
+                reason: 'Permissions are tightly scoped by CDK grants for the asset bucket and to create tenant db.'
+            },
+            {
+                id: 'AwsSolutions-IAM5',
+                reason: 'The rds:CreateTenantDatabase action requires wildcard permissions for tenant-database resources as tenant database ARNs are dynamically generated and cannot be known at deployment time. This is required for Oracle MultiTenant functionality.',
+                appliesTo: [
+                    'Resource::arn:<AWS::Partition>:rds:<AWS::Region>:<AWS::AccountId>:tenant-database:*'
+                ]
             }
         ]);
     });
@@ -75,6 +82,8 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
                     Ref: Match.stringLikeRegexp('TestOracleDB')
                 }
             });
+
+            writeFileSync('template.json', JSON.stringify(template.toJSON()));
         });
 
         it('should throw error when database is not provided', () => {
@@ -244,8 +253,7 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
                         {
                             Action: [
                                 'rds:ModifyDBInstance',
-                                'rds:DescribeDBInstances',
-                                'rds:CreateTenantDatabase'
+                                'rds:DescribeDBInstances'
                             ],
                             Effect: 'Allow',
                             Resource: {
@@ -263,6 +271,41 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
                                     ]
                                 ]
                             }
+                        },
+                        {
+                            Action: 'rds:CreateTenantDatabase',
+                            Effect: 'Allow',
+                            Resource: [
+                                {
+                                    'Fn::Join': [
+                                        '',
+                                        [
+                                            'arn:',
+                                            { Ref: 'AWS::Partition' },
+                                            ':rds:us-east-1:123456789012:db:',
+                                            {
+                                                Ref: Match.stringLikeRegexp(
+                                                    'TestOracleDB'
+                                                )
+                                            }
+                                        ]
+                                    ]
+                                },
+                                {
+                                    'Fn::Join': [
+                                        '',
+                                        [
+                                            'arn:',
+                                            { Ref: 'AWS::Partition' },
+                                            ':rds:',
+                                            { Ref: 'AWS::Region' },
+                                            ':',
+                                            { Ref: 'AWS::AccountId' },
+                                            ':tenant-database:*'
+                                        ]
+                                    ]
+                                }
+                            ]
                         }
                     ],
                     Version: '2012-10-17'

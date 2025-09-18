@@ -79,11 +79,9 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 });
 
                 const event = mockCreateEvent;
-                const result = await handler(event, mockContext);
 
-                expect(result.Status).toBe('FAILED');
-                expect(result.Reason).toContain(
-                    "Database engine 'mysql' is not Oracle"
+                await expect(handler(event, mockContext)).rejects.toThrow(
+                    "Database validation failed: Database engine 'mysql' is not Oracle"
                 );
             });
 
@@ -98,10 +96,10 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 });
 
                 const event = mockCreateEvent;
-                const result = await handler(event, mockContext);
 
-                expect(result.Status).toBe('FAILED');
-                expect(result.Reason).toContain('is not Oracle');
+                await expect(handler(event, mockContext)).rejects.toThrow(
+                    "Database validation failed: Database engine 'undefined' is not Oracle"
+                );
             });
         });
 
@@ -135,11 +133,9 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 });
 
                 const event = mockCreateEvent;
-                const result = await handler(event, mockContext);
 
-                expect(result.Status).toBe('FAILED');
-                expect(result.Reason).toContain(
-                    'Oracle version 12 does not support MultiTenant'
+                await expect(handler(event, mockContext)).rejects.toThrow(
+                    'Database validation failed: Oracle version 12 does not support MultiTenant'
                 );
             });
 
@@ -154,11 +150,9 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 });
 
                 const event = mockCreateEvent;
-                const result = await handler(event, mockContext);
 
-                expect(result.Status).toBe('FAILED');
-                expect(result.Reason).toContain(
-                    'Unable to parse Oracle version'
+                await expect(handler(event, mockContext)).rejects.toThrow(
+                    'Database validation failed: Unable to parse Oracle version'
                 );
             });
 
@@ -173,11 +167,9 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 });
 
                 const event = mockCreateEvent;
-                const result = await handler(event, mockContext);
 
-                expect(result.Status).toBe('FAILED');
-                expect(result.Reason).toContain(
-                    'Database engine version is not available'
+                await expect(handler(event, mockContext)).rejects.toThrow(
+                    'Database validation failed: Database engine version is not available'
                 );
             });
         });
@@ -284,11 +276,9 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 });
 
                 const event = mockCreateEvent;
-                const result = await handler(event, mockContext);
 
-                expect(result.Status).toBe('FAILED');
-                expect(result.Reason).toContain(
-                    "Database instance is in 'modifying' state"
+                await expect(handler(event, mockContext)).rejects.toThrow(
+                    "Database validation failed: Database instance is in 'modifying' state"
                 );
             });
         });
@@ -300,11 +290,9 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 });
 
                 const event = mockCreateEvent;
-                const result = await handler(event, mockContext);
 
-                expect(result.Status).toBe('FAILED');
-                expect(result.Reason).toContain(
-                    "Database instance 'test-db-instance' not found"
+                await expect(handler(event, mockContext)).rejects.toThrow(
+                    "Database validation failed: Database instance 'test-db-instance' not found"
                 );
             });
 
@@ -312,11 +300,9 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 rdsMock.on(DescribeDBInstancesCommand).resolves({});
 
                 const event = mockCreateEvent;
-                const result = await handler(event, mockContext);
 
-                expect(result.Status).toBe('FAILED');
-                expect(result.Reason).toContain(
-                    "Database instance 'test-db-instance' not found"
+                await expect(handler(event, mockContext)).rejects.toThrow(
+                    "Database validation failed: Database instance 'test-db-instance' not found"
                 );
             });
         });
@@ -367,47 +353,23 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 .rejects(mockRDSServiceException);
 
             const event = mockCreateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain(
+            await expect(handler(event, mockContext)).rejects.toThrow(
                 'RDS API error: ValidationException'
             );
         });
 
         it('should handle timeout during conversion monitoring', async () => {
-            // Mock successful validation
-            rdsMock.on(DescribeDBInstancesCommand).resolves({
-                DBInstances: [mockValidOracleInstance]
-            });
-
-            // Mock successful ModifyDBInstance
-            rdsMock.on(ModifyDBInstanceCommand).resolves({
-                DBInstance: mockInstanceWithPendingModifications
-            });
-
-            // Mock timeout scenario - always return modifying status
+            // Mock timeout scenario - return modifying status for validation
             rdsMock.on(DescribeDBInstancesCommand).resolves({
                 DBInstances: [mockTimeoutInstance]
             });
 
             const event = mockCreateEvent;
 
-            // Mock a short timeout for testing
-            const originalWaitFunction = waitForMultiTenantConversion;
-            const mockWaitFunction = vi
-                .fn()
-                .mockRejectedValue(
-                    new Error(
-                        'MultiTenant conversion timed out after 30 seconds'
-                    )
-                );
-
-            // We need to test the timeout behavior by mocking the wait function
-            const result = await handler(event, mockContext);
-
-            expect(result.Status).toBe('FAILED');
-            // The actual timeout will be handled by the waitForMultiTenantConversion function
+            await expect(handler(event, mockContext)).rejects.toThrow(
+                "Database validation failed: Database instance is in 'modifying' state"
+            );
         });
 
         it('should handle conversion failure status', async () => {
@@ -440,10 +402,8 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
             });
 
             const event = mockCreateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain(
+            await expect(handler(event, mockContext)).rejects.toThrow(
                 'MultiTenant conversion failed with status: failed'
             );
         });
@@ -458,11 +418,9 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
             rdsMock.on(ModifyDBInstanceCommand).resolves({});
 
             const event = mockCreateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain(
-                'ModifyDBInstance response did not include DBInstance details'
+            await expect(handler(event, mockContext)).rejects.toThrow(
+                'Failed to enable Oracle MultiTenant: ModifyDBInstance response did not include DBInstance details'
             );
         });
     });
@@ -491,10 +449,8 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
 
         it('should reject UPDATE with different DB instance identifier', async () => {
             const event = mockUpdateEventWithDifferentId;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain(
+            await expect(handler(event, mockContext)).rejects.toThrow(
                 'Cannot change DBInstanceIdentifier in UPDATE operation'
             );
         });
@@ -506,10 +462,8 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 .rejects(mockRDSServiceException);
 
             const event = mockUpdateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain(
+            await expect(handler(event, mockContext)).rejects.toThrow(
                 'RDS API error: ValidationException'
             );
         });
@@ -554,10 +508,7 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 RequestType: 'InvalidType' as any
             };
 
-            const result = await handler(invalidEvent, mockContext);
-
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain(
+            await expect(handler(invalidEvent, mockContext)).rejects.toThrow(
                 'Unsupported request type: InvalidType'
             );
         });
@@ -569,10 +520,8 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 .rejects(new Error('Unexpected error'));
 
             const event = mockCreateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain(
+            await expect(handler(event, mockContext)).rejects.toThrow(
                 'Database validation failed: Unexpected error'
             );
         });
@@ -582,33 +531,22 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
             rdsMock.on(DescribeDBInstancesCommand).rejects('String error');
 
             const event = mockCreateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain('String error');
+            await expect(handler(event, mockContext)).rejects.toThrow(
+                'String error'
+            );
         });
 
-        it('should return proper error response structure', async () => {
+        it('should throw errors with proper error messages', async () => {
             rdsMock
                 .on(DescribeDBInstancesCommand)
                 .rejects(new Error('Test error'));
 
             const event = mockCreateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result).toMatchObject({
-                Status: 'FAILED',
-                Reason: expect.stringContaining('Test error'),
-                PhysicalResourceId: `rds-oracle-multitenant-${mockDBInstanceId}`,
-                StackId: event.StackId,
-                RequestId: event.RequestId,
-                LogicalResourceId: event.LogicalResourceId,
-                Data: {
-                    DBInstanceIdentifier: mockDBInstanceId,
-                    MultiTenantStatus: 'Failed',
-                    ModificationStatus: 'Failed'
-                }
-            });
+            await expect(handler(event, mockContext)).rejects.toThrow(
+                'Database validation failed: Test error'
+            );
         });
 
         it('should handle non-Error exceptions in enableOracleMultiTenant', async () => {
@@ -621,10 +559,10 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
             rdsMock.on(ModifyDBInstanceCommand).rejects('Non-error exception');
 
             const event = mockCreateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain('Non-error exception');
+            await expect(handler(event, mockContext)).rejects.toThrow(
+                'Non-error exception'
+            );
         });
 
         it('should handle non-Error exceptions in getDatabaseStatus', async () => {
@@ -634,10 +572,10 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 .rejects('Database status error');
 
             const event = mockUpdateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain('Database status error');
+            await expect(handler(event, mockContext)).rejects.toThrow(
+                'Database status error'
+            );
         });
 
         it('should return undefined for PendingModifications when empty in CREATE', async () => {
@@ -695,10 +633,10 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
             rdsMock.on(DescribeDBInstancesCommand).rejects(genericError);
 
             const event = mockCreateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain('Generic type error');
+            await expect(handler(event, mockContext)).rejects.toThrow(
+                'Database validation failed: Generic type error'
+            );
         });
 
         it('should re-throw generic errors in enableOracleMultiTenant', async () => {
@@ -712,10 +650,10 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
             rdsMock.on(ModifyDBInstanceCommand).rejects(genericError);
 
             const event = mockCreateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain('Generic modification error');
+            await expect(handler(event, mockContext)).rejects.toThrow(
+                'Failed to enable Oracle MultiTenant: Generic modification error'
+            );
         });
 
         it('should re-throw generic errors in getDatabaseStatus', async () => {
@@ -724,10 +662,10 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
             rdsMock.on(DescribeDBInstancesCommand).rejects(genericError);
 
             const event = mockUpdateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain('Generic status error');
+            await expect(handler(event, mockContext)).rejects.toThrow(
+                'Failed to get database status: Generic status error'
+            );
         });
 
         it('should re-throw non-Error objects in validateDatabase', async () => {
@@ -737,10 +675,10 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 .rejects({ message: 'Not an Error object' });
 
             const event = mockCreateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain('Not an Error object');
+            await expect(handler(event, mockContext)).rejects.toThrow(
+                'Database validation failed: Not an Error object'
+            );
         });
 
         it('should re-throw non-Error objects in enableOracleMultiTenant', async () => {
@@ -755,10 +693,10 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 .rejects({ message: 'Not an Error object' });
 
             const event = mockCreateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain('Not an Error object');
+            await expect(handler(event, mockContext)).rejects.toThrow(
+                'Failed to enable Oracle MultiTenant: Not an Error object'
+            );
         });
 
         it('should re-throw non-Error objects in getDatabaseStatus', async () => {
@@ -768,10 +706,10 @@ describe('RDS Oracle MultiTenant Lambda Handler', () => {
                 .rejects({ message: 'Not an Error object' });
 
             const event = mockUpdateEvent;
-            const result = await handler(event, mockContext);
 
-            expect(result.Status).toBe('FAILED');
-            expect(result.Reason).toContain('Not an Error object');
+            await expect(handler(event, mockContext)).rejects.toThrow(
+                'Failed to get database status: Not an Error object'
+            );
         });
     });
 
