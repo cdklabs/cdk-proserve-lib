@@ -1,7 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { writeFileSync } from 'fs';
 import { Stack, App } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { SubnetType, Vpc } from 'aws-cdk-lib/aws-ec2';
@@ -76,8 +75,6 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
                     Ref: Match.stringLikeRegexp('TestOracleDB')
                 }
             });
-
-            writeFileSync('template.json', JSON.stringify(template.toJSON()));
         });
 
         it('should throw error when database is not provided', () => {
@@ -196,7 +193,7 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
                 Handler: 'index.handler',
                 Runtime: 'nodejs22.x',
                 MemorySize: 512,
-                Timeout: 1800, // 30 minutes
+                Timeout: 900, // 15 minutes
                 ReservedConcurrentExecutions: 5
             });
         });
@@ -247,7 +244,8 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
                         {
                             Action: [
                                 'rds:ModifyDBInstance',
-                                'rds:DescribeDBInstances'
+                                'rds:DescribeDBInstances',
+                                'rds:CreateTenantDatabase'
                             ],
                             Effect: 'Allow',
                             Resource: {
