@@ -61,6 +61,7 @@ test.json
 .yarn/
 cdk.out
 package-lock.json
+cdk.context.json
 !/.licenserc.yaml
 !/.github/workflows/lint.yml
 !/.codecov.yml

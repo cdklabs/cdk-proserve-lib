@@ -7,7 +7,7 @@ import { CdklabsTypeScriptProject } from 'cdklabs-projen-project-types';
  * Sets up the default ignores for the project.
  */
 export const configureIgnores = (project: CdklabsTypeScriptProject) => {
-    const ignores = [
+    const gitIgnores = [
         '.DS_Store',
         '.python-version',
         '.nvmrc',
@@ -15,10 +15,10 @@ export const configureIgnores = (project: CdklabsTypeScriptProject) => {
         '.vscode/',
         '.yarn/',
         'cdk.out',
-        'package-lock.json'
+        'package-lock.json',
+        'cdk.context.json'
     ];
-
-    ignores.forEach((ignore) => {
+    gitIgnores.forEach((ignore) => {
         project.addGitIgnore(ignore);
     });
 
