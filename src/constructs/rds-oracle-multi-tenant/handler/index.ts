@@ -5,7 +5,7 @@ import {
     DBInstance,
     RDSServiceException
 } from '@aws-sdk/client-rds';
-import { CloudFormationCustomResourceResponse, Context } from 'aws-lambda';
+import { CdkCustomResourceResponse, Context } from 'aws-lambda';
 
 /**
  * Properties passed to the Lambda handler from the Custom Resource
@@ -440,66 +440,43 @@ async function handleDelete(
 export async function handler(
     event: HandlerEvent,
     _context: Context
-): Promise<CloudFormationCustomResourceResponse> {
+): Promise<CdkCustomResourceResponse> {
     console.log('Event:', JSON.stringify(event, null, 2));
 
     const rdsClient = new RDSClient({});
     const dbInstanceId = event.ResourceProperties.DBInstanceIdentifier;
     const requestType = event.RequestType;
 
-    try {
-        let responseData: ResponseData;
+    let responseData: ResponseData;
 
-        switch (requestType) {
-            case 'Create':
-                responseData = await handleCreate(rdsClient, dbInstanceId);
-                break;
+    switch (requestType) {
+        case 'Create':
+            responseData = await handleCreate(rdsClient, dbInstanceId);
+            break;
 
-            case 'Update':
-                responseData = await handleUpdate(
-                    rdsClient,
-                    dbInstanceId,
-                    event.OldResourceProperties,
-                    event.ResourceProperties
-                );
-                break;
+        case 'Update':
+            responseData = await handleUpdate(
+                rdsClient,
+                dbInstanceId,
+                event.OldResourceProperties,
+                event.ResourceProperties
+            );
+            break;
 
-            case 'Delete':
-                responseData = await handleDelete(rdsClient, dbInstanceId);
-                break;
+        case 'Delete':
+            responseData = await handleDelete(rdsClient, dbInstanceId);
+            break;
 
-            default:
-                throw new Error(`Unsupported request type: ${requestType}`);
-        }
-
-        return {
-            Status: 'SUCCESS',
-            PhysicalResourceId: `rds-oracle-multitenant-${dbInstanceId}`,
-            StackId: event.StackId,
-            RequestId: event.RequestId,
-            LogicalResourceId: event.LogicalResourceId,
-            Data: responseData
-        };
-    } catch (error) {
-        console.error('Handler error:', error);
-
-        const errorMessage =
-            error instanceof Error ? error.message : 'Unknown error occurred';
-
-        return {
-            Status: 'FAILED',
-            Reason: errorMessage,
-            PhysicalResourceId:
-                event.PhysicalResourceId ||
-                `rds-oracle-multitenant-${dbInstanceId}`,
-            StackId: event.StackId,
-            RequestId: event.RequestId,
-            LogicalResourceId: event.LogicalResourceId,
-            Data: {
-                DBInstanceIdentifier: dbInstanceId,
-                MultiTenantStatus: 'Failed',
-                ModificationStatus: 'Failed'
-            } as ResponseData
-        };
+        default:
+            throw new Error(`Unsupported request type: ${requestType}`);
     }
+
+    return {
+        Status: 'SUCCESS',
+        PhysicalResourceId: `rds-oracle-multitenant-${dbInstanceId}`,
+        StackId: event.StackId,
+        RequestId: event.RequestId,
+        LogicalResourceId: event.LogicalResourceId,
+        Data: responseData
+    };
 }

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { join } from 'node:path';
-import { CustomResource, Duration, Stack } from 'aws-cdk-lib';
+import { Aws, CustomResource, Duration, Stack } from 'aws-cdk-lib';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
@@ -200,7 +200,7 @@ export class RdsOracleMultiTenant extends Construct {
                 code: Code.fromAsset(join(__dirname, 'handler')),
                 handler: 'index.handler',
                 memorySize: 512,
-                timeout: Duration.minutes(30), // Long timeout for MultiTenant conversion
+                timeout: Duration.minutes(15),
                 runtime: Runtime.NODEJS_22_X,
                 encryption: props.encryption,
                 ...props.lambdaConfiguration
@@ -213,7 +213,15 @@ export class RdsOracleMultiTenant extends Construct {
                 resources: [props.database.instanceArn]
             });
             onEventHandler.function.addToRolePolicy(rdsPolicy);
-
+            const tenantPolicy = new PolicyStatement({
+                effect: Effect.ALLOW,
+                actions: ['rds:CreateTenantDatabase'],
+                resources: [
+                    props.database.instanceArn,
+                    `arn:${Aws.PARTITION}:rds:${Aws.REGION}:${Aws.ACCOUNT_ID}:tenant-database:*`
+                ]
+            });
+            onEventHandler.function.addToRolePolicy(tenantPolicy);
             // Grant KMS permissions if encryption key is provided
             if (props.encryption) {
                 props.encryption.grantEncryptDecrypt(onEventHandler.function);
