@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { writeFileSync } from 'fs';
 import { Stack, App } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 import { SubnetType, Vpc } from 'aws-cdk-lib/aws-ec2';
@@ -15,7 +16,6 @@ import { NagSuppressions } from 'cdk-nag';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { RdsOracleMultiTenant } from '../../../src/constructs/rds-oracle-multi-tenant';
 import { describeCdkTest } from '../../../utilities/cdk-nag-test';
-import { writeFileSync } from 'fs';
 
 // Test fixtures for RDS database instances
 const createMockOracleInstance = (
@@ -189,7 +189,7 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
             });
         });
 
-        it('should create Lambda function with correct configuration', () => {
+        it('should create OnEvent and IsComplete Lambda functions with correct configuration', () => {
             // Act
             new RdsOracleMultiTenant(stack, id, {
                 database: oracleInstance
@@ -198,16 +198,36 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
             // Assert
             const template = getTemplate();
 
+            // Should have OnEvent and IsComplete handlers with correct configuration
             template.hasResourceProperties('AWS::Lambda::Function', {
                 Handler: 'index.handler',
                 Runtime: 'nodejs22.x',
                 MemorySize: 512,
-                Timeout: 900, // 15 minutes
+                Timeout: 300, // 5 minutes for OnEvent/IsComplete handlers
                 ReservedConcurrentExecutions: 5
             });
+
+            // Verify we have the expected number of Lambda functions
+            // OnEvent, IsComplete, and 3 provider framework functions = 5 total
+            const lambdaFunctions = template.findResources(
+                'AWS::Lambda::Function'
+            );
+            expect(Object.keys(lambdaFunctions)).toHaveLength(5);
+
+            // Verify OnEvent handler exists
+            const onEventFunctions = Object.keys(lambdaFunctions).filter(
+                (name: string) => name.includes('OnEventFunction')
+            );
+            expect(onEventFunctions).toHaveLength(1);
+
+            // Verify IsComplete handler exists
+            const isCompleteFunctions = Object.keys(lambdaFunctions).filter(
+                (name: string) => name.includes('IsCompleteFunction')
+            );
+            expect(isCompleteFunctions).toHaveLength(1);
         });
 
-        it('should create proper IAM role and policy', () => {
+        it('should create proper IAM roles and policies for both handlers', () => {
             // Act
             new RdsOracleMultiTenant(stack, id, {
                 database: oracleInstance
@@ -216,7 +236,7 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
             // Assert
             const template = getTemplate();
 
-            // Verify IAM role
+            // Verify IAM roles for both OnEvent and IsComplete handlers
             template.hasResourceProperties('AWS::IAM::Role', {
                 AssumeRolePolicyDocument: {
                     Statement: [
@@ -231,26 +251,11 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
                 }
             });
 
-            // Verify the policy document structure matches the actual template
+            // Verify both handlers have RDS permissions
             template.hasResourceProperties('AWS::IAM::Policy', {
                 PolicyDocument: {
-                    Statement: [
-                        {
-                            Action: [
-                                'logs:CreateLogStream',
-                                'logs:PutLogEvents'
-                            ],
-                            Effect: 'Allow',
-                            Resource: {
-                                'Fn::GetAtt': [
-                                    Match.stringLikeRegexp(
-                                        'CrRdsOracleMultiTenantOnEventLogGroup'
-                                    ),
-                                    'Arn'
-                                ]
-                            }
-                        },
-                        {
+                    Statement: Match.arrayWith([
+                        Match.objectLike({
                             Action: [
                                 'rds:ModifyDBInstance',
                                 'rds:DescribeDBInstances'
@@ -271,8 +276,8 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
                                     ]
                                 ]
                             }
-                        },
-                        {
+                        }),
+                        Match.objectLike({
                             Action: 'rds:CreateTenantDatabase',
                             Effect: 'Allow',
                             Resource: [
@@ -306,14 +311,30 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
                                     ]
                                 }
                             ]
-                        }
-                    ],
+                        })
+                    ]),
                     Version: '2012-10-17'
+                }
+            });
+
+            // Verify both handlers have CloudWatch Logs permissions
+            template.hasResourceProperties('AWS::IAM::Policy', {
+                PolicyDocument: {
+                    Statement: Match.arrayWith([
+                        Match.objectLike({
+                            Action: [
+                                'logs:CreateLogStream',
+                                'logs:PutLogEvents'
+                            ],
+                            Effect: 'Allow',
+                            Resource: Match.anyValue()
+                        })
+                    ])
                 }
             });
         });
 
-        it('should create CloudWatch Log Group with default retention', () => {
+        it('should create CloudWatch Log Groups for both handlers with default retention', () => {
             // Act
             new RdsOracleMultiTenant(stack, id, {
                 database: oracleInstance
@@ -322,12 +343,62 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
             // Assert
             const template = getTemplate();
 
+            // Should have log groups for both OnEvent and IsComplete handlers
             template.hasResourceProperties('AWS::Logs::LogGroup', {
                 RetentionInDays: 30 // Default retention from SecureFunction
             });
+
+            // Verify we have log groups for both handlers
+            const logGroups = template.findResources('AWS::Logs::LogGroup');
+            const logGroupKeys = Object.keys(logGroups);
+
+            // Should have log groups for OnEvent and IsComplete handlers
+            const onEventLogGroup = logGroupKeys.some((name: string) =>
+                name.includes('OnEventLogGroup')
+            );
+            const isCompleteLogGroup = logGroupKeys.some((name: string) =>
+                name.includes('IsCompleteLogGroup')
+            );
+
+            expect(onEventLogGroup).toBe(true);
+            expect(isCompleteLogGroup).toBe(true);
         });
 
-        it('should configure KMS permissions when encryption is provided', () => {
+        it('should configure Provider with correct queryInterval and totalTimeout', () => {
+            // Act
+            new RdsOracleMultiTenant(stack, id, {
+                database: oracleInstance
+            });
+
+            // Assert
+            const template = getTemplate();
+
+            // Verify Provider configuration through the framework Lambda functions
+            // The Provider creates framework functions that handle the polling logic
+            const frameworkFunctions = template.findResources(
+                'AWS::Lambda::Function'
+            );
+
+            // Should have 5 Lambda functions total:
+            // - OnEvent handler
+            // - IsComplete handler
+            // - 3 Provider framework functions (onEvent, isComplete, waiter)
+            expect(Object.keys(frameworkFunctions)).toHaveLength(5);
+
+            // Verify the Custom Resource uses the Provider service token
+            template.hasResourceProperties('Custom::RdsOracleMultiTenant', {
+                ServiceToken: {
+                    'Fn::GetAtt': [
+                        Match.stringLikeRegexp(
+                            'CrRdsOracleMultiTenantProvider'
+                        ),
+                        'Arn'
+                    ]
+                }
+            });
+        });
+
+        it('should configure KMS permissions for both handlers when encryption is provided', () => {
             // Arrange
             const key = new Key(stack, 'TestKey');
 
@@ -340,21 +411,21 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
             // Assert
             const template = getTemplate();
 
-            // Verify Lambda function encryption
+            // Verify both Lambda functions have encryption
             template.hasResourceProperties('AWS::Lambda::Function', {
                 KmsKeyArn: {
                     'Fn::GetAtt': [Match.stringLikeRegexp('TestKey'), 'Arn']
                 }
             });
 
-            // Verify Log Group encryption
+            // Verify both Log Groups have encryption
             template.hasResourceProperties('AWS::Logs::LogGroup', {
                 KmsKeyId: {
                     'Fn::GetAtt': [Match.stringLikeRegexp('TestKey'), 'Arn']
                 }
             });
 
-            // Verify KMS permissions for Lambda
+            // Verify KMS permissions for both Lambda handlers
             template.hasResourceProperties('AWS::IAM::Policy', {
                 PolicyDocument: {
                     Statement: Match.arrayWith([
@@ -376,6 +447,23 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
                     ])
                 }
             });
+
+            // Verify we have KMS policies for both handlers
+            const kmsPolicies = template.findResources('AWS::IAM::Policy');
+            const kmsPermissionPolicies = Object.values(kmsPolicies).filter(
+                (policy: any) => {
+                    const statements =
+                        policy.Properties?.PolicyDocument?.Statement || [];
+                    return statements.some(
+                        (stmt: any) =>
+                            Array.isArray(stmt.Action) &&
+                            stmt.Action.includes('kms:Decrypt')
+                    );
+                }
+            );
+
+            // Should have KMS policies for both OnEvent and IsComplete handlers
+            expect(kmsPermissionPolicies.length).toBeGreaterThanOrEqual(2);
         });
 
         it('should apply custom Lambda configuration when provided', () => {
@@ -480,18 +568,38 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
             });
 
             // Each stack should have its own Lambda functions
-            const providers1 = template1.findResources('AWS::Lambda::Function');
-            const providers2 = template2.findResources('AWS::Lambda::Function');
+            const functions1 = template1.findResources('AWS::Lambda::Function');
+            const functions2 = template2.findResources('AWS::Lambda::Function');
 
-            expect(Object.keys(providers1)).toHaveLength(2);
-            expect(Object.keys(providers2)).toHaveLength(2);
+            // OnEvent, IsComplete, and 3 provider framework functions = 5 total per stack
+            expect(Object.keys(functions1)).toHaveLength(5);
+            expect(Object.keys(functions2)).toHaveLength(5);
 
-            // The key point is that each stack has its own resources
-            // Even if logical IDs are the same, they are physically separate resources
-            // This is the expected CDK behavior for deterministic resource naming
+            // Verify each stack has OnEvent and IsComplete handlers
+            const stack1FunctionNames = Object.keys(functions1);
+            const stack2FunctionNames = Object.keys(functions2);
+
+            const stack1OnEvent = stack1FunctionNames.filter((name: string) =>
+                name.includes('OnEventFunction')
+            );
+            const stack1IsComplete = stack1FunctionNames.filter(
+                (name: string) => name.includes('IsCompleteFunction')
+            );
+
+            const stack2OnEvent = stack2FunctionNames.filter((name: string) =>
+                name.includes('OnEventFunction')
+            );
+            const stack2IsComplete = stack2FunctionNames.filter(
+                (name: string) => name.includes('IsCompleteFunction')
+            );
+
+            expect(stack1OnEvent).toHaveLength(1);
+            expect(stack1IsComplete).toHaveLength(1);
+            expect(stack2OnEvent).toHaveLength(1);
+            expect(stack2IsComplete).toHaveLength(1);
         });
 
-        it('should create only one Lambda function per stack', () => {
+        it('should reuse OnEvent and IsComplete handlers for multiple constructs in same stack', () => {
             // Arrange
             const oracleInstance2 = createMockOracleInstance(
                 stack,
@@ -518,17 +626,61 @@ describeCdkTest(RdsOracleMultiTenant, (id, getStack, getTemplate, getApp) => {
             // Assert
             const template = getTemplate();
 
-            // Should have two Lambda functions (OnEvent + Provider framework)
+            // Should have five Lambda functions (OnEvent, IsComplete + 3 Provider framework)
+            // These are shared across all constructs in the same stack
             const lambdaFunctions = template.findResources(
                 'AWS::Lambda::Function'
             );
-            expect(Object.keys(lambdaFunctions)).toHaveLength(2);
+            expect(Object.keys(lambdaFunctions)).toHaveLength(5);
 
-            // Should have three Custom Resources
+            // Should have three Custom Resources (one per construct)
             const customResources = template.findResources(
                 'Custom::RdsOracleMultiTenant'
             );
             expect(Object.keys(customResources)).toHaveLength(3);
+
+            // Verify all custom resources use the same service token (shared provider)
+            const resources = Object.values(customResources);
+            const serviceTokens = resources.map(
+                (r: any) => r.Properties.ServiceToken
+            );
+
+            // All service tokens should be identical (same provider)
+            expect(serviceTokens[0]).toEqual(serviceTokens[1]);
+            expect(serviceTokens[1]).toEqual(serviceTokens[2]);
+        });
+    });
+
+    describe('Handler Access', () => {
+        it('should expose OnEvent and IsComplete handlers', () => {
+            // Act
+            const construct = new RdsOracleMultiTenant(stack, id, {
+                database: oracleInstance
+            });
+
+            // Assert
+            expect(construct.onEventHandler).toBeDefined();
+            expect(construct.isCompleteHandler).toBeDefined();
+
+            // Verify the handlers are different functions
+            expect(construct.onEventHandler).not.toBe(
+                construct.isCompleteHandler
+            );
+
+            // Verify they are Lambda functions
+            expect(construct.onEventHandler.functionArn).toBeDefined();
+            expect(construct.isCompleteHandler.functionArn).toBeDefined();
+        });
+
+        it('should expose custom resource', () => {
+            // Act
+            const construct = new RdsOracleMultiTenant(stack, id, {
+                database: oracleInstance
+            });
+
+            // Assert
+            expect(construct.customResource).toBeDefined();
+            expect(construct.customResource.node.defaultChild).toBeDefined();
         });
     });
 

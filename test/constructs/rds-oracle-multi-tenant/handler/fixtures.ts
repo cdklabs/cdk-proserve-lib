@@ -2,11 +2,22 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { DBInstance, RDSServiceException } from '@aws-sdk/client-rds';
-import { ResourceProperties } from '../../../../src/constructs/rds-oracle-multi-tenant/handler';
+import {
+    CdkCustomResourceEvent,
+    CdkCustomResourceIsCompleteEvent,
+    Context
+} from 'aws-lambda';
+import {
+    ConversionStatus,
+    IConversionState
+} from '../../../../src/constructs/rds-oracle-multi-tenant/handler/types/conversion-status';
+import { IResourceProperties } from '../../../../src/constructs/rds-oracle-multi-tenant/handler/types/resource-properties';
+import { IResponseData } from '../../../../src/constructs/rds-oracle-multi-tenant/handler/types/resource-response';
 import {
     buildMockCreateEvent,
     buildMockUpdateEvent,
-    buildMockDeleteEvent
+    buildMockDeleteEvent,
+    mockContext
 } from '../../../fixtures';
 
 /**
@@ -17,9 +28,29 @@ export const mockDBInstanceId = 'test-db-instance';
 /**
  * Mock resource properties for RDS Oracle MultiTenant
  */
-export const mockResourceProperties: ResourceProperties = {
+export const mockResourceProperties: IResourceProperties = {
     DBInstanceIdentifier: mockDBInstanceId
 };
+
+/**
+ * Mock physical resource ID for tracking operations
+ */
+export const mockPhysicalResourceId = `rds-oracle-multi-tenant-${mockDBInstanceId}`;
+
+/**
+ * Mock Lambda context for handler testing
+ */
+export { mockContext };
+
+// =============================================================================
+// Legacy Type Compatibility
+// =============================================================================
+
+/**
+ * Legacy ResourceProperties type for backward compatibility
+ * @deprecated Use IResourceProperties instead
+ */
+export type ResourceProperties = IResourceProperties;
 
 /**
  * Mock valid Oracle database instance (Enterprise Edition, 19c, available)
@@ -108,41 +139,111 @@ export const mockFailedInstance: DBInstance = {
 };
 
 /**
- * Mock CREATE event for RDS Oracle MultiTenant
+ * Resource type for RDS Oracle MultiTenant custom resource
  */
-export const mockCreateEvent = buildMockCreateEvent(
-    'Custom::RdsOracleMultiTenant',
-    mockResourceProperties
-);
+export const resourceType = 'Custom::RdsOracleMultiTenant';
+
+// =============================================================================
+// OnEvent Handler Events
+// =============================================================================
 
 /**
- * Mock UPDATE event for RDS Oracle MultiTenant
+ * Mock CREATE event for OnEvent handler
  */
-export const mockUpdateEvent = buildMockUpdateEvent(
-    `rds-oracle-multitenant-${mockDBInstanceId}`,
-    'Custom::RdsOracleMultiTenant',
-    mockResourceProperties,
-    mockResourceProperties
-);
+export const mockOnEventCreateEvent: CdkCustomResourceEvent<IResourceProperties> =
+    buildMockCreateEvent(resourceType, mockResourceProperties);
 
 /**
- * Mock UPDATE event with different DB instance identifier
+ * Mock UPDATE event for OnEvent handler
  */
-export const mockUpdateEventWithDifferentId = buildMockUpdateEvent(
-    `rds-oracle-multitenant-${mockDBInstanceId}`,
-    'Custom::RdsOracleMultiTenant',
-    { DBInstanceIdentifier: 'new-db-instance' },
-    mockResourceProperties
-);
+export const mockOnEventUpdateEvent: CdkCustomResourceEvent<IResourceProperties> =
+    buildMockUpdateEvent(
+        mockPhysicalResourceId,
+        resourceType,
+        mockResourceProperties,
+        mockResourceProperties
+    );
 
 /**
- * Mock DELETE event for RDS Oracle MultiTenant
+ * Mock UPDATE event with different DB instance identifier for OnEvent handler
  */
-export const mockDeleteEvent = buildMockDeleteEvent(
-    `rds-oracle-multitenant-${mockDBInstanceId}`,
-    'Custom::RdsOracleMultiTenant',
-    mockResourceProperties
-);
+export const mockOnEventUpdateEventWithDifferentId: CdkCustomResourceEvent<IResourceProperties> =
+    buildMockUpdateEvent(
+        mockPhysicalResourceId,
+        resourceType,
+        { DBInstanceIdentifier: 'new-db-instance' },
+        mockResourceProperties
+    );
+
+/**
+ * Mock DELETE event for OnEvent handler
+ */
+export const mockOnEventDeleteEvent: CdkCustomResourceEvent<IResourceProperties> =
+    buildMockDeleteEvent(
+        mockPhysicalResourceId,
+        resourceType,
+        mockResourceProperties
+    );
+
+// =============================================================================
+// IsComplete Handler Events
+// =============================================================================
+
+/**
+ * Mock CREATE IsComplete event
+ */
+export const mockIsCompleteCreateEvent: CdkCustomResourceIsCompleteEvent<IResourceProperties> =
+    {
+        ...mockOnEventCreateEvent,
+        PhysicalResourceId: mockPhysicalResourceId
+    };
+
+/**
+ * Mock UPDATE IsComplete event
+ */
+export const mockIsCompleteUpdateEvent: CdkCustomResourceIsCompleteEvent<IResourceProperties> =
+    {
+        ...mockOnEventUpdateEvent,
+        PhysicalResourceId: mockPhysicalResourceId
+    };
+
+/**
+ * Mock DELETE IsComplete event
+ */
+export const mockIsCompleteDeleteEvent: CdkCustomResourceIsCompleteEvent<IResourceProperties> =
+    {
+        ...mockOnEventDeleteEvent,
+        PhysicalResourceId: mockPhysicalResourceId
+    };
+
+// =============================================================================
+// Legacy Events (for backward compatibility with existing tests)
+// =============================================================================
+
+/**
+ * Mock CREATE event for RDS Oracle MultiTenant (legacy)
+ * @deprecated Use mockOnEventCreateEvent instead
+ */
+export const mockCreateEvent = mockOnEventCreateEvent;
+
+/**
+ * Mock UPDATE event for RDS Oracle MultiTenant (legacy)
+ * @deprecated Use mockOnEventUpdateEvent instead
+ */
+export const mockUpdateEvent = mockOnEventUpdateEvent;
+
+/**
+ * Mock UPDATE event with different DB instance identifier (legacy)
+ * @deprecated Use mockOnEventUpdateEventWithDifferentId instead
+ */
+export const mockUpdateEventWithDifferentId =
+    mockOnEventUpdateEventWithDifferentId;
+
+/**
+ * Mock DELETE event for RDS Oracle MultiTenant (legacy)
+ * @deprecated Use mockOnEventDeleteEvent instead
+ */
+export const mockDeleteEvent = mockOnEventDeleteEvent;
 
 /**
  * Mock RDS Service Exception
@@ -164,3 +265,230 @@ export const mockTimeoutInstance: DBInstance = {
         MultiTenant: true
     }
 };
+
+// =============================================================================
+// Conversion State Fixtures
+// =============================================================================
+
+/**
+ * Mock conversion state for not started conversion
+ */
+export const mockNotStartedConversionState: IConversionState = {
+    status: ConversionStatus.NOT_STARTED,
+    dbInstanceStatus: 'available',
+    hasPendingModifications: false,
+    pendingModifications: {}
+};
+
+/**
+ * Mock conversion state for in-progress conversion
+ */
+export const mockInProgressConversionState: IConversionState = {
+    status: ConversionStatus.IN_PROGRESS,
+    dbInstanceStatus: 'modifying',
+    hasPendingModifications: true,
+    pendingModifications: {
+        MultiTenant: true
+    }
+};
+
+/**
+ * Mock conversion state for completed conversion
+ */
+export const mockCompletedConversionState: IConversionState = {
+    status: ConversionStatus.COMPLETED,
+    dbInstanceStatus: 'available',
+    hasPendingModifications: false,
+    pendingModifications: {}
+};
+
+/**
+ * Mock conversion state for failed conversion
+ */
+export const mockFailedConversionState: IConversionState = {
+    status: ConversionStatus.FAILED,
+    dbInstanceStatus: 'failed',
+    hasPendingModifications: false,
+    pendingModifications: {},
+    errorMessage: 'MultiTenant conversion failed with database status: failed'
+};
+
+/**
+ * Mock conversion state for incompatible parameters failure
+ */
+export const mockIncompatibleParametersConversionState: IConversionState = {
+    status: ConversionStatus.FAILED,
+    dbInstanceStatus: 'incompatible-parameters',
+    hasPendingModifications: false,
+    pendingModifications: {},
+    errorMessage:
+        'MultiTenant conversion failed with database status: incompatible-parameters'
+};
+
+// =============================================================================
+// Response Data Fixtures
+// =============================================================================
+
+/**
+ * Mock response data for completed conversion
+ */
+export const mockCompletedResponseData: IResponseData = {
+    DBInstanceIdentifier: mockDBInstanceId,
+    MultiTenantStatus: ConversionStatus.COMPLETED,
+    ModificationStatus: 'available',
+    PendingModifications: undefined
+};
+
+/**
+ * Mock response data for in-progress conversion
+ */
+export const mockInProgressResponseData: IResponseData = {
+    DBInstanceIdentifier: mockDBInstanceId,
+    MultiTenantStatus: ConversionStatus.IN_PROGRESS,
+    ModificationStatus: 'modifying',
+    PendingModifications: JSON.stringify({ MultiTenant: true })
+};
+
+/**
+ * Mock response data for UPDATE operation (current state)
+ */
+export const mockUpdateResponseData: IResponseData = {
+    DBInstanceIdentifier: mockDBInstanceId,
+    MultiTenantStatus: ConversionStatus.COMPLETED,
+    ModificationStatus: 'available',
+    PendingModifications: undefined
+};
+
+// =============================================================================
+// Additional Database Instance Scenarios
+// =============================================================================
+
+/**
+ * Mock Oracle database instance with null pending modifications
+ */
+export const mockInstanceWithNullPendingModifications: DBInstance = {
+    ...mockValidOracleInstance,
+    DBInstanceStatus: 'available',
+    PendingModifiedValues: null as any
+};
+
+/**
+ * Mock Oracle database instance with undefined status
+ */
+export const mockInstanceWithUndefinedStatus: DBInstance = {
+    ...mockValidOracleInstance,
+    DBInstanceStatus: undefined as any,
+    PendingModifiedValues: {}
+};
+
+/**
+ * Mock Oracle database instance in creating state
+ */
+export const mockCreatingInstance: DBInstance = {
+    ...mockValidOracleInstance,
+    DBInstanceStatus: 'creating'
+};
+
+/**
+ * Mock Oracle database instance in backing-up state
+ */
+export const mockBackingUpInstance: DBInstance = {
+    ...mockValidOracleInstance,
+    DBInstanceStatus: 'backing-up'
+};
+
+/**
+ * Mock Oracle database instance in maintenance state
+ */
+export const mockMaintenanceInstance: DBInstance = {
+    ...mockValidOracleInstance,
+    DBInstanceStatus: 'maintenance'
+};
+
+/**
+ * Mock Oracle database instance with complex pending modifications
+ */
+export const mockInstanceWithComplexPendingModifications: DBInstance = {
+    ...mockValidOracleInstance,
+    DBInstanceStatus: 'modifying',
+    PendingModifiedValues: {
+        MultiTenant: true,
+        DBInstanceClass: 'db.t3.large',
+        AllocatedStorage: 100,
+        BackupRetentionPeriod: 7
+    }
+};
+
+// =============================================================================
+// Event Builder Helpers
+// =============================================================================
+
+/**
+ * Creates a mock OnEvent CREATE event with custom properties
+ */
+export function createMockOnEventCreateEvent(
+    resourceProperties: IResourceProperties = mockResourceProperties
+): CdkCustomResourceEvent<IResourceProperties> {
+    return buildMockCreateEvent(resourceType, resourceProperties);
+}
+
+/**
+ * Creates a mock OnEvent UPDATE event with custom properties
+ */
+export function createMockOnEventUpdateEvent(
+    physicalResourceId: string = mockPhysicalResourceId,
+    resourceProperties: IResourceProperties = mockResourceProperties,
+    oldResourceProperties: IResourceProperties = mockResourceProperties
+): CdkCustomResourceEvent<IResourceProperties> {
+    return buildMockUpdateEvent(
+        physicalResourceId,
+        resourceType,
+        resourceProperties,
+        oldResourceProperties
+    );
+}
+
+/**
+ * Creates a mock OnEvent DELETE event with custom properties
+ */
+export function createMockOnEventDeleteEvent(
+    physicalResourceId: string = mockPhysicalResourceId,
+    resourceProperties: IResourceProperties = mockResourceProperties
+): CdkCustomResourceEvent<IResourceProperties> {
+    return buildMockDeleteEvent(
+        physicalResourceId,
+        resourceType,
+        resourceProperties
+    );
+}
+
+/**
+ * Creates a mock IsComplete event with custom properties
+ */
+export function createMockIsCompleteEvent(
+    requestType: 'Create' | 'Update' | 'Delete',
+    physicalResourceId: string = mockPhysicalResourceId,
+    resourceProperties: IResourceProperties = mockResourceProperties
+): CdkCustomResourceIsCompleteEvent<IResourceProperties> {
+    const baseEvent = (() => {
+        switch (requestType) {
+            case 'Create':
+                return mockOnEventCreateEvent;
+            case 'Update':
+                return mockOnEventUpdateEvent;
+            case 'Delete':
+                return mockOnEventDeleteEvent;
+            default:
+                throw new Error(`Unsupported request type: ${requestType}`);
+        }
+    })();
+
+    return {
+        ...baseEvent,
+        PhysicalResourceId: physicalResourceId,
+        ResourceProperties: {
+            ...baseEvent.ResourceProperties,
+            ...resourceProperties
+        }
+    };
+}
