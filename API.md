@@ -2567,6 +2567,8 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.customResource">customResource</a></code> | <code>aws-cdk-lib.CustomResource</code> | The Custom Resource that manages the Oracle MultiTenant configuration. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.isCompleteHandler">isCompleteHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | The Lambda function that handles IsComplete requests for the custom resource. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.onEventHandler">onEventHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | The Lambda function that handles OnEvent requests for the custom resource. |
 
 ---
 
@@ -2619,6 +2621,34 @@ const dbId = multiTenant.customResource.getAttString('DBInstanceIdentifier');
 const status = multiTenant.customResource.getAttString('MultiTenantStatus');
 ```
 
+
+##### `isCompleteHandler`<sup>Required</sup> <a name="isCompleteHandler" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.isCompleteHandler"></a>
+
+```typescript
+public readonly isCompleteHandler: IFunction;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.IFunction
+
+The Lambda function that handles IsComplete requests for the custom resource.
+
+This function monitors the conversion progress and determines when the operation is complete.
+
+---
+
+##### `onEventHandler`<sup>Required</sup> <a name="onEventHandler" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.onEventHandler"></a>
+
+```typescript
+public readonly onEventHandler: IFunction;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.IFunction
+
+The Lambda function that handles OnEvent requests for the custom resource.
+
+This function performs validation and initiates the Oracle MultiTenant conversion.
+
+---
 
 
 ### WebApplicationFirewall <a name="WebApplicationFirewall" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall"></a>
