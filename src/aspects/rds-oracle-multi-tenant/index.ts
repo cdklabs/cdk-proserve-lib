@@ -32,21 +32,6 @@ interface ValidationResult {
 }
 
 /**
- * Processing statistics for the RDS Oracle MultiTenant Aspect
- */
-export interface ProcessingStatistics {
-    /**
-     * Number of Oracle database instances that have been processed
-     */
-    readonly processedInstancesCount: number;
-
-    /**
-     * Array of instance identifiers that have been processed
-     */
-    readonly processedInstanceIds: string[];
-}
-
-/**
  * Properties for configuring the RDS Oracle MultiTenant Aspect
  *
  * @see {@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html | Oracle MultiTenant on Amazon RDS}
@@ -78,9 +63,9 @@ export interface RdsOracleMultiTenantProps {
 /**
  * An Aspect that automatically enables Oracle MultiTenant configuration on RDS Oracle database instances.
  *
- * This Aspect implements the cross-cutting concern pattern to apply Oracle MultiTenant configuration
- * to multiple RDS Oracle instances across a CDK application automatically. When applied to a construct
- * tree, it identifies all RDS Oracle database instances and enables MultiTenant architecture on each one.
+ * This Aspect will apply Oracle MultiTenant configuration to multiple RDS Oracle instances across a CDK
+ * application automatically. When applied to a construct tree, it identifies all RDS Oracle database
+ * instances and enables MultiTenant architecture on each one.
  *
  * The Aspect follows the established pattern of Lambda-backed custom resources used throughout the
  * CDK ProServe Library, providing a secure and reliable way to configure Oracle MultiTenant settings
@@ -104,32 +89,6 @@ export interface RdsOracleMultiTenantProps {
  * - **Status**: Database must be in 'available' state
  * - **Configuration**: Oracle Data Guard must not be enabled (incompatible with MultiTenant conversion)
  *
- * ## Important Considerations
- *
- * - **Irreversible Operation**: Oracle MultiTenant conversion cannot be undone once applied
- * - **Downtime Required**: Conversion requires a database restart, causing temporary unavailability
- * - **Connection Impact**: All existing database connections will be terminated during the restart
- * - **Backup Recommendation**: Ensure you have a recent backup before performing the conversion
- *
- * ## Security and Permissions
- *
- * The Aspect creates Lambda functions with minimal required permissions:
- * - `rds:ModifyDBInstance` - To enable MultiTenant configuration
- * - `rds:DescribeDBInstances` - To monitor conversion status and validate prerequisites
- * - KMS permissions (if encryption key provided) - For encrypting Lambda environment variables
- *
- * ## Monitoring and Troubleshooting
- *
- * The Lambda functions provide comprehensive logging for:
- * - Database validation steps and results
- * - MultiTenant conversion progress
- * - Error conditions with detailed messages
- * - Status monitoring during the conversion process
- *
- * Monitor the conversion through:
- * - CloudWatch Logs for the Lambda functions
- * - RDS Events for database-level notifications
- * - CloudFormation stack events for resource status
  *
  * @example
  * Basic usage applied to an entire CDK application:
@@ -141,41 +100,6 @@ export interface RdsOracleMultiTenantProps {
  *
  * // Apply to all Oracle instances in the application
  * Aspects.of(app).add(new RdsOracleMultiTenant());
- *
- * @example
- * Advanced usage with encryption and custom Lambda configuration:
- *
- * import { Aspects } from 'aws-cdk-lib';
- * import { RdsOracleMultiTenant } from '@cdklabs/cdk-proserve-lib/aspects';
- * import { Key } from 'aws-cdk-lib/aws-kms';
- * import { Vpc, SubnetType, SecurityGroup } from 'aws-cdk-lib/aws-ec2';
- * import { RetentionDays } from 'aws-cdk-lib/aws-logs';
- *
- * declare const stack: Stack;
- * declare const kmsKey: Key;
- * declare const vpc: Vpc;
- * declare const securityGroup: SecurityGroup;
- *
- * Aspects.of(stack).add(new RdsOracleMultiTenant({
- *   encryption: kmsKey,
- *   lambdaConfiguration: {
- *     vpc: vpc,
- *     subnets: { subnetType: SubnetType.PRIVATE_WITH_EGRESS },
- *     securityGroups: [securityGroup],
- *     logGroupRetention: RetentionDays.THREE_MONTHS,
- *   },
- * }));
- *
- * @example
- * Applying to a specific construct scope:
- *
- * import { Aspects } from 'aws-cdk-lib';
- * import { RdsOracleMultiTenant } from '@cdklabs/cdk-proserve-lib/aspects';
- *
- * declare const databaseConstruct: Construct;
- *
- * // Apply only to Oracle instances within this specific construct
- * Aspects.of(databaseConstruct).add(new RdsOracleMultiTenant());
  *
  * @see {@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html | Oracle MultiTenant on Amazon RDS}
  */
@@ -207,41 +131,8 @@ export class RdsOracleMultiTenant implements IAspect {
      * 4. Skip non-Oracle databases silently
      * 5. Prevent duplicate processing of the same instance
      *
-     * ## Configuration Application
-     *
-     * All configuration properties provided to the Aspect will be applied consistently
-     * to every Oracle database instance found in the construct tree:
-     * - Encryption settings will be applied to all Lambda functions
-     * - Lambda configuration will be used for all custom resource handlers
-     * - Provider reuse will be maintained within each stack
-     *
-     * ## Error Handling
-     *
-     * The Aspect handles various scenarios gracefully:
-     * - Non-Oracle databases are skipped silently
-     * - Invalid Oracle configurations are logged but don't fail the deployment
-     * - Duplicate processing is prevented through instance tracking
-     * - Runtime errors are handled by the Lambda functions
-     *
      * @param props - Optional configuration properties for the Oracle MultiTenant Aspect
      *
-     * @example
-     * Creating an Aspect with minimal configuration:
-     *
-     * const aspect = new RdsOracleMultiTenant();
-     *
-     * @example
-     * Creating an Aspect with full configuration:
-     *
-     * const aspect = new RdsOracleMultiTenant({
-     *   encryption: myKmsKey,
-     *   lambdaConfiguration: {
-     *     vpc: myVpc,
-     *     subnets: { subnetType: SubnetType.PRIVATE_WITH_EGRESS },
-     *     securityGroups: [mySecurityGroup],
-     *     logGroupRetention: RetentionDays.ONE_MONTH,
-     *   },
-     * });
      */
     constructor(props: RdsOracleMultiTenantProps = {}) {
         this.props = props;
@@ -267,21 +158,6 @@ export class RdsOracleMultiTenant implements IAspect {
      * - If already processed → skip silently with warning
      * - If Oracle and not processed → apply MultiTenant configuration
      *
-     * ## Error Handling
-     *
-     * The method handles errors gracefully:
-     * - Construction errors are thrown immediately
-     * - Runtime validation errors are handled by Lambda functions
-     * - Invalid configurations are logged but don't fail the deployment
-     * - Edge cases and validation failures are logged with appropriate warnings
-     *
-     * ## Provider Reuse
-     *
-     * The method maintains efficient resource usage:
-     * - Lambda functions and providers are reused within the same stack
-     * - Separate providers are created for different stacks
-     * - Custom Resources are created for each Oracle instance
-     *
      * @param node - The construct being visited by the Aspect
      *
      * @example
@@ -294,35 +170,28 @@ export class RdsOracleMultiTenant implements IAspect {
     visit(node: IConstruct): void {
         // Check if the node is a DatabaseInstance
         if (node instanceof DatabaseInstance) {
-            try {
-                // Validate the database instance configuration
-                const validationResult = this.validateDatabaseInstance(node);
+            // Validate the database instance configuration
+            const validationResult = this.validateDatabaseInstance(node);
 
-                if (!validationResult.isValid) {
-                    // Log validation failure details but continue processing other instances
-                    this.logValidationFailure(node, validationResult);
-                    return;
-                }
-
-                // Check if it's an Oracle database
-                if (!this.isOracleDatabase(node)) {
-                    // Skip non-Oracle databases silently (this is expected behavior)
-                    return;
-                }
-
-                // Check if it has already been processed
-                if (this.isAlreadyProcessed(node)) {
-                    // Skip already processed instances with warning
-                    this.logDuplicateProcessingAttempt(node);
-                    return;
-                }
-
-                // Apply Oracle MultiTenant configuration
-                this.applyMultiTenantConfiguration(node);
-            } catch (error) {
-                // Handle unexpected errors gracefully
-                this.handleProcessingError(node, error);
+            if (!validationResult.isValid) {
+                // Log validation failure details but continue processing other instances
+                return;
             }
+
+            // Check if it's an Oracle database
+            if (!this.isOracleDatabase(node)) {
+                // Skip non-Oracle databases silently (this is expected behavior)
+                return;
+            }
+
+            // Check if it has already been processed
+            if (this.isAlreadyProcessed(node)) {
+                // Skip already processed instances with warning
+                return;
+            }
+
+            // Apply Oracle MultiTenant configuration
+            this.applyMultiTenantConfiguration(node);
         }
     }
 
@@ -382,127 +251,6 @@ export class RdsOracleMultiTenant implements IAspect {
     }
 
     /**
-     * Logs validation failure details with appropriate warning level.
-     *
-     * This method provides detailed logging for database instances that fail
-     * basic validation checks, helping developers understand why certain
-     * instances are being skipped.
-     *
-     * @param instance - The DatabaseInstance that failed validation
-     * @param validationResult - The validation result containing failure details
-     */
-    private logValidationFailure(
-        instance: DatabaseInstance,
-        validationResult: ValidationResult
-    ): void {
-        const instancePath = instance.node.path;
-
-        console.warn(
-            `⚠️  Oracle MultiTenant Aspect: Skipping database instance due to validation failure`
-        );
-        console.warn(`   Instance Path: ${instancePath}`);
-        console.warn(`   Reason: ${validationResult.reason}`);
-
-        if (validationResult.details) {
-            console.warn(`   Details: ${validationResult.details}`);
-        }
-
-        console.warn(
-            `   This instance will be skipped and no Oracle MultiTenant configuration will be applied.`
-        );
-    }
-
-    /**
-     * Logs when a duplicate processing attempt is detected.
-     *
-     * This method provides visibility into duplicate processing attempts,
-     * which can occur when the same Aspect is applied at multiple scopes
-     * or when there are overlapping Aspect applications.
-     *
-     * @param instance - The DatabaseInstance that was already processed
-     */
-    private logDuplicateProcessingAttempt(instance: DatabaseInstance): void {
-        try {
-            const instanceId = this.extractInstanceIdentifier(instance);
-            const instancePath = instance.node.path;
-
-            console.warn(
-                `⚠️  Oracle MultiTenant Aspect: Duplicate processing attempt detected`
-            );
-            console.warn(`   Instance ID: ${instanceId || 'unknown'}`);
-            console.warn(`   Instance Path: ${instancePath}`);
-            console.warn(
-                `   This Oracle instance has already been processed by this Aspect.`
-            );
-            console.warn(
-                `   Skipping to prevent duplicate Custom Resource creation.`
-            );
-            console.warn(
-                `   Tip: Ensure the Aspect is only applied once per instance scope.`
-            );
-        } catch (error) {
-            console.warn(
-                `⚠️  Oracle MultiTenant Aspect: Duplicate processing attempt detected for instance at path: ${instance.node.path}`
-            );
-            console.warn(
-                `   Could not extract instance details for logging: ${error instanceof Error ? error.message : String(error)}`
-            );
-        }
-    }
-
-    /**
-     * Handles unexpected errors during instance processing.
-     *
-     * This method provides comprehensive error handling and logging for
-     * unexpected errors that occur during database instance processing,
-     * ensuring that errors don't fail the entire deployment.
-     *
-     * @param instance - The DatabaseInstance being processed when the error occurred
-     * @param error - The error that occurred
-     */
-    private handleProcessingError(
-        instance: DatabaseInstance,
-        error: unknown
-    ): void {
-        const instancePath = instance.node.path;
-        const errorMessage =
-            error instanceof Error ? error.message : String(error);
-        const errorStack = error instanceof Error ? error.stack : undefined;
-
-        console.error(
-            `❌ Oracle MultiTenant Aspect: Unexpected error processing database instance`
-        );
-        console.error(`   Instance Path: ${instancePath}`);
-        console.error(`   Error: ${errorMessage}`);
-
-        if (errorStack) {
-            console.error(`   Stack Trace: ${errorStack}`);
-        }
-
-        // Try to extract instance identifier for better error reporting
-        try {
-            const instanceId = this.extractInstanceIdentifier(instance);
-            if (instanceId) {
-                console.error(`   Instance ID: ${instanceId}`);
-                console.error(
-                    `   Failed to process Oracle instance: ${instanceId}`
-                );
-            }
-        } catch (identifierError) {
-            console.error(
-                `   Could not extract instance identifier for error reporting: ${identifierError instanceof Error ? identifierError.message : String(identifierError)}`
-            );
-        }
-
-        console.error(
-            `   This instance will be skipped. Other instances will continue to be processed.`
-        );
-        console.error(
-            `   If this is an Oracle instance, manual configuration may be required.`
-        );
-    }
-
-    /**
      * Determines if a DatabaseInstance is using an Oracle engine.
      *
      * This method validates that the database instance is running Oracle Database,
@@ -529,62 +277,25 @@ export class RdsOracleMultiTenant implements IAspect {
      */
     private isOracleDatabase(instance: DatabaseInstance): boolean {
         try {
-            const instanceId =
-                this.extractInstanceIdentifier(instance) || 'unknown';
-
             // Get the engine from the database instance
             const engine = instance.engine;
-
             if (!engine) {
-                console.debug(
-                    `Oracle MultiTenant Aspect: Instance ${instanceId} has no engine configuration - skipping`
-                );
                 return false;
             }
 
             // Check if the engine type is Oracle
             // Oracle engine types include: oracle-se2, oracle-se1, oracle-se, oracle-ee
             const engineType = engine.engineType;
-
             if (!engineType) {
-                console.debug(
-                    `Oracle MultiTenant Aspect: Instance ${instanceId} has no engine type - skipping`
-                );
                 return false;
             }
 
             // Check if the engine type starts with 'oracle'
             const isOracle = engineType.toLowerCase().startsWith('oracle');
 
-            if (isOracle) {
-                console.debug(
-                    `Oracle MultiTenant Aspect: Instance ${instanceId} is Oracle database (${engineType}) - will process`
-                );
-            } else {
-                console.debug(
-                    `Oracle MultiTenant Aspect: Instance ${instanceId} is not Oracle database (${engineType}) - skipping`
-                );
-            }
-
             return isOracle;
         } catch (error) {
             // If there's any error accessing the engine properties, assume it's not Oracle
-            const instanceId =
-                this.extractInstanceIdentifier(instance) || 'unknown';
-            const errorMessage =
-                error instanceof Error ? error.message : String(error);
-
-            console.warn(
-                `⚠️  Oracle MultiTenant Aspect: Error checking database engine for instance ${instanceId}`
-            );
-            console.warn(`   Error: ${errorMessage}`);
-            console.warn(
-                `   Assuming instance is not Oracle to avoid processing errors`
-            );
-            console.warn(
-                `   If this is an Oracle instance, manual verification may be required`
-            );
-
             return false;
         }
     }
@@ -616,38 +327,14 @@ export class RdsOracleMultiTenant implements IAspect {
 
             // If the instance doesn't have an identifier, we can't track it reliably
             if (!instanceId) {
-                console.warn(
-                    `⚠️  Oracle MultiTenant Aspect: Database instance at path ${instance.node.path} does not have an identifier`
-                );
-                console.warn(
-                    `   Cannot track processing status for instances without identifiers`
-                );
-                console.warn(
-                    `   This instance will be treated as not processed, but duplicate prevention may not work correctly`
-                );
                 return false;
             }
 
             const isProcessed = this.processedInstances.has(instanceId);
 
-            if (isProcessed) {
-                console.debug(
-                    `Oracle MultiTenant Aspect: Instance ${instanceId} has already been processed`
-                );
-            }
-
             return isProcessed;
         } catch (error) {
             // If there's any error accessing the instance identifier, assume it hasn't been processed
-            const errorMessage =
-                error instanceof Error ? error.message : String(error);
-            console.warn(
-                `⚠️  Oracle MultiTenant Aspect: Error checking processing status for database instance at path ${instance.node.path}`
-            );
-            console.warn(`   Error: ${errorMessage}`);
-            console.warn(
-                `   Assuming instance has not been processed to avoid skipping valid instances`
-            );
             return false;
         }
     }
@@ -677,87 +364,25 @@ export class RdsOracleMultiTenant implements IAspect {
             const instanceId = instance.instanceIdentifier;
 
             if (!instanceId) {
-                console.warn(
-                    `⚠️  Oracle MultiTenant Aspect: Database instance at path ${instance.node.path} has null or undefined identifier`
-                );
-                console.warn(
-                    `   Instance identifiers are required for tracking and Custom Resource creation`
-                );
-                console.warn(
-                    `   Ensure the database instance is properly configured with an identifier`
-                );
                 return null;
             }
 
             if (typeof instanceId !== 'string') {
-                console.warn(
-                    `⚠️  Oracle MultiTenant Aspect: Database instance at path ${instance.node.path} has non-string identifier`
-                );
-                console.warn(`   Identifier type: ${typeof instanceId}`);
-                console.warn(`   Identifier value: ${String(instanceId)}`);
-                console.warn(
-                    `   Instance identifiers must be strings for proper processing`
-                );
                 return null;
             }
 
             if (instanceId.trim() === '') {
-                console.warn(
-                    `⚠️  Oracle MultiTenant Aspect: Database instance at path ${instance.node.path} has empty identifier`
-                );
-                console.warn(
-                    `   Empty identifiers cannot be used for tracking or Custom Resource creation`
-                );
-                console.warn(
-                    `   Ensure the database instance has a meaningful identifier`
-                );
                 return null;
             }
 
             // Validate identifier format (basic AWS RDS identifier rules)
             const trimmedId = instanceId.trim();
             if (trimmedId.length < 1 || trimmedId.length > 63) {
-                console.warn(
-                    `⚠️  Oracle MultiTenant Aspect: Database instance identifier "${trimmedId}" has invalid length`
-                );
-                console.warn(
-                    `   RDS instance identifiers must be between 1 and 63 characters`
-                );
-                console.warn(`   Current length: ${trimmedId.length}`);
                 return null;
-            }
-
-            // Check for valid characters (basic validation)
-            // Skip validation for CDK tokens (they contain ${Token[...]} format)
-            const isCdkToken =
-                trimmedId.includes('${Token[') || trimmedId.includes('Token[');
-            if (!isCdkToken) {
-                const validIdentifierPattern = /^[a-zA-Z][a-zA-Z0-9-]*$/;
-                if (!validIdentifierPattern.test(trimmedId)) {
-                    console.warn(
-                        `⚠️  Oracle MultiTenant Aspect: Database instance identifier "${trimmedId}" contains invalid characters`
-                    );
-                    console.warn(
-                        `   RDS instance identifiers must start with a letter and contain only letters, numbers, and hyphens`
-                    );
-                    console.warn(
-                        `   This may cause issues with Custom Resource creation`
-                    );
-                    // Don't return null here as the identifier might still work, just warn
-                }
             }
 
             return trimmedId;
         } catch (error) {
-            const errorMessage =
-                error instanceof Error ? error.message : String(error);
-            console.warn(
-                `⚠️  Oracle MultiTenant Aspect: Error extracting instance identifier from database instance at path ${instance.node.path}`
-            );
-            console.warn(`   Error: ${errorMessage}`);
-            console.warn(
-                `   This may indicate a problem with the database instance configuration`
-            );
             return null;
         }
     }
@@ -900,65 +525,12 @@ export class RdsOracleMultiTenant implements IAspect {
         // Apply encryption settings if provided
         if (this.props.encryption) {
             config.encryption = this.props.encryption;
-
-            // Log that encryption is being applied for transparency
-            console.log(
-                'Applying KMS encryption to Oracle MultiTenant Lambda functions'
-            );
         }
 
         // Apply Lambda configuration settings if provided
         if (this.props.lambdaConfiguration) {
             // Spread all lambda configuration properties
             Object.assign(config, this.props.lambdaConfiguration);
-
-            // Log the configuration properties being applied
-            const configKeys = Object.keys(this.props.lambdaConfiguration);
-            if (configKeys.length > 0) {
-                console.log(
-                    `Applying Lambda configuration properties: ${configKeys.join(', ')}`
-                );
-            }
-
-            // Validate VPC configuration if provided
-            if (this.props.lambdaConfiguration.vpc) {
-                console.log('Lambda functions will be deployed in VPC');
-
-                // Ensure security groups are provided when VPC is specified
-                if (
-                    !this.props.lambdaConfiguration.securityGroups ||
-                    this.props.lambdaConfiguration.securityGroups.length === 0
-                ) {
-                    console.warn(
-                        'VPC specified but no security groups provided. ' +
-                            'Lambda functions may not have network access.'
-                    );
-                }
-            }
-
-            // Validate log retention setting
-            if (this.props.lambdaConfiguration.logGroupRetention) {
-                console.log(
-                    `Setting log retention to: ${this.props.lambdaConfiguration.logGroupRetention}`
-                );
-            }
-
-            // Validate reserved concurrent executions
-            if (
-                this.props.lambdaConfiguration.reservedConcurrentExecutions !==
-                undefined
-            ) {
-                console.log(
-                    `Setting reserved concurrent executions to: ${this.props.lambdaConfiguration.reservedConcurrentExecutions}`
-                );
-            }
-
-            // Validate dead letter queue configuration
-            if (this.props.lambdaConfiguration.deadLetterQueue) {
-                console.log(
-                    'Dead letter queue configured for Lambda functions'
-                );
-            }
         }
 
         return config;
@@ -1012,28 +584,17 @@ export class RdsOracleMultiTenant implements IAspect {
     private applyMultiTenantConfiguration(instance: DatabaseInstance): void {
         // Extract and validate the instance identifier
         const instanceId = this.extractInstanceIdentifier(instance);
-
         if (!instanceId) {
-            console.warn(
-                'Skipping Oracle MultiTenant configuration for instance without valid identifier'
-            );
             return;
         }
 
         // Mark instance as processed to prevent duplicates
         this.processedInstances.add(instanceId);
-        console.debug(
-            `Oracle MultiTenant Aspect: Marked instance ${instanceId} as processed (total processed: ${this.processedInstances.size})`
-        );
 
         try {
             // Get or build the provider for this stack (with reuse)
             // This ensures consistent configuration application across all instances
             const provider = this.getOrBuildProvider(instance);
-
-            console.log(
-                `Oracle MultiTenant configuration will be applied to instance: ${instanceId}`
-            );
 
             // Create Custom Resource properties for this specific Oracle instance
             const customResourceProperties =
@@ -1058,15 +619,7 @@ export class RdsOracleMultiTenant implements IAspect {
 
             // Add dependency on the database instance to ensure proper ordering
             customResource.node.addDependency(instance);
-
-            console.log(
-                `Created Oracle MultiTenant Custom Resource for instance: ${instanceId} with consistent configuration`
-            );
         } catch (error) {
-            console.error(
-                `Error creating Custom Resource for Oracle instance ${instanceId}:`,
-                error
-            );
             throw error;
         }
     }
