@@ -10,7 +10,8 @@ import { IResourceProperties } from '../types/resource-properties';
 import {
     createRdsClient,
     validateOracleDatabase,
-    enableOracleMultiTenant
+    enableOracleMultiTenant,
+    waitForDatabaseReady
 } from '../utils/rds-client';
 
 /**
@@ -29,6 +30,12 @@ async function onCreate(
     );
 
     const rdsClient = createRdsClient();
+
+    // Wait for database to be ready for modification
+    console.log(
+        `Waiting for database to be ready for modification: ${dbInstanceId}`
+    );
+    await waitForDatabaseReady(rdsClient, dbInstanceId);
 
     // Validate Oracle database compatibility
     console.log(

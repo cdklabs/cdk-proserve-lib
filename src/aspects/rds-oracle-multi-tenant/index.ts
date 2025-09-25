@@ -113,7 +113,7 @@ export class RdsOracleMultiTenant implements IAspect {
     /**
      * Set to track processed database instances to prevent duplicate processing
      */
-    private readonly processedInstances = new Set<string>();
+    protected readonly processedInstances = new Set<string>();
 
     /**
      * Configuration properties for the Aspect
@@ -428,7 +428,7 @@ export class RdsOracleMultiTenant implements IAspect {
                 code: Code.fromAsset(join(__dirname, 'handler', 'on-event')),
                 handler: 'index.handler',
                 memorySize: 512,
-                timeout: Duration.minutes(5),
+                timeout: Duration.minutes(15),
                 runtime: Runtime.NODEJS_22_X,
                 ...lambdaConfig
             });
