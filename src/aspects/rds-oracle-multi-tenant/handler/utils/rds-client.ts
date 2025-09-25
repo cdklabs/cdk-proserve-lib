@@ -151,6 +151,81 @@ export function isMultiTenantConversionComplete(
 }
 
 /**
+ * Waits for the database instance to be in a ready state (not modifying)
+ * @param rdsClient - The RDS client instance
+ * @param dbInstanceId - The database instance identifier
+ * @param maxWaitTimeMs - Maximum time to wait in milliseconds (default: 14 minutes)
+ * @param pollIntervalMs - Polling interval in milliseconds (default: 30 seconds)
+ * @throws Error if the database doesn't become ready within the timeout period
+ */
+export async function waitForDatabaseReady(
+    rdsClient: RDSClient,
+    dbInstanceId: string,
+    maxWaitTimeMs: number = 14 * 60 * 1000, // 14 minutes (leave 1 minute buffer for Lambda timeout)
+    pollIntervalMs: number = 30 * 1000 // 30 seconds
+): Promise<void> {
+    const startTime = Date.now();
+
+    console.log(
+        `Waiting for database ${dbInstanceId} to be ready for modification...`
+    );
+
+    while (Date.now() - startTime < maxWaitTimeMs) {
+        try {
+            const dbInstance = await getDatabaseInstance(
+                rdsClient,
+                dbInstanceId
+            );
+            const status = dbInstance.DBInstanceStatus;
+
+            console.log(`Database ${dbInstanceId} current status: ${status}`);
+
+            // Check if database is in a ready state
+            if (status === 'available') {
+                console.log(
+                    `Database ${dbInstanceId} is ready for modification`
+                );
+                return;
+            }
+
+            // Check for failed states
+            if (
+                status === 'failed' ||
+                status === 'incompatible-parameters' ||
+                status === 'stopped'
+            ) {
+                throw new Error(
+                    `Database ${dbInstanceId} is in a failed state: ${status}`
+                );
+            }
+
+            // Wait before next poll
+            console.log(
+                `Database ${dbInstanceId} is not ready (status: ${status}), waiting ${pollIntervalMs / 1000} seconds...`
+            );
+            await new Promise((resolve) => setTimeout(resolve, pollIntervalMs));
+        } catch (error) {
+            if (
+                error instanceof Error &&
+                error.message.includes('is in a failed state')
+            ) {
+                throw error; // Re-throw failed state errors
+            }
+
+            // For other errors (like network issues), log and continue polling
+            console.warn(
+                `Error checking database status, will retry: ${error instanceof Error ? error.message : String(error)}`
+            );
+            await new Promise((resolve) => setTimeout(resolve, pollIntervalMs));
+        }
+    }
+
+    throw new Error(
+        `Timeout waiting for database ${dbInstanceId} to be ready. Database must be in 'available' state before MultiTenant conversion can begin.`
+    );
+}
+
+/**
  * Creates a configured RDS client instance
  * @returns A new RDS client instance
  */

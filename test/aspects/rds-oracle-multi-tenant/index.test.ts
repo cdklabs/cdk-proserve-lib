@@ -738,8 +738,9 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
             );
 
             // Mock the processedInstances.has method to throw an error
-            const originalHas = aspect['processedInstances'].has;
-            aspect['processedInstances'].has = () => {
+            const aspectWithAccess = aspect as any;
+            const originalHas = aspectWithAccess.processedInstances.has;
+            aspectWithAccess.processedInstances.has = () => {
                 throw new Error('Set access error');
             };
 
@@ -752,7 +753,7 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
                 template.resourceCountIs('Custom::RdsOracleMultiTenant', 1);
             } finally {
                 // Restore the original method
-                aspect['processedInstances'].has = originalHas;
+                aspectWithAccess.processedInstances.has = originalHas;
             }
         });
 
@@ -891,7 +892,7 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
             template.hasResourceProperties('AWS::Lambda::Function', {
                 Runtime: 'nodejs22.x',
                 Handler: 'index.handler',
-                Timeout: 300
+                Timeout: 900
             });
 
             template.hasResourceProperties('AWS::IAM::Policy', {
