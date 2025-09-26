@@ -113,7 +113,7 @@ export class RdsOracleMultiTenant implements IAspect {
     /**
      * Set to track processed database instances to prevent duplicate processing
      */
-    protected readonly processedInstances = new Set<string>();
+    private readonly processedInstances = new Set<string>();
 
     /**
      * Configuration properties for the Aspect
