@@ -2398,259 +2398,6 @@ This ID can be used to reference and manage the workflow after deployment.
 ---
 
 
-### RdsOracleMultiTenant <a name="RdsOracleMultiTenant" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant"></a>
-
-Enables Oracle MultiTenant configuration on an existing RDS Oracle database.
-
-This construct creates a Lambda-backed custom resource that uses the AWS RDS ModifyDBInstance API
-to enable Oracle MultiTenant architecture, allowing the database to function as a Container Database (CDB)
-that can host multiple Pluggable Databases (PDBs).
-
-The construct follows the established pattern of Lambda-backed custom resources used throughout the
-CDK ProServe Library, providing a secure and reliable way to configure Oracle MultiTenant settings
-on RDS Oracle instances through AWS SDK calls.
-
-## Oracle MultiTenant Architecture
-
-Oracle MultiTenant architecture allows a single Oracle database instance to function as a Container Database (CDB)
-that can host multiple Pluggable Databases (PDBs). This provides:
-- Resource consolidation and cost optimization
-- Simplified database administration
-- Enhanced security through database isolation
-- Improved backup and recovery operations
-
-## Prerequisites
-
-Before using this construct, ensure your RDS Oracle instance meets these requirements:
-- **Engine**: Oracle Database
-- **Version**: 19c or higher (Oracle 12c Release 2 and later support MultiTenant)
-- **Edition**: Enterprise Edition (recommended) or Standard Edition 2 (limited support)
-- **Status**: Database must be in 'available' state
-- **Configuration**: Oracle Data Guard must not be enabled (incompatible with MultiTenant conversion)
-
-## Important Considerations
-
-- **Irreversible Operation**: Oracle MultiTenant conversion cannot be undone once applied
-- **Downtime Required**: Conversion requires a database restart, causing temporary unavailability
-- **Connection Impact**: All existing database connections will be terminated during the restart
-- **Backup Recommendation**: Ensure you have a recent backup before performing the conversion
-
-## Security and Permissions
-
-The construct creates a Lambda function with minimal required permissions:
-- `rds:ModifyDBInstance` - To enable MultiTenant configuration
-- `rds:DescribeDBInstances` - To monitor conversion status and validate prerequisites
-- KMS permissions (if encryption key provided) - For encrypting Lambda environment variables
-
-## Monitoring and Troubleshooting
-
-The Lambda function provides comprehensive logging for:
-- Database validation steps and results
-- MultiTenant conversion progress
-- Error conditions with detailed messages
-- Status monitoring during the conversion process
-
-Monitor the conversion through:
-- CloudWatch Logs for the Lambda function
-- RDS Events for database-level notifications
-- CloudFormation stack events for resource status
-
-> [{@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS}]({@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS})
-
-*Example*
-
-```typescript
-Using with imported RDS instance:
-
-import { RdsOracleMultiTenant } from '@cdklabs/cdk-proserve-lib/constructs';
-import { DatabaseInstance } from 'aws-cdk-lib/aws-rds';
-
-// Import existing Oracle RDS instance
-const oracleInstance = DatabaseInstance.fromDatabaseInstanceAttributes(this, 'ImportedOracle', {
-  instanceIdentifier: 'my-oracle-instance',
-  instanceEndpointAddress: 'my-oracle-instance.abc123.us-east-1.rds.amazonaws.com',
-  port: 1521,
-  securityGroups: [],
-});
-
-const multiTenant = new RdsOracleMultiTenant(this, 'OracleMultiTenant', {
-  database: oracleInstance,
-});
-```
-
-
-#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.Initializer"></a>
-
-```typescript
-import { constructs } from '@cdklabs/cdk-proserve-lib'
-
-new constructs.RdsOracleMultiTenant(scope: Construct, id: string, props: RdsOracleMultiTenantProps)
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The parent construct (typically a Stack or another construct). |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.Initializer.parameter.id">id</a></code> | <code>string</code> | - Unique identifier for this construct instance within the scope. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenantProps</code> | - Configuration properties for the Oracle MultiTenant construct. |
-
----
-
-##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.Initializer.parameter.scope"></a>
-
-- *Type:* constructs.Construct
-
-The parent construct (typically a Stack or another construct).
-
----
-
-##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.Initializer.parameter.id"></a>
-
-- *Type:* string
-
-Unique identifier for this construct instance within the scope.
-
----
-
-##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.Initializer.parameter.props"></a>
-
-- *Type:* @cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenantProps
-
-Configuration properties for the Oracle MultiTenant construct.
-
----
-
-#### Methods <a name="Methods" id="Methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.toString">toString</a></code> | Returns a string representation of this construct. |
-
----
-
-##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.toString"></a>
-
-```typescript
-public toString(): string
-```
-
-Returns a string representation of this construct.
-
-#### Static Functions <a name="Static Functions" id="Static Functions"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
-
----
-
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.isConstruct"></a>
-
-```typescript
-import { constructs } from '@cdklabs/cdk-proserve-lib'
-
-constructs.RdsOracleMultiTenant.isConstruct(x: any)
-```
-
-Checks if `x` is a construct.
-
-###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.isConstruct.parameter.x"></a>
-
-- *Type:* any
-
-Any object.
-
----
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.customResource">customResource</a></code> | <code>aws-cdk-lib.CustomResource</code> | The Custom Resource that manages the Oracle MultiTenant configuration. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.isCompleteHandler">isCompleteHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | The Lambda function that handles IsComplete requests for the custom resource. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.onEventHandler">onEventHandler</a></code> | <code>aws-cdk-lib.aws_lambda.IFunction</code> | The Lambda function that handles OnEvent requests for the custom resource. |
-
----
-
-##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.node"></a>
-
-```typescript
-public readonly node: Node;
-```
-
-- *Type:* constructs.Node
-
-The tree node.
-
----
-
-##### `customResource`<sup>Required</sup> <a name="customResource" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.customResource"></a>
-
-```typescript
-public readonly customResource: CustomResource;
-```
-
-- *Type:* aws-cdk-lib.CustomResource
-
-The Custom Resource that manages the Oracle MultiTenant configuration.
-
-This resource handles the lifecycle of the Oracle MultiTenant conversion:
-- **CREATE**: Validates the Oracle database and enables MultiTenant architecture
-- **UPDATE**: No-op operation (MultiTenant conversion is irreversible)
-- **DELETE**: No-op operation (MultiTenant configuration remains on the database)
-
-The Custom Resource returns the following data attributes:
-- `DBInstanceIdentifier`: The RDS instance identifier
-- `MultiTenantStatus`: Current status of the MultiTenant configuration
-- `ModificationStatus`: Status of the modification operation
-- `PendingModifications`: Any pending database modifications (if applicable)
-
----
-
-*Example*
-
-```typescript
-Accessing Custom Resource attributes:
-
-const multiTenant = new RdsOracleMultiTenant(this, 'OracleMultiTenant', {
-  database: oracleInstance,
-});
-
-// Access the database identifier from the custom resource
-const dbId = multiTenant.customResource.getAttString('DBInstanceIdentifier');
-const status = multiTenant.customResource.getAttString('MultiTenantStatus');
-```
-
-
-##### `isCompleteHandler`<sup>Required</sup> <a name="isCompleteHandler" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.isCompleteHandler"></a>
-
-```typescript
-public readonly isCompleteHandler: IFunction;
-```
-
-- *Type:* aws-cdk-lib.aws_lambda.IFunction
-
-The Lambda function that handles IsComplete requests for the custom resource.
-
-This function monitors the conversion progress and determines when the operation is complete.
-
----
-
-##### `onEventHandler`<sup>Required</sup> <a name="onEventHandler" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenant.property.onEventHandler"></a>
-
-```typescript
-public readonly onEventHandler: IFunction;
-```
-
-- *Type:* aws-cdk-lib.aws_lambda.IFunction
-
-The Lambda function that handles OnEvent requests for the custom resource.
-
-This function performs validation and initiates the Oracle MultiTenant conversion.
-
----
-
-
 ### WebApplicationFirewall <a name="WebApplicationFirewall" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall"></a>
 
 Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
@@ -6354,51 +6101,30 @@ behave as expected or designed. You do so at your own risk.
 
 ---
 
-### RdsOracleMultiTenantProps <a name="RdsOracleMultiTenantProps" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenantProps"></a>
+### RdsOracleMultiTenantProps <a name="RdsOracleMultiTenantProps" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps"></a>
 
-Properties for the RDS Oracle MultiTenant construct.
+Properties for configuring the RDS Oracle MultiTenant Aspect.
 
 > [{@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS}]({@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS})
 
-#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenantProps.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps.Initializer"></a>
 
 ```typescript
-import { constructs } from '@cdklabs/cdk-proserve-lib'
+import { aspects } from '@cdklabs/cdk-proserve-lib'
 
-const rdsOracleMultiTenantProps: constructs.RdsOracleMultiTenantProps = { ... }
+const rdsOracleMultiTenantProps: aspects.RdsOracleMultiTenantProps = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenantProps.property.database">database</a></code> | <code>aws-cdk-lib.aws_rds.IDatabaseInstance</code> | The RDS Oracle database instance to configure for MultiTenant. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenantProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS key for encrypting Lambda environment variables and CloudWatch log group. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenantProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings for the custom resource handler. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS key for encrypting Lambda environment variables and CloudWatch log group. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings for the custom resource handler. |
 
 ---
 
-##### `database`<sup>Required</sup> <a name="database" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenantProps.property.database"></a>
-
-```typescript
-public readonly database: IDatabaseInstance;
-```
-
-- *Type:* aws-cdk-lib.aws_rds.IDatabaseInstance
-
-The RDS Oracle database instance to configure for MultiTenant.
-
-The database must meet the following requirements:
-- Engine type: Oracle
-- Version: 19c or higher
-- Status: Available
-- Edition: Enterprise Edition recommended (Standard Edition has limited support)
-
-> [{@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html#oracle-multitenant-limitations Oracle MultiTenant Limitations}]({@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html#oracle-multitenant-limitations Oracle MultiTenant Limitations})
-
----
-
-##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenantProps.property.encryption"></a>
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps.property.encryption"></a>
 
 ```typescript
 public readonly encryption: IKey;
@@ -6414,7 +6140,7 @@ The Lambda function will be granted encrypt/decrypt permissions on this key.
 
 ---
 
-##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.constructs.RdsOracleMultiTenantProps.property.lambdaConfiguration"></a>
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps.property.lambdaConfiguration"></a>
 
 ```typescript
 public readonly lambdaConfiguration: LambdaConfiguration;
@@ -28309,6 +28035,151 @@ public readonly V26_3_2: EngineVersion;
 Version 26.3.2.
 
 ---
+
+### RdsOracleMultiTenant <a name="RdsOracleMultiTenant" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant"></a>
+
+- *Implements:* aws-cdk-lib.IAspect
+
+An Aspect that automatically enables Oracle MultiTenant configuration on RDS Oracle database instances.
+
+This Aspect will apply Oracle MultiTenant configuration to multiple RDS Oracle instances across a CDK
+application automatically. When applied to a construct tree, it identifies all RDS Oracle database
+instances and enables MultiTenant architecture on each one.
+
+The Aspect follows the established pattern of Lambda-backed custom resources used throughout the
+CDK ProServe Library, providing a secure and reliable way to configure Oracle MultiTenant settings
+on RDS Oracle instances through AWS SDK calls.
+
+## Oracle MultiTenant Architecture
+
+Oracle MultiTenant architecture allows a single Oracle database instance to function as a Container Database (CDB)
+that can host multiple Pluggable Databases (PDBs). This provides:
+- Resource consolidation and cost optimization
+- Simplified database administration
+- Enhanced security through database isolation
+- Improved backup and recovery operations
+
+## Prerequisites
+
+Before using this Aspect, ensure your RDS Oracle instances meet these requirements:
+- **Engine**: Oracle Database
+- **Version**: 19c or higher (Oracle 12c Release 2 and later support MultiTenant)
+- **Edition**: Enterprise Edition (recommended) or Standard Edition 2 (limited support)
+- **Status**: Database must be in 'available' state
+- **Configuration**: Oracle Data Guard must not be enabled (incompatible with MultiTenant conversion)
+
+> [{@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS}]({@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS})
+
+*Example*
+
+```typescript
+Basic usage applied to an entire CDK application:
+
+import { App, Aspects } from 'aws-cdk-lib';
+import { RdsOracleMultiTenant } from '@cdklabs/cdk-proserve-lib/aspects';
+
+const app = new App();
+
+// Apply to all Oracle instances in the application
+Aspects.of(app).add(new RdsOracleMultiTenant());
+```
+
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+new aspects.RdsOracleMultiTenant(props?: RdsOracleMultiTenantProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps</code> | - Optional configuration properties for the Oracle MultiTenant Aspect. |
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps
+
+Optional configuration properties for the Oracle MultiTenant Aspect.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.visit">visit</a></code> | Visits a construct node and applies Oracle MultiTenant configuration if applicable. |
+
+---
+
+##### `visit` <a name="visit" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.visit"></a>
+
+```typescript
+public visit(node: IConstruct): void
+```
+
+Visits a construct node and applies Oracle MultiTenant configuration if applicable.
+
+This method is called by the CDK framework for each construct in the tree when the
+Aspect is applied. It implements the core logic of the Aspect:
+
+1. **Instance Identification**: Checks if the node is a DatabaseInstance construct
+2. **Oracle Validation**: Verifies the database uses an Oracle engine
+3. **Duplicate Prevention**: Ensures the instance hasn't been processed already
+4. **Configuration Application**: Applies MultiTenant configuration to valid Oracle instances
+5. **Silent Skipping**: Ignores non-Oracle databases without errors
+
+## Processing Logic
+
+The visit method follows this decision tree:
+- If not a DatabaseInstance → skip silently
+- If not Oracle engine → skip silently
+- If already processed → skip silently with warning
+- If Oracle and not processed → apply MultiTenant configuration
+
+*Example*
+
+```typescript
+The visit method is called automatically by the CDK framework:
+
+// This happens automatically when the Aspect is applied
+Aspects.of(app).add(new RdsOracleMultiTenant());
+// The visit method will be called for every construct in the app
+```
+
+
+###### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.visit.parameter.node"></a>
+
+- *Type:* constructs.IConstruct
+
+The construct being visited by the Aspect.
+
+---
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.property.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps</code> | Configuration properties for the Aspect. |
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.property.props"></a>
+
+```typescript
+public readonly props: RdsOracleMultiTenantProps;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps
+
+Configuration properties for the Aspect.
+
+---
+
 
 ### SageMakerNotebookInstanceType <a name="SageMakerNotebookInstanceType" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType"></a>
 

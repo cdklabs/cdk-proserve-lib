@@ -83,7 +83,7 @@ Total: 23
 
 Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) applications. A construct is a component within your application that represents one or more AWS CloudFormation resources and their configuration. You build your application, piece by piece, by importing and configuring constructs. To learn more about constructs, check out the [AWS CDK documentation](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html).
 
-Count: 13
+Count: 12
 
 - [**DynamoDbProvisionTable**](API.md#dynamodbprovisiontable-): Controls the contents of an Amazon DynamoDB table from Infrastructure as Code.
 - [**Ec2ImageBuilderGetImage**](API.md#ec2imagebuildergetimage-): Retrieves an EC2 Image Builder image build version.
@@ -96,18 +96,18 @@ Count: 13
 - [**OpenSearchAdminUser**](API.md#opensearchadminuser-): Manages an admin user for an Amazon OpenSearch domain.
 - [**OpenSearchProvisionDomain**](API.md#opensearchprovisiondomain-): Controls the contents of an Amazon OpenSearch Service domain from Infrastructure as Code.
 - [**OpenSearchWorkflow**](API.md#opensearchworkflow-): Create OpenSearch Workflows using the flow framework to automate the provisioning of complex tasks using JSON or YAML.
-- [**RdsOracleMultiTenant**](API.md#rdsoraclemultitenant-): Enables Oracle MultiTenant configuration on an existing RDS Oracle database.
 - [**WebApplicationFirewall**](API.md#webapplicationfirewall-): Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
 
 ### 🎭 Aspects
 
 Aspects are a way to apply an operation to all constructs in a given scope. The aspect could modify the constructs, such as by adding tags. Or it could verify something about the state of the constructs, such as making sure that all buckets are encrypted. To learn more about aspects, check out the [AWS CDK documentation](https://docs.aws.amazon.com/cdk/v2/guide/aspects.html).
 
-Count: 7
+Count: 8
 
 - [**ApplyRemovalPolicy**](API.md#applyremovalpolicy-): Sets a user specified Removal Policy to all resources that the aspect applies to.
 - [**CreateLambdaLogGroup**](API.md#createlambdaloggroup-): Ensures that Lambda log groups are created for all Lambda functions that the aspect applies to.
 - [**Ec2AutomatedShutdown**](API.md#ec2automatedshutdown-): Automatically shut down EC2 instances when an alarm is triggered based off of a provided metric.
+- [**RdsOracleMultiTenant**](API.md#rdsoraclemultitenant-): An Aspect that automatically enables Oracle MultiTenant configuration on RDS Oracle database instances.
 - [**SecureSageMakerNotebook**](API.md#securesagemakernotebook-): Aspect that enforces security controls on SageMaker Notebook Instances by requiring VPC placement, disabling direct internet access, and preventing root access to the notebook environment.
 - [**SecurityCompliance**](API.md#securitycompliance-): Applies best practice security settings to be in compliance with security tools such as CDK Nag.
 - [**SetLogRetention**](API.md#setlogretention-): Aspect that sets the log retention period for CloudWatch log groups to a user-supplied retention period.
