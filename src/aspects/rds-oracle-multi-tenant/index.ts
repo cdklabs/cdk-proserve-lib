@@ -33,8 +33,6 @@ interface ValidationResult {
 
 /**
  * Properties for configuring the RDS Oracle MultiTenant Aspect
- *
- * @see {@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html | Oracle MultiTenant on Amazon RDS}
  */
 export interface RdsOracleMultiTenantProps {
     /**
@@ -61,11 +59,14 @@ export interface RdsOracleMultiTenantProps {
 }
 
 /**
- * An Aspect that automatically enables Oracle MultiTenant configuration on RDS Oracle database instances.
+ * Enables Oracle MultiTenant configuration on RDS Oracle database instances.
  *
  * This Aspect will apply Oracle MultiTenant configuration to multiple RDS Oracle instances across a CDK
  * application automatically. When applied to a construct tree, it identifies all RDS Oracle database
  * instances and enables MultiTenant architecture on each one.
+ *
+ * **NOTE: This should ONLY be used on new Oracle RDS databases, as it takes a backup and can take a
+ * significant amount of time to complete.**
  *
  * The Aspect follows the established pattern of Lambda-backed custom resources used throughout the
  * CDK ProServe Library, providing a secure and reliable way to configure Oracle MultiTenant settings
