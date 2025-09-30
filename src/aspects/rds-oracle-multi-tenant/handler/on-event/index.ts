@@ -47,10 +47,6 @@ async function onCreate(
     console.log(`Initiating multi-tenant conversion for: ${dbInstanceId}`);
     await enableOracleMultiTenant(rdsClient, dbInstanceId);
 
-    console.log(
-        `Successfully initiated multi-tenant conversion for: ${dbInstanceId}`
-    );
-
     return {
         PhysicalResourceId: `rds-oracle-multi-tenant-${dbInstanceId}`
     };

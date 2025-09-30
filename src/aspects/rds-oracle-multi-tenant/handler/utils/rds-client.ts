@@ -106,7 +106,7 @@ export async function enableOracleMultiTenant(
         }
 
         console.log(
-            `Successfully initiated MultiTenant conversion for ${dbInstanceId}`
+            `Successfully initiated multi-tenant conversion for: ${dbInstanceId}`
         );
     } catch (error) {
         if (error instanceof RDSServiceException) {
