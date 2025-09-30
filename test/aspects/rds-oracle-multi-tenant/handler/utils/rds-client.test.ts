@@ -4,7 +4,8 @@
 import {
     RDSClient,
     DescribeDBInstancesCommand,
-    ModifyDBInstanceCommand
+    ModifyDBInstanceCommand,
+    RDSServiceException
 } from '@aws-sdk/client-rds';
 import { mockClient } from 'aws-sdk-client-mock';
 import { vi, describe, beforeEach, afterEach, it, expect } from 'vitest';
@@ -276,13 +277,15 @@ describe('RDS Client Utilities', () => {
         });
     });
 
-    describe('existing functions', () => {
+    describe('createRdsClient', () => {
         it('should create RDS client', () => {
             const client = createRdsClient();
             expect(client).toBeInstanceOf(RDSClient);
         });
+    });
 
-        it('should get database instance', async () => {
+    describe('getDatabaseInstance', () => {
+        it('should get database instance successfully', async () => {
             const dbInstanceId = 'test-instance';
             const mockInstance = {
                 DBInstanceIdentifier: dbInstanceId,
@@ -301,7 +304,98 @@ describe('RDS Client Utilities', () => {
             expect(result).toEqual(mockInstance);
         });
 
-        it('should validate Oracle database', async () => {
+        it('should throw error when database instance not found', async () => {
+            const dbInstanceId = 'non-existent-instance';
+
+            rdsMock.on(DescribeDBInstancesCommand).resolves({
+                DBInstances: []
+            });
+
+            await expect(
+                getDatabaseInstance(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow(`Database instance '${dbInstanceId}' not found`);
+        });
+
+        it('should throw error when DBInstances is undefined', async () => {
+            const dbInstanceId = 'test-instance';
+
+            rdsMock.on(DescribeDBInstancesCommand).resolves({});
+
+            await expect(
+                getDatabaseInstance(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow(`Database instance '${dbInstanceId}' not found`);
+        });
+
+        it('should handle RDSServiceException', async () => {
+            const dbInstanceId = 'test-instance';
+            const rdsError = new RDSServiceException({
+                name: 'DBInstanceNotFoundFault',
+                message: 'DB instance not found',
+                $fault: 'client',
+                $metadata: {}
+            });
+
+            rdsMock.on(DescribeDBInstancesCommand).rejects(rdsError);
+
+            await expect(
+                getDatabaseInstance(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow(
+                'RDS API error: DBInstanceNotFoundFault - DB instance not found'
+            );
+        });
+
+        it('should handle generic Error', async () => {
+            const dbInstanceId = 'test-instance';
+            const genericError = new Error('Network timeout');
+
+            rdsMock.on(DescribeDBInstancesCommand).rejects(genericError);
+
+            await expect(
+                getDatabaseInstance(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow(
+                'Failed to get database instance: Network timeout'
+            );
+        });
+
+        it('should handle string errors as Error objects', async () => {
+            const dbInstanceId = 'test-instance';
+            const stringError = 'string error';
+
+            rdsMock.on(DescribeDBInstancesCommand).rejects(stringError);
+
+            await expect(
+                getDatabaseInstance(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow('Failed to get database instance: string error');
+        });
+
+        it('should handle object errors as Error objects', async () => {
+            const dbInstanceId = 'test-instance';
+            const objectError = {
+                code: 'CUSTOM_ERROR',
+                details: 'Custom error object'
+            } as any;
+
+            rdsMock.on(DescribeDBInstancesCommand).rejects(objectError);
+
+            await expect(
+                getDatabaseInstance(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow('Failed to get database instance:');
+        });
+
+        it('should handle primitive errors as Error objects', async () => {
+            const dbInstanceId = 'test-instance';
+            const primitiveError = 42 as any; // Number primitive
+
+            rdsMock.on(DescribeDBInstancesCommand).rejects(primitiveError);
+
+            await expect(
+                getDatabaseInstance(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow('Failed to get database instance:');
+        });
+    });
+
+    describe('validateOracleDatabase', () => {
+        it('should validate Oracle database successfully', async () => {
             const dbInstanceId = 'test-oracle-instance';
             const mockInstance = {
                 DBInstanceIdentifier: dbInstanceId,
@@ -321,7 +415,70 @@ describe('RDS Client Utilities', () => {
             expect(result).toEqual(mockInstance);
         });
 
-        it('should enable Oracle MultiTenant', async () => {
+        it('should handle validation errors', async () => {
+            const dbInstanceId = 'test-instance';
+            const mockInstance = {
+                DBInstanceIdentifier: dbInstanceId,
+                DBInstanceStatus: 'available',
+                Engine: 'mysql' // Non-Oracle engine to trigger validation error
+            };
+
+            rdsMock.on(DescribeDBInstancesCommand).resolves({
+                DBInstances: [mockInstance]
+            });
+
+            await expect(
+                validateOracleDatabase(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow('Database validation failed:');
+        });
+
+        it('should handle string errors in validation', async () => {
+            const dbInstanceId = 'test-instance';
+
+            // Mock getDatabaseInstance to throw a string error
+            rdsMock.on(DescribeDBInstancesCommand).rejects('string error');
+
+            await expect(
+                validateOracleDatabase(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow(
+                'Database validation failed: Failed to get database instance: string error'
+            );
+        });
+
+        it('should handle object errors in validation', async () => {
+            const dbInstanceId = 'test-instance';
+            const objectError = {
+                code: 'VALIDATION_ERROR',
+                details: 'Custom validation error'
+            } as any;
+
+            // Mock getDatabaseInstance to throw an object error
+            rdsMock.on(DescribeDBInstancesCommand).rejects(objectError);
+
+            await expect(
+                validateOracleDatabase(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow(
+                'Database validation failed: Failed to get database instance:'
+            );
+        });
+
+        it('should handle primitive errors in validation', async () => {
+            const dbInstanceId = 'test-instance';
+            const primitiveError = 123 as any; // Number primitive
+
+            // Mock getDatabaseInstance to throw a primitive error
+            rdsMock.on(DescribeDBInstancesCommand).rejects(primitiveError);
+
+            await expect(
+                validateOracleDatabase(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow(
+                'Database validation failed: Failed to get database instance:'
+            );
+        });
+    });
+
+    describe('enableOracleMultiTenant', () => {
+        it('should enable Oracle MultiTenant successfully', async () => {
             const dbInstanceId = 'test-oracle-instance';
 
             rdsMock.on(ModifyDBInstanceCommand).resolves({
@@ -344,30 +501,142 @@ describe('RDS Client Utilities', () => {
             });
         });
 
-        it('should check if MultiTenant conversion is complete', () => {
+        it('should throw error when ModifyDBInstance response has no DBInstance', async () => {
+            const dbInstanceId = 'test-oracle-instance';
+
+            rdsMock.on(ModifyDBInstanceCommand).resolves({});
+
+            await expect(
+                enableOracleMultiTenant(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow(
+                'ModifyDBInstance response did not include DBInstance details'
+            );
+        });
+
+        it('should handle RDSServiceException in enableOracleMultiTenant', async () => {
+            const dbInstanceId = 'test-oracle-instance';
+            const rdsError = new RDSServiceException({
+                name: 'InvalidDBInstanceStateFault',
+                message: 'DB instance is not in a valid state',
+                $fault: 'client',
+                $metadata: {}
+            });
+
+            rdsMock.on(ModifyDBInstanceCommand).rejects(rdsError);
+
+            await expect(
+                enableOracleMultiTenant(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow(
+                'RDS API error: InvalidDBInstanceStateFault - DB instance is not in a valid state'
+            );
+        });
+
+        it('should handle generic Error in enableOracleMultiTenant', async () => {
+            const dbInstanceId = 'test-oracle-instance';
+            const genericError = new Error('Network timeout');
+
+            rdsMock.on(ModifyDBInstanceCommand).rejects(genericError);
+
+            await expect(
+                enableOracleMultiTenant(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow(
+                'Failed to enable Oracle MultiTenant: Network timeout'
+            );
+        });
+
+        it('should handle string errors in enableOracleMultiTenant', async () => {
+            const dbInstanceId = 'test-oracle-instance';
+            const stringError = 'string error';
+
+            rdsMock.on(ModifyDBInstanceCommand).rejects(stringError);
+
+            await expect(
+                enableOracleMultiTenant(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow(
+                'Failed to enable Oracle MultiTenant: string error'
+            );
+        });
+
+        it('should handle object errors in enableOracleMultiTenant', async () => {
+            const dbInstanceId = 'test-oracle-instance';
+            const objectError = {
+                code: 'MODIFY_ERROR',
+                details: 'Custom modify error'
+            } as any;
+
+            rdsMock.on(ModifyDBInstanceCommand).rejects(objectError);
+
+            await expect(
+                enableOracleMultiTenant(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow('Failed to enable Oracle MultiTenant:');
+        });
+
+        it('should handle primitive errors in enableOracleMultiTenant', async () => {
+            const dbInstanceId = 'test-oracle-instance';
+            const primitiveError = 456 as any; // Number primitive
+
+            rdsMock.on(ModifyDBInstanceCommand).rejects(primitiveError);
+
+            await expect(
+                enableOracleMultiTenant(rdsMock as any, dbInstanceId)
+            ).rejects.toThrow('Failed to enable Oracle MultiTenant:');
+        });
+    });
+
+    describe('isMultiTenantConversionComplete', () => {
+        it('should return true when conversion is complete', () => {
             const completeInstance = {
                 DBInstanceStatus: 'available',
                 PendingModifiedValues: {}
             };
 
-            const incompleteInstance = {
-                DBInstanceStatus: 'modifying',
-                PendingModifiedValues: { MultiTenant: true }
-            };
+            expect(
+                isMultiTenantConversionComplete(completeInstance as any)
+            ).toBe(true);
+        });
 
-            const failedInstance = {
-                DBInstanceStatus: 'failed'
+        it('should return true when conversion is complete with no PendingModifiedValues', () => {
+            const completeInstance = {
+                DBInstanceStatus: 'available'
+                // No PendingModifiedValues property
             };
 
             expect(
                 isMultiTenantConversionComplete(completeInstance as any)
             ).toBe(true);
+        });
+
+        it('should return false when conversion is in progress', () => {
+            const incompleteInstance = {
+                DBInstanceStatus: 'modifying',
+                PendingModifiedValues: { MultiTenant: true }
+            };
+
             expect(
                 isMultiTenantConversionComplete(incompleteInstance as any)
             ).toBe(false);
+        });
+
+        it('should throw error for failed status', () => {
+            const failedInstance = {
+                DBInstanceStatus: 'failed'
+            };
+
             expect(() =>
                 isMultiTenantConversionComplete(failedInstance as any)
             ).toThrow('MultiTenant conversion failed with status: failed');
+        });
+
+        it('should throw error for incompatible-parameters status', () => {
+            const incompatibleInstance = {
+                DBInstanceStatus: 'incompatible-parameters'
+            };
+
+            expect(() =>
+                isMultiTenantConversionComplete(incompatibleInstance as any)
+            ).toThrow(
+                'MultiTenant conversion failed with status: incompatible-parameters'
+            );
         });
     });
 });
