@@ -72,7 +72,6 @@ async function onUpdate(
     console.log(
         `Multi-tenant conversion is a one-time operation and cannot be modified`
     );
-    console.log(`Returning existing PhysicalResourceId: ${physicalResourceId}`);
 
     return {
         PhysicalResourceId: physicalResourceId
@@ -98,9 +97,6 @@ async function onDelete(
     );
     console.log(`Multi-tenant conversion cannot be reversed through RDS API`);
     console.log(`Database instance will retain multi-tenant configuration`);
-    console.log(
-        `Returning PhysicalResourceId for cleanup: ${physicalResourceId}`
-    );
 
     return {
         PhysicalResourceId: physicalResourceId

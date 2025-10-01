@@ -36,7 +36,7 @@ async function getConversionState(
     if (status === 'failed' || status === 'incompatible-parameters') {
         return {
             status: ConversionStatus.FAILED,
-            dbInstanceStatus: status || 'unknown',
+            dbInstanceStatus: status,
             hasPendingModifications: hasPendingModifications || false,
             pendingModifications,
             errorMessage: `MultiTenant conversion failed with database status: ${status}`

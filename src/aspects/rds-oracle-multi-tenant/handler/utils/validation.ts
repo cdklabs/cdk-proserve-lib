@@ -8,7 +8,7 @@ import { DBInstance } from '@aws-sdk/client-rds';
  * @param dbInstance - The RDS database instance to validate
  * @throws Error if the database engine is not Oracle
  */
-export function validateOracleEngine(dbInstance: DBInstance): void {
+function validateOracleEngine(dbInstance: DBInstance): void {
     if (
         !dbInstance.Engine ||
         !dbInstance.Engine.toLowerCase().includes('oracle')
@@ -24,7 +24,7 @@ export function validateOracleEngine(dbInstance: DBInstance): void {
  * @param dbInstance - The RDS database instance to validate
  * @throws Error if the Oracle version doesn't support MultiTenant
  */
-export function validateOracleVersion(dbInstance: DBInstance): void {
+function validateOracleVersion(dbInstance: DBInstance): void {
     const engineVersion = dbInstance.EngineVersion;
     if (!engineVersion) {
         throw new Error('Database engine version is not available');
@@ -52,7 +52,7 @@ export function validateOracleVersion(dbInstance: DBInstance): void {
  * Note: MultiTenant is fully supported in Enterprise Edition, limited in Standard Edition
  * @param dbInstance - The RDS database instance to validate
  */
-export function validateOracleEdition(dbInstance: DBInstance): void {
+function validateOracleEdition(dbInstance: DBInstance): void {
     const licenseModel = dbInstance.LicenseModel;
 
     // Check if it's Standard Edition (which has limited MultiTenant support)
@@ -72,7 +72,7 @@ export function validateOracleEdition(dbInstance: DBInstance): void {
  * @param dbInstance - The RDS database instance to validate
  * @throws Error if the database is not in available state
  */
-export function validateDatabaseStatus(dbInstance: DBInstance): void {
+function validateDatabaseStatus(dbInstance: DBInstance): void {
     const status = dbInstance.DBInstanceStatus;
     if (status !== 'available') {
         throw new Error(

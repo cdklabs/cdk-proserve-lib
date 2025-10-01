@@ -1,13 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import {
-    RDSClient,
-    DescribeDBInstancesCommand,
-    ModifyDBInstanceCommand,
-    DBInstance,
-    RDSServiceException
-} from '@aws-sdk/client-rds';
+import { DBInstance, RDSServiceException, RDS } from '@aws-sdk/client-rds';
 import { validateOracleMultiTenantCompatibility } from './validation';
 
 /**
@@ -18,15 +12,13 @@ import { validateOracleMultiTenantCompatibility } from './validation';
  * @throws Error if the database instance is not found or RDS API call fails
  */
 export async function getDatabaseInstance(
-    rdsClient: RDSClient,
+    rdsClient: RDS,
     dbInstanceId: string
 ): Promise<DBInstance> {
     try {
-        const command = new DescribeDBInstancesCommand({
+        const response = await rdsClient.describeDBInstances({
             DBInstanceIdentifier: dbInstanceId
         });
-
-        const response = await rdsClient.send(command);
 
         if (!response.DBInstances || response.DBInstances.length === 0) {
             throw new Error(`Database instance '${dbInstanceId}' not found`);
@@ -36,13 +28,13 @@ export async function getDatabaseInstance(
     } catch (error) {
         if (error instanceof RDSServiceException) {
             throw new Error(`RDS API error: ${error.name} - ${error.message}`);
-        }
-        if (error instanceof Error) {
+        } else if (error instanceof Error) {
             throw new Error(
                 `Failed to get database instance: ${error.message}`
             );
+        } else {
+            throw error;
         }
-        throw error;
     }
 }
 
@@ -54,7 +46,7 @@ export async function getDatabaseInstance(
  * @throws Error if validation fails or database is not found
  */
 export async function validateOracleDatabase(
-    rdsClient: RDSClient,
+    rdsClient: RDS,
     dbInstanceId: string
 ): Promise<DBInstance> {
     try {
@@ -67,8 +59,9 @@ export async function validateOracleDatabase(
     } catch (error) {
         if (error instanceof Error) {
             throw new Error(`Database validation failed: ${error.message}`);
+        } else {
+            throw error;
         }
-        throw error;
     }
 }
 
@@ -79,7 +72,7 @@ export async function validateOracleDatabase(
  * @throws Error if the ModifyDBInstance operation fails
  */
 export async function enableOracleMultiTenant(
-    rdsClient: RDSClient,
+    rdsClient: RDS,
     dbInstanceId: string
 ): Promise<void> {
     try {
@@ -87,13 +80,12 @@ export async function enableOracleMultiTenant(
             `Enabling Oracle MultiTenant on database instance: ${dbInstanceId}`
         );
 
-        const command = new ModifyDBInstanceCommand({
+        const response = await rdsClient.modifyDBInstance({
             DBInstanceIdentifier: dbInstanceId,
             MultiTenant: true,
             ApplyImmediately: true
         });
 
-        const response = await rdsClient.send(command);
         console.log(
             `ModifyDBInstance response:`,
             JSON.stringify(response, null, 2)
@@ -111,43 +103,14 @@ export async function enableOracleMultiTenant(
     } catch (error) {
         if (error instanceof RDSServiceException) {
             throw new Error(`RDS API error: ${error.name} - ${error.message}`);
-        }
-        if (error instanceof Error) {
+        } else if (error instanceof Error) {
             throw new Error(
                 `Failed to enable Oracle MultiTenant: ${error.message}`
             );
+        } else {
+            throw error;
         }
-        throw error;
     }
-}
-
-/**
- * Checks if the MultiTenant conversion is complete
- * @param dbInstance - The database instance to check
- * @returns True if conversion is complete, false if still in progress
- * @throws Error if conversion has failed
- */
-export function isMultiTenantConversionComplete(
-    dbInstance: DBInstance
-): boolean {
-    const status = dbInstance.DBInstanceStatus;
-    const pendingModifications = dbInstance.PendingModifiedValues;
-
-    // Check for failed status
-    if (status === 'failed' || status === 'incompatible-parameters') {
-        throw new Error(`MultiTenant conversion failed with status: ${status}`);
-    }
-
-    // Check if conversion is complete
-    if (
-        status === 'available' &&
-        (!pendingModifications ||
-            Object.keys(pendingModifications).length === 0)
-    ) {
-        return true;
-    }
-
-    return false;
 }
 
 /**
@@ -159,10 +122,10 @@ export function isMultiTenantConversionComplete(
  * @throws Error if the database doesn't become ready within the timeout period
  */
 export async function waitForDatabaseReady(
-    rdsClient: RDSClient,
+    rdsClient: RDS,
     dbInstanceId: string,
-    maxWaitTimeMs: number = 14 * 60 * 1000, // 14 minutes (leave 1 minute buffer for Lambda timeout)
-    pollIntervalMs: number = 30 * 1000 // 30 seconds
+    maxWaitTimeMs: number = 240000, // 4 minutes (leave 1 minute buffer for Lambda timeout)
+    pollIntervalMs: number = 30000 // 30 seconds
 ): Promise<void> {
     const startTime = Date.now();
 
@@ -186,10 +149,7 @@ export async function waitForDatabaseReady(
                     `Database ${dbInstanceId} is ready for modification`
                 );
                 return;
-            }
-
-            // Check for failed states
-            if (
+            } else if (
                 status === 'failed' ||
                 status === 'incompatible-parameters' ||
                 status === 'stopped'
@@ -226,9 +186,9 @@ export async function waitForDatabaseReady(
 }
 
 /**
- * Creates a configured RDS client instance
- * @returns A new RDS client instance
+ * Creates a configured RDS instance
+ * @returns A new RDS instance
  */
-export function createRdsClient(): RDSClient {
-    return new RDSClient({});
+export function createRdsClient(): RDS {
+    return new RDS({});
 }

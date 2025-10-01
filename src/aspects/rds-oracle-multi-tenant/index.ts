@@ -2,7 +2,14 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { join } from 'node:path';
-import { Aws, CustomResource, Duration, IAspect, Stack } from 'aws-cdk-lib';
+import {
+    Aws,
+    CustomResource,
+    Duration,
+    IAspect,
+    Stack,
+    Token
+} from 'aws-cdk-lib';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
@@ -68,31 +75,8 @@ export interface RdsOracleMultiTenantProps {
  * **NOTE: This should ONLY be used on new Oracle RDS databases, as it takes a backup and can take a
  * significant amount of time to complete.**
  *
- * The Aspect follows the established pattern of Lambda-backed custom resources used throughout the
- * CDK ProServe Library, providing a secure and reliable way to configure Oracle MultiTenant settings
- * on RDS Oracle instances through AWS SDK calls.
- *
- * ## Oracle MultiTenant Architecture
- *
- * Oracle MultiTenant architecture allows a single Oracle database instance to function as a Container Database (CDB)
- * that can host multiple Pluggable Databases (PDBs). This provides:
- * - Resource consolidation and cost optimization
- * - Simplified database administration
- * - Enhanced security through database isolation
- * - Improved backup and recovery operations
- *
- * ## Prerequisites
- *
- * Before using this Aspect, ensure your RDS Oracle instances meet these requirements:
- * - **Engine**: Oracle Database
- * - **Version**: 19c or higher (Oracle 12c Release 2 and later support MultiTenant)
- * - **Edition**: Enterprise Edition (recommended) or Standard Edition 2 (limited support)
- * - **Status**: Database must be in 'available' state
- * - **Configuration**: Oracle Data Guard must not be enabled (incompatible with MultiTenant conversion)
- *
- *
  * @example
- * Basic usage applied to an entire CDK application:
+ * // Basic usage applied to an entire CDK application:
  *
  * import { App, Aspects } from 'aws-cdk-lib';
  * import { RdsOracleMultiTenant } from '@cdklabs/cdk-proserve-lib/aspects';
@@ -119,54 +103,23 @@ export class RdsOracleMultiTenant implements IAspect {
     /**
      * Configuration properties for the Aspect
      */
-    public readonly props: RdsOracleMultiTenantProps;
+    public readonly props?: RdsOracleMultiTenantProps;
 
     /**
      * Creates a new RDS Oracle MultiTenant Aspect that automatically enables Oracle MultiTenant
      * configuration on RDS Oracle database instances found in the construct tree.
      *
-     * The Aspect will:
-     * 1. Traverse the construct tree when applied
-     * 2. Identify all RDS Oracle database instances
-     * 3. Apply MultiTenant configuration to each Oracle instance
-     * 4. Skip non-Oracle databases silently
-     * 5. Prevent duplicate processing of the same instance
-     *
      * @param props - Optional configuration properties for the Oracle MultiTenant Aspect
      *
      */
-    constructor(props: RdsOracleMultiTenantProps = {}) {
+    constructor(props?: RdsOracleMultiTenantProps) {
         this.props = props;
     }
 
     /**
      * Visits a construct node and applies Oracle MultiTenant configuration if applicable.
      *
-     * This method is called by the CDK framework for each construct in the tree when the
-     * Aspect is applied. It implements the core logic of the Aspect:
-     *
-     * 1. **Instance Identification**: Checks if the node is a DatabaseInstance construct
-     * 2. **Oracle Validation**: Verifies the database uses an Oracle engine
-     * 3. **Duplicate Prevention**: Ensures the instance hasn't been processed already
-     * 4. **Configuration Application**: Applies MultiTenant configuration to valid Oracle instances
-     * 5. **Silent Skipping**: Ignores non-Oracle databases without errors
-     *
-     * ## Processing Logic
-     *
-     * The visit method follows this decision tree:
-     * - If not a DatabaseInstance → skip silently
-     * - If not Oracle engine → skip silently
-     * - If already processed → skip silently with warning
-     * - If Oracle and not processed → apply MultiTenant configuration
-     *
      * @param node - The construct being visited by the Aspect
-     *
-     * @example
-     * The visit method is called automatically by the CDK framework:
-     *
-     * // This happens automatically when the Aspect is applied
-     * Aspects.of(app).add(new RdsOracleMultiTenant());
-     * // The visit method will be called for every construct in the app
      */
     visit(node: IConstruct): void {
         // Check if the node is a DatabaseInstance
@@ -175,19 +128,12 @@ export class RdsOracleMultiTenant implements IAspect {
             const validationResult = this.validateDatabaseInstance(node);
 
             if (!validationResult.isValid) {
-                // Log validation failure details but continue processing other instances
                 return;
-            }
-
-            // Check if it's an Oracle database
-            if (!this.isOracleDatabase(node)) {
-                // Skip non-Oracle databases silently (this is expected behavior)
+            } else if (!this.isOracleDatabase(node)) {
+                // Check if it's an Oracle database
                 return;
-            }
-
-            // Check if it has already been processed
-            if (this.isAlreadyProcessed(node)) {
-                // Skip already processed instances with warning
+            } else if (this.isAlreadyProcessed(node)) {
+                // Check if it has already been processed
                 return;
             }
 
@@ -267,14 +213,6 @@ export class RdsOracleMultiTenant implements IAspect {
      *
      * @param instance - The DatabaseInstance to check
      * @returns true if the instance is using an Oracle engine, false otherwise
-     *
-     * @example
-     * ```typescript
-     * const isOracle = this.isOracleDatabase(myDatabaseInstance);
-     * if (isOracle) {
-     *   // Apply Oracle MultiTenant configuration
-     * }
-     * ```
      */
     private isOracleDatabase(instance: DatabaseInstance): boolean {
         try {
@@ -313,14 +251,6 @@ export class RdsOracleMultiTenant implements IAspect {
      *
      * @param instance - The DatabaseInstance to check
      * @returns true if the instance has been processed, false otherwise
-     *
-     * @example
-     * ```typescript
-     * if (!this.isAlreadyProcessed(instance)) {
-     *   // Process the instance
-     *   this.applyMultiTenantConfiguration(instance);
-     * }
-     * ```
      */
     private isAlreadyProcessed(instance: DatabaseInstance): boolean {
         try {
@@ -349,43 +279,28 @@ export class RdsOracleMultiTenant implements IAspect {
      *
      * @param instance - The DatabaseInstance to extract identifier from
      * @returns The instance identifier if valid, null otherwise
-     *
-     * @example
-     * ```typescript
-     * const instanceId = this.extractInstanceIdentifier(instance);
-     * if (instanceId) {
-     *   // Use the instance identifier
-     * }
-     * ```
      */
     private extractInstanceIdentifier(
         instance: DatabaseInstance
     ): string | null {
-        try {
-            const instanceId = instance.instanceIdentifier;
+        const instanceId = instance.instanceIdentifier;
 
-            if (!instanceId) {
-                return null;
-            }
-
-            if (typeof instanceId !== 'string') {
-                return null;
-            }
-
-            if (instanceId.trim() === '') {
-                return null;
-            }
-
-            // Validate identifier format (basic AWS RDS identifier rules)
-            const trimmedId = instanceId.trim();
-            if (trimmedId.length < 1 || trimmedId.length > 63) {
-                return null;
-            }
-
-            return trimmedId;
-        } catch (error) {
+        if (!instanceId) {
             return null;
         }
+
+        // Check if unresolved token
+        if (Token.isUnresolved(instanceId)) {
+            return null;
+        }
+
+        // Validate identifier format (basic AWS RDS identifier rules)
+        const trimmedId = instanceId.trim();
+        if (trimmedId.length < 1 || trimmedId.length > 63) {
+            return null;
+        }
+
+        return trimmedId;
     }
 
     /**
@@ -404,12 +319,6 @@ export class RdsOracleMultiTenant implements IAspect {
      *
      * @param scope - The construct scope where the provider should be created
      * @returns Provider for the Custom Resource
-     *
-     * @example
-     * ```typescript
-     * const provider = this.getOrBuildProvider(instance);
-     * // Provider will be reused for other Oracle instances in the same stack
-     * ```
      */
     private getOrBuildProvider(scope: IConstruct): Provider {
         const stack = Stack.of(scope);
@@ -429,7 +338,7 @@ export class RdsOracleMultiTenant implements IAspect {
                 code: Code.fromAsset(join(__dirname, 'handler', 'on-event')),
                 handler: 'index.handler',
                 memorySize: 512,
-                timeout: Duration.minutes(15),
+                timeout: Duration.minutes(5),
                 runtime: Runtime.NODEJS_22_X,
                 ...lambdaConfig
             });
@@ -480,7 +389,7 @@ export class RdsOracleMultiTenant implements IAspect {
                 // Grant KMS permissions if encryption key is provided
                 // This ensures the Lambda functions can decrypt environment variables
                 // and write to encrypted CloudWatch log groups
-                if (this.props.encryption) {
+                if (this.props?.encryption) {
                     this.props.encryption.grantEncryptDecrypt(handler.function);
                 }
             });
@@ -513,23 +422,17 @@ export class RdsOracleMultiTenant implements IAspect {
      * - Validation of configuration properties
      *
      * @returns Configuration object for SecureFunction
-     *
-     * @example
-     * ```typescript
-     * const config = this.createLambdaConfiguration();
-     * // config includes encryption, vpc, securityGroups, etc.
-     * ```
      */
     private createLambdaConfiguration(): any {
         const config: any = {};
 
         // Apply encryption settings if provided
-        if (this.props.encryption) {
+        if (this.props?.encryption) {
             config.encryption = this.props.encryption;
         }
 
         // Apply Lambda configuration settings if provided
-        if (this.props.lambdaConfiguration) {
+        if (this.props?.lambdaConfiguration) {
             // Spread all lambda configuration properties
             Object.assign(config, this.props.lambdaConfiguration);
         }
@@ -545,12 +448,6 @@ export class RdsOracleMultiTenant implements IAspect {
      *
      * @param instance - The Oracle DatabaseInstance to create properties for
      * @returns Properties object for the Custom Resource
-     *
-     * @example
-     * ```typescript
-     * const properties = this.createCustomResourceProperties(instance);
-     * // properties = { DBInstanceIdentifier: "my-oracle-instance" }
-     * ```
      */
     private createCustomResourceProperties(
         instance: DatabaseInstance
@@ -574,13 +471,6 @@ export class RdsOracleMultiTenant implements IAspect {
      * 5. Creates a Custom Resource for the specific Oracle instance
      *
      * @param instance - The Oracle DatabaseInstance to configure
-     *
-     * @example
-     * ```typescript
-     * if (this.isOracleDatabase(instance) && !this.isAlreadyProcessed(instance)) {
-     *   this.applyMultiTenantConfiguration(instance);
-     * }
-     * ```
      */
     private applyMultiTenantConfiguration(instance: DatabaseInstance): void {
         // Extract and validate the instance identifier
@@ -592,36 +482,28 @@ export class RdsOracleMultiTenant implements IAspect {
         // Mark instance as processed to prevent duplicates
         this.processedInstances.add(instanceId);
 
-        try {
-            // Get or build the provider for this stack (with reuse)
-            // This ensures consistent configuration application across all instances
-            const provider = this.getOrBuildProvider(instance);
+        // Get or build the provider for this stack (with reuse)
+        // This ensures consistent configuration application across all instances
+        const provider = this.getOrBuildProvider(instance);
 
-            // Create Custom Resource properties for this specific Oracle instance
-            const customResourceProperties =
-                this.createCustomResourceProperties(instance);
+        // Create Custom Resource properties for this specific Oracle instance
+        const customResourceProperties =
+            this.createCustomResourceProperties(instance);
 
-            // Create a unique Custom Resource for this Oracle instance
-            // Use a static ID since instanceId might be a token that gets resolved later
-            // The Custom Resource will be created as a child of the database instance,
-            // so it will be unique within that scope
-            const customResourceId = `RdsOracleMultiTenant`;
+        // Create a unique Custom Resource for this Oracle instance
+        // Use a static ID since instanceId might be a token that gets resolved later
+        // The Custom Resource will be created as a child of the database instance,
+        // so it will be unique within that scope
+        const customResourceId = `RdsOracleMultiTenant`;
 
-            // Create the Custom Resource that will handle the Oracle MultiTenant configuration
-            const customResource = new CustomResource(
-                instance,
-                customResourceId,
-                {
-                    serviceToken: provider.serviceToken,
-                    properties: customResourceProperties,
-                    resourceType: 'Custom::RdsOracleMultiTenant'
-                }
-            );
+        // Create the Custom Resource that will handle the Oracle MultiTenant configuration
+        const customResource = new CustomResource(instance, customResourceId, {
+            serviceToken: provider.serviceToken,
+            properties: customResourceProperties,
+            resourceType: 'Custom::RdsOracleMultiTenant'
+        });
 
-            // Add dependency on the database instance to ensure proper ordering
-            customResource.node.addDependency(instance);
-        } catch (error) {
-            throw error;
-        }
+        // Add dependency on the database instance to ensure proper ordering
+        customResource.node.addDependency(instance);
     }
 }
