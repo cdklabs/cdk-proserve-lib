@@ -10,6 +10,7 @@ import {
     enableOracleMultiTenant,
     waitForDatabaseReady
 } from '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client';
+import { mockDbInstanceId, mockOracleInstanceAvailable } from '../../fixtures';
 
 describe('RDS Client Utilities', () => {
     let mockRdsClient: RDS;
@@ -30,26 +31,19 @@ describe('RDS Client Utilities', () => {
 
     describe('getDatabaseInstance', () => {
         it('should get database instance successfully', async () => {
-            const dbInstanceId = 'test-instance';
-            const mockInstance = {
-                DBInstanceIdentifier: dbInstanceId,
-                DBInstanceStatus: 'available',
-                Engine: 'oracle-se2'
-            };
-
             mockRdsClient = {
                 describeDBInstances: vi.fn().mockResolvedValue({
-                    DBInstances: [mockInstance]
+                    DBInstances: [mockOracleInstanceAvailable]
                 })
             } as any;
 
             const result = await getDatabaseInstance(
                 mockRdsClient,
-                dbInstanceId
+                mockDbInstanceId
             );
-            expect(result).toEqual(mockInstance);
+            expect(result).toEqual(mockOracleInstanceAvailable);
             expect(mockRdsClient.describeDBInstances).toHaveBeenCalledWith({
-                DBInstanceIdentifier: dbInstanceId
+                DBInstanceIdentifier: mockDbInstanceId
             });
         });
 

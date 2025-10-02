@@ -18,16 +18,7 @@ import { Provider } from 'aws-cdk-lib/custom-resources';
 import { IConstruct, Construct } from 'constructs';
 import { SecureFunction } from '../../constructs/secure-function';
 import { LambdaConfiguration } from '../../types';
-
-/**
- * Properties passed to the Lambda handler from the Custom Resource
- */
-interface IResourceProperties {
-    /**
-     * The RDS database instance identifier
-     */
-    readonly DBInstanceIdentifier: string;
-}
+import { IResourceProperties } from './handler/types';
 
 /**
  * Validation result interface for database instance validation
@@ -202,8 +193,7 @@ export class RdsOracleMultiTenant implements IAspect {
      *
      * This method validates that the database instance is running Oracle Database,
      * which is a prerequisite for Oracle MultiTenant configuration. It checks the
-     * engine type by examining the engine family name and provides detailed logging
-     * for edge cases and validation failures.
+     * engine type by examining the engine family name.
      *
      * Supported Oracle engines include:
      * - Oracle Standard Edition (SE)

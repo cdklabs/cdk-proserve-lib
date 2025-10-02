@@ -5,6 +5,13 @@ import { RDS } from '@aws-sdk/client-rds';
 import { mockClient } from 'aws-sdk-client-mock';
 import { vi, describe, beforeEach, afterEach, it, expect } from 'vitest';
 import { mockContext } from '../../../../fixtures';
+import {
+    buildRdsMultiTenantCreateEvent,
+    buildRdsMultiTenantUpdateEvent,
+    buildRdsMultiTenantDeleteEvent,
+    mockDbInstanceId,
+    mockPhysicalResourceId
+} from '../../fixtures';
 
 // Mock the RDS client utilities
 vi.mock(
@@ -42,7 +49,7 @@ describe('OnEvent Handler', () => {
         );
         vi.mocked(waitForDatabaseReady).mockResolvedValue();
         vi.mocked(validateOracleDatabase).mockResolvedValue({
-            DBInstanceIdentifier: 'test-instance',
+            DBInstanceIdentifier: mockDbInstanceId,
             DBInstanceStatus: 'available',
             Engine: 'oracle-se2'
         } as any);
@@ -55,22 +62,7 @@ describe('OnEvent Handler', () => {
 
     describe('CREATE operations', () => {
         it('should wait for database to be ready before enabling MultiTenant', async () => {
-            const dbInstanceId = 'test-oracle-instance';
-            const event = {
-                RequestType: 'Create' as const,
-                ResourceProperties: {
-                    DBInstanceIdentifier: dbInstanceId,
-                    ServiceToken:
-                        'arn:aws:lambda:us-east-1:123456789012:function:test'
-                },
-                ResponseURL: 'https://example.com',
-                StackId: 'test-stack',
-                RequestId: 'test-request',
-                LogicalResourceId: 'test-resource',
-                ServiceToken:
-                    'arn:aws:lambda:us-east-1:123456789012:function:test',
-                ResourceType: 'Custom::RdsOracleMultiTenant'
-            };
+            const event = buildRdsMultiTenantCreateEvent();
 
             const { handler } = await import(
                 '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
@@ -85,40 +77,24 @@ describe('OnEvent Handler', () => {
 
             const result = await handler(event, mockContext);
 
-            expect(result.PhysicalResourceId).toBe(
-                `rds-oracle-multi-tenant-${dbInstanceId}`
-            );
+            expect(result.PhysicalResourceId).toBe(mockPhysicalResourceId);
             expect(waitForDatabaseReady).toHaveBeenCalledWith(
                 expect.any(RDS),
-                dbInstanceId
+                mockDbInstanceId
             );
             expect(validateOracleDatabase).toHaveBeenCalledWith(
                 expect.any(RDS),
-                dbInstanceId
+                mockDbInstanceId
             );
             expect(enableOracleMultiTenant).toHaveBeenCalledWith(
                 expect.any(RDS),
-                dbInstanceId
+                mockDbInstanceId
             );
         });
 
         it('should handle database that is already available', async () => {
             const dbInstanceId = 'test-oracle-instance-ready';
-            const event = {
-                RequestType: 'Create' as const,
-                ResourceProperties: {
-                    DBInstanceIdentifier: dbInstanceId,
-                    ServiceToken:
-                        'arn:aws:lambda:us-east-1:123456789012:function:test'
-                },
-                ResponseURL: 'https://example.com',
-                StackId: 'test-stack',
-                RequestId: 'test-request',
-                LogicalResourceId: 'test-resource',
-                ServiceToken:
-                    'arn:aws:lambda:us-east-1:123456789012:function:test',
-                ResourceType: 'Custom::RdsOracleMultiTenant'
-            };
+            const event = buildRdsMultiTenantCreateEvent(dbInstanceId);
 
             const { handler } = await import(
                 '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
@@ -152,21 +128,7 @@ describe('OnEvent Handler', () => {
 
         it('should timeout if database does not become ready within time limit', async () => {
             const dbInstanceId = 'test-oracle-instance-timeout';
-            const event = {
-                RequestType: 'Create' as const,
-                ResourceProperties: {
-                    DBInstanceIdentifier: dbInstanceId,
-                    ServiceToken:
-                        'arn:aws:lambda:us-east-1:123456789012:function:test'
-                },
-                ResponseURL: 'https://example.com',
-                StackId: 'test-stack',
-                RequestId: 'test-request',
-                LogicalResourceId: 'test-resource',
-                ServiceToken:
-                    'arn:aws:lambda:us-east-1:123456789012:function:test',
-                ResourceType: 'Custom::RdsOracleMultiTenant'
-            };
+            const event = buildRdsMultiTenantCreateEvent(dbInstanceId);
 
             const { handler } = await import(
                 '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
@@ -189,21 +151,7 @@ describe('OnEvent Handler', () => {
 
         it('should throw error if database is in failed state', async () => {
             const dbInstanceId = 'test-oracle-instance-failed';
-            const event = {
-                RequestType: 'Create' as const,
-                ResourceProperties: {
-                    DBInstanceIdentifier: dbInstanceId,
-                    ServiceToken:
-                        'arn:aws:lambda:us-east-1:123456789012:function:test'
-                },
-                ResponseURL: 'https://example.com',
-                StackId: 'test-stack',
-                RequestId: 'test-request',
-                LogicalResourceId: 'test-resource',
-                ServiceToken:
-                    'arn:aws:lambda:us-east-1:123456789012:function:test',
-                ResourceType: 'Custom::RdsOracleMultiTenant'
-            };
+            const event = buildRdsMultiTenantCreateEvent(dbInstanceId);
 
             const { handler } = await import(
                 '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
@@ -226,21 +174,7 @@ describe('OnEvent Handler', () => {
 
         it('should propagate wait errors from waitForDatabaseReady', async () => {
             const dbInstanceId = 'test-oracle-instance-wait-error';
-            const event = {
-                RequestType: 'Create' as const,
-                ResourceProperties: {
-                    DBInstanceIdentifier: dbInstanceId,
-                    ServiceToken:
-                        'arn:aws:lambda:us-east-1:123456789012:function:test'
-                },
-                ResponseURL: 'https://example.com',
-                StackId: 'test-stack',
-                RequestId: 'test-request',
-                LogicalResourceId: 'test-resource',
-                ServiceToken:
-                    'arn:aws:lambda:us-east-1:123456789012:function:test',
-                ResourceType: 'Custom::RdsOracleMultiTenant'
-            };
+            const event = buildRdsMultiTenantCreateEvent(dbInstanceId);
 
             const { handler } = await import(
                 '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
@@ -262,20 +196,9 @@ describe('OnEvent Handler', () => {
         });
 
         it('should throw error for missing DBInstanceIdentifier', async () => {
-            const event = {
-                RequestType: 'Create' as const,
-                ResourceProperties: {
-                    ServiceToken:
-                        'arn:aws:lambda:us-east-1:123456789012:function:test'
-                },
-                ResponseURL: 'https://example.com',
-                StackId: 'test-stack',
-                RequestId: 'test-request',
-                LogicalResourceId: 'test-resource',
-                ServiceToken:
-                    'arn:aws:lambda:us-east-1:123456789012:function:test',
-                ResourceType: 'Custom::RdsOracleMultiTenant'
-            } as any;
+            const event = buildRdsMultiTenantCreateEvent();
+            // Remove the DBInstanceIdentifier to test validation
+            delete (event.ResourceProperties as any).DBInstanceIdentifier;
 
             const { handler } = await import(
                 '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
@@ -290,28 +213,7 @@ describe('OnEvent Handler', () => {
     describe('UPDATE operations', () => {
         it('should return existing PhysicalResourceId for UPDATE', async () => {
             const dbInstanceId = 'test-oracle-instance-update';
-            const physicalResourceId = `rds-oracle-multi-tenant-${dbInstanceId}`;
-            const event = {
-                RequestType: 'Update' as const,
-                ResourceProperties: {
-                    DBInstanceIdentifier: dbInstanceId,
-                    ServiceToken:
-                        'arn:aws:lambda:us-east-1:123456789012:function:test'
-                },
-                OldResourceProperties: {
-                    DBInstanceIdentifier: dbInstanceId,
-                    ServiceToken:
-                        'arn:aws:lambda:us-east-1:123456789012:function:test'
-                },
-                PhysicalResourceId: physicalResourceId,
-                ResponseURL: 'https://example.com',
-                StackId: 'test-stack',
-                RequestId: 'test-request',
-                LogicalResourceId: 'test-resource',
-                ServiceToken:
-                    'arn:aws:lambda:us-east-1:123456789012:function:test',
-                ResourceType: 'Custom::RdsOracleMultiTenant'
-            };
+            const event = buildRdsMultiTenantUpdateEvent(dbInstanceId);
 
             const { handler } = await import(
                 '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
@@ -326,7 +228,9 @@ describe('OnEvent Handler', () => {
 
             const result = await handler(event, mockContext);
 
-            expect(result.PhysicalResourceId).toBe(physicalResourceId);
+            expect(result.PhysicalResourceId).toBe(
+                `rds-oracle-multi-tenant-${dbInstanceId}`
+            );
             expect(waitForDatabaseReady).not.toHaveBeenCalled();
             expect(validateOracleDatabase).not.toHaveBeenCalled();
             expect(enableOracleMultiTenant).not.toHaveBeenCalled();
@@ -336,23 +240,7 @@ describe('OnEvent Handler', () => {
     describe('DELETE operations', () => {
         it('should return existing PhysicalResourceId for DELETE', async () => {
             const dbInstanceId = 'test-oracle-instance-delete';
-            const physicalResourceId = `rds-oracle-multi-tenant-${dbInstanceId}`;
-            const event = {
-                RequestType: 'Delete' as const,
-                ResourceProperties: {
-                    DBInstanceIdentifier: dbInstanceId,
-                    ServiceToken:
-                        'arn:aws:lambda:us-east-1:123456789012:function:test'
-                },
-                PhysicalResourceId: physicalResourceId,
-                ResponseURL: 'https://example.com',
-                StackId: 'test-stack',
-                RequestId: 'test-request',
-                LogicalResourceId: 'test-resource',
-                ServiceToken:
-                    'arn:aws:lambda:us-east-1:123456789012:function:test',
-                ResourceType: 'Custom::RdsOracleMultiTenant'
-            };
+            const event = buildRdsMultiTenantDeleteEvent(dbInstanceId);
 
             const { handler } = await import(
                 '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
@@ -367,7 +255,9 @@ describe('OnEvent Handler', () => {
 
             const result = await handler(event, mockContext);
 
-            expect(result.PhysicalResourceId).toBe(physicalResourceId);
+            expect(result.PhysicalResourceId).toBe(
+                `rds-oracle-multi-tenant-${dbInstanceId}`
+            );
             expect(waitForDatabaseReady).not.toHaveBeenCalled();
             expect(validateOracleDatabase).not.toHaveBeenCalled();
             expect(enableOracleMultiTenant).not.toHaveBeenCalled();
@@ -376,21 +266,9 @@ describe('OnEvent Handler', () => {
 
     describe('Error handling', () => {
         it('should throw error for unsupported request type', async () => {
-            const event = {
-                RequestType: 'InvalidType' as any,
-                ResourceProperties: {
-                    DBInstanceIdentifier: 'test-instance',
-                    ServiceToken:
-                        'arn:aws:lambda:us-east-1:123456789012:function:test'
-                },
-                ResponseURL: 'https://example.com',
-                StackId: 'test-stack',
-                RequestId: 'test-request',
-                LogicalResourceId: 'test-resource',
-                ServiceToken:
-                    'arn:aws:lambda:us-east-1:123456789012:function:test',
-                ResourceType: 'Custom::RdsOracleMultiTenant'
-            };
+            const event = buildRdsMultiTenantCreateEvent();
+            // Change request type to invalid
+            (event as any).RequestType = 'InvalidType';
 
             const { handler } = await import(
                 '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
