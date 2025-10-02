@@ -28047,34 +28047,12 @@ instances and enables MultiTenant architecture on each one.
 **NOTE: This should ONLY be used on new Oracle RDS databases, as it takes a backup and can take a
 significant amount of time to complete.**
 
-The Aspect follows the established pattern of Lambda-backed custom resources used throughout the
-CDK ProServe Library, providing a secure and reliable way to configure Oracle MultiTenant settings
-on RDS Oracle instances through AWS SDK calls.
-
-## Oracle MultiTenant Architecture
-
-Oracle MultiTenant architecture allows a single Oracle database instance to function as a Container Database (CDB)
-that can host multiple Pluggable Databases (PDBs). This provides:
-- Resource consolidation and cost optimization
-- Simplified database administration
-- Enhanced security through database isolation
-- Improved backup and recovery operations
-
-## Prerequisites
-
-Before using this Aspect, ensure your RDS Oracle instances meet these requirements:
-- **Engine**: Oracle Database
-- **Version**: 19c or higher (Oracle 12c Release 2 and later support MultiTenant)
-- **Edition**: Enterprise Edition (recommended) or Standard Edition 2 (limited support)
-- **Status**: Database must be in 'available' state
-- **Configuration**: Oracle Data Guard must not be enabled (incompatible with MultiTenant conversion)
-
 > [{@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS}]({@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS})
 
 *Example*
 
 ```typescript
-Basic usage applied to an entire CDK application:
+// Basic usage applied to an entire CDK application:
 
 import { App, Aspects } from 'aws-cdk-lib';
 import { RdsOracleMultiTenant } from '@cdklabs/cdk-proserve-lib/aspects';
@@ -28124,34 +28102,6 @@ public visit(node: IConstruct): void
 
 Visits a construct node and applies Oracle MultiTenant configuration if applicable.
 
-This method is called by the CDK framework for each construct in the tree when the
-Aspect is applied. It implements the core logic of the Aspect:
-
-1. **Instance Identification**: Checks if the node is a DatabaseInstance construct
-2. **Oracle Validation**: Verifies the database uses an Oracle engine
-3. **Duplicate Prevention**: Ensures the instance hasn't been processed already
-4. **Configuration Application**: Applies MultiTenant configuration to valid Oracle instances
-5. **Silent Skipping**: Ignores non-Oracle databases without errors
-
-## Processing Logic
-
-The visit method follows this decision tree:
-- If not a DatabaseInstance → skip silently
-- If not Oracle engine → skip silently
-- If already processed → skip silently with warning
-- If Oracle and not processed → apply MultiTenant configuration
-
-*Example*
-
-```typescript
-The visit method is called automatically by the CDK framework:
-
-// This happens automatically when the Aspect is applied
-Aspects.of(app).add(new RdsOracleMultiTenant());
-// The visit method will be called for every construct in the app
-```
-
-
 ###### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.visit.parameter.node"></a>
 
 - *Type:* constructs.IConstruct
@@ -28169,7 +28119,7 @@ The construct being visited by the Aspect.
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.property.props"></a>
+##### `props`<sup>Optional</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.property.props"></a>
 
 ```typescript
 public readonly props: RdsOracleMultiTenantProps;

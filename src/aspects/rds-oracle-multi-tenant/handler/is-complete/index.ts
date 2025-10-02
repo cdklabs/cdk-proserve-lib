@@ -172,10 +172,6 @@ async function isUpdateComplete(
             Data: formatResponseData(dbInstanceId, conversionState)
         };
     } catch (error) {
-        // If we can't get the current state, just return completion without data
-        console.warn(
-            `Could not get current state for UPDATE no-op on ${dbInstanceId}: ${error}`
-        );
         return {
             IsComplete: true
         };

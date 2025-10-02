@@ -308,9 +308,6 @@ describe('IsComplete Handler', () => {
 
             expect(result.IsComplete).toBe(true);
             expect('Data' in result).toBe(false);
-            expect(consoleWarnSpy).toHaveBeenCalledWith(
-                `Could not get current state for UPDATE no-op on ${mockDbInstanceId}: Error: Database not found`
-            );
         });
     });
 

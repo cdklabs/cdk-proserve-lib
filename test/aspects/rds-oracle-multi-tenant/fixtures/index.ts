@@ -1,19 +1,19 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { DBInstance } from '@aws-sdk/client-rds';
 import {
     CloudFormationCustomResourceCreateEvent,
     CloudFormationCustomResourceUpdateEvent,
     CloudFormationCustomResourceDeleteEvent,
     CdkCustomResourceIsCompleteEvent
 } from 'aws-lambda';
-import { DBInstance } from '@aws-sdk/client-rds';
+import { IResourceProperties } from '../../../../src/aspects/rds-oracle-multi-tenant/handler/types/resource-properties';
 import {
     buildMockCreateEvent,
     buildMockUpdateEvent,
     buildMockDeleteEvent
 } from '../../../fixtures/custom-resource';
-import { IResourceProperties } from '../../../../src/aspects/rds-oracle-multi-tenant/handler/types/resource-properties';
 
 /**
  * Mock RDS Oracle database instance identifier
