@@ -254,7 +254,8 @@ export class RdsOracleMultiTenant implements IAspect {
      */
     private isAlreadyProcessed(instance: DatabaseInstance): boolean {
         try {
-            const instanceId = instance.instanceIdentifier;
+            // Use the same method as in applyMultiTenantConfiguration to ensure consistency
+            const instanceId = this.extractInstanceIdentifier(instance);
 
             // If the instance doesn't have an identifier, we can't track it reliably
             if (!instanceId) {
@@ -289,9 +290,11 @@ export class RdsOracleMultiTenant implements IAspect {
             return null;
         }
 
-        // Check if unresolved token
+        // For CDK tokens (which are valid in CDK context), we accept them
+        // In actual deployment, these will be resolved to proper identifiers
         if (Token.isUnresolved(instanceId)) {
-            return null;
+            // Return a unique placeholder based on the instance's node ID
+            return `cdk-token-identifier-${instance.node.id}`;
         }
 
         // Validate identifier format (basic AWS RDS identifier rules)
@@ -491,10 +494,10 @@ export class RdsOracleMultiTenant implements IAspect {
             this.createCustomResourceProperties(instance);
 
         // Create a unique Custom Resource for this Oracle instance
-        // Use a static ID since instanceId might be a token that gets resolved later
-        // The Custom Resource will be created as a child of the database instance,
-        // so it will be unique within that scope
-        const customResourceId = `RdsOracleMultiTenant`;
+        // Use the instance identifier or a unique suffix to avoid conflicts
+        const customResourceId = instanceId.startsWith('cdk-token-identifier')
+            ? `RdsOracleMultiTenant-${instance.node.id}`
+            : `RdsOracleMultiTenant-${instanceId}`;
 
         // Create the Custom Resource that will handle the Oracle MultiTenant configuration
         const customResource = new CustomResource(instance, customResourceId, {

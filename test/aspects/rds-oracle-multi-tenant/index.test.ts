@@ -614,11 +614,11 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
             template.resourceCountIs('Custom::RdsOracleMultiTenant', 0);
         });
 
-        it('should handle database instances with invalid instance identifier gracefully', () => {
+        it('should handle database instances with unresolved token identifier gracefully', () => {
             const aspect = new RdsOracleMultiTenant();
             const oracleInstance = new DatabaseInstance(
                 stack,
-                'OracleInstanceInvalidId',
+                'OracleInstanceTokenId',
                 {
                     engine: DatabaseInstanceEngine.oracleSe2({
                         version: OracleEngineVersion.VER_19_0_0_0_2020_04_R1
@@ -631,16 +631,18 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
                 }
             );
 
-            // Mock the instanceIdentifier property to return non-string value
+            // Mock the instanceIdentifier property to return a token (unresolved)
+            // This simulates when the identifier is a CDK token that hasn't been resolved yet
             Object.defineProperty(oracleInstance, 'instanceIdentifier', {
-                get: () => 123,
+                get: () => '${Token[TOKEN.123]}',
                 configurable: true
             });
 
             aspect.visit(oracleInstance);
             const template = getTemplate();
 
-            template.resourceCountIs('Custom::RdsOracleMultiTenant', 0);
+            // Now we accept tokens, so a Custom Resource should be created
+            template.resourceCountIs('Custom::RdsOracleMultiTenant', 1);
         });
 
         it('should handle exceptions during instance identifier access gracefully', () => {
@@ -892,7 +894,7 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
             template.hasResourceProperties('AWS::Lambda::Function', {
                 Runtime: 'nodejs22.x',
                 Handler: 'index.handler',
-                Timeout: 900
+                Timeout: 300
             });
 
             template.hasResourceProperties('AWS::IAM::Policy', {

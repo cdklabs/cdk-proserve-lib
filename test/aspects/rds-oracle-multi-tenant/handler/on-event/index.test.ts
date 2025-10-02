@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { RDSClient } from '@aws-sdk/client-rds';
+import { RDS } from '@aws-sdk/client-rds';
 import { mockClient } from 'aws-sdk-client-mock';
 import { vi, describe, beforeEach, afterEach, it, expect } from 'vitest';
 import { mockContext } from '../../../../fixtures';
@@ -18,13 +18,13 @@ vi.mock(
             waitForDatabaseReady: vi.fn(),
             validateOracleDatabase: vi.fn(),
             enableOracleMultiTenant: vi.fn(),
-            createRdsClient: vi.fn(() => new RDSClient({}))
+            createRdsClient: vi.fn(() => new RDS({}))
         };
     }
 );
 
 describe('OnEvent Handler', () => {
-    const rdsMock = mockClient(RDSClient);
+    const rdsMock = mockClient(RDS);
     const consoleSpy = vi.spyOn(console, 'log');
 
     beforeEach(async () => {
@@ -89,15 +89,15 @@ describe('OnEvent Handler', () => {
                 `rds-oracle-multi-tenant-${dbInstanceId}`
             );
             expect(waitForDatabaseReady).toHaveBeenCalledWith(
-                expect.any(RDSClient),
+                expect.any(RDS),
                 dbInstanceId
             );
             expect(validateOracleDatabase).toHaveBeenCalledWith(
-                expect.any(RDSClient),
+                expect.any(RDS),
                 dbInstanceId
             );
             expect(enableOracleMultiTenant).toHaveBeenCalledWith(
-                expect.any(RDSClient),
+                expect.any(RDS),
                 dbInstanceId
             );
         });
@@ -137,15 +137,15 @@ describe('OnEvent Handler', () => {
                 `rds-oracle-multi-tenant-${dbInstanceId}`
             );
             expect(waitForDatabaseReady).toHaveBeenCalledWith(
-                expect.any(RDSClient),
+                expect.any(RDS),
                 dbInstanceId
             );
             expect(validateOracleDatabase).toHaveBeenCalledWith(
-                expect.any(RDSClient),
+                expect.any(RDS),
                 dbInstanceId
             );
             expect(enableOracleMultiTenant).toHaveBeenCalledWith(
-                expect.any(RDSClient),
+                expect.any(RDS),
                 dbInstanceId
             );
         });

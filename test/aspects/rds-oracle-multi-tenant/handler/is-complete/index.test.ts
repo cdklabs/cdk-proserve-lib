@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { RDSClient } from '@aws-sdk/client-rds';
+import { RDS } from '@aws-sdk/client-rds';
 import { CdkCustomResourceIsCompleteEvent } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
 import { vi, describe, beforeEach, afterEach, it, expect } from 'vitest';
@@ -18,7 +18,7 @@ vi.mock(
         );
         return {
             ...actual,
-            createRdsClient: vi.fn(() => new RDSClient({})),
+            createRdsClient: vi.fn(() => new RDS({})),
             getDatabaseInstance: vi.fn()
         };
     }
@@ -74,7 +74,7 @@ function createEvent(
 }
 
 describe('IsComplete Handler', () => {
-    const rdsMock = mockClient(RDSClient);
+    const rdsMock = mockClient(RDS);
     let consoleSpy: any;
     let consoleErrorSpy: any;
     let consoleWarnSpy: any;
