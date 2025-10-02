@@ -16,7 +16,10 @@ import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { DatabaseInstance } from 'aws-cdk-lib/aws-rds';
 import { Provider } from 'aws-cdk-lib/custom-resources';
 import { IConstruct, Construct } from 'constructs';
-import { SecureFunction } from '../../constructs/secure-function';
+import {
+    SecureFunction,
+    SecureFunctionProps
+} from '../../constructs/secure-function';
 import { LambdaConfiguration } from '../../types';
 import { IResourceProperties } from './handler/types';
 
@@ -404,33 +407,16 @@ export class RdsOracleMultiTenant implements IAspect {
     /**
      * Creates a consistent Lambda configuration object that applies all configuration properties.
      *
-     * This method ensures that encryption settings and Lambda configuration are applied
-     * consistently across all Lambda functions created by the Aspect. It validates that
-     * all configuration properties are properly merged and applied.
-     *
-     * The method handles:
-     * - Encryption key application for environment variables and log groups
-     * - Lambda configuration properties (VPC, security groups, etc.)
-     * - Consistent application across all instances
-     * - Validation of configuration properties
-     *
      * @returns Configuration object for SecureFunction
      */
-    private createLambdaConfiguration(): any {
-        const config: any = {};
-
-        // Apply encryption settings if provided
-        if (this.props?.encryption) {
-            config.encryption = this.props.encryption;
-        }
-
-        // Apply Lambda configuration settings if provided
-        if (this.props?.lambdaConfiguration) {
-            // Spread all lambda configuration properties
-            Object.assign(config, this.props.lambdaConfiguration);
-        }
-
-        return config;
+    private createLambdaConfiguration(): Partial<SecureFunctionProps> {
+        return {
+            ...(this.props?.encryption && {
+                encryption: this.props.encryption
+            }),
+            ...(this.props?.lambdaConfiguration &&
+                this.props.lambdaConfiguration)
+        };
     }
 
     /**

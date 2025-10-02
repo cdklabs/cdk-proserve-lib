@@ -128,12 +128,19 @@ export async function waitForDatabaseReady(
     pollIntervalMs: number = 30000 // 30 seconds
 ): Promise<void> {
     const startTime = Date.now();
+    let isFirstIteration = true;
 
     console.log(
         `Waiting for database ${dbInstanceId} to be ready for modification...`
     );
 
     while (Date.now() - startTime < maxWaitTimeMs) {
+        // Wait before polling (except on first iteration)
+        if (!isFirstIteration) {
+            await new Promise((resolve) => setTimeout(resolve, pollIntervalMs));
+        }
+        isFirstIteration = false;
+
         try {
             const dbInstance = await getDatabaseInstance(
                 rdsClient,
@@ -159,11 +166,10 @@ export async function waitForDatabaseReady(
                 );
             }
 
-            // Wait before next poll
+            // Log that we're waiting for next poll
             console.log(
                 `Database ${dbInstanceId} is not ready (status: ${status}), waiting ${pollIntervalMs / 1000} seconds...`
             );
-            await new Promise((resolve) => setTimeout(resolve, pollIntervalMs));
         } catch (error) {
             if (
                 error instanceof Error &&
@@ -176,7 +182,6 @@ export async function waitForDatabaseReady(
             console.warn(
                 `Error checking database status, will retry: ${error instanceof Error ? error.message : String(error)}`
             );
-            await new Promise((resolve) => setTimeout(resolve, pollIntervalMs));
         }
     }
 

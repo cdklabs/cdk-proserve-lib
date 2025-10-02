@@ -30,8 +30,23 @@ export interface IResponseData {
  * Error response format for validation and runtime errors
  */
 export interface IErrorResponse {
+    /**
+     * Type of error encountered during operation
+     */
     readonly errorType: 'ValidationError' | 'RuntimeError' | 'PermissionError';
+
+    /**
+     * Detailed error message
+     */
     readonly errorMessage: string;
+
+    /**
+     * DB instance identifier where the error occurred
+     */
     readonly dbInstanceId: string;
+
+    /**
+     * AWS request ID for tracking
+     */
     readonly requestId?: string;
 }

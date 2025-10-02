@@ -141,10 +141,11 @@ async function isCreateComplete(
                 `Error checking CREATE completion for ${dbInstanceId}: ${error.message}`
             );
             throw error;
+        } else {
+            throw new Error(
+                `Unknown error checking CREATE completion for ${dbInstanceId}`
+            );
         }
-        throw new Error(
-            `Unknown error checking CREATE completion for ${dbInstanceId}`
-        );
     }
 }
 
