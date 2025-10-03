@@ -28045,7 +28045,8 @@ application automatically. When applied to a construct tree, it identifies all R
 instances and enables MultiTenant architecture on each one.
 
 **NOTE: This should ONLY be used on new Oracle RDS databases, as it takes a backup and can take a
-significant amount of time to complete.**
+significant amount of time to complete. This is a 1-way door, after this setting is turned on it
+CANNOT be reversed!**
 
 > [{@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS}]({@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS})
 
