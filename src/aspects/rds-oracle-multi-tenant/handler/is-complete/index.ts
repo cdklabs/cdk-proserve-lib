@@ -164,19 +164,9 @@ async function isUpdateComplete(
         `UPDATE operation is no-op for database: ${dbInstanceId}, completing immediately`
     );
 
-    // For UPDATE operations, we still need to return the current state
-    // even though it's a no-op, to maintain consistency
-    try {
-        const conversionState = await getConversionState(dbInstanceId);
-        return {
-            IsComplete: true,
-            Data: formatResponseData(dbInstanceId, conversionState)
-        };
-    } catch (error) {
-        return {
-            IsComplete: true
-        };
-    }
+    return {
+        IsComplete: true
+    };
 }
 
 /**

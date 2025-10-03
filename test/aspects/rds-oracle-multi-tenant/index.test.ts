@@ -525,37 +525,6 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
             template.resourceCountIs('Custom::RdsOracleMultiTenant', 0);
         });
 
-        it('should handle exceptions during engine access gracefully', () => {
-            const aspect = new RdsOracleMultiTenant();
-            const oracleInstance = new DatabaseInstance(
-                stack,
-                'OracleInstanceEngineError',
-                {
-                    engine: DatabaseInstanceEngine.oracleSe2({
-                        version: OracleEngineVersion.VER_19_0_0_0_2020_04_R1
-                    }),
-                    instanceType: InstanceType.of(
-                        InstanceClass.BURSTABLE3,
-                        InstanceSize.SMALL
-                    ),
-                    vpc
-                }
-            );
-
-            // Mock the engine property to throw an error
-            Object.defineProperty(oracleInstance, 'engine', {
-                get: () => {
-                    throw new Error('Engine access error');
-                },
-                configurable: true
-            });
-
-            aspect.visit(oracleInstance);
-            const template = getTemplate();
-
-            template.resourceCountIs('Custom::RdsOracleMultiTenant', 0);
-        });
-
         it('should handle database instances with missing instance identifier gracefully', () => {
             const aspect = new RdsOracleMultiTenant();
             const oracleInstance = new DatabaseInstance(
@@ -643,37 +612,6 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
 
             // Now we accept tokens, so a Custom Resource should be created
             template.resourceCountIs('Custom::RdsOracleMultiTenant', 1);
-        });
-
-        it('should handle exceptions during instance identifier access gracefully', () => {
-            const aspect = new RdsOracleMultiTenant();
-            const oracleInstance = new DatabaseInstance(
-                stack,
-                'OracleInstanceIdError',
-                {
-                    engine: DatabaseInstanceEngine.oracleSe2({
-                        version: OracleEngineVersion.VER_19_0_0_0_2020_04_R1
-                    }),
-                    instanceType: InstanceType.of(
-                        InstanceClass.BURSTABLE3,
-                        InstanceSize.SMALL
-                    ),
-                    vpc
-                }
-            );
-
-            // Mock the instanceIdentifier property to throw an error
-            Object.defineProperty(oracleInstance, 'instanceIdentifier', {
-                get: () => {
-                    throw new Error('Instance identifier access error');
-                },
-                configurable: true
-            });
-
-            aspect.visit(oracleInstance);
-            const template = getTemplate();
-
-            template.resourceCountIs('Custom::RdsOracleMultiTenant', 0);
         });
 
         it('should handle exceptions during duplicate check gracefully', () => {

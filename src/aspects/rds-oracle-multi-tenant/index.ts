@@ -24,15 +24,6 @@ import { LambdaConfiguration } from '../../types';
 import { IResourceProperties } from './handler/types';
 
 /**
- * Validation result interface for database instance validation
- */
-interface ValidationResult {
-    isValid: boolean;
-    reason?: string;
-    details?: string;
-}
-
-/**
  * Properties for configuring the RDS Oracle MultiTenant Aspect
  */
 export interface RdsOracleMultiTenantProps {
@@ -67,7 +58,8 @@ export interface RdsOracleMultiTenantProps {
  * instances and enables MultiTenant architecture on each one.
  *
  * **NOTE: This should ONLY be used on new Oracle RDS databases, as it takes a backup and can take a
- * significant amount of time to complete.**
+ * significant amount of time to complete. This is a 1-way door, after this setting is turned on it
+ * CANNOT be reversed!**
  *
  * @example
  * // Basic usage applied to an entire CDK application:
@@ -121,7 +113,7 @@ export class RdsOracleMultiTenant implements IAspect {
             // Validate the database instance configuration
             const validationResult = this.validateDatabaseInstance(node);
 
-            if (!validationResult.isValid) {
+            if (!validationResult) {
                 return;
             } else if (!this.isOracleDatabase(node)) {
                 // Check if it's an Oracle database
@@ -144,51 +136,28 @@ export class RdsOracleMultiTenant implements IAspect {
      * having a valid identifier and accessible engine configuration.
      *
      * @param instance - The DatabaseInstance to validate
-     * @returns ValidationResult indicating if the instance is valid for processing
+     * @returns boolean indicating if the instance is valid for processing
      */
-    private validateDatabaseInstance(
-        instance: DatabaseInstance
-    ): ValidationResult {
-        try {
-            // Check if instance has a valid identifier
-            const instanceId = this.extractInstanceIdentifier(instance);
-            if (!instanceId) {
-                return {
-                    isValid: false,
-                    reason: 'Missing or invalid instance identifier',
-                    details:
-                        'Database instance must have a valid identifier for tracking and configuration'
-                };
-            }
-
-            // Check if engine is accessible
-            const engine = instance.engine;
-            if (!engine) {
-                return {
-                    isValid: false,
-                    reason: 'Engine configuration not accessible',
-                    details: `Instance ${instanceId} does not have accessible engine configuration`
-                };
-            }
-
-            // Check if engine type is accessible
-            const engineType = engine.engineType;
-            if (!engineType) {
-                return {
-                    isValid: false,
-                    reason: 'Engine type not accessible',
-                    details: `Instance ${instanceId} engine type cannot be determined`
-                };
-            }
-
-            return { isValid: true };
-        } catch (error) {
-            return {
-                isValid: false,
-                reason: 'Validation error',
-                details: `Error during validation: ${error instanceof Error ? error.message : String(error)}`
-            };
+    private validateDatabaseInstance(instance: DatabaseInstance): boolean {
+        // Check if instance has a valid identifier
+        const instanceId = this.extractInstanceIdentifier(instance);
+        if (!instanceId) {
+            return false;
         }
+
+        // Check if engine is accessible
+        const engine = instance.engine;
+        if (!engine) {
+            return false;
+        }
+
+        // Check if engine type is accessible
+        const engineType = engine.engineType;
+        if (!engineType) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -208,28 +177,12 @@ export class RdsOracleMultiTenant implements IAspect {
      * @returns true if the instance is using an Oracle engine, false otherwise
      */
     private isOracleDatabase(instance: DatabaseInstance): boolean {
-        try {
-            // Get the engine from the database instance
-            const engine = instance.engine;
-            if (!engine) {
-                return false;
-            }
-
-            // Check if the engine type is Oracle
-            // Oracle engine types include: oracle-se2, oracle-se1, oracle-se, oracle-ee
-            const engineType = engine.engineType;
-            if (!engineType) {
-                return false;
-            }
-
-            // Check if the engine type starts with 'oracle'
-            const isOracle = engineType.toLowerCase().startsWith('oracle');
-
-            return isOracle;
-        } catch (error) {
-            // If there's any error accessing the engine properties, assume it's not Oracle
-            return false;
-        }
+        // Check if the engine type is Oracle
+        // Oracle engine types include: oracle-se2, oracle-se1, oracle-se, oracle-ee
+        return (
+            instance.engine?.engineType.toLowerCase().startsWith('oracle') ??
+            false
+        );
     }
 
     /**
