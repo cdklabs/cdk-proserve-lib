@@ -4096,7 +4096,7 @@ Block device mappings for the image.
 ##### `components`<sup>Optional</sup> <a name="components" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps.property.components"></a>
 
 ```typescript
-public readonly components: Component | CfnComponent[];
+public readonly components: (Component | CfnComponent)[];
 ```
 
 - *Type:* @cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component | aws-cdk-lib.aws_imagebuilder.CfnComponent[]
@@ -4243,7 +4243,7 @@ VPC configuration for the image pipeline.
 ##### `extraComponents`<sup>Optional</sup> <a name="extraComponents" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.extraComponents"></a>
 
 ```typescript
-public readonly extraComponents: Component | CfnComponent[];
+public readonly extraComponents: (Component | CfnComponent)[];
 ```
 
 - *Type:* @cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component | aws-cdk-lib.aws_imagebuilder.CfnComponent[]
@@ -7341,7 +7341,7 @@ const webApplicationFirewallProps: constructs.WebApplicationFirewallProps = { ..
 ##### `awsManagedRuleGroups`<sup>Optional</sup> <a name="awsManagedRuleGroups" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps.property.awsManagedRuleGroups"></a>
 
 ```typescript
-public readonly awsManagedRuleGroups: AwsManagedRuleGroupConfig | AwsManagedRuleGroup[];
+public readonly awsManagedRuleGroups: (AwsManagedRuleGroupConfig | AwsManagedRuleGroup)[];
 ```
 
 - *Type:* @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroupConfig | @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup[]
