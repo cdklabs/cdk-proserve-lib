@@ -62,6 +62,7 @@
     "@aws-sdk/client-imagebuilder": "3.600.0",
     "@aws-sdk/client-opensearch": "3.600.0",
     "@aws-sdk/client-pricing": "^3.901.0",
+    "@aws-sdk/client-rds": "3.600.0",
     "@aws-sdk/client-s3": "3.600.0",
     "@aws-sdk/client-secrets-manager": "3.600.0",
     "@aws-sdk/client-ssm": "3.600.0",
