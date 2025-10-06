@@ -110,16 +110,13 @@ export class RdsOracleMultiTenant implements IAspect {
     visit(node: IConstruct): void {
         // Check if the node is a DatabaseInstance
         if (node instanceof DatabaseInstance) {
-            // Validate the database instance configuration
-            const validationResult = this.validateDatabaseInstance(node);
+            // Validate the database instance configuration (includes Oracle engine check)
+            if (!this.validateDatabaseInstance(node)) {
+                return;
+            }
 
-            if (!validationResult) {
-                return;
-            } else if (!this.isOracleDatabase(node)) {
-                // Check if it's an Oracle database
-                return;
-            } else if (this.isAlreadyProcessed(node)) {
-                // Check if it has already been processed
+            // Check if it has already been processed
+            if (this.isAlreadyProcessed(node)) {
                 return;
             }
 
@@ -129,11 +126,13 @@ export class RdsOracleMultiTenant implements IAspect {
     }
 
     /**
-     * Validates a DatabaseInstance for basic configuration requirements.
+     * Validates a DatabaseInstance for configuration requirements.
      *
-     * This method performs comprehensive validation of the database instance
-     * to ensure it meets the basic requirements for processing, including
-     * having a valid identifier and accessible engine configuration.
+     * This method performs validation of the database instance
+     * to ensure it meets all requirements for processing, including:
+     * - Having a valid identifier
+     * - Accessible engine configuration
+     * - Using an Oracle database engine
      *
      * @param instance - The DatabaseInstance to validate
      * @returns boolean indicating if the instance is valid for processing
@@ -145,44 +144,19 @@ export class RdsOracleMultiTenant implements IAspect {
             return false;
         }
 
-        // Check if engine is accessible
-        const engine = instance.engine;
-        if (!engine) {
-            return false;
-        }
-
-        // Check if engine type is accessible
-        const engineType = engine.engineType;
-        if (!engineType) {
+        // Check if the engine type is Oracle
+        // Oracle engine types include: oracle-se2, oracle-se1, oracle-se, oracle-ee
+        if (
+            !(
+                instance.engine?.engineType
+                    ?.toLowerCase()
+                    .startsWith('oracle') ?? false
+            )
+        ) {
             return false;
         }
 
         return true;
-    }
-
-    /**
-     * Determines if a DatabaseInstance is using an Oracle engine.
-     *
-     * This method validates that the database instance is running Oracle Database,
-     * which is a prerequisite for Oracle MultiTenant configuration. It checks the
-     * engine type by examining the engine family name.
-     *
-     * Supported Oracle engines include:
-     * - Oracle Standard Edition (SE)
-     * - Oracle Standard Edition One (SE1)
-     * - Oracle Standard Edition Two (SE2)
-     * - Oracle Enterprise Edition (EE)
-     *
-     * @param instance - The DatabaseInstance to check
-     * @returns true if the instance is using an Oracle engine, false otherwise
-     */
-    private isOracleDatabase(instance: DatabaseInstance): boolean {
-        // Check if the engine type is Oracle
-        // Oracle engine types include: oracle-se2, oracle-se1, oracle-se, oracle-ee
-        return (
-            instance.engine?.engineType.toLowerCase().startsWith('oracle') ??
-            false
-        );
     }
 
     /**
