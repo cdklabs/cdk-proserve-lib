@@ -96,10 +96,6 @@ function formatResponseData(
 async function isCreateComplete(
     dbInstanceId: string
 ): Promise<CdkCustomResourceIsCompleteResponse<IResponseData>> {
-    console.log(
-        `Checking CREATE completion status for database: ${dbInstanceId}`
-    );
-
     try {
         const conversionState = await getConversionState(dbInstanceId);
 
