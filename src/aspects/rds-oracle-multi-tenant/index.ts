@@ -110,18 +110,22 @@ export class RdsOracleMultiTenant implements IAspect {
     visit(node: IConstruct): void {
         // Check if the node is a DatabaseInstance
         if (node instanceof DatabaseInstance) {
-            // Validate the database instance configuration (includes Oracle engine check)
-            if (!this.validateDatabaseInstance(node)) {
+            // Validate the database instance and extract validated properties
+            const validatedInstance = this.validateDatabaseInstance(node);
+            if (!validatedInstance) {
                 return;
             }
 
             // Check if it has already been processed
-            if (this.isAlreadyProcessed(node)) {
+            if (this.processedInstances.has(validatedInstance.instanceId)) {
                 return;
             }
 
-            // Apply Oracle MultiTenant configuration
-            this.applyMultiTenantConfiguration(node);
+            // Apply Oracle MultiTenant configuration with validated properties
+            this.applyMultiTenantConfiguration(
+                node,
+                validatedInstance.instanceId
+            );
         }
     }
 
@@ -135,13 +139,15 @@ export class RdsOracleMultiTenant implements IAspect {
      * - Using an Oracle database engine
      *
      * @param instance - The DatabaseInstance to validate
-     * @returns boolean indicating if the instance is valid for processing
+     * @returns Object with validated instanceId if valid, null otherwise
      */
-    private validateDatabaseInstance(instance: DatabaseInstance): boolean {
+    private validateDatabaseInstance(
+        instance: DatabaseInstance
+    ): { instanceId: string } | null {
         // Check if instance has a valid identifier
         const instanceId = this.extractInstanceIdentifier(instance);
         if (!instanceId) {
-            return false;
+            return null;
         }
 
         // Check if the engine type is Oracle
@@ -153,50 +159,17 @@ export class RdsOracleMultiTenant implements IAspect {
                     .startsWith('oracle') ?? false
             )
         ) {
-            return false;
+            return null;
         }
 
-        return true;
-    }
-
-    /**
-     * Checks if a DatabaseInstance has already been processed by this Aspect.
-     *
-     * This method prevents duplicate processing of the same database instance,
-     * which could occur if the Aspect is applied multiple times or at different scopes.
-     * It uses the instance identifier as a unique key to track processed instances.
-     *
-     * The method also validates that the instance has a valid identifier before checking,
-     * as instances without identifiers cannot be reliably tracked.
-     *
-     * @param instance - The DatabaseInstance to check
-     * @returns true if the instance has been processed, false otherwise
-     */
-    private isAlreadyProcessed(instance: DatabaseInstance): boolean {
-        try {
-            // Use the same method as in applyMultiTenantConfiguration to ensure consistency
-            const instanceId = this.extractInstanceIdentifier(instance);
-
-            // If the instance doesn't have an identifier, we can't track it reliably
-            if (!instanceId) {
-                return false;
-            }
-
-            const isProcessed = this.processedInstances.has(instanceId);
-
-            return isProcessed;
-        } catch (error) {
-            // If there's any error accessing the instance identifier, assume it hasn't been processed
-            return false;
-        }
+        return { instanceId };
     }
 
     /**
      * Extracts and validates the instance identifier from a DatabaseInstance.
      *
      * This method ensures that the database instance has a valid identifier
-     * that can be used for tracking and configuration purposes. It provides
-     * detailed logging for edge cases and validation failures.
+     * that can be used for tracking and configuration purposes.
      *
      * @param instance - The DatabaseInstance to extract identifier from
      * @returns The instance identifier if valid, null otherwise
@@ -232,13 +205,6 @@ export class RdsOracleMultiTenant implements IAspect {
      * This method implements stack-level provider caching to ensure efficient resource reuse.
      * Multiple Oracle instances within the same stack will share the same Lambda functions
      * and provider, while instances in different stacks will have separate providers.
-     *
-     * The provider includes:
-     * - OnEvent Lambda function for handling CREATE/UPDATE/DELETE operations
-     * - IsComplete Lambda function for monitoring asynchronous operations
-     * - IAM policies with minimal required permissions
-     * - KMS permissions if encryption is configured
-     * - Consistent application of all configuration properties
      *
      * @param scope - The construct scope where the provider should be created
      * @returns Provider for the Custom Resource
@@ -369,22 +335,13 @@ export class RdsOracleMultiTenant implements IAspect {
      * This method creates the necessary Lambda-backed custom resource to enable
      * Oracle MultiTenant architecture on the specified database instance.
      *
-     * The method:
-     * 1. Validates that the instance has a valid identifier
-     * 2. Validates that configuration properties are consistent
-     * 3. Marks the instance as processed to prevent duplicates
-     * 4. Gets or builds the provider for the stack (with reuse)
-     * 5. Creates a Custom Resource for the specific Oracle instance
-     *
      * @param instance - The Oracle DatabaseInstance to configure
+     * @param instanceId - The validated instance identifier
      */
-    private applyMultiTenantConfiguration(instance: DatabaseInstance): void {
-        // Extract and validate the instance identifier
-        const instanceId = this.extractInstanceIdentifier(instance);
-        if (!instanceId) {
-            return;
-        }
-
+    private applyMultiTenantConfiguration(
+        instance: DatabaseInstance,
+        instanceId: string
+    ): void {
         // Mark instance as processed to prevent duplicates
         this.processedInstances.add(instanceId);
 

@@ -659,45 +659,7 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
             template.resourceCountIs('Custom::RdsOracleMultiTenant', 1);
         });
 
-        it('should handle exceptions during processed instances check', () => {
-            const aspect = new RdsOracleMultiTenant();
-            const oracleInstance = new DatabaseInstance(
-                stack,
-                'OracleInstanceProcessedError',
-                {
-                    engine: DatabaseInstanceEngine.oracleSe2({
-                        version: OracleEngineVersion.VER_19_0_0_0_2020_04_R1
-                    }),
-                    instanceType: InstanceType.of(
-                        InstanceClass.BURSTABLE3,
-                        InstanceSize.SMALL
-                    ),
-                    vpc,
-                    instanceIdentifier: 'test-processed-error'
-                }
-            );
-
-            // Mock the processedInstances.has method to throw an error
-            const aspectWithAccess = aspect as any;
-            const originalHas = aspectWithAccess.processedInstances.has;
-            aspectWithAccess.processedInstances.has = () => {
-                throw new Error('Set access error');
-            };
-
-            try {
-                // Visit should handle the error gracefully and assume not processed
-                aspect.visit(oracleInstance);
-                const template = getTemplate();
-
-                // Should create Custom Resource since error assumes not processed
-                template.resourceCountIs('Custom::RdsOracleMultiTenant', 1);
-            } finally {
-                // Restore the original method
-                aspectWithAccess.processedInstances.has = originalHas;
-            }
-        });
-
-        it('should handle null instance identifier in isAlreadyProcessed check', () => {
+        it('should handle null instance identifier during validation', () => {
             const aspect = new RdsOracleMultiTenant();
             const oracleInstance = new DatabaseInstance(
                 stack,
@@ -714,7 +676,7 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
                 }
             );
 
-            // Mock the instanceIdentifier to return null during isAlreadyProcessed check
+            // Mock the instanceIdentifier to return null during validation
             Object.defineProperty(oracleInstance, 'instanceIdentifier', {
                 get: () => null,
                 configurable: true
@@ -938,7 +900,7 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
                 vpc
             });
 
-            // Test isAlreadyProcessed by visiting same instance multiple times
+            // Test duplicate prevention by visiting same instance multiple times
             aspect.visit(validOracleInstance);
             aspect.visit(validOracleInstance); // Should be skipped
             aspect.visit(oracleEeInstance);
