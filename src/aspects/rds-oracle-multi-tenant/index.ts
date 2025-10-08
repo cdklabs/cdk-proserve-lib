@@ -1,0 +1,372 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+
+import { join } from 'node:path';
+import {
+    Aws,
+    CustomResource,
+    Duration,
+    IAspect,
+    Stack,
+    Token
+} from 'aws-cdk-lib';
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { IKey } from 'aws-cdk-lib/aws-kms';
+import { Code, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { DatabaseInstance } from 'aws-cdk-lib/aws-rds';
+import { Provider } from 'aws-cdk-lib/custom-resources';
+import { IConstruct, Construct } from 'constructs';
+import {
+    SecureFunction,
+    SecureFunctionProps
+} from '../../constructs/secure-function';
+import { LambdaConfiguration } from '../../types';
+import { IResourceProperties } from './handler/types';
+
+/**
+ * Properties for configuring the RDS Oracle MultiTenant Aspect
+ */
+export interface RdsOracleMultiTenantProps {
+    /**
+     * Optional KMS key for encrypting Lambda environment variables and CloudWatch log group.
+     *
+     * If not provided, AWS managed keys will be used for encryption.
+     * The Lambda function will be granted encrypt/decrypt permissions on this key.
+     *
+     * @default - AWS managed keys are used
+     */
+    readonly encryption?: IKey;
+
+    /**
+     * Optional Lambda configuration settings for the custom resource handler.
+     *
+     * Allows customization of VPC settings, security groups, log retention, and other
+     * Lambda function properties. Useful when the RDS instance is in a private VPC
+     * or when specific networking requirements exist.
+     *
+     * @default - Lambda function uses default settings with no VPC configuration
+     * @see {@link LambdaConfiguration} for available options
+     */
+    readonly lambdaConfiguration?: LambdaConfiguration;
+}
+
+/**
+ * Enables Oracle MultiTenant configuration on RDS Oracle database instances.
+ *
+ * This Aspect will apply Oracle MultiTenant configuration to multiple RDS Oracle instances across a CDK
+ * application automatically. When applied to a construct tree, it identifies all RDS Oracle database
+ * instances and enables MultiTenant architecture on each one.
+ *
+ * **NOTE: This should ONLY be used on new Oracle RDS databases, as it takes a backup and can take a
+ * significant amount of time to complete. This is a 1-way door, after this setting is turned on it
+ * CANNOT be reversed!**
+ *
+ * @example
+ * // Basic usage applied to an entire CDK application:
+ *
+ * import { App, Aspects } from 'aws-cdk-lib';
+ * import { RdsOracleMultiTenant } from '@cdklabs/cdk-proserve-lib/aspects';
+ *
+ * const app = new App();
+ *
+ * // Apply to all Oracle instances in the application
+ * Aspects.of(app).add(new RdsOracleMultiTenant());
+ *
+ * @see {@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html | Oracle MultiTenant on Amazon RDS}
+ */
+export class RdsOracleMultiTenant implements IAspect {
+    /**
+     * Mapping of providers for each CDK stack
+     * Used to ensure only one provider is created per stack for efficient resource reuse
+     */
+    private static serviceTokens = new Map<string, Provider>();
+
+    /**
+     * Set to track processed database instances to prevent duplicate processing
+     */
+    private readonly processedInstances = new Set<string>();
+
+    /**
+     * Configuration properties for the Aspect
+     */
+    public readonly props?: RdsOracleMultiTenantProps;
+
+    /**
+     * Creates a new RDS Oracle MultiTenant Aspect that automatically enables Oracle MultiTenant
+     * configuration on RDS Oracle database instances found in the construct tree.
+     *
+     * @param props - Optional configuration properties for the Oracle MultiTenant Aspect
+     *
+     */
+    constructor(props?: RdsOracleMultiTenantProps) {
+        this.props = props;
+    }
+
+    /**
+     * Visits a construct node and applies Oracle MultiTenant configuration if applicable.
+     *
+     * @param node - The construct being visited by the Aspect
+     */
+    visit(node: IConstruct): void {
+        // Check if the node is a DatabaseInstance
+        if (node instanceof DatabaseInstance) {
+            // Validate the database instance and extract validated properties
+            const validatedInstance = this.validateDatabaseInstance(node);
+            if (!validatedInstance) {
+                return;
+            }
+
+            // Check if it has already been processed
+            if (this.processedInstances.has(validatedInstance.instanceId)) {
+                return;
+            }
+
+            // Apply Oracle MultiTenant configuration with validated properties
+            this.applyMultiTenantConfiguration(
+                node,
+                validatedInstance.instanceId
+            );
+        }
+    }
+
+    /**
+     * Validates a DatabaseInstance for configuration requirements.
+     *
+     * This method performs validation of the database instance
+     * to ensure it meets all requirements for processing, including:
+     * - Having a valid identifier
+     * - Accessible engine configuration
+     * - Using an Oracle database engine
+     *
+     * @param instance - The DatabaseInstance to validate
+     * @returns Object with validated instanceId if valid, null otherwise
+     */
+    private validateDatabaseInstance(
+        instance: DatabaseInstance
+    ): { instanceId: string } | null {
+        // Check if instance has a valid identifier
+        const instanceId = this.extractInstanceIdentifier(instance);
+        if (!instanceId) {
+            return null;
+        }
+
+        // Check if the engine type is Oracle
+        // Oracle engine types include: oracle-se2, oracle-se1, oracle-se, oracle-ee
+        if (
+            !(
+                instance.engine?.engineType
+                    ?.toLowerCase()
+                    .startsWith('oracle') ?? false
+            )
+        ) {
+            return null;
+        }
+
+        return { instanceId };
+    }
+
+    /**
+     * Extracts and validates the instance identifier from a DatabaseInstance.
+     *
+     * This method ensures that the database instance has a valid identifier
+     * that can be used for tracking and configuration purposes.
+     *
+     * @param instance - The DatabaseInstance to extract identifier from
+     * @returns The instance identifier if valid, null otherwise
+     */
+    private extractInstanceIdentifier(
+        instance: DatabaseInstance
+    ): string | null {
+        const instanceId = instance.instanceIdentifier;
+
+        if (!instanceId) {
+            return null;
+        }
+
+        // For CDK tokens (which are valid in CDK context), we accept them
+        // In actual deployment, these will be resolved to proper identifiers
+        if (Token.isUnresolved(instanceId)) {
+            // Return a unique placeholder based on the instance's node ID
+            return `cdk-token-identifier-${instance.node.id}`;
+        }
+
+        // Validate identifier format (basic AWS RDS identifier rules)
+        const trimmedId = instanceId.trim();
+        if (trimmedId.length < 1 || trimmedId.length > 63) {
+            return null;
+        }
+
+        return trimmedId;
+    }
+
+    /**
+     * Builds or retrieves the provider to support the Custom Resource for a given stack.
+     *
+     * This method implements stack-level provider caching to ensure efficient resource reuse.
+     * Multiple Oracle instances within the same stack will share the same Lambda functions
+     * and provider, while instances in different stacks will have separate providers.
+     *
+     * @param scope - The construct scope where the provider should be created
+     * @returns Provider for the Custom Resource
+     */
+    private getOrBuildProvider(scope: IConstruct): Provider {
+        const stack = Stack.of(scope);
+        const stackId = stack.node.id;
+
+        if (!RdsOracleMultiTenant.serviceTokens.has(stackId)) {
+            // Create a stack level construct to manage the framework
+            const provider = new Construct(
+                stack,
+                `Cr${RdsOracleMultiTenant.name}`
+            );
+
+            // Create Lambda function configuration that applies all properties consistently
+            const lambdaConfig = this.createLambdaConfiguration();
+
+            const onEventHandler = new SecureFunction(provider, 'OnEvent', {
+                code: Code.fromAsset(join(__dirname, 'handler', 'on-event')),
+                handler: 'index.handler',
+                memorySize: 512,
+                timeout: Duration.minutes(5),
+                runtime: Runtime.NODEJS_22_X,
+                ...lambdaConfig
+            });
+
+            const isCompleteHandler = new SecureFunction(
+                provider,
+                'IsComplete',
+                {
+                    code: Code.fromAsset(
+                        join(__dirname, 'handler', 'is-complete')
+                    ),
+                    handler: 'index.handler',
+                    memorySize: 512,
+                    timeout: Duration.minutes(5),
+                    runtime: Runtime.NODEJS_22_X,
+                    ...lambdaConfig
+                }
+            );
+
+            // Grant minimal required RDS permissions following principle of least privilege
+            // Note: For Aspects, we need to grant permissions to all Oracle instances in the stack
+            // This is handled by using a wildcard resource pattern for Oracle instances
+            const rdsPolicy = new PolicyStatement({
+                effect: Effect.ALLOW,
+                actions: ['rds:ModifyDBInstance', 'rds:DescribeDBInstances'],
+                resources: [
+                    // Allow access to all RDS instances in the current account/region
+                    // The Lambda function will validate that only Oracle instances are processed
+                    `arn:${Aws.PARTITION}:rds:${Aws.REGION}:${Aws.ACCOUNT_ID}:db:*`
+                ]
+            });
+
+            const tenantPolicy = new PolicyStatement({
+                effect: Effect.ALLOW,
+                actions: ['rds:CreateTenantDatabase'],
+                resources: [
+                    // Allow access to all RDS instances and tenant databases
+                    `arn:${Aws.PARTITION}:rds:${Aws.REGION}:${Aws.ACCOUNT_ID}:db:*`,
+                    `arn:${Aws.PARTITION}:rds:${Aws.REGION}:${Aws.ACCOUNT_ID}:tenant-database:*`
+                ]
+            });
+
+            // Apply permissions and configuration to both handlers consistently
+            [onEventHandler, isCompleteHandler].forEach((handler) => {
+                handler.function.addToRolePolicy(rdsPolicy);
+                handler.function.addToRolePolicy(tenantPolicy);
+
+                // Grant KMS permissions if encryption key is provided
+                // This ensures the Lambda functions can decrypt environment variables
+                // and write to encrypted CloudWatch log groups
+                if (this.props?.encryption) {
+                    this.props.encryption.grantEncryptDecrypt(handler.function);
+                }
+            });
+
+            RdsOracleMultiTenant.serviceTokens.set(
+                stackId,
+                new Provider(provider, 'Provider', {
+                    onEventHandler: onEventHandler.function,
+                    isCompleteHandler: isCompleteHandler.function,
+                    queryInterval: Duration.seconds(30),
+                    totalTimeout: Duration.hours(1)
+                })
+            );
+        }
+
+        return RdsOracleMultiTenant.serviceTokens.get(stackId)!;
+    }
+
+    /**
+     * Creates a consistent Lambda configuration object that applies all configuration properties.
+     *
+     * @returns Configuration object for SecureFunction
+     */
+    private createLambdaConfiguration(): Partial<SecureFunctionProps> {
+        return {
+            ...(this.props?.encryption && {
+                encryption: this.props.encryption
+            }),
+            ...(this.props?.lambdaConfiguration &&
+                this.props.lambdaConfiguration)
+        };
+    }
+
+    /**
+     * Creates Custom Resource properties for a specific Oracle database instance.
+     *
+     * This method translates the database instance information into the format
+     * expected by the Lambda handler for the Custom Resource.
+     *
+     * @param instance - The Oracle DatabaseInstance to create properties for
+     * @returns Properties object for the Custom Resource
+     */
+    private createCustomResourceProperties(
+        instance: DatabaseInstance
+    ): IResourceProperties {
+        return {
+            DBInstanceIdentifier: instance.instanceIdentifier
+        };
+    }
+
+    /**
+     * Applies Oracle MultiTenant configuration to a DatabaseInstance.
+     *
+     * This method creates the necessary Lambda-backed custom resource to enable
+     * Oracle MultiTenant architecture on the specified database instance.
+     *
+     * @param instance - The Oracle DatabaseInstance to configure
+     * @param instanceId - The validated instance identifier
+     */
+    private applyMultiTenantConfiguration(
+        instance: DatabaseInstance,
+        instanceId: string
+    ): void {
+        // Mark instance as processed to prevent duplicates
+        this.processedInstances.add(instanceId);
+
+        // Get or build the provider for this stack (with reuse)
+        // This ensures consistent configuration application across all instances
+        const provider = this.getOrBuildProvider(instance);
+
+        // Create Custom Resource properties for this specific Oracle instance
+        const customResourceProperties =
+            this.createCustomResourceProperties(instance);
+
+        // Create a unique Custom Resource for this Oracle instance
+        // Use the instance identifier or a unique suffix to avoid conflicts
+        const customResourceId = instanceId.startsWith('cdk-token-identifier')
+            ? `RdsOracleMultiTenant-${instance.node.id}`
+            : `RdsOracleMultiTenant-${instanceId}`;
+
+        // Create the Custom Resource that will handle the Oracle MultiTenant configuration
+        const customResource = new CustomResource(instance, customResourceId, {
+            serviceToken: provider.serviceToken,
+            properties: customResourceProperties,
+            resourceType: 'Custom::RdsOracleMultiTenant'
+        });
+
+        // Add dependency on the database instance to ensure proper ordering
+        customResource.node.addDependency(instance);
+    }
+}
