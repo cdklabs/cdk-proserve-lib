@@ -17,6 +17,7 @@ import {
     ObjectOwnership,
     ReplicationRule
 } from 'aws-cdk-lib/aws-s3';
+import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Construct } from 'constructs';
 
 /**
@@ -124,10 +125,21 @@ export interface ServerAccessLogsBucketProps {
      * @default - Auto-generated role when replication rules are specified
      */
     readonly replicationRole?: IRole;
+
+    /**
+     * Optional KMS key for bucket encryption.
+     *
+     * When provided, the bucket will use SSE-KMS encryption with the specified key.
+     * If not provided, the bucket will use SSE-S3 encryption (AES-256).
+     *
+     * @default - SSE-S3 encryption (AES-256)
+     */
+    readonly encryptionKey?: IKey;
 }
 
 /**
- * A secure S3 bucket configured to receive server access logs from other S3 buckets.
+ * A secure S3 bucket configured to receive server access logs from other S3
+ * buckets.
  *
  * The bucket policy includes conditions to restrict log delivery to specified
  * source buckets and accounts, following AWS security best practices.
@@ -162,13 +174,23 @@ export class ServerAccessLogsBucket extends Construct {
                 ? true
                 : (props?.versioned ?? true);
 
+        // Determine encryption settings
+        const encryptionConfig = props?.encryptionKey
+            ? {
+                  encryption: BucketEncryption.KMS,
+                  encryptionKey: props.encryptionKey
+              }
+            : {
+                  encryption: BucketEncryption.S3_MANAGED
+              };
+
         // Create the S3 bucket with security defaults
         this.bucket = new Bucket(this, 'Bucket', {
             // Optional bucket name
             bucketName: props?.bucketName,
 
-            // SSE-S3 encryption (required for server access log destination buckets)
-            encryption: BucketEncryption.S3_MANAGED,
+            // Encryption configuration (SSE-S3 by default, SSE-KMS if key provided)
+            ...encryptionConfig,
 
             // Enable versioning by default (configurable, but required for replication)
             versioned: versioningEnabled,
@@ -385,10 +407,13 @@ export class ServerAccessLogsBucket extends Construct {
                     id: 'AwsSolutions-S1',
                     reason: 'This is a server access logs destination bucket - enabling server access logging would create an infinite loop'
                 });
-                suppressions.push({
-                    id: 'NIST.800.53.R5-S3DefaultEncryptionKMS',
-                    reason: 'Server access log destination buckets can only use SSE-S3 for default encryption per AWS documentation'
-                });
+                // Only suppress KMS encryption requirement if using SSE-S3
+                if (!props?.encryptionKey) {
+                    suppressions.push({
+                        id: 'NIST.800.53.R5-S3DefaultEncryptionKMS',
+                        reason: 'Server access log destination buckets can only use SSE-S3 for default encryption per AWS documentation'
+                    });
+                }
 
                 // Conditionally suppress versioning requirement if versioning is disabled
                 if (props?.versioned === false) {

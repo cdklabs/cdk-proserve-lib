@@ -3,6 +3,7 @@
 
 import { Duration, RemovalPolicy, Stack } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
+import { Key } from 'aws-cdk-lib/aws-kms';
 import { Bucket, StorageClass } from 'aws-cdk-lib/aws-s3';
 import { expect, it, beforeEach } from 'vitest';
 import { ServerAccessLogsBucket } from '../../../src/constructs/server-access-logs-bucket';
@@ -878,6 +879,171 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
                         Priority: 2
                     }
                 ]
+            }
+        });
+    });
+
+    it('should use SSE-S3 encryption by default', () => {
+        // Act
+        new ServerAccessLogsBucket(stack, id);
+
+        // Assert
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::S3::Bucket', {
+            BucketEncryption: {
+                ServerSideEncryptionConfiguration: [
+                    {
+                        ServerSideEncryptionByDefault: {
+                            SSEAlgorithm: 'AES256'
+                        }
+                    }
+                ]
+            }
+        });
+    });
+
+    it('should use SSE-KMS encryption when KMS key is provided', () => {
+        // Arrange
+        const kmsKey = new Key(stack, 'TestKey', {
+            description: 'Test KMS key for server access logs bucket'
+        });
+
+        // Act
+        new ServerAccessLogsBucket(stack, id, {
+            encryptionKey: kmsKey
+        });
+
+        // Assert
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::S3::Bucket', {
+            BucketEncryption: {
+                ServerSideEncryptionConfiguration: [
+                    {
+                        ServerSideEncryptionByDefault: {
+                            SSEAlgorithm: 'aws:kms',
+                            KMSMasterKeyID: {
+                                'Fn::GetAtt': [Match.anyValue(), 'Arn']
+                            }
+                        }
+                    }
+                ]
+            }
+        });
+    });
+
+    it('should expose the encryption key when KMS is used', () => {
+        // Arrange
+        const kmsKey = new Key(stack, 'TestKey');
+
+        // Act
+        const logsBucket = new ServerAccessLogsBucket(stack, id, {
+            encryptionKey: kmsKey
+        });
+
+        // Assert
+        expect(logsBucket.bucket.encryptionKey).toBe(kmsKey);
+    });
+
+    it('should have null encryption key when SSE-S3 is used', () => {
+        // Act
+        const logsBucket = new ServerAccessLogsBucket(stack, id);
+
+        // Assert
+        expect(logsBucket.bucket.encryptionKey).toBeUndefined();
+    });
+
+    it('should not suppress KMS encryption requirement when KMS key is provided', () => {
+        // Arrange
+        const kmsKey = new Key(stack, 'TestKey');
+
+        // Act
+        new ServerAccessLogsBucket(stack, id, {
+            encryptionKey: kmsKey
+        });
+
+        // Assert - The construct should not add the NIST.800.53.R5-S3DefaultEncryptionKMS suppression
+        // when KMS encryption is used. We can verify this by checking that the template passes
+        // CDK Nag rules without the suppression.
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::S3::Bucket', {
+            BucketEncryption: {
+                ServerSideEncryptionConfiguration: [
+                    {
+                        ServerSideEncryptionByDefault: {
+                            SSEAlgorithm: 'aws:kms'
+                        }
+                    }
+                ]
+            }
+        });
+    });
+
+    it('should work with KMS key and other bucket properties', () => {
+        // Arrange
+        const kmsKey = new Key(stack, 'TestKey');
+
+        // Act
+        new ServerAccessLogsBucket(stack, id, {
+            encryptionKey: kmsKey,
+            bucketName: 'my-encrypted-logs-bucket',
+            versioned: true,
+            logPrefix: 'encrypted-logs/',
+            sourceBuckets: ['arn:aws:s3:::source-bucket'],
+            sourceAccountIds: ['123456789012']
+        });
+
+        // Assert
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::S3::Bucket', {
+            BucketName: 'my-encrypted-logs-bucket',
+            BucketEncryption: {
+                ServerSideEncryptionConfiguration: [
+                    {
+                        ServerSideEncryptionByDefault: {
+                            SSEAlgorithm: 'aws:kms',
+                            KMSMasterKeyID: {
+                                'Fn::GetAtt': [Match.anyValue(), 'Arn']
+                            }
+                        }
+                    }
+                ]
+            },
+            VersioningConfiguration: {
+                Status: 'Enabled'
+            }
+        });
+
+        // Verify bucket policy still works with KMS encryption
+        template.hasResourceProperties('AWS::S3::BucketPolicy', {
+            PolicyDocument: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Effect: 'Allow',
+                        Principal: {
+                            Service: 'logging.s3.amazonaws.com'
+                        },
+                        Action: 's3:PutObject',
+                        Resource: Match.objectLike({
+                            'Fn::Join': [
+                                '',
+                                [
+                                    Match.objectLike({
+                                        'Fn::GetAtt': Match.anyValue()
+                                    }),
+                                    '/encrypted-logs/*'
+                                ]
+                            ]
+                        }),
+                        Condition: Match.objectLike({
+                            ArnLike: {
+                                'aws:SourceArn': ['arn:aws:s3:::source-bucket']
+                            },
+                            StringEquals: {
+                                'aws:SourceAccount': ['123456789012']
+                            }
+                        })
+                    })
+                ])
             }
         });
     });

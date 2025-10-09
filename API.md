@@ -2398,6 +2398,135 @@ This ID can be used to reference and manage the workflow after deployment.
 ---
 
 
+### ServerAccessLogsBucket <a name="ServerAccessLogsBucket" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket"></a>
+
+A secure S3 bucket configured to receive server access logs from other S3 buckets.
+
+The bucket policy includes conditions to restrict log delivery to specified
+source buckets and accounts, following AWS security best practices.
+
+*Example*
+
+```typescript
+const logsBucket = new ServerAccessLogsBucket(this, 'LogsBucket', {
+  bucketName: 'my-access-logs',
+  sourceBuckets: [sourceBucket1, sourceBucket2],
+  logPrefix: 'logs/',
+  versioned: true,
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+new constructs.ServerAccessLogsBucket(scope: Construct, id: string, props?: ServerAccessLogsBucketProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.isConstruct"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+constructs.ServerAccessLogsBucket.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.property.bucket">bucket</a></code> | <code>aws-cdk-lib.aws_s3.Bucket</code> | The S3 bucket configured for receiving server access logs. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `bucket`<sup>Required</sup> <a name="bucket" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket.property.bucket"></a>
+
+```typescript
+public readonly bucket: Bucket;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.Bucket
+
+The S3 bucket configured for receiving server access logs.
+
+---
+
+
 ### WebApplicationFirewall <a name="WebApplicationFirewall" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall"></a>
 
 Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
@@ -6434,6 +6563,218 @@ a string to each suppression property.
 
 If you are not using CDK Nag or do not want to use any suppressions, you
 can ignore this property.
+
+---
+
+### ServerAccessLogsBucketProps <a name="ServerAccessLogsBucketProps" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps"></a>
+
+Properties for ServerAccessLogsBucket construct.
+
+Creates a secure S3 bucket configured to receive server access logs from other S3 buckets.
+The bucket is configured with encryption, versioning, and appropriate bucket policies.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.Initializer"></a>
+
+```typescript
+import { constructs } from '@cdklabs/cdk-proserve-lib'
+
+const serverAccessLogsBucketProps: constructs.ServerAccessLogsBucketProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.autoDeleteObjects">autoDeleteObjects</a></code> | <code>boolean</code> | Automatically delete objects when the bucket is removed. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.bucketName">bucketName</a></code> | <code>string</code> | Optional bucket name. If not provided, CloudFormation will generate a unique name. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.encryptionKey">encryptionKey</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS key for bucket encryption. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.lifecycleRules">lifecycleRules</a></code> | <code>aws-cdk-lib.aws_s3.LifecycleRule[]</code> | Optional lifecycle rules for log retention management. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.logPrefix">logPrefix</a></code> | <code>string</code> | Optional prefix path for log objects. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.removalPolicy">removalPolicy</a></code> | <code>aws-cdk-lib.RemovalPolicy</code> | Removal policy for the bucket. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.replicationRole">replicationRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Optional IAM role for replication. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.replicationRules">replicationRules</a></code> | <code>aws-cdk-lib.aws_s3.ReplicationRule[]</code> | Optional replication rules for cross-region or cross-account replication. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.sourceAccountIds">sourceAccountIds</a></code> | <code>string[]</code> | Source AWS account IDs that are allowed to deliver logs. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.sourceBuckets">sourceBuckets</a></code> | <code>string \| aws-cdk-lib.aws_s3.IBucket[]</code> | Source buckets that will deliver logs to this bucket. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.versioned">versioned</a></code> | <code>boolean</code> | Enable versioning on the bucket. |
+
+---
+
+##### `autoDeleteObjects`<sup>Optional</sup> <a name="autoDeleteObjects" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.autoDeleteObjects"></a>
+
+```typescript
+public readonly autoDeleteObjects: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Automatically delete objects when the bucket is removed.
+
+Only applies when removalPolicy is DESTROY.
+When enabled, all objects in the bucket will be deleted before the bucket is destroyed.
+
+---
+
+##### `bucketName`<sup>Optional</sup> <a name="bucketName" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.bucketName"></a>
+
+```typescript
+public readonly bucketName: string;
+```
+
+- *Type:* string
+- *Default:* CloudFormation generated name
+
+Optional bucket name. If not provided, CloudFormation will generate a unique name.
+
+Must follow S3 bucket naming rules (lowercase, no underscores, globally unique).
+
+---
+
+##### `encryptionKey`<sup>Optional</sup> <a name="encryptionKey" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.encryptionKey"></a>
+
+```typescript
+public readonly encryptionKey: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+- *Default:* SSE-S3 encryption (AES-256)
+
+Optional KMS key for bucket encryption.
+
+When provided, the bucket will use SSE-KMS encryption with the specified key.
+If not provided, the bucket will use SSE-S3 encryption (AES-256).
+
+Note: While AWS documentation states that server access log destination buckets
+can only use SSE-S3 for default bucket encryption, customer-provided KMS keys
+can be used for additional encryption layers.
+
+---
+
+##### `lifecycleRules`<sup>Optional</sup> <a name="lifecycleRules" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.lifecycleRules"></a>
+
+```typescript
+public readonly lifecycleRules: LifecycleRule[];
+```
+
+- *Type:* aws-cdk-lib.aws_s3.LifecycleRule[]
+- *Default:* No lifecycle rules
+
+Optional lifecycle rules for log retention management.
+
+Use lifecycle rules to automatically transition or expire old log files.
+Common patterns include transitioning to cheaper storage classes or deleting logs after a retention period.
+
+---
+
+##### `logPrefix`<sup>Optional</sup> <a name="logPrefix" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.logPrefix"></a>
+
+```typescript
+public readonly logPrefix: string;
+```
+
+- *Type:* string
+- *Default:* No prefix (logs can be written to bucket root)
+
+Optional prefix path for log objects.
+
+Recommended to end with a forward slash (/) for proper organization.
+Applied to the bucket policy resource ARN to restrict where logs can be written.
+
+---
+
+##### `removalPolicy`<sup>Optional</sup> <a name="removalPolicy" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.removalPolicy"></a>
+
+```typescript
+public readonly removalPolicy: RemovalPolicy;
+```
+
+- *Type:* aws-cdk-lib.RemovalPolicy
+- *Default:* RemovalPolicy.RETAIN
+
+Removal policy for the bucket.
+
+Controls what happens to the bucket when the CloudFormation stack is deleted.
+- RETAIN: Bucket is retained (recommended for log data)
+- DESTROY: Bucket is deleted (requires autoDeleteObjects=true if bucket contains objects)
+- SNAPSHOT: Not applicable for S3 buckets
+
+---
+
+##### `replicationRole`<sup>Optional</sup> <a name="replicationRole" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.replicationRole"></a>
+
+```typescript
+public readonly replicationRole: IRole;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IRole
+- *Default:* Auto-generated role when replication rules are specified
+
+Optional IAM role for replication.
+
+If not specified and replication rules are provided, a new role will be created automatically.
+The role must have permissions to read from the source bucket and write to destination buckets.
+
+---
+
+##### `replicationRules`<sup>Optional</sup> <a name="replicationRules" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.replicationRules"></a>
+
+```typescript
+public readonly replicationRules: ReplicationRule[];
+```
+
+- *Type:* aws-cdk-lib.aws_s3.ReplicationRule[]
+- *Default:* No replication rules
+
+Optional replication rules for cross-region or cross-account replication.
+
+Replication requires versioning to be enabled on both source and destination buckets.
+When replication rules are specified, versioning will be automatically enabled.
+
+---
+
+##### `sourceAccountIds`<sup>Optional</sup> <a name="sourceAccountIds" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.sourceAccountIds"></a>
+
+```typescript
+public readonly sourceAccountIds: string[];
+```
+
+- *Type:* string[]
+- *Default:* Current account only
+
+Source AWS account IDs that are allowed to deliver logs.
+
+Used to configure aws:SourceAccount condition in the bucket policy.
+
+---
+
+##### `sourceBuckets`<sup>Optional</sup> <a name="sourceBuckets" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.sourceBuckets"></a>
+
+```typescript
+public readonly sourceBuckets: (string | IBucket)[];
+```
+
+- *Type:* string | aws-cdk-lib.aws_s3.IBucket[]
+- *Default:* Allows any bucket in the same account to deliver logs
+
+Source buckets that will deliver logs to this bucket.
+
+Can be specified as bucket ARNs (strings) or IBucket references.
+Used to configure aws:SourceArn condition in the bucket policy.
+
+---
+
+##### `versioned`<sup>Optional</sup> <a name="versioned" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.versioned"></a>
+
+```typescript
+public readonly versioned: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable versioning on the bucket.
+
+Versioning helps maintain an audit trail and recover from accidental deletions.
 
 ---
 
