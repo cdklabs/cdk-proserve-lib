@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Duration, RemovalPolicy } from 'aws-cdk-lib';
+import { Duration, RemovalPolicy, Stack } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Bucket, StorageClass } from 'aws-cdk-lib/aws-s3';
 import { expect, it, beforeEach } from 'vitest';
@@ -10,7 +10,12 @@ import { describeCdkTest } from '../../../utilities/cdk-nag-test';
 import { NagSuppressions } from 'cdk-nag';
 
 describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
+    let stack: Stack;
+
     beforeEach(() => {
+        // Arrange
+        stack = getStack();
+
         NagSuppressions.addStackSuppressions(getStack(), [
             {
                 id: 'NIST.800.53.R5-S3BucketVersioningEnabled',
@@ -27,7 +32,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should create bucket with SSE-S3 encryption', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -46,7 +51,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should create bucket policy with logging service principal', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -67,7 +72,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should enable versioning by default', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -80,7 +85,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should allow disabling versioning via props', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id, {
+        new ServerAccessLogsBucket(stack, id, {
             versioned: false
         });
 
@@ -93,7 +98,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should enable all Block Public Access settings', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -109,7 +114,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should set Object Ownership to BucketOwnerEnforced', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -126,7 +131,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should default to RETAIN removal policy', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -138,7 +143,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should apply custom removal policy when specified', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id, {
+        new ServerAccessLogsBucket(stack, id, {
             removalPolicy: RemovalPolicy.DESTROY,
             autoDeleteObjects: true
         });
@@ -153,7 +158,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should apply custom bucket name when provided', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id, {
+        new ServerAccessLogsBucket(stack, id, {
             bucketName: 'my-custom-logs-bucket'
         });
 
@@ -166,7 +171,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should not set bucket name when not provided', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -177,7 +182,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should apply lifecycle rules when provided', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id, {
+        new ServerAccessLogsBucket(stack, id, {
             lifecycleRules: [
                 {
                     id: 'DeleteOldLogs',
@@ -224,7 +229,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should not set lifecycle rules when not provided', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -235,7 +240,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should create bucket policy with logging service principal having s3:PutObject permission', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -256,7 +261,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should include aws:SourceArn condition with correct ARNs when no source buckets specified', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -291,7 +296,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should include aws:SourceArn condition with specific ARNs for single source bucket', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id, {
+        new ServerAccessLogsBucket(stack, id, {
             sourceBuckets: ['arn:aws:s3:::source-bucket']
         });
 
@@ -314,7 +319,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should include aws:SourceArn condition with multiple ARNs for multiple source buckets', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id, {
+        new ServerAccessLogsBucket(stack, id, {
             sourceBuckets: [
                 'arn:aws:s3:::source-bucket-1',
                 'arn:aws:s3:::source-bucket-2'
@@ -343,7 +348,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should include aws:SourceAccount condition with current account by default', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -364,7 +369,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should include aws:SourceAccount condition with correct account IDs when specified', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id, {
+        new ServerAccessLogsBucket(stack, id, {
             sourceAccountIds: ['111111111111', '222222222222']
         });
 
@@ -390,7 +395,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should include log prefix in policy resource ARN when specified', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id, {
+        new ServerAccessLogsBucket(stack, id, {
             logPrefix: 'logs/'
         });
 
@@ -420,7 +425,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should include SSL enforcement policy statement', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -446,7 +451,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should create policy with both logging and SSL enforcement statements', () => {
         // Act
-        new ServerAccessLogsBucket(getStack(), id);
+        new ServerAccessLogsBucket(stack, id);
 
         // Assert
         const template = getTemplate();
@@ -481,19 +486,19 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should accept valid bucket names', () => {
         // Act & Assert - These should not throw errors
-        new ServerAccessLogsBucket(getStack(), `${id}1`, {
+        new ServerAccessLogsBucket(stack, `${id}1`, {
             bucketName: 'valid-bucket-name'
         });
 
-        new ServerAccessLogsBucket(getStack(), `${id}2`, {
+        new ServerAccessLogsBucket(stack, `${id}2`, {
             bucketName: 'bucket123'
         });
 
-        new ServerAccessLogsBucket(getStack(), `${id}3`, {
+        new ServerAccessLogsBucket(stack, `${id}3`, {
             bucketName: 'my.bucket.name'
         });
 
-        new ServerAccessLogsBucket(getStack(), `${id}4`, {
+        new ServerAccessLogsBucket(stack, `${id}4`, {
             bucketName: 'a23'
         });
     });
@@ -501,7 +506,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     it('should reject bucket names that are too short', () => {
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 bucketName: 'ab'
             });
         }).toThrow(
@@ -515,7 +520,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 bucketName: longName
             });
         }).toThrow(
@@ -526,7 +531,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     it('should reject bucket names with uppercase letters', () => {
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 bucketName: 'MyBucket'
             });
         }).toThrow(
@@ -537,7 +542,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     it('should reject bucket names with underscores', () => {
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 bucketName: 'my_bucket'
             });
         }).toThrow('Bucket name must not contain underscores. Got: my_bucket');
@@ -546,7 +551,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     it('should reject bucket names with invalid characters', () => {
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 bucketName: 'my@bucket'
             });
         }).toThrow(
@@ -554,7 +559,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
         );
 
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), `${id}2`, {
+            new ServerAccessLogsBucket(stack, `${id}2`, {
                 bucketName: 'my bucket'
             });
         }).toThrow(
@@ -565,7 +570,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     it('should reject bucket names that do not start with alphanumeric character', () => {
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 bucketName: '-mybucket'
             });
         }).toThrow(
@@ -573,7 +578,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
         );
 
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), `${id}2`, {
+            new ServerAccessLogsBucket(stack, `${id}2`, {
                 bucketName: '.mybucket'
             });
         }).toThrow(
@@ -584,7 +589,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     it('should reject bucket names that do not end with alphanumeric character', () => {
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 bucketName: 'mybucket-'
             });
         }).toThrow(
@@ -592,7 +597,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
         );
 
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), `${id}2`, {
+            new ServerAccessLogsBucket(stack, `${id}2`, {
                 bucketName: 'mybucket.'
             });
         }).toThrow(
@@ -603,7 +608,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     it('should reject bucket names with consecutive dots', () => {
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 bucketName: 'my..bucket'
             });
         }).toThrow(
@@ -614,7 +619,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     it('should reject bucket names with dot-dash patterns', () => {
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 bucketName: 'my.-bucket'
             });
         }).toThrow(
@@ -625,7 +630,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     it('should reject bucket names with dash-dot patterns', () => {
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 bucketName: 'my-.bucket'
             });
         }).toThrow(
@@ -635,26 +640,26 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should accept valid S3 bucket ARNs', () => {
         // Act & Assert - These should not throw errors
-        new ServerAccessLogsBucket(getStack(), `${id}1`, {
+        new ServerAccessLogsBucket(stack, `${id}1`, {
             sourceBuckets: ['arn:aws:s3:::valid-bucket-name']
         });
 
-        new ServerAccessLogsBucket(getStack(), `${id}2`, {
+        new ServerAccessLogsBucket(stack, `${id}2`, {
             sourceBuckets: ['arn:aws:s3:::bucket123']
         });
 
-        new ServerAccessLogsBucket(getStack(), `${id}3`, {
+        new ServerAccessLogsBucket(stack, `${id}3`, {
             sourceBuckets: ['arn:aws:s3:::my.bucket.name']
         });
 
-        new ServerAccessLogsBucket(getStack(), `${id}4`, {
+        new ServerAccessLogsBucket(stack, `${id}4`, {
             sourceBuckets: ['arn:aws:s3:::bucket-name/*']
         });
     });
 
     it('should accept multiple valid S3 bucket ARNs', () => {
         // Act & Assert - This should not throw an error
-        new ServerAccessLogsBucket(getStack(), id, {
+        new ServerAccessLogsBucket(stack, id, {
             sourceBuckets: [
                 'arn:aws:s3:::bucket-one',
                 'arn:aws:s3:::bucket-two',
@@ -666,7 +671,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     it('should reject invalid ARN format', () => {
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 sourceBuckets: ['invalid-arn']
             });
         }).toThrow(
@@ -674,7 +679,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
         );
 
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), `${id}2`, {
+            new ServerAccessLogsBucket(stack, `${id}2`, {
                 sourceBuckets: ['arn:aws:ec2:::instance-id']
             });
         }).toThrow(
@@ -686,7 +691,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
         // Act & Assert
         // ARN regex fails first for uppercase letters and underscores
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 sourceBuckets: ['arn:aws:s3:::My_Invalid_Bucket']
             });
         }).toThrow(
@@ -695,7 +700,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
         // Short bucket name passes ARN regex but fails bucket name validation
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), `${id}2`, {
+            new ServerAccessLogsBucket(stack, `${id}2`, {
                 sourceBuckets: ['arn:aws:s3:::ab']
             });
         }).toThrow(
@@ -706,7 +711,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     it('should validate all source bucket ARNs in array', () => {
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 sourceBuckets: [
                     'arn:aws:s3:::valid-bucket',
                     'arn:aws:s3:::Invalid_Bucket',
@@ -720,23 +725,23 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should not validate IBucket references', () => {
         // Arrange
-        const sourceBucket = new Bucket(getStack(), 'SourceBucket', {
+        const sourceBucket = new Bucket(stack, 'SourceBucket', {
             bucketName: 'source-bucket'
         });
 
         // Act & Assert - This should not throw an error - IBucket references are not validated
-        new ServerAccessLogsBucket(getStack(), id, {
+        new ServerAccessLogsBucket(stack, id, {
             sourceBuckets: [sourceBucket]
         });
     });
 
     it('should validate mixed source buckets (only string ARNs)', () => {
         // Arrange
-        const sourceBucket = new Bucket(getStack(), 'SourceBucket');
+        const sourceBucket = new Bucket(stack, 'SourceBucket');
 
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 sourceBuckets: [
                     'arn:aws:s3:::valid-bucket',
                     sourceBucket, // IBucket reference - not validated
@@ -751,7 +756,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     it('should handle empty bucket name gracefully', () => {
         // Act & Assert
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 bucketName: ''
             });
         }).toThrow(
@@ -761,21 +766,21 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
 
     it('should handle empty source buckets array', () => {
         // Act & Assert - Empty array should not cause validation errors
-        new ServerAccessLogsBucket(getStack(), id, {
+        new ServerAccessLogsBucket(stack, id, {
             sourceBuckets: []
         });
     });
 
     it('should handle undefined props gracefully', () => {
         // Act & Assert - Should not throw validation errors
-        new ServerAccessLogsBucket(getStack(), id);
-        new ServerAccessLogsBucket(getStack(), `${id}2`, {});
+        new ServerAccessLogsBucket(stack, id);
+        new ServerAccessLogsBucket(stack, `${id}2`, {});
     });
 
     it('should provide clear error messages for validation failures', () => {
         // Act & Assert - Test that error messages are descriptive and include the invalid value
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), id, {
+            new ServerAccessLogsBucket(stack, id, {
                 bucketName: 'INVALID'
             });
         }).toThrow(
@@ -783,11 +788,97 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
         );
 
         expect(() => {
-            new ServerAccessLogsBucket(getStack(), `${id}2`, {
+            new ServerAccessLogsBucket(stack, `${id}2`, {
                 sourceBuckets: ['not-an-arn']
             });
         }).toThrow(
             /Invalid S3 bucket ARN format\. Expected format: arn:aws:s3:::bucket-name\. Got: not-an-arn/
         );
+    });
+
+    it('should support custom replication role', () => {
+        // Arrange
+        const destinationBucket = new Bucket(stack, 'DestinationBucket');
+        const customRole = new (require('aws-cdk-lib/aws-iam').Role)(
+            stack,
+            'CustomReplicationRole',
+            {
+                assumedBy:
+                    new (require('aws-cdk-lib/aws-iam').ServicePrincipal)(
+                        's3.amazonaws.com'
+                    )
+            }
+        );
+
+        // Act
+        new ServerAccessLogsBucket(stack, id, {
+            replicationRules: [
+                {
+                    destination: destinationBucket,
+                    priority: 1
+                }
+            ],
+            replicationRole: customRole
+        });
+
+        // Assert
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::S3::Bucket', {
+            ReplicationConfiguration: {
+                Role: {
+                    'Fn::GetAtt': [Match.anyValue(), 'Arn']
+                }
+            }
+        });
+    });
+
+    it('should support multiple replication rules', () => {
+        // Arrange
+        const destinationBucket1 = new Bucket(stack, 'DestinationBucket1');
+        const destinationBucket2 = new Bucket(stack, 'DestinationBucket2');
+
+        // Add CDK Nag suppressions for replication role wildcard permissions
+        NagSuppressions.addStackSuppressions(stack, [
+            {
+                id: 'AwsSolutions-IAM5',
+                reason: 'Replication role requires wildcard permissions to replicate objects to destination buckets',
+                appliesTo: [
+                    'Resource::<ServerAccessLogsBucket2EA93BF7.Arn>/*',
+                    'Resource::<DestinationBucket1590C2E3A.Arn>/*',
+                    'Resource::<DestinationBucket217C2CCD2.Arn>/*'
+                ]
+            }
+        ]);
+
+        // Act
+        new ServerAccessLogsBucket(stack, id, {
+            replicationRules: [
+                {
+                    destination: destinationBucket1,
+                    priority: 1
+                },
+                {
+                    destination: destinationBucket2,
+                    priority: 2
+                }
+            ]
+        });
+
+        // Assert
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::S3::Bucket', {
+            ReplicationConfiguration: {
+                Rules: [
+                    {
+                        Status: 'Enabled',
+                        Priority: 1
+                    },
+                    {
+                        Status: 'Enabled',
+                        Priority: 2
+                    }
+                ]
+            }
+        });
     });
 });

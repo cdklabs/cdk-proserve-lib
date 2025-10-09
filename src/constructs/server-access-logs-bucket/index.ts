@@ -2,14 +2,20 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { Arn, CfnResource, RemovalPolicy, Stack } from 'aws-cdk-lib';
-import { Effect, PolicyStatement, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
+import {
+    Effect,
+    PolicyStatement,
+    ServicePrincipal,
+    IRole
+} from 'aws-cdk-lib/aws-iam';
 import {
     BlockPublicAccess,
     Bucket,
     BucketEncryption,
     IBucket,
     LifecycleRule,
-    ObjectOwnership
+    ObjectOwnership,
+    ReplicationRule
 } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
 
@@ -18,12 +24,6 @@ import { Construct } from 'constructs';
  *
  * Creates a secure S3 bucket configured to receive server access logs from other S3 buckets.
  * The bucket is configured with encryption, versioning, and appropriate bucket policies.
- *
- * **AWS Restrictions:**
- * - Object Lock cannot be enabled on server access log destination buckets
- * - Requester Pays cannot be enabled on server access log destination buckets
- * - Server access logging cannot be enabled on the logs bucket itself (prevents infinite loops)
- * - Default bucket encryption must use SSE-S3 (SSE-KMS is not supported for default encryption)
  */
 export interface ServerAccessLogsBucketProps {
     /**
@@ -104,6 +104,26 @@ export interface ServerAccessLogsBucketProps {
      * @default - No lifecycle rules
      */
     readonly lifecycleRules?: LifecycleRule[];
+
+    /**
+     * Optional replication rules for cross-region or cross-account replication.
+     *
+     * Replication requires versioning to be enabled on both source and destination buckets.
+     * When replication rules are specified, versioning will be automatically enabled.
+     *
+     * @default - No replication rules
+     */
+    readonly replicationRules?: ReplicationRule[];
+
+    /**
+     * Optional IAM role for replication.
+     *
+     * If not specified and replication rules are provided, a new role will be created automatically.
+     * The role must have permissions to read from the source bucket and write to destination buckets.
+     *
+     * @default - Auto-generated role when replication rules are specified
+     */
+    readonly replicationRole?: IRole;
 }
 
 /**
@@ -113,14 +133,12 @@ export interface ServerAccessLogsBucketProps {
  * source buckets and accounts, following AWS security best practices.
  *
  * @example
- * ```typescript
  * const logsBucket = new ServerAccessLogsBucket(this, 'LogsBucket', {
  *   bucketName: 'my-access-logs',
  *   sourceBuckets: [sourceBucket1, sourceBucket2],
  *   logPrefix: 'logs/',
  *   versioned: true,
  * });
- * ```
  */
 export class ServerAccessLogsBucket extends Construct {
     /**
@@ -138,6 +156,12 @@ export class ServerAccessLogsBucket extends Construct {
         // Validate configuration
         this.validateProps(props);
 
+        // Determine versioning setting - force enable if replication rules are provided
+        const versioningEnabled =
+            props?.replicationRules && props.replicationRules.length > 0
+                ? true
+                : (props?.versioned ?? true);
+
         // Create the S3 bucket with security defaults
         this.bucket = new Bucket(this, 'Bucket', {
             // Optional bucket name
@@ -146,8 +170,8 @@ export class ServerAccessLogsBucket extends Construct {
             // SSE-S3 encryption (required for server access log destination buckets)
             encryption: BucketEncryption.S3_MANAGED,
 
-            // Enable versioning by default (configurable)
-            versioned: props?.versioned ?? true,
+            // Enable versioning by default (configurable, but required for replication)
+            versioned: versioningEnabled,
 
             // Block all public access
             blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
@@ -163,6 +187,12 @@ export class ServerAccessLogsBucket extends Construct {
 
             // Apply lifecycle rules if provided
             lifecycleRules: props?.lifecycleRules,
+
+            // Apply replication rules if provided
+            replicationRules: props?.replicationRules,
+
+            // Apply replication role if provided
+            replicationRole: props?.replicationRole,
 
             // Enforce SSL/TLS for all connections
             enforceSSL: true
