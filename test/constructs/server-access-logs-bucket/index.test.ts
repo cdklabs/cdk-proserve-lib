@@ -17,16 +17,22 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
         // Arrange
         stack = getStack();
 
-        NagSuppressions.addStackSuppressions(getStack(), [
+        NagSuppressions.addStackSuppressions(stack, [
             {
                 id: 'NIST.800.53.R5-S3BucketVersioningEnabled',
                 reason: 'Versioning can optionally be enabled by the user on the construct.'
             }
         ]);
-        NagSuppressions.addStackSuppressions(getStack(), [
+        NagSuppressions.addStackSuppressions(stack, [
             {
                 id: 'NIST.800.53.R5-S3BucketReplicationEnabled',
                 reason: 'The user has the ability to enable bucket replication.'
+            }
+        ]);
+        NagSuppressions.addStackSuppressions(stack, [
+            {
+                id: 'NIST.800.53.R5-S3DefaultEncryptionKMS',
+                reason: 'KMS key can optionally be supplied by the user.'
             }
         ]);
     });

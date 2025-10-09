@@ -405,13 +405,6 @@ export class ServerAccessLogsBucket extends Construct {
                     id: 'AwsSolutions-S1',
                     reason: 'This is a server access logs destination bucket - enabling server access logging would create an infinite loop'
                 });
-                // Only suppress KMS encryption requirement if using SSE-S3
-                if (!props?.encryptionKey) {
-                    suppressions.push({
-                        id: 'NIST.800.53.R5-S3DefaultEncryptionKMS',
-                        reason: 'Server access log destination buckets can only use SSE-S3 for default encryption per AWS documentation'
-                    });
-                }
 
                 c.addMetadata('cdk_nag', {
                     rules_to_suppress: suppressions
