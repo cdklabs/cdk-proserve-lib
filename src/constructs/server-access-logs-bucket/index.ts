@@ -304,17 +304,15 @@ export class ServerAccessLogsBucket extends Construct {
 
     /**
      * Validates S3 bucket ARN format.
-     *
-     * Expected format: arn:aws:s3:::bucket-name or arn:aws:s3:::bucket-name/*
      */
     private validateBucketArn(arn: string): void {
-        // Basic ARN format check
-        const arnPattern = /^arn:aws:s3:::([a-z0-9.-]+)(\/.*)?$/;
+        // Basic ARN format check - supports any AWS partition
+        const arnPattern = /^arn:[a-z0-9-]+:s3:::([a-z0-9.-]+)(\/.*)?$/;
         const match = arnPattern.exec(arn);
 
         if (!match) {
             throw new Error(
-                `Invalid S3 bucket ARN format. Expected format: arn:aws:s3:::bucket-name. Got: ${arn}`
+                `Invalid S3 bucket ARN format. Expected format: arn:partition:s3:::bucket-name. Got: ${arn}`
             );
         }
 

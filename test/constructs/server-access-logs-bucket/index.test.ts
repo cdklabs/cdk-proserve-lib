@@ -658,6 +658,17 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
         });
     });
 
+    it('should accept S3 bucket ARNs from different AWS partitions', () => {
+        // Act & Assert - These should not throw errors for different partitions
+        new ServerAccessLogsBucket(stack, `${id}1`, {
+            sourceBuckets: ['arn:aws:s3:::standard-bucket']
+        });
+
+        new ServerAccessLogsBucket(stack, `${id}2`, {
+            sourceBuckets: ['arn:aws-us-gov:s3:::govcloud-bucket']
+        });
+    });
+
     it('should accept multiple valid S3 bucket ARNs', () => {
         // Act & Assert - This should not throw an error
         new ServerAccessLogsBucket(stack, id, {
@@ -676,7 +687,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
                 sourceBuckets: ['invalid-arn']
             });
         }).toThrow(
-            'Invalid S3 bucket ARN format. Expected format: arn:aws:s3:::bucket-name. Got: invalid-arn'
+            'Invalid S3 bucket ARN format. Expected format: arn:partition:s3:::bucket-name. Got: invalid-arn'
         );
 
         expect(() => {
@@ -684,7 +695,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
                 sourceBuckets: ['arn:aws:ec2:::instance-id']
             });
         }).toThrow(
-            'Invalid S3 bucket ARN format. Expected format: arn:aws:s3:::bucket-name. Got: arn:aws:ec2:::instance-id'
+            'Invalid S3 bucket ARN format. Expected format: arn:partition:s3:::bucket-name. Got: arn:aws:ec2:::instance-id'
         );
     });
 
@@ -696,7 +707,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
                 sourceBuckets: ['arn:aws:s3:::My_Invalid_Bucket']
             });
         }).toThrow(
-            'Invalid S3 bucket ARN format. Expected format: arn:aws:s3:::bucket-name. Got: arn:aws:s3:::My_Invalid_Bucket'
+            'Invalid S3 bucket ARN format. Expected format: arn:partition:s3:::bucket-name. Got: arn:aws:s3:::My_Invalid_Bucket'
         );
 
         // Short bucket name passes ARN regex but fails bucket name validation
@@ -720,7 +731,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
                 ]
             });
         }).toThrow(
-            'Invalid S3 bucket ARN format. Expected format: arn:aws:s3:::bucket-name. Got: arn:aws:s3:::Invalid_Bucket'
+            'Invalid S3 bucket ARN format. Expected format: arn:partition:s3:::bucket-name. Got: arn:aws:s3:::Invalid_Bucket'
         );
     });
 
@@ -750,7 +761,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
                 ]
             });
         }).toThrow(
-            'Invalid S3 bucket ARN format. Expected format: arn:aws:s3:::bucket-name. Got: arn:aws:s3:::Invalid_Bucket'
+            'Invalid S3 bucket ARN format. Expected format: arn:partition:s3:::bucket-name. Got: arn:aws:s3:::Invalid_Bucket'
         );
     });
 
@@ -793,7 +804,7 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
                 sourceBuckets: ['not-an-arn']
             });
         }).toThrow(
-            /Invalid S3 bucket ARN format\. Expected format: arn:aws:s3:::bucket-name\. Got: not-an-arn/
+            /Invalid S3 bucket ARN format\. Expected format: arn:partition:s3:::bucket-name\. Got: not-an-arn/
         );
     });
 
