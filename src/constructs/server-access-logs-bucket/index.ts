@@ -224,7 +224,7 @@ export class ServerAccessLogsBucket extends Construct {
         this.addLoggingServicePolicy(props);
 
         // Add CDK Nag suppressions for expected violations in server access logs buckets
-        this.addCdkNagSuppressions(props);
+        this.addCdkNagSuppressions();
     }
 
     /**
@@ -393,7 +393,7 @@ export class ServerAccessLogsBucket extends Construct {
      * buckets have specific AWS restrictions that conflict with some security
      * rules.
      */
-    private addCdkNagSuppressions(props?: ServerAccessLogsBucketProps): void {
+    private addCdkNagSuppressions(): void {
         this.bucket.node.children.forEach((c) => {
             if (c instanceof CfnResource) {
                 const suppressions = [];
