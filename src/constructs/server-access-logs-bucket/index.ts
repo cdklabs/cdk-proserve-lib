@@ -172,7 +172,7 @@ export class ServerAccessLogsBucket extends Construct {
         this.addLoggingServicePolicy(props);
 
         // Add CDK Nag suppressions for expected violations in server access logs buckets
-        this.addCdkNagSuppressions();
+        this.addCdkNagSuppressions(props);
     }
 
     /**
@@ -343,7 +343,7 @@ export class ServerAccessLogsBucket extends Construct {
      * buckets have specific AWS restrictions that conflict with some security
      * rules.
      */
-    private addCdkNagSuppressions(): void {
+    private addCdkNagSuppressions(props?: ServerAccessLogsBucketProps): void {
         this.bucket.node.children.forEach((c) => {
             if (c instanceof CfnResource) {
                 const suppressions = [];
@@ -359,6 +359,14 @@ export class ServerAccessLogsBucket extends Construct {
                     id: 'NIST.800.53.R5-S3DefaultEncryptionKMS',
                     reason: 'Server access log destination buckets can only use SSE-S3 for default encryption per AWS documentation'
                 });
+
+                // Conditionally suppress versioning requirement if versioning is disabled
+                if (props?.versioned === false) {
+                    suppressions.push({
+                        id: 'NIST.800.53.R5-S3BucketVersioningEnabled',
+                        reason: 'Versioning is intentionally disabled for this configuration'
+                    });
+                }
 
                 c.addMetadata('cdk_nag', {
                     rules_to_suppress: suppressions

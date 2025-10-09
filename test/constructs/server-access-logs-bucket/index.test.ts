@@ -4,49 +4,33 @@
 import { Duration, RemovalPolicy } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Bucket, StorageClass } from 'aws-cdk-lib/aws-s3';
-import { NagSuppressions } from 'cdk-nag';
 import { expect, it, beforeEach } from 'vitest';
 import { ServerAccessLogsBucket } from '../../../src/constructs/server-access-logs-bucket';
 import { describeCdkTest } from '../../../utilities/cdk-nag-test';
-import { writeFileSync } from 'fs';
+import { NagSuppressions } from 'cdk-nag';
 
 describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     beforeEach(() => {
-        // Suppress expected CDK Nag findings for ServerAccessLogsBucket
-        // This bucket is designed to receive server access logs, so it doesn't need:
-        // - Server access logging (would create circular dependency)
-        // - KMS encryption (uses SSE-S3 by design)
-        // - Replication (not required for access logs)
-        // NagSuppressions.addStackSuppressions(getStack(), [
-        //     {
-        //         id: 'NIST.800.53.R5-S3BucketLoggingEnabled',
-        //         reason: 'ServerAccessLogsBucket is designed to receive server access logs from other buckets. Enabling server access logging on this bucket would create a circular dependency.'
-        //     },
-        //     {
-        //         id: 'AwsSolutions-S1',
-        //         reason: 'ServerAccessLogsBucket is designed to receive server access logs from other buckets. Enabling server access logging on this bucket would create a circular dependency.'
-        //     },
-        //     {
-        //         id: 'NIST.800.53.R5-S3DefaultEncryptionKMS',
-        //         reason: 'ServerAccessLogsBucket uses SSE-S3 encryption by design, which is appropriate for server access logs. KMS encryption is not required.'
-        //     },
-        //     {
-        //         id: 'NIST.800.53.R5-S3BucketReplicationEnabled',
-        //         reason: 'Cross-region replication is not required for server access logs buckets by default. Users can enable replication if needed for their specific use case.'
-        //     },
-        //     {
-        //         id: 'NIST.800.53.R5-S3BucketVersioningEnabled',
-        //         reason: 'Versioning can be disabled for server access logs buckets when explicitly configured by the user.'
-        //     }
-        // ]);
+        NagSuppressions.addStackSuppressions(getStack(), [
+            {
+                id: 'NIST.800.53.R5-S3BucketVersioningEnabled',
+                reason: 'Versioning can optionally be enabled by the user on the construct.'
+            }
+        ]);
+        NagSuppressions.addStackSuppressions(getStack(), [
+            {
+                id: 'NIST.800.53.R5-S3BucketReplicationEnabled',
+                reason: 'The user has the ability to enable bucket replication.'
+            }
+        ]);
     });
+
     it('should create bucket with SSE-S3 encryption', () => {
         // Act
         new ServerAccessLogsBucket(getStack(), id);
 
         // Assert
         const template = getTemplate();
-        writeFileSync('template.json', JSON.stringify(template));
         template.hasResourceProperties('AWS::S3::Bucket', {
             BucketEncryption: {
                 ServerSideEncryptionConfiguration: [
