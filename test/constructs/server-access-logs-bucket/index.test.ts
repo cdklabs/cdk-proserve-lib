@@ -5,10 +5,10 @@ import { Duration, RemovalPolicy, Stack } from 'aws-cdk-lib';
 import { Match } from 'aws-cdk-lib/assertions';
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Bucket, StorageClass } from 'aws-cdk-lib/aws-s3';
+import { NagSuppressions } from 'cdk-nag';
 import { expect, it, beforeEach } from 'vitest';
 import { ServerAccessLogsBucket } from '../../../src/constructs/server-access-logs-bucket';
 import { describeCdkTest } from '../../../utilities/cdk-nag-test';
-import { NagSuppressions } from 'cdk-nag';
 
 describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     let stack: Stack;

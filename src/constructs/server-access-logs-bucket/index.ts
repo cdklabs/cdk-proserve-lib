@@ -8,6 +8,7 @@ import {
     ServicePrincipal,
     IRole
 } from 'aws-cdk-lib/aws-iam';
+import { IKey } from 'aws-cdk-lib/aws-kms';
 import {
     BlockPublicAccess,
     Bucket,
@@ -17,7 +18,6 @@ import {
     ObjectOwnership,
     ReplicationRule
 } from 'aws-cdk-lib/aws-s3';
-import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Construct } from 'constructs';
 
 /**
@@ -145,6 +145,9 @@ export interface ServerAccessLogsBucketProps {
  * source buckets and accounts, following AWS security best practices.
  *
  * @example
+ *
+ * import { ServerAccessLogsBucket } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
  * const logsBucket = new ServerAccessLogsBucket(this, 'LogsBucket', {
  *   bucketName: 'my-access-logs',
  *   sourceBuckets: [sourceBucket1, sourceBucket2],

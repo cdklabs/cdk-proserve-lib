@@ -2408,6 +2408,8 @@ source buckets and accounts, following AWS security best practices.
 *Example*
 
 ```typescript
+import { ServerAccessLogsBucket } from '@cdklabs/cdk-proserve-lib/constructs';
+
 const logsBucket = new ServerAccessLogsBucket(this, 'LogsBucket', {
   bucketName: 'my-access-logs',
   sourceBuckets: [sourceBucket1, sourceBucket2],
@@ -6643,10 +6645,6 @@ Optional KMS key for bucket encryption.
 
 When provided, the bucket will use SSE-KMS encryption with the specified key.
 If not provided, the bucket will use SSE-S3 encryption (AES-256).
-
-Note: While AWS documentation states that server access log destination buckets
-can only use SSE-S3 for default bucket encryption, customer-provided KMS keys
-can be used for additional encryption layers.
 
 ---
 
