@@ -413,14 +413,6 @@ export class ServerAccessLogsBucket extends Construct {
                     });
                 }
 
-                // Conditionally suppress versioning requirement if versioning is disabled
-                if (props?.versioned === false) {
-                    suppressions.push({
-                        id: 'NIST.800.53.R5-S3BucketVersioningEnabled',
-                        reason: 'Versioning is intentionally disabled for this configuration'
-                    });
-                }
-
                 c.addMetadata('cdk_nag', {
                     rules_to_suppress: suppressions
                 });
