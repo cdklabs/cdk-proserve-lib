@@ -222,8 +222,7 @@ export class CompatibilityMatrixGenerator {
             partitions: {
                 commercial: PartitionStatus.NEEDS_TESTING,
                 govcloud: PartitionStatus.NEEDS_TESTING,
-                iso: PartitionStatus.NEEDS_TESTING,
-                isob: PartitionStatus.NEEDS_TESTING
+                other: PartitionStatus.NEEDS_TESTING
             },
             notes: 'Needs compatibility assessment',
             lastUpdated: new Date().toISOString().split('T')[0] // Today's date in YYYY-MM-DD format
@@ -257,7 +256,7 @@ export class CompatibilityMatrixGenerator {
             );
         }
 
-        const requiredPartitions = ['commercial', 'govcloud', 'iso', 'isob'];
+        const requiredPartitions = ['commercial', 'govcloud', 'other'];
         for (const partition of requiredPartitions) {
             if (!(partition in config.partitions)) {
                 throw new Error(
@@ -336,7 +335,7 @@ export class CompatibilityMatrixGenerator {
         }
 
         // Check for unknown partition fields
-        const allowedPartitions = ['commercial', 'govcloud', 'iso', 'isob'];
+        const allowedPartitions = ['commercial', 'govcloud', 'other'];
         const unknownPartitions = Object.keys(config.partitions).filter(
             (key) => !allowedPartitions.includes(key)
         );
@@ -417,8 +416,7 @@ This document tracks the compatibility of all constructs, aspects, and patterns 
 
 - **Commercial** (\`aws\`): Standard AWS regions
 - **GovCloud** (\`aws-us-gov\`): AWS GovCloud (US) regions
-- **ISO** (\`aws-iso\`): AWS ISO regions
-- **ISOB** (\`aws-iso-b\`): AWS ISO-B regions
+- **Other**: Other AWS partitions
 
 ## Compatibility Legend
 
@@ -452,14 +450,14 @@ This document tracks the compatibility of all constructs, aspects, and patterns 
             return table;
         }
 
-        table += `| ${singularTitle} | Commercial | GovCloud | ISO | ISOB | Notes |\n`;
-        table += '|-----------|------------|----------|-----|------|-------|\n';
+        table += `| ${singularTitle} | Commercial | GovCloud | Other | Notes |\n`;
+        table += '|-----------|------------|----------|-------|-------|\n';
 
         for (const component of components) {
             const config = component.config;
             const notes = config.notes || '';
 
-            table += `| ${component.name} | ${config.partitions.commercial} | ${config.partitions.govcloud} | ${config.partitions.iso} | ${config.partitions.isob} | ${notes} |\n`;
+            table += `| ${component.name} | ${config.partitions.commercial} | ${config.partitions.govcloud} | ${config.partitions.other} | ${notes} |\n`;
         }
 
         return table;
