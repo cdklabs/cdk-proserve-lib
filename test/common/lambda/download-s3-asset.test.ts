@@ -152,8 +152,8 @@ describe('downloadS3Asset', () => {
             Body: 'not a readable stream' as any
         });
 
-        // Call the function and expect it to reject
-        await expect(downloadS3Asset(s3ObjectUri)).rejects.toThrow(
+        // Call the function with short retry delay and expect it to reject
+        await expect(downloadS3Asset(s3ObjectUri, 100)).rejects.toThrow(
             'S3 object body is not a readable stream'
         );
     });

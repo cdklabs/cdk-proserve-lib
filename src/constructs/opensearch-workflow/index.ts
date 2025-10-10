@@ -240,6 +240,9 @@ export class OpenSearchWorkflow extends Construct {
     constructor(scope: Construct, id: string, props: OpenSearchWorkflowProps) {
         super(scope, id);
 
+        // Add dependency on the underlying OpenSearch Domain and child objects
+        this.node.addDependency(props.domain);
+
         const asset = new Asset(this, 'TemplateAsset', {
             path: props.flowFrameworkTemplatePath
         });

@@ -1506,6 +1506,8 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.adminUser">adminUser</a></code> | <code>aws-cdk-lib.aws_secretsmanager.ISecret</code> | Credentials for bootstrapping a local admin user in Keycloak. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.endpoint">endpoint</a></code> | <code>aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer \| aws-cdk-lib.aws_elasticloadbalancingv2.INetworkLoadBalancer</code> | Endpoint for the Keycloak service. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.service">service</a></code> | <code>aws-cdk-lib.aws_ecs.FargateService</code> | Container service for the Keycloak cluster. |
 
 ---
 
@@ -1530,6 +1532,30 @@ public readonly adminUser: ISecret;
 - *Type:* aws-cdk-lib.aws_secretsmanager.ISecret
 
 Credentials for bootstrapping a local admin user in Keycloak.
+
+---
+
+##### `endpoint`<sup>Optional</sup> <a name="endpoint" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.endpoint"></a>
+
+```typescript
+public readonly endpoint: IApplicationLoadBalancer | INetworkLoadBalancer;
+```
+
+- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer | aws-cdk-lib.aws_elasticloadbalancingv2.INetworkLoadBalancer
+
+Endpoint for the Keycloak service.
+
+---
+
+##### `service`<sup>Optional</sup> <a name="service" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.property.service"></a>
+
+```typescript
+public readonly service: FargateService;
+```
+
+- *Type:* aws-cdk-lib.aws_ecs.FargateService
+
+Container service for the Keycloak cluster.
 
 ---
 
@@ -2460,14 +2486,14 @@ Returns a string representation of this construct.
 ##### `associate` <a name="associate" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.associate"></a>
 
 ```typescript
-public associate(resource: ApplicationLoadBalancer): void
+public associate(resource: IApplicationLoadBalancer): void
 ```
 
 Associates the Web Application Firewall to an applicable resource.
 
 ###### `resource`<sup>Required</sup> <a name="resource" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.associate.parameter.resource"></a>
 
-- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.ApplicationLoadBalancer
+- *Type:* aws-cdk-lib.aws_elasticloadbalancingv2.IApplicationLoadBalancer
 
 ---
 
@@ -3233,8 +3259,22 @@ const clusterConfiguration: patterns.KeycloakService.ClusterConfiguration = { ..
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.environment">environment</a></code> | <code>{[ key: string ]: string}</code> | Environment variables to make accessible to the service containers. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.scaling">scaling</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterScalingConfiguration</code> | Boundaries for cluster scaling. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.secrets">secrets</a></code> | <code>{[ key: string ]: aws-cdk-lib.aws_ecs.Secret}</code> | Environment variables to make accessible to the service containers via secrets. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.sizing">sizing</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.TaskSizingConfiguration</code> | Resource allocation options for each Keycloak task. |
+
+---
+
+##### `environment`<sup>Optional</sup> <a name="environment" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.environment"></a>
+
+```typescript
+public readonly environment: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Environment variables to make accessible to the service containers.
 
 ---
 
@@ -3249,6 +3289,18 @@ public readonly scaling: ClusterScalingConfiguration;
 Boundaries for cluster scaling.
 
 If not specified, auto scaling is disabled
+
+---
+
+##### `secrets`<sup>Optional</sup> <a name="secrets" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.ClusterConfiguration.property.secrets"></a>
+
+```typescript
+public readonly secrets: {[ key: string ]: Secret};
+```
+
+- *Type:* {[ key: string ]: aws-cdk-lib.aws_ecs.Secret}
+
+Environment variables to make accessible to the service containers via secrets.
 
 ---
 
@@ -4044,7 +4096,7 @@ Block device mappings for the image.
 ##### `components`<sup>Optional</sup> <a name="components" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipelineProps.property.components"></a>
 
 ```typescript
-public readonly components: Component | CfnComponent[];
+public readonly components: (Component | CfnComponent)[];
 ```
 
 - *Type:* @cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component | aws-cdk-lib.aws_imagebuilder.CfnComponent[]
@@ -4191,7 +4243,7 @@ VPC configuration for the image pipeline.
 ##### `extraComponents`<sup>Optional</sup> <a name="extraComponents" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipelineProps.property.extraComponents"></a>
 
 ```typescript
-public readonly extraComponents: Component | CfnComponent[];
+public readonly extraComponents: (Component | CfnComponent)[];
 ```
 
 - *Type:* @cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component | aws-cdk-lib.aws_imagebuilder.CfnComponent[]
@@ -4300,6 +4352,51 @@ Defaults to ContainerInsights.ENABLED if not disabled.
 
 ---
 
+### FabricApplicationLoadBalancingConfiguration <a name="FabricApplicationLoadBalancingConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration"></a>
+
+Configuration for using application load balancing (layer 7) for the fabric endpoint.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.Initializer"></a>
+
+```typescript
+import { patterns } from '@cdklabs/cdk-proserve-lib'
+
+const fabricApplicationLoadBalancingConfiguration: patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.property.certificate">certificate</a></code> | <code>aws-cdk-lib.aws_certificatemanager.ICertificate</code> | TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.property.managementCertificate">managementCertificate</a></code> | <code>aws-cdk-lib.aws_certificatemanager.ICertificate</code> | TLS certificate to support SSL termination at the load balancer level for the management Keycloak endpoint. |
+
+---
+
+##### `certificate`<sup>Required</sup> <a name="certificate" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.property.certificate"></a>
+
+```typescript
+public readonly certificate: ICertificate;
+```
+
+- *Type:* aws-cdk-lib.aws_certificatemanager.ICertificate
+
+TLS certificate to support SSL termination at the load balancer level for the default Keycloak endpoint.
+
+---
+
+##### `managementCertificate`<sup>Optional</sup> <a name="managementCertificate" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration.property.managementCertificate"></a>
+
+```typescript
+public readonly managementCertificate: ICertificate;
+```
+
+- *Type:* aws-cdk-lib.aws_certificatemanager.ICertificate
+
+TLS certificate to support SSL termination at the load balancer level for the management Keycloak endpoint.
+
+---
+
 ### FabricConfiguration <a name="FabricConfiguration" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration"></a>
 
 Configuration options for the fabric.
@@ -4316,8 +4413,30 @@ const fabricConfiguration: patterns.KeycloakService.FabricConfiguration = { ... 
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.applicationLoadBalancing">applicationLoadBalancing</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration</code> | If specified, an Application Load Balancer will be used for the Keycloak service endpoint instead of a Network Load Balancer. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.dnsZoneName">dnsZoneName</a></code> | <code>string</code> | Name of the Route53 DNS Zone where the Keycloak hostnames should be automatically configured if provided. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.internetFacing">internetFacing</a></code> | <code>boolean</code> | Whether or not the load balancer should be exposed to the external network. |
+
+---
+
+##### `applicationLoadBalancing`<sup>Optional</sup> <a name="applicationLoadBalancing" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricConfiguration.property.applicationLoadBalancing"></a>
+
+```typescript
+public readonly applicationLoadBalancing: FabricApplicationLoadBalancingConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.FabricApplicationLoadBalancingConfiguration
+
+If specified, an Application Load Balancer will be used for the Keycloak service endpoint instead of a Network Load Balancer.
+
+This is useful if you want to have fine grain control over the routes exposed as well
+as implement application-based firewall rules.
+
+The default is to use a Network Load Balancer (Layer 4) with TCP passthrough for performance.
+
+NOTE: If you switch to application (layer 7) load balancing, you will not be able to perform mutual TLS
+authentication and authorization flows at the Keycloak service itself as SSL will be terminated at the load
+balancer and re-encrypted to the backend which will drop the client certificate.
 
 ---
 
@@ -4526,6 +4645,7 @@ const iamServerCertificateProps: constructs.IamServerCertificateProps = { ... }
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.certificate">certificate</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps \| @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps</code> | AWS Systems Manager parameter or AWS Secrets Manager secret which contains the public certificate. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.prefix">prefix</a></code> | <code>string</code> | Prefix to prepend to the AWS IAM Server Certificate name. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.privateKey">privateKey</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps \| @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps</code> | AWS Systems Manager parameter or AWS Secrets Manager secret which contains the private key. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.certificateChain">certificateChain</a></code> | <code>@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps \| @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps</code> | AWS Systems Manager parameter or AWS Secrets Manager secret which contains the certificate chain if applicable. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for protecting the framework resources. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings. |
 
@@ -4564,6 +4684,18 @@ public readonly privateKey: ParameterProps | SecretProps;
 - *Type:* @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps | @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps
 
 AWS Systems Manager parameter or AWS Secrets Manager secret which contains the private key.
+
+---
+
+##### `certificateChain`<sup>Optional</sup> <a name="certificateChain" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificateProps.property.certificateChain"></a>
+
+```typescript
+public readonly certificateChain: ParameterProps | SecretProps;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.ParameterProps | @cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.SecretProps
+
+AWS Systems Manager parameter or AWS Secrets Manager secret which contains the certificate chain if applicable.
 
 ---
 
@@ -5969,6 +6101,62 @@ behave as expected or designed. You do so at your own risk.
 
 ---
 
+### RdsOracleMultiTenantProps <a name="RdsOracleMultiTenantProps" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps"></a>
+
+Properties for configuring the RDS Oracle MultiTenant Aspect.
+
+#### Initializer <a name="Initializer" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+const rdsOracleMultiTenantProps: aspects.RdsOracleMultiTenantProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps.property.encryption">encryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Optional KMS key for encrypting Lambda environment variables and CloudWatch log group. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps.property.lambdaConfiguration">lambdaConfiguration</a></code> | <code>@cdklabs/cdk-proserve-lib.types.LambdaConfiguration</code> | Optional Lambda configuration settings for the custom resource handler. |
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+- *Default:* AWS managed keys are used
+
+Optional KMS key for encrypting Lambda environment variables and CloudWatch log group.
+
+If not provided, AWS managed keys will be used for encryption.
+The Lambda function will be granted encrypt/decrypt permissions on this key.
+
+---
+
+##### `lambdaConfiguration`<sup>Optional</sup> <a name="lambdaConfiguration" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps.property.lambdaConfiguration"></a>
+
+```typescript
+public readonly lambdaConfiguration: LambdaConfiguration;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.types.LambdaConfiguration
+- *Default:* Lambda function uses default settings with no VPC configuration
+
+Optional Lambda configuration settings for the custom resource handler.
+
+Allows customization of VPC settings, security groups, log retention, and other
+Lambda function properties. Useful when the RDS instance is in a private VPC
+or when specific networking requirements exist.
+
+> [{@link LambdaConfiguration } for available options]({@link LambdaConfiguration } for available options)
+
+---
+
 ### RemovalPolicies <a name="RemovalPolicies" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.RemovalPolicies"></a>
 
 Policies to lifecycle various components of the pattern during stack actions.
@@ -7209,7 +7397,7 @@ const webApplicationFirewallProps: constructs.WebApplicationFirewallProps = { ..
 ##### `awsManagedRuleGroups`<sup>Optional</sup> <a name="awsManagedRuleGroups" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewallProps.property.awsManagedRuleGroups"></a>
 
 ```typescript
-public readonly awsManagedRuleGroups: AwsManagedRuleGroupConfig | AwsManagedRuleGroup[];
+public readonly awsManagedRuleGroups: (AwsManagedRuleGroupConfig | AwsManagedRuleGroup)[];
 ```
 
 - *Type:* @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroupConfig | @cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup[]
@@ -27845,6 +28033,105 @@ public readonly V26_3_2: EngineVersion;
 Version 26.3.2.
 
 ---
+
+### RdsOracleMultiTenant <a name="RdsOracleMultiTenant" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant"></a>
+
+- *Implements:* aws-cdk-lib.IAspect
+
+Enables Oracle MultiTenant configuration on RDS Oracle database instances.
+
+This Aspect will apply Oracle MultiTenant configuration to multiple RDS Oracle instances across a CDK
+application automatically. When applied to a construct tree, it identifies all RDS Oracle database
+instances and enables MultiTenant architecture on each one.
+
+**NOTE: This should ONLY be used on new Oracle RDS databases, as it takes a backup and can take a
+significant amount of time to complete. This is a 1-way door, after this setting is turned on it
+CANNOT be reversed!**
+
+> [{@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS}]({@link https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-multitenant.html Oracle MultiTenant on Amazon RDS})
+
+*Example*
+
+```typescript
+// Basic usage applied to an entire CDK application:
+
+import { App, Aspects } from 'aws-cdk-lib';
+import { RdsOracleMultiTenant } from '@cdklabs/cdk-proserve-lib/aspects';
+
+const app = new App();
+
+// Apply to all Oracle instances in the application
+Aspects.of(app).add(new RdsOracleMultiTenant());
+```
+
+
+#### Initializers <a name="Initializers" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.Initializer"></a>
+
+```typescript
+import { aspects } from '@cdklabs/cdk-proserve-lib'
+
+new aspects.RdsOracleMultiTenant(props?: RdsOracleMultiTenantProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.Initializer.parameter.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps</code> | - Optional configuration properties for the Oracle MultiTenant Aspect. |
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.Initializer.parameter.props"></a>
+
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps
+
+Optional configuration properties for the Oracle MultiTenant Aspect.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.visit">visit</a></code> | Visits a construct node and applies Oracle MultiTenant configuration if applicable. |
+
+---
+
+##### `visit` <a name="visit" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.visit"></a>
+
+```typescript
+public visit(node: IConstruct): void
+```
+
+Visits a construct node and applies Oracle MultiTenant configuration if applicable.
+
+###### `node`<sup>Required</sup> <a name="node" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.visit.parameter.node"></a>
+
+- *Type:* constructs.IConstruct
+
+The construct being visited by the Aspect.
+
+---
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.property.props">props</a></code> | <code>@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps</code> | Configuration properties for the Aspect. |
+
+---
+
+##### `props`<sup>Optional</sup> <a name="props" id="@cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenant.property.props"></a>
+
+```typescript
+public readonly props: RdsOracleMultiTenantProps;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.aspects.RdsOracleMultiTenantProps
+
+Configuration properties for the Aspect.
+
+---
+
 
 ### SageMakerNotebookInstanceType <a name="SageMakerNotebookInstanceType" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType"></a>
 

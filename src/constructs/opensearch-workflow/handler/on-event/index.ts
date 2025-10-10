@@ -7,6 +7,7 @@ import {
     CdkCustomResourceResponse,
     Context
 } from 'aws-lambda';
+import { waitForOpenSearchAvailability } from '../../../../common/lambda/aos-availability-check';
 import { AwsHttpClient } from '../../../../common/lambda/aws-http-client';
 import { downloadS3Asset } from '../../../../common/lambda/download-s3-asset';
 import { DestructiveOperation } from '../../../../types/destructive-operation';
@@ -217,6 +218,10 @@ export async function handler(
         baseUrl: `https://${props.DomainEndpoint}`,
         timeout: 45000
     });
+
+    // Wait for OpenSearch to be available before proceeding
+    await waitForOpenSearchAvailability(client);
+
     let template: Json;
 
     switch (event.RequestType) {

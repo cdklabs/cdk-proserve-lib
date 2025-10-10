@@ -35,6 +35,9 @@ import {
     mockContext
 } from '../../../../fixtures';
 import {
+    mockCertificateChainParameterName,
+    mockCertificateChainSecretArn,
+    mockCertificateChainValue,
     mockCertificateParameterName,
     mockCertificateSecretArn,
     mockCertificateValue,
@@ -342,6 +345,275 @@ describe('IamServerCertificate Custom Resource On Event Handler', () => {
             1
         );
         expect(ssmMock).toHaveReceivedCommandTimes(GetParameterCommand, 1);
+    });
+
+    describe('Certificate Chain', () => {
+        it('should create an IAM Server Certificate when the certificate chain is included and comes from AWS Systems Manager Parameter Store', async () => {
+            // Arrange
+            const mockEvent: CloudFormationCustomResourceCreateEvent<ResourceProperties> =
+                buildMockCreateEvent(resourceType, {
+                    CertificatePrefix: mockPrefix,
+                    Certificate: {
+                        Id: mockCertificateParameterName,
+                        Source: 'parameter'
+                    },
+                    CertificateChain: {
+                        Id: mockCertificateChainParameterName,
+                        Source: 'parameter'
+                    },
+                    PrivateKey: {
+                        Id: mockPrivateKeyParameterName,
+                        Source: 'parameter'
+                    }
+                });
+
+            ssmMock
+                .on(GetParameterCommand)
+                .rejects()
+                .on(GetParameterCommand, {
+                    Name: mockCertificateParameterName,
+                    WithDecryption: true
+                })
+                .resolves({
+                    Parameter: {
+                        Value: mockCertificateValue
+                    }
+                })
+                .on(GetParameterCommand, {
+                    Name: mockCertificateChainParameterName,
+                    WithDecryption: true
+                })
+                .resolves({
+                    Parameter: {
+                        Value: mockCertificateChainValue
+                    }
+                })
+                .on(GetParameterCommand, {
+                    Name: mockPrivateKeyParameterName,
+                    WithDecryption: true
+                })
+                .resolves({
+                    Parameter: {
+                        Value: mockPrivateKeyValue
+                    }
+                });
+
+            iamMock
+                .on(UploadServerCertificateCommand)
+                .rejects()
+                .on(UploadServerCertificateCommand, {
+                    CertificateBody: mockCertificateValue,
+                    CertificateChain: mockCertificateChainValue,
+                    PrivateKey: mockPrivateKeyValue
+                })
+                .resolves({
+                    ServerCertificateMetadata: {
+                        Arn: mockServerCertificateArn,
+                        Path: 'test-path',
+                        ServerCertificateId: 'test-id',
+                        ServerCertificateName: mockServerCertificateName
+                    }
+                });
+
+            // Act
+            const result = await handler(mockEvent, mockContext);
+
+            // Assert
+            expect(result).toMatchObject<
+                CdkCustomResourceResponse<ResponseData>
+            >({
+                Data: {
+                    Arn: mockServerCertificateArn
+                }
+            });
+            expect(iamMock).toHaveReceivedCommandTimes(
+                UploadServerCertificateCommand,
+                1
+            );
+            expect(secretsManagerMock).not.toHaveReceivedAnyCommand();
+            expect(ssmMock).toHaveReceivedCommandTimes(GetParameterCommand, 3);
+        });
+
+        it('should create an IAM Server Certificate when the certificate chain is included and comes from AWS Secrets Manager', async () => {
+            // Arrange
+            const mockEvent: CloudFormationCustomResourceCreateEvent<ResourceProperties> =
+                buildMockCreateEvent(resourceType, {
+                    CertificatePrefix: mockPrefix,
+                    Certificate: {
+                        Id: mockCertificateSecretArn,
+                        Source: 'secret'
+                    },
+                    CertificateChain: {
+                        Id: mockCertificateChainSecretArn,
+                        Source: 'secret'
+                    },
+                    PrivateKey: {
+                        Id: mockPrivateKeySecretArn,
+                        Source: 'secret'
+                    }
+                });
+
+            secretsManagerMock
+                .on(GetSecretValueCommand)
+                .rejects()
+                .on(GetSecretValueCommand, {
+                    SecretId: mockCertificateSecretArn
+                })
+                .resolves({
+                    SecretString: mockCertificateValue
+                })
+                .on(GetSecretValueCommand, {
+                    SecretId: mockCertificateChainSecretArn
+                })
+                .resolves({
+                    SecretString: mockCertificateChainValue
+                })
+                .on(GetSecretValueCommand, {
+                    SecretId: mockPrivateKeySecretArn
+                })
+                .resolves({
+                    SecretString: mockPrivateKeyValue
+                });
+
+            iamMock
+                .on(UploadServerCertificateCommand)
+                .rejects()
+                .on(UploadServerCertificateCommand, {
+                    CertificateBody: mockCertificateValue,
+                    CertificateChain: mockCertificateChainValue,
+                    PrivateKey: mockPrivateKeyValue
+                })
+                .resolves({
+                    ServerCertificateMetadata: {
+                        Arn: mockServerCertificateArn,
+                        Path: 'test-path',
+                        ServerCertificateId: 'test-id',
+                        ServerCertificateName: mockServerCertificateName
+                    }
+                });
+
+            // Act
+            const result = await handler(mockEvent, mockContext);
+
+            // Assert
+            expect(result).toMatchObject<
+                CdkCustomResourceResponse<ResponseData>
+            >({
+                Data: {
+                    Arn: mockServerCertificateArn
+                }
+            });
+            expect(iamMock).toHaveReceivedCommandTimes(
+                UploadServerCertificateCommand,
+                1
+            );
+            expect(secretsManagerMock).toHaveReceivedCommandTimes(
+                GetSecretValueCommand,
+                3
+            );
+            expect(ssmMock).not.toHaveReceivedAnyCommand();
+        });
+
+        it('should return an appropriate error when the certificate chain cannot be loaded from AWS Systems Manager Parameter Store', async () => {
+            // Arrange
+            const mockEvent: CloudFormationCustomResourceCreateEvent<ResourceProperties> =
+                buildMockCreateEvent(resourceType, {
+                    CertificatePrefix: mockPrefix,
+                    Certificate: {
+                        Id: mockCertificateParameterName,
+                        Source: 'parameter'
+                    },
+                    CertificateChain: {
+                        Id: mockCertificateChainParameterName,
+                        Source: 'parameter'
+                    },
+                    PrivateKey: {
+                        Id: mockPrivateKeyParameterName,
+                        Source: 'parameter'
+                    }
+                });
+
+            ssmMock
+                .on(GetParameterCommand)
+                .rejects()
+                .on(GetParameterCommand, {
+                    Name: mockCertificateParameterName,
+                    WithDecryption: true
+                })
+                .resolves({
+                    Parameter: {
+                        Value: mockCertificateValue
+                    }
+                })
+                .on(GetParameterCommand, {
+                    Name: mockCertificateChainParameterName,
+                    WithDecryption: true
+                })
+                .resolves({});
+
+            // Act
+            const result = handler(mockEvent, mockContext);
+
+            // Assert
+            await expect(result).rejects.toThrow(
+                FailedToRetrieveValueException
+            );
+            await expect(result).rejects.toThrow(
+                /AWS Systems Manager Parameter Store$/
+            );
+            expect(iamMock).not.toHaveReceivedAnyCommand();
+            expect(secretsManagerMock).not.toHaveReceivedAnyCommand();
+            expect(ssmMock).toHaveReceivedCommandTimes(GetParameterCommand, 2);
+        });
+
+        it('should return an appropriate error when the certificate chain cannot be loaded from AWS Secrets Manager', async () => {
+            // Arrange
+            const mockEvent: CloudFormationCustomResourceCreateEvent<ResourceProperties> =
+                buildMockCreateEvent(resourceType, {
+                    CertificatePrefix: mockPrefix,
+                    Certificate: {
+                        Id: mockCertificateSecretArn,
+                        Source: 'secret'
+                    },
+                    CertificateChain: {
+                        Id: mockCertificateChainSecretArn,
+                        Source: 'secret'
+                    },
+                    PrivateKey: {
+                        Id: mockPrivateKeyParameterName,
+                        Source: 'parameter'
+                    }
+                });
+
+            secretsManagerMock
+                .on(GetSecretValueCommand)
+                .rejects()
+                .on(GetSecretValueCommand, {
+                    SecretId: mockCertificateSecretArn
+                })
+                .resolves({
+                    SecretString: mockCertificateValue
+                })
+                .on(GetSecretValueCommand, {
+                    SecretId: mockCertificateChainSecretArn
+                })
+                .resolves({});
+
+            // Act
+            const result = handler(mockEvent, mockContext);
+
+            // Assert
+            await expect(result).rejects.toThrow(
+                FailedToRetrieveValueException
+            );
+            await expect(result).rejects.toThrow(/AWS Secrets Manager$/);
+            expect(iamMock).not.toHaveReceivedAnyCommand();
+            expect(secretsManagerMock).toHaveReceivedCommandTimes(
+                GetSecretValueCommand,
+                2
+            );
+            expect(ssmMock).not.toHaveReceivedAnyCommand();
+        });
     });
 
     it('should return an appropriate error when the certificate fails to provision', async () => {

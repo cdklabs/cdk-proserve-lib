@@ -15,7 +15,6 @@ export async function detectDomainType(
 ): Promise<DomainType> {
     try {
         const response = await client.get<DomainInfoResponse>('/');
-        response.data.version.distribution;
 
         // Check version info to determine if it's Elasticsearch or OpenSearch
         const distribution = response.data.version.distribution;

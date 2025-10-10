@@ -4,6 +4,7 @@
 import { CdkCustomResourceEvent } from 'aws-lambda';
 import { getClient } from './client';
 import { detectDomainType } from './detect-domain-type';
+import { waitForOpenSearchAvailability } from '../../../../../common/lambda/aos-availability-check';
 import { ProvisionerConfiguration } from '../../types/provisioner-configuration';
 import { ResourceProperties } from '../../types/resource-properties';
 
@@ -18,6 +19,10 @@ export async function createProvisionerConfig(
     assetPath: string
 ): Promise<ProvisionerConfiguration> {
     const client = getClient(event);
+
+    // Wait for OpenSearch to be available before proceeding
+    await waitForOpenSearchAvailability(client);
+
     const domainType = await detectDomainType(client);
 
     return {

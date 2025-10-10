@@ -25,6 +25,27 @@ export const mockCertificateSecretArn = buildMockArn(
 export const mockCertificateValue = 'test-certifcate-value';
 
 /**
+ * Mock AWS Systems Manager Parameter Store parameter name for the certificate chain parameter
+ */
+export const mockCertificateChainParameterName = '/test/certificate-chain';
+
+/**
+ * Mock AWS Secrets Manager secret ARN for the certificate parameter
+ */
+export const mockCertificateChainSecretArn = buildMockArn(
+    'aws',
+    'secretsmanager',
+    'secret:TestCertificateChainSecret',
+    mockRegion,
+    mockAccount
+);
+
+/**
+ * Mock value for the certificate chain
+ */
+export const mockCertificateChainValue = 'test-certifcate-chain-value';
+
+/**
  * Mock AWS Systems Manager Parameter Store parameter name for the private key parameter
  */
 export const mockPrivateKeyParameterName = '/test/private-key';
