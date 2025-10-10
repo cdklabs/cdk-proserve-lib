@@ -21,14 +21,14 @@ This document tracks the compatibility of all constructs, aspects, and patterns 
 
 | Aspect | Commercial | GovCloud | Other | Notes |
 |-----------|------------|----------|-------|-------|
-| apply-removal-policy | ✅ | ✅ | 🔍 |  |
-| create-lambda-log-group | ✅ | ✅ | 🔍 |  |
+| apply-removal-policy | ✅ | ✅ | ✅ |  |
+| create-lambda-log-group | ✅ | ✅ | ✅ |  |
 | ec2-automated-shutdown | ✅ | ✅ | 🔍 |  |
 | rds-oracle-multi-tenant | ✅ | ✅ | 🔍 |  |
 | secure-sagemaker-notebook | ✅ | ✅ | 🔍 |  |
-| security-compliance | ✅ | 🔍 | 🔍 | Some compliance rules may vary across partitions due to service availability differences. |
-| set-log-retention | ✅ | ✅ | 🔍 |  |
-| sqs-require-ssl | ✅ | ✅ | 🔍 |  |
+| security-compliance | ✅ | ⚠️ | ⚠️ | Some compliance rules may vary across partitions due to service availability differences. |
+| set-log-retention | ✅ | ✅ | ✅ |  |
+| sqs-require-ssl | ✅ | ✅ | ✅ |  |
 
 ---
 
@@ -36,18 +36,18 @@ This document tracks the compatibility of all constructs, aspects, and patterns 
 
 | Construct | Commercial | GovCloud | Other | Notes |
 |-----------|------------|----------|-------|-------|
-| dynamodb-provision-table | ✅ | ✅ | 🔍 |  |
+| dynamodb-provision-table | ✅ | ✅ | ⚠️ |  |
 | ec2-image-builder-get-image | ✅ | ✅ | 🔍 |  |
 | ec2-image-builder-start | ✅ | ✅ | 🔍 |  |
 | ec2-image-pipeline | ✅ | ✅ | 🔍 |  |
-| friendly-embrace | ✅ | ✅ | 🔍 |  |
-| iam-server-certificate | ✅ | ✅ | 🔍 |  |
+| friendly-embrace | ✅ | ✅ | ✅ |  |
+| iam-server-certificate | ✅ | ✅ | ✅ |  |
 | network-firewall | ✅ | ✅ | 🔍 |  |
 | network-firewall-endpoints | ✅ | ✅ | 🔍 |  |
-| opensearch-admin-user | ✅ | ✅ | 🔍 |  |
-| opensearch-provision-domain | ✅ | ✅ | 🔍 |  |
-| opensearch-workflow | ✅ | ✅ | 🔍 |  |
-| secure-function | ✅ | ✅ | 🔍 |  |
+| opensearch-admin-user | ✅ | ✅ | ✅ |  |
+| opensearch-provision-domain | ✅ | ✅ | ✅ |  |
+| opensearch-workflow | ✅ | ✅ | ⚠️ |  |
+| secure-function | ✅ | ✅ | ✅ |  |
 | web-application-firewall | ✅ | ✅ | 🔍 |  |
 
 ---
@@ -56,6 +56,6 @@ This document tracks the compatibility of all constructs, aspects, and patterns 
 
 | Pattern | Commercial | GovCloud | Other | Notes |
 |-----------|------------|----------|-------|-------|
-| apigateway-static-hosting | ✅ | ✅ | 🔍 |  |
+| apigateway-static-hosting | ✅ | ✅ | ✅ |  |
 | ec2-linux-image-pipeline | ✅ | ✅ | 🔍 |  |
-| keycloak-service | ✅ | 🔍 | 🔍 |  |
+| keycloak-service | ✅ | ✅ | 🔍 |  |

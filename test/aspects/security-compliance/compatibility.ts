@@ -9,8 +9,8 @@ import {
 export const compatibility: CompatibilityConfig = {
     partitions: {
         commercial: PartitionStatus.FULLY_COMPATIBLE,
-        govcloud: PartitionStatus.NEEDS_TESTING,
-        other: PartitionStatus.NEEDS_TESTING
+        govcloud: PartitionStatus.PARTIALLY_COMPATIBLE,
+        other: PartitionStatus.PARTIALLY_COMPATIBLE
     },
     notes: 'Some compliance rules may vary across partitions due to service availability differences.',
     lastUpdated: '2025-10-09'
