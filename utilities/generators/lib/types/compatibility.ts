@@ -25,7 +25,7 @@ export interface PartitionCompatibility {
     readonly commercial: PartitionStatus;
     /** AWS GovCloud partition (aws-us-gov) compatibility status */
     readonly govcloud: PartitionStatus;
-    /** Other AWS partitions (aws-iso, aws-iso-b, etc.) compatibility status */
+    /** Other AWS partitions compatibility status */
     readonly other: PartitionStatus;
 }
 
