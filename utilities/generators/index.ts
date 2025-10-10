@@ -6,15 +6,20 @@ import { generateAndInjectAwsManagedRuleEnum } from './lib/aws-managed-rule-grou
 import { generateAndInjectEc2InstanceTypes } from './lib/ec2-instance-type';
 import { generateAndInjectImageBuilderComponentEnum } from './lib/image-builder-component';
 import { generateAndInjectSageMakerInstanceTypes } from './lib/sagemaker-notebook-instance-type';
+import { CompatibilityMatrixGenerator } from './lib/compatibility-matrix-generator';
 
 async function main() {
     try {
+        // Create compatibility matrix generator instance
+        const compatibilityGenerator = new CompatibilityMatrixGenerator();
+
         await Promise.all([
             generateAndInjectAwsManagedRuleEnum(),
             generateAndInjectImageBuilderComponentEnum(),
             generateAndInjectAwsManagedPolicyClass(),
             generateAndInjectEc2InstanceTypes(),
-            generateAndInjectSageMakerInstanceTypes()
+            generateAndInjectSageMakerInstanceTypes(),
+            compatibilityGenerator.generateMatrix()
         ]);
     } catch (error) {
         console.error('Error running generators:', error);
