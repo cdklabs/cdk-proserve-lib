@@ -10,9 +10,8 @@ export const compatibility: CompatibilityConfig = {
     partitions: {
         commercial: PartitionStatus.FULLY_COMPATIBLE,
         govcloud: PartitionStatus.FULLY_COMPATIBLE,
-        iso: PartitionStatus.PARTIALLY_COMPATIBLE,
-        isob: PartitionStatus.PARTIALLY_COMPATIBLE
+        iso: PartitionStatus.NEEDS_TESTING,
+        isob: PartitionStatus.NEEDS_TESTING
     },
-    notes: 'API Gateway and S3 static hosting work in all partitions. Some API Gateway features may be limited in ISO/ISO-B partitions.',
-    lastUpdated: '2024-10-09'
+    lastUpdated: '2025-10-09'
 };

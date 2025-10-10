@@ -13,6 +13,6 @@ export const compatibility: CompatibilityConfig = {
         iso: PartitionStatus.NEEDS_TESTING,
         isob: PartitionStatus.NEEDS_TESTING
     },
-    notes: 'Some compliance rules may vary in ISO/ISO-B partitions due to service availability differences.',
+    notes: 'Some compliance rules may vary across partitions due to service availability differences.',
     lastUpdated: '2025-10-09'
 };

@@ -12,7 +12,6 @@ export const compatibility: CompatibilityConfig = {
         govcloud: PartitionStatus.FULLY_COMPATIBLE,
         iso: PartitionStatus.NEEDS_TESTING,
         isob: PartitionStatus.NEEDS_TESTING
-    }
-    // notes: 'asdf'
-    // lastUpdated: '2024-10-09'
+    },
+    lastUpdated: '2025-01-01'
 };
