@@ -149,7 +149,7 @@ export class CompatibilityMatrixGenerator {
         if (!fs.existsSync(compatibilityPath)) {
             this.recordError({
                 component: name,
-                type: type as 'aspect' | 'construct' | 'pattern',
+                type: this.getComponentType(type),
                 error: 'Compatibility file not found',
                 fallbackUsed: true
             });
@@ -168,7 +168,7 @@ export class CompatibilityMatrixGenerator {
             if (!module.compatibility) {
                 this.recordError({
                     component: name,
-                    type: type as 'aspect' | 'construct' | 'pattern',
+                    type: this.getComponentType(type),
                     error: "No 'compatibility' export found in configuration file",
                     fallbackUsed: true
                 });
@@ -188,7 +188,7 @@ export class CompatibilityMatrixGenerator {
                 error instanceof Error ? error.message : String(error);
             this.recordError({
                 component: name,
-                type: type as 'aspect' | 'construct' | 'pattern',
+                type: this.getComponentType(type),
                 error: `Failed to load or validate configuration: ${errorMessage}`,
                 fallbackUsed: true
             });
@@ -294,7 +294,7 @@ export class CompatibilityMatrixGenerator {
      * @throws Error if the configuration schema is invalid
      */
     private validateConfigurationSchema(
-        config: any,
+        config: CompatibilityConfig,
         componentPath: string
     ): void {
         // Check if config is an object
