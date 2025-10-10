@@ -12,6 +12,5 @@ export const compatibility: CompatibilityConfig = {
         govcloud: PartitionStatus.PARTIALLY_COMPATIBLE,
         other: PartitionStatus.PARTIALLY_COMPATIBLE
     },
-    notes: 'Some compliance rules may vary across partitions due to service availability differences.',
-    lastUpdated: '2025-10-09'
+    notes: 'Some compliance rules may vary across partitions due to service availability differences.'
 };

@@ -38,8 +38,6 @@ export interface CompatibilityConfig {
     readonly partitions: PartitionCompatibility;
     /** Optional notes providing additional context about compatibility */
     readonly notes?: string;
-    /** Optional ISO date string (YYYY-MM-DD) indicating when this configuration was last updated */
-    readonly lastUpdated?: string;
 }
 
 /**

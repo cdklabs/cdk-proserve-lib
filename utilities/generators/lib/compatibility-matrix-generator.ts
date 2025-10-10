@@ -224,8 +224,7 @@ export class CompatibilityMatrixGenerator {
                 govcloud: PartitionStatus.NEEDS_TESTING,
                 other: PartitionStatus.NEEDS_TESTING
             },
-            notes: 'Needs compatibility assessment',
-            lastUpdated: new Date().toISOString().split('T')[0] // Today's date in YYYY-MM-DD format
+            notes: 'Needs compatibility assessment'
         };
     }
 
@@ -273,13 +272,6 @@ export class CompatibilityMatrixGenerator {
             }
         }
 
-        // Validate optional date field
-        if (config.lastUpdated && !this.isValidDateString(config.lastUpdated)) {
-            throw new Error(
-                `Invalid 'lastUpdated' date format in compatibility config for ${componentPath}. Expected YYYY-MM-DD format.`
-            );
-        }
-
         // Validate that notes field is not empty if provided
         if (config.notes !== undefined && typeof config.notes !== 'string') {
             throw new Error(
@@ -324,7 +316,7 @@ export class CompatibilityMatrixGenerator {
         }
 
         // Check for unknown fields at root level
-        const allowedRootFields = ['partitions', 'notes', 'lastUpdated'];
+        const allowedRootFields = ['partitions', 'notes'];
         const unknownFields = Object.keys(config).filter(
             (key) => !allowedRootFields.includes(key)
         );
@@ -344,21 +336,6 @@ export class CompatibilityMatrixGenerator {
                 `Unknown partition fields in compatibility config for ${componentPath}: ${unknownPartitions.join(', ')}`
             );
         }
-    }
-
-    /**
-     * Validates if a string is in YYYY-MM-DD date format.
-     * @param dateString The date string to validate
-     * @returns True if the date string is valid
-     */
-    private isValidDateString(dateString: string): boolean {
-        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-        if (!dateRegex.test(dateString)) {
-            return false;
-        }
-
-        const date = new Date(dateString);
-        return date.toISOString().split('T')[0] === dateString;
     }
 
     /**

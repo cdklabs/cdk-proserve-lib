@@ -11,6 +11,5 @@ export const compatibility: CompatibilityConfig = {
         commercial: PartitionStatus.FULLY_COMPATIBLE,
         govcloud: PartitionStatus.FULLY_COMPATIBLE,
         other: PartitionStatus.PARTIALLY_COMPATIBLE
-    },
-    lastUpdated: '2025-10-09'
+    }
 };
