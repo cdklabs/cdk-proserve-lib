@@ -9,10 +9,10 @@ import {
 export const compatibility: CompatibilityConfig = {
     partitions: {
         commercial: PartitionStatus.FULLY_COMPATIBLE,
-        govcloud: PartitionStatus.FULLY_COMPATIBLE,
-        iso: PartitionStatus.PARTIALLY_COMPATIBLE,
-        isob: PartitionStatus.PARTIALLY_COMPATIBLE
+        govcloud: PartitionStatus.NEEDS_TESTING,
+        iso: PartitionStatus.NEEDS_TESTING,
+        isob: PartitionStatus.NEEDS_TESTING
     },
-    notes: 'Security compliance aspect works across all partitions. Some compliance rules may vary in ISO/ISO-B partitions due to service availability differences.',
-    lastUpdated: '2024-10-09'
+    notes: 'Some compliance rules may vary in ISO/ISO-B partitions due to service availability differences.',
+    lastUpdated: '2025-10-09'
 };

@@ -10,9 +10,8 @@ export const compatibility: CompatibilityConfig = {
     partitions: {
         commercial: PartitionStatus.FULLY_COMPATIBLE,
         govcloud: PartitionStatus.FULLY_COMPATIBLE,
-        iso: PartitionStatus.FULLY_COMPATIBLE,
-        isob: PartitionStatus.FULLY_COMPATIBLE
+        iso: PartitionStatus.NEEDS_TESTING,
+        isob: PartitionStatus.NEEDS_TESTING
     },
-    notes: 'S3 server access logging is available in all AWS partitions with consistent functionality.',
-    lastUpdated: '2024-10-09'
+    lastUpdated: '2025-10-09'
 };

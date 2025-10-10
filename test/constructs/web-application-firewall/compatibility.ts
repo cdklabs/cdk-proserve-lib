@@ -13,6 +13,5 @@ export const compatibility: CompatibilityConfig = {
         iso: PartitionStatus.PARTIALLY_COMPATIBLE,
         isob: PartitionStatus.PARTIALLY_COMPATIBLE
     },
-    notes: 'WAF is available in all partitions. ISO/ISO-B partitions may have limited rule group availability.',
-    lastUpdated: '2024-10-09'
+    lastUpdated: '2025-10-09'
 };

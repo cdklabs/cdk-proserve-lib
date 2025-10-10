@@ -9,7 +9,7 @@ import {
 export const compatibility: CompatibilityConfig = {
     partitions: {
         commercial: PartitionStatus.FULLY_COMPATIBLE,
-        govcloud: PartitionStatus.NEEDS_TESTING,
+        govcloud: PartitionStatus.FULLY_COMPATIBLE,
         iso: PartitionStatus.NEEDS_TESTING,
         isob: PartitionStatus.NEEDS_TESTING
     },
