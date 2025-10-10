@@ -34,4 +34,17 @@ export const configureGenerators = (project: CdklabsTypeScriptProject) => {
         ]
     });
     project.postCompileTask.spawn(readmeTask);
+
+    // Compatibility Matrix
+    const compatibilityTask = project.addTask('update:compatibility', {
+        description:
+            'Updates the compatibility matrix with current constructs, aspects, and patterns.',
+        steps: [
+            {
+                exec: `${tsNodeCommand} utilities/generators/lib/update-compatibility-matrix.ts`,
+                name: 'Runs script to automatically update the compatibility matrix.'
+            }
+        ]
+    });
+    project.postCompileTask.spawn(compatibilityTask);
 };

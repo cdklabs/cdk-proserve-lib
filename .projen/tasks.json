@@ -377,6 +377,9 @@
           "spawn": "update:readme"
         },
         {
+          "spawn": "update:compatibility"
+        },
+        {
           "spawn": "bundle"
         }
       ]
@@ -472,6 +475,16 @@
       "steps": [
         {
           "builtin": "release/reset-version"
+        }
+      ]
+    },
+    "update:compatibility": {
+      "name": "update:compatibility",
+      "description": "Updates the compatibility matrix with current constructs, aspects, and patterns.",
+      "steps": [
+        {
+          "exec": "yarn ts-node --project tsconfig.dev.json utilities/generators/lib/update-compatibility-matrix.ts",
+          "name": "Runs script to automatically update the compatibility matrix."
         }
       ]
     },

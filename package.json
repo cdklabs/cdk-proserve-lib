@@ -38,6 +38,7 @@
     "test:watch": "npx projen test:watch",
     "test:watch:nocov": "npx projen test:watch:nocov",
     "unbump": "npx projen unbump",
+    "update:compatibility": "npx projen update:compatibility",
     "update:readme": "npx projen update:readme",
     "upgrade": "npx projen upgrade",
     "upgrade-cdklabs-projen-project-types": "npx projen upgrade-cdklabs-projen-project-types",
