@@ -416,7 +416,7 @@ This document tracks the compatibility of all constructs, aspects, and patterns 
 ## AWS Partitions
 
 - **Commercial** (\`aws\`): Standard AWS regions
-- **GovCloud** (\`aws-us-gov\`): AWS GovCloud (US) regions  
+- **GovCloud** (\`aws-us-gov\`): AWS GovCloud (US) regions
 - **ISO** (\`aws-iso\`): AWS ISO regions
 - **ISOB** (\`aws-iso-b\`): AWS ISO-B regions
 
