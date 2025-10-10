@@ -85,18 +85,18 @@ Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) 
 
 Count: 12
 
-- [**DynamoDbProvisionTable**](API.md#dynamodbprovisiontable-): Controls the contents of an Amazon DynamoDB table from Infrastructure as Code.
-- [**Ec2ImageBuilderGetImage**](API.md#ec2imagebuildergetimage-): Retrieves an EC2 Image Builder image build version.
-- [**Ec2ImageBuilderStart**](API.md#ec2imagebuilderstart-): Starts an EC2 Image Builder Pipeline and optionally waits for the build to complete.
-- [**Ec2ImagePipeline**](API.md#ec2imagepipeline-): An EC2 Image Pipeline that can be used to build a Amazon Machine Image (AMI) automatically.
-- [**FriendlyEmbrace**](API.md#friendlyembrace-): The Friendly Embrace construct can be used to remove CloudFormation stack dependencies that are based on stack exports and imports.
-- [**IamServerCertificate**](API.md#iamservercertificate-): Manages an AWS Identity and Access Management Server Certificate for use in regions/partitions where AWS Certificate Manager is not available.
-- [**NetworkFirewall**](API.md#networkfirewall-): Creates an AWS Network Firewall using a user-supplied Suricata rules file in a VPC.
-- [**NetworkFirewallEndpoints**](API.md#networkfirewallendpoints-): Retrieves Network Firewall endpoints so that you can reference them in your other resources.
-- [**OpenSearchAdminUser**](API.md#opensearchadminuser-): Manages an admin user for an Amazon OpenSearch domain.
-- [**OpenSearchProvisionDomain**](API.md#opensearchprovisiondomain-): Controls the contents of an Amazon OpenSearch Service domain from Infrastructure as Code.
-- [**OpenSearchWorkflow**](API.md#opensearchworkflow-): Create OpenSearch Workflows using the flow framework to automate the provisioning of complex tasks using JSON or YAML.
-- [**WebApplicationFirewall**](API.md#webapplicationfirewall-): Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
+- [**DynamoDbProvisionTable**](https://cdklabs.github.io/cdk-proserve-lib/API.html#dynamodbprovisiontable-): Controls the contents of an Amazon DynamoDB table from Infrastructure as Code.
+- [**Ec2ImageBuilderGetImage**](https://cdklabs.github.io/cdk-proserve-lib/API.html#ec2imagebuildergetimage-): Retrieves an EC2 Image Builder image build version.
+- [**Ec2ImageBuilderStart**](https://cdklabs.github.io/cdk-proserve-lib/API.html#ec2imagebuilderstart-): Starts an EC2 Image Builder Pipeline and optionally waits for the build to complete.
+- [**Ec2ImagePipeline**](https://cdklabs.github.io/cdk-proserve-lib/API.html#ec2imagepipeline-): An EC2 Image Pipeline that can be used to build a Amazon Machine Image (AMI) automatically.
+- [**FriendlyEmbrace**](https://cdklabs.github.io/cdk-proserve-lib/API.html#friendlyembrace-): The Friendly Embrace construct can be used to remove CloudFormation stack dependencies that are based on stack exports and imports.
+- [**IamServerCertificate**](https://cdklabs.github.io/cdk-proserve-lib/API.html#iamservercertificate-): Manages an AWS Identity and Access Management Server Certificate for use in regions/partitions where AWS Certificate Manager is not available.
+- [**NetworkFirewall**](https://cdklabs.github.io/cdk-proserve-lib/API.html#networkfirewall-): Creates an AWS Network Firewall using a user-supplied Suricata rules file in a VPC.
+- [**NetworkFirewallEndpoints**](https://cdklabs.github.io/cdk-proserve-lib/API.html#networkfirewallendpoints-): Retrieves Network Firewall endpoints so that you can reference them in your other resources.
+- [**OpenSearchAdminUser**](https://cdklabs.github.io/cdk-proserve-lib/API.html#opensearchadminuser-): Manages an admin user for an Amazon OpenSearch domain.
+- [**OpenSearchProvisionDomain**](https://cdklabs.github.io/cdk-proserve-lib/API.html#opensearchprovisiondomain-): Controls the contents of an Amazon OpenSearch Service domain from Infrastructure as Code.
+- [**OpenSearchWorkflow**](https://cdklabs.github.io/cdk-proserve-lib/API.html#opensearchworkflow-): Create OpenSearch Workflows using the flow framework to automate the provisioning of complex tasks using JSON or YAML.
+- [**WebApplicationFirewall**](https://cdklabs.github.io/cdk-proserve-lib/API.html#webapplicationfirewall-): Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
 
 ### 🎭 Aspects
 
@@ -104,14 +104,14 @@ Aspects are a way to apply an operation to all constructs in a given scope. The 
 
 Count: 8
 
-- [**ApplyRemovalPolicy**](API.md#applyremovalpolicy-): Sets a user specified Removal Policy to all resources that the aspect applies to.
-- [**CreateLambdaLogGroup**](API.md#createlambdaloggroup-): Ensures that Lambda log groups are created for all Lambda functions that the aspect applies to.
-- [**Ec2AutomatedShutdown**](API.md#ec2automatedshutdown-): Automatically shut down EC2 instances when an alarm is triggered based off of a provided metric.
-- [**RdsOracleMultiTenant**](API.md#rdsoraclemultitenant-): Enables Oracle MultiTenant configuration on RDS Oracle database instances.
-- [**SecureSageMakerNotebook**](API.md#securesagemakernotebook-): Aspect that enforces security controls on SageMaker Notebook Instances by requiring VPC placement, disabling direct internet access, and preventing root access to the notebook environment.
-- [**SecurityCompliance**](API.md#securitycompliance-): Applies best practice security settings to be in compliance with security tools such as CDK Nag.
-- [**SetLogRetention**](API.md#setlogretention-): Aspect that sets the log retention period for CloudWatch log groups to a user-supplied retention period.
-- [**SqsRequireSsl**](API.md#sqsrequiressl-): Enforces SSL/TLS requirements on Simple Queue Service (SQS) for all resources that the aspect applies to.
+- [**ApplyRemovalPolicy**](https://cdklabs.github.io/cdk-proserve-lib/API.html#applyremovalpolicy-): Sets a user specified Removal Policy to all resources that the aspect applies to.
+- [**CreateLambdaLogGroup**](https://cdklabs.github.io/cdk-proserve-lib/API.html#createlambdaloggroup-): Ensures that Lambda log groups are created for all Lambda functions that the aspect applies to.
+- [**Ec2AutomatedShutdown**](https://cdklabs.github.io/cdk-proserve-lib/API.html#ec2automatedshutdown-): Automatically shut down EC2 instances when an alarm is triggered based off of a provided metric.
+- [**RdsOracleMultiTenant**](https://cdklabs.github.io/cdk-proserve-lib/API.html#rdsoraclemultitenant-): Enables Oracle MultiTenant configuration on RDS Oracle database instances.
+- [**SecureSageMakerNotebook**](https://cdklabs.github.io/cdk-proserve-lib/API.html#securesagemakernotebook-): Aspect that enforces security controls on SageMaker Notebook Instances by requiring VPC placement, disabling direct internet access, and preventing root access to the notebook environment.
+- [**SecurityCompliance**](https://cdklabs.github.io/cdk-proserve-lib/API.html#securitycompliance-): Applies best practice security settings to be in compliance with security tools such as CDK Nag.
+- [**SetLogRetention**](https://cdklabs.github.io/cdk-proserve-lib/API.html#setlogretention-): Aspect that sets the log retention period for CloudWatch log groups to a user-supplied retention period.
+- [**SqsRequireSsl**](https://cdklabs.github.io/cdk-proserve-lib/API.html#sqsrequiressl-): Enforces SSL/TLS requirements on Simple Queue Service (SQS) for all resources that the aspect applies to.
 
 ### 🎯 Patterns
 
@@ -119,9 +119,9 @@ Patterns are higher-level abstractions that combine multiple constructs and thei
 
 Count: 3
 
-- [**ApiGatewayStaticHosting**](API.md#apigatewaystatichosting-): A pattern that deploys resources to support the hosting of static assets within an AWS account.
-- [**Ec2LinuxImagePipeline**](API.md#ec2linuximagepipeline-): A pattern to build an EC2 Image Pipeline specifically for Linux.
-- [**KeycloakService**](API.md#keycloakservice-): Deploys a production-grade Keycloak service.
+- [**ApiGatewayStaticHosting**](https://cdklabs.github.io/cdk-proserve-lib/API.html#apigatewaystatichosting-): A pattern that deploys resources to support the hosting of static assets within an AWS account.
+- [**Ec2LinuxImagePipeline**](https://cdklabs.github.io/cdk-proserve-lib/API.html#ec2linuximagepipeline-): A pattern to build an EC2 Image Pipeline specifically for Linux.
+- [**KeycloakService**](https://cdklabs.github.io/cdk-proserve-lib/API.html#keycloakservice-): Deploys a production-grade Keycloak service.
 
 ## 🤝 Contributors
 
