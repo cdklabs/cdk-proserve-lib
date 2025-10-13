@@ -312,7 +312,7 @@ export namespace WebApplicationFirewall {
         ACFP_RULE_SET = 'AWSManagedRulesACFPRuleSet',
 
         /** Provides protection against DDoS attacks targeting the application layer, also known as Layer 7 attacks. */
-        ANTI_D_DO_S_RULE_SET = 'AWSManagedRulesAntiDDoSRuleSet'
+        ANTI_DDOS_RULE_SET = 'AWSManagedRulesAntiDDoSRuleSet'
     }
     /** End WAF Managed Rule Groups */
 

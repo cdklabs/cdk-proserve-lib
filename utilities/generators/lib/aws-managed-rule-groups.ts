@@ -15,6 +15,7 @@ function formatRuleGroupName(name: string): string {
 
     formattedName = formattedName
         .replace(/SQLi/g, 'SQL_DATABASE')
+        .replace(/DDoS/g, 'DDOS')
         .replace(/([A-Z]+)([A-Z][a-z])/g, '$1_$2')
         .replace(/([a-z])([A-Z])/g, '$1_$2')
         .toUpperCase();
