@@ -309,7 +309,10 @@ export namespace WebApplicationFirewall {
         ATP_RULE_SET = 'AWSManagedRulesATPRuleSet',
 
         /** Provides protection against the creation of fraudulent accounts on your site. Fraudulent accounts can be used for activities such as obtaining sign-up bonuses and impersonating legitimate users. */
-        ACFP_RULE_SET = 'AWSManagedRulesACFPRuleSet'
+        ACFP_RULE_SET = 'AWSManagedRulesACFPRuleSet',
+
+        /** Provides protection against DDoS attacks targeting the application layer, also known as Layer 7 attacks. */
+        ANTI_D_DO_S_RULE_SET = 'AWSManagedRulesAntiDDoSRuleSet'
     }
     /** End WAF Managed Rule Groups */
 
