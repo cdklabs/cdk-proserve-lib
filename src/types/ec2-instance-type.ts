@@ -1369,6 +1369,314 @@ export class Ec2InstanceType {
     public static readonly C8G_XLARGE = 'c8g.xlarge';
 
     /**
+     * c8gd.12xlarge
+     * vCPUs: 48
+     * Memory: 98304 MiB
+     */
+    public static readonly C8GD_12XLARGE = 'c8gd.12xlarge';
+
+    /**
+     * c8gd.16xlarge
+     * vCPUs: 64
+     * Memory: 131072 MiB
+     */
+    public static readonly C8GD_16XLARGE = 'c8gd.16xlarge';
+
+    /**
+     * c8gd.24xlarge
+     * vCPUs: 96
+     * Memory: 196608 MiB
+     */
+    public static readonly C8GD_24XLARGE = 'c8gd.24xlarge';
+
+    /**
+     * c8gd.2xlarge
+     * vCPUs: 8
+     * Memory: 16384 MiB
+     */
+    public static readonly C8GD_2XLARGE = 'c8gd.2xlarge';
+
+    /**
+     * c8gd.48xlarge
+     * vCPUs: 192
+     * Memory: 393216 MiB
+     */
+    public static readonly C8GD_48XLARGE = 'c8gd.48xlarge';
+
+    /**
+     * c8gd.4xlarge
+     * vCPUs: 16
+     * Memory: 32768 MiB
+     */
+    public static readonly C8GD_4XLARGE = 'c8gd.4xlarge';
+
+    /**
+     * c8gd.8xlarge
+     * vCPUs: 32
+     * Memory: 65536 MiB
+     */
+    public static readonly C8GD_8XLARGE = 'c8gd.8xlarge';
+
+    /**
+     * c8gd.large
+     * vCPUs: 2
+     * Memory: 4096 MiB
+     */
+    public static readonly C8GD_LARGE = 'c8gd.large';
+
+    /**
+     * c8gd.medium
+     * vCPUs: 1
+     * Memory: 2048 MiB
+     */
+    public static readonly C8GD_MEDIUM = 'c8gd.medium';
+
+    /**
+     * c8gd.metal-24xl
+     * vCPUs: 96
+     * Memory: 196608 MiB
+     */
+    public static readonly C8GD_METAL_24XL = 'c8gd.metal-24xl';
+
+    /**
+     * c8gd.metal-48xl
+     * vCPUs: 192
+     * Memory: 393216 MiB
+     */
+    public static readonly C8GD_METAL_48XL = 'c8gd.metal-48xl';
+
+    /**
+     * c8gd.xlarge
+     * vCPUs: 4
+     * Memory: 8192 MiB
+     */
+    public static readonly C8GD_XLARGE = 'c8gd.xlarge';
+
+    /**
+     * c8gn.12xlarge
+     * vCPUs: 48
+     * Memory: 98304 MiB
+     */
+    public static readonly C8GN_12XLARGE = 'c8gn.12xlarge';
+
+    /**
+     * c8gn.16xlarge
+     * vCPUs: 64
+     * Memory: 131072 MiB
+     */
+    public static readonly C8GN_16XLARGE = 'c8gn.16xlarge';
+
+    /**
+     * c8gn.24xlarge
+     * vCPUs: 96
+     * Memory: 196608 MiB
+     */
+    public static readonly C8GN_24XLARGE = 'c8gn.24xlarge';
+
+    /**
+     * c8gn.2xlarge
+     * vCPUs: 8
+     * Memory: 16384 MiB
+     */
+    public static readonly C8GN_2XLARGE = 'c8gn.2xlarge';
+
+    /**
+     * c8gn.48xlarge
+     * vCPUs: 192
+     * Memory: 393216 MiB
+     */
+    public static readonly C8GN_48XLARGE = 'c8gn.48xlarge';
+
+    /**
+     * c8gn.4xlarge
+     * vCPUs: 16
+     * Memory: 32768 MiB
+     */
+    public static readonly C8GN_4XLARGE = 'c8gn.4xlarge';
+
+    /**
+     * c8gn.8xlarge
+     * vCPUs: 32
+     * Memory: 65536 MiB
+     */
+    public static readonly C8GN_8XLARGE = 'c8gn.8xlarge';
+
+    /**
+     * c8gn.large
+     * vCPUs: 2
+     * Memory: 4096 MiB
+     */
+    public static readonly C8GN_LARGE = 'c8gn.large';
+
+    /**
+     * c8gn.medium
+     * vCPUs: 1
+     * Memory: 2048 MiB
+     */
+    public static readonly C8GN_MEDIUM = 'c8gn.medium';
+
+    /**
+     * c8gn.metal-24xl
+     * vCPUs: 96
+     * Memory: 196608 MiB
+     */
+    public static readonly C8GN_METAL_24XL = 'c8gn.metal-24xl';
+
+    /**
+     * c8gn.metal-48xl
+     * vCPUs: 192
+     * Memory: 393216 MiB
+     */
+    public static readonly C8GN_METAL_48XL = 'c8gn.metal-48xl';
+
+    /**
+     * c8gn.xlarge
+     * vCPUs: 4
+     * Memory: 8192 MiB
+     */
+    public static readonly C8GN_XLARGE = 'c8gn.xlarge';
+
+    /**
+     * c8i-flex.12xlarge
+     * vCPUs: 48
+     * Memory: 98304 MiB
+     */
+    public static readonly C8I_FLEX_12XLARGE = 'c8i-flex.12xlarge';
+
+    /**
+     * c8i-flex.16xlarge
+     * vCPUs: 64
+     * Memory: 131072 MiB
+     */
+    public static readonly C8I_FLEX_16XLARGE = 'c8i-flex.16xlarge';
+
+    /**
+     * c8i-flex.2xlarge
+     * vCPUs: 8
+     * Memory: 16384 MiB
+     */
+    public static readonly C8I_FLEX_2XLARGE = 'c8i-flex.2xlarge';
+
+    /**
+     * c8i-flex.4xlarge
+     * vCPUs: 16
+     * Memory: 32768 MiB
+     */
+    public static readonly C8I_FLEX_4XLARGE = 'c8i-flex.4xlarge';
+
+    /**
+     * c8i-flex.8xlarge
+     * vCPUs: 32
+     * Memory: 65536 MiB
+     */
+    public static readonly C8I_FLEX_8XLARGE = 'c8i-flex.8xlarge';
+
+    /**
+     * c8i-flex.large
+     * vCPUs: 2
+     * Memory: 4096 MiB
+     */
+    public static readonly C8I_FLEX_LARGE = 'c8i-flex.large';
+
+    /**
+     * c8i-flex.xlarge
+     * vCPUs: 4
+     * Memory: 8192 MiB
+     */
+    public static readonly C8I_FLEX_XLARGE = 'c8i-flex.xlarge';
+
+    /**
+     * c8i.12xlarge
+     * vCPUs: 48
+     * Memory: 98304 MiB
+     */
+    public static readonly C8I_12XLARGE = 'c8i.12xlarge';
+
+    /**
+     * c8i.16xlarge
+     * vCPUs: 64
+     * Memory: 131072 MiB
+     */
+    public static readonly C8I_16XLARGE = 'c8i.16xlarge';
+
+    /**
+     * c8i.24xlarge
+     * vCPUs: 96
+     * Memory: 196608 MiB
+     */
+    public static readonly C8I_24XLARGE = 'c8i.24xlarge';
+
+    /**
+     * c8i.2xlarge
+     * vCPUs: 8
+     * Memory: 16384 MiB
+     */
+    public static readonly C8I_2XLARGE = 'c8i.2xlarge';
+
+    /**
+     * c8i.32xlarge
+     * vCPUs: 128
+     * Memory: 262144 MiB
+     */
+    public static readonly C8I_32XLARGE = 'c8i.32xlarge';
+
+    /**
+     * c8i.48xlarge
+     * vCPUs: 192
+     * Memory: 393216 MiB
+     */
+    public static readonly C8I_48XLARGE = 'c8i.48xlarge';
+
+    /**
+     * c8i.4xlarge
+     * vCPUs: 16
+     * Memory: 32768 MiB
+     */
+    public static readonly C8I_4XLARGE = 'c8i.4xlarge';
+
+    /**
+     * c8i.8xlarge
+     * vCPUs: 32
+     * Memory: 65536 MiB
+     */
+    public static readonly C8I_8XLARGE = 'c8i.8xlarge';
+
+    /**
+     * c8i.96xlarge
+     * vCPUs: 384
+     * Memory: 786432 MiB
+     */
+    public static readonly C8I_96XLARGE = 'c8i.96xlarge';
+
+    /**
+     * c8i.large
+     * vCPUs: 2
+     * Memory: 4096 MiB
+     */
+    public static readonly C8I_LARGE = 'c8i.large';
+
+    /**
+     * c8i.metal-48xl
+     * vCPUs: 192
+     * Memory: 393216 MiB
+     */
+    public static readonly C8I_METAL_48XL = 'c8i.metal-48xl';
+
+    /**
+     * c8i.metal-96xl
+     * vCPUs: 384
+     * Memory: 786432 MiB
+     */
+    public static readonly C8I_METAL_96XL = 'c8i.metal-96xl';
+
+    /**
+     * c8i.xlarge
+     * vCPUs: 4
+     * Memory: 8192 MiB
+     */
+    public static readonly C8I_XLARGE = 'c8i.xlarge';
+
+    /**
      * d2.2xlarge
      * vCPUs: 8
      * Memory: 62464 MiB
@@ -1810,6 +2118,34 @@ export class Ec2InstanceType {
     public static readonly G6E_XLARGE = 'g6e.xlarge';
 
     /**
+     * g6f.2xlarge
+     * vCPUs: 8
+     * Memory: 32768 MiB
+     */
+    public static readonly G6F_2XLARGE = 'g6f.2xlarge';
+
+    /**
+     * g6f.4xlarge
+     * vCPUs: 16
+     * Memory: 65536 MiB
+     */
+    public static readonly G6F_4XLARGE = 'g6f.4xlarge';
+
+    /**
+     * g6f.large
+     * vCPUs: 2
+     * Memory: 8192 MiB
+     */
+    public static readonly G6F_LARGE = 'g6f.large';
+
+    /**
+     * g6f.xlarge
+     * vCPUs: 4
+     * Memory: 16384 MiB
+     */
+    public static readonly G6F_XLARGE = 'g6f.xlarge';
+
+    /**
      * gr6.4xlarge
      * vCPUs: 16
      * Memory: 131072 MiB
@@ -1822,6 +2158,13 @@ export class Ec2InstanceType {
      * Memory: 262144 MiB
      */
     public static readonly GR6_8XLARGE = 'gr6.8xlarge';
+
+    /**
+     * gr6f.4xlarge
+     * vCPUs: 16
+     * Memory: 131072 MiB
+     */
+    public static readonly GR6F_4XLARGE = 'gr6f.4xlarge';
 
     /**
      * h1.16xlarge
@@ -1934,13 +2277,6 @@ export class Ec2InstanceType {
      * Memory: 15616 MiB
      */
     public static readonly I3_LARGE = 'i3.large';
-
-    /**
-     * i3.metal
-     * vCPUs: 72
-     * Memory: 524288 MiB
-     */
-    public static readonly I3_METAL = 'i3.metal';
 
     /**
      * i3.xlarge
@@ -2118,6 +2454,83 @@ export class Ec2InstanceType {
     public static readonly I4I_XLARGE = 'i4i.xlarge';
 
     /**
+     * i7i.12xlarge
+     * vCPUs: 48
+     * Memory: 393216 MiB
+     */
+    public static readonly I7I_12XLARGE = 'i7i.12xlarge';
+
+    /**
+     * i7i.16xlarge
+     * vCPUs: 64
+     * Memory: 524288 MiB
+     */
+    public static readonly I7I_16XLARGE = 'i7i.16xlarge';
+
+    /**
+     * i7i.24xlarge
+     * vCPUs: 96
+     * Memory: 786432 MiB
+     */
+    public static readonly I7I_24XLARGE = 'i7i.24xlarge';
+
+    /**
+     * i7i.2xlarge
+     * vCPUs: 8
+     * Memory: 65536 MiB
+     */
+    public static readonly I7I_2XLARGE = 'i7i.2xlarge';
+
+    /**
+     * i7i.48xlarge
+     * vCPUs: 192
+     * Memory: 1572864 MiB
+     */
+    public static readonly I7I_48XLARGE = 'i7i.48xlarge';
+
+    /**
+     * i7i.4xlarge
+     * vCPUs: 16
+     * Memory: 131072 MiB
+     */
+    public static readonly I7I_4XLARGE = 'i7i.4xlarge';
+
+    /**
+     * i7i.8xlarge
+     * vCPUs: 32
+     * Memory: 262144 MiB
+     */
+    public static readonly I7I_8XLARGE = 'i7i.8xlarge';
+
+    /**
+     * i7i.large
+     * vCPUs: 2
+     * Memory: 16384 MiB
+     */
+    public static readonly I7I_LARGE = 'i7i.large';
+
+    /**
+     * i7i.metal-24xl
+     * vCPUs: 96
+     * Memory: 786432 MiB
+     */
+    public static readonly I7I_METAL_24XL = 'i7i.metal-24xl';
+
+    /**
+     * i7i.metal-48xl
+     * vCPUs: 192
+     * Memory: 1572864 MiB
+     */
+    public static readonly I7I_METAL_48XL = 'i7i.metal-48xl';
+
+    /**
+     * i7i.xlarge
+     * vCPUs: 4
+     * Memory: 32768 MiB
+     */
+    public static readonly I7I_XLARGE = 'i7i.xlarge';
+
+    /**
      * i7ie.12xlarge
      * vCPUs: 48
      * Memory: 393216 MiB
@@ -2174,6 +2587,20 @@ export class Ec2InstanceType {
     public static readonly I7IE_LARGE = 'i7ie.large';
 
     /**
+     * i7ie.metal-24xl
+     * vCPUs: 96
+     * Memory: 786432 MiB
+     */
+    public static readonly I7IE_METAL_24XL = 'i7ie.metal-24xl';
+
+    /**
+     * i7ie.metal-48xl
+     * vCPUs: 192
+     * Memory: 1572864 MiB
+     */
+    public static readonly I7IE_METAL_48XL = 'i7ie.metal-48xl';
+
+    /**
      * i7ie.xlarge
      * vCPUs: 4
      * Memory: 32768 MiB
@@ -2209,6 +2636,13 @@ export class Ec2InstanceType {
     public static readonly I8G_2XLARGE = 'i8g.2xlarge';
 
     /**
+     * i8g.48xlarge
+     * vCPUs: 192
+     * Memory: 1572864 MiB
+     */
+    public static readonly I8G_48XLARGE = 'i8g.48xlarge';
+
+    /**
      * i8g.4xlarge
      * vCPUs: 16
      * Memory: 131072 MiB
@@ -2242,6 +2676,83 @@ export class Ec2InstanceType {
      * Memory: 32768 MiB
      */
     public static readonly I8G_XLARGE = 'i8g.xlarge';
+
+    /**
+     * i8ge.12xlarge
+     * vCPUs: 48
+     * Memory: 393216 MiB
+     */
+    public static readonly I8GE_12XLARGE = 'i8ge.12xlarge';
+
+    /**
+     * i8ge.18xlarge
+     * vCPUs: 72
+     * Memory: 589824 MiB
+     */
+    public static readonly I8GE_18XLARGE = 'i8ge.18xlarge';
+
+    /**
+     * i8ge.24xlarge
+     * vCPUs: 96
+     * Memory: 786432 MiB
+     */
+    public static readonly I8GE_24XLARGE = 'i8ge.24xlarge';
+
+    /**
+     * i8ge.2xlarge
+     * vCPUs: 8
+     * Memory: 65536 MiB
+     */
+    public static readonly I8GE_2XLARGE = 'i8ge.2xlarge';
+
+    /**
+     * i8ge.3xlarge
+     * vCPUs: 12
+     * Memory: 98304 MiB
+     */
+    public static readonly I8GE_3XLARGE = 'i8ge.3xlarge';
+
+    /**
+     * i8ge.48xlarge
+     * vCPUs: 192
+     * Memory: 1572864 MiB
+     */
+    public static readonly I8GE_48XLARGE = 'i8ge.48xlarge';
+
+    /**
+     * i8ge.6xlarge
+     * vCPUs: 24
+     * Memory: 196608 MiB
+     */
+    public static readonly I8GE_6XLARGE = 'i8ge.6xlarge';
+
+    /**
+     * i8ge.large
+     * vCPUs: 2
+     * Memory: 16384 MiB
+     */
+    public static readonly I8GE_LARGE = 'i8ge.large';
+
+    /**
+     * i8ge.metal-24xl
+     * vCPUs: 96
+     * Memory: 786432 MiB
+     */
+    public static readonly I8GE_METAL_24XL = 'i8ge.metal-24xl';
+
+    /**
+     * i8ge.metal-48xl
+     * vCPUs: 192
+     * Memory: 1572864 MiB
+     */
+    public static readonly I8GE_METAL_48XL = 'i8ge.metal-48xl';
+
+    /**
+     * i8ge.xlarge
+     * vCPUs: 4
+     * Memory: 32768 MiB
+     */
+    public static readonly I8GE_XLARGE = 'i8ge.xlarge';
 
     /**
      * im4gn.16xlarge
@@ -3819,6 +4330,244 @@ export class Ec2InstanceType {
     public static readonly M8G_XLARGE = 'm8g.xlarge';
 
     /**
+     * m8gd.12xlarge
+     * vCPUs: 48
+     * Memory: 196608 MiB
+     */
+    public static readonly M8GD_12XLARGE = 'm8gd.12xlarge';
+
+    /**
+     * m8gd.16xlarge
+     * vCPUs: 64
+     * Memory: 262144 MiB
+     */
+    public static readonly M8GD_16XLARGE = 'm8gd.16xlarge';
+
+    /**
+     * m8gd.24xlarge
+     * vCPUs: 96
+     * Memory: 393216 MiB
+     */
+    public static readonly M8GD_24XLARGE = 'm8gd.24xlarge';
+
+    /**
+     * m8gd.2xlarge
+     * vCPUs: 8
+     * Memory: 32768 MiB
+     */
+    public static readonly M8GD_2XLARGE = 'm8gd.2xlarge';
+
+    /**
+     * m8gd.48xlarge
+     * vCPUs: 192
+     * Memory: 786432 MiB
+     */
+    public static readonly M8GD_48XLARGE = 'm8gd.48xlarge';
+
+    /**
+     * m8gd.4xlarge
+     * vCPUs: 16
+     * Memory: 65536 MiB
+     */
+    public static readonly M8GD_4XLARGE = 'm8gd.4xlarge';
+
+    /**
+     * m8gd.8xlarge
+     * vCPUs: 32
+     * Memory: 131072 MiB
+     */
+    public static readonly M8GD_8XLARGE = 'm8gd.8xlarge';
+
+    /**
+     * m8gd.large
+     * vCPUs: 2
+     * Memory: 8192 MiB
+     */
+    public static readonly M8GD_LARGE = 'm8gd.large';
+
+    /**
+     * m8gd.medium
+     * vCPUs: 1
+     * Memory: 4096 MiB
+     */
+    public static readonly M8GD_MEDIUM = 'm8gd.medium';
+
+    /**
+     * m8gd.metal-24xl
+     * vCPUs: 96
+     * Memory: 393216 MiB
+     */
+    public static readonly M8GD_METAL_24XL = 'm8gd.metal-24xl';
+
+    /**
+     * m8gd.metal-48xl
+     * vCPUs: 192
+     * Memory: 786432 MiB
+     */
+    public static readonly M8GD_METAL_48XL = 'm8gd.metal-48xl';
+
+    /**
+     * m8gd.xlarge
+     * vCPUs: 4
+     * Memory: 16384 MiB
+     */
+    public static readonly M8GD_XLARGE = 'm8gd.xlarge';
+
+    /**
+     * m8i-flex.12xlarge
+     * vCPUs: 48
+     * Memory: 196608 MiB
+     */
+    public static readonly M8I_FLEX_12XLARGE = 'm8i-flex.12xlarge';
+
+    /**
+     * m8i-flex.16xlarge
+     * vCPUs: 64
+     * Memory: 262144 MiB
+     */
+    public static readonly M8I_FLEX_16XLARGE = 'm8i-flex.16xlarge';
+
+    /**
+     * m8i-flex.2xlarge
+     * vCPUs: 8
+     * Memory: 32768 MiB
+     */
+    public static readonly M8I_FLEX_2XLARGE = 'm8i-flex.2xlarge';
+
+    /**
+     * m8i-flex.4xlarge
+     * vCPUs: 16
+     * Memory: 65536 MiB
+     */
+    public static readonly M8I_FLEX_4XLARGE = 'm8i-flex.4xlarge';
+
+    /**
+     * m8i-flex.8xlarge
+     * vCPUs: 32
+     * Memory: 131072 MiB
+     */
+    public static readonly M8I_FLEX_8XLARGE = 'm8i-flex.8xlarge';
+
+    /**
+     * m8i-flex.large
+     * vCPUs: 2
+     * Memory: 8192 MiB
+     */
+    public static readonly M8I_FLEX_LARGE = 'm8i-flex.large';
+
+    /**
+     * m8i-flex.xlarge
+     * vCPUs: 4
+     * Memory: 16384 MiB
+     */
+    public static readonly M8I_FLEX_XLARGE = 'm8i-flex.xlarge';
+
+    /**
+     * m8i.12xlarge
+     * vCPUs: 48
+     * Memory: 196608 MiB
+     */
+    public static readonly M8I_12XLARGE = 'm8i.12xlarge';
+
+    /**
+     * m8i.16xlarge
+     * vCPUs: 64
+     * Memory: 262144 MiB
+     */
+    public static readonly M8I_16XLARGE = 'm8i.16xlarge';
+
+    /**
+     * m8i.24xlarge
+     * vCPUs: 96
+     * Memory: 393216 MiB
+     */
+    public static readonly M8I_24XLARGE = 'm8i.24xlarge';
+
+    /**
+     * m8i.2xlarge
+     * vCPUs: 8
+     * Memory: 32768 MiB
+     */
+    public static readonly M8I_2XLARGE = 'm8i.2xlarge';
+
+    /**
+     * m8i.32xlarge
+     * vCPUs: 128
+     * Memory: 524288 MiB
+     */
+    public static readonly M8I_32XLARGE = 'm8i.32xlarge';
+
+    /**
+     * m8i.48xlarge
+     * vCPUs: 192
+     * Memory: 786432 MiB
+     */
+    public static readonly M8I_48XLARGE = 'm8i.48xlarge';
+
+    /**
+     * m8i.4xlarge
+     * vCPUs: 16
+     * Memory: 65536 MiB
+     */
+    public static readonly M8I_4XLARGE = 'm8i.4xlarge';
+
+    /**
+     * m8i.8xlarge
+     * vCPUs: 32
+     * Memory: 131072 MiB
+     */
+    public static readonly M8I_8XLARGE = 'm8i.8xlarge';
+
+    /**
+     * m8i.96xlarge
+     * vCPUs: 384
+     * Memory: 1572864 MiB
+     */
+    public static readonly M8I_96XLARGE = 'm8i.96xlarge';
+
+    /**
+     * m8i.large
+     * vCPUs: 2
+     * Memory: 8192 MiB
+     */
+    public static readonly M8I_LARGE = 'm8i.large';
+
+    /**
+     * m8i.metal-48xl
+     * vCPUs: 192
+     * Memory: 786432 MiB
+     */
+    public static readonly M8I_METAL_48XL = 'm8i.metal-48xl';
+
+    /**
+     * m8i.metal-96xl
+     * vCPUs: 384
+     * Memory: 1572864 MiB
+     */
+    public static readonly M8I_METAL_96XL = 'm8i.metal-96xl';
+
+    /**
+     * m8i.xlarge
+     * vCPUs: 4
+     * Memory: 16384 MiB
+     */
+    public static readonly M8I_XLARGE = 'm8i.xlarge';
+
+    /**
+     * mac-m4.metal
+     * vCPUs: 10
+     * Memory: 24576 MiB
+     */
+    public static readonly MAC_M4_METAL = 'mac-m4.metal';
+
+    /**
+     * mac-m4pro.metal
+     * vCPUs: 14
+     * Memory: 49152 MiB
+     */
+    public static readonly MAC_M4PRO_METAL = 'mac-m4pro.metal';
+
+    /**
      * mac1.metal
      * vCPUs: 12
      * Memory: 32768 MiB
@@ -3852,27 +4601,6 @@ export class Ec2InstanceType {
      * Memory: 16384 MiB
      */
     public static readonly MAC2_METAL = 'mac2.metal';
-
-    /**
-     * p2.16xlarge
-     * vCPUs: 64
-     * Memory: 749568 MiB
-     */
-    public static readonly P2_16XLARGE = 'p2.16xlarge';
-
-    /**
-     * p2.8xlarge
-     * vCPUs: 32
-     * Memory: 499712 MiB
-     */
-    public static readonly P2_8XLARGE = 'p2.8xlarge';
-
-    /**
-     * p2.xlarge
-     * vCPUs: 4
-     * Memory: 62464 MiB
-     */
-    public static readonly P2_XLARGE = 'p2.xlarge';
 
     /**
      * p3.16xlarge
@@ -3910,11 +4638,39 @@ export class Ec2InstanceType {
     public static readonly P4D_24XLARGE = 'p4d.24xlarge';
 
     /**
+     * p4de.24xlarge
+     * vCPUs: 96
+     * Memory: 1179648 MiB
+     */
+    public static readonly P4DE_24XLARGE = 'p4de.24xlarge';
+
+    /**
      * p5.48xlarge
      * vCPUs: 192
      * Memory: 2097152 MiB
      */
     public static readonly P5_48XLARGE = 'p5.48xlarge';
+
+    /**
+     * p5.4xlarge
+     * vCPUs: 16
+     * Memory: 262144 MiB
+     */
+    public static readonly P5_4XLARGE = 'p5.4xlarge';
+
+    /**
+     * p5en.48xlarge
+     * vCPUs: 192
+     * Memory: 2097152 MiB
+     */
+    public static readonly P5EN_48XLARGE = 'p5en.48xlarge';
+
+    /**
+     * p6-b200.48xlarge
+     * vCPUs: 192
+     * Memory: 2097152 MiB
+     */
+    public static readonly P6_B200_48XLARGE = 'p6-b200.48xlarge';
 
     /**
      * r3.2xlarge
@@ -5345,6 +6101,384 @@ export class Ec2InstanceType {
     public static readonly R8G_XLARGE = 'r8g.xlarge';
 
     /**
+     * r8gb.12xlarge
+     * vCPUs: 48
+     * Memory: 393216 MiB
+     */
+    public static readonly R8GB_12XLARGE = 'r8gb.12xlarge';
+
+    /**
+     * r8gb.16xlarge
+     * vCPUs: 64
+     * Memory: 524288 MiB
+     */
+    public static readonly R8GB_16XLARGE = 'r8gb.16xlarge';
+
+    /**
+     * r8gb.24xlarge
+     * vCPUs: 96
+     * Memory: 786432 MiB
+     */
+    public static readonly R8GB_24XLARGE = 'r8gb.24xlarge';
+
+    /**
+     * r8gb.2xlarge
+     * vCPUs: 8
+     * Memory: 65536 MiB
+     */
+    public static readonly R8GB_2XLARGE = 'r8gb.2xlarge';
+
+    /**
+     * r8gb.4xlarge
+     * vCPUs: 16
+     * Memory: 131072 MiB
+     */
+    public static readonly R8GB_4XLARGE = 'r8gb.4xlarge';
+
+    /**
+     * r8gb.8xlarge
+     * vCPUs: 32
+     * Memory: 262144 MiB
+     */
+    public static readonly R8GB_8XLARGE = 'r8gb.8xlarge';
+
+    /**
+     * r8gb.large
+     * vCPUs: 2
+     * Memory: 16384 MiB
+     */
+    public static readonly R8GB_LARGE = 'r8gb.large';
+
+    /**
+     * r8gb.medium
+     * vCPUs: 1
+     * Memory: 8192 MiB
+     */
+    public static readonly R8GB_MEDIUM = 'r8gb.medium';
+
+    /**
+     * r8gb.metal-24xl
+     * vCPUs: 96
+     * Memory: 786432 MiB
+     */
+    public static readonly R8GB_METAL_24XL = 'r8gb.metal-24xl';
+
+    /**
+     * r8gb.xlarge
+     * vCPUs: 4
+     * Memory: 32768 MiB
+     */
+    public static readonly R8GB_XLARGE = 'r8gb.xlarge';
+
+    /**
+     * r8gd.12xlarge
+     * vCPUs: 48
+     * Memory: 393216 MiB
+     */
+    public static readonly R8GD_12XLARGE = 'r8gd.12xlarge';
+
+    /**
+     * r8gd.16xlarge
+     * vCPUs: 64
+     * Memory: 524288 MiB
+     */
+    public static readonly R8GD_16XLARGE = 'r8gd.16xlarge';
+
+    /**
+     * r8gd.24xlarge
+     * vCPUs: 96
+     * Memory: 786432 MiB
+     */
+    public static readonly R8GD_24XLARGE = 'r8gd.24xlarge';
+
+    /**
+     * r8gd.2xlarge
+     * vCPUs: 8
+     * Memory: 65536 MiB
+     */
+    public static readonly R8GD_2XLARGE = 'r8gd.2xlarge';
+
+    /**
+     * r8gd.48xlarge
+     * vCPUs: 192
+     * Memory: 1572864 MiB
+     */
+    public static readonly R8GD_48XLARGE = 'r8gd.48xlarge';
+
+    /**
+     * r8gd.4xlarge
+     * vCPUs: 16
+     * Memory: 131072 MiB
+     */
+    public static readonly R8GD_4XLARGE = 'r8gd.4xlarge';
+
+    /**
+     * r8gd.8xlarge
+     * vCPUs: 32
+     * Memory: 262144 MiB
+     */
+    public static readonly R8GD_8XLARGE = 'r8gd.8xlarge';
+
+    /**
+     * r8gd.large
+     * vCPUs: 2
+     * Memory: 16384 MiB
+     */
+    public static readonly R8GD_LARGE = 'r8gd.large';
+
+    /**
+     * r8gd.medium
+     * vCPUs: 1
+     * Memory: 8192 MiB
+     */
+    public static readonly R8GD_MEDIUM = 'r8gd.medium';
+
+    /**
+     * r8gd.metal-24xl
+     * vCPUs: 96
+     * Memory: 786432 MiB
+     */
+    public static readonly R8GD_METAL_24XL = 'r8gd.metal-24xl';
+
+    /**
+     * r8gd.metal-48xl
+     * vCPUs: 192
+     * Memory: 1572864 MiB
+     */
+    public static readonly R8GD_METAL_48XL = 'r8gd.metal-48xl';
+
+    /**
+     * r8gd.xlarge
+     * vCPUs: 4
+     * Memory: 32768 MiB
+     */
+    public static readonly R8GD_XLARGE = 'r8gd.xlarge';
+
+    /**
+     * r8gn.12xlarge
+     * vCPUs: 48
+     * Memory: 393216 MiB
+     */
+    public static readonly R8GN_12XLARGE = 'r8gn.12xlarge';
+
+    /**
+     * r8gn.16xlarge
+     * vCPUs: 64
+     * Memory: 524288 MiB
+     */
+    public static readonly R8GN_16XLARGE = 'r8gn.16xlarge';
+
+    /**
+     * r8gn.24xlarge
+     * vCPUs: 96
+     * Memory: 786432 MiB
+     */
+    public static readonly R8GN_24XLARGE = 'r8gn.24xlarge';
+
+    /**
+     * r8gn.2xlarge
+     * vCPUs: 8
+     * Memory: 65536 MiB
+     */
+    public static readonly R8GN_2XLARGE = 'r8gn.2xlarge';
+
+    /**
+     * r8gn.48xlarge
+     * vCPUs: 192
+     * Memory: 1572864 MiB
+     */
+    public static readonly R8GN_48XLARGE = 'r8gn.48xlarge';
+
+    /**
+     * r8gn.4xlarge
+     * vCPUs: 16
+     * Memory: 131072 MiB
+     */
+    public static readonly R8GN_4XLARGE = 'r8gn.4xlarge';
+
+    /**
+     * r8gn.8xlarge
+     * vCPUs: 32
+     * Memory: 262144 MiB
+     */
+    public static readonly R8GN_8XLARGE = 'r8gn.8xlarge';
+
+    /**
+     * r8gn.large
+     * vCPUs: 2
+     * Memory: 16384 MiB
+     */
+    public static readonly R8GN_LARGE = 'r8gn.large';
+
+    /**
+     * r8gn.medium
+     * vCPUs: 1
+     * Memory: 8192 MiB
+     */
+    public static readonly R8GN_MEDIUM = 'r8gn.medium';
+
+    /**
+     * r8gn.metal-24xl
+     * vCPUs: 96
+     * Memory: 786432 MiB
+     */
+    public static readonly R8GN_METAL_24XL = 'r8gn.metal-24xl';
+
+    /**
+     * r8gn.metal-48xl
+     * vCPUs: 192
+     * Memory: 1572864 MiB
+     */
+    public static readonly R8GN_METAL_48XL = 'r8gn.metal-48xl';
+
+    /**
+     * r8gn.xlarge
+     * vCPUs: 4
+     * Memory: 32768 MiB
+     */
+    public static readonly R8GN_XLARGE = 'r8gn.xlarge';
+
+    /**
+     * r8i-flex.12xlarge
+     * vCPUs: 48
+     * Memory: 393216 MiB
+     */
+    public static readonly R8I_FLEX_12XLARGE = 'r8i-flex.12xlarge';
+
+    /**
+     * r8i-flex.16xlarge
+     * vCPUs: 64
+     * Memory: 524288 MiB
+     */
+    public static readonly R8I_FLEX_16XLARGE = 'r8i-flex.16xlarge';
+
+    /**
+     * r8i-flex.2xlarge
+     * vCPUs: 8
+     * Memory: 65536 MiB
+     */
+    public static readonly R8I_FLEX_2XLARGE = 'r8i-flex.2xlarge';
+
+    /**
+     * r8i-flex.4xlarge
+     * vCPUs: 16
+     * Memory: 131072 MiB
+     */
+    public static readonly R8I_FLEX_4XLARGE = 'r8i-flex.4xlarge';
+
+    /**
+     * r8i-flex.8xlarge
+     * vCPUs: 32
+     * Memory: 262144 MiB
+     */
+    public static readonly R8I_FLEX_8XLARGE = 'r8i-flex.8xlarge';
+
+    /**
+     * r8i-flex.large
+     * vCPUs: 2
+     * Memory: 16384 MiB
+     */
+    public static readonly R8I_FLEX_LARGE = 'r8i-flex.large';
+
+    /**
+     * r8i-flex.xlarge
+     * vCPUs: 4
+     * Memory: 32768 MiB
+     */
+    public static readonly R8I_FLEX_XLARGE = 'r8i-flex.xlarge';
+
+    /**
+     * r8i.12xlarge
+     * vCPUs: 48
+     * Memory: 393216 MiB
+     */
+    public static readonly R8I_12XLARGE = 'r8i.12xlarge';
+
+    /**
+     * r8i.16xlarge
+     * vCPUs: 64
+     * Memory: 524288 MiB
+     */
+    public static readonly R8I_16XLARGE = 'r8i.16xlarge';
+
+    /**
+     * r8i.24xlarge
+     * vCPUs: 96
+     * Memory: 786432 MiB
+     */
+    public static readonly R8I_24XLARGE = 'r8i.24xlarge';
+
+    /**
+     * r8i.2xlarge
+     * vCPUs: 8
+     * Memory: 65536 MiB
+     */
+    public static readonly R8I_2XLARGE = 'r8i.2xlarge';
+
+    /**
+     * r8i.32xlarge
+     * vCPUs: 128
+     * Memory: 1048576 MiB
+     */
+    public static readonly R8I_32XLARGE = 'r8i.32xlarge';
+
+    /**
+     * r8i.48xlarge
+     * vCPUs: 192
+     * Memory: 1572864 MiB
+     */
+    public static readonly R8I_48XLARGE = 'r8i.48xlarge';
+
+    /**
+     * r8i.4xlarge
+     * vCPUs: 16
+     * Memory: 131072 MiB
+     */
+    public static readonly R8I_4XLARGE = 'r8i.4xlarge';
+
+    /**
+     * r8i.8xlarge
+     * vCPUs: 32
+     * Memory: 262144 MiB
+     */
+    public static readonly R8I_8XLARGE = 'r8i.8xlarge';
+
+    /**
+     * r8i.96xlarge
+     * vCPUs: 384
+     * Memory: 3145728 MiB
+     */
+    public static readonly R8I_96XLARGE = 'r8i.96xlarge';
+
+    /**
+     * r8i.large
+     * vCPUs: 2
+     * Memory: 16384 MiB
+     */
+    public static readonly R8I_LARGE = 'r8i.large';
+
+    /**
+     * r8i.metal-48xl
+     * vCPUs: 192
+     * Memory: 1572864 MiB
+     */
+    public static readonly R8I_METAL_48XL = 'r8i.metal-48xl';
+
+    /**
+     * r8i.metal-96xl
+     * vCPUs: 384
+     * Memory: 3145728 MiB
+     */
+    public static readonly R8I_METAL_96XL = 'r8i.metal-96xl';
+
+    /**
+     * r8i.xlarge
+     * vCPUs: 4
+     * Memory: 32768 MiB
+     */
+    public static readonly R8I_XLARGE = 'r8i.xlarge';
+
+    /**
      * t1.micro
      * vCPUs: 1
      * Memory: 627 MiB
@@ -5569,27 +6703,6 @@ export class Ec2InstanceType {
     public static readonly TRN1N_32XLARGE = 'trn1n.32xlarge';
 
     /**
-     * u-12tb1.112xlarge
-     * vCPUs: 448
-     * Memory: 12582912 MiB
-     */
-    public static readonly U_12TB1_112XLARGE = 'u-12tb1.112xlarge';
-
-    /**
-     * u-18tb1.112xlarge
-     * vCPUs: 448
-     * Memory: 18874368 MiB
-     */
-    public static readonly U_18TB1_112XLARGE = 'u-18tb1.112xlarge';
-
-    /**
-     * u-24tb1.112xlarge
-     * vCPUs: 448
-     * Memory: 25165824 MiB
-     */
-    public static readonly U_24TB1_112XLARGE = 'u-24tb1.112xlarge';
-
-    /**
      * u-3tb1.56xlarge
      * vCPUs: 224
      * Memory: 3145728 MiB
@@ -5609,13 +6722,6 @@ export class Ec2InstanceType {
      * Memory: 6291456 MiB
      */
     public static readonly U_6TB1_56XLARGE = 'u-6tb1.56xlarge';
-
-    /**
-     * u-9tb1.112xlarge
-     * vCPUs: 448
-     * Memory: 9437184 MiB
-     */
-    public static readonly U_9TB1_112XLARGE = 'u-9tb1.112xlarge';
 
     /**
      * u7i-12tb.224xlarge

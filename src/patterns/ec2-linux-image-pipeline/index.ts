@@ -263,7 +263,7 @@ export class Ec2LinuxImagePipeline extends Construct {
 
         // STIG
         if (features.includes(Ec2LinuxImagePipeline.Feature.STIG)) {
-            components.push(Ec2ImagePipeline.Component.STIG_BUILD_LINUX_HIGH);
+            components.push(Ec2ImagePipeline.Component.STIG_BUILD_LINUX);
         }
 
         // SCAP

@@ -7534,6 +7534,7 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ADMINISTRATOR_ACCESS">ADMINISTRATOR_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ADMINISTRATOR_ACCESS_AMPLIFY">ADMINISTRATOR_ACCESS_AMPLIFY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ADMINISTRATOR_ACCESS_AWS_ELASTIC_BEANSTALK">ADMINISTRATOR_ACCESS_AWS_ELASTIC_BEANSTALK</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_ASSISTANT_INCIDENT_REPORT_POLICY">AI_OPS_ASSISTANT_INCIDENT_REPORT_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_ASSISTANT_POLICY">AI_OPS_ASSISTANT_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_CONSOLE_ADMIN_POLICY">AI_OPS_CONSOLE_ADMIN_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_OPERATOR_ACCESS">AI_OPS_OPERATOR_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -7557,7 +7558,10 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AURORA_DSQL_CONSOLE_FULL_ACCESS">AMAZON_AURORA_DSQL_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AURORA_DSQL_FULL_ACCESS">AMAZON_AURORA_DSQL_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_AURORA_DSQL_READ_ONLY_ACCESS">AMAZON_AURORA_DSQL_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_AGENT_CORE_MEMORY_BEDROCK_MODEL_INFERENCE_EXECUTION_ROLE_POLICY">AMAZON_BEDROCK_AGENT_CORE_MEMORY_BEDROCK_MODEL_INFERENCE_EXECUTION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_FULL_ACCESS">AMAZON_BEDROCK_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_LIMITED_ACCESS">AMAZON_BEDROCK_LIMITED_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_MARKETPLACE_ACCESS">AMAZON_BEDROCK_MARKETPLACE_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_READ_ONLY">AMAZON_BEDROCK_READ_ONLY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_STUDIO_PERMISSIONS_BOUNDARY">AMAZON_BEDROCK_STUDIO_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BRAKET_FULL_ACCESS">AMAZON_BRAKET_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -7611,6 +7615,7 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DOC_DB_READ_ONLY_ACCESS">AMAZON_DOC_DB_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DRSVPC_MANAGEMENT">AMAZON_DRSVPC_MANAGEMENT</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_FULL_ACCESS">AMAZON_DYNAMO_DB_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_FULL_ACCESS_V2">AMAZON_DYNAMO_DB_FULL_ACCESS_V2</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE">AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_READ_ONLY_ACCESS">AMAZON_DYNAMO_DB_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_FULL_ACCESS">AMAZON_EC2_CONTAINER_REGISTRY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -7618,14 +7623,19 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_PULL_ONLY">AMAZON_EC2_CONTAINER_REGISTRY_PULL_ONLY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_CONTAINER_REGISTRY_READ_ONLY">AMAZON_EC2_CONTAINER_REGISTRY_READ_ONLY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_FULL_ACCESS">AMAZON_EC2_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_IMAGE_REFERENCES_ACCESS_POLICY">AMAZON_EC2_IMAGE_REFERENCES_ACCESS_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_READ_ONLY_ACCESS">AMAZON_EC2_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_ROLE_POLICY_FOR_LAUNCH_WIZARD">AMAZON_EC2_ROLE_POLICY_FOR_LAUNCH_WIZARD</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_FULL_ACCESS">AMAZON_ECS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_LOAD_BALANCERS">AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_LOAD_BALANCERS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_MANAGED_INSTANCES">AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_MANAGED_INSTANCES</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE">AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_INSTANCE_ROLE_POLICY_FOR_MANAGED_INSTANCES">AMAZON_ECS_INSTANCE_ROLE_POLICY_FOR_MANAGED_INSTANCES</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_BLOCK_STORAGE_POLICY">AMAZON_EKS_BLOCK_STORAGE_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_CLUSTER_POLICY">AMAZON_EKS_CLUSTER_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_CNI_POLICY">AMAZON_EKS_CNI_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_COMPUTE_POLICY">AMAZON_EKS_COMPUTE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_DASHBOARD_CONSOLE_READ_ONLY">AMAZON_EKS_DASHBOARD_CONSOLE_READ_ONLY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_FARGATE_POD_EXECUTION_ROLE_POLICY">AMAZON_EKS_FARGATE_POD_EXECUTION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_LOAD_BALANCING_POLICY">AMAZON_EKS_LOAD_BALANCING_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_LOCAL_OUTPOST_CLUSTER_POLICY">AMAZON_EKS_LOCAL_OUTPOST_CLUSTER_POLICY</a></code> | <code>string</code> | *No description.* |
@@ -7675,6 +7685,7 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GLACIER_FULL_ACCESS">AMAZON_GLACIER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GLACIER_READ_ONLY_ACCESS">AMAZON_GLACIER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GUARD_DUTY_FULL_ACCESS">AMAZON_GUARD_DUTY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GUARD_DUTY_FULL_ACCESS_V2">AMAZON_GUARD_DUTY_FULL_ACCESS_V2</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GUARD_DUTY_READ_ONLY_ACCESS">AMAZON_GUARD_DUTY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HEALTH_LAKE_FULL_ACCESS">AMAZON_HEALTH_LAKE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_HEALTH_LAKE_READ_ONLY_ACCESS">AMAZON_HEALTH_LAKE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -7687,6 +7698,7 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR_FULL_ACCESS">AMAZON_INSPECTOR_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR_READ_ONLY_ACCESS">AMAZON_INSPECTOR_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_FULL_ACCESS">AMAZON_INSPECTOR2_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_FULL_ACCESS_V2">AMAZON_INSPECTOR2_FULL_ACCESS_V2</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_MANAGED_CIS_POLICY">AMAZON_INSPECTOR2_MANAGED_CIS_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_READ_ONLY_ACCESS">AMAZON_INSPECTOR2_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_KENDRA_FULL_ACCESS">AMAZON_KENDRA_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -7820,6 +7832,8 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_FEATURE_STORE_ACCESS">AMAZON_SAGE_MAKER_FEATURE_STORE_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_FULL_ACCESS">AMAZON_SAGE_MAKER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_GROUND_TRUTH_EXECUTION">AMAZON_SAGE_MAKER_GROUND_TRUTH_EXECUTION</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_HYPER_POD_OBSERVABILITY_ADMIN_ACCESS">AMAZON_SAGE_MAKER_HYPER_POD_OBSERVABILITY_ADMIN_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_HYPER_POD_TRAINING_OPERATOR_ACCESS">AMAZON_SAGE_MAKER_HYPER_POD_TRAINING_OPERATOR_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS">AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MODEL_GOVERNANCE_USE_ACCESS">AMAZON_SAGE_MAKER_MODEL_GOVERNANCE_USE_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MODEL_REGISTRY_FULL_ACCESS">AMAZON_SAGE_MAKER_MODEL_REGISTRY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -7847,6 +7861,7 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_CONSOLE_FULL_ACCESS">AMAZON_TIMESTREAM_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_FULL_ACCESS">AMAZON_TIMESTREAM_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS">AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS_WITHOUT_MARKETPLACE_ACCESS">AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS_WITHOUT_MARKETPLACE_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_READ_ONLY_ACCESS">AMAZON_TIMESTREAM_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TRANSCRIBE_FULL_ACCESS">AMAZON_TRANSCRIBE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TRANSCRIBE_READ_ONLY_ACCESS">AMAZON_TRANSCRIBE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -7917,6 +7932,7 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_OPERATOR_ACCESS">AWS_BACKUP_OPERATOR_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_ORGANIZATION_ADMIN_ACCESS">AWS_BACKUP_ORGANIZATION_ADMIN_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_RESTORE_ACCESS_FOR_SAPHANA">AWS_BACKUP_RESTORE_ACCESS_FOR_SAPHANA</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SEARCH_OPERATOR_ACCESS">AWS_BACKUP_SEARCH_OPERATOR_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_INDEXING">AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_INDEXING</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_ITEM_RESTORES">AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_ITEM_RESTORES</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_BACKUP">AWS_BACKUP_SERVICE_ROLE_POLICY_FOR_S3_BACKUP</a></code> | <code>string</code> | *No description.* |
@@ -8024,6 +8040,8 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_FAILBACK_INSTALLATION_POLICY">AWS_ELASTIC_DISASTER_RECOVERY_FAILBACK_INSTALLATION_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_LAUNCH_ACTIONS_POLICY">AWS_ELASTIC_DISASTER_RECOVERY_LAUNCH_ACTIONS_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELASTIC_DISASTER_RECOVERY_READ_ONLY_ACCESS">AWS_ELASTIC_DISASTER_RECOVERY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONNECT_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_CONNECT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONNECT_READ_ONLY_ACCESS">AWS_ELEMENTAL_MEDIA_CONNECT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONVERT_READ_ONLY">AWS_ELEMENTAL_MEDIA_CONVERT_READ_ONLY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_LIVE_FULL_ACCESS">AWS_ELEMENTAL_MEDIA_LIVE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -8078,6 +8096,7 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_EVENTS_FULL_ACCESS">AWS_IO_T_EVENTS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_EVENTS_READ_ONLY_ACCESS">AWS_IO_T_EVENTS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_FULL_ACCESS">AWS_IO_T_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_MANAGED_INTEGRATIONS_FULL_ACCESS">AWS_IO_T_MANAGED_INTEGRATIONS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS">AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_FULL_ACCESS">AWS_IO_T_SITE_WISE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_READ_ONLY_ACCESS">AWS_IO_T_SITE_WISE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -8087,8 +8106,6 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_GATEWAY_CERT_MANAGER">AWS_IO_T_WIRELESS_GATEWAY_CERT_MANAGER</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_LOGGING">AWS_IO_T_WIRELESS_LOGGING</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_WIRELESS_READ_ONLY_ACCESS">AWS_IO_T_WIRELESS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T1_CLICK_FULL_ACCESS">AWS_IO_T1_CLICK_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T1_CLICK_READ_ONLY_ACCESS">AWS_IO_T1_CLICK_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IQ_FULL_ACCESS">AWS_IQ_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_KEY_MANAGEMENT_SERVICE_POWER_USER">AWS_KEY_MANAGEMENT_SERVICE_POWER_USER</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAKE_FORMATION_CROSS_ACCOUNT_MANAGER">AWS_LAKE_FORMATION_CROSS_ACCOUNT_MANAGER</a></code> | <code>string</code> | *No description.* |
@@ -8097,10 +8114,10 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_FULL_ACCESS">AWS_LAMBDA_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_INVOCATION_DYNAMO_DB">AWS_LAMBDA_INVOCATION_DYNAMO_DB</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_LAMBDA_READ_ONLY_ACCESS">AWS_LAMBDA_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MANAGEMENT_CONSOLE_BASIC_USER_ACCESS">AWS_MANAGEMENT_CONSOLE_BASIC_USER_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_AMI_INGESTION">AWS_MARKETPLACE_AMI_INGESTION</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_FULL_ACCESS">AWS_MARKETPLACE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_GET_ENTITLEMENTS">AWS_MARKETPLACE_GET_ENTITLEMENTS</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS">AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_MANAGE_SUBSCRIPTIONS">AWS_MARKETPLACE_MANAGE_SUBSCRIPTIONS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_METERING_FULL_ACCESS">AWS_MARKETPLACE_METERING_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_METERING_REGISTER_USAGE">AWS_MARKETPLACE_METERING_REGISTER_USAGE</a></code> | <code>string</code> | *No description.* |
@@ -8118,14 +8135,10 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_REFACTOR_SPACES_FULL_ACCESS">AWS_MIGRATION_HUB_REFACTOR_SPACES_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_STRATEGY_COLLECTOR">AWS_MIGRATION_HUB_STRATEGY_COLLECTOR</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MIGRATION_HUB_STRATEGY_CONSOLE_FULL_ACCESS">AWS_MIGRATION_HUB_STRATEGY_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_FIREWALL_FULL_ACCESS">AWS_NETWORK_FIREWALL_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_FIREWALL_READ_ONLY_ACCESS">AWS_NETWORK_FIREWALL_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_MANAGER_FULL_ACCESS">AWS_NETWORK_MANAGER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_MANAGER_READ_ONLY_ACCESS">AWS_NETWORK_MANAGER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_CLOUD_WATCH_LOGS">AWS_OPS_WORKS_CLOUD_WATCH_LOGS</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE">AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_FULL_ACCESS">AWS_OPS_WORKS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_INSTANCE_REGISTRATION">AWS_OPS_WORKS_INSTANCE_REGISTRATION</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_REGISTER_CLI_EC2">AWS_OPS_WORKS_REGISTER_CLI_EC2</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES">AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ORGANIZATIONS_FULL_ACCESS">AWS_ORGANIZATIONS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ORGANIZATIONS_READ_ONLY_ACCESS">AWS_ORGANIZATIONS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OUTPOSTS_AUTHORIZE_SERVER_POLICY">AWS_OUTPOSTS_AUTHORIZE_SERVER_POLICY</a></code> | <code>string</code> | *No description.* |
@@ -8135,8 +8148,10 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_SANDBOX_FULL_ACCESS">AWS_PARTNER_CENTRAL_SANDBOX_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_CENTRAL_SELLING_RESOURCE_SNAPSHOT_JOB_EXECUTION_ROLE_POLICY">AWS_PARTNER_CENTRAL_SELLING_RESOURCE_SNAPSHOT_JOB_EXECUTION_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PARTNER_LED_SUPPORT_READ_ONLY_ACCESS">AWS_PARTNER_LED_SUPPORT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PCS_COMPUTE_NODE_POLICY">AWS_PCS_COMPUTE_NODE_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRICE_LIST_SERVICE_FULL_ACCESS">AWS_PRICE_LIST_SERVICE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_AUDITOR">AWS_PRIVATE_CA_AUDITOR</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_CONNECTOR_FOR_KUBERNETES_POLICY">AWS_PRIVATE_CA_CONNECTOR_FOR_KUBERNETES_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_FULL_ACCESS">AWS_PRIVATE_CA_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_PRIVILEGED_USER">AWS_PRIVATE_CA_PRIVILEGED_USER</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_READ_ONLY">AWS_PRIVATE_CA_READ_ONLY</a></code> | <code>string</code> | *No description.* |
@@ -8154,6 +8169,8 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_DISTRIBUTOR_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_DISTRIBUTOR_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_ENABLE_AREX_EXECUTION_POLICY">AWS_QUICK_SETUP_ENABLE_AREX_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_ENABLE_DHMC_EXECUTION_POLICY">AWS_QUICK_SETUP_ENABLE_DHMC_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_JITNA_DEPLOYMENT_ROLE_POLICY">AWS_QUICK_SETUP_JITNA_DEPLOYMENT_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_MANAGE_JITNA_RESOURCES_EXECUTION_POLICY">AWS_QUICK_SETUP_MANAGE_JITNA_RESOURCES_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY">AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_PATCH_POLICY_BASELINE_ACCESS">AWS_QUICK_SETUP_PATCH_POLICY_BASELINE_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_PATCH_POLICY_DEPLOYMENT_ROLE_POLICY">AWS_QUICK_SETUP_PATCH_POLICY_DEPLOYMENT_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
@@ -8164,9 +8181,12 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_HOST_MGMT_PERMISSIONS_BOUNDARY">AWS_QUICK_SETUP_SSM_HOST_MGMT_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_LIFECYCLE_MANAGEMENT_EXECUTION_POLICY">AWS_QUICK_SETUP_SSM_LIFECYCLE_MANAGEMENT_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_SSM_MANAGE_RESOURCES_EXECUTION_POLICY">AWS_QUICK_SETUP_SSM_MANAGE_RESOURCES_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_START_SSM_ASSOCIATIONS_EXECUTION_POLICY">AWS_QUICK_SETUP_START_SSM_ASSOCIATIONS_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_START_STOP_INSTANCES_EXECUTION_POLICY">AWS_QUICK_SETUP_START_STOP_INSTANCES_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY">AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_ASSET_BUNDLE_IMPORT_POLICY">AWS_QUICK_SIGHT_ASSET_BUNDLE_IMPORT_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_IO_T_ANALYTICS_ACCESS">AWS_QUICK_SIGHT_IO_T_ANALYTICS_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_SECRETS_MANAGER_WRITE_POLICY">AWS_QUICK_SIGHT_SECRETS_MANAGER_WRITE_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_REFACTORING_TOOLKIT_FULL_ACCESS">AWS_REFACTORING_TOOLKIT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_REFACTORING_TOOLKIT_SIDECAR_POLICY">AWS_REFACTORING_TOOLKIT_SIDECAR_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_REPOST_SPACE_SUPPORT_OPERATIONS_POLICY">AWS_REPOST_SPACE_SUPPORT_OPERATIONS_POLICY</a></code> | <code>string</code> | *No description.* |
@@ -8181,6 +8201,8 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROBO_MAKER_FULL_ACCESS">AWS_ROBO_MAKER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROBO_MAKER_READ_ONLY_ACCESS">AWS_ROBO_MAKER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROBO_MAKER_SERVICE_ROLE_POLICY">AWS_ROBO_MAKER_SERVICE_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROLES_ANYWHERE_FULL_ACCESS">AWS_ROLES_ANYWHERE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROLES_ANYWHERE_READ_ONLY">AWS_ROLES_ANYWHERE_READ_ONLY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SAVINGS_PLANS_FULL_ACCESS">AWS_SAVINGS_PLANS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SAVINGS_PLANS_READ_ONLY_ACCESS">AWS_SAVINGS_PLANS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SECURITY_HUB_FULL_ACCESS">AWS_SECURITY_HUB_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -8221,6 +8243,9 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_ENABLE_EXPLORER_EXECUTION_POLICY">AWS_SYSTEMS_MANAGER_ENABLE_EXPLORER_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_FOR_SAP_FULL_ACCESS">AWS_SYSTEMS_MANAGER_FOR_SAP_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_FOR_SAP_READ_ONLY_ACCESS">AWS_SYSTEMS_MANAGER_FOR_SAP_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_POLICY">AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_SESSION_POLICY">AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_SESSION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_JUST_IN_TIME_NODE_ACCESS_ROLE_PROPAGATION_POLICY">AWS_SYSTEMS_MANAGER_JUST_IN_TIME_NODE_ACCESS_ROLE_PROPAGATION_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_ASSET_SERVER_POLICY">AWS_THINKBOX_ASSET_SERVER_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_AWS_PORTAL_ADMIN_POLICY">AWS_THINKBOX_AWS_PORTAL_ADMIN_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_AWS_PORTAL_GATEWAY_POLICY">AWS_THINKBOX_AWS_PORTAL_GATEWAY_POLICY</a></code> | <code>string</code> | *No description.* |
@@ -8248,6 +8273,7 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_FULL_ACCESS">AWS_XRAY_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_READ_ONLY_ACCESS">AWS_XRAY_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_XRAY_WRITE_ONLY_ACCESS">AWS_XRAY_WRITE_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.BEDROCK_AGENT_CORE_FULL_ACCESS">BEDROCK_AGENT_CORE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_FRONT_FULL_ACCESS">CLOUD_FRONT_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_FRONT_READ_ONLY_ACCESS">CLOUD_FRONT_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.CLOUD_SEARCH_FULL_ACCESS">CLOUD_SEARCH_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -8300,10 +8326,9 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ELEMENTAL_SUPPORT_CENTER_FULL_ACCESS">ELEMENTAL_SUPPORT_CENTER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GAME_LIFT_CONTAINER_FLEET_POLICY">GAME_LIFT_CONTAINER_FLEET_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GAME_LIFT_GAME_SERVER_GROUP_POLICY">GAME_LIFT_GAME_SERVER_GROUP_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GIT_LAB_DUO_WITH_AMAZON_Q_PERMISSIONS_POLICY">GIT_LAB_DUO_WITH_AMAZON_Q_PERMISSIONS_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GLOBAL_ACCELERATOR_FULL_ACCESS">GLOBAL_ACCELERATOR_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GLOBAL_ACCELERATOR_READ_ONLY_ACCESS">GLOBAL_ACCELERATOR_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS">GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS">GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_ACCESS_ADVISOR_READ_ONLY">IAM_ACCESS_ADVISOR_READ_ONLY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_ACCESS_ANALYZER_FULL_ACCESS">IAM_ACCESS_ANALYZER_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IAM_ACCESS_ANALYZER_READ_ONLY_ACCESS">IAM_ACCESS_ANALYZER_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -8315,6 +8340,8 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IVS_FULL_ACCESS">IVS_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.IVS_READ_ONLY_ACCESS">IVS_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.MEDIA_CONNECT_GATEWAY_INSTANCE_ROLE_POLICY">MEDIA_CONNECT_GATEWAY_INSTANCE_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.MULTI_PARTY_APPROVAL_FULL_ACCESS">MULTI_PARTY_APPROVAL_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.MULTI_PARTY_APPROVAL_READ_ONLY_ACCESS">MULTI_PARTY_APPROVAL_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_CONSOLE_FULL_ACCESS">NEPTUNE_CONSOLE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_FULL_ACCESS">NEPTUNE_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.NEPTUNE_GRAPH_READ_ONLY_ACCESS">NEPTUNE_GRAPH_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
@@ -8329,10 +8356,19 @@ AWS Managed Policy.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.RESOURCE_GROUPS_AND_TAG_EDITOR_READ_ONLY_ACCESS">RESOURCE_GROUPS_AND_TAG_EDITOR_READ_ONLY_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.RESOURCE_GROUPS_TAGGING_API_TAG_UNTAG_SUPPORTED_RESOURCES">RESOURCE_GROUPS_TAGGING_API_TAG_UNTAG_SUPPORTED_RESOURCES</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ROSA_MANAGE_SUBSCRIPTION">ROSA_MANAGE_SUBSCRIPTION</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ROSA_SHARED_VPC_ENDPOINT_POLICY">ROSA_SHARED_VPC_ENDPOINT_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ROSA_SHARED_VPC_ROUTE53_POLICY">ROSA_SHARED_VPC_ROUTE53_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_ADMIN_IAM_CONSOLE_POLICY">SAGE_MAKER_STUDIO_ADMIN_IAM_CONSOLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_ADMIN_IAM_DEFAULT_EXECUTION_POLICY">SAGE_MAKER_STUDIO_ADMIN_IAM_DEFAULT_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_ADMIN_IAM_PERMISSIVE_EXECUTION_POLICY">SAGE_MAKER_STUDIO_ADMIN_IAM_PERMISSIVE_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_ADMIN_PROJECT_USER_ROLE_POLICY">SAGE_MAKER_STUDIO_ADMIN_PROJECT_USER_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_FULL_ACCESS">SAGE_MAKER_STUDIO_FULL_ACCESS</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_PROJECT_ROLE_MACHINE_LEARNING_POLICY">SAGE_MAKER_STUDIO_PROJECT_ROLE_MACHINE_LEARNING_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_PERMISSIONS_BOUNDARY">SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_PERMISSIONS_BOUNDARY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_POLICY">SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_USER_IAM_CONSOLE_POLICY">SAGE_MAKER_STUDIO_USER_IAM_CONSOLE_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_USER_IAM_DEFAULT_EXECUTION_POLICY">SAGE_MAKER_STUDIO_USER_IAM_DEFAULT_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_USER_IAM_PERMISSIVE_EXECUTION_POLICY">SAGE_MAKER_STUDIO_USER_IAM_PERMISSIVE_EXECUTION_POLICY</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SECRETS_MANAGER_READ_WRITE">SECRETS_MANAGER_READ_WRITE</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SECURITY_AUDIT">SECURITY_AUDIT</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SERVER_MIGRATION_CONNECTOR">SERVER_MIGRATION_CONNECTOR</a></code> | <code>string</code> | *No description.* |
@@ -8375,6 +8411,16 @@ public readonly ADMINISTRATOR_ACCESS_AMPLIFY: string;
 
 ```typescript
 public readonly ADMINISTRATOR_ACCESS_AWS_ELASTIC_BEANSTALK: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AI_OPS_ASSISTANT_INCIDENT_REPORT_POLICY`<sup>Required</sup> <a name="AI_OPS_ASSISTANT_INCIDENT_REPORT_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AI_OPS_ASSISTANT_INCIDENT_REPORT_POLICY"></a>
+
+```typescript
+public readonly AI_OPS_ASSISTANT_INCIDENT_REPORT_POLICY: string;
 ```
 
 - *Type:* string
@@ -8611,10 +8657,40 @@ public readonly AMAZON_AURORA_DSQL_READ_ONLY_ACCESS: string;
 
 ---
 
+##### `AMAZON_BEDROCK_AGENT_CORE_MEMORY_BEDROCK_MODEL_INFERENCE_EXECUTION_ROLE_POLICY`<sup>Required</sup> <a name="AMAZON_BEDROCK_AGENT_CORE_MEMORY_BEDROCK_MODEL_INFERENCE_EXECUTION_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_AGENT_CORE_MEMORY_BEDROCK_MODEL_INFERENCE_EXECUTION_ROLE_POLICY"></a>
+
+```typescript
+public readonly AMAZON_BEDROCK_AGENT_CORE_MEMORY_BEDROCK_MODEL_INFERENCE_EXECUTION_ROLE_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AMAZON_BEDROCK_FULL_ACCESS`<sup>Required</sup> <a name="AMAZON_BEDROCK_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_FULL_ACCESS"></a>
 
 ```typescript
 public readonly AMAZON_BEDROCK_FULL_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AMAZON_BEDROCK_LIMITED_ACCESS`<sup>Required</sup> <a name="AMAZON_BEDROCK_LIMITED_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_LIMITED_ACCESS"></a>
+
+```typescript
+public readonly AMAZON_BEDROCK_LIMITED_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AMAZON_BEDROCK_MARKETPLACE_ACCESS`<sup>Required</sup> <a name="AMAZON_BEDROCK_MARKETPLACE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_BEDROCK_MARKETPLACE_ACCESS"></a>
+
+```typescript
+public readonly AMAZON_BEDROCK_MARKETPLACE_ACCESS: string;
 ```
 
 - *Type:* string
@@ -9151,6 +9227,16 @@ public readonly AMAZON_DYNAMO_DB_FULL_ACCESS: string;
 
 ---
 
+##### `AMAZON_DYNAMO_DB_FULL_ACCESS_V2`<sup>Required</sup> <a name="AMAZON_DYNAMO_DB_FULL_ACCESS_V2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_FULL_ACCESS_V2"></a>
+
+```typescript
+public readonly AMAZON_DYNAMO_DB_FULL_ACCESS_V2: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE`<sup>Required</sup> <a name="AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_DYNAMO_DB_FULL_ACCESSWITH_DATA_PIPELINE"></a>
 
 ```typescript
@@ -9221,6 +9307,16 @@ public readonly AMAZON_EC2_FULL_ACCESS: string;
 
 ---
 
+##### `AMAZON_EC2_IMAGE_REFERENCES_ACCESS_POLICY`<sup>Required</sup> <a name="AMAZON_EC2_IMAGE_REFERENCES_ACCESS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_IMAGE_REFERENCES_ACCESS_POLICY"></a>
+
+```typescript
+public readonly AMAZON_EC2_IMAGE_REFERENCES_ACCESS_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AMAZON_EC2_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_EC2_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EC2_READ_ONLY_ACCESS"></a>
 
 ```typescript
@@ -9251,10 +9347,40 @@ public readonly AMAZON_ECS_FULL_ACCESS: string;
 
 ---
 
+##### `AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_LOAD_BALANCERS`<sup>Required</sup> <a name="AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_LOAD_BALANCERS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_LOAD_BALANCERS"></a>
+
+```typescript
+public readonly AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_LOAD_BALANCERS: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_MANAGED_INSTANCES`<sup>Required</sup> <a name="AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_MANAGED_INSTANCES" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_MANAGED_INSTANCES"></a>
+
+```typescript
+public readonly AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_MANAGED_INSTANCES: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE`<sup>Required</sup> <a name="AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE"></a>
 
 ```typescript
 public readonly AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_VPC_LATTICE: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AMAZON_ECS_INSTANCE_ROLE_POLICY_FOR_MANAGED_INSTANCES`<sup>Required</sup> <a name="AMAZON_ECS_INSTANCE_ROLE_POLICY_FOR_MANAGED_INSTANCES" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_ECS_INSTANCE_ROLE_POLICY_FOR_MANAGED_INSTANCES"></a>
+
+```typescript
+public readonly AMAZON_ECS_INSTANCE_ROLE_POLICY_FOR_MANAGED_INSTANCES: string;
 ```
 
 - *Type:* string
@@ -9295,6 +9421,16 @@ public readonly AMAZON_EKS_CNI_POLICY: string;
 
 ```typescript
 public readonly AMAZON_EKS_COMPUTE_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AMAZON_EKS_DASHBOARD_CONSOLE_READ_ONLY`<sup>Required</sup> <a name="AMAZON_EKS_DASHBOARD_CONSOLE_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_EKS_DASHBOARD_CONSOLE_READ_ONLY"></a>
+
+```typescript
+public readonly AMAZON_EKS_DASHBOARD_CONSOLE_READ_ONLY: string;
 ```
 
 - *Type:* string
@@ -9791,6 +9927,16 @@ public readonly AMAZON_GUARD_DUTY_FULL_ACCESS: string;
 
 ---
 
+##### `AMAZON_GUARD_DUTY_FULL_ACCESS_V2`<sup>Required</sup> <a name="AMAZON_GUARD_DUTY_FULL_ACCESS_V2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GUARD_DUTY_FULL_ACCESS_V2"></a>
+
+```typescript
+public readonly AMAZON_GUARD_DUTY_FULL_ACCESS_V2: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AMAZON_GUARD_DUTY_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AMAZON_GUARD_DUTY_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_GUARD_DUTY_READ_ONLY_ACCESS"></a>
 
 ```typescript
@@ -9905,6 +10051,16 @@ public readonly AMAZON_INSPECTOR_READ_ONLY_ACCESS: string;
 
 ```typescript
 public readonly AMAZON_INSPECTOR2_FULL_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AMAZON_INSPECTOR2_FULL_ACCESS_V2`<sup>Required</sup> <a name="AMAZON_INSPECTOR2_FULL_ACCESS_V2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_INSPECTOR2_FULL_ACCESS_V2"></a>
+
+```typescript
+public readonly AMAZON_INSPECTOR2_FULL_ACCESS_V2: string;
 ```
 
 - *Type:* string
@@ -11241,6 +11397,26 @@ public readonly AMAZON_SAGE_MAKER_GROUND_TRUTH_EXECUTION: string;
 
 ---
 
+##### `AMAZON_SAGE_MAKER_HYPER_POD_OBSERVABILITY_ADMIN_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_HYPER_POD_OBSERVABILITY_ADMIN_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_HYPER_POD_OBSERVABILITY_ADMIN_ACCESS"></a>
+
+```typescript
+public readonly AMAZON_SAGE_MAKER_HYPER_POD_OBSERVABILITY_ADMIN_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AMAZON_SAGE_MAKER_HYPER_POD_TRAINING_OPERATOR_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_HYPER_POD_TRAINING_OPERATOR_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_HYPER_POD_TRAINING_OPERATOR_ACCESS"></a>
+
+```typescript
+public readonly AMAZON_SAGE_MAKER_HYPER_POD_TRAINING_OPERATOR_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS`<sup>Required</sup> <a name="AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_SAGE_MAKER_MECHANICAL_TURK_ACCESS"></a>
 
 ```typescript
@@ -11505,6 +11681,16 @@ public readonly AMAZON_TIMESTREAM_FULL_ACCESS: string;
 
 ```typescript
 public readonly AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS_WITHOUT_MARKETPLACE_ACCESS`<sup>Required</sup> <a name="AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS_WITHOUT_MARKETPLACE_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS_WITHOUT_MARKETPLACE_ACCESS"></a>
+
+```typescript
+public readonly AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS_WITHOUT_MARKETPLACE_ACCESS: string;
 ```
 
 - *Type:* string
@@ -12205,6 +12391,16 @@ public readonly AWS_BACKUP_ORGANIZATION_ADMIN_ACCESS: string;
 
 ```typescript
 public readonly AWS_BACKUP_RESTORE_ACCESS_FOR_SAPHANA: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AWS_BACKUP_SEARCH_OPERATOR_ACCESS`<sup>Required</sup> <a name="AWS_BACKUP_SEARCH_OPERATOR_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_BACKUP_SEARCH_OPERATOR_ACCESS"></a>
+
+```typescript
+public readonly AWS_BACKUP_SEARCH_OPERATOR_ACCESS: string;
 ```
 
 - *Type:* string
@@ -13281,6 +13477,26 @@ public readonly AWS_ELASTIC_DISASTER_RECOVERY_READ_ONLY_ACCESS: string;
 
 ---
 
+##### `AWS_ELEMENTAL_MEDIA_CONNECT_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_CONNECT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONNECT_FULL_ACCESS"></a>
+
+```typescript
+public readonly AWS_ELEMENTAL_MEDIA_CONNECT_FULL_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AWS_ELEMENTAL_MEDIA_CONNECT_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_CONNECT_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONNECT_READ_ONLY_ACCESS"></a>
+
+```typescript
+public readonly AWS_ELEMENTAL_MEDIA_CONNECT_READ_ONLY_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ELEMENTAL_MEDIA_CONVERT_FULL_ACCESS"></a>
 
 ```typescript
@@ -13821,6 +14037,16 @@ public readonly AWS_IO_T_FULL_ACCESS: string;
 
 ---
 
+##### `AWS_IO_T_MANAGED_INTEGRATIONS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_MANAGED_INTEGRATIONS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_MANAGED_INTEGRATIONS_FULL_ACCESS"></a>
+
+```typescript
+public readonly AWS_IO_T_MANAGED_INTEGRATIONS_FULL_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T_SITE_WISE_CONSOLE_FULL_ACCESS"></a>
 
 ```typescript
@@ -13911,26 +14137,6 @@ public readonly AWS_IO_T_WIRELESS_READ_ONLY_ACCESS: string;
 
 ---
 
-##### `AWS_IO_T1_CLICK_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IO_T1_CLICK_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T1_CLICK_FULL_ACCESS"></a>
-
-```typescript
-public readonly AWS_IO_T1_CLICK_FULL_ACCESS: string;
-```
-
-- *Type:* string
-
----
-
-##### `AWS_IO_T1_CLICK_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_IO_T1_CLICK_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IO_T1_CLICK_READ_ONLY_ACCESS"></a>
-
-```typescript
-public readonly AWS_IO_T1_CLICK_READ_ONLY_ACCESS: string;
-```
-
-- *Type:* string
-
----
-
 ##### `AWS_IQ_FULL_ACCESS`<sup>Required</sup> <a name="AWS_IQ_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_IQ_FULL_ACCESS"></a>
 
 ```typescript
@@ -14011,6 +14217,16 @@ public readonly AWS_LAMBDA_READ_ONLY_ACCESS: string;
 
 ---
 
+##### `AWS_MANAGEMENT_CONSOLE_BASIC_USER_ACCESS`<sup>Required</sup> <a name="AWS_MANAGEMENT_CONSOLE_BASIC_USER_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MANAGEMENT_CONSOLE_BASIC_USER_ACCESS"></a>
+
+```typescript
+public readonly AWS_MANAGEMENT_CONSOLE_BASIC_USER_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AWS_MARKETPLACE_AMI_INGESTION`<sup>Required</sup> <a name="AWS_MARKETPLACE_AMI_INGESTION" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_AMI_INGESTION"></a>
 
 ```typescript
@@ -14035,16 +14251,6 @@ public readonly AWS_MARKETPLACE_FULL_ACCESS: string;
 
 ```typescript
 public readonly AWS_MARKETPLACE_GET_ENTITLEMENTS: string;
-```
-
-- *Type:* string
-
----
-
-##### `AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS`<sup>Required</sup> <a name="AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS"></a>
-
-```typescript
-public readonly AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS: string;
 ```
 
 - *Type:* string
@@ -14221,6 +14427,26 @@ public readonly AWS_MIGRATION_HUB_STRATEGY_CONSOLE_FULL_ACCESS: string;
 
 ---
 
+##### `AWS_NETWORK_FIREWALL_FULL_ACCESS`<sup>Required</sup> <a name="AWS_NETWORK_FIREWALL_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_FIREWALL_FULL_ACCESS"></a>
+
+```typescript
+public readonly AWS_NETWORK_FIREWALL_FULL_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AWS_NETWORK_FIREWALL_READ_ONLY_ACCESS`<sup>Required</sup> <a name="AWS_NETWORK_FIREWALL_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_FIREWALL_READ_ONLY_ACCESS"></a>
+
+```typescript
+public readonly AWS_NETWORK_FIREWALL_READ_ONLY_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AWS_NETWORK_MANAGER_FULL_ACCESS`<sup>Required</sup> <a name="AWS_NETWORK_MANAGER_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_NETWORK_MANAGER_FULL_ACCESS"></a>
 
 ```typescript
@@ -14235,66 +14461,6 @@ public readonly AWS_NETWORK_MANAGER_FULL_ACCESS: string;
 
 ```typescript
 public readonly AWS_NETWORK_MANAGER_READ_ONLY_ACCESS: string;
-```
-
-- *Type:* string
-
----
-
-##### `AWS_OPS_WORKS_CLOUD_WATCH_LOGS`<sup>Required</sup> <a name="AWS_OPS_WORKS_CLOUD_WATCH_LOGS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_CLOUD_WATCH_LOGS"></a>
-
-```typescript
-public readonly AWS_OPS_WORKS_CLOUD_WATCH_LOGS: string;
-```
-
-- *Type:* string
-
----
-
-##### `AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE`<sup>Required</sup> <a name="AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE"></a>
-
-```typescript
-public readonly AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE: string;
-```
-
-- *Type:* string
-
----
-
-##### `AWS_OPS_WORKS_FULL_ACCESS`<sup>Required</sup> <a name="AWS_OPS_WORKS_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_FULL_ACCESS"></a>
-
-```typescript
-public readonly AWS_OPS_WORKS_FULL_ACCESS: string;
-```
-
-- *Type:* string
-
----
-
-##### `AWS_OPS_WORKS_INSTANCE_REGISTRATION`<sup>Required</sup> <a name="AWS_OPS_WORKS_INSTANCE_REGISTRATION" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_INSTANCE_REGISTRATION"></a>
-
-```typescript
-public readonly AWS_OPS_WORKS_INSTANCE_REGISTRATION: string;
-```
-
-- *Type:* string
-
----
-
-##### `AWS_OPS_WORKS_REGISTER_CLI_EC2`<sup>Required</sup> <a name="AWS_OPS_WORKS_REGISTER_CLI_EC2" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_REGISTER_CLI_EC2"></a>
-
-```typescript
-public readonly AWS_OPS_WORKS_REGISTER_CLI_EC2: string;
-```
-
-- *Type:* string
-
----
-
-##### `AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES`<sup>Required</sup> <a name="AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES"></a>
-
-```typescript
-public readonly AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES: string;
 ```
 
 - *Type:* string
@@ -14391,6 +14557,16 @@ public readonly AWS_PARTNER_LED_SUPPORT_READ_ONLY_ACCESS: string;
 
 ---
 
+##### `AWS_PCS_COMPUTE_NODE_POLICY`<sup>Required</sup> <a name="AWS_PCS_COMPUTE_NODE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PCS_COMPUTE_NODE_POLICY"></a>
+
+```typescript
+public readonly AWS_PCS_COMPUTE_NODE_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AWS_PRICE_LIST_SERVICE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_PRICE_LIST_SERVICE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRICE_LIST_SERVICE_FULL_ACCESS"></a>
 
 ```typescript
@@ -14405,6 +14581,16 @@ public readonly AWS_PRICE_LIST_SERVICE_FULL_ACCESS: string;
 
 ```typescript
 public readonly AWS_PRIVATE_CA_AUDITOR: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AWS_PRIVATE_CA_CONNECTOR_FOR_KUBERNETES_POLICY`<sup>Required</sup> <a name="AWS_PRIVATE_CA_CONNECTOR_FOR_KUBERNETES_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_PRIVATE_CA_CONNECTOR_FOR_KUBERNETES_POLICY"></a>
+
+```typescript
+public readonly AWS_PRIVATE_CA_CONNECTOR_FOR_KUBERNETES_POLICY: string;
 ```
 
 - *Type:* string
@@ -14581,6 +14767,26 @@ public readonly AWS_QUICK_SETUP_ENABLE_DHMC_EXECUTION_POLICY: string;
 
 ---
 
+##### `AWS_QUICK_SETUP_JITNA_DEPLOYMENT_ROLE_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_JITNA_DEPLOYMENT_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_JITNA_DEPLOYMENT_ROLE_POLICY"></a>
+
+```typescript
+public readonly AWS_QUICK_SETUP_JITNA_DEPLOYMENT_ROLE_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AWS_QUICK_SETUP_MANAGE_JITNA_RESOURCES_EXECUTION_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_MANAGE_JITNA_RESOURCES_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_MANAGE_JITNA_RESOURCES_EXECUTION_POLICY"></a>
+
+```typescript
+public readonly AWS_QUICK_SETUP_MANAGE_JITNA_RESOURCES_EXECUTION_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_MANAGED_INSTANCE_PROFILE_EXECUTION_POLICY"></a>
 
 ```typescript
@@ -14681,6 +14887,26 @@ public readonly AWS_QUICK_SETUP_SSM_MANAGE_RESOURCES_EXECUTION_POLICY: string;
 
 ---
 
+##### `AWS_QUICK_SETUP_START_SSM_ASSOCIATIONS_EXECUTION_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_START_SSM_ASSOCIATIONS_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_START_SSM_ASSOCIATIONS_EXECUTION_POLICY"></a>
+
+```typescript
+public readonly AWS_QUICK_SETUP_START_SSM_ASSOCIATIONS_EXECUTION_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AWS_QUICK_SETUP_START_STOP_INSTANCES_EXECUTION_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SETUP_START_STOP_INSTANCES_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SETUP_START_STOP_INSTANCES_EXECUTION_POLICY"></a>
+
+```typescript
+public readonly AWS_QUICK_SETUP_START_STOP_INSTANCES_EXECUTION_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_ASSET_BUNDLE_EXPORT_POLICY"></a>
 
 ```typescript
@@ -14705,6 +14931,16 @@ public readonly AWS_QUICK_SIGHT_ASSET_BUNDLE_IMPORT_POLICY: string;
 
 ```typescript
 public readonly AWS_QUICK_SIGHT_IO_T_ANALYTICS_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AWS_QUICK_SIGHT_SECRETS_MANAGER_WRITE_POLICY`<sup>Required</sup> <a name="AWS_QUICK_SIGHT_SECRETS_MANAGER_WRITE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_QUICK_SIGHT_SECRETS_MANAGER_WRITE_POLICY"></a>
+
+```typescript
+public readonly AWS_QUICK_SIGHT_SECRETS_MANAGER_WRITE_POLICY: string;
 ```
 
 - *Type:* string
@@ -14845,6 +15081,26 @@ public readonly AWS_ROBO_MAKER_READ_ONLY_ACCESS: string;
 
 ```typescript
 public readonly AWS_ROBO_MAKER_SERVICE_ROLE_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AWS_ROLES_ANYWHERE_FULL_ACCESS`<sup>Required</sup> <a name="AWS_ROLES_ANYWHERE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROLES_ANYWHERE_FULL_ACCESS"></a>
+
+```typescript
+public readonly AWS_ROLES_ANYWHERE_FULL_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AWS_ROLES_ANYWHERE_READ_ONLY`<sup>Required</sup> <a name="AWS_ROLES_ANYWHERE_READ_ONLY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_ROLES_ANYWHERE_READ_ONLY"></a>
+
+```typescript
+public readonly AWS_ROLES_ANYWHERE_READ_ONLY: string;
 ```
 
 - *Type:* string
@@ -15251,6 +15507,36 @@ public readonly AWS_SYSTEMS_MANAGER_FOR_SAP_READ_ONLY_ACCESS: string;
 
 ---
 
+##### `AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_POLICY`<sup>Required</sup> <a name="AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_POLICY"></a>
+
+```typescript
+public readonly AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_SESSION_POLICY`<sup>Required</sup> <a name="AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_SESSION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_SESSION_POLICY"></a>
+
+```typescript
+public readonly AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_SESSION_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `AWS_SYSTEMS_MANAGER_JUST_IN_TIME_NODE_ACCESS_ROLE_PROPAGATION_POLICY`<sup>Required</sup> <a name="AWS_SYSTEMS_MANAGER_JUST_IN_TIME_NODE_ACCESS_ROLE_PROPAGATION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_SYSTEMS_MANAGER_JUST_IN_TIME_NODE_ACCESS_ROLE_PROPAGATION_POLICY"></a>
+
+```typescript
+public readonly AWS_SYSTEMS_MANAGER_JUST_IN_TIME_NODE_ACCESS_ROLE_PROPAGATION_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `AWS_THINKBOX_ASSET_SERVER_POLICY`<sup>Required</sup> <a name="AWS_THINKBOX_ASSET_SERVER_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.AWS_THINKBOX_ASSET_SERVER_POLICY"></a>
 
 ```typescript
@@ -15515,6 +15801,16 @@ public readonly AWS_XRAY_READ_ONLY_ACCESS: string;
 
 ```typescript
 public readonly AWS_XRAY_WRITE_ONLY_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
+##### `BEDROCK_AGENT_CORE_FULL_ACCESS`<sup>Required</sup> <a name="BEDROCK_AGENT_CORE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.BEDROCK_AGENT_CORE_FULL_ACCESS"></a>
+
+```typescript
+public readonly BEDROCK_AGENT_CORE_FULL_ACCESS: string;
 ```
 
 - *Type:* string
@@ -16041,6 +16337,16 @@ public readonly GAME_LIFT_GAME_SERVER_GROUP_POLICY: string;
 
 ---
 
+##### `GIT_LAB_DUO_WITH_AMAZON_Q_PERMISSIONS_POLICY`<sup>Required</sup> <a name="GIT_LAB_DUO_WITH_AMAZON_Q_PERMISSIONS_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GIT_LAB_DUO_WITH_AMAZON_Q_PERMISSIONS_POLICY"></a>
+
+```typescript
+public readonly GIT_LAB_DUO_WITH_AMAZON_Q_PERMISSIONS_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `GLOBAL_ACCELERATOR_FULL_ACCESS`<sup>Required</sup> <a name="GLOBAL_ACCELERATOR_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GLOBAL_ACCELERATOR_FULL_ACCESS"></a>
 
 ```typescript
@@ -16055,26 +16361,6 @@ public readonly GLOBAL_ACCELERATOR_FULL_ACCESS: string;
 
 ```typescript
 public readonly GLOBAL_ACCELERATOR_READ_ONLY_ACCESS: string;
-```
-
-- *Type:* string
-
----
-
-##### `GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS`<sup>Required</sup> <a name="GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS"></a>
-
-```typescript
-public readonly GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS: string;
-```
-
-- *Type:* string
-
----
-
-##### `GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS`<sup>Required</sup> <a name="GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS"></a>
-
-```typescript
-public readonly GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS: string;
 ```
 
 - *Type:* string
@@ -16185,6 +16471,26 @@ public readonly IVS_READ_ONLY_ACCESS: string;
 
 ```typescript
 public readonly MEDIA_CONNECT_GATEWAY_INSTANCE_ROLE_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `MULTI_PARTY_APPROVAL_FULL_ACCESS`<sup>Required</sup> <a name="MULTI_PARTY_APPROVAL_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.MULTI_PARTY_APPROVAL_FULL_ACCESS"></a>
+
+```typescript
+public readonly MULTI_PARTY_APPROVAL_FULL_ACCESS: string;
+```
+
+- *Type:* string
+
+---
+
+##### `MULTI_PARTY_APPROVAL_READ_ONLY_ACCESS`<sup>Required</sup> <a name="MULTI_PARTY_APPROVAL_READ_ONLY_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.MULTI_PARTY_APPROVAL_READ_ONLY_ACCESS"></a>
+
+```typescript
+public readonly MULTI_PARTY_APPROVAL_READ_ONLY_ACCESS: string;
 ```
 
 - *Type:* string
@@ -16331,6 +16637,66 @@ public readonly ROSA_MANAGE_SUBSCRIPTION: string;
 
 ---
 
+##### `ROSA_SHARED_VPC_ENDPOINT_POLICY`<sup>Required</sup> <a name="ROSA_SHARED_VPC_ENDPOINT_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ROSA_SHARED_VPC_ENDPOINT_POLICY"></a>
+
+```typescript
+public readonly ROSA_SHARED_VPC_ENDPOINT_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `ROSA_SHARED_VPC_ROUTE53_POLICY`<sup>Required</sup> <a name="ROSA_SHARED_VPC_ROUTE53_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.ROSA_SHARED_VPC_ROUTE53_POLICY"></a>
+
+```typescript
+public readonly ROSA_SHARED_VPC_ROUTE53_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `SAGE_MAKER_STUDIO_ADMIN_IAM_CONSOLE_POLICY`<sup>Required</sup> <a name="SAGE_MAKER_STUDIO_ADMIN_IAM_CONSOLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_ADMIN_IAM_CONSOLE_POLICY"></a>
+
+```typescript
+public readonly SAGE_MAKER_STUDIO_ADMIN_IAM_CONSOLE_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `SAGE_MAKER_STUDIO_ADMIN_IAM_DEFAULT_EXECUTION_POLICY`<sup>Required</sup> <a name="SAGE_MAKER_STUDIO_ADMIN_IAM_DEFAULT_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_ADMIN_IAM_DEFAULT_EXECUTION_POLICY"></a>
+
+```typescript
+public readonly SAGE_MAKER_STUDIO_ADMIN_IAM_DEFAULT_EXECUTION_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `SAGE_MAKER_STUDIO_ADMIN_IAM_PERMISSIVE_EXECUTION_POLICY`<sup>Required</sup> <a name="SAGE_MAKER_STUDIO_ADMIN_IAM_PERMISSIVE_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_ADMIN_IAM_PERMISSIVE_EXECUTION_POLICY"></a>
+
+```typescript
+public readonly SAGE_MAKER_STUDIO_ADMIN_IAM_PERMISSIVE_EXECUTION_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `SAGE_MAKER_STUDIO_ADMIN_PROJECT_USER_ROLE_POLICY`<sup>Required</sup> <a name="SAGE_MAKER_STUDIO_ADMIN_PROJECT_USER_ROLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_ADMIN_PROJECT_USER_ROLE_POLICY"></a>
+
+```typescript
+public readonly SAGE_MAKER_STUDIO_ADMIN_PROJECT_USER_ROLE_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `SAGE_MAKER_STUDIO_FULL_ACCESS`<sup>Required</sup> <a name="SAGE_MAKER_STUDIO_FULL_ACCESS" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_FULL_ACCESS"></a>
 
 ```typescript
@@ -16365,6 +16731,36 @@ public readonly SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_PERMISSIONS_BOUNDARY: string
 
 ```typescript
 public readonly SAGE_MAKER_STUDIO_PROJECT_USER_ROLE_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `SAGE_MAKER_STUDIO_USER_IAM_CONSOLE_POLICY`<sup>Required</sup> <a name="SAGE_MAKER_STUDIO_USER_IAM_CONSOLE_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_USER_IAM_CONSOLE_POLICY"></a>
+
+```typescript
+public readonly SAGE_MAKER_STUDIO_USER_IAM_CONSOLE_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `SAGE_MAKER_STUDIO_USER_IAM_DEFAULT_EXECUTION_POLICY`<sup>Required</sup> <a name="SAGE_MAKER_STUDIO_USER_IAM_DEFAULT_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_USER_IAM_DEFAULT_EXECUTION_POLICY"></a>
+
+```typescript
+public readonly SAGE_MAKER_STUDIO_USER_IAM_DEFAULT_EXECUTION_POLICY: string;
+```
+
+- *Type:* string
+
+---
+
+##### `SAGE_MAKER_STUDIO_USER_IAM_PERMISSIVE_EXECUTION_POLICY`<sup>Required</sup> <a name="SAGE_MAKER_STUDIO_USER_IAM_PERMISSIVE_EXECUTION_POLICY" id="@cdklabs/cdk-proserve-lib.types.AwsManagedPolicy.property.SAGE_MAKER_STUDIO_USER_IAM_PERMISSIVE_EXECUTION_POLICY"></a>
+
+```typescript
+public readonly SAGE_MAKER_STUDIO_USER_IAM_PERMISSIVE_EXECUTION_POLICY: string;
 ```
 
 - *Type:* string
@@ -16887,6 +17283,50 @@ EC2 Instance Type.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_METAL_24XL">C8G_METAL_24XL</a></code> | <code>string</code> | c8g.metal-24xl vCPUs: 96 Memory: 196608 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_METAL_48XL">C8G_METAL_48XL</a></code> | <code>string</code> | c8g.metal-48xl vCPUs: 192 Memory: 393216 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8G_XLARGE">C8G_XLARGE</a></code> | <code>string</code> | c8g.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_12XLARGE">C8GD_12XLARGE</a></code> | <code>string</code> | c8gd.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_16XLARGE">C8GD_16XLARGE</a></code> | <code>string</code> | c8gd.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_24XLARGE">C8GD_24XLARGE</a></code> | <code>string</code> | c8gd.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_2XLARGE">C8GD_2XLARGE</a></code> | <code>string</code> | c8gd.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_48XLARGE">C8GD_48XLARGE</a></code> | <code>string</code> | c8gd.48xlarge vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_4XLARGE">C8GD_4XLARGE</a></code> | <code>string</code> | c8gd.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_8XLARGE">C8GD_8XLARGE</a></code> | <code>string</code> | c8gd.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_LARGE">C8GD_LARGE</a></code> | <code>string</code> | c8gd.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_MEDIUM">C8GD_MEDIUM</a></code> | <code>string</code> | c8gd.medium vCPUs: 1 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_METAL_24XL">C8GD_METAL_24XL</a></code> | <code>string</code> | c8gd.metal-24xl vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_METAL_48XL">C8GD_METAL_48XL</a></code> | <code>string</code> | c8gd.metal-48xl vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_XLARGE">C8GD_XLARGE</a></code> | <code>string</code> | c8gd.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_12XLARGE">C8GN_12XLARGE</a></code> | <code>string</code> | c8gn.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_16XLARGE">C8GN_16XLARGE</a></code> | <code>string</code> | c8gn.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_24XLARGE">C8GN_24XLARGE</a></code> | <code>string</code> | c8gn.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_2XLARGE">C8GN_2XLARGE</a></code> | <code>string</code> | c8gn.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_48XLARGE">C8GN_48XLARGE</a></code> | <code>string</code> | c8gn.48xlarge vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_4XLARGE">C8GN_4XLARGE</a></code> | <code>string</code> | c8gn.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_8XLARGE">C8GN_8XLARGE</a></code> | <code>string</code> | c8gn.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_LARGE">C8GN_LARGE</a></code> | <code>string</code> | c8gn.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_MEDIUM">C8GN_MEDIUM</a></code> | <code>string</code> | c8gn.medium vCPUs: 1 Memory: 2048 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_METAL_24XL">C8GN_METAL_24XL</a></code> | <code>string</code> | c8gn.metal-24xl vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_METAL_48XL">C8GN_METAL_48XL</a></code> | <code>string</code> | c8gn.metal-48xl vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_XLARGE">C8GN_XLARGE</a></code> | <code>string</code> | c8gn.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_12XLARGE">C8I_12XLARGE</a></code> | <code>string</code> | c8i.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_16XLARGE">C8I_16XLARGE</a></code> | <code>string</code> | c8i.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_24XLARGE">C8I_24XLARGE</a></code> | <code>string</code> | c8i.24xlarge vCPUs: 96 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_2XLARGE">C8I_2XLARGE</a></code> | <code>string</code> | c8i.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_32XLARGE">C8I_32XLARGE</a></code> | <code>string</code> | c8i.32xlarge vCPUs: 128 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_48XLARGE">C8I_48XLARGE</a></code> | <code>string</code> | c8i.48xlarge vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_4XLARGE">C8I_4XLARGE</a></code> | <code>string</code> | c8i.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_8XLARGE">C8I_8XLARGE</a></code> | <code>string</code> | c8i.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_96XLARGE">C8I_96XLARGE</a></code> | <code>string</code> | c8i.96xlarge vCPUs: 384 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_12XLARGE">C8I_FLEX_12XLARGE</a></code> | <code>string</code> | c8i-flex.12xlarge vCPUs: 48 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_16XLARGE">C8I_FLEX_16XLARGE</a></code> | <code>string</code> | c8i-flex.16xlarge vCPUs: 64 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_2XLARGE">C8I_FLEX_2XLARGE</a></code> | <code>string</code> | c8i-flex.2xlarge vCPUs: 8 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_4XLARGE">C8I_FLEX_4XLARGE</a></code> | <code>string</code> | c8i-flex.4xlarge vCPUs: 16 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_8XLARGE">C8I_FLEX_8XLARGE</a></code> | <code>string</code> | c8i-flex.8xlarge vCPUs: 32 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_LARGE">C8I_FLEX_LARGE</a></code> | <code>string</code> | c8i-flex.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_XLARGE">C8I_FLEX_XLARGE</a></code> | <code>string</code> | c8i-flex.xlarge vCPUs: 4 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_LARGE">C8I_LARGE</a></code> | <code>string</code> | c8i.large vCPUs: 2 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_METAL_48XL">C8I_METAL_48XL</a></code> | <code>string</code> | c8i.metal-48xl vCPUs: 192 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_METAL_96XL">C8I_METAL_96XL</a></code> | <code>string</code> | c8i.metal-96xl vCPUs: 384 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_XLARGE">C8I_XLARGE</a></code> | <code>string</code> | c8i.xlarge vCPUs: 4 Memory: 8192 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D2_2XLARGE">D2_2XLARGE</a></code> | <code>string</code> | d2.2xlarge vCPUs: 8 Memory: 62464 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D2_4XLARGE">D2_4XLARGE</a></code> | <code>string</code> | d2.4xlarge vCPUs: 16 Memory: 124928 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D2_8XLARGE">D2_8XLARGE</a></code> | <code>string</code> | d2.8xlarge vCPUs: 36 Memory: 249856 MiB. |
@@ -16950,8 +17390,13 @@ EC2 Instance Type.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_4XLARGE">G6E_4XLARGE</a></code> | <code>string</code> | g6e.4xlarge vCPUs: 16 Memory: 131072 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_8XLARGE">G6E_8XLARGE</a></code> | <code>string</code> | g6e.8xlarge vCPUs: 32 Memory: 262144 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6E_XLARGE">G6E_XLARGE</a></code> | <code>string</code> | g6e.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6F_2XLARGE">G6F_2XLARGE</a></code> | <code>string</code> | g6f.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6F_4XLARGE">G6F_4XLARGE</a></code> | <code>string</code> | g6f.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6F_LARGE">G6F_LARGE</a></code> | <code>string</code> | g6f.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6F_XLARGE">G6F_XLARGE</a></code> | <code>string</code> | g6f.xlarge vCPUs: 4 Memory: 16384 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.GR6_4XLARGE">GR6_4XLARGE</a></code> | <code>string</code> | gr6.4xlarge vCPUs: 16 Memory: 131072 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.GR6_8XLARGE">GR6_8XLARGE</a></code> | <code>string</code> | gr6.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.GR6F_4XLARGE">GR6F_4XLARGE</a></code> | <code>string</code> | gr6f.4xlarge vCPUs: 16 Memory: 131072 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.H1_16XLARGE">H1_16XLARGE</a></code> | <code>string</code> | h1.16xlarge vCPUs: 64 Memory: 262144 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.H1_2XLARGE">H1_2XLARGE</a></code> | <code>string</code> | h1.2xlarge vCPUs: 8 Memory: 32768 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.H1_4XLARGE">H1_4XLARGE</a></code> | <code>string</code> | h1.4xlarge vCPUs: 16 Memory: 65536 MiB. |
@@ -16968,7 +17413,6 @@ EC2 Instance Type.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_4XLARGE">I3_4XLARGE</a></code> | <code>string</code> | i3.4xlarge vCPUs: 16 Memory: 124928 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_8XLARGE">I3_8XLARGE</a></code> | <code>string</code> | i3.8xlarge vCPUs: 32 Memory: 249856 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_LARGE">I3_LARGE</a></code> | <code>string</code> | i3.large vCPUs: 2 Memory: 15616 MiB. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_METAL">I3_METAL</a></code> | <code>string</code> | i3.metal vCPUs: 72 Memory: 524288 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_XLARGE">I3_XLARGE</a></code> | <code>string</code> | i3.xlarge vCPUs: 4 Memory: 31232 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_12XLARGE">I3EN_12XLARGE</a></code> | <code>string</code> | i3en.12xlarge vCPUs: 48 Memory: 393216 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3EN_24XLARGE">I3EN_24XLARGE</a></code> | <code>string</code> | i3en.24xlarge vCPUs: 96 Memory: 786432 MiB. |
@@ -16994,6 +17438,17 @@ EC2 Instance Type.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_LARGE">I4I_LARGE</a></code> | <code>string</code> | i4i.large vCPUs: 2 Memory: 16384 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_METAL">I4I_METAL</a></code> | <code>string</code> | i4i.metal vCPUs: 128 Memory: 1048576 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I4I_XLARGE">I4I_XLARGE</a></code> | <code>string</code> | i4i.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_12XLARGE">I7I_12XLARGE</a></code> | <code>string</code> | i7i.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_16XLARGE">I7I_16XLARGE</a></code> | <code>string</code> | i7i.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_24XLARGE">I7I_24XLARGE</a></code> | <code>string</code> | i7i.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_2XLARGE">I7I_2XLARGE</a></code> | <code>string</code> | i7i.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_48XLARGE">I7I_48XLARGE</a></code> | <code>string</code> | i7i.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_4XLARGE">I7I_4XLARGE</a></code> | <code>string</code> | i7i.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_8XLARGE">I7I_8XLARGE</a></code> | <code>string</code> | i7i.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_LARGE">I7I_LARGE</a></code> | <code>string</code> | i7i.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_METAL_24XL">I7I_METAL_24XL</a></code> | <code>string</code> | i7i.metal-24xl vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_METAL_48XL">I7I_METAL_48XL</a></code> | <code>string</code> | i7i.metal-48xl vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_XLARGE">I7I_XLARGE</a></code> | <code>string</code> | i7i.xlarge vCPUs: 4 Memory: 32768 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_12XLARGE">I7IE_12XLARGE</a></code> | <code>string</code> | i7ie.12xlarge vCPUs: 48 Memory: 393216 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_18XLARGE">I7IE_18XLARGE</a></code> | <code>string</code> | i7ie.18xlarge vCPUs: 72 Memory: 589824 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_24XLARGE">I7IE_24XLARGE</a></code> | <code>string</code> | i7ie.24xlarge vCPUs: 96 Memory: 786432 MiB. |
@@ -17002,16 +17457,30 @@ EC2 Instance Type.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_48XLARGE">I7IE_48XLARGE</a></code> | <code>string</code> | i7ie.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_6XLARGE">I7IE_6XLARGE</a></code> | <code>string</code> | i7ie.6xlarge vCPUs: 24 Memory: 196608 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_LARGE">I7IE_LARGE</a></code> | <code>string</code> | i7ie.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_METAL_24XL">I7IE_METAL_24XL</a></code> | <code>string</code> | i7ie.metal-24xl vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_METAL_48XL">I7IE_METAL_48XL</a></code> | <code>string</code> | i7ie.metal-48xl vCPUs: 192 Memory: 1572864 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_XLARGE">I7IE_XLARGE</a></code> | <code>string</code> | i7ie.xlarge vCPUs: 4 Memory: 32768 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_12XLARGE">I8G_12XLARGE</a></code> | <code>string</code> | i8g.12xlarge vCPUs: 48 Memory: 393216 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_16XLARGE">I8G_16XLARGE</a></code> | <code>string</code> | i8g.16xlarge vCPUs: 64 Memory: 524288 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_24XLARGE">I8G_24XLARGE</a></code> | <code>string</code> | i8g.24xlarge vCPUs: 96 Memory: 786432 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_2XLARGE">I8G_2XLARGE</a></code> | <code>string</code> | i8g.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_48XLARGE">I8G_48XLARGE</a></code> | <code>string</code> | i8g.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_4XLARGE">I8G_4XLARGE</a></code> | <code>string</code> | i8g.4xlarge vCPUs: 16 Memory: 131072 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_8XLARGE">I8G_8XLARGE</a></code> | <code>string</code> | i8g.8xlarge vCPUs: 32 Memory: 262144 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_LARGE">I8G_LARGE</a></code> | <code>string</code> | i8g.large vCPUs: 2 Memory: 16384 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_METAL_24XL">I8G_METAL_24XL</a></code> | <code>string</code> | i8g.metal-24xl vCPUs: 96 Memory: 786432 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_XLARGE">I8G_XLARGE</a></code> | <code>string</code> | i8g.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_12XLARGE">I8GE_12XLARGE</a></code> | <code>string</code> | i8ge.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_18XLARGE">I8GE_18XLARGE</a></code> | <code>string</code> | i8ge.18xlarge vCPUs: 72 Memory: 589824 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_24XLARGE">I8GE_24XLARGE</a></code> | <code>string</code> | i8ge.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_2XLARGE">I8GE_2XLARGE</a></code> | <code>string</code> | i8ge.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_3XLARGE">I8GE_3XLARGE</a></code> | <code>string</code> | i8ge.3xlarge vCPUs: 12 Memory: 98304 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_48XLARGE">I8GE_48XLARGE</a></code> | <code>string</code> | i8ge.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_6XLARGE">I8GE_6XLARGE</a></code> | <code>string</code> | i8ge.6xlarge vCPUs: 24 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_LARGE">I8GE_LARGE</a></code> | <code>string</code> | i8ge.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_METAL_24XL">I8GE_METAL_24XL</a></code> | <code>string</code> | i8ge.metal-24xl vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_METAL_48XL">I8GE_METAL_48XL</a></code> | <code>string</code> | i8ge.metal-48xl vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_XLARGE">I8GE_XLARGE</a></code> | <code>string</code> | i8ge.xlarge vCPUs: 4 Memory: 32768 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_16XLARGE">IM4GN_16XLARGE</a></code> | <code>string</code> | im4gn.16xlarge vCPUs: 64 Memory: 262144 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_2XLARGE">IM4GN_2XLARGE</a></code> | <code>string</code> | im4gn.2xlarge vCPUs: 8 Memory: 32768 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.IM4GN_4XLARGE">IM4GN_4XLARGE</a></code> | <code>string</code> | im4gn.4xlarge vCPUs: 16 Memory: 65536 MiB. |
@@ -17237,20 +17706,55 @@ EC2 Instance Type.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_METAL_24XL">M8G_METAL_24XL</a></code> | <code>string</code> | m8g.metal-24xl vCPUs: 96 Memory: 393216 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_METAL_48XL">M8G_METAL_48XL</a></code> | <code>string</code> | m8g.metal-48xl vCPUs: 192 Memory: 786432 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8G_XLARGE">M8G_XLARGE</a></code> | <code>string</code> | m8g.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_12XLARGE">M8GD_12XLARGE</a></code> | <code>string</code> | m8gd.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_16XLARGE">M8GD_16XLARGE</a></code> | <code>string</code> | m8gd.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_24XLARGE">M8GD_24XLARGE</a></code> | <code>string</code> | m8gd.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_2XLARGE">M8GD_2XLARGE</a></code> | <code>string</code> | m8gd.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_48XLARGE">M8GD_48XLARGE</a></code> | <code>string</code> | m8gd.48xlarge vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_4XLARGE">M8GD_4XLARGE</a></code> | <code>string</code> | m8gd.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_8XLARGE">M8GD_8XLARGE</a></code> | <code>string</code> | m8gd.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_LARGE">M8GD_LARGE</a></code> | <code>string</code> | m8gd.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_MEDIUM">M8GD_MEDIUM</a></code> | <code>string</code> | m8gd.medium vCPUs: 1 Memory: 4096 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_METAL_24XL">M8GD_METAL_24XL</a></code> | <code>string</code> | m8gd.metal-24xl vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_METAL_48XL">M8GD_METAL_48XL</a></code> | <code>string</code> | m8gd.metal-48xl vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_XLARGE">M8GD_XLARGE</a></code> | <code>string</code> | m8gd.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_12XLARGE">M8I_12XLARGE</a></code> | <code>string</code> | m8i.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_16XLARGE">M8I_16XLARGE</a></code> | <code>string</code> | m8i.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_24XLARGE">M8I_24XLARGE</a></code> | <code>string</code> | m8i.24xlarge vCPUs: 96 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_2XLARGE">M8I_2XLARGE</a></code> | <code>string</code> | m8i.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_32XLARGE">M8I_32XLARGE</a></code> | <code>string</code> | m8i.32xlarge vCPUs: 128 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_48XLARGE">M8I_48XLARGE</a></code> | <code>string</code> | m8i.48xlarge vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_4XLARGE">M8I_4XLARGE</a></code> | <code>string</code> | m8i.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_8XLARGE">M8I_8XLARGE</a></code> | <code>string</code> | m8i.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_96XLARGE">M8I_96XLARGE</a></code> | <code>string</code> | m8i.96xlarge vCPUs: 384 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_12XLARGE">M8I_FLEX_12XLARGE</a></code> | <code>string</code> | m8i-flex.12xlarge vCPUs: 48 Memory: 196608 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_16XLARGE">M8I_FLEX_16XLARGE</a></code> | <code>string</code> | m8i-flex.16xlarge vCPUs: 64 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_2XLARGE">M8I_FLEX_2XLARGE</a></code> | <code>string</code> | m8i-flex.2xlarge vCPUs: 8 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_4XLARGE">M8I_FLEX_4XLARGE</a></code> | <code>string</code> | m8i-flex.4xlarge vCPUs: 16 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_8XLARGE">M8I_FLEX_8XLARGE</a></code> | <code>string</code> | m8i-flex.8xlarge vCPUs: 32 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_LARGE">M8I_FLEX_LARGE</a></code> | <code>string</code> | m8i-flex.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_XLARGE">M8I_FLEX_XLARGE</a></code> | <code>string</code> | m8i-flex.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_LARGE">M8I_LARGE</a></code> | <code>string</code> | m8i.large vCPUs: 2 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_METAL_48XL">M8I_METAL_48XL</a></code> | <code>string</code> | m8i.metal-48xl vCPUs: 192 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_METAL_96XL">M8I_METAL_96XL</a></code> | <code>string</code> | m8i.metal-96xl vCPUs: 384 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_XLARGE">M8I_XLARGE</a></code> | <code>string</code> | m8i.xlarge vCPUs: 4 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC_M4_METAL">MAC_M4_METAL</a></code> | <code>string</code> | mac-m4.metal vCPUs: 10 Memory: 24576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC_M4PRO_METAL">MAC_M4PRO_METAL</a></code> | <code>string</code> | mac-m4pro.metal vCPUs: 14 Memory: 49152 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC1_METAL">MAC1_METAL</a></code> | <code>string</code> | mac1.metal vCPUs: 12 Memory: 32768 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC2_M1ULTRA_METAL">MAC2_M1ULTRA_METAL</a></code> | <code>string</code> | mac2-m1ultra.metal vCPUs: 20 Memory: 131072 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC2_M2_METAL">MAC2_M2_METAL</a></code> | <code>string</code> | mac2-m2.metal vCPUs: 8 Memory: 24576 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC2_M2PRO_METAL">MAC2_M2PRO_METAL</a></code> | <code>string</code> | mac2-m2pro.metal vCPUs: 12 Memory: 32768 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC2_METAL">MAC2_METAL</a></code> | <code>string</code> | mac2.metal vCPUs: 8 Memory: 16384 MiB. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P2_16XLARGE">P2_16XLARGE</a></code> | <code>string</code> | p2.16xlarge vCPUs: 64 Memory: 749568 MiB. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P2_8XLARGE">P2_8XLARGE</a></code> | <code>string</code> | p2.8xlarge vCPUs: 32 Memory: 499712 MiB. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P2_XLARGE">P2_XLARGE</a></code> | <code>string</code> | p2.xlarge vCPUs: 4 Memory: 62464 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P3_16XLARGE">P3_16XLARGE</a></code> | <code>string</code> | p3.16xlarge vCPUs: 64 Memory: 499712 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P3_2XLARGE">P3_2XLARGE</a></code> | <code>string</code> | p3.2xlarge vCPUs: 8 Memory: 62464 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P3_8XLARGE">P3_8XLARGE</a></code> | <code>string</code> | p3.8xlarge vCPUs: 32 Memory: 249856 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P3DN_24XLARGE">P3DN_24XLARGE</a></code> | <code>string</code> | p3dn.24xlarge vCPUs: 96 Memory: 786432 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P4D_24XLARGE">P4D_24XLARGE</a></code> | <code>string</code> | p4d.24xlarge vCPUs: 96 Memory: 1179648 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P4DE_24XLARGE">P4DE_24XLARGE</a></code> | <code>string</code> | p4de.24xlarge vCPUs: 96 Memory: 1179648 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P5_48XLARGE">P5_48XLARGE</a></code> | <code>string</code> | p5.48xlarge vCPUs: 192 Memory: 2097152 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P5_4XLARGE">P5_4XLARGE</a></code> | <code>string</code> | p5.4xlarge vCPUs: 16 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P5EN_48XLARGE">P5EN_48XLARGE</a></code> | <code>string</code> | p5en.48xlarge vCPUs: 192 Memory: 2097152 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P6_B200_48XLARGE">P6_B200_48XLARGE</a></code> | <code>string</code> | p6-b200.48xlarge vCPUs: 192 Memory: 2097152 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_2XLARGE">R3_2XLARGE</a></code> | <code>string</code> | r3.2xlarge vCPUs: 8 Memory: 62464 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_4XLARGE">R3_4XLARGE</a></code> | <code>string</code> | r3.4xlarge vCPUs: 16 Memory: 124928 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R3_8XLARGE">R3_8XLARGE</a></code> | <code>string</code> | r3.8xlarge vCPUs: 32 Memory: 249856 MiB. |
@@ -17455,6 +17959,60 @@ EC2 Instance Type.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_METAL_24XL">R8G_METAL_24XL</a></code> | <code>string</code> | r8g.metal-24xl vCPUs: 96 Memory: 786432 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_METAL_48XL">R8G_METAL_48XL</a></code> | <code>string</code> | r8g.metal-48xl vCPUs: 192 Memory: 1572864 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8G_XLARGE">R8G_XLARGE</a></code> | <code>string</code> | r8g.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_12XLARGE">R8GB_12XLARGE</a></code> | <code>string</code> | r8gb.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_16XLARGE">R8GB_16XLARGE</a></code> | <code>string</code> | r8gb.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_24XLARGE">R8GB_24XLARGE</a></code> | <code>string</code> | r8gb.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_2XLARGE">R8GB_2XLARGE</a></code> | <code>string</code> | r8gb.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_4XLARGE">R8GB_4XLARGE</a></code> | <code>string</code> | r8gb.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_8XLARGE">R8GB_8XLARGE</a></code> | <code>string</code> | r8gb.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_LARGE">R8GB_LARGE</a></code> | <code>string</code> | r8gb.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_MEDIUM">R8GB_MEDIUM</a></code> | <code>string</code> | r8gb.medium vCPUs: 1 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_METAL_24XL">R8GB_METAL_24XL</a></code> | <code>string</code> | r8gb.metal-24xl vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_XLARGE">R8GB_XLARGE</a></code> | <code>string</code> | r8gb.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_12XLARGE">R8GD_12XLARGE</a></code> | <code>string</code> | r8gd.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_16XLARGE">R8GD_16XLARGE</a></code> | <code>string</code> | r8gd.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_24XLARGE">R8GD_24XLARGE</a></code> | <code>string</code> | r8gd.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_2XLARGE">R8GD_2XLARGE</a></code> | <code>string</code> | r8gd.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_48XLARGE">R8GD_48XLARGE</a></code> | <code>string</code> | r8gd.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_4XLARGE">R8GD_4XLARGE</a></code> | <code>string</code> | r8gd.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_8XLARGE">R8GD_8XLARGE</a></code> | <code>string</code> | r8gd.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_LARGE">R8GD_LARGE</a></code> | <code>string</code> | r8gd.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_MEDIUM">R8GD_MEDIUM</a></code> | <code>string</code> | r8gd.medium vCPUs: 1 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_METAL_24XL">R8GD_METAL_24XL</a></code> | <code>string</code> | r8gd.metal-24xl vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_METAL_48XL">R8GD_METAL_48XL</a></code> | <code>string</code> | r8gd.metal-48xl vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_XLARGE">R8GD_XLARGE</a></code> | <code>string</code> | r8gd.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_12XLARGE">R8GN_12XLARGE</a></code> | <code>string</code> | r8gn.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_16XLARGE">R8GN_16XLARGE</a></code> | <code>string</code> | r8gn.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_24XLARGE">R8GN_24XLARGE</a></code> | <code>string</code> | r8gn.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_2XLARGE">R8GN_2XLARGE</a></code> | <code>string</code> | r8gn.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_48XLARGE">R8GN_48XLARGE</a></code> | <code>string</code> | r8gn.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_4XLARGE">R8GN_4XLARGE</a></code> | <code>string</code> | r8gn.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_8XLARGE">R8GN_8XLARGE</a></code> | <code>string</code> | r8gn.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_LARGE">R8GN_LARGE</a></code> | <code>string</code> | r8gn.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_MEDIUM">R8GN_MEDIUM</a></code> | <code>string</code> | r8gn.medium vCPUs: 1 Memory: 8192 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_METAL_24XL">R8GN_METAL_24XL</a></code> | <code>string</code> | r8gn.metal-24xl vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_METAL_48XL">R8GN_METAL_48XL</a></code> | <code>string</code> | r8gn.metal-48xl vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_XLARGE">R8GN_XLARGE</a></code> | <code>string</code> | r8gn.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_12XLARGE">R8I_12XLARGE</a></code> | <code>string</code> | r8i.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_16XLARGE">R8I_16XLARGE</a></code> | <code>string</code> | r8i.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_24XLARGE">R8I_24XLARGE</a></code> | <code>string</code> | r8i.24xlarge vCPUs: 96 Memory: 786432 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_2XLARGE">R8I_2XLARGE</a></code> | <code>string</code> | r8i.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_32XLARGE">R8I_32XLARGE</a></code> | <code>string</code> | r8i.32xlarge vCPUs: 128 Memory: 1048576 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_48XLARGE">R8I_48XLARGE</a></code> | <code>string</code> | r8i.48xlarge vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_4XLARGE">R8I_4XLARGE</a></code> | <code>string</code> | r8i.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_8XLARGE">R8I_8XLARGE</a></code> | <code>string</code> | r8i.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_96XLARGE">R8I_96XLARGE</a></code> | <code>string</code> | r8i.96xlarge vCPUs: 384 Memory: 3145728 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_12XLARGE">R8I_FLEX_12XLARGE</a></code> | <code>string</code> | r8i-flex.12xlarge vCPUs: 48 Memory: 393216 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_16XLARGE">R8I_FLEX_16XLARGE</a></code> | <code>string</code> | r8i-flex.16xlarge vCPUs: 64 Memory: 524288 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_2XLARGE">R8I_FLEX_2XLARGE</a></code> | <code>string</code> | r8i-flex.2xlarge vCPUs: 8 Memory: 65536 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_4XLARGE">R8I_FLEX_4XLARGE</a></code> | <code>string</code> | r8i-flex.4xlarge vCPUs: 16 Memory: 131072 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_8XLARGE">R8I_FLEX_8XLARGE</a></code> | <code>string</code> | r8i-flex.8xlarge vCPUs: 32 Memory: 262144 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_LARGE">R8I_FLEX_LARGE</a></code> | <code>string</code> | r8i-flex.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_XLARGE">R8I_FLEX_XLARGE</a></code> | <code>string</code> | r8i-flex.xlarge vCPUs: 4 Memory: 32768 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_LARGE">R8I_LARGE</a></code> | <code>string</code> | r8i.large vCPUs: 2 Memory: 16384 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_METAL_48XL">R8I_METAL_48XL</a></code> | <code>string</code> | r8i.metal-48xl vCPUs: 192 Memory: 1572864 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_METAL_96XL">R8I_METAL_96XL</a></code> | <code>string</code> | r8i.metal-96xl vCPUs: 384 Memory: 3145728 MiB. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_XLARGE">R8I_XLARGE</a></code> | <code>string</code> | r8i.xlarge vCPUs: 4 Memory: 32768 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T1_MICRO">T1_MICRO</a></code> | <code>string</code> | t1.micro vCPUs: 1 Memory: 627 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_2XLARGE">T2_2XLARGE</a></code> | <code>string</code> | t2.2xlarge vCPUs: 8 Memory: 32768 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T2_LARGE">T2_LARGE</a></code> | <code>string</code> | t2.large vCPUs: 2 Memory: 8192 MiB. |
@@ -17487,13 +18045,9 @@ EC2 Instance Type.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.TRN1_2XLARGE">TRN1_2XLARGE</a></code> | <code>string</code> | trn1.2xlarge vCPUs: 8 Memory: 32768 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.TRN1_32XLARGE">TRN1_32XLARGE</a></code> | <code>string</code> | trn1.32xlarge vCPUs: 128 Memory: 524288 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.TRN1N_32XLARGE">TRN1N_32XLARGE</a></code> | <code>string</code> | trn1n.32xlarge vCPUs: 128 Memory: 524288 MiB. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_12TB1_112XLARGE">U_12TB1_112XLARGE</a></code> | <code>string</code> | u-12tb1.112xlarge vCPUs: 448 Memory: 12582912 MiB. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_18TB1_112XLARGE">U_18TB1_112XLARGE</a></code> | <code>string</code> | u-18tb1.112xlarge vCPUs: 448 Memory: 18874368 MiB. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_24TB1_112XLARGE">U_24TB1_112XLARGE</a></code> | <code>string</code> | u-24tb1.112xlarge vCPUs: 448 Memory: 25165824 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_3TB1_56XLARGE">U_3TB1_56XLARGE</a></code> | <code>string</code> | u-3tb1.56xlarge vCPUs: 224 Memory: 3145728 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_6TB1_112XLARGE">U_6TB1_112XLARGE</a></code> | <code>string</code> | u-6tb1.112xlarge vCPUs: 448 Memory: 6291456 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_6TB1_56XLARGE">U_6TB1_56XLARGE</a></code> | <code>string</code> | u-6tb1.56xlarge vCPUs: 224 Memory: 6291456 MiB. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_9TB1_112XLARGE">U_9TB1_112XLARGE</a></code> | <code>string</code> | u-9tb1.112xlarge vCPUs: 448 Memory: 9437184 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7I_12TB_224XLARGE">U7I_12TB_224XLARGE</a></code> | <code>string</code> | u7i-12tb.224xlarge vCPUs: 896 Memory: 12582912 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7I_6TB_112XLARGE">U7I_6TB_112XLARGE</a></code> | <code>string</code> | u7i-6tb.112xlarge vCPUs: 448 Memory: 6291456 MiB. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U7I_8TB_112XLARGE">U7I_8TB_112XLARGE</a></code> | <code>string</code> | u7i-8tb.112xlarge vCPUs: 448 Memory: 8388608 MiB. |
@@ -19900,6 +20454,534 @@ c8g.xlarge vCPUs: 4 Memory: 8192 MiB.
 
 ---
 
+##### `C8GD_12XLARGE`<sup>Required</sup> <a name="C8GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_12XLARGE"></a>
+
+```typescript
+public readonly C8GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+c8gd.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C8GD_16XLARGE`<sup>Required</sup> <a name="C8GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_16XLARGE"></a>
+
+```typescript
+public readonly C8GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+c8gd.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C8GD_24XLARGE`<sup>Required</sup> <a name="C8GD_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_24XLARGE"></a>
+
+```typescript
+public readonly C8GD_24XLARGE: string;
+```
+
+- *Type:* string
+
+c8gd.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C8GD_2XLARGE`<sup>Required</sup> <a name="C8GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_2XLARGE"></a>
+
+```typescript
+public readonly C8GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+c8gd.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C8GD_48XLARGE`<sup>Required</sup> <a name="C8GD_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_48XLARGE"></a>
+
+```typescript
+public readonly C8GD_48XLARGE: string;
+```
+
+- *Type:* string
+
+c8gd.48xlarge vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C8GD_4XLARGE`<sup>Required</sup> <a name="C8GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_4XLARGE"></a>
+
+```typescript
+public readonly C8GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+c8gd.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C8GD_8XLARGE`<sup>Required</sup> <a name="C8GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_8XLARGE"></a>
+
+```typescript
+public readonly C8GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+c8gd.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C8GD_LARGE`<sup>Required</sup> <a name="C8GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_LARGE"></a>
+
+```typescript
+public readonly C8GD_LARGE: string;
+```
+
+- *Type:* string
+
+c8gd.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C8GD_MEDIUM`<sup>Required</sup> <a name="C8GD_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_MEDIUM"></a>
+
+```typescript
+public readonly C8GD_MEDIUM: string;
+```
+
+- *Type:* string
+
+c8gd.medium vCPUs: 1 Memory: 2048 MiB.
+
+---
+
+##### `C8GD_METAL_24XL`<sup>Required</sup> <a name="C8GD_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_METAL_24XL"></a>
+
+```typescript
+public readonly C8GD_METAL_24XL: string;
+```
+
+- *Type:* string
+
+c8gd.metal-24xl vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C8GD_METAL_48XL`<sup>Required</sup> <a name="C8GD_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_METAL_48XL"></a>
+
+```typescript
+public readonly C8GD_METAL_48XL: string;
+```
+
+- *Type:* string
+
+c8gd.metal-48xl vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C8GD_XLARGE`<sup>Required</sup> <a name="C8GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GD_XLARGE"></a>
+
+```typescript
+public readonly C8GD_XLARGE: string;
+```
+
+- *Type:* string
+
+c8gd.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C8GN_12XLARGE`<sup>Required</sup> <a name="C8GN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_12XLARGE"></a>
+
+```typescript
+public readonly C8GN_12XLARGE: string;
+```
+
+- *Type:* string
+
+c8gn.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C8GN_16XLARGE`<sup>Required</sup> <a name="C8GN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_16XLARGE"></a>
+
+```typescript
+public readonly C8GN_16XLARGE: string;
+```
+
+- *Type:* string
+
+c8gn.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C8GN_24XLARGE`<sup>Required</sup> <a name="C8GN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_24XLARGE"></a>
+
+```typescript
+public readonly C8GN_24XLARGE: string;
+```
+
+- *Type:* string
+
+c8gn.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C8GN_2XLARGE`<sup>Required</sup> <a name="C8GN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_2XLARGE"></a>
+
+```typescript
+public readonly C8GN_2XLARGE: string;
+```
+
+- *Type:* string
+
+c8gn.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C8GN_48XLARGE`<sup>Required</sup> <a name="C8GN_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_48XLARGE"></a>
+
+```typescript
+public readonly C8GN_48XLARGE: string;
+```
+
+- *Type:* string
+
+c8gn.48xlarge vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C8GN_4XLARGE`<sup>Required</sup> <a name="C8GN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_4XLARGE"></a>
+
+```typescript
+public readonly C8GN_4XLARGE: string;
+```
+
+- *Type:* string
+
+c8gn.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C8GN_8XLARGE`<sup>Required</sup> <a name="C8GN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_8XLARGE"></a>
+
+```typescript
+public readonly C8GN_8XLARGE: string;
+```
+
+- *Type:* string
+
+c8gn.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C8GN_LARGE`<sup>Required</sup> <a name="C8GN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_LARGE"></a>
+
+```typescript
+public readonly C8GN_LARGE: string;
+```
+
+- *Type:* string
+
+c8gn.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C8GN_MEDIUM`<sup>Required</sup> <a name="C8GN_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_MEDIUM"></a>
+
+```typescript
+public readonly C8GN_MEDIUM: string;
+```
+
+- *Type:* string
+
+c8gn.medium vCPUs: 1 Memory: 2048 MiB.
+
+---
+
+##### `C8GN_METAL_24XL`<sup>Required</sup> <a name="C8GN_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_METAL_24XL"></a>
+
+```typescript
+public readonly C8GN_METAL_24XL: string;
+```
+
+- *Type:* string
+
+c8gn.metal-24xl vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C8GN_METAL_48XL`<sup>Required</sup> <a name="C8GN_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_METAL_48XL"></a>
+
+```typescript
+public readonly C8GN_METAL_48XL: string;
+```
+
+- *Type:* string
+
+c8gn.metal-48xl vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C8GN_XLARGE`<sup>Required</sup> <a name="C8GN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8GN_XLARGE"></a>
+
+```typescript
+public readonly C8GN_XLARGE: string;
+```
+
+- *Type:* string
+
+c8gn.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C8I_12XLARGE`<sup>Required</sup> <a name="C8I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_12XLARGE"></a>
+
+```typescript
+public readonly C8I_12XLARGE: string;
+```
+
+- *Type:* string
+
+c8i.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C8I_16XLARGE`<sup>Required</sup> <a name="C8I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_16XLARGE"></a>
+
+```typescript
+public readonly C8I_16XLARGE: string;
+```
+
+- *Type:* string
+
+c8i.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C8I_24XLARGE`<sup>Required</sup> <a name="C8I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_24XLARGE"></a>
+
+```typescript
+public readonly C8I_24XLARGE: string;
+```
+
+- *Type:* string
+
+c8i.24xlarge vCPUs: 96 Memory: 196608 MiB.
+
+---
+
+##### `C8I_2XLARGE`<sup>Required</sup> <a name="C8I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_2XLARGE"></a>
+
+```typescript
+public readonly C8I_2XLARGE: string;
+```
+
+- *Type:* string
+
+c8i.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C8I_32XLARGE`<sup>Required</sup> <a name="C8I_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_32XLARGE"></a>
+
+```typescript
+public readonly C8I_32XLARGE: string;
+```
+
+- *Type:* string
+
+c8i.32xlarge vCPUs: 128 Memory: 262144 MiB.
+
+---
+
+##### `C8I_48XLARGE`<sup>Required</sup> <a name="C8I_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_48XLARGE"></a>
+
+```typescript
+public readonly C8I_48XLARGE: string;
+```
+
+- *Type:* string
+
+c8i.48xlarge vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C8I_4XLARGE`<sup>Required</sup> <a name="C8I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_4XLARGE"></a>
+
+```typescript
+public readonly C8I_4XLARGE: string;
+```
+
+- *Type:* string
+
+c8i.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C8I_8XLARGE`<sup>Required</sup> <a name="C8I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_8XLARGE"></a>
+
+```typescript
+public readonly C8I_8XLARGE: string;
+```
+
+- *Type:* string
+
+c8i.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C8I_96XLARGE`<sup>Required</sup> <a name="C8I_96XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_96XLARGE"></a>
+
+```typescript
+public readonly C8I_96XLARGE: string;
+```
+
+- *Type:* string
+
+c8i.96xlarge vCPUs: 384 Memory: 786432 MiB.
+
+---
+
+##### `C8I_FLEX_12XLARGE`<sup>Required</sup> <a name="C8I_FLEX_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_12XLARGE"></a>
+
+```typescript
+public readonly C8I_FLEX_12XLARGE: string;
+```
+
+- *Type:* string
+
+c8i-flex.12xlarge vCPUs: 48 Memory: 98304 MiB.
+
+---
+
+##### `C8I_FLEX_16XLARGE`<sup>Required</sup> <a name="C8I_FLEX_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_16XLARGE"></a>
+
+```typescript
+public readonly C8I_FLEX_16XLARGE: string;
+```
+
+- *Type:* string
+
+c8i-flex.16xlarge vCPUs: 64 Memory: 131072 MiB.
+
+---
+
+##### `C8I_FLEX_2XLARGE`<sup>Required</sup> <a name="C8I_FLEX_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_2XLARGE"></a>
+
+```typescript
+public readonly C8I_FLEX_2XLARGE: string;
+```
+
+- *Type:* string
+
+c8i-flex.2xlarge vCPUs: 8 Memory: 16384 MiB.
+
+---
+
+##### `C8I_FLEX_4XLARGE`<sup>Required</sup> <a name="C8I_FLEX_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_4XLARGE"></a>
+
+```typescript
+public readonly C8I_FLEX_4XLARGE: string;
+```
+
+- *Type:* string
+
+c8i-flex.4xlarge vCPUs: 16 Memory: 32768 MiB.
+
+---
+
+##### `C8I_FLEX_8XLARGE`<sup>Required</sup> <a name="C8I_FLEX_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_8XLARGE"></a>
+
+```typescript
+public readonly C8I_FLEX_8XLARGE: string;
+```
+
+- *Type:* string
+
+c8i-flex.8xlarge vCPUs: 32 Memory: 65536 MiB.
+
+---
+
+##### `C8I_FLEX_LARGE`<sup>Required</sup> <a name="C8I_FLEX_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_LARGE"></a>
+
+```typescript
+public readonly C8I_FLEX_LARGE: string;
+```
+
+- *Type:* string
+
+c8i-flex.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C8I_FLEX_XLARGE`<sup>Required</sup> <a name="C8I_FLEX_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_FLEX_XLARGE"></a>
+
+```typescript
+public readonly C8I_FLEX_XLARGE: string;
+```
+
+- *Type:* string
+
+c8i-flex.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
+##### `C8I_LARGE`<sup>Required</sup> <a name="C8I_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_LARGE"></a>
+
+```typescript
+public readonly C8I_LARGE: string;
+```
+
+- *Type:* string
+
+c8i.large vCPUs: 2 Memory: 4096 MiB.
+
+---
+
+##### `C8I_METAL_48XL`<sup>Required</sup> <a name="C8I_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_METAL_48XL"></a>
+
+```typescript
+public readonly C8I_METAL_48XL: string;
+```
+
+- *Type:* string
+
+c8i.metal-48xl vCPUs: 192 Memory: 393216 MiB.
+
+---
+
+##### `C8I_METAL_96XL`<sup>Required</sup> <a name="C8I_METAL_96XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_METAL_96XL"></a>
+
+```typescript
+public readonly C8I_METAL_96XL: string;
+```
+
+- *Type:* string
+
+c8i.metal-96xl vCPUs: 384 Memory: 786432 MiB.
+
+---
+
+##### `C8I_XLARGE`<sup>Required</sup> <a name="C8I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.C8I_XLARGE"></a>
+
+```typescript
+public readonly C8I_XLARGE: string;
+```
+
+- *Type:* string
+
+c8i.xlarge vCPUs: 4 Memory: 8192 MiB.
+
+---
+
 ##### `D2_2XLARGE`<sup>Required</sup> <a name="D2_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.D2_2XLARGE"></a>
 
 ```typescript
@@ -20656,6 +21738,54 @@ g6e.xlarge vCPUs: 4 Memory: 32768 MiB.
 
 ---
 
+##### `G6F_2XLARGE`<sup>Required</sup> <a name="G6F_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6F_2XLARGE"></a>
+
+```typescript
+public readonly G6F_2XLARGE: string;
+```
+
+- *Type:* string
+
+g6f.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `G6F_4XLARGE`<sup>Required</sup> <a name="G6F_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6F_4XLARGE"></a>
+
+```typescript
+public readonly G6F_4XLARGE: string;
+```
+
+- *Type:* string
+
+g6f.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `G6F_LARGE`<sup>Required</sup> <a name="G6F_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6F_LARGE"></a>
+
+```typescript
+public readonly G6F_LARGE: string;
+```
+
+- *Type:* string
+
+g6f.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `G6F_XLARGE`<sup>Required</sup> <a name="G6F_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.G6F_XLARGE"></a>
+
+```typescript
+public readonly G6F_XLARGE: string;
+```
+
+- *Type:* string
+
+g6f.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
 ##### `GR6_4XLARGE`<sup>Required</sup> <a name="GR6_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.GR6_4XLARGE"></a>
 
 ```typescript
@@ -20677,6 +21807,18 @@ public readonly GR6_8XLARGE: string;
 - *Type:* string
 
 gr6.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `GR6F_4XLARGE`<sup>Required</sup> <a name="GR6F_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.GR6F_4XLARGE"></a>
+
+```typescript
+public readonly GR6F_4XLARGE: string;
+```
+
+- *Type:* string
+
+gr6f.4xlarge vCPUs: 16 Memory: 131072 MiB.
 
 ---
 
@@ -20869,18 +22011,6 @@ public readonly I3_LARGE: string;
 - *Type:* string
 
 i3.large vCPUs: 2 Memory: 15616 MiB.
-
----
-
-##### `I3_METAL`<sup>Required</sup> <a name="I3_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I3_METAL"></a>
-
-```typescript
-public readonly I3_METAL: string;
-```
-
-- *Type:* string
-
-i3.metal vCPUs: 72 Memory: 524288 MiB.
 
 ---
 
@@ -21184,6 +22314,138 @@ i4i.xlarge vCPUs: 4 Memory: 32768 MiB.
 
 ---
 
+##### `I7I_12XLARGE`<sup>Required</sup> <a name="I7I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_12XLARGE"></a>
+
+```typescript
+public readonly I7I_12XLARGE: string;
+```
+
+- *Type:* string
+
+i7i.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `I7I_16XLARGE`<sup>Required</sup> <a name="I7I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_16XLARGE"></a>
+
+```typescript
+public readonly I7I_16XLARGE: string;
+```
+
+- *Type:* string
+
+i7i.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `I7I_24XLARGE`<sup>Required</sup> <a name="I7I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_24XLARGE"></a>
+
+```typescript
+public readonly I7I_24XLARGE: string;
+```
+
+- *Type:* string
+
+i7i.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `I7I_2XLARGE`<sup>Required</sup> <a name="I7I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_2XLARGE"></a>
+
+```typescript
+public readonly I7I_2XLARGE: string;
+```
+
+- *Type:* string
+
+i7i.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `I7I_48XLARGE`<sup>Required</sup> <a name="I7I_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_48XLARGE"></a>
+
+```typescript
+public readonly I7I_48XLARGE: string;
+```
+
+- *Type:* string
+
+i7i.48xlarge vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `I7I_4XLARGE`<sup>Required</sup> <a name="I7I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_4XLARGE"></a>
+
+```typescript
+public readonly I7I_4XLARGE: string;
+```
+
+- *Type:* string
+
+i7i.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `I7I_8XLARGE`<sup>Required</sup> <a name="I7I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_8XLARGE"></a>
+
+```typescript
+public readonly I7I_8XLARGE: string;
+```
+
+- *Type:* string
+
+i7i.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `I7I_LARGE`<sup>Required</sup> <a name="I7I_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_LARGE"></a>
+
+```typescript
+public readonly I7I_LARGE: string;
+```
+
+- *Type:* string
+
+i7i.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `I7I_METAL_24XL`<sup>Required</sup> <a name="I7I_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_METAL_24XL"></a>
+
+```typescript
+public readonly I7I_METAL_24XL: string;
+```
+
+- *Type:* string
+
+i7i.metal-24xl vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `I7I_METAL_48XL`<sup>Required</sup> <a name="I7I_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_METAL_48XL"></a>
+
+```typescript
+public readonly I7I_METAL_48XL: string;
+```
+
+- *Type:* string
+
+i7i.metal-48xl vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `I7I_XLARGE`<sup>Required</sup> <a name="I7I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7I_XLARGE"></a>
+
+```typescript
+public readonly I7I_XLARGE: string;
+```
+
+- *Type:* string
+
+i7i.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
 ##### `I7IE_12XLARGE`<sup>Required</sup> <a name="I7IE_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_12XLARGE"></a>
 
 ```typescript
@@ -21280,6 +22542,30 @@ i7ie.large vCPUs: 2 Memory: 16384 MiB.
 
 ---
 
+##### `I7IE_METAL_24XL`<sup>Required</sup> <a name="I7IE_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_METAL_24XL"></a>
+
+```typescript
+public readonly I7IE_METAL_24XL: string;
+```
+
+- *Type:* string
+
+i7ie.metal-24xl vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `I7IE_METAL_48XL`<sup>Required</sup> <a name="I7IE_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_METAL_48XL"></a>
+
+```typescript
+public readonly I7IE_METAL_48XL: string;
+```
+
+- *Type:* string
+
+i7ie.metal-48xl vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
 ##### `I7IE_XLARGE`<sup>Required</sup> <a name="I7IE_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I7IE_XLARGE"></a>
 
 ```typescript
@@ -21340,6 +22626,18 @@ i8g.2xlarge vCPUs: 8 Memory: 65536 MiB.
 
 ---
 
+##### `I8G_48XLARGE`<sup>Required</sup> <a name="I8G_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_48XLARGE"></a>
+
+```typescript
+public readonly I8G_48XLARGE: string;
+```
+
+- *Type:* string
+
+i8g.48xlarge vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
 ##### `I8G_4XLARGE`<sup>Required</sup> <a name="I8G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8G_4XLARGE"></a>
 
 ```typescript
@@ -21397,6 +22695,138 @@ public readonly I8G_XLARGE: string;
 - *Type:* string
 
 i8g.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `I8GE_12XLARGE`<sup>Required</sup> <a name="I8GE_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_12XLARGE"></a>
+
+```typescript
+public readonly I8GE_12XLARGE: string;
+```
+
+- *Type:* string
+
+i8ge.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `I8GE_18XLARGE`<sup>Required</sup> <a name="I8GE_18XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_18XLARGE"></a>
+
+```typescript
+public readonly I8GE_18XLARGE: string;
+```
+
+- *Type:* string
+
+i8ge.18xlarge vCPUs: 72 Memory: 589824 MiB.
+
+---
+
+##### `I8GE_24XLARGE`<sup>Required</sup> <a name="I8GE_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_24XLARGE"></a>
+
+```typescript
+public readonly I8GE_24XLARGE: string;
+```
+
+- *Type:* string
+
+i8ge.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `I8GE_2XLARGE`<sup>Required</sup> <a name="I8GE_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_2XLARGE"></a>
+
+```typescript
+public readonly I8GE_2XLARGE: string;
+```
+
+- *Type:* string
+
+i8ge.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `I8GE_3XLARGE`<sup>Required</sup> <a name="I8GE_3XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_3XLARGE"></a>
+
+```typescript
+public readonly I8GE_3XLARGE: string;
+```
+
+- *Type:* string
+
+i8ge.3xlarge vCPUs: 12 Memory: 98304 MiB.
+
+---
+
+##### `I8GE_48XLARGE`<sup>Required</sup> <a name="I8GE_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_48XLARGE"></a>
+
+```typescript
+public readonly I8GE_48XLARGE: string;
+```
+
+- *Type:* string
+
+i8ge.48xlarge vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `I8GE_6XLARGE`<sup>Required</sup> <a name="I8GE_6XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_6XLARGE"></a>
+
+```typescript
+public readonly I8GE_6XLARGE: string;
+```
+
+- *Type:* string
+
+i8ge.6xlarge vCPUs: 24 Memory: 196608 MiB.
+
+---
+
+##### `I8GE_LARGE`<sup>Required</sup> <a name="I8GE_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_LARGE"></a>
+
+```typescript
+public readonly I8GE_LARGE: string;
+```
+
+- *Type:* string
+
+i8ge.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `I8GE_METAL_24XL`<sup>Required</sup> <a name="I8GE_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_METAL_24XL"></a>
+
+```typescript
+public readonly I8GE_METAL_24XL: string;
+```
+
+- *Type:* string
+
+i8ge.metal-24xl vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `I8GE_METAL_48XL`<sup>Required</sup> <a name="I8GE_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_METAL_48XL"></a>
+
+```typescript
+public readonly I8GE_METAL_48XL: string;
+```
+
+- *Type:* string
+
+i8ge.metal-48xl vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `I8GE_XLARGE`<sup>Required</sup> <a name="I8GE_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.I8GE_XLARGE"></a>
+
+```typescript
+public readonly I8GE_XLARGE: string;
+```
+
+- *Type:* string
+
+i8ge.xlarge vCPUs: 4 Memory: 32768 MiB.
 
 ---
 
@@ -24100,6 +25530,414 @@ m8g.xlarge vCPUs: 4 Memory: 16384 MiB.
 
 ---
 
+##### `M8GD_12XLARGE`<sup>Required</sup> <a name="M8GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_12XLARGE"></a>
+
+```typescript
+public readonly M8GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+m8gd.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M8GD_16XLARGE`<sup>Required</sup> <a name="M8GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_16XLARGE"></a>
+
+```typescript
+public readonly M8GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+m8gd.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M8GD_24XLARGE`<sup>Required</sup> <a name="M8GD_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_24XLARGE"></a>
+
+```typescript
+public readonly M8GD_24XLARGE: string;
+```
+
+- *Type:* string
+
+m8gd.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M8GD_2XLARGE`<sup>Required</sup> <a name="M8GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_2XLARGE"></a>
+
+```typescript
+public readonly M8GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+m8gd.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M8GD_48XLARGE`<sup>Required</sup> <a name="M8GD_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_48XLARGE"></a>
+
+```typescript
+public readonly M8GD_48XLARGE: string;
+```
+
+- *Type:* string
+
+m8gd.48xlarge vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `M8GD_4XLARGE`<sup>Required</sup> <a name="M8GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_4XLARGE"></a>
+
+```typescript
+public readonly M8GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+m8gd.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M8GD_8XLARGE`<sup>Required</sup> <a name="M8GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_8XLARGE"></a>
+
+```typescript
+public readonly M8GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+m8gd.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M8GD_LARGE`<sup>Required</sup> <a name="M8GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_LARGE"></a>
+
+```typescript
+public readonly M8GD_LARGE: string;
+```
+
+- *Type:* string
+
+m8gd.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M8GD_MEDIUM`<sup>Required</sup> <a name="M8GD_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_MEDIUM"></a>
+
+```typescript
+public readonly M8GD_MEDIUM: string;
+```
+
+- *Type:* string
+
+m8gd.medium vCPUs: 1 Memory: 4096 MiB.
+
+---
+
+##### `M8GD_METAL_24XL`<sup>Required</sup> <a name="M8GD_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_METAL_24XL"></a>
+
+```typescript
+public readonly M8GD_METAL_24XL: string;
+```
+
+- *Type:* string
+
+m8gd.metal-24xl vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M8GD_METAL_48XL`<sup>Required</sup> <a name="M8GD_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_METAL_48XL"></a>
+
+```typescript
+public readonly M8GD_METAL_48XL: string;
+```
+
+- *Type:* string
+
+m8gd.metal-48xl vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `M8GD_XLARGE`<sup>Required</sup> <a name="M8GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8GD_XLARGE"></a>
+
+```typescript
+public readonly M8GD_XLARGE: string;
+```
+
+- *Type:* string
+
+m8gd.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M8I_12XLARGE`<sup>Required</sup> <a name="M8I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_12XLARGE"></a>
+
+```typescript
+public readonly M8I_12XLARGE: string;
+```
+
+- *Type:* string
+
+m8i.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M8I_16XLARGE`<sup>Required</sup> <a name="M8I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_16XLARGE"></a>
+
+```typescript
+public readonly M8I_16XLARGE: string;
+```
+
+- *Type:* string
+
+m8i.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M8I_24XLARGE`<sup>Required</sup> <a name="M8I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_24XLARGE"></a>
+
+```typescript
+public readonly M8I_24XLARGE: string;
+```
+
+- *Type:* string
+
+m8i.24xlarge vCPUs: 96 Memory: 393216 MiB.
+
+---
+
+##### `M8I_2XLARGE`<sup>Required</sup> <a name="M8I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_2XLARGE"></a>
+
+```typescript
+public readonly M8I_2XLARGE: string;
+```
+
+- *Type:* string
+
+m8i.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M8I_32XLARGE`<sup>Required</sup> <a name="M8I_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_32XLARGE"></a>
+
+```typescript
+public readonly M8I_32XLARGE: string;
+```
+
+- *Type:* string
+
+m8i.32xlarge vCPUs: 128 Memory: 524288 MiB.
+
+---
+
+##### `M8I_48XLARGE`<sup>Required</sup> <a name="M8I_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_48XLARGE"></a>
+
+```typescript
+public readonly M8I_48XLARGE: string;
+```
+
+- *Type:* string
+
+m8i.48xlarge vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `M8I_4XLARGE`<sup>Required</sup> <a name="M8I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_4XLARGE"></a>
+
+```typescript
+public readonly M8I_4XLARGE: string;
+```
+
+- *Type:* string
+
+m8i.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M8I_8XLARGE`<sup>Required</sup> <a name="M8I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_8XLARGE"></a>
+
+```typescript
+public readonly M8I_8XLARGE: string;
+```
+
+- *Type:* string
+
+m8i.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M8I_96XLARGE`<sup>Required</sup> <a name="M8I_96XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_96XLARGE"></a>
+
+```typescript
+public readonly M8I_96XLARGE: string;
+```
+
+- *Type:* string
+
+m8i.96xlarge vCPUs: 384 Memory: 1572864 MiB.
+
+---
+
+##### `M8I_FLEX_12XLARGE`<sup>Required</sup> <a name="M8I_FLEX_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_12XLARGE"></a>
+
+```typescript
+public readonly M8I_FLEX_12XLARGE: string;
+```
+
+- *Type:* string
+
+m8i-flex.12xlarge vCPUs: 48 Memory: 196608 MiB.
+
+---
+
+##### `M8I_FLEX_16XLARGE`<sup>Required</sup> <a name="M8I_FLEX_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_16XLARGE"></a>
+
+```typescript
+public readonly M8I_FLEX_16XLARGE: string;
+```
+
+- *Type:* string
+
+m8i-flex.16xlarge vCPUs: 64 Memory: 262144 MiB.
+
+---
+
+##### `M8I_FLEX_2XLARGE`<sup>Required</sup> <a name="M8I_FLEX_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_2XLARGE"></a>
+
+```typescript
+public readonly M8I_FLEX_2XLARGE: string;
+```
+
+- *Type:* string
+
+m8i-flex.2xlarge vCPUs: 8 Memory: 32768 MiB.
+
+---
+
+##### `M8I_FLEX_4XLARGE`<sup>Required</sup> <a name="M8I_FLEX_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_4XLARGE"></a>
+
+```typescript
+public readonly M8I_FLEX_4XLARGE: string;
+```
+
+- *Type:* string
+
+m8i-flex.4xlarge vCPUs: 16 Memory: 65536 MiB.
+
+---
+
+##### `M8I_FLEX_8XLARGE`<sup>Required</sup> <a name="M8I_FLEX_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_8XLARGE"></a>
+
+```typescript
+public readonly M8I_FLEX_8XLARGE: string;
+```
+
+- *Type:* string
+
+m8i-flex.8xlarge vCPUs: 32 Memory: 131072 MiB.
+
+---
+
+##### `M8I_FLEX_LARGE`<sup>Required</sup> <a name="M8I_FLEX_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_LARGE"></a>
+
+```typescript
+public readonly M8I_FLEX_LARGE: string;
+```
+
+- *Type:* string
+
+m8i-flex.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M8I_FLEX_XLARGE`<sup>Required</sup> <a name="M8I_FLEX_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_FLEX_XLARGE"></a>
+
+```typescript
+public readonly M8I_FLEX_XLARGE: string;
+```
+
+- *Type:* string
+
+m8i-flex.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `M8I_LARGE`<sup>Required</sup> <a name="M8I_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_LARGE"></a>
+
+```typescript
+public readonly M8I_LARGE: string;
+```
+
+- *Type:* string
+
+m8i.large vCPUs: 2 Memory: 8192 MiB.
+
+---
+
+##### `M8I_METAL_48XL`<sup>Required</sup> <a name="M8I_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_METAL_48XL"></a>
+
+```typescript
+public readonly M8I_METAL_48XL: string;
+```
+
+- *Type:* string
+
+m8i.metal-48xl vCPUs: 192 Memory: 786432 MiB.
+
+---
+
+##### `M8I_METAL_96XL`<sup>Required</sup> <a name="M8I_METAL_96XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_METAL_96XL"></a>
+
+```typescript
+public readonly M8I_METAL_96XL: string;
+```
+
+- *Type:* string
+
+m8i.metal-96xl vCPUs: 384 Memory: 1572864 MiB.
+
+---
+
+##### `M8I_XLARGE`<sup>Required</sup> <a name="M8I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.M8I_XLARGE"></a>
+
+```typescript
+public readonly M8I_XLARGE: string;
+```
+
+- *Type:* string
+
+m8i.xlarge vCPUs: 4 Memory: 16384 MiB.
+
+---
+
+##### `MAC_M4_METAL`<sup>Required</sup> <a name="MAC_M4_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC_M4_METAL"></a>
+
+```typescript
+public readonly MAC_M4_METAL: string;
+```
+
+- *Type:* string
+
+mac-m4.metal vCPUs: 10 Memory: 24576 MiB.
+
+---
+
+##### `MAC_M4PRO_METAL`<sup>Required</sup> <a name="MAC_M4PRO_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC_M4PRO_METAL"></a>
+
+```typescript
+public readonly MAC_M4PRO_METAL: string;
+```
+
+- *Type:* string
+
+mac-m4pro.metal vCPUs: 14 Memory: 49152 MiB.
+
+---
+
 ##### `MAC1_METAL`<sup>Required</sup> <a name="MAC1_METAL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.MAC1_METAL"></a>
 
 ```typescript
@@ -24157,42 +25995,6 @@ public readonly MAC2_METAL: string;
 - *Type:* string
 
 mac2.metal vCPUs: 8 Memory: 16384 MiB.
-
----
-
-##### `P2_16XLARGE`<sup>Required</sup> <a name="P2_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P2_16XLARGE"></a>
-
-```typescript
-public readonly P2_16XLARGE: string;
-```
-
-- *Type:* string
-
-p2.16xlarge vCPUs: 64 Memory: 749568 MiB.
-
----
-
-##### `P2_8XLARGE`<sup>Required</sup> <a name="P2_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P2_8XLARGE"></a>
-
-```typescript
-public readonly P2_8XLARGE: string;
-```
-
-- *Type:* string
-
-p2.8xlarge vCPUs: 32 Memory: 499712 MiB.
-
----
-
-##### `P2_XLARGE`<sup>Required</sup> <a name="P2_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P2_XLARGE"></a>
-
-```typescript
-public readonly P2_XLARGE: string;
-```
-
-- *Type:* string
-
-p2.xlarge vCPUs: 4 Memory: 62464 MiB.
 
 ---
 
@@ -24256,6 +26058,18 @@ p4d.24xlarge vCPUs: 96 Memory: 1179648 MiB.
 
 ---
 
+##### `P4DE_24XLARGE`<sup>Required</sup> <a name="P4DE_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P4DE_24XLARGE"></a>
+
+```typescript
+public readonly P4DE_24XLARGE: string;
+```
+
+- *Type:* string
+
+p4de.24xlarge vCPUs: 96 Memory: 1179648 MiB.
+
+---
+
 ##### `P5_48XLARGE`<sup>Required</sup> <a name="P5_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P5_48XLARGE"></a>
 
 ```typescript
@@ -24265,6 +26079,42 @@ public readonly P5_48XLARGE: string;
 - *Type:* string
 
 p5.48xlarge vCPUs: 192 Memory: 2097152 MiB.
+
+---
+
+##### `P5_4XLARGE`<sup>Required</sup> <a name="P5_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P5_4XLARGE"></a>
+
+```typescript
+public readonly P5_4XLARGE: string;
+```
+
+- *Type:* string
+
+p5.4xlarge vCPUs: 16 Memory: 262144 MiB.
+
+---
+
+##### `P5EN_48XLARGE`<sup>Required</sup> <a name="P5EN_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P5EN_48XLARGE"></a>
+
+```typescript
+public readonly P5EN_48XLARGE: string;
+```
+
+- *Type:* string
+
+p5en.48xlarge vCPUs: 192 Memory: 2097152 MiB.
+
+---
+
+##### `P6_B200_48XLARGE`<sup>Required</sup> <a name="P6_B200_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.P6_B200_48XLARGE"></a>
+
+```typescript
+public readonly P6_B200_48XLARGE: string;
+```
+
+- *Type:* string
+
+p6-b200.48xlarge vCPUs: 192 Memory: 2097152 MiB.
 
 ---
 
@@ -26716,6 +28566,654 @@ r8g.xlarge vCPUs: 4 Memory: 32768 MiB.
 
 ---
 
+##### `R8GB_12XLARGE`<sup>Required</sup> <a name="R8GB_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_12XLARGE"></a>
+
+```typescript
+public readonly R8GB_12XLARGE: string;
+```
+
+- *Type:* string
+
+r8gb.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R8GB_16XLARGE`<sup>Required</sup> <a name="R8GB_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_16XLARGE"></a>
+
+```typescript
+public readonly R8GB_16XLARGE: string;
+```
+
+- *Type:* string
+
+r8gb.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R8GB_24XLARGE`<sup>Required</sup> <a name="R8GB_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_24XLARGE"></a>
+
+```typescript
+public readonly R8GB_24XLARGE: string;
+```
+
+- *Type:* string
+
+r8gb.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R8GB_2XLARGE`<sup>Required</sup> <a name="R8GB_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_2XLARGE"></a>
+
+```typescript
+public readonly R8GB_2XLARGE: string;
+```
+
+- *Type:* string
+
+r8gb.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R8GB_4XLARGE`<sup>Required</sup> <a name="R8GB_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_4XLARGE"></a>
+
+```typescript
+public readonly R8GB_4XLARGE: string;
+```
+
+- *Type:* string
+
+r8gb.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R8GB_8XLARGE`<sup>Required</sup> <a name="R8GB_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_8XLARGE"></a>
+
+```typescript
+public readonly R8GB_8XLARGE: string;
+```
+
+- *Type:* string
+
+r8gb.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R8GB_LARGE`<sup>Required</sup> <a name="R8GB_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_LARGE"></a>
+
+```typescript
+public readonly R8GB_LARGE: string;
+```
+
+- *Type:* string
+
+r8gb.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R8GB_MEDIUM`<sup>Required</sup> <a name="R8GB_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_MEDIUM"></a>
+
+```typescript
+public readonly R8GB_MEDIUM: string;
+```
+
+- *Type:* string
+
+r8gb.medium vCPUs: 1 Memory: 8192 MiB.
+
+---
+
+##### `R8GB_METAL_24XL`<sup>Required</sup> <a name="R8GB_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_METAL_24XL"></a>
+
+```typescript
+public readonly R8GB_METAL_24XL: string;
+```
+
+- *Type:* string
+
+r8gb.metal-24xl vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R8GB_XLARGE`<sup>Required</sup> <a name="R8GB_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GB_XLARGE"></a>
+
+```typescript
+public readonly R8GB_XLARGE: string;
+```
+
+- *Type:* string
+
+r8gb.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R8GD_12XLARGE`<sup>Required</sup> <a name="R8GD_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_12XLARGE"></a>
+
+```typescript
+public readonly R8GD_12XLARGE: string;
+```
+
+- *Type:* string
+
+r8gd.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R8GD_16XLARGE`<sup>Required</sup> <a name="R8GD_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_16XLARGE"></a>
+
+```typescript
+public readonly R8GD_16XLARGE: string;
+```
+
+- *Type:* string
+
+r8gd.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R8GD_24XLARGE`<sup>Required</sup> <a name="R8GD_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_24XLARGE"></a>
+
+```typescript
+public readonly R8GD_24XLARGE: string;
+```
+
+- *Type:* string
+
+r8gd.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R8GD_2XLARGE`<sup>Required</sup> <a name="R8GD_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_2XLARGE"></a>
+
+```typescript
+public readonly R8GD_2XLARGE: string;
+```
+
+- *Type:* string
+
+r8gd.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R8GD_48XLARGE`<sup>Required</sup> <a name="R8GD_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_48XLARGE"></a>
+
+```typescript
+public readonly R8GD_48XLARGE: string;
+```
+
+- *Type:* string
+
+r8gd.48xlarge vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R8GD_4XLARGE`<sup>Required</sup> <a name="R8GD_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_4XLARGE"></a>
+
+```typescript
+public readonly R8GD_4XLARGE: string;
+```
+
+- *Type:* string
+
+r8gd.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R8GD_8XLARGE`<sup>Required</sup> <a name="R8GD_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_8XLARGE"></a>
+
+```typescript
+public readonly R8GD_8XLARGE: string;
+```
+
+- *Type:* string
+
+r8gd.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R8GD_LARGE`<sup>Required</sup> <a name="R8GD_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_LARGE"></a>
+
+```typescript
+public readonly R8GD_LARGE: string;
+```
+
+- *Type:* string
+
+r8gd.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R8GD_MEDIUM`<sup>Required</sup> <a name="R8GD_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_MEDIUM"></a>
+
+```typescript
+public readonly R8GD_MEDIUM: string;
+```
+
+- *Type:* string
+
+r8gd.medium vCPUs: 1 Memory: 8192 MiB.
+
+---
+
+##### `R8GD_METAL_24XL`<sup>Required</sup> <a name="R8GD_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_METAL_24XL"></a>
+
+```typescript
+public readonly R8GD_METAL_24XL: string;
+```
+
+- *Type:* string
+
+r8gd.metal-24xl vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R8GD_METAL_48XL`<sup>Required</sup> <a name="R8GD_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_METAL_48XL"></a>
+
+```typescript
+public readonly R8GD_METAL_48XL: string;
+```
+
+- *Type:* string
+
+r8gd.metal-48xl vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R8GD_XLARGE`<sup>Required</sup> <a name="R8GD_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GD_XLARGE"></a>
+
+```typescript
+public readonly R8GD_XLARGE: string;
+```
+
+- *Type:* string
+
+r8gd.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R8GN_12XLARGE`<sup>Required</sup> <a name="R8GN_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_12XLARGE"></a>
+
+```typescript
+public readonly R8GN_12XLARGE: string;
+```
+
+- *Type:* string
+
+r8gn.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R8GN_16XLARGE`<sup>Required</sup> <a name="R8GN_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_16XLARGE"></a>
+
+```typescript
+public readonly R8GN_16XLARGE: string;
+```
+
+- *Type:* string
+
+r8gn.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R8GN_24XLARGE`<sup>Required</sup> <a name="R8GN_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_24XLARGE"></a>
+
+```typescript
+public readonly R8GN_24XLARGE: string;
+```
+
+- *Type:* string
+
+r8gn.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R8GN_2XLARGE`<sup>Required</sup> <a name="R8GN_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_2XLARGE"></a>
+
+```typescript
+public readonly R8GN_2XLARGE: string;
+```
+
+- *Type:* string
+
+r8gn.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R8GN_48XLARGE`<sup>Required</sup> <a name="R8GN_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_48XLARGE"></a>
+
+```typescript
+public readonly R8GN_48XLARGE: string;
+```
+
+- *Type:* string
+
+r8gn.48xlarge vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R8GN_4XLARGE`<sup>Required</sup> <a name="R8GN_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_4XLARGE"></a>
+
+```typescript
+public readonly R8GN_4XLARGE: string;
+```
+
+- *Type:* string
+
+r8gn.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R8GN_8XLARGE`<sup>Required</sup> <a name="R8GN_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_8XLARGE"></a>
+
+```typescript
+public readonly R8GN_8XLARGE: string;
+```
+
+- *Type:* string
+
+r8gn.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R8GN_LARGE`<sup>Required</sup> <a name="R8GN_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_LARGE"></a>
+
+```typescript
+public readonly R8GN_LARGE: string;
+```
+
+- *Type:* string
+
+r8gn.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R8GN_MEDIUM`<sup>Required</sup> <a name="R8GN_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_MEDIUM"></a>
+
+```typescript
+public readonly R8GN_MEDIUM: string;
+```
+
+- *Type:* string
+
+r8gn.medium vCPUs: 1 Memory: 8192 MiB.
+
+---
+
+##### `R8GN_METAL_24XL`<sup>Required</sup> <a name="R8GN_METAL_24XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_METAL_24XL"></a>
+
+```typescript
+public readonly R8GN_METAL_24XL: string;
+```
+
+- *Type:* string
+
+r8gn.metal-24xl vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R8GN_METAL_48XL`<sup>Required</sup> <a name="R8GN_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_METAL_48XL"></a>
+
+```typescript
+public readonly R8GN_METAL_48XL: string;
+```
+
+- *Type:* string
+
+r8gn.metal-48xl vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R8GN_XLARGE`<sup>Required</sup> <a name="R8GN_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8GN_XLARGE"></a>
+
+```typescript
+public readonly R8GN_XLARGE: string;
+```
+
+- *Type:* string
+
+r8gn.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R8I_12XLARGE`<sup>Required</sup> <a name="R8I_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_12XLARGE"></a>
+
+```typescript
+public readonly R8I_12XLARGE: string;
+```
+
+- *Type:* string
+
+r8i.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R8I_16XLARGE`<sup>Required</sup> <a name="R8I_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_16XLARGE"></a>
+
+```typescript
+public readonly R8I_16XLARGE: string;
+```
+
+- *Type:* string
+
+r8i.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R8I_24XLARGE`<sup>Required</sup> <a name="R8I_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_24XLARGE"></a>
+
+```typescript
+public readonly R8I_24XLARGE: string;
+```
+
+- *Type:* string
+
+r8i.24xlarge vCPUs: 96 Memory: 786432 MiB.
+
+---
+
+##### `R8I_2XLARGE`<sup>Required</sup> <a name="R8I_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_2XLARGE"></a>
+
+```typescript
+public readonly R8I_2XLARGE: string;
+```
+
+- *Type:* string
+
+r8i.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R8I_32XLARGE`<sup>Required</sup> <a name="R8I_32XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_32XLARGE"></a>
+
+```typescript
+public readonly R8I_32XLARGE: string;
+```
+
+- *Type:* string
+
+r8i.32xlarge vCPUs: 128 Memory: 1048576 MiB.
+
+---
+
+##### `R8I_48XLARGE`<sup>Required</sup> <a name="R8I_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_48XLARGE"></a>
+
+```typescript
+public readonly R8I_48XLARGE: string;
+```
+
+- *Type:* string
+
+r8i.48xlarge vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R8I_4XLARGE`<sup>Required</sup> <a name="R8I_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_4XLARGE"></a>
+
+```typescript
+public readonly R8I_4XLARGE: string;
+```
+
+- *Type:* string
+
+r8i.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R8I_8XLARGE`<sup>Required</sup> <a name="R8I_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_8XLARGE"></a>
+
+```typescript
+public readonly R8I_8XLARGE: string;
+```
+
+- *Type:* string
+
+r8i.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R8I_96XLARGE`<sup>Required</sup> <a name="R8I_96XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_96XLARGE"></a>
+
+```typescript
+public readonly R8I_96XLARGE: string;
+```
+
+- *Type:* string
+
+r8i.96xlarge vCPUs: 384 Memory: 3145728 MiB.
+
+---
+
+##### `R8I_FLEX_12XLARGE`<sup>Required</sup> <a name="R8I_FLEX_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_12XLARGE"></a>
+
+```typescript
+public readonly R8I_FLEX_12XLARGE: string;
+```
+
+- *Type:* string
+
+r8i-flex.12xlarge vCPUs: 48 Memory: 393216 MiB.
+
+---
+
+##### `R8I_FLEX_16XLARGE`<sup>Required</sup> <a name="R8I_FLEX_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_16XLARGE"></a>
+
+```typescript
+public readonly R8I_FLEX_16XLARGE: string;
+```
+
+- *Type:* string
+
+r8i-flex.16xlarge vCPUs: 64 Memory: 524288 MiB.
+
+---
+
+##### `R8I_FLEX_2XLARGE`<sup>Required</sup> <a name="R8I_FLEX_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_2XLARGE"></a>
+
+```typescript
+public readonly R8I_FLEX_2XLARGE: string;
+```
+
+- *Type:* string
+
+r8i-flex.2xlarge vCPUs: 8 Memory: 65536 MiB.
+
+---
+
+##### `R8I_FLEX_4XLARGE`<sup>Required</sup> <a name="R8I_FLEX_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_4XLARGE"></a>
+
+```typescript
+public readonly R8I_FLEX_4XLARGE: string;
+```
+
+- *Type:* string
+
+r8i-flex.4xlarge vCPUs: 16 Memory: 131072 MiB.
+
+---
+
+##### `R8I_FLEX_8XLARGE`<sup>Required</sup> <a name="R8I_FLEX_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_8XLARGE"></a>
+
+```typescript
+public readonly R8I_FLEX_8XLARGE: string;
+```
+
+- *Type:* string
+
+r8i-flex.8xlarge vCPUs: 32 Memory: 262144 MiB.
+
+---
+
+##### `R8I_FLEX_LARGE`<sup>Required</sup> <a name="R8I_FLEX_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_LARGE"></a>
+
+```typescript
+public readonly R8I_FLEX_LARGE: string;
+```
+
+- *Type:* string
+
+r8i-flex.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R8I_FLEX_XLARGE`<sup>Required</sup> <a name="R8I_FLEX_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_FLEX_XLARGE"></a>
+
+```typescript
+public readonly R8I_FLEX_XLARGE: string;
+```
+
+- *Type:* string
+
+r8i-flex.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
+##### `R8I_LARGE`<sup>Required</sup> <a name="R8I_LARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_LARGE"></a>
+
+```typescript
+public readonly R8I_LARGE: string;
+```
+
+- *Type:* string
+
+r8i.large vCPUs: 2 Memory: 16384 MiB.
+
+---
+
+##### `R8I_METAL_48XL`<sup>Required</sup> <a name="R8I_METAL_48XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_METAL_48XL"></a>
+
+```typescript
+public readonly R8I_METAL_48XL: string;
+```
+
+- *Type:* string
+
+r8i.metal-48xl vCPUs: 192 Memory: 1572864 MiB.
+
+---
+
+##### `R8I_METAL_96XL`<sup>Required</sup> <a name="R8I_METAL_96XL" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_METAL_96XL"></a>
+
+```typescript
+public readonly R8I_METAL_96XL: string;
+```
+
+- *Type:* string
+
+r8i.metal-96xl vCPUs: 384 Memory: 3145728 MiB.
+
+---
+
+##### `R8I_XLARGE`<sup>Required</sup> <a name="R8I_XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.R8I_XLARGE"></a>
+
+```typescript
+public readonly R8I_XLARGE: string;
+```
+
+- *Type:* string
+
+r8i.xlarge vCPUs: 4 Memory: 32768 MiB.
+
+---
+
 ##### `T1_MICRO`<sup>Required</sup> <a name="T1_MICRO" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.T1_MICRO"></a>
 
 ```typescript
@@ -27100,42 +29598,6 @@ trn1n.32xlarge vCPUs: 128 Memory: 524288 MiB.
 
 ---
 
-##### `U_12TB1_112XLARGE`<sup>Required</sup> <a name="U_12TB1_112XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_12TB1_112XLARGE"></a>
-
-```typescript
-public readonly U_12TB1_112XLARGE: string;
-```
-
-- *Type:* string
-
-u-12tb1.112xlarge vCPUs: 448 Memory: 12582912 MiB.
-
----
-
-##### `U_18TB1_112XLARGE`<sup>Required</sup> <a name="U_18TB1_112XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_18TB1_112XLARGE"></a>
-
-```typescript
-public readonly U_18TB1_112XLARGE: string;
-```
-
-- *Type:* string
-
-u-18tb1.112xlarge vCPUs: 448 Memory: 18874368 MiB.
-
----
-
-##### `U_24TB1_112XLARGE`<sup>Required</sup> <a name="U_24TB1_112XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_24TB1_112XLARGE"></a>
-
-```typescript
-public readonly U_24TB1_112XLARGE: string;
-```
-
-- *Type:* string
-
-u-24tb1.112xlarge vCPUs: 448 Memory: 25165824 MiB.
-
----
-
 ##### `U_3TB1_56XLARGE`<sup>Required</sup> <a name="U_3TB1_56XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_3TB1_56XLARGE"></a>
 
 ```typescript
@@ -27169,18 +29631,6 @@ public readonly U_6TB1_56XLARGE: string;
 - *Type:* string
 
 u-6tb1.56xlarge vCPUs: 224 Memory: 6291456 MiB.
-
----
-
-##### `U_9TB1_112XLARGE`<sup>Required</sup> <a name="U_9TB1_112XLARGE" id="@cdklabs/cdk-proserve-lib.types.Ec2InstanceType.property.U_9TB1_112XLARGE"></a>
-
-```typescript
-public readonly U_9TB1_112XLARGE: string;
-```
-
-- *Type:* string
-
-u-9tb1.112xlarge vCPUs: 448 Memory: 9437184 MiB.
 
 ---
 
@@ -28214,6 +30664,7 @@ SageMaker Instance Type.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_4XLARGE">ML_C7G_4XLARGE</a></code> | <code>string</code> | ml.c7g.4xlarge Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_8XLARGE">ML_C7G_8XLARGE</a></code> | <code>string</code> | ml.c7g.8xlarge Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_LARGE">ML_C7G_LARGE</a></code> | <code>string</code> | ml.c7g.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_MEDIUM">ML_C7G_MEDIUM</a></code> | <code>string</code> | ml.c7g.medium Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_XLARGE">ML_C7G_XLARGE</a></code> | <code>string</code> | ml.c7g.xlarge Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_12XLARGE">ML_C7I_12XLARGE</a></code> | <code>string</code> | ml.c7i.12xlarge Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7I_16XLARGE">ML_C7I_16XLARGE</a></code> | <code>string</code> | ml.c7i.16xlarge Notebook Instance Type. |
@@ -28336,6 +30787,9 @@ SageMaker Instance Type.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P4D_24XLARGE">ML_P4D_24XLARGE</a></code> | <code>string</code> | ml.p4d.24xlarge Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P4DE_24XLARGE">ML_P4DE_24XLARGE</a></code> | <code>string</code> | ml.p4de.24xlarge Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P5_48XLARGE">ML_P5_48XLARGE</a></code> | <code>string</code> | ml.p5.48xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P5_4XLARGE">ML_P5_4XLARGE</a></code> | <code>string</code> | ml.p5.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P5E_48XLARGE">ML_P5E_48XLARGE</a></code> | <code>string</code> | ml.p5e.48xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P5EN_48XLARGE">ML_P5EN_48XLARGE</a></code> | <code>string</code> | ml.p5en.48xlarge Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_12XLARGE">ML_R5_12XLARGE</a></code> | <code>string</code> | ml.r5.12xlarge Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_16XLARGE">ML_R5_16XLARGE</a></code> | <code>string</code> | ml.r5.16xlarge Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_24XLARGE">ML_R5_24XLARGE</a></code> | <code>string</code> | ml.r5.24xlarge Notebook Instance Type. |
@@ -28393,6 +30847,16 @@ SageMaker Instance Type.
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_8XLARGE">ML_R7I_8XLARGE</a></code> | <code>string</code> | ml.r7i.8xlarge Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_LARGE">ML_R7I_LARGE</a></code> | <code>string</code> | ml.r7i.large Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R7I_XLARGE">ML_R7I_XLARGE</a></code> | <code>string</code> | ml.r7i.xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_12XLARGE">ML_R8G_12XLARGE</a></code> | <code>string</code> | ml.r8g.12xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_16XLARGE">ML_R8G_16XLARGE</a></code> | <code>string</code> | ml.r8g.16xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_24XLARGE">ML_R8G_24XLARGE</a></code> | <code>string</code> | ml.r8g.24xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_2XLARGE">ML_R8G_2XLARGE</a></code> | <code>string</code> | ml.r8g.2xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_48XLARGE">ML_R8G_48XLARGE</a></code> | <code>string</code> | ml.r8g.48xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_4XLARGE">ML_R8G_4XLARGE</a></code> | <code>string</code> | ml.r8g.4xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_8XLARGE">ML_R8G_8XLARGE</a></code> | <code>string</code> | ml.r8g.8xlarge Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_LARGE">ML_R8G_LARGE</a></code> | <code>string</code> | ml.r8g.large Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_MEDIUM">ML_R8G_MEDIUM</a></code> | <code>string</code> | ml.r8g.medium Notebook Instance Type. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_XLARGE">ML_R8G_XLARGE</a></code> | <code>string</code> | ml.r8g.xlarge Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T2_2XLARGE">ML_T2_2XLARGE</a></code> | <code>string</code> | ml.t2.2xlarge Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T2_LARGE">ML_T2_LARGE</a></code> | <code>string</code> | ml.t2.large Notebook Instance Type. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T2_MEDIUM">ML_T2_MEDIUM</a></code> | <code>string</code> | ml.t2.medium Notebook Instance Type. |
@@ -29244,6 +31708,18 @@ public readonly ML_C7G_LARGE: string;
 - *Type:* string
 
 ml.c7g.large Notebook Instance Type.
+
+---
+
+##### `ML_C7G_MEDIUM`<sup>Required</sup> <a name="ML_C7G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_C7G_MEDIUM"></a>
+
+```typescript
+public readonly ML_C7G_MEDIUM: string;
+```
+
+- *Type:* string
+
+ml.c7g.medium Notebook Instance Type.
 
 ---
 
@@ -30711,6 +33187,42 @@ ml.p5.48xlarge Notebook Instance Type.
 
 ---
 
+##### `ML_P5_4XLARGE`<sup>Required</sup> <a name="ML_P5_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P5_4XLARGE"></a>
+
+```typescript
+public readonly ML_P5_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p5.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_P5E_48XLARGE`<sup>Required</sup> <a name="ML_P5E_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P5E_48XLARGE"></a>
+
+```typescript
+public readonly ML_P5E_48XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p5e.48xlarge Notebook Instance Type.
+
+---
+
+##### `ML_P5EN_48XLARGE`<sup>Required</sup> <a name="ML_P5EN_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_P5EN_48XLARGE"></a>
+
+```typescript
+public readonly ML_P5EN_48XLARGE: string;
+```
+
+- *Type:* string
+
+ml.p5en.48xlarge Notebook Instance Type.
+
+---
+
 ##### `ML_R5_12XLARGE`<sup>Required</sup> <a name="ML_R5_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R5_12XLARGE"></a>
 
 ```typescript
@@ -31395,6 +33907,126 @@ ml.r7i.xlarge Notebook Instance Type.
 
 ---
 
+##### `ML_R8G_12XLARGE`<sup>Required</sup> <a name="ML_R8G_12XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_12XLARGE"></a>
+
+```typescript
+public readonly ML_R8G_12XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r8g.12xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R8G_16XLARGE`<sup>Required</sup> <a name="ML_R8G_16XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_16XLARGE"></a>
+
+```typescript
+public readonly ML_R8G_16XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r8g.16xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R8G_24XLARGE`<sup>Required</sup> <a name="ML_R8G_24XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_24XLARGE"></a>
+
+```typescript
+public readonly ML_R8G_24XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r8g.24xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R8G_2XLARGE`<sup>Required</sup> <a name="ML_R8G_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_2XLARGE"></a>
+
+```typescript
+public readonly ML_R8G_2XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r8g.2xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R8G_48XLARGE`<sup>Required</sup> <a name="ML_R8G_48XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_48XLARGE"></a>
+
+```typescript
+public readonly ML_R8G_48XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r8g.48xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R8G_4XLARGE`<sup>Required</sup> <a name="ML_R8G_4XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_4XLARGE"></a>
+
+```typescript
+public readonly ML_R8G_4XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r8g.4xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R8G_8XLARGE`<sup>Required</sup> <a name="ML_R8G_8XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_8XLARGE"></a>
+
+```typescript
+public readonly ML_R8G_8XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r8g.8xlarge Notebook Instance Type.
+
+---
+
+##### `ML_R8G_LARGE`<sup>Required</sup> <a name="ML_R8G_LARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_LARGE"></a>
+
+```typescript
+public readonly ML_R8G_LARGE: string;
+```
+
+- *Type:* string
+
+ml.r8g.large Notebook Instance Type.
+
+---
+
+##### `ML_R8G_MEDIUM`<sup>Required</sup> <a name="ML_R8G_MEDIUM" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_MEDIUM"></a>
+
+```typescript
+public readonly ML_R8G_MEDIUM: string;
+```
+
+- *Type:* string
+
+ml.r8g.medium Notebook Instance Type.
+
+---
+
+##### `ML_R8G_XLARGE`<sup>Required</sup> <a name="ML_R8G_XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_R8G_XLARGE"></a>
+
+```typescript
+public readonly ML_R8G_XLARGE: string;
+```
+
+- *Type:* string
+
+ml.r8g.xlarge Notebook Instance Type.
+
+---
+
 ##### `ML_T2_2XLARGE`<sup>Required</sup> <a name="ML_T2_2XLARGE" id="@cdklabs/cdk-proserve-lib.types.SageMakerNotebookInstanceType.property.ML_T2_2XLARGE"></a>
 
 ```typescript
@@ -31851,6 +34483,7 @@ WAF Managed Rule Groups.
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.BOT_CONTROL_RULE_SET">BOT_CONTROL_RULE_SET</a></code> | Provides protection against automated bots that can consume excess resources, skew business metrics, cause downtime, or perform malicious activities. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ATP_RULE_SET">ATP_RULE_SET</a></code> | Provides protection for your login page against stolen credentials, credential stuffing attacks, brute force login attempts, and other anomalous login activities. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ACFP_RULE_SET">ACFP_RULE_SET</a></code> | Provides protection against the creation of fraudulent accounts on your site. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ANTI_DDOS_RULE_SET">ANTI_DDOS_RULE_SET</a></code> | Provides protection against DDoS attacks targeting the application layer, also known as Layer 7 attacks. |
 
 ---
 
@@ -31976,6 +34609,13 @@ Fraudulent accounts can be used for activities such as obtaining sign-up bonuses
 ---
 
 
+##### `ANTI_DDOS_RULE_SET` <a name="ANTI_DDOS_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ANTI_DDOS_RULE_SET"></a>
+
+Provides protection against DDoS attacks targeting the application layer, also known as Layer 7 attacks.
+
+---
+
+
 ### Component <a name="Component" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component"></a>
 
 Image Builder Component.
@@ -32005,7 +34645,6 @@ Image Builder Component.
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_RPM_GENERIC">AMAZON_CORRETTO_8_RPM_GENERIC</a></code> | Installs Amazon Corretto 8 for RPM-based Linux platforms in accordance with the Amazon Corretto 8 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/generic-linux-install.html. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_CORRETTO_8_WINDOWS">AMAZON_CORRETTO_8_WINDOWS</a></code> | Installs Amazon Corretto 8 for Windows in accordance with the Amazon Corretto 8 User Guide at https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/windows-7-install.html. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AMAZON_KINESIS_AGENT_WINDOWS">AMAZON_KINESIS_AGENT_WINDOWS</a></code> | Installs the latest version of Amazon Kinesis Agent for Windows. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ANACONDA_WINDOWS">ANACONDA_WINDOWS</a></code> | Installs the Anaconda distribution and environments for Tensorflow, PyTorch, and MXNet. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.APACHE_TOMCAT_9_LINUX">APACHE_TOMCAT_9_LINUX</a></code> | Installs the latest version of Apache Tomcat and the JRE, sets required environment variables, and schedules Tomcat to run on startup. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.APT_REPOSITORY_TEST_LINUX">APT_REPOSITORY_TEST_LINUX</a></code> | Tests whether the apt package manager is functioning correctly. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_CLI_VERSION_2_LINUX">AWS_CLI_VERSION_2_LINUX</a></code> | Installs the latest version of the AWS CLI version 2, and creates the symlink /usr/bin/aws that points to the installed application. |
@@ -32015,8 +34654,8 @@ Image Builder Component.
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.AWS_VSS_COMPONENTS_WINDOWS">AWS_VSS_COMPONENTS_WINDOWS</a></code> | Installs the AwsVssComponents Distributor package on a Windows instance. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.CHOCOLATEY">CHOCOLATEY</a></code> | Installs Chocolatey for Windows. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.CHRONY_TIME_CONFIGURATION_TEST">CHRONY_TIME_CONFIGURATION_TEST</a></code> | Validates the Chrony configuration file and ensures that Chrony time sources on Amazon Linux 2 are configured for the Amazon time servers. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DCV_SERVER_LINUX">DCV_SERVER_LINUX</a></code> | Install and configure the latest NICE DCV server on Linux. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DCV_SERVER_WINDOWS">DCV_SERVER_WINDOWS</a></code> | Install and configure the latest NICE DCV server on Windows. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DCV_SERVER_LINUX">DCV_SERVER_LINUX</a></code> | Install and configure the latest Amazon DCV server on Linux. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DCV_SERVER_WINDOWS">DCV_SERVER_WINDOWS</a></code> | Install and configure the latest Amazon DCV server on Windows. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DISTRIBUTOR_PACKAGE_WINDOWS">DISTRIBUTOR_PACKAGE_WINDOWS</a></code> | Installs a Distributor package on a Windows instance. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOCKER_CE_CENTOS">DOCKER_CE_CENTOS</a></code> | Installs Docker Community Edition from the Docker package repository, and enables the centos user to manage Docker without using sudo. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DOCKER_CE_LINUX">DOCKER_CE_LINUX</a></code> | Install the latest Docker Community Edition from Amazon Linux Extras, and enable the ec2-user user to manage docker without using sudo. |
@@ -32032,7 +34671,7 @@ Image Builder Component.
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EC2_NETWORK_ROUTE_TEST_WINDOWS">EC2_NETWORK_ROUTE_TEST_WINDOWS</a></code> | Test to ensure all required EC2 network routes exist in the route table. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EC2LAUNCH_V2_WINDOWS">EC2LAUNCH_V2_WINDOWS</a></code> | Installs the latest version of EC2Launch v2. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ECS_OPTIMIZED_AMI_WINDOWS">ECS_OPTIMIZED_AMI_WINDOWS</a></code> | Installs Amazon ECS-optimized Windows artifacts. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EKS_OPTIMIZED_AMI_WINDOWS">EKS_OPTIMIZED_AMI_WINDOWS</a></code> | Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.32. This includes kubelet version 1.32.0, containerd version 1.7.20, and CSI Proxy version 1.1.2. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EKS_OPTIMIZED_AMI_WINDOWS">EKS_OPTIMIZED_AMI_WINDOWS</a></code> | Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.33. This includes kubelet version 1.33.1, containerd version 1.7.27, and CSI Proxy version 1.2.1. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ENI_ATTACHMENT_TEST_LINUX">ENI_ATTACHMENT_TEST_LINUX</a></code> | The ENI attachment test performs the following actions: 1) It creates an elastic network interface (ENI) and attaches it to the instance. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ENI_ATTACHMENT_TEST_WINDOWS">ENI_ATTACHMENT_TEST_WINDOWS</a></code> | The ENI attachment test performs the following actions: 1) It creates an elastic network interface (ENI) and attaches it to the instance. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.GO_STABLE_LINUX">GO_STABLE_LINUX</a></code> | Installs the latest stable release of the Go programming language using the release information from https://go.dev/dl/. |
@@ -32043,8 +34682,6 @@ Image Builder Component.
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.INSPECTOR_TEST_WINDOWS">INSPECTOR_TEST_WINDOWS</a></code> | Performs a Center for Internet Security (CIS) security assessment for an instance, using Amazon Inspector (Inspector). |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.INSTALL_PACKAGE_FROM_REPOSITORY">INSTALL_PACKAGE_FROM_REPOSITORY</a></code> | Installs a package from the Linux repository. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MARIADB_LINUX">MARIADB_LINUX</a></code> | Installs the MariaDB package using apt, yum, or zypper. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MATE_DE_LINUX">MATE_DE_LINUX</a></code> | Installs the MATE Desktop Environment, xrdp, TigerVNC server, and enables the xrdp service. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MONO_LINUX">MONO_LINUX</a></code> | Installs the latest version of the Mono framework. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PHP_8_2_LINUX">PHP_8_2_LINUX</a></code> | Installs PHP 8.2. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_LTS_LINUX">POWERSHELL_LTS_LINUX</a></code> | Installs the latest LTS 7.4 release of PowerShell following the instructions at https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.4. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_LTS_WINDOWS">POWERSHELL_LTS_WINDOWS</a></code> | Installs the latest LTS 7.4 release of PowerShell using the MSI installer from the GitHub repository located at https://github.com/PowerShell/PowerShell. |
@@ -32052,21 +34689,17 @@ Image Builder Component.
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.POWERSHELL_YUM">POWERSHELL_YUM</a></code> | Installs the latest version of PowerShell from the Microsoft RedHat repository. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PUTTY">PUTTY</a></code> | Installs the latest version of PuTTY from the 64-bit MSI link on the release page: https://the.earth.li/~sgtatham/putty/latest/w64/. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PYTHON_3_LINUX">PYTHON_3_LINUX</a></code> | Installs the Python 3 package using apt, yum, or zypper. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PYTHON_3_WINDOWS">PYTHON_3_WINDOWS</a></code> | Installs Python 3.8.2 for Windows. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PYTHON_3_WINDOWS">PYTHON_3_WINDOWS</a></code> | Installs the latest Python 3.13 release for Windows. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_LINUX">REBOOT_LINUX</a></code> | Reboots the system. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_TEST_LINUX">REBOOT_TEST_LINUX</a></code> | Tests whether the system can reboot successfully. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_TEST_WINDOWS">REBOOT_TEST_WINDOWS</a></code> | Tests whether the system can reboot successfully. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.REBOOT_WINDOWS">REBOOT_WINDOWS</a></code> | Reboots the system. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_LINUX">SCAP_COMPLIANCE_CHECKER_LINUX</a></code> | Installs and runs SCAP Compliance Checker (SCC) 5.10 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04/22.04 with all current STIG Q1 2025 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported or contain issues within the EC2 environment. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_LINUX">SCAP_COMPLIANCE_CHECKER_LINUX</a></code> | Installs and runs SCAP Compliance Checker (SCC) 5.10 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04 with all current STIG Q1 2025 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported or contain issues within the EC2 environment. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_WINDOWS">SCAP_COMPLIANCE_CHECKER_WINDOWS</a></code> | Installs and runs SCAP Compliance Checker (SCC) 5.10 for Windows with all current STIG Q3 2024 benchmarks. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-builder-stig.html. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SIMPLE_BOOT_TEST_LINUX">SIMPLE_BOOT_TEST_LINUX</a></code> | Executes a simple boot test. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SIMPLE_BOOT_TEST_WINDOWS">SIMPLE_BOOT_TEST_WINDOWS</a></code> | Executes a simple boot test. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_HIGH">STIG_BUILD_LINUX_HIGH</a></code> | Applies the high, medium, and low severity STIG settings for Red Hat Enterprise Linux (RHEL) to Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, and Ubuntu 22.04 instances. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_LOW">STIG_BUILD_LINUX_LOW</a></code> | Applies the low severity STIG settings for Red Hat Enterprise Linux (RHEL) to Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, and Ubuntu 22.04 instances. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_MEDIUM">STIG_BUILD_LINUX_MEDIUM</a></code> | Applies the medium and low severity STIG settings for Red Hat Enterprise Linux (RHEL) to Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, and Ubuntu 22.04 instances. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_HIGH">STIG_BUILD_WINDOWS_HIGH</a></code> | Applies the high, medium, and low severity STIG settings to Windows instances. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_LOW">STIG_BUILD_WINDOWS_LOW</a></code> | Applies the low severity STIG settings to Windows instances. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_MEDIUM">STIG_BUILD_WINDOWS_MEDIUM</a></code> | Applies the medium and low severity STIG settings to Windows instances. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX">STIG_BUILD_LINUX</a></code> | Applies the high, medium, and/or low severity STIG settings for Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04, Ubuntu 24.04, SLES 12, and SLES 15 operating systems. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/ib-stig.html. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS">STIG_BUILD_WINDOWS</a></code> | Applies the high, medium, and/or low severity STIG settings to Windows Server operating systems. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_LINUX_KERNEL_5">UPDATE_LINUX_KERNEL_5</a></code> | Installs the Linux kernel 5.* for Amazon Linux 2 from Amazon Linux Extras. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_LINUX_KERNEL_ML">UPDATE_LINUX_KERNEL_ML</a></code> | Installs the latest mainline release of the Linux kernel for CentOS 7 and Red Hat Enterprise Linux 7 and 8 via the 'kernel-ml' package from https://www.elrepo.org. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.UPDATE_LINUX">UPDATE_LINUX</a></code> | Updates Linux by installing all available updates via the UpdateOS action module. |
@@ -32077,6 +34710,7 @@ Image Builder Component.
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WINDOWS_ACTIVATION_TEST">WINDOWS_ACTIVATION_TEST</a></code> | Verifies the Windows license status in the Common Information Model. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WINDOWS_IS_READY_WITH_PASSWORD_GENERATION_TEST">WINDOWS_IS_READY_WITH_PASSWORD_GENERATION_TEST</a></code> | Checks the EC2 logs for the statement `Windows is Ready to use` and for the password generation message on Windows Server 2016 and later SKUs. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WINDOWS_SERVER_IIS">WINDOWS_SERVER_IIS</a></code> | Installs the Internet Information Services (IIS) web server and management tools. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WORKSPACES_IMAGE_COMPATIBILITY_CHECKER_WINDOWS">WORKSPACES_IMAGE_COMPATIBILITY_CHECKER_WINDOWS</a></code> | Checking the compatibility of the WorkSpaces image before importing the image. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.YUM_REPOSITORY_TEST_LINUX">YUM_REPOSITORY_TEST_LINUX</a></code> | Tests whether yum repository works successfully. |
 
 ---
@@ -32232,13 +34866,6 @@ Installs the latest version of Amazon Kinesis Agent for Windows.
 ---
 
 
-##### `ANACONDA_WINDOWS` <a name="ANACONDA_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.ANACONDA_WINDOWS"></a>
-
-Installs the Anaconda distribution and environments for Tensorflow, PyTorch, and MXNet.
-
----
-
-
 ##### `APACHE_TOMCAT_9_LINUX` <a name="APACHE_TOMCAT_9_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.APACHE_TOMCAT_9_LINUX"></a>
 
 Installs the latest version of Apache Tomcat and the JRE, sets required environment variables, and schedules Tomcat to run on startup.
@@ -32316,14 +34943,14 @@ Uses validation steps outlined here: https://docs.aws.amazon.com/AWSEC2/latest/U
 
 ##### `DCV_SERVER_LINUX` <a name="DCV_SERVER_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DCV_SERVER_LINUX"></a>
 
-Install and configure the latest NICE DCV server on Linux.
+Install and configure the latest Amazon DCV server on Linux.
 
 ---
 
 
 ##### `DCV_SERVER_WINDOWS` <a name="DCV_SERVER_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.DCV_SERVER_WINDOWS"></a>
 
-Install and configure the latest NICE DCV server on Windows.
+Install and configure the latest Amazon DCV server on Windows.
 
 ---
 
@@ -32449,7 +35076,7 @@ This includes latest Amazon ECS Container Agent and Docker CE version 20.10.21.
 
 ##### `EKS_OPTIMIZED_AMI_WINDOWS` <a name="EKS_OPTIMIZED_AMI_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.EKS_OPTIMIZED_AMI_WINDOWS"></a>
 
-Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.32. This includes kubelet version 1.32.0, containerd version 1.7.20, and CSI Proxy version 1.1.2.
+Installs Amazon EKS-optimized Windows artifacts for Amazon EKS version 1.33. This includes kubelet version 1.33.1, containerd version 1.7.27, and CSI Proxy version 1.2.1.
 
 ---
 
@@ -32532,22 +35159,6 @@ Installs the MariaDB package using apt, yum, or zypper.
 ---
 
 
-##### `MATE_DE_LINUX` <a name="MATE_DE_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MATE_DE_LINUX"></a>
-
-Installs the MATE Desktop Environment, xrdp, TigerVNC server, and enables the xrdp service.
-
----
-
-
-##### `MONO_LINUX` <a name="MONO_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.MONO_LINUX"></a>
-
-Installs the latest version of the Mono framework.
-
-Follows the instructions found at https://www.mono-project.com/.
-
----
-
-
 ##### `PHP_8_2_LINUX` <a name="PHP_8_2_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PHP_8_2_LINUX"></a>
 
 Installs PHP 8.2.
@@ -32599,7 +35210,7 @@ Installs the Python 3 package using apt, yum, or zypper.
 
 ##### `PYTHON_3_WINDOWS` <a name="PYTHON_3_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.PYTHON_3_WINDOWS"></a>
 
-Installs Python 3.8.2 for Windows.
+Installs the latest Python 3.13 release for Windows.
 
 ---
 
@@ -32634,7 +35245,7 @@ Reboots the system.
 
 ##### `SCAP_COMPLIANCE_CHECKER_LINUX` <a name="SCAP_COMPLIANCE_CHECKER_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.SCAP_COMPLIANCE_CHECKER_LINUX"></a>
 
-Installs and runs SCAP Compliance Checker (SCC) 5.10 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04/22.04 with all current STIG Q1 2025 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported or contain issues within the EC2 environment. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html.
+Installs and runs SCAP Compliance Checker (SCC) 5.10 for Red Hat Enterprise Linux (RHEL) 7/8, Ubuntu 18.04/20.04 with all current STIG Q1 2025 benchmarks. SCC supports the AMD64 architecture. Other architectures are not currently supported or contain issues within the EC2 environment. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html.
 
 ---
 
@@ -32660,50 +35271,18 @@ Executes a simple boot test.
 ---
 
 
-##### `STIG_BUILD_LINUX_HIGH` <a name="STIG_BUILD_LINUX_HIGH" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_HIGH"></a>
+##### `STIG_BUILD_LINUX` <a name="STIG_BUILD_LINUX" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX"></a>
 
-Applies the high, medium, and low severity STIG settings for Red Hat Enterprise Linux (RHEL) to Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, and Ubuntu 22.04 instances. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html.
-
----
-
-
-##### `STIG_BUILD_LINUX_LOW` <a name="STIG_BUILD_LINUX_LOW" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_LOW"></a>
-
-Applies the low severity STIG settings for Red Hat Enterprise Linux (RHEL) to Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, and Ubuntu 22.04 instances. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html.
+Applies the high, medium, and/or low severity STIG settings for Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04, Ubuntu 24.04, SLES 12, and SLES 15 operating systems. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/ib-stig.html.
 
 ---
 
 
-##### `STIG_BUILD_LINUX_MEDIUM` <a name="STIG_BUILD_LINUX_MEDIUM" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_LINUX_MEDIUM"></a>
+##### `STIG_BUILD_WINDOWS` <a name="STIG_BUILD_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS"></a>
 
-Applies the medium and low severity STIG settings for Red Hat Enterprise Linux (RHEL) to Amazon Linux 2, Amazon Linux 2023, RHEL 7, CentOS Linux 7, CentOS Linux 8, CentOS Stream 9, RHEL 8, RHEL 9, Ubuntu 18.04, Ubuntu 20.04, and Ubuntu 22.04 instances. For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/toe-stig.html.
+Applies the high, medium, and/or low severity STIG settings to Windows Server operating systems.
 
----
-
-
-##### `STIG_BUILD_WINDOWS_HIGH` <a name="STIG_BUILD_WINDOWS_HIGH" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_HIGH"></a>
-
-Applies the high, medium, and low severity STIG settings to Windows instances.
-
-For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-builder-stig.html.
-
----
-
-
-##### `STIG_BUILD_WINDOWS_LOW` <a name="STIG_BUILD_WINDOWS_LOW" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_LOW"></a>
-
-Applies the low severity STIG settings to Windows instances.
-
-For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-builder-stig.html.
-
----
-
-
-##### `STIG_BUILD_WINDOWS_MEDIUM` <a name="STIG_BUILD_WINDOWS_MEDIUM" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.STIG_BUILD_WINDOWS_MEDIUM"></a>
-
-Applies the medium and low severity STIG settings to Windows instances.
-
-For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-builder-stig.html.
+For more information, see https://docs.aws.amazon.com/imagebuilder/latest/userguide/ib-stig.html.
 
 ---
 
@@ -32778,6 +35357,15 @@ This component does not support instances launched without an EC2 key pair.
 Installs the Internet Information Services (IIS) web server and management tools.
 
 The installation is performed by enabling the Windows features built into the Windows operating system.
+
+---
+
+
+##### `WORKSPACES_IMAGE_COMPATIBILITY_CHECKER_WINDOWS` <a name="WORKSPACES_IMAGE_COMPATIBILITY_CHECKER_WINDOWS" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.Component.WORKSPACES_IMAGE_COMPATIBILITY_CHECKER_WINDOWS"></a>
+
+Checking the compatibility of the WorkSpaces image before importing the image.
+
+See the documentation at https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html
 
 ---
 
