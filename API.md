@@ -34483,7 +34483,7 @@ WAF Managed Rule Groups.
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.BOT_CONTROL_RULE_SET">BOT_CONTROL_RULE_SET</a></code> | Provides protection against automated bots that can consume excess resources, skew business metrics, cause downtime, or perform malicious activities. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ATP_RULE_SET">ATP_RULE_SET</a></code> | Provides protection for your login page against stolen credentials, credential stuffing attacks, brute force login attempts, and other anomalous login activities. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ACFP_RULE_SET">ACFP_RULE_SET</a></code> | Provides protection against the creation of fraudulent accounts on your site. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ANTI_D_DO_S_RULE_SET">ANTI_D_DO_S_RULE_SET</a></code> | Provides protection against DDoS attacks targeting the application layer, also known as Layer 7 attacks. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ANTI_DDOS_RULE_SET">ANTI_DDOS_RULE_SET</a></code> | Provides protection against DDoS attacks targeting the application layer, also known as Layer 7 attacks. |
 
 ---
 
@@ -34609,7 +34609,7 @@ Fraudulent accounts can be used for activities such as obtaining sign-up bonuses
 ---
 
 
-##### `ANTI_D_DO_S_RULE_SET` <a name="ANTI_D_DO_S_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ANTI_D_DO_S_RULE_SET"></a>
+##### `ANTI_DDOS_RULE_SET` <a name="ANTI_DDOS_RULE_SET" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.AwsManagedRuleGroup.ANTI_DDOS_RULE_SET"></a>
 
 Provides protection against DDoS attacks targeting the application layer, also known as Layer 7 attacks.
 
