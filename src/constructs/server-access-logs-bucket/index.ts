@@ -1,7 +1,13 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Arn, CfnResource, RemovalPolicy, Stack } from 'aws-cdk-lib';
+import {
+    Annotations,
+    Arn,
+    CfnResource,
+    RemovalPolicy,
+    Stack
+} from 'aws-cdk-lib';
 import {
     Effect,
     PolicyStatement,
@@ -168,7 +174,7 @@ export class ServerAccessLogsBucket extends Construct {
     ) {
         super(scope, id);
 
-        // Validate configuration
+        // Validate configuration - this will add annotations for any errors
         this.validateProps(props);
 
         // Determine versioning setting - force enable if replication rules are provided
@@ -234,11 +240,6 @@ export class ServerAccessLogsBucket extends Construct {
      * Validates the construct properties.
      */
     private validateProps(props?: ServerAccessLogsBucketProps): void {
-        // Validate bucket name format if provided (including empty strings)
-        if (props?.bucketName !== undefined) {
-            this.validateBucketName(props.bucketName);
-        }
-
         // Validate source bucket ARNs if provided
         if (props?.sourceBuckets) {
             for (const source of props.sourceBuckets) {
@@ -246,62 +247,6 @@ export class ServerAccessLogsBucket extends Construct {
                     this.validateBucketArn(source);
                 }
             }
-        }
-    }
-
-    /**
-     * Validates S3 bucket name format.
-     */
-    private validateBucketName(bucketName: string): void {
-        // Check length
-        if (bucketName.length < 3 || bucketName.length > 63) {
-            throw new Error(
-                `Bucket name must be between 3 and 63 characters long. Got: ${bucketName}`
-            );
-        }
-
-        // Check for uppercase letters
-        if (bucketName !== bucketName.toLowerCase()) {
-            throw new Error(
-                `Bucket name must not contain uppercase letters. Got: ${bucketName}`
-            );
-        }
-
-        // Check for underscores
-        if (bucketName.includes('_')) {
-            throw new Error(
-                `Bucket name must not contain underscores. Got: ${bucketName}`
-            );
-        }
-
-        // Check valid characters (lowercase letters, numbers, dots, hyphens)
-        const validCharPattern = /^[a-z0-9.-]+$/;
-        if (!validCharPattern.test(bucketName)) {
-            throw new Error(
-                `Bucket name can only contain lowercase letters, numbers, dots (.), and hyphens (-). Got: ${bucketName}`
-            );
-        }
-
-        // Check that it starts and ends with a letter or number
-        const startsEndsWithAlphanumeric = /^[a-z0-9].*[a-z0-9]$/;
-        if (!startsEndsWithAlphanumeric.test(bucketName)) {
-            throw new Error(
-                `Bucket name must begin and end with a letter or number. Got: ${bucketName}`
-            );
-        }
-
-        // Check for consecutive dots
-        if (bucketName.includes('..')) {
-            throw new Error(
-                `Bucket name must not contain consecutive dots. Got: ${bucketName}`
-            );
-        }
-
-        // Check for dot-dash or dash-dot patterns (not allowed adjacent to dots)
-        if (bucketName.includes('.-') || bucketName.includes('-.')) {
-            throw new Error(
-                `Bucket name must not contain dot-dash (.-) or dash-dot (-.) patterns. Got: ${bucketName}`
-            );
         }
     }
 
@@ -314,14 +259,11 @@ export class ServerAccessLogsBucket extends Construct {
         const match = arnPattern.exec(arn);
 
         if (!match) {
-            throw new Error(
+            Annotations.of(this).addError(
                 `Invalid S3 bucket ARN format. Expected format: arn:partition:s3:::bucket-name. Got: ${arn}`
             );
+            return;
         }
-
-        // Extract bucket name from ARN and validate it
-        const bucketName = match[1];
-        this.validateBucketName(bucketName);
     }
 
     /**
