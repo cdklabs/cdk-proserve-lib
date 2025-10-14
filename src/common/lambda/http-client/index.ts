@@ -266,9 +266,20 @@ export class HttpClient<TOptions extends HttpClientOptions> {
             host: parsedUrl.hostname
         };
 
+        // Prepare body and set appropriate headers
+        const bodyString = body ? JSON.stringify(body) : undefined;
+
         // Add content-type for requests with body
-        if (body && !requestHeaders['content-type']) {
+        if (bodyString && !requestHeaders['content-type']) {
             requestHeaders['content-type'] = 'application/json';
+        }
+
+        // Set Content-Length to prevent chunked encoding
+        if (bodyString) {
+            requestHeaders['content-length'] = Buffer.byteLength(
+                bodyString,
+                'utf8'
+            ).toString();
         }
 
         const request: HttpClientRequest = {
@@ -279,7 +290,7 @@ export class HttpClient<TOptions extends HttpClientOptions> {
             method,
             headers: requestHeaders,
             params: options?.params,
-            body: body ? JSON.stringify(body) : undefined
+            body: bodyString
         };
 
         return request;
