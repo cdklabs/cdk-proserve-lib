@@ -51,5 +51,3 @@ $ npx cdk deploy --profile test
 ## References
 
 - [AWS EC2 Image Builder User Guide](https://docs.aws.amazon.com/imagebuilder/latest/userguide/what-is-image-builder.html)
-- [DISA STIG Library](https://public.cyber.mil/stigs/)
-- [AWS STIG Automation](https://aws.amazon.com/blogs/publicsector/automating-stig-compliance-using-aws-ec2-image-builder/)
