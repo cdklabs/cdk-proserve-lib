@@ -10,6 +10,6 @@ export const compatibility: CompatibilityConfig = {
     partitions: {
         commercial: PartitionStatus.FULLY_COMPATIBLE,
         govcloud: PartitionStatus.FULLY_COMPATIBLE,
-        other: PartitionStatus.NEEDS_TESTING
+        other: PartitionStatus.NOT_COMPATIBLE
     }
 };

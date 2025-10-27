@@ -10,6 +10,7 @@ export const compatibility: CompatibilityConfig = {
     partitions: {
         commercial: PartitionStatus.FULLY_COMPATIBLE,
         govcloud: PartitionStatus.FULLY_COMPATIBLE,
-        other: PartitionStatus.NEEDS_TESTING
-    }
+        other: PartitionStatus.PARTIALLY_COMPATIBLE
+    },
+    notes: 'AWS_CLI and SCAP features are not available.'
 };

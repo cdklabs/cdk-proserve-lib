@@ -23,9 +23,9 @@ This document tracks the compatibility of all constructs, aspects, and patterns 
 |-----------|------------|----------|-------|-------|
 | apply-removal-policy | ✅ | ✅ | ✅ |  |
 | create-lambda-log-group | ✅ | ✅ | ✅ |  |
-| ec2-automated-shutdown | ✅ | ✅ | 🔍 |  |
+| ec2-automated-shutdown | ✅ | ✅ | ✅ |  |
 | rds-oracle-multi-tenant | ✅ | ✅ | 🔍 |  |
-| secure-sagemaker-notebook | ✅ | ✅ | 🔍 |  |
+| secure-sagemaker-notebook | ✅ | ✅ | ⚠️ | Policy restrictions are not automatically added in other partitions. |
 | security-compliance | ✅ | ⚠️ | ⚠️ | Some compliance rules may vary across partitions due to service availability differences. |
 | set-log-retention | ✅ | ✅ | ✅ |  |
 | sqs-require-ssl | ✅ | ✅ | ✅ |  |
@@ -37,18 +37,18 @@ This document tracks the compatibility of all constructs, aspects, and patterns 
 | Construct | Commercial | GovCloud | Other | Notes |
 |-----------|------------|----------|-------|-------|
 | dynamodb-provision-table | ✅ | ✅ | ⚠️ |  |
-| ec2-image-builder-get-image | ✅ | ✅ | 🔍 |  |
-| ec2-image-builder-start | ✅ | ✅ | 🔍 |  |
-| ec2-image-pipeline | ✅ | ✅ | 🔍 |  |
+| ec2-image-builder-get-image | ✅ | ✅ | ✅ |  |
+| ec2-image-builder-start | ✅ | ✅ | ✅ |  |
+| ec2-image-pipeline | ✅ | ✅ | ✅ |  |
 | friendly-embrace | ✅ | ✅ | ✅ |  |
 | iam-server-certificate | ✅ | ✅ | ✅ |  |
-| network-firewall | ✅ | ✅ | 🔍 |  |
-| network-firewall-endpoints | ✅ | ✅ | 🔍 |  |
+| network-firewall | ✅ | ✅ | ❌ |  |
+| network-firewall-endpoints | ✅ | ✅ | ❌ |  |
 | opensearch-admin-user | ✅ | ✅ | ✅ |  |
 | opensearch-provision-domain | ✅ | ✅ | ✅ |  |
 | opensearch-workflow | ✅ | ✅ | ⚠️ |  |
 | secure-function | ✅ | ✅ | ✅ |  |
-| web-application-firewall | ✅ | ✅ | 🔍 |  |
+| web-application-firewall | ✅ | ✅ | ❌ | Other partitions require static rule version configuration. |
 
 ---
 
@@ -57,5 +57,5 @@ This document tracks the compatibility of all constructs, aspects, and patterns 
 | Pattern | Commercial | GovCloud | Other | Notes |
 |-----------|------------|----------|-------|-------|
 | apigateway-static-hosting | ✅ | ✅ | ✅ |  |
-| ec2-linux-image-pipeline | ✅ | ✅ | 🔍 |  |
+| ec2-linux-image-pipeline | ✅ | ✅ | ⚠️ | AWS_CLI and SCAP features are not available. |
 | keycloak-service | ✅ | ✅ | 🔍 |  |
