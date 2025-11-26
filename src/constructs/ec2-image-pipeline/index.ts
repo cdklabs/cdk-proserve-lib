@@ -232,6 +232,14 @@ export class Ec2ImagePipeline extends Construct {
             role: role
         });
 
+        // If user provides a subnet, use that. Otherwise, use the first private subnet in VPC.
+        let subnetId: string | undefined;
+        if (props?.vpcConfiguration?.subnet?.subnetId) {
+            subnetId = props.vpcConfiguration.subnet.subnetId;
+        } else if (props?.vpcConfiguration?.vpc) {
+            subnetId = props.vpcConfiguration.vpc.privateSubnets[0].subnetId;
+        }
+
         // Infrastructure Configuration
         const infraConfig = new CfnInfrastructureConfiguration(
             this,
@@ -245,7 +253,7 @@ export class Ec2ImagePipeline extends Construct {
                 snsTopicArn: topic.topicArn,
                 description: 'Infrastructure Configuration for Image Builder',
                 securityGroupIds: securityGroupIds,
-                subnetId: props?.vpcConfiguration?.subnet?.subnetId
+                subnetId
             }
         );
 
