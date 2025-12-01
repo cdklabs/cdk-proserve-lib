@@ -44,9 +44,8 @@ describe('OnEvent Handler', () => {
             waitForDatabaseReady,
             validateOracleDatabase,
             enableOracleMultiTenant
-        } = await import(
-            '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-        );
+        } =
+            await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
         vi.mocked(waitForDatabaseReady).mockResolvedValue();
         vi.mocked(validateOracleDatabase).mockResolvedValue({
             DBInstanceIdentifier: mockDbInstanceId,
@@ -64,16 +63,14 @@ describe('OnEvent Handler', () => {
         it('should wait for database to be ready before enabling MultiTenant', async () => {
             const event = buildRdsMultiTenantCreateEvent();
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event');
             const {
                 waitForDatabaseReady,
                 validateOracleDatabase,
                 enableOracleMultiTenant
-            } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
 
             const result = await handler(event, mockContext);
 
@@ -96,16 +93,14 @@ describe('OnEvent Handler', () => {
             const dbInstanceId = 'test-oracle-instance-ready';
             const event = buildRdsMultiTenantCreateEvent(dbInstanceId);
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event');
             const {
                 waitForDatabaseReady,
                 validateOracleDatabase,
                 enableOracleMultiTenant
-            } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
 
             const result = await handler(event, mockContext);
 
@@ -130,12 +125,10 @@ describe('OnEvent Handler', () => {
             const dbInstanceId = 'test-oracle-instance-timeout';
             const event = buildRdsMultiTenantCreateEvent(dbInstanceId);
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
-            );
-            const { waitForDatabaseReady } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event');
+            const { waitForDatabaseReady } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
 
             // Mock waitForDatabaseReady to throw timeout error
             vi.mocked(waitForDatabaseReady).mockRejectedValue(
@@ -153,12 +146,10 @@ describe('OnEvent Handler', () => {
             const dbInstanceId = 'test-oracle-instance-failed';
             const event = buildRdsMultiTenantCreateEvent(dbInstanceId);
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
-            );
-            const { waitForDatabaseReady } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event');
+            const { waitForDatabaseReady } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
 
             // Mock waitForDatabaseReady to throw failed state error
             vi.mocked(waitForDatabaseReady).mockRejectedValue(
@@ -176,12 +167,10 @@ describe('OnEvent Handler', () => {
             const dbInstanceId = 'test-oracle-instance-wait-error';
             const event = buildRdsMultiTenantCreateEvent(dbInstanceId);
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
-            );
-            const { waitForDatabaseReady } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event');
+            const { waitForDatabaseReady } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
 
             // Mock waitForDatabaseReady to throw an error
             vi.mocked(waitForDatabaseReady).mockRejectedValue(
@@ -200,9 +189,8 @@ describe('OnEvent Handler', () => {
             // Remove the DBInstanceIdentifier to test validation
             delete (event.ResourceProperties as any).DBInstanceIdentifier;
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event');
 
             await expect(handler(event, mockContext)).rejects.toThrow(
                 'DBInstanceIdentifier is required in ResourceProperties'
@@ -215,16 +203,14 @@ describe('OnEvent Handler', () => {
             const dbInstanceId = 'test-oracle-instance-update';
             const event = buildRdsMultiTenantUpdateEvent(dbInstanceId);
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event');
             const {
                 waitForDatabaseReady,
                 validateOracleDatabase,
                 enableOracleMultiTenant
-            } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
 
             const result = await handler(event, mockContext);
 
@@ -242,16 +228,14 @@ describe('OnEvent Handler', () => {
             const dbInstanceId = 'test-oracle-instance-delete';
             const event = buildRdsMultiTenantDeleteEvent(dbInstanceId);
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event');
             const {
                 waitForDatabaseReady,
                 validateOracleDatabase,
                 enableOracleMultiTenant
-            } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
 
             const result = await handler(event, mockContext);
 
@@ -270,9 +254,8 @@ describe('OnEvent Handler', () => {
             // Change request type to invalid
             (event as any).RequestType = 'InvalidType';
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/on-event');
 
             await expect(handler(event, mockContext)).rejects.toThrow(
                 'Unsupported request type: InvalidType'

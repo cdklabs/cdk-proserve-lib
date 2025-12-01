@@ -9,8 +9,7 @@ import { KeycloakCluster } from '../cluster';
 /**
  * Options for configuring Keycloak
  */
-export interface Keycloak_26_3_2_ConfigurationBuilderOptions
-    extends ServiceConfiguration {
+export interface Keycloak_26_3_2_ConfigurationBuilderOptions extends ServiceConfiguration {
     /**
      * Determines whether proxy configuration should be specified on the service
      */

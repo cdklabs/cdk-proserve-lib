@@ -19,8 +19,7 @@ export interface IHost {
  */
 export abstract class CommonHost<
     TConfiguration extends CommonHostingConfiguration
-> implements IHost
-{
+> implements IHost {
     /**
      * Provides an error handler which only obfuscates errors for a production system
      *

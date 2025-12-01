@@ -1065,14 +1065,12 @@ export namespace KeycloakService {
     /**
      * Configuration options for a non-serverless database model
      */
-    export interface TraditionalDatabaseConfiguration
-        extends CommonDatabaseConfiguration {}
+    export interface TraditionalDatabaseConfiguration extends CommonDatabaseConfiguration {}
 
     /**
      * Configuration options for a serverless database model
      */
-    export interface ServerlessDatabaseConfiguration
-        extends CommonDatabaseConfiguration {
+    export interface ServerlessDatabaseConfiguration extends CommonDatabaseConfiguration {
         /**
          * How to scale the database
          *
