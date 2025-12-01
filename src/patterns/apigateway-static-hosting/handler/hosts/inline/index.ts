@@ -10,8 +10,7 @@ import { CommonHost } from '../common';
 /**
  * Configuration for the inline file system backed hosting scheme
  */
-export interface InlineHostingConfiguration
-    extends CommonHostingConfiguration {}
+export interface InlineHostingConfiguration extends CommonHostingConfiguration {}
 
 /**
  * Static asset host backed by the local file system
