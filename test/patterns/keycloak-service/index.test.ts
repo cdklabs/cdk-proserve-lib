@@ -19,6 +19,8 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
     let vpc: Vpc;
     let image: ContainerImage;
 
+    const latestVersion = KeycloakService.EngineVersion.V26_5_2;
+
     beforeEach(() => {
         stack = getStack();
 
@@ -27,7 +29,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             maxAzs: 2
         });
 
-        image = ContainerImage.fromRegistry('keycloak/keycloak:26.3.2');
+        image = ContainerImage.fromRegistry('keycloak/keycloak:26.5.2');
 
         NagSuppressions.addStackSuppressions(
             stack,
@@ -86,7 +88,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -113,7 +115,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             const service = new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -146,7 +148,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             const service = new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -167,7 +169,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'https://auth.example.com'
@@ -192,7 +194,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.example.com:8080'
@@ -217,7 +219,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.example.com/path'
@@ -242,7 +244,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.example.com'
@@ -268,7 +270,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.example.com'
@@ -294,7 +296,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.example.com'
@@ -323,7 +325,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.example.com'
@@ -351,7 +353,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -374,7 +376,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -400,7 +402,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.different.com'
@@ -427,7 +429,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.example.com',
@@ -454,7 +456,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com',
@@ -485,7 +487,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -514,7 +516,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -534,7 +536,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -578,7 +580,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -602,7 +604,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -624,7 +626,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -647,7 +649,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -682,7 +684,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -720,7 +722,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -764,7 +766,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -811,7 +813,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.example.com'
@@ -845,7 +847,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -882,7 +884,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -918,7 +920,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -956,7 +958,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.example.com'
@@ -1003,7 +1005,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1044,7 +1046,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1099,7 +1101,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1137,7 +1139,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1184,7 +1186,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1209,7 +1211,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1229,7 +1231,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1254,7 +1256,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1287,7 +1289,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1310,7 +1312,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1357,7 +1359,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1389,7 +1391,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1423,7 +1425,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1460,7 +1462,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
             new KeycloakService(stack, id, {
                 keycloak: {
                     image,
-                    version: KeycloakService.EngineVersion.V26_3_2,
+                    version: latestVersion,
                     configuration: {
                         hostnames: {
                             default: 'auth.example.com'
@@ -1498,6 +1500,23 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                     keycloak: {
                         image,
                         version: KeycloakService.EngineVersion.V26_3_2,
+                        configuration: {
+                            hostnames: {
+                                default: 'auth.example.com'
+                            }
+                        }
+                    },
+                    vpc
+                });
+            }).not.toThrow();
+        });
+
+        it('supports version 26.5.2', () => {
+            expect(() => {
+                new KeycloakService(stack, id, {
+                    keycloak: {
+                        image,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.example.com'
@@ -1549,7 +1568,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.example.com'
@@ -1581,7 +1600,7 @@ describeCdkTest(KeycloakService, (id, getStack, getTemplate) => {
                 new KeycloakService(stack, id, {
                     keycloak: {
                         image,
-                        version: KeycloakService.EngineVersion.V26_3_2,
+                        version: latestVersion,
                         configuration: {
                             hostnames: {
                                 default: 'auth.example.com'

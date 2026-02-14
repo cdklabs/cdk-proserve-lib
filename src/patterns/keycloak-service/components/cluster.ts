@@ -18,9 +18,9 @@ import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { CfnDBProxyTargetGroup } from 'aws-cdk-lib/aws-rds';
 import { Construct } from 'constructs';
 import { KeycloakService } from '..';
-import { PortConfiguration } from '../types/configuration';
 import { KeycloakConfigurationBuilder } from './configuration/builder';
 import { KeycloakDatabase } from './database';
+import { PortConfiguration } from '../types/configuration';
 
 /**
  * Properties for configuring the cluster for Keycloak

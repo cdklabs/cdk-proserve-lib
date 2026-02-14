@@ -3,13 +3,15 @@
 
 import { Secret } from 'aws-cdk-lib/aws-ecs';
 import { KeycloakConfigurationBuilder } from './builder';
+import { KeycloakService } from '../..';
 import { ServiceConfiguration } from '../../types/configuration';
+import { KeycloakVersion } from '../../types/version';
 import { KeycloakCluster } from '../cluster';
 
 /**
  * Options for configuring Keycloak
  */
-export interface Keycloak_26_3_2_ConfigurationBuilderOptions extends ServiceConfiguration {
+export interface Keycloak_26_ConfigurationBuilderOptions extends ServiceConfiguration {
     /**
      * Determines whether proxy configuration should be specified on the service
      */
@@ -24,19 +26,41 @@ export interface Keycloak_26_3_2_ConfigurationBuilderOptions extends ServiceConf
  *
  * Secure configurations will be consumed by Fargate through AWS Secrets Manager
  *
- * This builder supports Keycloak 26.3.2
+ * This builder supports multiple versions of Keycloak 26
  */
-export class Keycloak_26_3_2_ConfigurationBuilder extends KeycloakConfigurationBuilder {
+export class Keycloak_26_ConfigurationBuilder extends KeycloakConfigurationBuilder {
+    /**
+     * Determines if this configuration builder supports a given Keycloak version
+     * @param version Keycloak version to check for compatibility
+     * @returns True if this configuration builder supports the given Keycloak version, false otherwise
+     */
+    static supports(version: KeycloakService.EngineVersion): boolean {
+        return this.supportsVersion(
+            this.supportedVersions.map((v) =>
+                KeycloakService.EngineVersion.of(v)
+            ),
+            version
+        );
+    }
+
+    /**
+     * Versions of Keycloak that this configuration builder supports
+     */
+    private static supportedVersions: KeycloakVersion[] = [
+        KeycloakVersion.V26_3_2,
+        KeycloakVersion.V26_5_2
+    ];
+
     /**
      * Options for configuring Keycloak
      */
-    private readonly opts: Keycloak_26_3_2_ConfigurationBuilderOptions;
+    private readonly opts: Keycloak_26_ConfigurationBuilderOptions;
 
     /**
      * Create a new configuration builder for Keycloak 26.3.2
      * @param options Options for configuring Keycloak
      */
-    constructor(options: Keycloak_26_3_2_ConfigurationBuilderOptions) {
+    constructor(options: Keycloak_26_ConfigurationBuilderOptions) {
         super();
 
         this.opts = options;
