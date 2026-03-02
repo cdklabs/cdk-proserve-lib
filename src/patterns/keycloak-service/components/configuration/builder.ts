@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { Secret } from 'aws-cdk-lib/aws-ecs';
+import { KeycloakService } from '../..';
 
 /**
  * Builder for creating dynamic standard and secure Keycloak configurations that are consumed by the Keycloak
@@ -12,6 +13,19 @@ import { Secret } from 'aws-cdk-lib/aws-ecs';
  * Secure configurations will be consumed by Fargate through AWS Secrets Manager
  */
 export abstract class KeycloakConfigurationBuilder {
+    /**
+     * Determines whether the configuration builder supports a specific verison of Keycloak
+     * @param supportedVersions Versions supported by the configuration builder
+     * @param targetVersion Version to check
+     * @returns Whether the version is supported by the configuration builder
+     */
+    protected static supportsVersion(
+        supportedVersions: KeycloakService.EngineVersion[],
+        targetVersion: KeycloakService.EngineVersion
+    ): boolean {
+        return supportedVersions.some((v) => v.is(targetVersion));
+    }
+
     /**
      * Create a new configuration builder
      */
