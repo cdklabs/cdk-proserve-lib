@@ -30679,6 +30679,7 @@ The full version string.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.property.V26_3_2">V26_3_2</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion</code> | Version 26.3.2. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.property.V26_5_2">V26_5_2</a></code> | <code>@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion</code> | Version 26.5.2. |
 
 ---
 
@@ -30691,6 +30692,18 @@ public readonly V26_3_2: EngineVersion;
 - *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion
 
 Version 26.3.2.
+
+---
+
+##### `V26_5_2`<sup>Required</sup> <a name="V26_5_2" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion.property.V26_5_2"></a>
+
+```typescript
+public readonly V26_5_2: EngineVersion;
+```
+
+- *Type:* @cdklabs/cdk-proserve-lib.patterns.KeycloakService.EngineVersion
+
+Version 26.5.2.
 
 ---
 
