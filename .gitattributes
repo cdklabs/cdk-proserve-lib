@@ -2,7 +2,7 @@
 
 * text=auto eol=lf
 /.codecov.yml linguist-generated
-/.eslintrc.json linguist-generated
+/.eslintrc.json linguist-generated linguist-language=JSON-with-Comments
 /.gitattributes linguist-generated
 /.github/pull_request_template.md linguist-generated
 /.github/workflows/auto-approve.yml linguist-generated
@@ -11,6 +11,7 @@
 /.github/workflows/lint.yml linguist-generated
 /.github/workflows/pull-request-lint.yml linguist-generated
 /.github/workflows/release.yml linguist-generated
+/.github/workflows/retry-automerge.yml linguist-generated
 /.github/workflows/upgrade-cdklabs-projen-project-types-main.yml linguist-generated
 /.github/workflows/upgrade-dev-deps-main.yml linguist-generated
 /.github/workflows/upgrade-main.yml linguist-generated
@@ -26,5 +27,5 @@
 /API.md linguist-generated
 /LICENSE linguist-generated
 /package.json linguist-generated
-/tsconfig.dev.json linguist-generated
+/tsconfig.dev.json linguist-generated linguist-language=JSON-with-Comments
 /yarn.lock linguist-generated

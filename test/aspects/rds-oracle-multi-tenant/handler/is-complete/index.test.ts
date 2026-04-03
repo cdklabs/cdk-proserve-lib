@@ -56,16 +56,14 @@ describe('IsComplete Handler', () => {
         it('should return IsComplete: true when conversion is completed', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockResolvedValue(
                 mockOracleInstanceAvailable
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             const result = await handler(event, mockContext);
 
@@ -89,16 +87,14 @@ describe('IsComplete Handler', () => {
         it('should return IsComplete: false when conversion is in progress', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockResolvedValue(
                 mockOracleInstanceModifying
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             const result = await handler(event, mockContext);
 
@@ -112,16 +108,14 @@ describe('IsComplete Handler', () => {
         it('should throw error when conversion has failed', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockResolvedValue(
                 mockOracleInstanceFailed
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             await expect(handler(event, mockContext)).rejects.toThrow(
                 'MultiTenant conversion failed with database status: failed'
@@ -134,18 +128,16 @@ describe('IsComplete Handler', () => {
         it('should handle incompatible-parameters status as failed', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockResolvedValue(
                 buildMockOracleInstance({
                     DBInstanceStatus: 'incompatible-parameters'
                 })
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             await expect(handler(event, mockContext)).rejects.toThrow(
                 'MultiTenant conversion failed with database status: incompatible-parameters'
@@ -155,18 +147,16 @@ describe('IsComplete Handler', () => {
         it('should handle database with null pending modifications', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockResolvedValue(
                 buildMockOracleInstance({
                     PendingModifiedValues: null as any
                 })
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             const result = await handler(event, mockContext);
 
@@ -179,18 +169,16 @@ describe('IsComplete Handler', () => {
         it('should handle database with undefined status', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockResolvedValue(
                 buildMockOracleInstance({
                     DBInstanceStatus: undefined
                 })
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             const result = await handler(event, mockContext);
 
@@ -201,15 +189,13 @@ describe('IsComplete Handler', () => {
         it('should handle RDS client errors gracefully', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             const testError = new Error('RDS API Error');
             vi.mocked(getDatabaseInstance).mockRejectedValue(testError);
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             await expect(handler(event, mockContext)).rejects.toThrow(
                 'RDS API Error'
@@ -222,14 +208,12 @@ describe('IsComplete Handler', () => {
         it('should handle non-Error exceptions', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockRejectedValue('String error');
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             await expect(handler(event, mockContext)).rejects.toThrow(
                 `Unknown error checking CREATE completion for ${mockDbInstanceId}`
@@ -239,18 +223,16 @@ describe('IsComplete Handler', () => {
         it('should handle database with unknown status as in progress', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockResolvedValue(
                 buildMockOracleInstance({
                     DBInstanceStatus: 'unknown-status'
                 })
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             const result = await handler(event, mockContext);
 
@@ -263,16 +245,14 @@ describe('IsComplete Handler', () => {
         it('should return IsComplete: true immediately for UPDATE operations', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Update');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockResolvedValue(
                 mockOracleInstanceAvailable
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             const result = await handler(event, mockContext);
 
@@ -293,16 +273,14 @@ describe('IsComplete Handler', () => {
         it('should handle UPDATE operation when database state cannot be retrieved', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Update');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockRejectedValue(
                 new Error('Database not found')
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             const result = await handler(event, mockContext);
 
@@ -315,9 +293,8 @@ describe('IsComplete Handler', () => {
         it('should return IsComplete: true immediately for DELETE operations', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Delete');
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             const result = await handler(event, mockContext);
 
@@ -338,9 +315,8 @@ describe('IsComplete Handler', () => {
             // Remove the DBInstanceIdentifier to test validation
             delete (event.ResourceProperties as any).DBInstanceIdentifier;
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             await expect(handler(event, mockContext)).rejects.toThrow(
                 'DBInstanceIdentifier is required in ResourceProperties'
@@ -352,9 +328,8 @@ describe('IsComplete Handler', () => {
             // Change request type to invalid
             (event as any).RequestType = 'InvalidType';
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             await expect(handler(event, mockContext)).rejects.toThrow(
                 'Unsupported request type: InvalidType'
@@ -366,16 +341,14 @@ describe('IsComplete Handler', () => {
         it('should log database status and pending modifications', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockResolvedValue(
                 mockOracleInstanceModifying
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             await handler(event, mockContext);
 
@@ -387,16 +360,14 @@ describe('IsComplete Handler', () => {
         it('should handle empty pending modifications object', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockResolvedValue(
                 mockOracleInstanceAvailable
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             const result = await handler(event, mockContext);
 
@@ -413,9 +384,8 @@ describe('IsComplete Handler', () => {
         it('should format response data correctly with pending modifications', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             const pendingModifications = {
                 MultiTenant: true,
                 DBInstanceClass: 'db.t3.medium'
@@ -427,9 +397,8 @@ describe('IsComplete Handler', () => {
                 })
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             const result = await handler(event, mockContext);
 
@@ -441,18 +410,16 @@ describe('IsComplete Handler', () => {
         it('should handle undefined pending modifications', async () => {
             const event = buildRdsMultiTenantIsCompleteEvent('Create');
 
-            const { getDatabaseInstance } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client'
-            );
+            const { getDatabaseInstance } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/utils/rds-client');
             vi.mocked(getDatabaseInstance).mockResolvedValue(
                 buildMockOracleInstance({
                     PendingModifiedValues: undefined
                 })
             );
 
-            const { handler } = await import(
-                '../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete'
-            );
+            const { handler } =
+                await import('../../../../../src/aspects/rds-oracle-multi-tenant/handler/is-complete');
 
             const result = await handler(event, mockContext);
 

@@ -196,7 +196,8 @@
       "name": "eslint",
       "description": "Runs eslint against the codebase",
       "env": {
-        "ESLINT_USE_FLAT_CONFIG": "false"
+        "ESLINT_USE_FLAT_CONFIG": "false",
+        "NODE_NO_WARNINGS": "1"
       },
       "steps": [
         {
@@ -377,6 +378,9 @@
           "spawn": "update:readme"
         },
         {
+          "spawn": "update:compatibility"
+        },
+        {
           "spawn": "bundle"
         }
       ]
@@ -475,6 +479,16 @@
         }
       ]
     },
+    "update:compatibility": {
+      "name": "update:compatibility",
+      "description": "Updates the compatibility matrix with current constructs, aspects, and patterns.",
+      "steps": [
+        {
+          "exec": "yarn ts-node --project tsconfig.dev.json utilities/generators/lib/update-compatibility-matrix.ts",
+          "name": "Runs script to automatically update the compatibility matrix."
+        }
+      ]
+    },
     "update:readme": {
       "name": "update:readme",
       "description": "Updates the README with library package information.",
@@ -505,7 +519,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=latest --peer --no-deprecated --dep=dev,peer,prod,optional --filter=cdklabs-projen-project-types,projen"
+          "exec": "npx npm-check-updates@18 --upgrade --target=latest --peer --no-deprecated --dep=dev,peer,prod,optional --filter=cdklabs-projen-project-types,projen"
         },
         {
           "exec": "yarn install --check-files"
@@ -529,7 +543,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@aws-sdk/client-pricing,@aws-sdk/client-wafv2,@aws-sdk/util-stream,@types/glob,@types/js-yaml,@types/supertest,@types/uuid,@vitest/coverage-v8,aws-sdk-client-mock,aws-sdk-client-mock-vitest,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,glob,husky,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,memfs,prettier,supertest,ts-node,typescript,vitest"
+          "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@aws-sdk/client-pricing,@aws-sdk/client-wafv2,@aws-sdk/util-stream,@types/glob,@types/js-yaml,@types/supertest,@types/uuid,@vitest/coverage-v8,aws-sdk-client-mock,aws-sdk-client-mock-vitest,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,glob,husky,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,memfs,prettier,supertest,ts-node,typescript,vitest"
         },
         {
           "exec": "yarn install --check-files"

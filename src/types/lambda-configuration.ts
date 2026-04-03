@@ -40,5 +40,4 @@ export interface LambdaConfiguration extends BaseLambdaConfiguration {
     readonly logGroupRetention?: RetentionDays;
 }
 
-export interface AwsCustomResourceLambdaConfiguration
-    extends BaseLambdaConfiguration {}
+export interface AwsCustomResourceLambdaConfiguration extends BaseLambdaConfiguration {}

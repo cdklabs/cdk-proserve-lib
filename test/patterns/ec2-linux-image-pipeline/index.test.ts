@@ -72,7 +72,7 @@ describeCdkTest(Ec2LinuxImagePipeline, (id, getStack, getTemplate) => {
                                 { Ref: 'AWS::Partition' },
                                 ':imagebuilder:',
                                 { Ref: 'AWS::Region' },
-                                ':aws:component/stig-build-linux-high/x.x.x'
+                                ':aws:component/stig-build-linux/x.x.x'
                             ]
                         ]
                     }

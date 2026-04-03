@@ -41,6 +41,7 @@ export const configureLinting = (project: CdklabsTypeScriptProject) => {
         '.eslintrc.json',
         '.prettierrc.json',
         'API.md',
+        'COMPATIBILITY.md',
         'package.json',
         'tsconfig.dev.json',
         'yarn.lock'

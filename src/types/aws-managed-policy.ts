@@ -373,9 +373,6 @@ export class AwsManagedPolicy {
     public static readonly AWS_APPLICATION_DISCOVERY_AGENT_ACCESS =
         'AWSApplicationDiscoveryAgentAccess';
 
-    public static readonly AWS_OPS_WORKS_INSTANCE_REGISTRATION =
-        'AWSOpsWorksInstanceRegistration';
-
     public static readonly AWS_CODE_PIPELINE_APPROVER_ACCESS =
         'AWSCodePipelineApproverAccess';
 
@@ -392,9 +389,6 @@ export class AwsManagedPolicy {
         'ServerMigrationConnector';
 
     public static readonly IAM_USER_CHANGE_PASSWORD = 'IAMUserChangePassword';
-
-    public static readonly AWS_OPS_WORKS_CM_INSTANCE_PROFILE_ROLE =
-        'AWSOpsWorksCMInstanceProfileRole';
 
     public static readonly AMAZON_REKOGNITION_FULL_ACCESS =
         'AmazonRekognitionFullAccess';
@@ -469,9 +463,6 @@ export class AwsManagedPolicy {
 
     public static readonly AWS_MARKETPLACE_GET_ENTITLEMENTS =
         'AWSMarketplaceGetEntitlements';
-
-    public static readonly AWS_OPS_WORKS_CLOUD_WATCH_LOGS =
-        'AWSOpsWorksCloudWatchLogs';
 
     public static readonly AMAZON_LEX_RUN_BOTS_ONLY = 'AmazonLexRunBotsOnly';
 
@@ -634,12 +625,6 @@ export class AwsManagedPolicy {
     public static readonly AWS_FM_MEMBER_READ_ONLY_ACCESS =
         'AWSFMMemberReadOnlyAccess';
 
-    public static readonly AWS_IO_T1_CLICK_READ_ONLY_ACCESS =
-        'AWSIoT1ClickReadOnlyAccess';
-
-    public static readonly AWS_IO_T1_CLICK_FULL_ACCESS =
-        'AWSIoT1ClickFullAccess';
-
     public static readonly AMAZON_EKS_CLUSTER_POLICY = 'AmazonEKSClusterPolicy';
 
     public static readonly AMAZON_EKS_CNI_POLICY = 'AmazonEKS_CNI_Policy';
@@ -681,9 +666,6 @@ export class AwsManagedPolicy {
 
     public static readonly AWS_SSO_MEMBER_ACCOUNT_ADMINISTRATOR =
         'AWSSSOMemberAccountAdministrator';
-
-    public static readonly AWS_MARKETPLACE_IMAGE_BUILD_FULL_ACCESS =
-        'AWSMarketplaceImageBuildFullAccess';
 
     public static readonly AWS_DISCOVERY_CONTINUOUS_EXPORT_FIREHOSE_POLICY =
         'AWSDiscoveryContinuousExportFirehosePolicy';
@@ -880,12 +862,6 @@ export class AwsManagedPolicy {
 
     public static readonly AWS_RESOURCE_ACCESS_MANAGER_FULL_ACCESS =
         'AWSResourceAccessManagerFullAccess';
-
-    public static readonly AWS_OPS_WORKS_REGISTER_CLI_ON_PREMISES =
-        'AWSOpsWorksRegisterCLI_OnPremises';
-
-    public static readonly AWS_OPS_WORKS_REGISTER_CLI_EC2 =
-        'AWSOpsWorksRegisterCLI_EC2';
 
     public static readonly AWS_CERTIFICATE_MANAGER_PRIVATE_CA_PRIVILEGED_USER =
         'AWSCertificateManagerPrivateCAPrivilegedUser';
@@ -1390,8 +1366,6 @@ export class AwsManagedPolicy {
     public static readonly AMAZON_PROMETHEUS_REMOTE_WRITE_ACCESS =
         'AmazonPrometheusRemoteWriteAccess';
 
-    public static readonly AWS_OPS_WORKS_FULL_ACCESS = 'AWSOpsWorks_FullAccess';
-
     public static readonly AWS_ELASTIC_BEANSTALK_READ_ONLY =
         'AWSElasticBeanstalkReadOnly';
 
@@ -1714,12 +1688,6 @@ export class AwsManagedPolicy {
 
     public static readonly AMAZON_EKS_LOCAL_OUTPOST_CLUSTER_POLICY =
         'AmazonEKSLocalOutpostClusterPolicy';
-
-    public static readonly GROUND_TRUTH_SYNTHETIC_CONSOLE_READ_ONLY_ACCESS =
-        'GroundTruthSyntheticConsoleReadOnlyAccess';
-
-    public static readonly GROUND_TRUTH_SYNTHETIC_CONSOLE_FULL_ACCESS =
-        'GroundTruthSyntheticConsoleFullAccess';
 
     public static readonly AMAZON_SSM_MANAGED_EC2_INSTANCE_DEFAULT_POLICY =
         'AmazonSSMManagedEC2InstanceDefaultPolicy';
@@ -2342,6 +2310,147 @@ export class AwsManagedPolicy {
 
     public static readonly AMAZON_SAGE_MAKER_PARTNER_APPS_FULL_ACCESS =
         'AmazonSageMakerPartnerAppsFullAccess';
+
+    public static readonly AWS_ELEMENTAL_MEDIA_CONNECT_READ_ONLY_ACCESS =
+        'AWSElementalMediaConnectReadOnlyAccess';
+
+    public static readonly AWS_ELEMENTAL_MEDIA_CONNECT_FULL_ACCESS =
+        'AWSElementalMediaConnectFullAccess';
+
+    public static readonly AWS_BACKUP_SEARCH_OPERATOR_ACCESS =
+        'AWSBackupSearchOperatorAccess';
+
+    public static readonly AWS_IO_T_MANAGED_INTEGRATIONS_FULL_ACCESS =
+        'AWSIoTManagedIntegrationsFullAccess';
+
+    public static readonly GIT_LAB_DUO_WITH_AMAZON_Q_PERMISSIONS_POLICY =
+        'GitLabDuoWithAmazonQPermissionsPolicy';
+
+    public static readonly AWS_QUICK_SETUP_JITNA_DEPLOYMENT_ROLE_POLICY =
+        'AWSQuickSetupJITNADeploymentRolePolicy';
+
+    public static readonly AMAZON_TIMESTREAM_INFLUX_DB_FULL_ACCESS_WITHOUT_MARKETPLACE_ACCESS =
+        'AmazonTimestreamInfluxDBFullAccessWithoutMarketplaceAccess';
+
+    public static readonly AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_SESSION_POLICY =
+        'AWSSystemsManagerJustInTimeAccessTokenSessionPolicy';
+
+    public static readonly AWS_SYSTEMS_MANAGER_JUST_IN_TIME_ACCESS_TOKEN_POLICY =
+        'AWSSystemsManagerJustInTimeAccessTokenPolicy';
+
+    public static readonly AWS_QUICK_SETUP_MANAGE_JITNA_RESOURCES_EXECUTION_POLICY =
+        'AWSQuickSetupManageJITNAResourcesExecutionPolicy';
+
+    public static readonly AWS_SYSTEMS_MANAGER_JUST_IN_TIME_NODE_ACCESS_ROLE_PROPAGATION_POLICY =
+        'AWSSystemsManagerJustInTimeNodeAccessRolePropagationPolicy';
+
+    public static readonly AWS_QUICK_SIGHT_SECRETS_MANAGER_WRITE_POLICY =
+        'AWSQuickSightSecretsManagerWritePolicy';
+
+    public static readonly AWS_PRIVATE_CA_CONNECTOR_FOR_KUBERNETES_POLICY =
+        'AWSPrivateCAConnectorForKubernetesPolicy';
+
+    public static readonly AMAZON_DYNAMO_DB_FULL_ACCESS_V2 =
+        'AmazonDynamoDBFullAccess_v2';
+
+    public static readonly AMAZON_GUARD_DUTY_FULL_ACCESS_V2 =
+        'AmazonGuardDutyFullAccess_v2';
+
+    public static readonly AWS_NETWORK_FIREWALL_READ_ONLY_ACCESS =
+        'AWSNetworkFirewallReadOnlyAccess';
+
+    public static readonly AWS_NETWORK_FIREWALL_FULL_ACCESS =
+        'AWSNetworkFirewallFullAccess';
+
+    public static readonly MULTI_PARTY_APPROVAL_READ_ONLY_ACCESS =
+        'MultiPartyApprovalReadOnlyAccess';
+
+    public static readonly MULTI_PARTY_APPROVAL_FULL_ACCESS =
+        'MultiPartyApprovalFullAccess';
+
+    public static readonly AMAZON_EKS_DASHBOARD_CONSOLE_READ_ONLY =
+        'AmazonEKSDashboardConsoleReadOnly';
+
+    public static readonly AWS_PCS_COMPUTE_NODE_POLICY =
+        'AWSPCSComputeNodePolicy';
+
+    public static readonly AMAZON_BEDROCK_LIMITED_ACCESS =
+        'AmazonBedrockLimitedAccess';
+
+    public static readonly AMAZON_BEDROCK_MARKETPLACE_ACCESS =
+        'AmazonBedrockMarketplaceAccess';
+
+    public static readonly AMAZON_INSPECTOR2_FULL_ACCESS_V2 =
+        'AmazonInspector2FullAccess_v2';
+
+    public static readonly SAGE_MAKER_STUDIO_ADMIN_PROJECT_USER_ROLE_POLICY =
+        'SageMakerStudioAdminProjectUserRolePolicy';
+
+    public static readonly AMAZON_SAGE_MAKER_HYPER_POD_OBSERVABILITY_ADMIN_ACCESS =
+        'AmazonSageMakerHyperPodObservabilityAdminAccess';
+
+    public static readonly AMAZON_BEDROCK_AGENT_CORE_MEMORY_BEDROCK_MODEL_INFERENCE_EXECUTION_ROLE_POLICY =
+        'AmazonBedrockAgentCoreMemoryBedrockModelInferenceExecutionRolePolicy';
+
+    public static readonly BEDROCK_AGENT_CORE_FULL_ACCESS =
+        'BedrockAgentCoreFullAccess';
+
+    public static readonly AWS_ROLES_ANYWHERE_FULL_ACCESS =
+        'AWSRolesAnywhereFullAccess';
+
+    public static readonly AWS_ROLES_ANYWHERE_READ_ONLY =
+        'AWSRolesAnywhereReadOnly';
+
+    public static readonly AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_LOAD_BALANCERS =
+        'AmazonECSInfrastructureRolePolicyForLoadBalancers';
+
+    public static readonly AWS_QUICK_SETUP_START_STOP_INSTANCES_EXECUTION_POLICY =
+        'AWSQuickSetupStartStopInstancesExecutionPolicy';
+
+    public static readonly AWS_QUICK_SETUP_START_SSM_ASSOCIATIONS_EXECUTION_POLICY =
+        'AWSQuickSetupStartSSMAssociationsExecutionPolicy';
+
+    public static readonly ROSA_SHARED_VPC_ROUTE53_POLICY =
+        'ROSASharedVPCRoute53Policy';
+
+    public static readonly ROSA_SHARED_VPC_ENDPOINT_POLICY =
+        'ROSASharedVPCEndpointPolicy';
+
+    public static readonly AWS_MANAGEMENT_CONSOLE_BASIC_USER_ACCESS =
+        'AWSManagementConsoleBasicUserAccess';
+
+    public static readonly SAGE_MAKER_STUDIO_USER_IAM_DEFAULT_EXECUTION_POLICY =
+        'SageMakerStudioUserIAMDefaultExecutionPolicy';
+
+    public static readonly SAGE_MAKER_STUDIO_ADMIN_IAM_PERMISSIVE_EXECUTION_POLICY =
+        'SageMakerStudioAdminIAMPermissiveExecutionPolicy';
+
+    public static readonly SAGE_MAKER_STUDIO_ADMIN_IAM_DEFAULT_EXECUTION_POLICY =
+        'SageMakerStudioAdminIAMDefaultExecutionPolicy';
+
+    public static readonly SAGE_MAKER_STUDIO_USER_IAM_PERMISSIVE_EXECUTION_POLICY =
+        'SageMakerStudioUserIAMPermissiveExecutionPolicy';
+
+    public static readonly SAGE_MAKER_STUDIO_USER_IAM_CONSOLE_POLICY =
+        'SageMakerStudioUserIAMConsolePolicy';
+
+    public static readonly SAGE_MAKER_STUDIO_ADMIN_IAM_CONSOLE_POLICY =
+        'SageMakerStudioAdminIAMConsolePolicy';
+
+    public static readonly AMAZON_SAGE_MAKER_HYPER_POD_TRAINING_OPERATOR_ACCESS =
+        'AmazonSageMakerHyperPodTrainingOperatorAccess';
+
+    public static readonly AMAZON_EC2_IMAGE_REFERENCES_ACCESS_POLICY =
+        'AmazonEC2ImageReferencesAccessPolicy';
+
+    public static readonly AMAZON_ECS_INFRASTRUCTURE_ROLE_POLICY_FOR_MANAGED_INSTANCES =
+        'AmazonECSInfrastructureRolePolicyForManagedInstances';
+
+    public static readonly AMAZON_ECS_INSTANCE_ROLE_POLICY_FOR_MANAGED_INSTANCES =
+        'AmazonECSInstanceRolePolicyForManagedInstances';
+
+    public static readonly AI_OPS_ASSISTANT_INCIDENT_REPORT_POLICY =
+        'AIOpsAssistantIncidentReportPolicy';
 
     private constructor() {} // Prevents instantiation
 }

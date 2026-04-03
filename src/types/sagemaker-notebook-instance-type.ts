@@ -354,6 +354,11 @@ export class SageMakerNotebookInstanceType {
     public static readonly ML_C7G_LARGE = 'ml.c7g.large';
 
     /**
+     * ml.c7g.medium Notebook Instance Type
+     */
+    public static readonly ML_C7G_MEDIUM = 'ml.c7g.medium';
+
+    /**
      * ml.c7g.xlarge Notebook Instance Type
      */
     public static readonly ML_C7G_XLARGE = 'ml.c7g.xlarge';
@@ -964,6 +969,21 @@ export class SageMakerNotebookInstanceType {
     public static readonly ML_P5_48XLARGE = 'ml.p5.48xlarge';
 
     /**
+     * ml.p5.4xlarge Notebook Instance Type
+     */
+    public static readonly ML_P5_4XLARGE = 'ml.p5.4xlarge';
+
+    /**
+     * ml.p5e.48xlarge Notebook Instance Type
+     */
+    public static readonly ML_P5E_48XLARGE = 'ml.p5e.48xlarge';
+
+    /**
+     * ml.p5en.48xlarge Notebook Instance Type
+     */
+    public static readonly ML_P5EN_48XLARGE = 'ml.p5en.48xlarge';
+
+    /**
      * ml.r5.12xlarge Notebook Instance Type
      */
     public static readonly ML_R5_12XLARGE = 'ml.r5.12xlarge';
@@ -1247,6 +1267,56 @@ export class SageMakerNotebookInstanceType {
      * ml.r7i.xlarge Notebook Instance Type
      */
     public static readonly ML_R7I_XLARGE = 'ml.r7i.xlarge';
+
+    /**
+     * ml.r8g.12xlarge Notebook Instance Type
+     */
+    public static readonly ML_R8G_12XLARGE = 'ml.r8g.12xlarge';
+
+    /**
+     * ml.r8g.16xlarge Notebook Instance Type
+     */
+    public static readonly ML_R8G_16XLARGE = 'ml.r8g.16xlarge';
+
+    /**
+     * ml.r8g.24xlarge Notebook Instance Type
+     */
+    public static readonly ML_R8G_24XLARGE = 'ml.r8g.24xlarge';
+
+    /**
+     * ml.r8g.2xlarge Notebook Instance Type
+     */
+    public static readonly ML_R8G_2XLARGE = 'ml.r8g.2xlarge';
+
+    /**
+     * ml.r8g.48xlarge Notebook Instance Type
+     */
+    public static readonly ML_R8G_48XLARGE = 'ml.r8g.48xlarge';
+
+    /**
+     * ml.r8g.4xlarge Notebook Instance Type
+     */
+    public static readonly ML_R8G_4XLARGE = 'ml.r8g.4xlarge';
+
+    /**
+     * ml.r8g.8xlarge Notebook Instance Type
+     */
+    public static readonly ML_R8G_8XLARGE = 'ml.r8g.8xlarge';
+
+    /**
+     * ml.r8g.large Notebook Instance Type
+     */
+    public static readonly ML_R8G_LARGE = 'ml.r8g.large';
+
+    /**
+     * ml.r8g.medium Notebook Instance Type
+     */
+    public static readonly ML_R8G_MEDIUM = 'ml.r8g.medium';
+
+    /**
+     * ml.r8g.xlarge Notebook Instance Type
+     */
+    public static readonly ML_R8G_XLARGE = 'ml.r8g.xlarge';
 
     /**
      * ml.t2.2xlarge Notebook Instance Type
