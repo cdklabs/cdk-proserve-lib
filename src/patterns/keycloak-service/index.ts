@@ -26,7 +26,7 @@ import {
 import { ISecret, Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
 import { KeycloakCluster } from './components/cluster';
-import { Keycloak_26_3_2_ConfigurationBuilder } from './components/configuration/26-3-2';
+import { Keycloak_26_ConfigurationBuilder } from './components/configuration/26';
 import { KeycloakDatabase } from './components/database';
 import { KeycloakFabric } from './components/fabric';
 import {
@@ -34,6 +34,7 @@ import {
     ParsedHostnameConfiguration,
     PortConfiguration
 } from './types/configuration';
+import { KeycloakVersion } from './types/version';
 
 /**
  * Properties for the KeycloakService construct
@@ -630,11 +631,11 @@ export class KeycloakService extends Construct {
 
         const configBuilder = (() => {
             if (
-                this.props.keycloak.version.is(
-                    KeycloakService.EngineVersion.V26_3_2
+                Keycloak_26_ConfigurationBuilder.supports(
+                    this.props.keycloak.version
                 )
             ) {
-                return new Keycloak_26_3_2_ConfigurationBuilder({
+                return new Keycloak_26_ConfigurationBuilder({
                     adminUser: this.adminUser,
                     database: databaseConfiguration,
                     hostnames: this.props.keycloak.configuration.hostnames,
@@ -701,9 +702,18 @@ export namespace KeycloakService {
      */
     export class EngineVersion {
         /**
+         * Version 26.5.2
+         */
+        public static readonly V26_5_2 = EngineVersion.of(
+            KeycloakVersion.V26_5_2
+        );
+
+        /**
          * Version 26.3.2
          */
-        public static readonly V26_3_2 = EngineVersion.of('26.3.2');
+        public static readonly V26_3_2 = EngineVersion.of(
+            KeycloakVersion.V26_3_2
+        );
 
         /**
          * Create a new KeycloakVersion with an arbitrary version
