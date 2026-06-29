@@ -495,8 +495,7 @@ export namespace ApiGatewayStaticHosting {
      * Domain configuration for the distribution endpoint
      */
     export type DomainConfiguration =
-        | CustomDomainConfiguration
-        | DefaultEndpointConfiguration;
+        CustomDomainConfiguration | DefaultEndpointConfiguration;
 
     /**
      * Underlying components for the pattern

@@ -4,9 +4,4 @@
 // NOTE: This type cannot be converted by JSII
 // It can be used inside of code that will not be converted by JSII (e.g. Lambda handlers)
 export type Json =
-    | string
-    | number
-    | boolean
-    | null
-    | { [key: string]: Json }
-    | Json[];
+    string | number | boolean | null | { [key: string]: Json } | Json[];

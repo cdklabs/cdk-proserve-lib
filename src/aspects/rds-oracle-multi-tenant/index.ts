@@ -152,13 +152,10 @@ export class RdsOracleMultiTenant implements IAspect {
 
         // Check if the engine type is Oracle
         // Oracle engine types include: oracle-se2, oracle-se1, oracle-se, oracle-ee
-        if (
-            !(
-                instance.engine?.engineType
-                    ?.toLowerCase()
-                    .startsWith('oracle') ?? false
-            )
-        ) {
+        if (!(
+            instance.engine?.engineType?.toLowerCase().startsWith('oracle') ??
+            false
+        )) {
             return null;
         }
 

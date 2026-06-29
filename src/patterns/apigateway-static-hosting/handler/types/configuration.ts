@@ -36,8 +36,7 @@ export interface CommonHostingConfiguration {
  * Configuration for hosting static assets
  */
 export type HostingConfiguration =
-    | InlineHostingConfiguration
-    | S3HostingConfiguration;
+    InlineHostingConfiguration | S3HostingConfiguration;
 
 /**
  * Utilities for manipulating the handler configuration

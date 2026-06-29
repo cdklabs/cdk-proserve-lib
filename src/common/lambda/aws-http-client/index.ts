@@ -67,8 +67,7 @@ export class AwsHttpClient extends HttpClient<AwsHttpClientOptions> {
         request: HttpClientRequest
     ): Promise<HttpClientRequest> {
         let credentials:
-            | AwsCredentialIdentity
-            | Provider<AwsCredentialIdentity>;
+            AwsCredentialIdentity | Provider<AwsCredentialIdentity>;
 
         // Get region from options or use the Lambda environment variable
         const region = this.options.region ?? process.env.AWS_REGION;
