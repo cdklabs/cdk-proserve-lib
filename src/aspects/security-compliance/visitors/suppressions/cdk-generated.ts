@@ -38,8 +38,7 @@ export class CdkGeneratedSuppressionsVisitor extends BaseVisitor<
         if (!this.settings?.cdkGeneratedResources) return;
 
         const existingMetadata = node.getMetadata('cdk_nag') as
-            | CdkNagSuppressions
-            | undefined;
+            CdkNagSuppressions | undefined;
 
         const suppressions = [...(existingMetadata?.rules_to_suppress ?? [])];
 

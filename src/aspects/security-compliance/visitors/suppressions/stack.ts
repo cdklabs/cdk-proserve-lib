@@ -20,8 +20,7 @@ export class StackSuppressionsVisitor extends BaseVisitor<
 
         const suppressions: CdkNagSuppression[] = [];
         const existingMetadata = node.templateOptions.metadata as
-            | CdkNagMetadata
-            | undefined;
+            CdkNagMetadata | undefined;
         const existingRules = existingMetadata?.cdk_nag?.rules_to_suppress;
 
         if (this.settings?.cdkCommonGrants) {

@@ -24,7 +24,8 @@ export class LambdaVisitor extends BaseVisitor<
             !node.reservedConcurrentExecutions
         ) {
             node.reservedConcurrentExecutions =
-                this.settings?.reservedConcurrentExecutions?.concurrentExecutionCount;
+                this.settings?.reservedConcurrentExecutions
+                    ?.concurrentExecutionCount;
         }
     }
 }

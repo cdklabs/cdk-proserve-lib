@@ -9,10 +9,7 @@
  * FAILED - The workflow encountered an error during execution
  */
 export type WorkflowState =
-    | 'COMPLETED'
-    | 'PROVISIONING'
-    | 'NOT_STARTED'
-    | 'FAILED';
+    'COMPLETED' | 'PROVISIONING' | 'NOT_STARTED' | 'FAILED';
 
 /**
  * Response returned when a workflow is created.

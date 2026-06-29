@@ -35,22 +35,19 @@ export interface IamServerCertificateProps {
      * AWS Systems Manager parameter or AWS Secrets Manager secret which contains the public certificate
      */
     readonly certificate:
-        | IamServerCertificate.ParameterProps
-        | IamServerCertificate.SecretProps;
+        IamServerCertificate.ParameterProps | IamServerCertificate.SecretProps;
 
     /**
      * AWS Systems Manager parameter or AWS Secrets Manager secret which contains the certificate chain if applicable
      */
     readonly certificateChain?:
-        | IamServerCertificate.ParameterProps
-        | IamServerCertificate.SecretProps;
+        IamServerCertificate.ParameterProps | IamServerCertificate.SecretProps;
 
     /**
      * AWS Systems Manager parameter or AWS Secrets Manager secret which contains the private key
      */
     readonly privateKey:
-        | IamServerCertificate.ParameterProps
-        | IamServerCertificate.SecretProps;
+        IamServerCertificate.ParameterProps | IamServerCertificate.SecretProps;
 
     /**
      * Encryption key for protecting the framework resources

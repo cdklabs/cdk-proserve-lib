@@ -1097,8 +1097,7 @@ export namespace KeycloakService {
      * Configuration options for the database
      */
     export type DatabaseConfiguration =
-        | ServerlessDatabaseConfiguration
-        | TraditionalDatabaseConfiguration;
+        ServerlessDatabaseConfiguration | TraditionalDatabaseConfiguration;
 
     /**
      * Overrides for prescribed defaults for the infrastructure
