@@ -90,7 +90,7 @@
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "@vitest/coverage-v8": "^3.2.7",
-    "adm-zip": "0.5.16",
+    "adm-zip": "0.6.0",
     "aws-cdk-lib": "2.212.0",
     "aws-sdk-client-mock": "^4.1.0",
     "aws-sdk-client-mock-vitest": "^6.2.1",
