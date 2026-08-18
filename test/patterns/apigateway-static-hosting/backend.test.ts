@@ -97,7 +97,7 @@ describeCdkTest(ApiGatewayStaticHosting, (id, getStack, getTemplate) => {
                 Handler: 'index.handler',
                 MemorySize: 512,
                 ReservedConcurrentExecutions: 5,
-                Runtime: 'nodejs22.x',
+                Runtime: 'nodejs24.x',
                 Timeout: 29
             };
             const handlerPolicy: Partial<PolicyProperties> = {

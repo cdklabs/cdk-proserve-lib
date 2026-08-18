@@ -148,7 +148,7 @@ export class FriendlyEmbrace extends Construct {
                 handler: 'index.handler',
                 memorySize: 512,
                 timeout: Duration.minutes(5),
-                runtime: Runtime.NODEJS_22_X,
+                runtime: Runtime.NODEJS_24_X,
                 environment: {
                     CFN_TEMPLATE_BUCKET_NAME: cfnTemplateBucket.bucketName,
                     CFN_TEMPLATE_BUCKET_URL: cfnTemplateBucket.urlForObject()

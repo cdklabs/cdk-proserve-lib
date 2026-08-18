@@ -115,7 +115,7 @@ describeCdkTest(Ec2AutomatedShutdown, (_, getStack, getTemplate) => {
         template.hasResource('AWS::Lambda::Function', {
             Properties: Match.objectLike({
                 Handler: 'index.handler',
-                Runtime: 'nodejs22.x'
+                Runtime: 'nodejs24.x'
             })
         });
 

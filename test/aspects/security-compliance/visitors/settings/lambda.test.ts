@@ -19,7 +19,7 @@ describeCdkTest(SecurityCompliance, (_, getStack, getTemplate) => {
         it('does not apply reserved concurrency if disabled', () => {
             // Arrange
             new SecureFunction(stack, 'TestFunction', {
-                runtime: Runtime.NODEJS_22_X,
+                runtime: Runtime.NODEJS_24_X,
                 handler: 'index.handler',
                 code: Code.fromInline('exports.handler = () => {};')
             });
@@ -48,7 +48,7 @@ describeCdkTest(SecurityCompliance, (_, getStack, getTemplate) => {
         it('applies default reserved concurrent executions', () => {
             // Arrange
             new SecureFunction(stack, 'TestFunction', {
-                runtime: Runtime.NODEJS_22_X,
+                runtime: Runtime.NODEJS_24_X,
                 handler: 'index.handler',
                 code: Code.fromInline('exports.handler = () => {};'),
                 reservedConcurrentExecutions: undefined
@@ -67,7 +67,7 @@ describeCdkTest(SecurityCompliance, (_, getStack, getTemplate) => {
         it('sets a user defined reserved concurrent execution', () => {
             // Arrange
             new SecureFunction(stack, 'TestFunction', {
-                runtime: Runtime.NODEJS_22_X,
+                runtime: Runtime.NODEJS_24_X,
                 handler: 'index.handler',
                 code: Code.fromInline('exports.handler = () => {};'),
                 reservedConcurrentExecutions: undefined

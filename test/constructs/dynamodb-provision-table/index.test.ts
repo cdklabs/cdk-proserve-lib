@@ -68,7 +68,7 @@ describeCdkTest(DynamoDbProvisionTable, (id, getStack, getTemplate) => {
         const lambdaResourceProperties: Partial<FunctionProperties> = {
             Handler: 'index.handler',
             ReservedConcurrentExecutions: 5,
-            Runtime: 'nodejs22.x',
+            Runtime: 'nodejs24.x',
             Timeout: 60,
             MemorySize: 512
         };

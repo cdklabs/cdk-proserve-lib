@@ -727,7 +727,7 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
 
             template.hasResourceProperties('AWS::Lambda::Function', {
                 Handler: 'index.handler',
-                Runtime: 'nodejs22.x'
+                Runtime: 'nodejs24.x'
             });
 
             template.resourceCountIs('AWS::Lambda::Function', 5);
@@ -792,7 +792,7 @@ describeCdkTest(RdsOracleMultiTenant, (_, getStack, getTemplate, getApp) => {
             const template = getTemplate();
 
             template.hasResourceProperties('AWS::Lambda::Function', {
-                Runtime: 'nodejs22.x',
+                Runtime: 'nodejs24.x',
                 Handler: 'index.handler',
                 Timeout: 300
             });
