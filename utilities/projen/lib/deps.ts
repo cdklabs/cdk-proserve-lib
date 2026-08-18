@@ -36,13 +36,13 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         '@types/express@5.0.0',
         '@types/mime@3.0.0',
         '@types/morgan@1.9.9',
-        'adm-zip@0.5.16',
-        'express@5.0.1',
+        'adm-zip@0.6.0',
+        'express@5.2.0',
         'express-async-handler@1.2.0',
-        'js-yaml@4.1.0',
+        'js-yaml@4.3.1',
         'mime@3.0.0',
-        'morgan@1.10.0',
-        'uuid@11.0.3'
+        'morgan@1.11.0',
+        'uuid@14.0.1'
     ];
 
     const ideAndTestDeps = [

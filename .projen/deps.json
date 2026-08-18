@@ -169,7 +169,7 @@
     },
     {
       "name": "adm-zip",
-      "version": "0.5.16",
+      "version": "0.6.0",
       "type": "build"
     },
     {
@@ -230,7 +230,7 @@
     },
     {
       "name": "express",
-      "version": "5.0.1",
+      "version": "5.2.0",
       "type": "build"
     },
     {
@@ -243,7 +243,7 @@
     },
     {
       "name": "js-yaml",
-      "version": "4.1.0",
+      "version": "4.3.1",
       "type": "build"
     },
     {
@@ -283,7 +283,7 @@
     },
     {
       "name": "morgan",
-      "version": "1.10.0",
+      "version": "1.11.0",
       "type": "build"
     },
     {
@@ -308,7 +308,7 @@
     },
     {
       "name": "uuid",
-      "version": "11.0.3",
+      "version": "14.0.1",
       "type": "build"
     },
     {
