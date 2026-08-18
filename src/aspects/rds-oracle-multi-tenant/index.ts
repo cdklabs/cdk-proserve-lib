@@ -225,7 +225,7 @@ export class RdsOracleMultiTenant implements IAspect {
                 handler: 'index.handler',
                 memorySize: 512,
                 timeout: Duration.minutes(5),
-                runtime: Runtime.NODEJS_22_X,
+                runtime: Runtime.NODEJS_24_X,
                 ...lambdaConfig
             });
 
@@ -239,7 +239,7 @@ export class RdsOracleMultiTenant implements IAspect {
                     handler: 'index.handler',
                     memorySize: 512,
                     timeout: Duration.minutes(5),
-                    runtime: Runtime.NODEJS_22_X,
+                    runtime: Runtime.NODEJS_24_X,
                     ...lambdaConfig
                 }
             );

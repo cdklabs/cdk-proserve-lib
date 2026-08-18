@@ -177,7 +177,7 @@ export class Ec2AutomatedShutdown implements IAspect {
         if (!Ec2AutomatedShutdown.lambdaByStack.has(stackId)) {
             const lambda = new SecureFunction(stack, 'Ec2ShutdownFunction', {
                 code: Code.fromAsset(join(__dirname, 'handler')),
-                runtime: Runtime.NODEJS_22_X,
+                runtime: Runtime.NODEJS_24_X,
                 handler: 'index.handler',
                 timeout: Duration.seconds(15),
                 encryption: this.props.encryption,

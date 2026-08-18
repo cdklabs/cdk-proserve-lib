@@ -94,6 +94,7 @@ Metadata for configuring the pattern.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -104,6 +105,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -319,6 +341,7 @@ Metadata for configuring the Custom Resource.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -329,6 +352,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -456,6 +500,7 @@ Configuration properties.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImage.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImage.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -466,6 +511,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImage.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImage.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -618,6 +684,7 @@ Configuration properties.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderStart.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderStart.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -628,6 +695,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderStart.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderStart.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -777,6 +865,7 @@ Configuration properties.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -787,6 +876,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -975,6 +1085,7 @@ Configuration properties.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -985,6 +1096,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -1174,6 +1306,7 @@ Configuration properties.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -1184,6 +1317,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -1350,6 +1504,7 @@ Metadata for configuring the Custom Resource.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -1360,6 +1515,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -1575,6 +1751,7 @@ Properties for configuring the cluster for Keycloak.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.patterns.KeycloakService.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -1585,6 +1762,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -1753,6 +1951,7 @@ Network Firewall configuration properties.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -1763,6 +1962,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -1908,6 +2128,7 @@ Configuration properties for the construct.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.getEndpointId">getEndpointId</a></code> | Gets the endpoint ID for a specific availability zone. |
 
 ---
@@ -1919,6 +2140,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `getEndpointId` <a name="getEndpointId" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints.getEndpointId"></a>
 
@@ -2086,6 +2328,7 @@ Metadata for configuring the custom resource.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -2096,6 +2339,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -2304,6 +2568,7 @@ Metadata for configuring the Custom Resource.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -2314,6 +2579,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -2461,6 +2747,7 @@ Metadata for configuring the custom resource.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.getResourceId">getResourceId</a></code> | Retrieves a created Resource ID from the Workflow by the provided workflowStepId. |
 
 ---
@@ -2472,6 +2759,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `getResourceId` <a name="getResourceId" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow.getResourceId"></a>
 
@@ -2667,6 +2975,7 @@ Configuration properties.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.associate">associate</a></code> | Associates the Web Application Firewall to an applicable resource. |
 
 ---
@@ -2678,6 +2987,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `associate` <a name="associate" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall.associate"></a>
 

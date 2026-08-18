@@ -29,7 +29,7 @@ describeCdkTest(CreateLambdaLogGroup, (_, getStack, getTemplate) => {
     it('should create log group when visiting a Lambda function', () => {
         // Arrange
         new Function(stack, 'TestFunction', {
-            runtime: Runtime.NODEJS_22_X,
+            runtime: Runtime.NODEJS_24_X,
             handler: 'index.handler',
             code: Code.fromInline('exports.handler = () => {};'),
             reservedConcurrentExecutions: 5

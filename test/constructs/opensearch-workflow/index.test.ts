@@ -58,7 +58,7 @@ describeCdkTest(OpenSearchWorkflow, (id, getStack, getTemplate) => {
 
         const lambdaResourceProperties: Partial<FunctionProperties> = {
             Handler: 'index.handler',
-            Runtime: 'nodejs22.x',
+            Runtime: 'nodejs24.x',
             Timeout: 300 // 5 minutes
         };
 

@@ -384,7 +384,7 @@ export class ApiGatewayStaticHosting extends Construct {
             handler: 'index.handler',
             memorySize: 512,
             timeout: Duration.seconds(29),
-            runtime: Runtime.NODEJS_22_X,
+            runtime: Runtime.NODEJS_24_X,
             encryption: this.props.encryption,
             environment: {
                 CONFIGURATION: JSON.stringify(config)

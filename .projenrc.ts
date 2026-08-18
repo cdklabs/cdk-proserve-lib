@@ -15,7 +15,10 @@ const project = new CdklabsConstructLibrary({
     private: false,
     keywords: ['aws', 'awscdk', 'aws-cdk', 'cdk'],
     jsiiVersion: '~5.8',
-    cdkVersion: '2.223.0',
+    cdkVersion: '2.265.0',
+    // Must stay >= the constructs peer that cdkVersion declares; jsii fails the
+    // build if the installed constructs is below it.
+    constructsVersion: '10.5.0',
     defaultReleaseBranch: 'main',
     rosettaOptions: {
         strict: false

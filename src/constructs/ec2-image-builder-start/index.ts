@@ -180,7 +180,7 @@ export class Ec2ImageBuilderStart extends Construct {
 
             const signal = new SecureFunction(this, 'WaiterSignal', {
                 code: Code.fromAsset(join(__dirname, 'handler')),
-                runtime: Runtime.NODEJS_22_X,
+                runtime: Runtime.NODEJS_24_X,
                 handler: 'index.handler',
                 environment: {
                     WAIT_HANDLE_URL: waitHandle.ref,

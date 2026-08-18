@@ -136,7 +136,7 @@ export class IamServerCertificate extends Construct {
                 handler: 'index.handler',
                 memorySize: 512,
                 timeout: Duration.minutes(1),
-                runtime: Runtime.NODEJS_22_X,
+                runtime: Runtime.NODEJS_24_X,
                 encryption: props.encryption,
                 ...props.lambdaConfiguration
             });
