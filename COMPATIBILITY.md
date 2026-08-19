@@ -48,6 +48,7 @@ This document tracks the compatibility of all constructs, aspects, and patterns 
 | opensearch-provision-domain | ✅ | ✅ | ✅ |  |
 | opensearch-workflow | ✅ | ✅ | ⚠️ |  |
 | secure-function | ✅ | ✅ | ✅ |  |
+| server-access-logs-bucket | 🔍 | 🔍 | 🔍 | Needs compatibility assessment |
 | web-application-firewall | ✅ | ✅ | ❌ | Other partitions require static rule version configuration. |
 
 ---

@@ -77,13 +77,13 @@ go get github.com/cdklabs/cdk-proserve-lib-go/cdklabscdkproservelib
 
 The library consists of [constructs](#-constructs), [aspects](#-aspects), and [patterns](#-patterns) that you can utilize in AWS CDK applications.
 
-Total: 23
+Total: 24
 
 ### 🧱 Constructs
 
 Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) applications. A construct is a component within your application that represents one or more AWS CloudFormation resources and their configuration. You build your application, piece by piece, by importing and configuring constructs. To learn more about constructs, check out the [AWS CDK documentation](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html).
 
-Count: 12
+Count: 13
 
 - [**DynamoDbProvisionTable**](https://cdklabs.github.io/cdk-proserve-lib/API.html#dynamodbprovisiontable-): Controls the contents of an Amazon DynamoDB table from Infrastructure as Code.
 - [**Ec2ImageBuilderGetImage**](https://cdklabs.github.io/cdk-proserve-lib/API.html#ec2imagebuildergetimage-): Retrieves an EC2 Image Builder image build version.
@@ -96,6 +96,7 @@ Count: 12
 - [**OpenSearchAdminUser**](https://cdklabs.github.io/cdk-proserve-lib/API.html#opensearchadminuser-): Manages an admin user for an Amazon OpenSearch domain.
 - [**OpenSearchProvisionDomain**](https://cdklabs.github.io/cdk-proserve-lib/API.html#opensearchprovisiondomain-): Controls the contents of an Amazon OpenSearch Service domain from Infrastructure as Code.
 - [**OpenSearchWorkflow**](https://cdklabs.github.io/cdk-proserve-lib/API.html#opensearchworkflow-): Create OpenSearch Workflows using the flow framework to automate the provisioning of complex tasks using JSON or YAML.
+- [**ServerAccessLogsBucket**](https://cdklabs.github.io/cdk-proserve-lib/API.html#serveraccesslogsbucket-): A secure S3 bucket configured to receive server access logs from other S3 buckets.
 - [**WebApplicationFirewall**](https://cdklabs.github.io/cdk-proserve-lib/API.html#webapplicationfirewall-): Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
 
 ### 🎭 Aspects
