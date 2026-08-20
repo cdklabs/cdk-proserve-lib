@@ -24,7 +24,7 @@ import {
     ReplicationRule
 } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
-import { CdkNagSuppressions } from '../../aspects/security-compliance/types/cdk-nag';
+import { CdkNagSuppressions } from '../../common/cdk-nag';
 
 /**
  * Properties for ServerAccessLogsBucket construct.

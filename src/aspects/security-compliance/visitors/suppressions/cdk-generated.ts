@@ -7,7 +7,7 @@ import { CfnLogGroup } from 'aws-cdk-lib/aws-logs';
 import { CfnStateMachine } from 'aws-cdk-lib/aws-stepfunctions';
 import { IConstruct } from 'constructs';
 import { SecurityCompliance } from '../..';
-import { CdkNagSuppressions } from '../../types/cdk-nag';
+import { CdkNagSuppressions } from '../../../../common/cdk-nag';
 import { BaseVisitor } from '../base';
 
 export class CdkGeneratedSuppressionsVisitor extends BaseVisitor<

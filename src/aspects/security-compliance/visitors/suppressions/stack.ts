@@ -4,7 +4,7 @@
 import { Stack } from 'aws-cdk-lib';
 import { IConstruct } from 'constructs';
 import { SecurityCompliance } from '../..';
-import { CdkNagMetadata, CdkNagSuppression } from '../../types/cdk-nag';
+import { CdkNagMetadata, CdkNagSuppression } from '../../../../common/cdk-nag';
 import { BaseVisitor } from '../base';
 
 export class StackSuppressionsVisitor extends BaseVisitor<
