@@ -295,9 +295,16 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     });
 
     it('should include aws:SourceArn condition with specific ARNs for single source bucket', () => {
+        // Arrange
+        const sourceBucket = Bucket.fromBucketArn(
+            stack,
+            'ImportedSource',
+            'arn:aws:s3:::source-bucket'
+        );
+
         // Act
         new ServerAccessLogsBucket(stack, id, {
-            sourceBuckets: ['arn:aws:s3:::source-bucket']
+            sourceBuckets: [sourceBucket]
         });
 
         // Assert
@@ -318,12 +325,21 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
     });
 
     it('should include aws:SourceArn condition with multiple ARNs for multiple source buckets', () => {
+        // Arrange
+        const sourceBucket1 = Bucket.fromBucketArn(
+            stack,
+            'ImportedSource1',
+            'arn:aws:s3:::source-bucket-1'
+        );
+        const sourceBucket2 = Bucket.fromBucketArn(
+            stack,
+            'ImportedSource2',
+            'arn:aws:s3:::source-bucket-2'
+        );
+
         // Act
         new ServerAccessLogsBucket(stack, id, {
-            sourceBuckets: [
-                'arn:aws:s3:::source-bucket-1',
-                'arn:aws:s3:::source-bucket-2'
-            ]
+            sourceBuckets: [sourceBucket1, sourceBucket2]
         });
 
         // Assert
@@ -503,132 +519,68 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
         });
     });
 
-    it('should accept valid S3 bucket ARNs', () => {
-        // Act & Assert - These should not throw errors
-        new ServerAccessLogsBucket(stack, `${id}1`, {
-            sourceBuckets: ['arn:aws:s3:::valid-bucket-name']
-        });
+    it('should accept imported buckets from other partitions as source buckets', () => {
+        // Arrange
+        const govCloudBucket = Bucket.fromBucketArn(
+            stack,
+            'GovCloudSource',
+            'arn:aws-us-gov:s3:::govcloud-bucket'
+        );
 
-        new ServerAccessLogsBucket(stack, `${id}2`, {
-            sourceBuckets: ['arn:aws:s3:::bucket123']
-        });
-
-        new ServerAccessLogsBucket(stack, `${id}3`, {
-            sourceBuckets: ['arn:aws:s3:::my.bucket.name']
-        });
-
-        new ServerAccessLogsBucket(stack, `${id}4`, {
-            sourceBuckets: ['arn:aws:s3:::bucket-name/*']
-        });
-    });
-
-    it('should accept S3 bucket ARNs from different AWS partitions', () => {
-        // Act & Assert - These should not throw errors for different partitions
-        new ServerAccessLogsBucket(stack, `${id}1`, {
-            sourceBuckets: ['arn:aws:s3:::standard-bucket']
-        });
-
-        new ServerAccessLogsBucket(stack, `${id}2`, {
-            sourceBuckets: ['arn:aws-us-gov:s3:::govcloud-bucket']
-        });
-    });
-
-    it('should accept multiple valid S3 bucket ARNs', () => {
-        // Act & Assert - This should not throw an error
+        // Act
         new ServerAccessLogsBucket(stack, id, {
-            sourceBuckets: [
-                'arn:aws:s3:::bucket-one',
-                'arn:aws:s3:::bucket-two',
-                'arn:aws:s3:::bucket.three'
-            ]
-        });
-    });
-
-    it('should reject invalid ARN format', () => {
-        // Act
-        const construct1 = new ServerAccessLogsBucket(stack, id, {
-            sourceBuckets: ['invalid-arn']
-        });
-
-        const construct2 = new ServerAccessLogsBucket(stack, `${id}2`, {
-            sourceBuckets: ['arn:aws:ec2:::instance-id']
+            sourceBuckets: [govCloudBucket]
         });
 
         // Assert
-        const errorMetadata1 = construct1.node.metadata.filter(
-            (m) =>
-                m.type === 'aws:cdk:error' &&
-                m.data.includes(
-                    'Invalid S3 bucket ARN format. Expected format: arn:partition:s3:::bucket-name. Got: invalid-arn'
-                )
-        );
-        expect(errorMetadata1).toHaveLength(1);
-
-        const errorMetadata2 = construct2.node.metadata.filter(
-            (m) =>
-                m.type === 'aws:cdk:error' &&
-                m.data.includes(
-                    'Invalid S3 bucket ARN format. Expected format: arn:partition:s3:::bucket-name. Got: arn:aws:ec2:::instance-id'
-                )
-        );
-        expect(errorMetadata2).toHaveLength(1);
-    });
-
-    it('should validate all source bucket ARNs in array', () => {
-        // Act
-        const construct = new ServerAccessLogsBucket(stack, id, {
-            sourceBuckets: [
-                'arn:aws:s3:::valid-bucket',
-                'arn:aws:s3:::Invalid_Bucket',
-                'arn:aws:s3:::another-valid-bucket'
-            ]
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::S3::BucketPolicy', {
+            PolicyDocument: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Condition: Match.objectLike({
+                            ArnLike: {
+                                'aws:SourceArn': [
+                                    'arn:aws-us-gov:s3:::govcloud-bucket'
+                                ]
+                            }
+                        })
+                    })
+                ])
+            }
         });
-
-        // Assert
-        const errorMetadata = construct.node.metadata.filter(
-            (m) =>
-                m.type === 'aws:cdk:error' &&
-                m.data.includes(
-                    'Invalid S3 bucket ARN format. Expected format: arn:partition:s3:::bucket-name. Got: arn:aws:s3:::Invalid_Bucket'
-                )
-        );
-        expect(errorMetadata).toHaveLength(1);
     });
 
-    it('should not validate IBucket references', () => {
+    it('should reference the bucket ARN by token for source buckets in the same stack', () => {
         // Arrange
         const sourceBucket = new Bucket(stack, 'SourceBucket', {
             bucketName: 'source-bucket'
         });
 
-        // Act & Assert - This should not throw an error - IBucket references are not validated
+        // Act
         new ServerAccessLogsBucket(stack, id, {
             sourceBuckets: [sourceBucket]
         });
-    });
-
-    it('should validate mixed source buckets (only string ARNs)', () => {
-        // Arrange
-        const sourceBucket = new Bucket(stack, 'SourceBucket');
-
-        // Act
-        const construct = new ServerAccessLogsBucket(stack, id, {
-            sourceBuckets: [
-                'arn:aws:s3:::valid-bucket',
-                sourceBucket, // IBucket reference - not validated
-                'arn:aws:s3:::Invalid_Bucket' // String ARN - will be validated
-            ]
-        });
 
         // Assert
-        const errorMetadata = construct.node.metadata.filter(
-            (m) =>
-                m.type === 'aws:cdk:error' &&
-                m.data.includes(
-                    'Invalid S3 bucket ARN format. Expected format: arn:partition:s3:::bucket-name. Got: arn:aws:s3:::Invalid_Bucket'
-                )
-        );
-        expect(errorMetadata).toHaveLength(1);
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::S3::BucketPolicy', {
+            PolicyDocument: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Condition: Match.objectLike({
+                            ArnLike: {
+                                'aws:SourceArn': [
+                                    Match.objectLike({
+                                        'Fn::GetAtt': Match.anyValue()
+                                    })
+                                ]
+                            }
+                        })
+                    })
+                ])
+            }
+        });
     });
 
     it('should handle empty source buckets array', () => {

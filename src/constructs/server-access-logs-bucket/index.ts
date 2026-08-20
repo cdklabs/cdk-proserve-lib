@@ -1,13 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import {
-    Annotations,
-    Arn,
-    CfnResource,
-    RemovalPolicy,
-    Stack
-} from 'aws-cdk-lib';
+import { Arn, CfnResource, RemovalPolicy, Stack } from 'aws-cdk-lib';
 import {
     Effect,
     PolicyStatement,
@@ -45,12 +39,13 @@ export interface ServerAccessLogsBucketProps {
     /**
      * Source buckets that will deliver logs to this bucket.
      *
-     * Can be specified as bucket ARNs (strings) or IBucket references.
      * Used to configure aws:SourceArn condition in the bucket policy.
+     * To reference a bucket this stack does not create, import it first with
+     * `Bucket.fromBucketArn(...)` or `Bucket.fromBucketName(...)`.
      *
      * @default - Allows any bucket in the same account to deliver logs
      */
-    readonly sourceBuckets?: (string | IBucket)[];
+    readonly sourceBuckets?: IBucket[];
 
     /**
      * Source AWS account IDs that are allowed to deliver logs.
@@ -164,9 +159,6 @@ export class ServerAccessLogsBucket extends Construct {
     ) {
         super(scope, id);
 
-        // Validate configuration - this will add annotations for any errors
-        this.validateProps(props);
-
         // Determine versioning setting - force enable if replication rules are provided
         const versioningEnabled =
             props?.replicationRules && props.replicationRules.length > 0
@@ -219,36 +211,6 @@ export class ServerAccessLogsBucket extends Construct {
     }
 
     /**
-     * Validates the construct properties.
-     */
-    private validateProps(props?: ServerAccessLogsBucketProps): void {
-        // Validate source bucket ARNs if provided
-        if (props?.sourceBuckets) {
-            for (const source of props.sourceBuckets) {
-                if (typeof source === 'string') {
-                    this.validateBucketArn(source);
-                }
-            }
-        }
-    }
-
-    /**
-     * Validates S3 bucket ARN format.
-     */
-    private validateBucketArn(arn: string): void {
-        // Basic ARN format check - supports any AWS partition
-        const arnPattern = /^arn:[a-z0-9-]+:s3:::([a-z0-9.-]+)(\/.*)?$/;
-        const match = arnPattern.exec(arn);
-
-        if (!match) {
-            Annotations.of(this).addError(
-                `Invalid S3 bucket ARN format. Expected format: arn:partition:s3:::bucket-name. Got: ${arn}`
-            );
-            return;
-        }
-    }
-
-    /**
      * Adds bucket policy statement to allow the S3 logging service principal to write logs.
      */
     private addLoggingServicePolicy(props?: ServerAccessLogsBucketProps): void {
@@ -263,13 +225,7 @@ export class ServerAccessLogsBucket extends Construct {
         const sourceBucketArns: string[] = [];
         if (props?.sourceBuckets && props.sourceBuckets.length > 0) {
             for (const source of props.sourceBuckets) {
-                if (typeof source === 'string') {
-                    // String ARN provided directly
-                    sourceBucketArns.push(source);
-                } else {
-                    // IBucket reference - get its ARN
-                    sourceBucketArns.push(source.bucketArn);
-                }
+                sourceBucketArns.push(source.bucketArn);
             }
         } else {
             // No source buckets specified - allow any bucket in current account
