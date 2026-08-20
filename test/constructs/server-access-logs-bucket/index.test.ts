@@ -439,6 +439,66 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
         });
     });
 
+    it('should append a trailing slash to a log prefix that omits one', () => {
+        // Act
+        new ServerAccessLogsBucket(stack, id, {
+            logPrefix: 'logs'
+        });
+
+        // Assert
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::S3::BucketPolicy', {
+            PolicyDocument: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Action: 's3:PutObject',
+                        Resource: Match.objectLike({
+                            'Fn::Join': [
+                                '',
+                                [
+                                    Match.objectLike({
+                                        'Fn::GetAtt': Match.anyValue()
+                                    }),
+                                    '/logs/*'
+                                ]
+                            ]
+                        })
+                    })
+                ])
+            }
+        });
+    });
+
+    it('should collapse repeated trailing slashes in a log prefix', () => {
+        // Act
+        new ServerAccessLogsBucket(stack, id, {
+            logPrefix: 'logs//'
+        });
+
+        // Assert
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::S3::BucketPolicy', {
+            PolicyDocument: {
+                Statement: Match.arrayWith([
+                    Match.objectLike({
+                        Action: 's3:PutObject',
+                        Resource: Match.objectLike({
+                            'Fn::Join': [
+                                '',
+                                [
+                                    Match.objectLike({
+                                        'Fn::GetAtt': Match.anyValue()
+                                    }),
+                                    '/logs/*'
+                                ]
+                            ]
+                        })
+                    })
+                ])
+            }
+        });
+    });
+
     it('should include SSL enforcement policy statement', () => {
         // Act
         new ServerAccessLogsBucket(stack, id);
@@ -678,6 +738,66 @@ describeCdkTest(ServerAccessLogsBucket, (id, getStack, getTemplate) => {
                         Priority: 2
                     }
                 ]
+            }
+        });
+    });
+
+    it('should error when replication rules are combined with versioned false', () => {
+        // Arrange
+        const destinationBucket = new Bucket(stack, 'DestinationBucket');
+
+        // Act
+        const construct = new ServerAccessLogsBucket(stack, id, {
+            versioned: false,
+            replicationRules: [
+                {
+                    destination: destinationBucket,
+                    priority: 1
+                }
+            ]
+        });
+
+        // Assert
+        const errorMetadata = construct.node.metadata.filter(
+            (m) =>
+                m.type === 'aws:cdk:error' &&
+                m.data.includes(
+                    'Versioning must be enabled to use replicationRules'
+                )
+        );
+        expect(errorMetadata).toHaveLength(1);
+    });
+
+    it('should enable versioning without error when replication rules are provided and versioned is unset', () => {
+        // Arrange
+        const destinationBucket = new Bucket(stack, 'DestinationBucket');
+        NagSuppressions.addStackSuppressions(stack, [
+            {
+                id: 'AwsSolutions-IAM5',
+                reason: 'The replication role created by CDK needs object-level wildcards on the source and destination buckets.'
+            }
+        ]);
+
+        // Act
+        const construct = new ServerAccessLogsBucket(stack, id, {
+            replicationRules: [
+                {
+                    destination: destinationBucket,
+                    priority: 1
+                }
+            ]
+        });
+
+        // Assert
+        const errorMetadata = construct.node.metadata.filter(
+            (m) => m.type === 'aws:cdk:error'
+        );
+        expect(errorMetadata).toHaveLength(0);
+
+        const template = getTemplate();
+        template.hasResourceProperties('AWS::S3::Bucket', {
+            VersioningConfiguration: {
+                Status: 'Enabled'
             }
         });
     });

@@ -1,7 +1,13 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { Arn, CfnResource, RemovalPolicy, Stack } from 'aws-cdk-lib';
+import {
+    Annotations,
+    Arn,
+    CfnResource,
+    RemovalPolicy,
+    Stack
+} from 'aws-cdk-lib';
 import {
     Effect,
     PolicyStatement,
@@ -59,8 +65,9 @@ export interface ServerAccessLogsBucketProps {
     /**
      * Optional prefix path for log objects.
      *
-     * Recommended to end with a forward slash (/) for proper organization.
      * Applied to the bucket policy resource ARN to restrict where logs can be written.
+     * The construct enforces a single trailing forward slash (/), appending one
+     * if absent, so the prefix always scopes to a folder.
      *
      * @default - No prefix (logs can be written to bucket root)
      */
@@ -70,6 +77,8 @@ export interface ServerAccessLogsBucketProps {
      * Enable versioning on the bucket.
      *
      * Versioning helps maintain an audit trail and recover from accidental deletions.
+     * Must not be set to false when `replicationRules` are provided, as
+     * replication requires versioning; that combination produces an error.
      *
      * @default true
      */
@@ -111,7 +120,9 @@ export interface ServerAccessLogsBucketProps {
      * Optional replication rules for cross-region or cross-account replication.
      *
      * Replication requires versioning to be enabled on both source and destination buckets.
-     * When replication rules are specified, versioning will be automatically enabled.
+     * Leave `versioned` unset to accept the default of true; explicitly setting
+     * it to false alongside these rules is an error rather than being silently
+     * overridden, since enabling versioning changes behavior and incurs cost.
      *
      * @default - No replication rules
      */
@@ -159,11 +170,22 @@ export class ServerAccessLogsBucket extends Construct {
     ) {
         super(scope, id);
 
-        // Determine versioning setting - force enable if replication rules are provided
-        const versioningEnabled =
-            props?.replicationRules && props.replicationRules.length > 0
-                ? true
-                : (props?.versioned ?? true);
+        const replicationRequested =
+            props?.replicationRules !== undefined &&
+            props.replicationRules.length > 0;
+
+        if (replicationRequested && props?.versioned === false) {
+            Annotations.of(this).addError(
+                'Versioning must be enabled to use replicationRules. Remove `versioned: false` or remove `replicationRules` - versioning is not enabled automatically because it changes bucket behavior and incurs additional storage cost.'
+            );
+        }
+
+        // Versioning stays on whenever replication is requested: the underlying
+        // CDK Bucket throws on that combination, which would mask the actionable
+        // error above.
+        const versioningEnabled = replicationRequested
+            ? true
+            : (props?.versioned ?? true);
 
         // Create the S3 bucket with security defaults
         this.bucket = new Bucket(this, 'Bucket', {
@@ -211,6 +233,15 @@ export class ServerAccessLogsBucket extends Construct {
     }
 
     /**
+     * Collapses any trailing slashes on a log prefix down to exactly one, so
+     * `logs`, `logs/` and `logs//` all scope the policy to `logs/*` rather than
+     * to keys that merely start with `logs`.
+     */
+    private normalizeLogPrefix(prefix: string): string {
+        return `${prefix.replace(/\/+$/, '')}/`;
+    }
+
+    /**
      * Adds bucket policy statement to allow the S3 logging service principal to write logs.
      */
     private addLoggingServicePolicy(props?: ServerAccessLogsBucketProps): void {
@@ -218,7 +249,9 @@ export class ServerAccessLogsBucket extends Construct {
 
         // Build resource ARN with optional log prefix
         const resourceArn = props?.logPrefix
-            ? this.bucket.arnForObjects(`${props.logPrefix}*`)
+            ? this.bucket.arnForObjects(
+                  `${this.normalizeLogPrefix(props.logPrefix)}*`
+              )
             : this.bucket.arnForObjects('*');
 
         // Prepare source bucket ARNs for aws:SourceArn condition
