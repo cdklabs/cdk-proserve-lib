@@ -1,0 +1,336 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+
+import {
+    Annotations,
+    Arn,
+    CfnResource,
+    RemovalPolicy,
+    Stack
+} from 'aws-cdk-lib';
+import {
+    Effect,
+    PolicyStatement,
+    ServicePrincipal,
+    IRole
+} from 'aws-cdk-lib/aws-iam';
+import {
+    BlockPublicAccess,
+    Bucket,
+    BucketEncryption,
+    IBucket,
+    LifecycleRule,
+    ObjectOwnership,
+    ReplicationRule
+} from 'aws-cdk-lib/aws-s3';
+import { Construct } from 'constructs';
+import { CdkNagSuppressions } from '../../common/cdk-nag';
+
+/**
+ * Properties for ServerAccessLogsBucket construct.
+ *
+ * Creates a secure S3 bucket configured to receive server access logs from other S3 buckets.
+ * The bucket is configured with encryption, versioning, and appropriate bucket policies.
+ */
+export interface ServerAccessLogsBucketProps {
+    /**
+     * Optional bucket name. If not provided, CloudFormation will generate a unique name.
+     *
+     * Must follow S3 bucket naming rules (lowercase, no underscores, globally unique).
+     *
+     * @default - CloudFormation generated name
+     */
+    readonly bucketName?: string;
+
+    /**
+     * Source buckets that will deliver logs to this bucket.
+     *
+     * Used to configure aws:SourceArn condition in the bucket policy.
+     * To reference a bucket this stack does not create, import it first with
+     * `Bucket.fromBucketArn(...)` or `Bucket.fromBucketName(...)`.
+     *
+     * @default - Allows any bucket in the same account to deliver logs
+     */
+    readonly sourceBuckets?: IBucket[];
+
+    /**
+     * Source AWS account IDs that are allowed to deliver logs.
+     *
+     * Used to configure aws:SourceAccount condition in the bucket policy.
+     *
+     * @default - Current account only
+     */
+    readonly sourceAccountIds?: string[];
+
+    /**
+     * Optional prefix path for log objects.
+     *
+     * Applied to the bucket policy resource ARN to restrict where logs can be written.
+     * The construct enforces a single trailing forward slash (/), appending one
+     * if absent, so the prefix always scopes to a folder.
+     *
+     * @default - No prefix (logs can be written to bucket root)
+     */
+    readonly logPrefix?: string;
+
+    /**
+     * Enable versioning on the bucket.
+     *
+     * Versioning helps maintain an audit trail and recover from accidental deletions.
+     * Must not be set to false when `replicationRules` are provided, as
+     * replication requires versioning; that combination produces an error.
+     *
+     * @default true
+     */
+    readonly versioned?: boolean;
+
+    /**
+     * Removal policy for the bucket.
+     *
+     * Controls what happens to the bucket when the CloudFormation stack is deleted.
+     * - RETAIN: Bucket is retained (recommended for log data)
+     * - DESTROY: Bucket is deleted (requires autoDeleteObjects=true if bucket contains objects)
+     * - SNAPSHOT: Not applicable for S3 buckets
+     *
+     * @default RemovalPolicy.RETAIN
+     */
+    readonly removalPolicy?: RemovalPolicy;
+
+    /**
+     * Automatically delete objects when the bucket is removed.
+     *
+     * Only applies when removalPolicy is DESTROY.
+     * When enabled, all objects in the bucket will be deleted before the bucket is destroyed.
+     *
+     * @default false
+     */
+    readonly autoDeleteObjects?: boolean;
+
+    /**
+     * Optional lifecycle rules for log retention management.
+     *
+     * Use lifecycle rules to automatically transition or expire old log files.
+     * Common patterns include transitioning to cheaper storage classes or deleting logs after a retention period.
+     *
+     * @default - No lifecycle rules
+     */
+    readonly lifecycleRules?: LifecycleRule[];
+
+    /**
+     * Optional replication rules for cross-region or cross-account replication.
+     *
+     * Replication requires versioning to be enabled on both source and destination buckets.
+     * Leave `versioned` unset to accept the default of true; explicitly setting
+     * it to false alongside these rules is an error rather than being silently
+     * overridden, since enabling versioning changes behavior and incurs cost.
+     *
+     * @default - No replication rules
+     */
+    readonly replicationRules?: ReplicationRule[];
+
+    /**
+     * Optional IAM role for replication.
+     *
+     * If not specified and replication rules are provided, a new role will be created automatically.
+     * The role must have permissions to read from the source bucket and write to destination buckets.
+     *
+     * @default - Auto-generated role when replication rules are specified
+     */
+    readonly replicationRole?: IRole;
+}
+
+/**
+ * A secure S3 bucket configured to receive server access logs from other S3
+ * buckets.
+ *
+ * The bucket policy includes conditions to restrict log delivery to specified
+ * source buckets and accounts, following AWS security best practices.
+ *
+ * @example
+ *
+ * import { ServerAccessLogsBucket } from '@cdklabs/cdk-proserve-lib/constructs';
+ *
+ * const logsBucket = new ServerAccessLogsBucket(this, 'LogsBucket', {
+ *   bucketName: 'my-access-logs',
+ *   sourceBuckets: [sourceBucket1, sourceBucket2],
+ *   logPrefix: 'logs/',
+ *   versioned: true,
+ * });
+ */
+export class ServerAccessLogsBucket extends Construct {
+    /**
+     * The S3 bucket configured for receiving server access logs.
+     */
+    public readonly bucket: Bucket;
+
+    constructor(
+        scope: Construct,
+        id: string,
+        props?: ServerAccessLogsBucketProps
+    ) {
+        super(scope, id);
+
+        const replicationRequested =
+            props?.replicationRules !== undefined &&
+            props.replicationRules.length > 0;
+
+        if (replicationRequested && props?.versioned === false) {
+            Annotations.of(this).addError(
+                'Versioning must be enabled to use replicationRules. Remove `versioned: false` or remove `replicationRules` - versioning is not enabled automatically because it changes bucket behavior and incurs additional storage cost.'
+            );
+        }
+
+        // Versioning stays on whenever replication is requested: the underlying
+        // CDK Bucket throws on that combination, which would mask the actionable
+        // error above.
+        const versioningEnabled = replicationRequested
+            ? true
+            : (props?.versioned ?? true);
+
+        // Create the S3 bucket with security defaults
+        this.bucket = new Bucket(this, 'Bucket', {
+            // Optional bucket name
+            bucketName: props?.bucketName,
+
+            // Must be SSE-S3. S3 server access log delivery does not support an
+            // SSE-KMS destination bucket; logs would be undeliverable or written
+            // under a key the bucket owner cannot read.
+            encryption: BucketEncryption.S3_MANAGED,
+
+            // Enable versioning by default (configurable, but required for replication)
+            versioned: versioningEnabled,
+
+            // Block all public access
+            blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
+
+            // Enforce bucket owner ownership (disables ACLs)
+            objectOwnership: ObjectOwnership.BUCKET_OWNER_ENFORCED,
+
+            // Default to RETAIN to prevent accidental data loss
+            removalPolicy: props?.removalPolicy ?? RemovalPolicy.RETAIN,
+
+            // Auto-delete objects configuration
+            autoDeleteObjects: props?.autoDeleteObjects ?? false,
+
+            // Apply lifecycle rules if provided
+            lifecycleRules: props?.lifecycleRules,
+
+            // Apply replication rules if provided
+            replicationRules: props?.replicationRules,
+
+            // Apply replication role if provided
+            replicationRole: props?.replicationRole,
+
+            // Enforce SSL/TLS for all connections
+            enforceSSL: true
+        });
+
+        // Add bucket policy for logging service principal
+        this.addLoggingServicePolicy(props);
+
+        // Add CDK Nag suppressions for expected violations in server access logs buckets
+        this.addCdkNagSuppressions();
+    }
+
+    /**
+     * Collapses any trailing slashes on a log prefix down to exactly one, so
+     * `logs`, `logs/` and `logs//` all scope the policy to `logs/*` rather than
+     * to keys that merely start with `logs`.
+     */
+    private normalizeLogPrefix(prefix: string): string {
+        return `${prefix.replace(/\/+$/, '')}/`;
+    }
+
+    /**
+     * Adds bucket policy statement to allow the S3 logging service principal to write logs.
+     */
+    private addLoggingServicePolicy(props?: ServerAccessLogsBucketProps): void {
+        const stack = Stack.of(this);
+
+        // Build resource ARN with optional log prefix
+        const resourceArn = props?.logPrefix
+            ? this.bucket.arnForObjects(
+                  `${this.normalizeLogPrefix(props.logPrefix)}*`
+              )
+            : this.bucket.arnForObjects('*');
+
+        // Prepare source bucket ARNs for aws:SourceArn condition
+        const sourceBucketArns: string[] = [];
+        if (props?.sourceBuckets && props.sourceBuckets.length > 0) {
+            for (const source of props.sourceBuckets) {
+                sourceBucketArns.push(source.bucketArn);
+            }
+        } else {
+            // No source buckets specified - allow any bucket in current account
+            sourceBucketArns.push(
+                Arn.format(
+                    {
+                        service: 's3',
+                        resource: '*',
+                        region: '',
+                        account: ''
+                    },
+                    stack
+                )
+            );
+        }
+
+        // Prepare source account IDs for aws:SourceAccount condition
+        const sourceAccountIds =
+            props?.sourceAccountIds && props.sourceAccountIds.length > 0
+                ? props.sourceAccountIds
+                : [stack.account];
+
+        // Create policy statement for logging service principal
+        const loggingStatement = new PolicyStatement({
+            effect: Effect.ALLOW,
+            principals: [new ServicePrincipal('logging.s3.amazonaws.com')],
+            actions: ['s3:PutObject'],
+            resources: [resourceArn],
+            conditions: {
+                ArnLike: {
+                    'aws:SourceArn': sourceBucketArns
+                },
+                StringEquals: {
+                    'aws:SourceAccount': sourceAccountIds
+                }
+            }
+        });
+
+        // Add the policy statement to the bucket
+        this.bucket.addToResourcePolicy(loggingStatement);
+    }
+
+    /**
+     * Adds CDK Nag suppressions for expected violations in server access logs
+     * buckets.
+     *
+     * These suppressions are necessary because server access logs destination
+     * buckets have specific AWS restrictions that conflict with some security
+     * rules.
+     */
+    private addCdkNagSuppressions(): void {
+        const suppressions: CdkNagSuppressions = {
+            rules_to_suppress: [
+                {
+                    id: 'NIST.800.53.R5-S3BucketLoggingEnabled',
+                    reason: 'This is a server access logs destination bucket - enabling server access logging would create an infinite loop'
+                },
+                {
+                    id: 'AwsSolutions-S1',
+                    reason: 'This is a server access logs destination bucket - enabling server access logging would create an infinite loop'
+                },
+                {
+                    id: 'NIST.800.53.R5-S3DefaultEncryptionKMS',
+                    reason: 'S3 server access log delivery does not support an SSE-KMS destination bucket, so SSE-S3 is the only usable encryption for this bucket'
+                }
+            ]
+        };
+
+        this.bucket.node.children.forEach((c) => {
+            if (c instanceof CfnResource) {
+                c.addMetadata('cdk_nag', suppressions);
+            }
+        });
+    }
+}
