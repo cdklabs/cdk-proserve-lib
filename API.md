@@ -7227,7 +7227,7 @@ const serverAccessLogsBucketProps: constructs.ServerAccessLogsBucketProps = { ..
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.replicationRole">replicationRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Optional IAM role for replication. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.replicationRules">replicationRules</a></code> | <code>aws-cdk-lib.aws_s3.ReplicationRule[]</code> | Optional replication rules for cross-region or cross-account replication. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.sourceAccountIds">sourceAccountIds</a></code> | <code>string[]</code> | Source AWS account IDs that are allowed to deliver logs. |
-| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.sourceBuckets">sourceBuckets</a></code> | <code>string \| aws-cdk-lib.aws_s3.IBucket[]</code> | Source buckets that will deliver logs to this bucket. |
+| <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.sourceBuckets">sourceBuckets</a></code> | <code>aws-cdk-lib.aws_s3.IBucket[]</code> | Source buckets that will deliver logs to this bucket. |
 | <code><a href="#@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.versioned">versioned</a></code> | <code>boolean</code> | Enable versioning on the bucket. |
 
 ---
@@ -7290,8 +7290,9 @@ public readonly logPrefix: string;
 
 Optional prefix path for log objects.
 
-Recommended to end with a forward slash (/) for proper organization.
 Applied to the bucket policy resource ARN to restrict where logs can be written.
+The construct enforces a single trailing forward slash (/), appending one
+if absent, so the prefix always scopes to a folder.
 
 ---
 
@@ -7341,7 +7342,9 @@ public readonly replicationRules: ReplicationRule[];
 Optional replication rules for cross-region or cross-account replication.
 
 Replication requires versioning to be enabled on both source and destination buckets.
-When replication rules are specified, versioning will be automatically enabled.
+Leave `versioned` unset to accept the default of true; explicitly setting
+it to false alongside these rules is an error rather than being silently
+overridden, since enabling versioning changes behavior and incurs cost.
 
 ---
 
@@ -7363,16 +7366,17 @@ Used to configure aws:SourceAccount condition in the bucket policy.
 ##### `sourceBuckets`<sup>Optional</sup> <a name="sourceBuckets" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucketProps.property.sourceBuckets"></a>
 
 ```typescript
-public readonly sourceBuckets: (string | IBucket)[];
+public readonly sourceBuckets: IBucket[];
 ```
 
-- *Type:* string | aws-cdk-lib.aws_s3.IBucket[]
+- *Type:* aws-cdk-lib.aws_s3.IBucket[]
 - *Default:* Allows any bucket in the same account to deliver logs
 
 Source buckets that will deliver logs to this bucket.
 
-Can be specified as bucket ARNs (strings) or IBucket references.
 Used to configure aws:SourceArn condition in the bucket policy.
+To reference a bucket this stack does not create, import it first with
+`Bucket.fromBucketArn(...)` or `Bucket.fromBucketName(...)`.
 
 ---
 
@@ -7388,6 +7392,8 @@ public readonly versioned: boolean;
 Enable versioning on the bucket.
 
 Versioning helps maintain an audit trail and recover from accidental deletions.
+Must not be set to false when `replicationRules` are provided, as
+replication requires versioning; that combination produces an error.
 
 ---
 
