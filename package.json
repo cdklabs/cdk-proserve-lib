@@ -118,7 +118,7 @@
     "lint-staged": "^15.5.2",
     "memfs": "^4.78.1",
     "mime": "3.0.0",
-    "morgan": "1.11.0",
+    "morgan": "1.12.0",
     "prettier": "^3.9.8",
     "projen": "^0.98.32",
     "supertest": "^7.2.2",
