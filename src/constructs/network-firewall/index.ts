@@ -14,10 +14,10 @@ import {
     CfnRuleGroup
 } from 'aws-cdk-lib/aws-networkfirewall';
 import { Construct } from 'constructs';
+import { DefaultConfig } from '../../common/default-config';
 import { AwsCustomResourceLambdaConfiguration } from '../../types';
 import { NetworkFirewallEndpoints } from '../network-firewall-endpoints';
 import { LogDestinationType } from './types/cfn-network-firewall';
-import { DefaultConfig } from '../../common/default-config';
 
 /**
  * Properties for configuring a NetworkFirewall

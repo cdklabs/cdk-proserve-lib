@@ -29,10 +29,10 @@ import {
 } from 'aws-cdk-lib/aws-s3';
 import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
 import { Construct } from 'constructs';
+import { DefaultConfig } from '../../common/default-config';
 import { SecureFunction } from '../../constructs/secure-function';
 import { LambdaConfiguration } from '../../types';
 import { S3HostingConfiguration } from './handler/hosts/s3';
-import { DefaultConfig } from '../../common/default-config';
 
 /**
  * Properties for configuring the static hosting pattern
