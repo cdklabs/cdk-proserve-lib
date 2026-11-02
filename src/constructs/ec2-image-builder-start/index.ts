@@ -18,14 +18,14 @@ import {
     PhysicalResourceId
 } from 'aws-cdk-lib/custom-resources';
 import { Construct } from 'constructs';
-import { DefaultConfig } from '../../common/default-config';
-import { validate, ValidationTypes } from '../../common/validate';
-import { LambdaConfiguration } from '../../types/lambda-configuration';
-import { SecureFunction } from '../secure-function';
 import {
     Ec2ImageBuilderStartHashError,
     Ec2ImageBuilderStartTimeoutError
 } from './types/exception';
+import { DefaultConfig } from '../../common/default-config';
+import { validate, ValidationTypes } from '../../common/validate';
+import { LambdaConfiguration } from '../../types/lambda-configuration';
+import { SecureFunction } from '../secure-function';
 
 /**
  * Properties for the EC2 Image Builder Start custom resource
