@@ -34,8 +34,7 @@
       "mime",
       "morgan",
       "node",
-      "supertest",
-      "uuid"
+      "supertest"
     ],
     "skipLibCheck": true
   },

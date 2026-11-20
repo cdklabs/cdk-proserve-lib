@@ -13,7 +13,7 @@ const buildDefaults: Partial<BuildOptions> = {
     bundle: true,
     minify: true,
     platform: 'node',
-    tsconfig: 'tsconfig.dev.json'
+    tsconfig: 'tsconfig.json'
 };
 
 /**

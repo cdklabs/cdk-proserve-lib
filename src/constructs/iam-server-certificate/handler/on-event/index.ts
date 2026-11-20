@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
+import { randomUUID } from 'node:crypto';
 import { IAM } from '@aws-sdk/client-iam';
 import { SecretsManager } from '@aws-sdk/client-secrets-manager';
 import { SSM } from '@aws-sdk/client-ssm';
@@ -12,7 +13,6 @@ import {
     CloudFormationCustomResourceUpdateEvent,
     Context
 } from 'aws-lambda';
-import { v4 } from 'uuid';
 import {
     FailedToCreateIamServerCertificateException,
     FailedToRetrieveValueException
@@ -77,7 +77,7 @@ async function onCreate(
         : undefined;
     const privateKey = await getValue(props.PrivateKey);
 
-    const name = `${props.CertificatePrefix}-${v4()}`.substring(
+    const name = `${props.CertificatePrefix}-${randomUUID()}`.substring(
         0,
         128 - props.CertificatePrefix.length
     );

@@ -197,7 +197,7 @@
       "description": "Builds the Lambda function code and bundles dependencies",
       "steps": [
         {
-          "exec": "yarn ts-node --project tsconfig.dev.json esbuild.ts",
+          "exec": "yarn ts-node --project test/tsconfig.json esbuild.ts",
           "name": "Run esbuild."
         }
       ]
@@ -272,7 +272,7 @@
       "description": "Automatically update files with generator scripts.",
       "steps": [
         {
-          "exec": "yarn ts-node --project tsconfig.dev.json ./utilities/generators"
+          "exec": "yarn ts-node --project test/tsconfig.json ./utilities/generators"
         },
         {
           "spawn": "eslint"
@@ -513,7 +513,8 @@
       "description": "Test rosetta extract",
       "steps": [
         {
-          "exec": "yarn jsii-rosetta extract 2> /dev/null 1>&2"
+          "exec": "yarn jsii-rosetta extract 2> /dev/null 1>&2",
+          "shell": "system"
         }
       ]
     },
@@ -574,7 +575,7 @@
       "description": "Updates the compatibility matrix with current constructs, aspects, and patterns.",
       "steps": [
         {
-          "exec": "yarn ts-node --project tsconfig.dev.json utilities/generators/lib/update-compatibility-matrix.ts",
+          "exec": "yarn ts-node --project test/tsconfig.json utilities/generators/lib/update-compatibility-matrix.ts",
           "name": "Runs script to automatically update the compatibility matrix."
         }
       ]
@@ -584,7 +585,7 @@
       "description": "Updates the README with library package information.",
       "steps": [
         {
-          "exec": "yarn ts-node --project tsconfig.dev.json utilities/generators/lib/update-readme-library.ts",
+          "exec": "yarn ts-node --project test/tsconfig.json utilities/generators/lib/update-readme-library.ts",
           "name": "Runs script to automatically update the README."
         }
       ]
@@ -658,7 +659,7 @@
             "--peer",
             "--no-deprecated",
             "--dep=dev",
-            "--filter=@aws-sdk/client-pricing,@aws-sdk/client-wafv2,@aws-sdk/util-stream,@types/glob,@types/js-yaml,@types/supertest,@types/uuid,@vitest/coverage-v8,aws-sdk-client-mock,aws-sdk-client-mock-vitest,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,glob,husky,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,memfs,prettier,supertest,ts-node,typescript,vitest"
+            "--filter=@aws-sdk/client-pricing,@aws-sdk/client-wafv2,@aws-sdk/util-stream,@types/glob,@types/js-yaml,@types/supertest,@vitest/coverage-v8,aws-sdk-client-mock,aws-sdk-client-mock-vitest,cloudform-types,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,glob,husky,jsii-diff,jsii-pacmak,jsii-rosetta,lint-staged,memfs,prettier,supertest,ts-node,typescript,vitest"
           ]
         },
         {
@@ -699,7 +700,6 @@
             "@types/morgan",
             "@types/node",
             "@types/supertest",
-            "@types/uuid",
             "@typescript-eslint/eslint-plugin",
             "@typescript-eslint/parser",
             "@vitest/coverage-v8",
@@ -733,7 +733,6 @@
             "supertest",
             "ts-node",
             "typescript",
-            "uuid",
             "vitest",
             "@aws-cdk/integ-runner",
             "@aws-cdk/integ-tests-alpha"

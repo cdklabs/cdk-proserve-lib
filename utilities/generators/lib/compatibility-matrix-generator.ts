@@ -163,7 +163,7 @@ export class CompatibilityMatrixGenerator {
             // Clear module cache to ensure fresh import
             delete require.cache[absolutePath];
 
-            const module = await import(absolutePath);
+            const module = require(absolutePath);
 
             if (!module.compatibility) {
                 this.recordError({
