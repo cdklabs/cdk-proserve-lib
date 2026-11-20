@@ -9,8 +9,10 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v3
+      - id: auto_656c9688
+        uses: actions/checkout@v3
       - name: Check License Header
+        id: check_license_header
         uses: apache/skywalking-eyes/header@5c5b974209f0de5d905f37deb69369068ebfc15c
         with:
           mode: check
