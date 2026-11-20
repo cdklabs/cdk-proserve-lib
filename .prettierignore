@@ -5,5 +5,5 @@
 API.md
 COMPATIBILITY.md
 package.json
-tsconfig.dev.json
+tsconfig.json
 yarn.lock

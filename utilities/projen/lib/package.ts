@@ -77,6 +77,8 @@ export const configurePackaging = (project: CdklabsTypeScriptProject) => {
 
     // Rosetta
     project.tasks.tryFind('rosetta:extract')?.updateStep(0, {
-        exec: 'yarn jsii-rosetta extract 2> /dev/null 1>&2'
+        exec: 'yarn jsii-rosetta extract 2> /dev/null 1>&2',
+        // projen's built-in shell does not support multiple redirects
+        shell: 'system'
     });
 };

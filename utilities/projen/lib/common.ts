@@ -4,4 +4,4 @@
 /**
  * Runs ts-node in context of the dev tsconfig
  */
-export const tsNodeCommand = 'yarn ts-node --project tsconfig.dev.json';
+export const tsNodeCommand = 'yarn ts-node --project test/tsconfig.json';

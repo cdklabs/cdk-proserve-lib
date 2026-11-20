@@ -41,8 +41,7 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         'express-async-handler@1.2.0',
         'js-yaml@4.3.1',
         'mime@3.0.0',
-        'morgan@1.11.0',
-        'uuid@14.0.1'
+        'morgan@1.11.0'
     ];
 
     const ideAndTestDeps = [
@@ -51,7 +50,6 @@ export const configureDependencies = (project: CdklabsTypeScriptProject) => {
         '@aws-sdk/util-stream', // download-s3-asset test sdkStreamMixin
         '@types/glob',
         '@types/supertest',
-        '@types/uuid',
         '@types/js-yaml',
         'aws-sdk-client-mock',
         'cdk-nag@2.34.0',
