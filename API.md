@@ -4,6 +4,8 @@
 
 ### ApiGatewayStaticHosting <a name="ApiGatewayStaticHosting" id="@cdklabs/cdk-proserve-lib.patterns.ApiGatewayStaticHosting"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 A pattern that deploys resources to support the hosting of static assets within an AWS account.
 
 Unlike the normal pattern for static content hosting (Amazon S3 fronted by Amazon CloudFront), this pattern instead
@@ -236,6 +238,8 @@ value.
 
 ### DynamoDbProvisionTable <a name="DynamoDbProvisionTable" id="@cdklabs/cdk-proserve-lib.constructs.DynamoDbProvisionTable"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 Controls the contents of an Amazon DynamoDB table from Infrastructure as Code.
 
 This construct uses information about the key attributes of a table and a list of rows to populate the table upon
@@ -437,6 +441,8 @@ The tree node.
 
 ### Ec2ImageBuilderGetImage <a name="Ec2ImageBuilderGetImage" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderGetImage"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 Retrieves an EC2 Image Builder image build version.
 
 This is useful for retrieving the AMI ID of an image that was built by an
@@ -608,6 +614,8 @@ The AMI ID retrieved from the EC2 Image Builder image.
 
 
 ### Ec2ImageBuilderStart <a name="Ec2ImageBuilderStart" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImageBuilderStart"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 Starts an EC2 Image Builder Pipeline and optionally waits for the build to complete.
 
@@ -792,6 +800,8 @@ The ARN of the image build version created by the pipeline execution.
 
 
 ### Ec2ImagePipeline <a name="Ec2ImagePipeline" id="@cdklabs/cdk-proserve-lib.constructs.Ec2ImagePipeline"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 An EC2 Image Pipeline that can be used to build a Amazon Machine Image (AMI) automatically.
 
@@ -1003,6 +1013,8 @@ property to be available.
 
 
 ### Ec2LinuxImagePipeline <a name="Ec2LinuxImagePipeline" id="@cdklabs/cdk-proserve-lib.patterns.Ec2LinuxImagePipeline"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 A pattern to build an EC2 Image Pipeline specifically for Linux.
 
@@ -1228,6 +1240,8 @@ property to be available.
 
 ### FriendlyEmbrace <a name="FriendlyEmbrace" id="@cdklabs/cdk-proserve-lib.constructs.FriendlyEmbrace"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 The Friendly Embrace construct can be used to remove CloudFormation stack dependencies that are based on stack exports and imports.
 
 🚨 WARNING: This construct is experimental and will directly modify
@@ -1414,6 +1428,8 @@ Handler for the custom resource.
 
 
 ### IamServerCertificate <a name="IamServerCertificate" id="@cdklabs/cdk-proserve-lib.constructs.IamServerCertificate"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 Manages an AWS Identity and Access Management Server Certificate for use in regions/partitions where AWS Certificate Manager is not available.
 
@@ -1612,6 +1628,8 @@ ARN for the created AWS IAM Server Certificate.
 
 
 ### KeycloakService <a name="KeycloakService" id="@cdklabs/cdk-proserve-lib.patterns.KeycloakService"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 Deploys a production-grade Keycloak service.
 
@@ -1886,6 +1904,8 @@ Container service for the Keycloak cluster.
 
 ### NetworkFirewall <a name="NetworkFirewall" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewall"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 Creates an AWS Network Firewall using a user-supplied Suricata rules file in a VPC.
 
 Follows guidelines that can be found at:
@@ -2059,6 +2079,8 @@ The underlying CloudFormation Network Firewall resource.
 
 
 ### NetworkFirewallEndpoints <a name="NetworkFirewallEndpoints" id="@cdklabs/cdk-proserve-lib.constructs.NetworkFirewallEndpoints"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 Retrieves Network Firewall endpoints so that you can reference them in your other resources.
 
@@ -2240,6 +2262,8 @@ The tree node.
 
 
 ### OpenSearchAdminUser <a name="OpenSearchAdminUser" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchAdminUser"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 Manages an admin user for an Amazon OpenSearch domain.
 
@@ -2423,6 +2447,8 @@ The tree node.
 
 
 ### OpenSearchProvisionDomain <a name="OpenSearchProvisionDomain" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchProvisionDomain"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 Controls the contents of an Amazon OpenSearch Service domain from Infrastructure as Code.
 
@@ -2664,6 +2690,8 @@ The tree node.
 
 ### OpenSearchWorkflow <a name="OpenSearchWorkflow" id="@cdklabs/cdk-proserve-lib.constructs.OpenSearchWorkflow"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 Create OpenSearch Workflows using the flow framework to automate the provisioning of complex tasks using JSON or YAML.
 
 This construct creates a custom resource that deploys a Flow Framework
@@ -2904,6 +2932,8 @@ This ID can be used to reference and manage the workflow after deployment.
 
 ### ServerAccessLogsBucket <a name="ServerAccessLogsBucket" id="@cdklabs/cdk-proserve-lib.constructs.ServerAccessLogsBucket"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 A secure S3 bucket configured to receive server access logs from other S3 buckets.
 
 The bucket policy includes conditions to restrict log delivery to specified
@@ -3070,6 +3100,8 @@ The S3 bucket configured for receiving server access logs.
 
 
 ### WebApplicationFirewall <a name="WebApplicationFirewall" id="@cdklabs/cdk-proserve-lib.constructs.WebApplicationFirewall"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 Creates an AWS Web Application Firewall (WAF) that can be associated with resources such as an Application Load Balancer.
 
